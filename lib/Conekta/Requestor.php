@@ -30,6 +30,7 @@ class Conekta_Requestor
 	
 	public function request($meth, $url, $params=null)
 	{
+		$params = self::encode($params);
 		$headers = $this->setHeaders();
 		$curl = curl_init();
 		$meth = strtolower($meth);
@@ -51,7 +52,7 @@ class Conekta_Requestor
 			case 'put':
 				$opts[CURLOPT_RETURNTRANSFER] = 1;
 				$opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
-				$opts[CURLOPT_POSTFIELDS] = self::encode($params);
+				$opts[CURLOPT_POSTFIELDS] = $params;
 				break;
 			case 'delete':
 				$opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
@@ -72,6 +73,33 @@ class Conekta_Requestor
 		$response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 		return json_decode($response, true);
+	}
+	
+	public static function encode($arr, $prefix=null)
+	{
+		if (!is_array($arr)) {
+			return $arr;
+		}
+		$r = array();
+		foreach ($arr as $k => $v) {
+			if (is_null($v)) {
+				continue;
+			}
+
+			if ($prefix && $k && !is_int($k)) {
+				$k = $prefix."[".$k."]";
+			}
+			else if ($prefix) {
+				$k = $prefix."[]";
+			}
+
+			if (is_array($v)) {
+				$r[] = self::encode($v, $k, true);
+			} else {
+				$r[] = urlencode($k)."=".urlencode($v);
+			}
+		}
+		return implode("&", $r);
 	}
 	
 	public function handleError()
