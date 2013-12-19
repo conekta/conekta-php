@@ -1,6 +1,16 @@
 <?php
 abstract class Conekta_Resource extends Conekta_Object
-{	
+{		
+	public function getClassSimpleName() {
+		$types = Conekta_Util::$types;
+		foreach ($types as $k => $v) {
+			if (strpos(get_class($this), $v) !== false) {
+				return $k;
+			}
+		}
+		throw new Exception('Not a Conekta class');
+	}
+	
 	public static function classUrl($class=null) 
 	{
 		if (!$class)
@@ -48,15 +58,16 @@ abstract class Conekta_Resource extends Conekta_Object
 	{
 	}
 	
-	protected function _scpUpdate() 
+	protected function _update($params) 
 	{
+		$requestor = new Conekta_Requestor();
+		$url = $this->instanceUrl();
+		$response = $requestor->request('put', $url, $params);
+		$this->loadFromArray($response);
+		return $this;
 	}
 	
-	protected function _scpModifyMember() 
-	{
-	}
-	
-	protected function _scpCreateMember($member,$params) 
+	protected function _createMember($member,$params) 
 	{
 		$requestor = new Conekta_Requestor();
 		$url = $this->instanceUrl() . '/' . $member;;
@@ -64,11 +75,11 @@ abstract class Conekta_Resource extends Conekta_Object
 		if (strpos(get_class($this->$member), "Conekta_Object") !== false) {
 			$this->$member->loadFromArray(array_merge(array($response), $this->$member->_toArray()));
 			$instances = $this->$member;
-			return $instances[0];
+			$instance = $instances[0];
 		} else {
 			$instance = $this->$member->loadFromArray($response);
-			return $instance;
 		}
+		return $instance;
 	}
 }
 ?>

@@ -2,21 +2,16 @@
 abstract class Conekta_Util
 {
 	public static $types = array(
-			'card_payment' => 'Conekta_Payment_Method',
-			'cash_payment' => 'Conekta_Payment_Method',
-			'bank_transfer_payment' => 'Conekta_Payment_Method',
-			'card' => 'Conekta_Card',
-			'charge' => 'Conekta_Charge',
-			'customer' => 'Conekta_Customer',
-			'list' => 'Conekta_List',
-			'invoice' => 'Conekta_Invoice',
-			'invoiceitem' => 'Conekta_InvoiceItem',
-			'event' => 'Conekta_Event',
-			'transfer' => 'Conekta_Transfer',
-			'plan' => 'Conekta_Plan',
-			'recipient' => 'Conekta_Recipient',
-			'subscription' => 'Conekta_Subscription'
-		);
+		'card_payment' => 'Conekta_Payment_Method',
+		'cash_payment' => 'Conekta_Payment_Method',
+		'bank_transfer_payment' => 'Conekta_Payment_Method',
+		'card' => 'Conekta_Card',
+		'charge' => 'Conekta_Charge',
+		'customer' => 'Conekta_Customer',
+		'event' => 'Conekta_Event',
+		'plan' => 'Conekta_Plan',
+		'subscription' => 'Conekta_Subscription'
+	);
 	
 	public static function convertToConektaObject($resp)
 	{
@@ -32,7 +27,7 @@ abstract class Conekta_Util
 			}
 			if (is_array($resp[0])) {
 				$instance = new Conekta_Object();
-				$instance->loadFromArray(array($resp[0]));
+				$instance->loadFromArray($resp);
 				return $instance;
 			}
 		} 
