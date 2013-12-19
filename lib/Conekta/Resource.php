@@ -1,16 +1,6 @@
 <?php
 abstract class Conekta_Resource extends Conekta_Object
 {		
-	public function getClassSimpleName() {
-		$types = Conekta_Util::$types;
-		foreach ($types as $k => $v) {
-			if (strpos(get_class($this), $v) !== false) {
-				return $k;
-			}
-		}
-		throw new Exception('Not a Conekta class');
-	}
-	
 	public static function classUrl($class=null) 
 	{
 		if (!$class)
