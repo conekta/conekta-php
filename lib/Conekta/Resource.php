@@ -44,8 +44,20 @@ abstract class Conekta_Resource extends Conekta_Object
 		return "$base/$extn";  
 	}
 	
-	protected function _scpDelete() 
+	protected function _delete($method='delete') 
 	{
+		$requestor = new Conekta_Requestor();
+		$url = $this->instanceUrl();
+		$response = $requestor->request($method, $url, $params);
+		$this->loadFromArray($response);
+		// Fix this so it can be used by all classes
+		foreach ($this->customer->cards as $k => $v) {
+			if (strpos($v->id, $this->id) !== false) {
+				$this->customer->cards->_values = Conekta_Util::shiftArray($this->customer->cards->_values,$k);
+				continue;
+			}
+		}
+		return $this;
 	}
 	
 	protected function _update($params) 

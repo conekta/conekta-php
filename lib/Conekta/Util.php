@@ -33,5 +33,18 @@ abstract class Conekta_Util
 		} 
 		return $resp;
 	}
+	
+	public static function shiftArray($array, $k) {
+		unset($array[$k]);
+		end($array);
+		$lastKey = key($array);
+		
+		for ($i = $k; $i < $lastKey; ++ $i) {
+			$array[$i] = $array[$i+1];
+			unset($array[$i+1]);
+		}
+		
+		return $array;
+	}
 }
 ?>

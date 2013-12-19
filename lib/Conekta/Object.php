@@ -15,6 +15,11 @@ class Conekta_Object extends ArrayObject
 		$this->_values[$k] = $v;
 	}
 	
+	public function _unsetKey($k)
+	{
+		unset($this->_values[$k]);
+	}
+	
 	public function loadFromArray($values)
 	{
 		foreach ($values as $k => $v) {

@@ -4,12 +4,15 @@ class Conekta_Customer extends Conekta_Resource
 	
 	public function loadFromArray($values) {
 		parent::loadFromArray($values);
-		foreach ($this->cards as $card) {
-			$card->customer = $this;
+		foreach ($this->cards as $k => $v) {
+			if (isset($v->deleted) != true) {
+				$v->customer = &$this;
+				$this->cards[$k] = $v;
+			}
 		}
 		
 		if (isset($this->subscription)) {
-			$this->subscription = $this;
+			$this->subscription = &$this;
 		}
 	}
 	

@@ -19,5 +19,9 @@ class Conekta_Card extends Conekta_Resource
 	{
 		return self::_update($params);
 	}
+	
+	public function delete() {
+		return self::_delete();
+	}
 }
 ?>
