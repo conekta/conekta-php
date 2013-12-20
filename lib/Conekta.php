@@ -18,4 +18,6 @@ require(dirname(__FILE__) . '/Conekta/Charge.php');
 require(dirname(__FILE__) . '/Conekta/PaymentMethod.php');
 require(dirname(__FILE__) . '/Conekta/Customer.php');
 require(dirname(__FILE__) . '/Conekta/Card.php');
+require(dirname(__FILE__) . '/Conekta/Plan.php');
+require(dirname(__FILE__) . '/Conekta/Subscription.php');
 ?>

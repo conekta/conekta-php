@@ -44,17 +44,34 @@ abstract class Conekta_Resource extends Conekta_Object
 		return "$base/$extn";  
 	}
 	
-	protected function _delete($method='delete') 
+	protected function _delete($parent=null, $member=null, $method='delete', $action=null) 
 	{
 		$requestor = new Conekta_Requestor();
-		$url = $this->instanceUrl();
+		if (isset($action)) {
+			$url = $this->instanceUrl() . '/' . $action;
+		} else {
+			$url = $this->instanceUrl();
+		}
 		$response = $requestor->request($method, $url, $params);
 		$this->loadFromArray($response);
 		// Fix this so it can be used by all classes
-		foreach ($this->customer->cards as $k => $v) {
-			if (strpos($v->id, $this->id) !== false) {
-				$this->customer->cards->_values = Conekta_Util::shiftArray($this->customer->cards->_values,$k);
-				continue;
+		//foreach ($this->customer->cards as $k => $v) {
+			//if (strpos($v->id, $this->id) !== false) {
+				//$this->customer->cards->_values = Conekta_Util::shiftArray($this->customer->cards->_values,$k);
+				//continue;
+			//}
+		//}
+		if (isset($parent) && isset($member) && strpos($method, 'delete') !== false) {
+			$obj = $this->$parent->$member;
+			if (strpos(get_class($obj), "Conekta_Object") !== false) {
+				foreach ($this->$parent->$member as $k => $v) {
+					if (strpos($v->id, $this->id) !== false) {
+						$this->$parent->$member->_values = Conekta_Util::shiftArray($this->$parent->$member->_values,$k);
+						continue;
+					}
+				}
+			} else {
+				unset($this->$parent->$member);
 			}
 		}
 		return $this;

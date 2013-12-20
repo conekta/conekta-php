@@ -21,7 +21,7 @@ class Conekta_Card extends Conekta_Resource
 	}
 	
 	public function delete() {
-		return self::_delete();
+		return self::_delete('customer', 'cards');
 	}
 }
 ?>

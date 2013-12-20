@@ -37,5 +37,10 @@ class Conekta_Customer extends Conekta_Resource
 	{
 		return self::_createMember('cards', $params);
 	}
+	
+	public function createSubscription($params=null)
+	{
+		return self::_createMember('subscription', $params);
+	}
 }
 ?>
