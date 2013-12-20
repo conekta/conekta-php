@@ -54,13 +54,6 @@ abstract class Conekta_Resource extends Conekta_Object
 		}
 		$response = $requestor->request($method, $url, $params);
 		$this->loadFromArray($response);
-		// Fix this so it can be used by all classes
-		//foreach ($this->customer->cards as $k => $v) {
-			//if (strpos($v->id, $this->id) !== false) {
-				//$this->customer->cards->_values = Conekta_Util::shiftArray($this->customer->cards->_values,$k);
-				//continue;
-			//}
-		//}
 		if (isset($parent) && isset($member) && strpos($method, 'delete') !== false) {
 			$obj = $this->$parent->$member;
 			if (strpos(get_class($obj), "Conekta_Object") !== false) {
@@ -93,10 +86,16 @@ abstract class Conekta_Resource extends Conekta_Object
 		$response = $requestor->request('post', $url, $params);
 		if (strpos(get_class($this->$member), "Conekta_Object") !== false) {
 			$this->$member->loadFromArray(array_merge(array($response), $this->$member->_toArray()));
+			$this->loadFromArray();
 			$instances = $this->$member;
 			$instance = $instances[0];
 		} else {
-			$instance = $this->$member->loadFromArray($response);
+			$class = 'Conekta_' . ucfirst($member);
+			$instance = new $class();
+			$instance->loadFromArray($response);
+			$this->$member = $instance;
+			$this->_setVal($member, $instance);
+			$this->loadFromArray();
 		}
 		return $instance;
 	}

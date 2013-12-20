@@ -3,7 +3,9 @@ class Conekta_Customer extends Conekta_Resource
 {
 	
 	public function loadFromArray($values) {
-		parent::loadFromArray($values);
+		if (isset($values)) {
+			parent::loadFromArray($values);
+		}
 		foreach ($this->cards as $k => $v) {
 			if (isset($v->deleted) != true) {
 				$v->customer = &$this;
@@ -12,7 +14,7 @@ class Conekta_Customer extends Conekta_Resource
 		}
 		
 		if (isset($this->subscription)) {
-			$this->subscription = &$this;
+			$this->subscription->customer = &$this;
 		}
 	}
 	
