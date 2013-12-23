@@ -73,7 +73,6 @@ class Conekta_Requestor
 		$response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 		if ($response_code != 200) {
-			//throw new Exception('AN ERROR');
 			Conekta_Error::errorHandler($response, $response_code);
 		}
 		return json_decode($response, true);
