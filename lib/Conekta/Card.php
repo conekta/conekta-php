@@ -6,7 +6,7 @@ class Conekta_Card extends Conekta_Resource
 		$id = $this->id;
 		if (!$id) 
 		{
-			throw new Exception('No id');
+			throw new Conekta_Error('Could not get the id of '. get_class() . ' instance.' );
 		}
 		$class = get_class($this);
 		$base = $this->classUrl($class);

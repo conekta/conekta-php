@@ -6,7 +6,7 @@ class Conekta_Subscription extends Conekta_Resource
 		$id = $this->id;
 		if (!$id) 
 		{
-			throw new Exception('No id');
+			throw new Conekta_Error('Could not get the id of '. get_class() . ' instance.' );
 		}
 		$class = get_class($this);
 		$base = '/subscription';
@@ -21,17 +21,17 @@ class Conekta_Subscription extends Conekta_Resource
 	
 	public function cancel()
 	{
-		return self::_delete('customer', 'subscription', 'post', 'cancel');
+		return self::_customAction('customer', 'subscription', 'post', 'cancel');
 	}
 	
 	public function pause()
 	{
-		return self::_delete('customer', 'subscription', 'post', 'pause');
+		return self::_customAction('customer', 'subscription', 'post', 'pause');
 	}
 	
 	public function resume()
 	{
-		return self::_delete('customer', 'subscription', 'post', 'resume');
+		return self::_customAction('customer', 'subscription', 'post', 'resume');
 	}
 }
 ?>

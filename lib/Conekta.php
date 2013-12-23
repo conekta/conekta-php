@@ -20,4 +20,7 @@ require(dirname(__FILE__) . '/Conekta/Customer.php');
 require(dirname(__FILE__) . '/Conekta/Card.php');
 require(dirname(__FILE__) . '/Conekta/Plan.php');
 require(dirname(__FILE__) . '/Conekta/Subscription.php');
+require(dirname(__FILE__) . '/Conekta/Token.php');
+require(dirname(__FILE__) . '/Conekta/Event.php');
+require(dirname(__FILE__) . '/Conekta/Error.php');
 ?>

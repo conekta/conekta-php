@@ -11,6 +11,16 @@ abstract class Conekta_Resource extends Conekta_Object
 		return "/${base}s";
 	}
 	
+	protected static function _scpWhere($class, $params)
+	{
+		$instance = new Conekta_Object();
+		$requestor = new Conekta_Requestor();
+		$url = self::classUrl($class);
+		$response = $requestor->request('get', $url, $params);
+		$instance->loadFromArray($response);
+		return $instance;
+	}
+	
 	protected static function _scpGet($class, $id) 
 	{
 		$instance = new $class($id);
@@ -36,7 +46,7 @@ abstract class Conekta_Resource extends Conekta_Object
 		$id = $this->id;
 		if (!$id) 
 		{
-			throw new Exception('No id');
+			throw new Conekta_Error('Could not get the id of '. get_class() . ' instance.' );
 		}
 		$class = get_class($this);
 		$base = $this->classUrl($class);
@@ -44,17 +54,10 @@ abstract class Conekta_Resource extends Conekta_Object
 		return "$base/$extn";  
 	}
 	
-	protected function _delete($parent=null, $member=null, $method='delete', $action=null) 
+	protected function _delete($parent=null, $member=null) 
 	{
-		$requestor = new Conekta_Requestor();
-		if (isset($action)) {
-			$url = $this->instanceUrl() . '/' . $action;
-		} else {
-			$url = $this->instanceUrl();
-		}
-		$response = $requestor->request($method, $url, $params);
-		$this->loadFromArray($response);
-		if (isset($parent) && isset($member) && strpos($method, 'delete') !== false) {
+		self::_customAction($parent, $member, 'delete', null, null);
+		if (isset($parent) && isset($member)) {
 			$obj = $this->$parent->$member;
 			if (strpos(get_class($obj), "Conekta_Object") !== false) {
 				foreach ($this->$parent->$member as $k => $v) {
@@ -98,6 +101,19 @@ abstract class Conekta_Resource extends Conekta_Object
 			$this->loadFromArray();
 		}
 		return $instance;
+	}
+	
+	protected function _customAction($parent=null, $member=null, $method='post', $action=null, $params=null) 
+	{
+		$requestor = new Conekta_Requestor();
+		if (isset($action)) {
+			$url = $this->instanceUrl() . '/' . $action;
+		} else {
+			$url = $this->instanceUrl();
+		}
+		$response = $requestor->request($method, $url, $params);
+		$this->loadFromArray($response);
+		return $this;
 	}
 }
 ?>

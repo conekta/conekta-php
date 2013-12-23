@@ -72,6 +72,10 @@ class Conekta_Requestor
 		$response = curl_exec($curl);
 		$response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
+		if ($response_code != 200) {
+			//throw new Exception('AN ERROR');
+			Conekta_Error::errorHandler($response, $response_code);
+		}
 		return json_decode($response, true);
 	}
 	
@@ -96,6 +100,9 @@ class Conekta_Requestor
 			if (is_array($v)) {
 				$r[] = self::encode($v, $k, true);
 			} else {
+				if (is_bool($v)) {
+					$v = ($res) ? 'true' : 'false';
+				}
 				$r[] = urlencode($k)."=".urlencode($v);
 			}
 		}

@@ -13,6 +13,15 @@ class Conekta_Plan extends Conekta_Resource
 		return self::_scpCreate($class, $params);
 	}
 	
+	public static function where($params) {
+		$class = get_class();
+		return self::_scpWhere($class, $params);
+	}
+	
+	public function delete() {
+		return self::_delete();
+	}
+	
 	public function update($params=null)
 	{
 		return self::_update($params);
