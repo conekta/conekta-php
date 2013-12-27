@@ -1,8 +1,10 @@
 <?php
 
-function authorizeFromEnv()
+function setApiKey()
 {
-  Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
+	if (isset($env) == false) {
+		$env = Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
+	}
 }
 
 @include_once(dirname(__FILE__).'/simpletest/autorun.php');

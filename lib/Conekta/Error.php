@@ -17,7 +17,6 @@ class Conekta_Error extends Exception
 		if (isset($code) != true || $code == 0) {
 			throw new Conekta_Error('Could not connect to '.Conekta::$apiBase, $type, $code, $params);
 		}
-		echo 'Hola' . $code ;
 		switch ($code) {
 			case 400:
 				throw new Conekta_MalformedRequestError($message, $type, $code, $params);
