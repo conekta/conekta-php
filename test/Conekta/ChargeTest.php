@@ -15,8 +15,8 @@ class Conekta_ChargeTest extends UnitTestCase
 											$bank));
 			$this->assertTrue($c->status == "pending_payment");
 		} catch (Exception $e) {
-			echo "<span class='fail'>".$e->getMessage()."</span><br/>";
 			$this->assertTrue(true == false);
+			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
 		}
 	}
 	public function testSuccesfulCardPMCreate()
@@ -30,8 +30,8 @@ class Conekta_ChargeTest extends UnitTestCase
 											$card));
 			$this->assertTrue($c->status == "paid");
 		} catch (Exception $e) {
-			echo "<span class='fail'>".$e->getMessage()."</span><br/>";
 			$this->assertTrue(true == false);
+			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
 		}
 	}
 	public function testSuccesfulOxxoPMCreate()
@@ -45,8 +45,8 @@ class Conekta_ChargeTest extends UnitTestCase
 											$bank));
 			$this->assertTrue($c->status == "pending_payment");
 		} catch (Exception $e) {
-			echo "<span class='fail'>".$e->getMessage()."</span><br/>";
 			$this->assertTrue(true == false);
+			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
 		}
 	}
 }
