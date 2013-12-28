@@ -35,6 +35,7 @@ class Conekta_Requestor
 		$curl = curl_init();
 		$meth = strtolower($meth);
 		$opts = array();
+		$query = "";
 		if (count($params) > 0)
 		{
 			$query = '?'.$params;
@@ -100,7 +101,7 @@ class Conekta_Requestor
 				$r[] = self::encode($v, $k, true);
 			} else {
 				if (is_bool($v)) {
-					$v = ($res) ? 'true' : 'false';
+					$v = $v ? 'true' : 'false';
 				}
 				$r[] = urlencode($k)."=".urlencode($v);
 			}

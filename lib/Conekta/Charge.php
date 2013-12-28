@@ -25,6 +25,7 @@ class Conekta_Charge extends Conekta_Resource
 	
 	public function refund($amount=null)
 	{
+		$params = null;
 		if (isset($amount)) {
 			$params = array('amount'=>$amount);
 		}

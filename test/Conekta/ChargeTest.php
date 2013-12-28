@@ -3,51 +3,92 @@ class Conekta_ChargeTest extends UnitTestCase
 {
 	public static $valid_payment_method = array('amount' => 2000,
 		'currency' => 'mxn', 'description' => 'Some desc');
+	public static $invalid_payment_method = array('amount' => 10,
+		'currency' => 'mxn', 'description' => 'Some desc');
 	public static $valid_visa_card = array('card' => 'tok_test_visa_4242');
 	public function testSuccesfulBankPMCreate()
 	{
 		$pm = self::$valid_payment_method;
 		$bank = array('bank' => array('type' => 'banorte'));
 		setApiKey();
-		try {
-			$c = Conekta_Charge::create(array_merge(
-											$pm,
-											$bank));
-			$this->assertTrue($c->status == "pending_payment");
-		} catch (Exception $e) {
-			$this->assertTrue(true == false);
-			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
-		}
+		$bpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$bank));
+		$this->assertTrue($bpm->status == "pending_payment");
 	}
 	public function testSuccesfulCardPMCreate()
 	{
 		$pm = self::$valid_payment_method;
 		$card = self::$valid_visa_card;
 		setApiKey();
-		try {
-			$c = Conekta_Charge::create(array_merge(
-											$pm,
-											$card));
-			$this->assertTrue($c->status == "paid");
-		} catch (Exception $e) {
-			$this->assertTrue(true == false);
-			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
-		}
+		$cpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$card));
+		$this->assertTrue($cpm->status == "paid");
 	}
 	public function testSuccesfulOxxoPMCreate()
 	{
 		$pm = self::$valid_payment_method;
 		$bank = array('cash' => array('type' => 'oxxo'));
 		setApiKey();
+		$opm = Conekta_Charge::create(array_merge(
+										$pm,
+										$bank));
+		$this->assertTrue($opm->status == "pending_payment");
+	}
+	public function testUnsuccesfulPMCreate()
+	{
+		$pm = self::$invalid_payment_method;
+		$card = self::$valid_visa_card;
+		setApiKey();
 		try {
-			$c = Conekta_Charge::create(array_merge(
+			$cpm = Conekta_Charge::create(array_merge(
 											$pm,
-											$bank));
-			$this->assertTrue($c->status == "pending_payment");
+											$card));
 		} catch (Exception $e) {
-			$this->assertTrue(true == false);
-			echo "Message: <span class='fail'>".$e->getMessage()."</span><br/>";
-		}
+			$this->assertTrue(strpos($e->getMessage(), "The minimum purchase is 3 MXN pesos for card payments") !== false);
+		}	
+	}
+	public function testSuccesfulRefund()
+	{
+		$pm = self::$valid_payment_method;
+		$card = self::$valid_visa_card;
+		setApiKey();
+		$cpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$card));
+		$this->assertTrue($cpm->status == "paid");
+		$cpm->refund();
+		$this->assertTrue($cpm->status == "refunded");
+	}
+	public function testUnsuccesfulRefund()
+	{
+		$pm = self::$valid_payment_method;
+		$card = self::$valid_visa_card;
+		setApiKey();
+		$cpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$card));
+		$this->assertTrue($cpm->status == "paid");
+		try {
+			$cpm->refund(3000);
+		} catch (Exception $e) {
+			$this->assertTrue(strpos($e->getMessage(), "The order does not exist or the amount to refund is invalid") !== false);
+		}	
+	}
+	public function testSuccesfulCapture()
+	{
+		$pm = self::$valid_payment_method;
+		$card = self::$valid_visa_card;
+		$capture = array('capture'=>false);
+		setApiKey();
+		$cpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$card, 
+										$capture));
+		$this->assertTrue($cpm->status == "pre_authorized");
+		$cpm->capture();
+		$this->assertTrue($cpm->status == "paid");
 	}
 }
 ?>

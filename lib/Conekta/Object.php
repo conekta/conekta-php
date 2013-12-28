@@ -50,7 +50,7 @@ class Conekta_Object extends ArrayObject
 	protected function _toArray() {
 		$array = array();
 		foreach ($this->_values as $k => $v) {
-			if (strpos(get_class($v), "Conekta_") !== false) {
+			if (is_object($v) == true && strpos(get_class($v), "Conekta_") !== false) {
 				if (empty($v->_values) != true) {
 					$array[$k] = $v->_toArray();
 				}

@@ -2,7 +2,7 @@
 class Conekta_Customer extends Conekta_Resource
 {
 	
-	public function loadFromArray($values) {
+	public function loadFromArray($values=null) {
 		if (isset($values)) {
 			parent::loadFromArray($values);
 		}

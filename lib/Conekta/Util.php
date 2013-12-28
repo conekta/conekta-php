@@ -24,8 +24,7 @@ abstract class Conekta_Util
 				$instance = new $class();
 				$instance->loadFromArray($resp);
 				return $instance;
-			}
-			//if (is_array($resp[0])) {
+			}			
 			if (current($resp)) {
 				$instance = new Conekta_Object();
 				$instance->loadFromArray($resp);
