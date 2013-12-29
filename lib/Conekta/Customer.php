@@ -24,7 +24,7 @@ class Conekta_Customer extends Conekta_Resource
 		return self::_scpGet($class, $id);
 	}
 	
-	public static function where($params) {
+	public static function where($params=null) {
 		$class = get_class();
 		return self::_scpWhere($class, $params);
 	}

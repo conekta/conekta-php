@@ -108,9 +108,5 @@ class Conekta_Requestor
 		}
 		return implode("&", $r);
 	}
-	
-	public function handleError()
-	{
-	}
 }
 ?>

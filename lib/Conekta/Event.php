@@ -1,7 +1,7 @@
 <?php
 class Conekta_Event extends Conekta_Resource
 {	
-	public static function where($params) {
+	public static function where($params=null) {
 		$class = get_class();
 		return self::_scpWhere($class, $params);
 	}

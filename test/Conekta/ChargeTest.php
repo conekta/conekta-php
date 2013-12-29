@@ -6,6 +6,26 @@ class Conekta_ChargeTest extends UnitTestCase
 	public static $invalid_payment_method = array('amount' => 10,
 		'currency' => 'mxn', 'description' => 'Some desc');
 	public static $valid_visa_card = array('card' => 'tok_test_visa_4242');
+	public function testSuccesfulGetCharge()
+	{
+		$pm = self::$valid_payment_method;
+		$card = self::$valid_visa_card;
+		setApiKey();
+		$cpm = Conekta_Charge::create(array_merge(
+										$pm,
+										$card));
+		$this->assertTrue($cpm->status == "paid");
+		$pm = Conekta_Charge::get($cpm->id);
+		$this->assertTrue(strpos(get_class($pm), "Conekta_Charge") !== false);
+	}
+	public function testSuccesfulWhere()
+	{
+		
+		setApiKey();
+		$charges = Conekta_Charge::where();
+		$this->assertTrue(strpos(get_class($charges), "Conekta_Object") !== false);
+		$this->assertTrue(strpos(get_class($charges[0]), "Conekta_Charge") !== false);
+	}
 	public function testSuccesfulBankPMCreate()
 	{
 		$pm = self::$valid_payment_method;

@@ -1,7 +1,7 @@
 <?php
 class Conekta_Error extends Exception
 {
-	public function __construct($message, $type, $code, $params) {
+	public function __construct($message, $type=null, $code=null, $params=null) {
 		parent::__construct($message);
 		$this->message = $message;
 		$this->type = $type;
@@ -15,7 +15,7 @@ class Conekta_Error extends Exception
 		$type = isset($resp['type']) ? $resp['type'] : null;
 		$params = isset($resp['params']) ? $resp['params'] : null;
 		if (isset($code) != true || $code == 0) {
-			throw new Conekta_Error('Could not connect to '.Conekta::$apiBase, $type, $code, $params);
+			throw new Conekta_NoConnectionError('Could not connect to '.Conekta::$apiBase, $type, $code, $params);
 		}
 		switch ($code) {
 			case 400:
@@ -37,6 +37,10 @@ class Conekta_Error extends Exception
 }
 
 	class Conekta_ApiError extends Conekta_Error {
+		
+	}
+	
+	class Conekta_NoConnectionError extends Conekta_Error {
 		
 	}
 
