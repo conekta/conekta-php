@@ -13,7 +13,7 @@ class Conekta_Error extends Exception
 		$resp = json_decode($resp, true);
 		$message = isset($resp['message']) ? $resp['message'] : null;
 		$type = isset($resp['type']) ? $resp['type'] : null;
-		$params = isset($resp['params']) ? $resp['params'] : null;
+		$params = isset($resp['param']) ? $resp['param'] : null;
 		if (isset($code) != true || $code == 0) {
 			throw new Conekta_NoConnectionError('Could not connect to '.Conekta::$apiBase, $type, $code, $params);
 		}

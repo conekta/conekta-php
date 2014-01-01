@@ -21,17 +21,17 @@ class Conekta_Subscription extends Conekta_Resource
 	
 	public function cancel()
 	{
-		return self::_customAction('customer', 'subscription', 'post', 'cancel');
+		return self::_customAction('post', 'cancel');
 	}
 	
 	public function pause()
 	{
-		return self::_customAction('customer', 'subscription', 'post', 'pause');
+		return self::_customAction('post', 'pause');
 	}
 	
 	public function resume()
 	{
-		return self::_customAction('customer', 'subscription', 'post', 'resume');
+		return self::_customAction('post', 'resume');
 	}
 }
 ?>

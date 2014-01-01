@@ -20,7 +20,7 @@ class Conekta_Charge extends Conekta_Resource
 	
 	public function capture()
 	{
-		return self::_customAction(null, null, 'post', 'capture', null);
+		return self::_customAction('post', 'capture', null);
 	}
 	
 	public function refund($amount=null)
@@ -29,7 +29,7 @@ class Conekta_Charge extends Conekta_Resource
 		if (isset($amount)) {
 			$params = array('amount'=>$amount);
 		}
-		return self::_customAction(null, null, 'post', 'refund', $params);
+		return self::_customAction('post', 'refund', $params);
 	}
 }
 ?>

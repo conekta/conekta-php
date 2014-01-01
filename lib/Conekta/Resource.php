@@ -56,7 +56,7 @@ abstract class Conekta_Resource extends Conekta_Object
 	
 	protected function _delete($parent=null, $member=null) 
 	{
-		self::_customAction($parent, $member, 'delete', null, null);
+		self::_customAction('delete', null, null);
 		if (isset($parent) && isset($member)) {
 			$obj = $this->$parent->$member;
 			if (strpos(get_class($obj), "Conekta_Object") !== false) {
@@ -103,7 +103,7 @@ abstract class Conekta_Resource extends Conekta_Object
 		return $instance;
 	}
 	
-	protected function _customAction($parent=null, $member=null, $method='post', $action=null, $params=null) 
+	protected function _customAction($method='post', $action=null, $params=null) 
 	{
 		$requestor = new Conekta_Requestor();
 		if (isset($action)) {
