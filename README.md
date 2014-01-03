@@ -2,15 +2,15 @@
 
 Obtain the latest version of the Conekta PHP bindings with:
 
-    git clone https://github.com/conekta/conekta-php
+    git clone https://github.com/conekta/conekta-php-new
 
 To get started, add the following to your PHP script:
 
-    require_once("/path/to/conekta-php/lib/Conekta.php");
+    require_once("/path/to/conekta-php-new/lib/Conekta.php");
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php": "dev-master"
+  require: "conekta/conekta-php-new": "dev-master"
 
 Simple usage looks like:
     
