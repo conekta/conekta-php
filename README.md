@@ -1,4 +1,8 @@
-= Installation
+# Conekta
+
+This is a ruby library that allows interaction with https://api.conekta.io API.
+
+## Installation
 
 Obtain the latest version of the Conekta PHP bindings with:
 
@@ -12,7 +16,7 @@ You can also install this library with composer:
 
   require: "conekta/conekta-php-new": "dev-master"
 
-Simple usage looks like:
+## Usage
     
     Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
     $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015, 'cvc' => 123, 'name' => 'Mario Moreno');
@@ -53,11 +57,11 @@ Simple usage looks like:
         }
     }
 
-= Documentation
+## Documentation
 
 Please see https://www.conekta.io/docs/api for up-to-date documentation.
 
-= Tests
+## Tests
 
 In order to run tests you have to install SimpleTest (http://packagist.org/packages/vierbergenlars/simpletest) via Composer (http://getcomposer.org/) (recommended way):
 
