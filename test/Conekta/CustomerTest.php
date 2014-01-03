@@ -50,7 +50,7 @@ class Conekta_CustomerTest extends UnitTestCase
 			$customer = Conekta_Customer::create(array(
 							'cards' => array("tok_test_visa_4241")));
 		} catch (Exception $e) {
-			$this->assertTrue(strpos($e->getMessage(), "Token 'tok_test_visa_4241' could not be found") !== false);
+			$this->assertTrue(strpos($e->getMessage(), "Token 'tok_test_visa_4241' could not be found.") !== false);
 		}
 	}
 	public function testAddCardToCustomer()
@@ -83,12 +83,21 @@ class Conekta_CustomerTest extends UnitTestCase
 		setApiKey();
 		$customer = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
+		$subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
+		$this->assertTrue(strpos(get_class($subscription), "Conekta_Subscription") !== false);
+	}
+	public function testSuccesfulSubscriptionUpdate()
+	{
+		setApiKey();
+		$customer = Conekta_Customer::create(array(
+						'cards' => array("tok_test_visa_4242")));
+		$subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
 		try {
-			$plan = Conekta_Plan::get("gold-plan");
+			$plan = Conekta_Plan::get("gold-plan2");
 		} catch (Exception $e) {
 			// Plan does not exist
 			$plan = Conekta_Plan::create(array(
-					'id' => "gold-plan",
+					'id' => "gold-plan2",
 					'name' => "Gold Plan",
 					'amount' => 10000,
 					'currency' => "MXN",
@@ -99,18 +108,7 @@ class Conekta_CustomerTest extends UnitTestCase
 					)
 			);
 		}
-		$subscription = $customer->createSubscription(array(
-				'plan' => $plan->id));
-		$this->assertTrue(strpos(get_class($subscription), "Conekta_Subscription") !== false);
-	}
-	public function testSuccesfulSubscriptionUpdate()
-	{
-		setApiKey();
-		$customer = Conekta_Customer::create(array(
-						'cards' => array("tok_test_visa_4242")));
-		$subscription = $customer->createSubscription(array(
-				'plan' => 'gold-plan'));
-		$subscription->update(array('plan'=>'gold-plan2'));
+		$subscription->update(array('plan'=>$plan->id));
 		$this->assertTrue(strpos($subscription->plan_id, "gold-plan2") !== false);
 	}
 	public function testUnsuccesfulSubscriptionCreate()
@@ -122,7 +120,7 @@ class Conekta_CustomerTest extends UnitTestCase
 			$subscription = $customer->createSubscription(array(
 				'plan' => 'unexistent-plan'));
 		} catch (Exception $e) {
-			$this->assertTrue(strpos($e->getMessage(), "Plan 'unexistent-plan' does not exist and cannot be used to create a new subsription") !== false);
+			$this->assertTrue(strpos($e->getMessage(), "Plan 'unexistent-plan' does not exist and cannot be used to create a new subsription.") !== false);
 		}	
 	}
 	public function testSuccesfulSubscriptionPause()
@@ -130,24 +128,8 @@ class Conekta_CustomerTest extends UnitTestCase
 		setApiKey();
 		$customer = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
-		try {
-			$plan = Conekta_Plan::get("gold-plan");
-		} catch (Exception $e) {
-			// Plan did not exist
-			$plan = Conekta_Plan::create(array(
-					'id' => "gold-plan",
-					'name' => "Gold Plan",
-					'amount' => 10000,
-					'currency' => "MXN",
-					'interval' => "month",
-					'frequency' => 1,
-					'trial_period_days' => 15,
-					'expiry_count' => 12
-					)
-			);
-		}
 		$subscription = $customer->createSubscription(array(
-				'plan' => $plan->id));
+				'plan' => 'gold-plan'));
 		$this->assertTrue(strpos(get_class($subscription), "Conekta_Subscription") !== false);
 		$subscription->pause();
 		$this->assertTrue(strpos($subscription->status, "paused") !== false);
@@ -157,24 +139,8 @@ class Conekta_CustomerTest extends UnitTestCase
 		setApiKey();
 		$customer = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
-		try {
-			$plan = Conekta_Plan::get("gold-plan");
-		} catch (Exception $e) {
-			// Plan did not exist
-			$plan = Conekta_Plan::create(array(
-					'id' => "gold-plan",
-					'name' => "Gold Plan",
-					'amount' => 10000,
-					'currency' => "MXN",
-					'interval' => "month",
-					'frequency' => 1,
-					'trial_period_days' => 15,
-					'expiry_count' => 12
-					)
-			);
-		}
 		$subscription = $customer->createSubscription(array(
-				'plan' => $plan->id));
+				'plan' => 'gold-plan'));
 		$this->assertTrue(strpos(get_class($subscription), "Conekta_Subscription") !== false);
 		$subscription->resume();
 		$this->assertTrue(strpos($subscription->status, "active") !== false);
@@ -184,24 +150,8 @@ class Conekta_CustomerTest extends UnitTestCase
 		setApiKey();
 		$customer = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
-		try {
-			$plan = Conekta_Plan::get("gold-plan");
-		} catch (Exception $e) {
-			// Plan did not exist
-			$plan = Conekta_Plan::create(array(
-					'id' => "gold-plan",
-					'name' => "Gold Plan",
-					'amount' => 10000,
-					'currency' => "MXN",
-					'interval' => "month",
-					'frequency' => 1,
-					'trial_period_days' => 15,
-					'expiry_count' => 12
-					)
-			);
-		}
 		$subscription = $customer->createSubscription(array(
-				'plan' => $plan->id));
+				'plan' => 'gold-plan'));
 		$this->assertTrue(strpos(get_class($subscription), "Conekta_Subscription") !== false);
 		$subscription->cancel();
 		$this->assertTrue(strpos($subscription->status, "canceled") !== false);

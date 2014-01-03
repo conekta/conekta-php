@@ -49,11 +49,11 @@ class Conekta_ChargeTest extends UnitTestCase
 	public function testSuccesfulOxxoPMCreate()
 	{
 		$pm = self::$valid_payment_method;
-		$bank = array('cash' => array('type' => 'oxxo'));
+		$oxxo = array('cash' => array('type' => 'oxxo'));
 		setApiKey();
 		$opm = Conekta_Charge::create(array_merge(
 										$pm,
-										$bank));
+										$oxxo));
 		$this->assertTrue($opm->status == "pending_payment");
 	}
 	public function testUnsuccesfulPMCreate()

@@ -85,7 +85,7 @@ abstract class Conekta_Resource extends Conekta_Object
 	protected function _createMember($member,$params) 
 	{
 		$requestor = new Conekta_Requestor();
-		$url = $this->instanceUrl() . '/' . $member;;
+		$url = $this->instanceUrl() . '/' . $member;
 		$response = $requestor->request('post', $url, $params);
 		if (strpos(get_class($this->$member), "Conekta_Object") !== false) {
 			$this->$member->loadFromArray(array_merge(array($response), $this->$member->_toArray()));
