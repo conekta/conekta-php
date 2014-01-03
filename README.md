@@ -1,6 +1,6 @@
 # Conekta
 
-This is a ruby library that allows interaction with https://api.conekta.io API.
+This is a php library that allows interaction with https://api.conekta.io API.
 
 ## Installation
 
