@@ -69,6 +69,7 @@ class Conekta_Requestor
 		$opts[CURLOPT_TIMEOUT] = 80;
 		$opts[CURLOPT_RETURNTRANSFER] = true;
 		$opts[CURLOPT_HTTPHEADER] = $headers;
+		$opts[CURLOPT_CAINFO] = dirname(__FILE__) . '/../ssl_data/ca_bundle.crt';
 		curl_setopt_array($curl, $opts);
 		$response = curl_exec($curl);
 		$response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);

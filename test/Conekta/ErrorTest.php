@@ -57,11 +57,14 @@ class Conekta_ErrorTest extends UnitTestCase
 		$charges = Conekta_Charge::where();
 		foreach ($charges as $charge) {
 			if (strpos($charge->status, "pre_authorized") !== false) {
+				$ok = true;
 				continue;
 			}
 		}
 		try {
-			$charge->capture();
+			if (isset($ok)) {
+				$charge->capture();
+			}
 		} catch (Exception $e) {
 			$this->assertTrue(strpos(get_class($e), "Conekta_ProcessingError") !== false);
 		}
