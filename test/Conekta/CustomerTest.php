@@ -59,8 +59,7 @@ class Conekta_CustomerTest extends UnitTestCase
 		$customer = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
 		$customer->createCard(array('token' => "tok_test_visa_1881"));
-		$this->assertTrue(count($customer->cards) == 2);
-		$this->assertTrue(strpos($customer->cards[0]->last4, "1881") !== false);
+		$this->assertTrue(strpos(end($customer->cards)->last4, "1881") !== false);
 	}
 	public function testDeleteCard()
 	{

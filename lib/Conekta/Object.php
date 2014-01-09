@@ -65,5 +65,18 @@ class Conekta_Object extends ArrayObject
 	{
 		return $this->__toJSON();
 	}
+	
+	//public function shiftArray($array, $k) {
+		//unset($array[$k]);
+		//end($array);
+		//$lastKey = key($array);
+		
+		//for ($i = $k; $i < $lastKey; ++ $i) {
+			//$array[$i] = $array[$i+1];
+			//unset($array[$i+1]);
+		//}
+		
+		//return $array;
+	//}
 }
 ?>
