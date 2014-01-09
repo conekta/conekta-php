@@ -6,7 +6,7 @@ class Conekta_ChargeTest extends UnitTestCase
 	public static $invalid_payment_method = array('amount' => 10,
 		'currency' => 'mxn', 'description' => 'Some desc');
 	public static $valid_visa_card = array('card' => 'tok_test_visa_4242');
-	public function testSuccesfulGetCharge()
+	public function testSuccesfulFindCharge()
 	{
 		$pm = self::$valid_payment_method;
 		$card = self::$valid_visa_card;
@@ -15,7 +15,7 @@ class Conekta_ChargeTest extends UnitTestCase
 										$pm,
 										$card));
 		$this->assertTrue($cpm->status == "paid");
-		$pm = Conekta_Charge::get($cpm->id);
+		$pm = Conekta_Charge::find($cpm->id);
 		$this->assertTrue(strpos(get_class($pm), "Conekta_Charge") !== false);
 	}
 	public function testSuccesfulWhere()

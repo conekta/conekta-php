@@ -8,12 +8,12 @@ class Conekta_CustomerTest extends UnitTestCase
 						'cards' => array("tok_test_visa_4242")));
 		$this->assertTrue(strpos(get_class($customer), "Conekta_Customer") !== false);
 	}
-	public function testSuccesfulCustomerGet()
+	public function testSuccesfulCustomerFind()
 	{
 		setApiKey();
 		$c = Conekta_Customer::create(array(
 						'cards' => array("tok_test_visa_4242")));
-		$customer = Conekta_Customer::get($c->id);
+		$customer = Conekta_Customer::find($c->id);
 		$this->assertTrue(strpos(get_class($customer), "Conekta_Customer") !== false);
 	}
 	public function testSuccesfulCustomerWhere()
@@ -92,7 +92,7 @@ class Conekta_CustomerTest extends UnitTestCase
 						'cards' => array("tok_test_visa_4242")));
 		$subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
 		try {
-			$plan = Conekta_Plan::get("gold-plan2");
+			$plan = Conekta_Plan::find("gold-plan2");
 		} catch (Exception $e) {
 			// Plan does not exist
 			$plan = Conekta_Plan::create(array(

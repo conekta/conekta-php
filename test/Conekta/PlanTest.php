@@ -6,7 +6,7 @@ class Conekta_PlanTest extends UnitTestCase
 		setApiKey();
 		$plans = Conekta_Plan::where();
 		$p = $plans[0];
-		$plan = Conekta_Plan::get($p->id);
+		$plan = Conekta_Plan::find($p->id);
 		$this->assertTrue(strpos(get_class($plan), "Conekta_Plan") !== false);
 	}
 	public function testSuccesfulWhere()

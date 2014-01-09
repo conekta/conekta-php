@@ -5,7 +5,7 @@ class Conekta_ErrorTest extends UnitTestCase
 	{
 		setApiKey();
 		try {
-			$charge = Conekta_Charge::get('0');
+			$charge = Conekta_Charge::find('0');
 		} catch (Exception $e) {
 			$this->assertTrue(strpos($e->getMessage(), "Could not get the id of Conekta_Resource instance.") !== false);
 		}
@@ -73,7 +73,7 @@ class Conekta_ErrorTest extends UnitTestCase
 	{
 		setApiKey();
 		try {
-			$charge = Conekta_Charge::get('1');
+			$charge = Conekta_Charge::find('1');
 		} catch (Exception $e) {
 			$this->assertTrue(strpos(get_class($e), "Conekta_ResourceNotFoundError") !== false);
 		}

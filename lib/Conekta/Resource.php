@@ -21,7 +21,7 @@ abstract class Conekta_Resource extends Conekta_Object
 		return $instance;
 	}
 	
-	protected static function _scpGet($class, $id) 
+	protected static function _scpFind($class, $id) 
 	{
 		$instance = new $class($id);
 		$requestor = new Conekta_Requestor();

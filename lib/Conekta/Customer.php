@@ -18,10 +18,10 @@ class Conekta_Customer extends Conekta_Resource
 		}
 	}
 	
-	public static function get($id)
+	public static function find($id)
 	{
 		$class = get_class();
-		return self::_scpGet($class, $id);
+		return self::_scpFind($class, $id);
 	}
 	
 	public static function where($params=null) {
