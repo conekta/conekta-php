@@ -31,5 +31,19 @@ class Conekta_Charge extends Conekta_Resource
 		}
 		return self::_customAction('post', 'refund', $params);
 	}
+	
+	/**
+	 * @deprecated
+	 */
+	public static function retrieve($id)
+	{
+		$class = get_class();
+		return self::_scpFind($class, $id);
+	}
+	
+	public static function all($params=null) {
+		$class = get_class();
+		return self::_scpWhere($class, $params);
+	}
 }
 ?>
