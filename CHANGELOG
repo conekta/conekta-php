@@ -3,3 +3,7 @@
 * Deprecate retrieve and all methods and replaced them with find and where respectively.
 * Add payment method model.
 * Objects' properties are now accessible with the T_OBJECT_OPERATOR.
+
+=== 0.3.5 2013-01-21
+
+* Add setting version functionality.
