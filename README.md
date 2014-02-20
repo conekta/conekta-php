@@ -6,15 +6,15 @@ This is a php library that allows interaction with https://api.conekta.io API.
 
 Obtain the latest version of the Conekta PHP bindings with:
 
-    git clone https://github.com/conekta/conekta-php-new
+    git clone https://github.com/conekta/conekta-php
 
 To get started, add the following to your PHP script:
 
-    require_once("/path/to/conekta-php-new/lib/Conekta.php");
+    require_once("/path/to/conekta-php/lib/Conekta.php");
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php-new": "dev-master"
+  require: "conekta/conekta-php": "dev-master"
 
 ## Usage
     
