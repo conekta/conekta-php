@@ -11,7 +11,7 @@ abstract class Conekta
 		self::$apiKey = $apiKey;
 	}
 	
-	public static function setApiVerion($version)
+	public static function setApiVersion($version)
 	{
 		self::$apiVersion = $version;
 	}
