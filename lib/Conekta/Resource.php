@@ -60,13 +60,18 @@ abstract class Conekta_Resource extends Conekta_Object
 		if (isset($parent) && isset($member)) {
 			$obj = $this->$parent->$member;
 			if (strpos(get_class($obj), "Conekta_Object") !== false) {
+				$continue = false;
 				foreach ($this->$parent->$member as $k => $v) {
 					if (strpos($v->id, $this->id) !== false) {
 						$this->$parent->$member->_values = Conekta_Util::shiftArray($this->$parent->$member->_values,$k);
 						$this->$parent->$member->loadFromArray($this->$parent->$member->_values);
-						$this->$parent->$member->offsetUnset(count($this->$parent->cards)-1);
-						continue 2;
+						$continue = true;
+						$unset = count($this->$parent->cards)-1;
+						continue ;
 					}
+				}
+				if ($continue) {
+					$this->$parent->$member->offsetUnset(count($this->$parent->cards)-1);
 				}
 			} else {
 				unset($this->$parent->$member);

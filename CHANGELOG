@@ -7,3 +7,7 @@
 === 1.9.1 2013-01-21
 
 * Add setting version functionality.
+
+=== 1.9.2 2014-04-2
+
+* Fix bugs in Resource.php.

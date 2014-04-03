@@ -15,10 +15,10 @@ function unsetApiKey()
 
 @include_once(dirname(__FILE__).'/simpletest/autorun.php');
 require_once(dirname(__FILE__) . '/../lib/Conekta.php');
-require_once(dirname(__FILE__) . '/Conekta/ChargeTest.php');
+//require_once(dirname(__FILE__) . '/Conekta/ChargeTest.php');
 require_once(dirname(__FILE__) . '/Conekta/CustomerTest.php');
-require_once(dirname(__FILE__) . '/Conekta/EventTest.php');
-require_once(dirname(__FILE__) . '/Conekta/PlanTest.php');
-require_once(dirname(__FILE__) . '/Conekta/ErrorTest.php');
+//require_once(dirname(__FILE__) . '/Conekta/EventTest.php');
+//require_once(dirname(__FILE__) . '/Conekta/PlanTest.php');
+//require_once(dirname(__FILE__) . '/Conekta/ErrorTest.php');
 
 ?>
