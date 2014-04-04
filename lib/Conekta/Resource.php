@@ -100,7 +100,12 @@ abstract class Conekta_Resource extends Conekta_Object
 			$instances = $this->$member;
 			$instance = end($instances);
 		} else {
-			$class = 'Conekta_' . ucfirst($member);
+			echo $member;
+			if (strpos($member,'cards') !== false) {
+				$class = 'Conekta_Card';
+			} else {
+				$class = 'Conekta_' . ucfirst($member);
+			}
 			$instance = new $class();
 			$instance->loadFromArray($response);
 			$this->$member = $instance;
