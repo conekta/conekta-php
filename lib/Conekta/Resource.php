@@ -94,18 +94,15 @@ abstract class Conekta_Resource extends Conekta_Object
 		$requestor = new Conekta_Requestor();
 		$url = $this->instanceUrl() . '/' . $member;
 		$response = $requestor->request('post', $url, $params);
-		if (strpos(get_class($this->$member), "Conekta_Object") !== false) {
+		if (strpos(get_class($this->$member), "Conekta_Object") !== false || strpos($member,'cards') !== false) {
+			if (empty($this->$member)) {
+				$this->$member = new Conekta_Object();
+			}
 			$this->$member->loadFromArray(array_merge($this->$member->_toArray(), array($response)));
 			$this->loadFromArray();
 			$instances = $this->$member;
 			$instance = end($instances);
 		} else {
-			echo $member;
-			if (strpos($member,'cards') !== false) {
-				$class = 'Conekta_Card';
-			} else {
-				$class = 'Conekta_' . ucfirst($member);
-			}
 			$instance = new $class();
 			$instance->loadFromArray($response);
 			$this->$member = $instance;
