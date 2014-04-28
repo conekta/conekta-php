@@ -50,7 +50,7 @@ class Conekta_CustomerTest extends UnitTestCase
 			$customer = Conekta_Customer::create(array(
 							'cards' => array("tok_test_visa_4241")));
 		} catch (Exception $e) {
-			$this->assertTrue(strpos($e->getMessage(), "Token 'tok_test_visa_4241' could not be found.") !== false);
+			$this->assertTrue(strpos($e->getMessage(), "Object tok_test_visa_4241 could not be found.") !== false);
 		}
 	}
 	public function testAddCardToCustomer()
@@ -119,7 +119,7 @@ class Conekta_CustomerTest extends UnitTestCase
 			$subscription = $customer->createSubscription(array(
 				'plan' => 'unexistent-plan'));
 		} catch (Exception $e) {
-			$this->assertTrue(strpos($e->getMessage(), "Plan 'unexistent-plan' does not exist and cannot be used to create a new subsription.") !== false);
+			$this->assertTrue(strpos($e->getMessage(), "Object Plan unexistent-plan could not be found.") !== false);
 		}	
 	}
 	public function testSuccesfulSubscriptionPause()

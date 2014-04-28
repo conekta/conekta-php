@@ -15,3 +15,9 @@
 === 1.9.3 2014-04-2
 
 * Fix bugs in Resource.php.
+
+=== 1.9.4 2014-04-28
+
+* Fix Plan tests.
+* Add Address, Payee, Payout, PayoutMethod, Method.
+* Add Payout tests.

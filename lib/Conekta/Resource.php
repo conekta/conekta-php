@@ -64,7 +64,7 @@ abstract class Conekta_Resource extends Conekta_Object
 					if (strpos($v->id, $this->id) !== false) {
 						$this->$parent->$member->_values = Conekta_Util::shiftArray($this->$parent->$member->_values,$k);
 						$this->$parent->$member->loadFromArray($this->$parent->$member->_values);
-						$this->$parent->$member->offsetUnset(count($this->$parent->cards)-1);
+						$this->$parent->$member->offsetUnset(count($this->$parent->$member)-1);
 						break ;
 					}
 				}
@@ -89,7 +89,7 @@ abstract class Conekta_Resource extends Conekta_Object
 		$requestor = new Conekta_Requestor();
 		$url = $this->instanceUrl() . '/' . $member;
 		$response = $requestor->request('post', $url, $params);
-		if (strpos(get_class($this->$member), "Conekta_Object") !== false || strpos($member,'cards') !== false) {
+		if (strpos(get_class($this->$member), "Conekta_Object") !== false || strpos($member,'cards') !== false || strpos($member,'payout_methods') !== false) {
 			if (empty($this->$member)) {
 				$this->$member = new Conekta_Object();
 			}

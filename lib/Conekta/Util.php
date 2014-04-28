@@ -2,6 +2,11 @@
 abstract class Conekta_Util
 {
 	public static $types = array(
+		'billing_address' => 'Conekta_Address',
+		'bank_transfer_payout_method' => 'Conekta_Method',
+		'payout' => 'Conekta_Payout',
+		'payee' => 'Conekta_Payee',
+		'payout_method' => 'Conekta_Payout_Method',
 		'card_payment' => 'Conekta_Payment_Method',
 		'cash_payment' => 'Conekta_Payment_Method',
 		'bank_transfer_payment' => 'Conekta_Payment_Method',
@@ -24,7 +29,13 @@ abstract class Conekta_Util
 				$instance = new $class();
 				$instance->loadFromArray($resp);
 				return $instance;
-			}			
+			}
+			if (isset($resp['street1']) || isset($resp['street2'])) {
+				$class = "Conekta_Address";
+				$instance = new $class();
+				$instance->loadFromArray($resp);
+				return $instance;
+			}
 			if (current($resp)) {
 				$instance = new Conekta_Object();
 				$instance->loadFromArray($resp);

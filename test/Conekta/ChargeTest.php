@@ -66,7 +66,7 @@ class Conekta_ChargeTest extends UnitTestCase
 											$pm,
 											$card));
 		} catch (Exception $e) {
-			$this->assertTrue(strpos($e->getMessage(), "The minimum purchase is 3 MXN pesos for card payments") !== false);
+			$this->assertTrue(strpos($e->getMessage(), "The minimum for card payments is 3 pesos. Check that the amount is in cents as explained in the documentation.") !== false);
 		}	
 	}
 	public function testSuccesfulRefund()

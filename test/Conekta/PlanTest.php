@@ -22,7 +22,7 @@ class Conekta_PlanTest extends UnitTestCase
 		setApiKey();
 		$plans = Conekta_Plan::where();
 		$plan = Conekta_Plan::create(array(
-					'id' => "gold-plan".count($plans),
+					'id' => "gold-plan".    substr( "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1),
 					'name' => "Gold Plan",
 					'amount' => 10000,
 					'currency' => "MXN",

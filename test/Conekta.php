@@ -20,5 +20,6 @@ require_once(dirname(__FILE__) . '/Conekta/CustomerTest.php');
 require_once(dirname(__FILE__) . '/Conekta/EventTest.php');
 require_once(dirname(__FILE__) . '/Conekta/PlanTest.php');
 require_once(dirname(__FILE__) . '/Conekta/ErrorTest.php');
+require_once(dirname(__FILE__) . '/Conekta/PayoutTest.php');
 
 ?>

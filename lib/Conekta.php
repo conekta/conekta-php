@@ -23,4 +23,9 @@ require(dirname(__FILE__) . '/Conekta/Subscription.php');
 require(dirname(__FILE__) . '/Conekta/Token.php');
 require(dirname(__FILE__) . '/Conekta/Event.php');
 require(dirname(__FILE__) . '/Conekta/Error.php');
+require(dirname(__FILE__) . '/Conekta/Payout.php');
+require(dirname(__FILE__) . '/Conekta/Payee.php');
+require(dirname(__FILE__) . '/Conekta/PayoutMethod.php');
+require(dirname(__FILE__) . '/Conekta/Method.php');
+require(dirname(__FILE__) . '/Conekta/Address.php');
 ?>
