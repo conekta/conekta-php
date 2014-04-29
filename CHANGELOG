@@ -21,3 +21,7 @@
 * Fix Plan tests.
 * Add Address, Payee, Payout, PayoutMethod, Method.
 * Add Payout tests.
+
+=== 1.9.5 2014-04-28
+
+* Add FILES for Address, Payee, Payout, PayoutMethod, Method.
