@@ -11,7 +11,6 @@ class Conekta_PayoutTest extends UnitTestCase
 			"bank" => array(
 			  "account_number" => '032180000118359719',
 			  "account_holder" => 'J D - Radcorp',
-			  "bank" => 'Banorte',
 			  "description" => 'Conekta To JD',
 			  "statement_description" => 'Conekta To JD 111111111',
 			  "statement_reference" => '111111111'

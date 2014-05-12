@@ -41,6 +41,7 @@ abstract class Conekta_Util
 				$instance->loadFromArray($resp);
 				return $instance;
 			}
+			return new Conekta_Object();
 		} 
 		return $resp;
 	}
