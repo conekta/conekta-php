@@ -8,6 +8,9 @@ if (!function_exists('json_decode')) {
 if (!function_exists('mb_detect_encoding')) {
   throw new Exception('Conekta needs the Multibyte String PHP extension.');
 }
+if (!function_exists('get_called_class')) {
+	throw new Exception('Conekta needs to be run on PHP >= 5.3.0.');
+}
 require(dirname(__FILE__) . '/Conekta/Conekta.php');
 require(dirname(__FILE__) . '/Conekta/Util.php');
 require(dirname(__FILE__) . '/Conekta/Requestor.php');
