@@ -19,13 +19,19 @@ You can also install this library with composer:
 ## Usage
     
     Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
-    $myCard = array('number' => '4242424242424242', 'exp_month' => 5, 'exp_year' => 2015, 'cvc' => 123, 'name' => 'Mario Moreno');
-    try {
-      $charge = Conekta_Charge::create(array('card' => $myCard, 'description' => 'Some desc', 'amount' => 2000, 'currency' => 'mxn'));
-      echo $charge;
-    } catch (Exception $e) {
-      // Catch all exceptions including validation errors.
-      echo $e->getMessage(); }
+    try{
+        $charge = Conekta_Charge::create(array(
+            "amount"=> 51000,
+            "currency"=> "MXN",
+            "description"=> "Pizza Delivery",
+            "reference_id"=> "orden_de_id_interno",
+            "card"=> $_POST['conektaTokenId']
+            //"tok_a4Ff0dD2xYZZq82d9"
+        ));
+    }catch (Conekta_Error $e){
+            echo $e->getMessage();
+            //el pago no pudo ser procesado
+    }
 
     {
         "id": "5286828b8ee31e64b7001739",
