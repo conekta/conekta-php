@@ -3,7 +3,7 @@ abstract class YAML
 { 
   const EN = 'en';
   const ES = 'es';
-  public static function translate($key, $parameters=nil, $locale)
+  public static function translate($key, $parameters=null, $locale)
   {
     $yaml = array_merge(
       (array) yaml_parse_file(dirname(__FILE__) . '/en.yml'),

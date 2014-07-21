@@ -33,3 +33,7 @@
 === 1.9.7 2014-05-22
 
 * Throw an exception if PHP version is not supported.
+
+=== 1.9.8 2014-05-22
+
+* Add Internationalization.
