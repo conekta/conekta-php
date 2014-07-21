@@ -11,6 +11,10 @@ if (!function_exists('mb_detect_encoding')) {
 if (!function_exists('get_called_class')) {
 	throw new Exception('Conekta needs to be run on PHP >= 5.3.0.');
 }
+if (!function_exists('yaml_parse_file')) {
+  throw new Exception('Conekta needs the PECL YAML extension.');
+}
+require(dirname(__FILE__) . '/locales/YAML.php');
 require(dirname(__FILE__) . '/Conekta/Conekta.php');
 require(dirname(__FILE__) . '/Conekta/Util.php');
 require(dirname(__FILE__) . '/Conekta/Requestor.php');

@@ -6,7 +6,10 @@ class Conekta_Payout_Method extends Conekta_Resource
 		$id = $this->id;
 		if (!$id) 
 		{
-			throw new Conekta_Error('Could not get the id of '. get_class() . ' instance.' );
+			throw new Conekta_Error(
+			YAML::translate('error.resource.id', array('RESOURCE'=>get_class()), YAML::EN),
+			YAML::translate('error.resource.id_purchaser', null, Conekta::$locale)
+			);
 		}
 		$class = get_class($this);
 		$base = $this->classUrl($class);

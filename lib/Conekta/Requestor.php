@@ -22,6 +22,7 @@ class Conekta_Requestor
 		'publisher' => 'conekta',
 		'uname' => php_uname());
 		$headers = array('Accept: application/vnd.conekta-v' . Conekta::$apiVersion . '+json',
+		'Accept-Language: ' . Conekta::$locale,
 		'X-Conekta-Client-User-Agent: ' . json_encode($user_agent),
 		'User-Agent: Conekta/v1 PhpBindings/' . Conekta::VERSION,
 		'Authorization: Basic ' . base64_encode($this->apiKey . ':' ));
