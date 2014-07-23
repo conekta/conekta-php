@@ -78,3 +78,7 @@ In order to run tests you have to install SimpleTest (http://packagist.org/packa
 Run test suite:
 
     php ./test/Conekta.php
+
+License
+-------
+Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LICENSE).
