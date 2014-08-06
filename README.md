@@ -72,7 +72,7 @@ Please see https://www.conekta.io/docs/api for up-to-date documentation.
 
 ## Tests
 
-In order to run tests you have to install SimpleTest (http://packagist.org/packages/vierbergenlars/simpletest) via Composer (http://getcomposer.org/) (recommended way):
+In order to run tests you have to install SimpleTest (https://github.com/simpletest/simpletest) via Composer (http://getcomposer.org/) (recommended way):
 
     composer.phar update --dev
 
