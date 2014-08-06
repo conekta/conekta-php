@@ -24,7 +24,7 @@ class LANG
 		return $result;
 	}
 
-	protected function readDirectory($directory)
+	protected static function readDirectory($directory)
 	{
 		if (!empty(self::$cache)) return self::$cache;
 
