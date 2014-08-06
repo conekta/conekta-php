@@ -66,8 +66,8 @@ abstract class Conekta_Resource extends Conekta_Object
 		if (!$id) 
 		{
 			throw new Conekta_Error(
-			YAML::translate('error.resource.id', array('RESOURCE'=>get_class()), YAML::EN),
-			YAML::translate('error.resource.id_purchaser', null, Conekta::$locale)
+			LANG::translate('error.resource.id', array('RESOURCE'=>get_class()), LANG::EN),
+			LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
 			);
 		}
 		$class = get_class($this);

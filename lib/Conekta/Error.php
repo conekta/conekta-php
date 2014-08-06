@@ -18,8 +18,8 @@ class Conekta_Error extends Exception
 		$params = isset($resp['param']) ? $resp['param'] : null;
 		if (isset($code) != true || $code == 0) {
 			throw new Conekta_NoConnectionError(
-				YAML::translate('error.requestor.connection', array('BASE'=>Conekta::$apiBase), YAML::EN),
-				YAML::translate('error.requestor.connection_purchaser', null, Conekta::$locale),
+				LANG::translate('error.requestor.connection', array('BASE'=>Conekta::$apiBase), LANG::EN),
+				LANG::translate('error.requestor.connection_purchaser', null, Conekta::$locale),
 				$type, $code, $params);
 		}
 		switch ($code) {
