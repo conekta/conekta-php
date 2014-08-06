@@ -1,13 +1,32 @@
 <?php
 abstract class Conekta_Resource extends Conekta_Object
 {		
+	 public static function className($class)
+	{
+		// Useful for namespaces: Foo\Conekta_Charge
+		if ($postfix = strrchr($class, '\\'))
+		$class = substr($postfix, 1);
+		if (substr($class, 0, strlen('Conekta')) == 'Conekta')
+		$class = substr($class, strlen('Conekta'));
+		$class = str_replace('_', '', $class);
+		$name = urlencode($class);
+		$name = strtolower($name);
+		return $name;
+	}
+ 
+	protected static function _getBase($class, $method)
+	{
+		$args = array_slice(func_get_args(), 2);
+		return call_user_func_array(array($class, $method), $args);
+	}
+ 
 	public static function classUrl($class=null) 
 	{
 		if (!$class)
 		{
 			$class = get_class($this);
 		}
-		$base = str_replace("conekta_", "", strtolower($class));
+		$base = self::_getBase($class, 'className', $class);
 		return "/${base}s";
 	}
 	
@@ -47,8 +66,8 @@ abstract class Conekta_Resource extends Conekta_Object
 		if (!$id) 
 		{
 			throw new Conekta_Error(
-			YAML::translate('error.resource.id', array('RESOURCE'=>get_class()), YAML::EN),
-			YAML::translate('error.resource.id_purchaser', null, Conekta::$locale)
+			LANG::translate('error.resource.id', array('RESOURCE'=>get_class()), LANG::EN),
+			LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
 			);
 		}
 		$class = get_class($this);
