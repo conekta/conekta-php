@@ -84,3 +84,10 @@ Run test suite:
 License
 -------
 Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LICENSE).
+
+We are hiring
+-------------
+
+If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. 
+Send your CV, github to quieroser@conekta.io
+
