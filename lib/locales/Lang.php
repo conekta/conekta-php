@@ -1,48 +1,49 @@
 <?php
-class LANG
-{ 
-	const EN = 'en';
-	const ES = 'es';
 
-	protected static $cache = array();
+class Lang
+{
+    const EN = 'en';
+    const ES = 'es';
 
-	public static function translate($key, $parameters=null, $locale)
-	{
-		$langs = self::readDirectory(dirname(__FILE__) . '/messages');
+    protected static $cache = array();
 
-		$keys = explode(".", $locale . '.' .$key);
-		$result = $langs[array_shift($keys)];
-		foreach ($keys as $v) {
-			$result = $result[$v];
-		}
-		if (is_array($parameters) && !empty($parameters)) {
-			foreach($parameters as $k => $v) {
-				$result = str_replace($k,$v,$result);
-			}
-		}
+    public static function translate($key, $parameters = null, $locale)
+    {
+        $langs = self::readDirectory(dirname(__FILE__).'/messages');
 
-		return $result;
-	}
+        $keys = explode('.', $locale.'.'.$key);
+        $result = $langs[array_shift($keys)];
+        foreach ($keys as $v) {
+            $result = $result[$v];
+        }
+        if (is_array($parameters) && !empty($parameters)) {
+            foreach ($parameters as $k => $v) {
+                $result = str_replace($k, $v, $result);
+            }
+        }
 
-	protected static function readDirectory($directory)
-	{
-		if (!empty(self::$cache)) return self::$cache;
+        return $result;
+    }
 
-		$langs = array();
-		if ($handle = opendir($directory)) {
-			while ($lang = readdir($handle)) {
-				if (strpos($lang, ".php") !== false) {
-					$langKey = str_replace('.php', '', $lang);
-					$langs[$langKey] = include($directory . '/' . $lang);
-				}
-			}
-			closedir($handle);
-		}
+    protected static function readDirectory($directory)
+    {
+        if (!empty(self::$cache)) {
+            return self::$cache;
+        }
 
-		self::$cache = $langs;
+        $langs = array();
+        if ($handle = opendir($directory)) {
+            while ($lang = readdir($handle)) {
+                if (strpos($lang, '.php') !== false) {
+                    $langKey = str_replace('.php', '', $lang);
+                    $langs[$langKey] = include $directory.'/'.$lang;
+                }
+            }
+            closedir($handle);
+        }
 
-		return $langs;
-	}
-	
+        self::$cache = $langs;
+
+        return $langs;
+    }
 }
-?>
