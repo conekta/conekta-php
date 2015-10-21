@@ -43,10 +43,10 @@ class Conekta_PayoutTest extends UnitTestCase
         $this->assertTrue(strpos('06100', $payee->billing_address->zip) !== false);
 
         $payout = Conekta_Payout::create(array(
-                    'amount'   => 5000,
-                    'currency' => 'MXN',
-                    'payee'    => $payee->id, )
-                    );
+            'amount'   => 5000,
+            'currency' => 'MXN',
+            'payee'    => $payee->id,
+        ));
         $this->assertTrue(strpos(get_class($payout), 'Conekta_Payout') !== false);
         $this->assertTrue(5000 == $payout->amount);
         $this->assertTrue(strpos('MXN', $payout->currency) !== false);

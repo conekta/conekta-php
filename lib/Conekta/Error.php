@@ -44,30 +44,30 @@ class Conekta_Error extends Exception
     }
 }
 
-    class Conekta_ApiError extends Conekta_Error
-    {
-    }
+class Conekta_ApiError extends Conekta_Error
+{
+}
 
-    class Conekta_NoConnectionError extends Conekta_Error
-    {
-    }
+class Conekta_NoConnectionError extends Conekta_Error
+{
+}
 
-    class Conekta_AuthenticationError extends Conekta_Error
-    {
-    }
+class Conekta_AuthenticationError extends Conekta_Error
+{
+}
 
-    class Conekta_ParameterValidationError extends Conekta_Error
-    {
-    }
+class Conekta_ParameterValidationError extends Conekta_Error
+{
+}
 
-    class Conekta_ProcessingError extends Conekta_Error
-    {
-    }
+class Conekta_ProcessingError extends Conekta_Error
+{
+}
 
-    class Conekta_ResourceNotFoundError extends Conekta_Error
-    {
-    }
+class Conekta_ResourceNotFoundError extends Conekta_Error
+{
+}
 
-    class Conekta_MalformedRequestError extends Conekta_Error
-    {
-    }
+class Conekta_MalformedRequestError extends Conekta_Error
+{
+}

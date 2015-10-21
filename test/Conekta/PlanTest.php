@@ -10,6 +10,7 @@ class Conekta_PlanTest extends UnitTestCase
         $plan = Conekta_Plan::find($p->id);
         $this->assertTrue(strpos(get_class($plan), 'Conekta_Plan') !== false);
     }
+
     public function testSuccesfulWhere()
     {
         setApiKey();
@@ -17,23 +18,24 @@ class Conekta_PlanTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($plans), 'Conekta_Object') !== false);
         $this->assertTrue(strpos(get_class($plans[0]), 'Conekta_Plan') !== false);
     }
+
     public function testSuccesfulPlanCreate()
     {
         setApiKey();
         $plans = Conekta_Plan::where();
         $plan = Conekta_Plan::create(array(
-                    'id'                => 'gold-plan'.substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1).substr(md5(time()), 1),
-                    'name'              => 'Gold Plan',
-                    'amount'            => 10000,
-                    'currency'          => 'MXN',
-                    'interval'          => 'month',
-                    'frequency'         => 10,
-                    'trial_period_days' => 15,
-                    'expiry_count'      => 12,
-                    )
-            );
+            'id'                => 'gold-plan'.substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1).substr(md5(time()), 1),
+            'name'              => 'Gold Plan',
+            'amount'            => 10000,
+            'currency'          => 'MXN',
+            'interval'          => 'month',
+            'frequency'         => 10,
+            'trial_period_days' => 15,
+            'expiry_count'      => 12,
+        ));
         $this->assertTrue(strpos(get_class($plan), 'Conekta_Plan') !== false);
     }
+
     public function testUpdatePlan()
     {
         setApiKey();
@@ -42,6 +44,7 @@ class Conekta_PlanTest extends UnitTestCase
         $plan->update(array('name' => 'Silver Plan'));
         $this->assertTrue(strpos($plan->name, 'Silver Plan') !== false);
     }
+
     public function testDeletePlan()
     {
         setApiKey();

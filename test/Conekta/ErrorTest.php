@@ -11,39 +11,40 @@ class Conekta_ErrorTest extends UnitTestCase
             $this->assertTrue(strpos($e->getMessage(), 'Could not get the id of Conekta_Resource instance.') !== false);
         }
     }
+
     public function testNoConnectionError()
     {
         $apiUrl = Conekta::$apiBase;
         Conekta::$apiBase = 'http://localhost:3001';
         try {
-            $customer = Conekta_Customer::create(array(
-                    'cards' => array('tok_test_visa_4242'), ));
+            $customer = Conekta_Customer::create(array('cards' => array('tok_test_visa_4242')));
         } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'Conekta_NoConnectionError') !== false);
         }
         Conekta::$apiBase = $apiUrl;
     }
+
     public function testApiError()
     {
         setApiKey();
         try {
-            $customer = Conekta_Customer::create(array(
-                    'cards' => array(0 => 'tok_test_visa_4242'), ));
+            $customer = Conekta_Customer::create(array('cards' => array(0 => 'tok_test_visa_4242')));
         } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'Conekta_ApiError') !== false);
         }
     }
+
     public function testAuthenticationError()
     {
         unsetApiKey();
         try {
-            $customer = Conekta_Customer::create(array(
-                    'cards' => array('tok_test_visa_4242'), ));
+            $customer = Conekta_Customer::create(array('cards' => array('tok_test_visa_4242')));
         } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'Conekta_AuthenticationError') !== false);
         }
         setApiKey();
     }
+
     public function testParameterValidationError()
     {
         setApiKey();
@@ -53,6 +54,7 @@ class Conekta_ErrorTest extends UnitTestCase
             $this->assertTrue(strpos(get_class($e), 'Conekta_ParameterValidationError') !== false);
         }
     }
+
     public function testProcessingError()
     {
         $charges = Conekta_Charge::where();
@@ -70,6 +72,7 @@ class Conekta_ErrorTest extends UnitTestCase
             $this->assertTrue(strpos(get_class($e), 'Conekta_ProcessingError') !== false);
         }
     }
+
     public function testResourceNotFoundError()
     {
         setApiKey();

@@ -7,8 +7,8 @@ class Conekta_Card extends Conekta_Resource
         $id = $this->id;
         if (!$id) {
             throw new Conekta_Error(
-            LANG::translate('error.resource.id', array('RESOURCE' => get_class()), LANG::EN),
-            LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
+                LANG::translate('error.resource.id', array('RESOURCE' => get_class()), LANG::EN),
+                LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
             );
         }
         $class = get_class($this);
