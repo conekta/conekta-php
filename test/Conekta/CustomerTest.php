@@ -140,8 +140,9 @@ class Conekta_CustomerTest extends UnitTestCase
         $customer = Conekta_Customer::create(array('cards' => array('tok_test_visa_4242')));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Conekta_Subscription') !== false);
+        $subscription->pause();
         $subscription->resume();
-        $this->assertTrue(strpos($subscription->status, 'active') !== false);
+        $this->assertTrue(strpos($subscription->status, 'in_trial') !== false);
     }
 
     public function testSuccesfulSubscriptionCancel()

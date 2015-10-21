@@ -95,7 +95,7 @@ class Conekta_ChargeTest extends UnitTestCase
         try {
             $cpm->refund(3000);
         } catch (Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'The order does not exist or the amount to refund is invalid') !== false);
+            $this->assertTrue(strpos($e->getMessage(), 'The amount to refund exceeds the charge total') !== false);
         }
     }
 
