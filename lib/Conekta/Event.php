@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Event extends Conekta_Resource
+class Event extends Resource
 {
     public static function where($params = null)
     {

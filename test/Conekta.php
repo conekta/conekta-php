@@ -7,12 +7,12 @@ function setApiKey()
     if (!$apiEnvKey) {
         $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
     }
-    Conekta::setApiKey($apiEnvKey);
+    \Conekta\Conekta::setApiKey($apiEnvKey);
 }
 function unsetApiKey()
 {
     if (isset($env) == false) {
-        $env = Conekta::setApiKey('');
+        $env = \Conekta\Conekta::setApiKey('');
     }
 }
 

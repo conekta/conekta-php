@@ -1,11 +1,11 @@
 <?php
 
-class Conekta_PayoutTest extends UnitTestCase
+class PayoutTest extends UnitTestCase
 {
     public function testSuccesfulGetPayout()
     {
         setApiKey();
-        $payee = Conekta_Payee::create(array(
+        $payee = \Conekta\Payee::create(array(
             'name'  => 'John Doe',
             'email' => 'j_d@radcorp->com',
             'phone' => '555555555',
@@ -28,7 +28,7 @@ class Conekta_PayoutTest extends UnitTestCase
               'zip'          => '06100',
             ),
         ));
-        $this->assertTrue(strpos(get_class($payee), 'Conekta_Payee') !== false);
+        $this->assertTrue(strpos(get_class($payee), 'Payee') !== false);
         $this->assertTrue(strpos('555555555', $payee->phone) !== false);
         $this->assertTrue(strpos('032180000118359719', $payee->payout_methods[0]->account_number) !== false);
         $this->assertTrue(strpos('J D - Radcorp', $payee->payout_methods[0]->account_holder) !== false);
@@ -42,12 +42,12 @@ class Conekta_PayoutTest extends UnitTestCase
         $this->assertTrue(strpos('tax121212abc', $payee->billing_address->tax_id) !== false);
         $this->assertTrue(strpos('06100', $payee->billing_address->zip) !== false);
 
-        $payout = Conekta_Payout::create(array(
+        $payout = \Conekta\Payout::create(array(
             'amount'   => 5000,
             'currency' => 'MXN',
             'payee'    => $payee->id,
         ));
-        $this->assertTrue(strpos(get_class($payout), 'Conekta_Payout') !== false);
+        $this->assertTrue(strpos(get_class($payout), 'Payout') !== false);
         $this->assertTrue(5000 == $payout->amount);
         $this->assertTrue(strpos('MXN', $payout->currency) !== false);
 

@@ -1,5 +1,5 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Address extends Conekta_Resource
+class Address extends Resource
 {
 }

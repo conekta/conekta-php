@@ -1,10 +1,10 @@
-<?php
+<?php namespace Conekta;
 
-abstract class Conekta_Resource extends Conekta_Object
+abstract class Resource extends Object
 {
     public static function className($class)
     {
-        // Useful for namespaces: Foo\Conekta_Charge
+        // Useful for namespaces: Foo\Charge
         if ($postfix = strrchr($class, '\\')) {
             $class = substr($postfix, 1);
         }
@@ -37,8 +37,8 @@ abstract class Conekta_Resource extends Conekta_Object
 
     protected static function _scpWhere($class, $params)
     {
-        $instance = new Conekta_Object();
-        $requestor = new Conekta_Requestor();
+        $instance = new Object();
+        $requestor = new Requestor();
         $url = self::classUrl($class);
         $response = $requestor->request('get', $url, $params);
         $instance->loadFromArray($response);
@@ -49,7 +49,7 @@ abstract class Conekta_Resource extends Conekta_Object
     protected static function _scpFind($class, $id)
     {
         $instance = new $class($id);
-        $requestor = new Conekta_Requestor();
+        $requestor = new Requestor();
         $url = $instance->instanceUrl();
         $response = $requestor->request('get', $url);
         $instance->loadFromArray($response);
@@ -59,7 +59,7 @@ abstract class Conekta_Resource extends Conekta_Object
 
     protected static function _scpCreate($class, $params)
     {
-        $requestor = new Conekta_Requestor();
+        $requestor = new Requestor();
         $url = self::classUrl($class);
         $response = $requestor->request('post', $url, $params);
         $instance = new $class();
@@ -72,7 +72,7 @@ abstract class Conekta_Resource extends Conekta_Object
     {
         $id = $this->id;
         if (!$id) {
-            throw new Conekta_Error(
+            throw new Error(
             LANG::translate('error.resource.id', array('RESOURCE' => get_class()), LANG::EN),
             LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
             );
@@ -89,10 +89,10 @@ abstract class Conekta_Resource extends Conekta_Object
         self::_customAction('delete', null, null);
         if (isset($parent) && isset($member)) {
             $obj = $this->$parent->$member;
-            if (strpos(get_class($obj), 'Conekta_Object') !== false) {
+            if (strpos(get_class($obj), 'Object') !== false) {
                 foreach ($this->$parent->$member as $k => $v) {
                     if (strpos($v->id, $this->id) !== false) {
-                        $this->$parent->$member->_values = Conekta_Util::shiftArray($this->$parent->$member->_values, $k);
+                        $this->$parent->$member->_values = Util::shiftArray($this->$parent->$member->_values, $k);
                         $this->$parent->$member->loadFromArray($this->$parent->$member->_values);
                         $this->$parent->$member->offsetUnset(count($this->$parent->$member) - 1);
                         break;
@@ -108,7 +108,7 @@ abstract class Conekta_Resource extends Conekta_Object
 
     protected function _update($params)
     {
-        $requestor = new Conekta_Requestor();
+        $requestor = new Requestor();
         $url = $this->instanceUrl();
         $response = $requestor->request('put', $url, $params);
         $this->loadFromArray($response);
@@ -118,19 +118,19 @@ abstract class Conekta_Resource extends Conekta_Object
 
     protected function _createMember($member, $params)
     {
-        $requestor = new Conekta_Requestor();
+        $requestor = new Requestor();
         $url = $this->instanceUrl().'/'.$member;
         $response = $requestor->request('post', $url, $params);
-        if (strpos(get_class($this->$member), 'Conekta_Object') !== false || strpos($member, 'cards') !== false || strpos($member, 'payout_methods') !== false) {
+        if (strpos(get_class($this->$member), 'Object') !== false || strpos($member, 'cards') !== false || strpos($member, 'payout_methods') !== false) {
             if (empty($this->$member)) {
-                $this->$member = new Conekta_Object();
+                $this->$member = new Object();
             }
             $this->$member->loadFromArray(array_merge($this->$member->_toArray(), array($response)));
             $this->loadFromArray();
             $instances = $this->$member;
             $instance = end($instances);
         } else {
-            $class = 'Conekta_'.ucfirst($member);
+            $class = '\Conekta\\'.ucfirst($member);
             $instance = new $class();
             $instance->loadFromArray($response);
             $this->$member = $instance;
@@ -143,7 +143,7 @@ abstract class Conekta_Resource extends Conekta_Object
 
     protected function _customAction($method = 'post', $action = null, $params = null)
     {
-        $requestor = new Conekta_Requestor();
+        $requestor = new Requestor();
         if (isset($action)) {
             $url = $this->instanceUrl().'/'.$action;
         } else {

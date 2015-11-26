@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Charge extends Conekta_Resource
+class Charge extends Resource
 {
     public static function find($id)
     {

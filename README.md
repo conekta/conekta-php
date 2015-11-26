@@ -23,7 +23,7 @@ You can also install this library with composer:
 ```php
 Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
 try {
-  $charge = Conekta_Charge::create(array(
+  $charge = Charge::create(array(
     "amount"=> 51000,
     "currency"=> "MXN",
     "description"=> "Pizza Delivery",
@@ -31,7 +31,7 @@ try {
     "card"=> $_POST['conektaTokenId']
     //"tok_a4Ff0dD2xYZZq82d9"
   ));
-} catch (Conekta_Error $e) {
+} catch (Error $e) {
   echo $e->getMessage();
   //El pago no pudo ser procesado
 }

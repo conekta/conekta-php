@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Token extends Conekta_Resource
+class Token extends Resource
 {
     public static function find($id)
     {

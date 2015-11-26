@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Payee extends Conekta_Resource
+class Payee extends Resource
 {
     public function loadFromArray($values = null)
     {

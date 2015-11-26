@@ -1,12 +1,12 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Payout_Method extends Conekta_Resource
+class Payout_Method extends Resource
 {
     public function instanceUrl()
     {
         $id = $this->id;
         if (!$id) {
-            throw new Conekta_Error(
+            throw new Error(
                 LANG::translate('error.resource.id', array('RESOURCE' => get_class()), LANG::EN),
                 LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
             );

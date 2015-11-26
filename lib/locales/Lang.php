@@ -1,4 +1,4 @@
-<?php
+<?php namespace Conekta;
 
 class Lang
 {
@@ -9,6 +9,8 @@ class Lang
 
     public static function translate($key, $parameters = null, $locale)
     {
+        $parameters = str_replace("Conekta\\", "", $parameters);
+        
         $langs = self::readDirectory(dirname(__FILE__).'/messages');
 
         $keys = explode('.', $locale.'.'.$key);

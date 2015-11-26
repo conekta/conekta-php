@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Requestor
+class Requestor
 {
     public $apiKey;
 
@@ -82,7 +82,7 @@ class Conekta_Requestor
         $response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
         if ($response_code != 200) {
-            Conekta_Error::errorHandler($response, $response_code);
+            Error::errorHandler($response, $response_code);
         }
 
         return json_decode($response, true);
