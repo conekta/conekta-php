@@ -1,6 +1,6 @@
-<?php
+<?php namespace Conekta;
 
-class Conekta_Webhook extends Conekta_Resource
+class Webhook extends Resource
 {
     public static function find($id)
     {

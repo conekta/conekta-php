@@ -3,6 +3,8 @@
 abstract class Util
 {
     public static $types = array(
+        'webhook'                     => 'Conekta\Webhook',
+        'webhook_log'                 => 'Conekta\WebhookLog',
         'billing_address'             => 'Conekta\Address',
         'bank_transfer_payout_method' => 'Conekta\Method',
         'payout'                      => 'Conekta\Payout',
@@ -16,7 +18,7 @@ abstract class Util
         'customer'                    => 'Conekta\Customer',
         'event'                       => 'Conekta\Event',
         'plan'                        => 'Conekta\Plan',
-        'subscription'                => 'Conekta\Subscription',
+        'subscription'                => 'Conekta\Subscription'
     );
 
     public static function convertToConektaObject($resp)

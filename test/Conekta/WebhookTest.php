@@ -1,6 +1,6 @@
 <?php
 
-class Conekta_WebhookTest extends UnitTestCase
+class WebhookTest extends UnitTestCase
 {
     public static $events = array("events" => 
         array("charge.created", "charge.paid", "charge.under_fraud_review",
