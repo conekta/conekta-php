@@ -21,8 +21,8 @@ class WebhookTest extends UnitTestCase
     public function testSuccesfulWebhookCreate()
     {
         setApiKey();
-        $webhook = Conekta_Webhook::create(array_merge(self::$url, self::$events));
-        $this->assertTrue(strpos(get_class($webhook), 'Conekta_Webhook') !== false);
+        $webhook = \Conekta\Webhook::create(array_merge(self::$url, self::$events));
+        $this->assertTrue(strpos(get_class($webhook), 'Webhook') !== false);
         $this->assertTrue(strpos($webhook->webhook_url, self::$url["url"]) !== false);
         $webhook->update(array("url" => "http://localhost:2000/my_listener"));
         $this->assertTrue(strpos($webhook->webhook_url, "http://localhost:2000/my_listener") !== false);
