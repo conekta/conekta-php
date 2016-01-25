@@ -18,7 +18,7 @@ abstract class Conekta_Util
         'customer'                    => 'Conekta_Customer',
         'event'                       => 'Conekta_Event',
         'plan'                        => 'Conekta_Plan',
-        'subscription'                => 'Conekta_Subscription',
+        'subscription'                => 'Conekta_Subscription'
     );
 
     public static function convertToConektaObject($resp)
