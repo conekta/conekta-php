@@ -1,7 +1,7 @@
 
 ![alt tag](https://raw.github.com/conekta/conekta-php/master/readme_files/cover.png)
 
-# Conekta PHP v.1.9.9
+# Conekta PHP v.2.0.0
 
 This is a php library that allows interaction with https://api.conekta.io API.
 

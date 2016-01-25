@@ -45,3 +45,8 @@
 * Change YAML to arrays.
 * Add support for namespaces.
 * (Thanks to https://github.com/joecohens)
+
+=== 2.0.0 2016-01-25
+
+* Add Webhook and WebhookLog models.
+* Fix Charge specs.
