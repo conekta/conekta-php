@@ -3,6 +3,8 @@
 abstract class Conekta_Util
 {
     public static $types = array(
+        'webhook'                     => 'Conekta_Webhook',
+        'webhook_log'                 => 'Conekta_WebhookLog',
         'billing_address'             => 'Conekta_Address',
         'bank_transfer_payout_method' => 'Conekta_Method',
         'payout'                      => 'Conekta_Payout',
