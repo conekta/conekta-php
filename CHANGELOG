@@ -46,7 +46,10 @@
 * Add support for namespaces.
 * (Thanks to https://github.com/joecohens)
 
-== 2.0.0 2015-11-26
+
+=== 2.0.0 2016-01-25
 
 * Add namespaces.
 * Remove strpos warning in Object class.
+* Add Webhook and WebhookLog models.
+* Fix Charge specs.

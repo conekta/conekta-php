@@ -33,3 +33,5 @@ require dirname(__FILE__).'/Conekta/Payee.php';
 require dirname(__FILE__).'/Conekta/PayoutMethod.php';
 require dirname(__FILE__).'/Conekta/Method.php';
 require dirname(__FILE__).'/Conekta/Address.php';
+require dirname(__FILE__).'/Conekta/Webhook.php';
+require dirname(__FILE__).'/Conekta/WebhookLog.php';
