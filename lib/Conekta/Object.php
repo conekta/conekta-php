@@ -29,7 +29,7 @@ class Conekta_Object extends ArrayObject
             if (strpos(get_class($this), 'Conekta_Object') !== false) {
                 $this[$k] = $v;
             } else {
-                if (strpos($k, 'url') !== false) {
+                if (strpos($k, 'url') !== false && strpos(get_class($this), 'Conekta_Webhook') !== false) {
                     $k = "webhook_url";
                 }
                 $this->$k = $v;

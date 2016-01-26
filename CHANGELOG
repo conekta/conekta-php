@@ -50,3 +50,8 @@
 
 * Add Webhook and WebhookLog models.
 * Fix Charge specs.
+
+=== 2.0.1 2016-01-26
+
+* Fix Util.php for 'url' field name replacement.
+* Complete specs for offline payments.

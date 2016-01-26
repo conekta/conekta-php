@@ -31,7 +31,7 @@ class Conekta_ChargeTest extends UnitTestCase
         )
     );
 
-    public static $invalid_payment_method = array(
+    public static $intvalid_payment_method = array(
         'amount'      => 10,
         'currency'    => 'mxn',
         'description' => 'Some desc',
@@ -87,6 +87,22 @@ class Conekta_ChargeTest extends UnitTestCase
         $bank = array('bank' => array('type' => 'banorte'));
         setApiKey();
         $bpm = Conekta_Charge::create(array_merge($pm, $bank));
+        $this->assertTrue($bpm->payment_method->service_number == "127589");
+        $this->assertTrue($bpm->payment_method->service_name == "Conekta");
+        $this->assertTrue(intval($bpm->payment_method->reference) > 0);
+        $this->assertTrue(is_numeric($bpm->payment_method->expires_at));
+        $this->assertTrue($bpm->status == 'pending_payment');
+    }
+
+    public function testSuccesfulSpeiPMCreate()
+    {
+        $pm = self::$valid_payment_method;
+        $spei = array('bank' => array('type' => 'spei'));
+        setApiKey();
+        $bpm = Conekta_Charge::create(array_merge($pm, $spei));
+        $this->assertTrue($bpm->payment_method->bank == "STP");
+        $this->assertTrue(intval($bpm->payment_method->clabe) > 0);
+        $this->assertTrue(is_numeric($bpm->payment_method->expires_at));
         $this->assertTrue($bpm->status == 'pending_payment');
     }
 
@@ -105,12 +121,16 @@ class Conekta_ChargeTest extends UnitTestCase
         $oxxo = array('cash' => array('type' => 'oxxo'));
         setApiKey();
         $opm = Conekta_Charge::create(array_merge($pm, $oxxo));
+        $this->assertTrue($opm->payment_method->barcode_url == "http://s3.amazonaws.com/cash_payment_barcodes/12345678901234567890123456789012.png");
+        $this->assertTrue($opm->payment_method->barcode == "12345678901234567890123456789012");
+        $this->assertTrue(is_numeric($opm->payment_method->expires_at));
+        $this->assertTrue($opm->payment_method->store_name == "OXXO");
         $this->assertTrue($opm->status == 'pending_payment');
     }
 
     public function testUnsuccesfulPMCreate()
     {
-        $pm = self::$invalid_payment_method;
+        $pm = self::$intvalid_payment_method;
         $card = self::$valid_visa_card;
         setApiKey();
         try {
