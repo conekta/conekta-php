@@ -29,7 +29,7 @@ class Object extends \ArrayObject
             if (strpos(get_class($this), 'Object') !== false) {
                 $this[$k] = $v;
             } else {
-                if (strpos($k, 'url') !== false && strpos(get_class($this), 'Conekta_Webhook') !== false) {
+                if (strpos($k, 'url') !== false && strpos(get_class($this), 'Webhook') !== false) {
                     $k = "webhook_url";
                 }
                 $this->$k = $v;

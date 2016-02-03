@@ -7,8 +7,8 @@ class Payout_Method extends Resource
         $id = $this->id;
         if (!$id) {
             throw new Error(
-                LANG::translate('error.resource.id', array('RESOURCE' => get_class()), LANG::EN),
-                LANG::translate('error.resource.id_purchaser', null, Conekta::$locale)
+                \Conekta\Lang::translate('error.resource.id', array('RESOURCE' => get_class()), \Conekta\Lang::EN),
+                \Conekta\Lang::translate('error.resource.id_purchaser', null, Conekta::$locale)
             );
         }
         $class = get_class($this);
