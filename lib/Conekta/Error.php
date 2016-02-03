@@ -21,8 +21,8 @@ class Conekta_Error extends Exception
         $params = isset($resp['param']) ? $resp['param'] : null;
         if (isset($code) != true || $code == 0) {
             throw new Conekta_NoConnectionError(
-                LANG::translate('error.requestor.connection', array('BASE' => Conekta::$apiBase), LANG::EN),
-                LANG::translate('error.requestor.connection_purchaser', null, Conekta::$locale),
+                Conekta_Lang::translate('error.requestor.connection', array('BASE' => Conekta::$apiBase), Conekta_Lang::EN),
+                Conekta_Lang::translate('error.requestor.connection_purchaser', null, Conekta::$locale),
                 $type, $code, $params);
         }
         switch ($code) {
