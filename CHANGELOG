@@ -59,3 +59,7 @@
 === 2.0.3 2016-02-23
 
 * Change Language module to Conekta_Language.
+
+=== 2.0.4 2016-02-23
+
+* Move Conekta_Language to Conekta folder.
