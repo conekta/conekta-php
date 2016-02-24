@@ -58,3 +58,7 @@
 
 * Fix Util.php for 'url' field name replacement.
 * Complete specs for offline payments.
+
+=== 2.0.3 2016-02-23
+
+* Change Language module to Conekta_Language.
