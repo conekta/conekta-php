@@ -11,7 +11,7 @@ class Conekta_Lang
     {
         $parameters = str_replace("Conekta\\", "", $parameters);
         
-        $langs = self::readDirectory(dirname(__FILE__).'/messages');
+        $langs = self::readDirectory(dirname(__FILE__).'/../messages');
 
         $keys = explode('.', $locale.'.'.$key);
         $result = $langs[array_shift($keys)];

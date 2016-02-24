@@ -1,7 +1,7 @@
 
 ![alt tag](https://raw.github.com/conekta/conekta-php/master/readme_files/cover.png)
 
-# Conekta PHP v.2.0.3
+# Conekta PHP v.2.0.4
 
 This is a php library that allows interaction with https://api.conekta.io API.
 
@@ -84,3 +84,10 @@ Run test suite:
 License
 -------
 Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LICENSE).
+
+We are hiring
+-------------
+
+If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. 
+Send your CV, github to quieroser@conekta.io
+
