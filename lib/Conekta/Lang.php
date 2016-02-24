@@ -9,7 +9,7 @@ class Conekta_Lang
 
     public static function translate($key, $parameters = null, $locale)
     {
-        $langs = self::readDirectory(dirname(__FILE__).'/messages');
+        $langs = self::readDirectory(dirname(__FILE__).'/../locales/messages');
 
         $keys = explode('.', $locale.'.'.$key);
         $result = $langs[array_shift($keys)];
