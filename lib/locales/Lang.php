@@ -1,6 +1,6 @@
 <?php namespace Conekta;
 
-class Lang
+class Conekta_Lang
 {
     const EN = 'en';
     const ES = 'es';
