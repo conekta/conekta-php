@@ -67,4 +67,9 @@ class Conekta_Object extends ArrayObject
     {
         return $this->__toJSON();
     }
+
+    public function offsetGet($offset)
+    {
+    	return isset($this->_values[$offset]) ? $this->_values[$offset] : null;
+    }
 }
