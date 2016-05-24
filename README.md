@@ -32,7 +32,8 @@ try {
     //"tok_a4Ff0dD2xYZZq82d9"
   ));
 } catch (Conekta_Error $e) {
-  echo $e->getMessage();
+  echo $e->getMessage(); //Dev Message
+  echo $e->message_to_purchaser;
   //El pago no pudo ser procesado
 }
 
