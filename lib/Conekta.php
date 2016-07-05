@@ -35,3 +35,4 @@ require_once dirname(__FILE__).'/Conekta/Method.php';
 require_once dirname(__FILE__).'/Conekta/Address.php';
 require_once dirname(__FILE__).'/Conekta/Webhook.php';
 require_once dirname(__FILE__).'/Conekta/WebhookLog.php';
+require_once dirname(__FILE__).'/Conekta/Log.php';

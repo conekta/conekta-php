@@ -31,8 +31,9 @@ try {
     "card"=> $_POST['conektaTokenId']
     //"tok_a4Ff0dD2xYZZq82d9"
   ));
-} catch (Error $e) {
-  echo $e->getMessage();
+} catch (Conekta_Error $e) {
+  echo $e->getMessage(); //Dev Message
+  echo $e->message_to_purchaser;
   //El pago no pudo ser procesado
 }
 
