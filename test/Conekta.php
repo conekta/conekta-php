@@ -6,7 +6,7 @@ function setApiKey()
     $apiEnvKey = getenv('CONEKTA_API');
     if (!$apiEnvKey) {
         $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
-    }
+    }   
     Conekta::setApiKey($apiEnvKey);
 }
 function unsetApiKey()
@@ -50,3 +50,4 @@ require_once dirname(__FILE__).'/Conekta/PlanTest.php';
 require_once dirname(__FILE__).'/Conekta/ErrorTest.php';
 require_once dirname(__FILE__).'/Conekta/PayoutTest.php';
 require_once dirname(__FILE__).'/Conekta/WebhookTest.php';
+require_once dirname(__FILE__).'/Conekta/LogTest.php';
