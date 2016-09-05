@@ -9,13 +9,13 @@ class Conekta_Customer extends Conekta_Resource
         }
         foreach ($this->cards as $k => $v) {
             if (isset($v->deleted) != true) {
-                $v->customer = &$this;
+                $v->customer = $this;
                 $this->cards[$k] = $v;
             }
         }
 
         if (isset($this->subscription)) {
-            $this->subscription->customer = &$this;
+            $this->subscription->customer = $this;
         }
     }
 
