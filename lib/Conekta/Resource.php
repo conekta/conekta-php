@@ -74,7 +74,7 @@ abstract class Resource extends Object
         if (!$id) {
             throw new Error(
             \Conekta\Conekta_Lang::translate('error.resource.id', array('RESOURCE' => get_class()), \Conekta\Conekta_Lang::EN),
-            \Conekta\Conekta_Lang::translate('error.resource.id_purchaser', null, Conekta::$locale)
+            \Conekta\Conekta_Lang::translate('error.resource.id_purchaser', null, \Conekta\Conekta::$locale)
             );
         }
         $class = get_class($this);
