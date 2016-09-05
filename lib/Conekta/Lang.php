@@ -9,7 +9,7 @@ class Conekta_Lang
 
     public static function translate($key, $parameters = null, $locale)
     {
-        $parameters = str_replace("Conekta\\Conekta\\", "", $parameters);
+        $parameters = str_replace("\\Conekta\\Conekta\\", "", $parameters);
         
         $langs = self::readDirectory(dirname(__FILE__).'/../messages');
 
