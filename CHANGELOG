@@ -66,3 +66,7 @@
 === 2.0.4 2016-02-23
 
 * Move Conekta_Language to Conekta folder.
+
+=== 2.0.5 2016-07-05
+
+* Add Log model.
