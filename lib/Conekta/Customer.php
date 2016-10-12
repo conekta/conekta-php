@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Customer extends Resource
 {
@@ -27,41 +23,41 @@ class Customer extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpCreate($class, $params);
+        return self::_scpCreate($class, $params);
     }
 
     public function delete()
     {
-        return parent::_delete();
+        return self::_delete();
     }
 
     public function update($params = null)
     {
-        return parent::_update($params);
+        return self::_update($params);
     }
 
     public function createCard($params = null)
     {
-        return parent::_createMember('cards', $params);
+        return self::_createMember('cards', $params);
     }
 
     public function createSubscription($params = null)
     {
-        return parent::_createMember('subscription', $params);
+        return self::_createMember('subscription', $params);
     }
 
     /**
@@ -71,13 +67,13 @@ class Customer extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function all($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 }

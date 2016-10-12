@@ -12,7 +12,6 @@ if (!function_exists('mb_detect_encoding')) {
 if (!function_exists('get_called_class')) {
     throw new Exception('Conekta needs to be run on PHP >= 5.3.0.');
 }
-
 require_once dirname(__FILE__).'/Conekta/Lang.php';
 require_once dirname(__FILE__).'/Conekta/Conekta.php';
 require_once dirname(__FILE__).'/Conekta/Util.php';

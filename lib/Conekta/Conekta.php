@@ -1,6 +1,4 @@
-<?php 
-
-namespace Conekta;
+<?php namespace Conekta;
 
 abstract class Conekta
 {

@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Payout extends Resource
 {
@@ -10,20 +6,20 @@ class Payout extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpCreate($class, $params);
+        return self::_scpCreate($class, $params);
     }
 }

@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Event extends Resource
 {
@@ -10,7 +6,7 @@ class Event extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 
     /**
@@ -20,6 +16,6 @@ class Event extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 }

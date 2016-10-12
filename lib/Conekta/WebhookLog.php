@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class WebhookLog extends Resource
 {

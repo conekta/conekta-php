@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Token extends Resource
 {
@@ -10,14 +6,14 @@ class Token extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
-        
-        return parent::_scpCreate($class, $params);
+
+        return self::_scpCreate($class, $params);
     }
 
     /**
@@ -27,6 +23,6 @@ class Token extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 }

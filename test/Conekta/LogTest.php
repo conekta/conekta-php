@@ -10,9 +10,9 @@ class LogTest extends UnitTestCase
     }
     public function testSuccesfulWhere()
     {
-        setApiKey();
-        $logs = \Conekta\Log::where();
-        $this->assertTrue(strpos(get_class($logs), 'Conekta_Object') !== false);
-        $this->assertTrue(strpos(get_class($logs[0]), 'Conekta_Object') !== false);
+    	setApiKey();
+    	$logs = \Conekta\Log::where();
+    	$this->assertTrue(strpos(get_class($logs), 'Conekta_Object') !== false);
+    	$this->assertTrue(strpos(get_class($logs[0]), 'Conekta_Object') !== false);
     }
 }

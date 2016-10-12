@@ -1,28 +1,24 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Object;
+<?php namespace Conekta;
 
 abstract class Util
 {
     public static $types = array(
-        'webhook'                     => '\Conekta\Webhook',
-        'webhook_log'                 => '\Conekta\WebhookLog',
-        'billing_address'             => '\Conekta\Address',
-        'bank_transfer_payout_method' => '\Conekta\Method',
-        'payout'                      => '\Conekta\Payout',
-        'payee'                       => '\Conekta\Payee',
-        'payout_method'               => '\Conekta\PayoutMethod',
-        'card_payment'                => '\Conekta\PaymentMethod',
-        'cash_payment'                => '\Conekta\PaymentMethod',
-        'bank_transfer_payment'       => '\Conekta\PaymentMethod',
-        'card'                        => '\Conekta\Card',
-        'charge'                      => '\Conekta\Charge',
-        'customer'                    => '\Conekta\Customer',
-        'event'                       => '\Conekta\Event',
-        'plan'                        => '\Conekta\Plan',
-        'subscription'                => '\Conekta\Subscription'
+        'webhook'                     => 'Conekta\Webhook',
+        'webhook_log'                 => 'Conekta\WebhookLog',
+        'billing_address'             => 'Conekta\Address',
+        'bank_transfer_payout_method' => 'Conekta\Method',
+        'payout'                      => 'Conekta\Payout',
+        'payee'                       => 'Conekta\Payee',
+        'payout_method'               => 'Conekta\Payout_Method',
+        'card_payment'                => 'Conekta\Payment_Method',
+        'cash_payment'                => 'Conekta\Payment_Method',
+        'bank_transfer_payment'       => 'Conekta\Payment_Method',
+        'card'                        => 'Conekta\Card',
+        'charge'                      => 'Conekta\Charge',
+        'customer'                    => 'Conekta\Customer',
+        'event'                       => 'Conekta\Event',
+        'plan'                        => 'Conekta\Plan',
+        'subscription'                => 'Conekta\Subscription'
     );
 
     public static function convertToConektaObject($resp)
@@ -36,7 +32,6 @@ abstract class Util
 
                 return $instance;
             }
-
             if (isset($resp['street1']) || isset($resp['street2'])) {
                 $class = '\Conekta\Address';
                 $instance = new $class();

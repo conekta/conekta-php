@@ -1,11 +1,10 @@
 {
   "name": "conekta/conekta-php",
-  "description": "Conekta PHP Library",
+  "description": "PHP  Library",
   "keywords": [
     "conekta",
     "payment processing",
-    "api",
-    "payments"
+    "api"
   ],
   "homepage": "https://www.conekta.io/",
   "license": "MIT",
@@ -16,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=5.3",
+    "php": ">=5.2",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*"
@@ -25,8 +24,6 @@
     "simpletest/simpletest": "*"
   },
   "autoload": {
-    "classmap": [
-      "lib/Conekta/"
-    ]
+    "classmap": ["lib/Conekta/"]
   }
 }

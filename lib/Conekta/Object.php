@@ -1,11 +1,6 @@
-<?php 
+<?php namespace Conekta;
 
-namespace Conekta;
-
-use \ArrayObject;
-use \Conekta\Util;
-
-class Object extends ArrayObject
+class Object extends \ArrayObject
 {
     protected $_values;
 
@@ -56,7 +51,7 @@ class Object extends ArrayObject
     {
         $array = array();
         foreach ($this->_values as $k => $v) {
-            if (is_object($v) == true && get_class($v) != '') {
+            if (is_object($v) == true && get_class($v) != '' ) {
                 if (empty($v->_values) != true) {
                     $array[$k] = $v->_toArray();
                 }
@@ -75,6 +70,6 @@ class Object extends ArrayObject
 
     public function offsetGet($offset)
     {
-        return isset($this->_values[$offset]) ? $this->_values[$offset] : null;
+    	return isset($this->_values[$offset]) ? $this->_values[$offset] : null;
     }
 }

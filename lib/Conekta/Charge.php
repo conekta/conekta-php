@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Charge extends Resource
 {
@@ -10,26 +6,26 @@ class Charge extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpCreate($class, $params);
+        return self::_scpCreate($class, $params);
     }
 
     public function capture()
     {
-        return parent::_customAction('post', 'capture', null);
+        return self::_customAction('post', 'capture', null);
     }
 
     public function refund($amount = null)
@@ -39,7 +35,7 @@ class Charge extends Resource
             $params = array('amount' => $amount);
         }
 
-        return parent::_customAction('post', 'refund', $params);
+        return self::_customAction('post', 'refund', $params);
     }
 
     /**
@@ -49,13 +45,13 @@ class Charge extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function all($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 }

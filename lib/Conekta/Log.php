@@ -1,8 +1,4 @@
-<?php 
-
-namespace Conekta;
-
-use \Conekta\Resource;
+<?php namespace Conekta;
 
 class Log extends Resource
 {
@@ -10,13 +6,13 @@ class Log extends Resource
     {
         $class = get_called_class();
 
-        return parent::_scpFind($class, $id);
+        return self::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return parent::_scpWhere($class, $params);
+        return self::_scpWhere($class, $params);
     }
 }

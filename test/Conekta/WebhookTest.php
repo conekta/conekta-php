@@ -2,7 +2,7 @@
 
 class WebhookTest extends UnitTestCase
 {
-    public static $events = array("events" =>
+    public static $events = array("events" => 
         array("charge.created", "charge.paid", "charge.under_fraud_review",
         "charge.fraudulent", "charge.refunded", "charge.created", "customer.created",
         "customer.updated", "customer.deleted", "webhook.created", "webhook.updated",
