@@ -1,4 +1,8 @@
-<?php namespace Conekta;
+<?php 
+
+namespace Conekta;
+
+use \Conekta\Resource;
 
 class Plan extends Resource
 {
@@ -6,31 +10,31 @@ class Plan extends Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpCreate($class, $params);
+        return parent::_scpCreate($class, $params);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 
     public function delete()
     {
-        return self::_delete();
+        return parent::_delete();
     }
 
     public function update($params = null)
     {
-        return self::_update($params);
+        return parent::_update($params);
     }
 
     /**
@@ -40,13 +44,13 @@ class Plan extends Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function all($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 }

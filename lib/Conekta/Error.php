@@ -1,6 +1,12 @@
-<?php namespace Conekta;
+<?php 
 
-class Error extends \Exception
+namespace Conekta;
+
+use \Conekta\Lang as Lang;
+use \Conekta\Conekta;
+use \Exception;
+
+class Error extends Exception
 {
     public function __construct($message = null, $message_to_purchaser = null, $type = null, $code = null, $params = null)
     {
@@ -19,12 +25,14 @@ class Error extends \Exception
         $message_to_purchaser = isset($resp['message_to_purchaser']) ? $resp['message_to_purchaser'] : null;
         $type = isset($resp['type']) ? $resp['type'] : null;
         $params = isset($resp['param']) ? $resp['param'] : null;
+
         if (isset($code) != true || $code == 0) {
             throw new NoConnectionError(
-                \Conekta\Conekta_Lang::translate('error.requestor.connection', array('BASE' => \Conekta\Conekta::$apiBase), \Conekta\Conekta_Lang::EN),
-                \Conekta\Conekta_Lang::translate('error.requestor.connection_purchaser', null, \Conekta\Conekta::$locale),
+                Lang::translate('error.requestor.connection', Lang::EN, array('BASE' => Conekta::$apiBase)),
+                Lang::translate('error.requestor.connection_purchaser', Conekta::$locale),
                 $type, $code, $params);
         }
+
         switch ($code) {
             case 400:
                 throw new MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
@@ -40,6 +48,7 @@ class Error extends \Exception
                 throw new ApiError($message, $message_to_purchaser, $type, $code, $params);
             default:
                 throw new self($message, $message_to_purchaser, $type, $code, $params);
+                
         }
     }
 }

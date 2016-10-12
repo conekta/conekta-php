@@ -9,6 +9,6 @@ return array(
         'requestor' => array(
             'connection'           => 'Could not connect to BASE.',
             'connection_purchaser' => 'Could not connect to payment system.',
-        ),
-    ),
+        )
+    )
 );
