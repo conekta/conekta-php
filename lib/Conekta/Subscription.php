@@ -1,4 +1,11 @@
-<?php namespace Conekta;
+<?php 
+
+namespace Conekta;
+
+use \Conekta\Resource;
+use \Conekta\Lang;
+use \Conekta\Conekta;
+use \Conekta\Error;
 
 class Subscription extends Resource
 {
@@ -7,34 +14,34 @@ class Subscription extends Resource
         $id = $this->id;
         if (!$id) {
             throw new Error(
-                \Conekta\Conekta_Lang::translate('error.resource.id', array('RESOURCE' => get_class()), \Conekta\Conekta_Lang::EN),
-                \Conekta\Conekta_Lang::translate('error.resource.id_purchaser', null, \Conekta\Conekta::$locale)
+                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
         $class = get_class($this);
         $base = '/subscription';
         $customerUrl = $this->customer->instanceUrl();
 
-        return "$customerUrl$base";
+        return $customerUrl . $base;
     }
 
     public function update($params = null)
     {
-        return self::_update($params);
+        return parent::_update($params);
     }
 
     public function cancel()
     {
-        return self::_customAction('post', 'cancel');
+        return parent::_customAction('post', 'cancel');
     }
 
     public function pause()
     {
-        return self::_customAction('post', 'pause');
+        return parent::_customAction('post', 'pause');
     }
 
     public function resume()
     {
-        return self::_customAction('post', 'resume');
+        return parent::_customAction('post', 'resume');
     }
 }

@@ -1,4 +1,9 @@
-<?php namespace Conekta;
+<?php 
+
+namespace Conekta;
+
+use \Conekta\Conekta;
+use \Conekta\Error;
 
 class Requestor
 {
@@ -13,7 +18,7 @@ class Requestor
     {
         $apiBase = Conekta::$apiBase;
 
-        return "$apiBase$url";
+        return $apiBase . $url;
     }
 
     private function setHeaders()
