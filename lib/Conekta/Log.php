@@ -1,18 +1,22 @@
-<?php
+<?php 
 
-class Conekta_Log extends Conekta_Resource
+namespace Conekta;
+
+use \Conekta\Resource;
+
+class Log extends Resource
 {
     public static function find($id)
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 }

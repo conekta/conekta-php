@@ -1,6 +1,12 @@
-<?php
+<?php 
 
-class Conekta_Error extends Exception
+namespace Conekta;
+
+use \Conekta\Lang;
+use \Conekta\Conekta;
+use \Exception;
+
+class Error extends Exception
 {
     public function __construct($message = null, $message_to_purchaser = null, $type = null, $code = null, $params = null)
     {
@@ -19,55 +25,58 @@ class Conekta_Error extends Exception
         $message_to_purchaser = isset($resp['message_to_purchaser']) ? $resp['message_to_purchaser'] : null;
         $type = isset($resp['type']) ? $resp['type'] : null;
         $params = isset($resp['param']) ? $resp['param'] : null;
+
         if (isset($code) != true || $code == 0) {
-            throw new Conekta_NoConnectionError(
-                Conekta_Lang::translate('error.requestor.connection', array('BASE' => Conekta::$apiBase), Conekta_Lang::EN),
-                Conekta_Lang::translate('error.requestor.connection_purchaser', null, Conekta::$locale),
+            throw new NoConnectionError(
+                Lang::translate('error.requestor.connection', Lang::EN, array('BASE' => Conekta::$apiBase)),
+                Lang::translate('error.requestor.connection_purchaser', Conekta::$locale),
                 $type, $code, $params);
         }
+
         switch ($code) {
             case 400:
-                throw new Conekta_MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
+                throw new MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
             case 401:
-                throw new Conekta_AuthenticationError($message, $message_to_purchaser, $type, $code, $params);
+                throw new AuthenticationError($message, $message_to_purchaser, $type, $code, $params);
             case 402:
-                throw new Conekta_ProcessingError($message, $message_to_purchaser, $type, $code, $params);
+                throw new ProcessingError($message, $message_to_purchaser, $type, $code, $params);
             case 404:
-                throw new Conekta_ResourceNotFoundError($message, $message_to_purchaser, $type, $code, $params);
+                throw new ResourceNotFoundError($message, $message_to_purchaser, $type, $code, $params);
             case 422:
-                throw new Conekta_ParameterValidationError($message, $message_to_purchaser, $type, $code, $params);
+                throw new ParameterValidationError($message, $message_to_purchaser, $type, $code, $params);
             case 500:
-                throw new Conekta_ApiError($message, $message_to_purchaser, $type, $code, $params);
+                throw new ApiError($message, $message_to_purchaser, $type, $code, $params);
             default:
                 throw new self($message, $message_to_purchaser, $type, $code, $params);
+                
         }
     }
 }
 
-class Conekta_ApiError extends Conekta_Error
+class ApiError extends Error
 {
 }
 
-class Conekta_NoConnectionError extends Conekta_Error
+class NoConnectionError extends Error
 {
 }
 
-class Conekta_AuthenticationError extends Conekta_Error
+class AuthenticationError extends Error
 {
 }
 
-class Conekta_ParameterValidationError extends Conekta_Error
+class ParameterValidationError extends Error
 {
 }
 
-class Conekta_ProcessingError extends Conekta_Error
+class ProcessingError extends Error
 {
 }
 
-class Conekta_ResourceNotFoundError extends Conekta_Error
+class ResourceNotFoundError extends Error
 {
 }
 
-class Conekta_MalformedRequestError extends Conekta_Error
+class MalformedRequestError extends Error
 {
 }

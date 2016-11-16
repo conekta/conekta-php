@@ -1,6 +1,11 @@
-<?php
+<?php 
 
-class Conekta_Object extends ArrayObject
+namespace Conekta;
+
+use \ArrayObject;
+use \Conekta\Util;
+
+class Object extends ArrayObject
 {
     protected $_values;
 
@@ -24,12 +29,12 @@ class Conekta_Object extends ArrayObject
     {
         foreach ($values as $k => $v) {
             if (is_array($v)) {
-                $v = Conekta_Util::convertToConektaObject($v);
+                $v = Util::convertToConektaObject($v);
             }
-            if (strpos(get_class($this), 'Conekta_Object') !== false) {
+            if (strpos(get_class($this), 'Object') !== false) {
                 $this[$k] = $v;
             } else {
-                if (strpos($k, 'url') !== false && strpos(get_class($this), 'Conekta_Webhook') !== false) {
+                if (strpos($k, 'url') !== false && strpos(get_class($this), 'Webhook') !== false) {
                     $k = "webhook_url";
                 }
                 $this->$k = $v;
@@ -51,7 +56,7 @@ class Conekta_Object extends ArrayObject
     {
         $array = array();
         foreach ($this->_values as $k => $v) {
-            if (is_object($v) == true && strpos(get_class($v), 'Conekta_') !== false) {
+            if (is_object($v) == true && get_class($v) != '') {
                 if (empty($v->_values) != true) {
                     $array[$k] = $v->_toArray();
                 }
@@ -70,6 +75,6 @@ class Conekta_Object extends ArrayObject
 
     public function offsetGet($offset)
     {
-    	return isset($this->_values[$offset]) ? $this->_values[$offset] : null;
+        return isset($this->_values[$offset]) ? $this->_values[$offset] : null;
     }
 }

@@ -1,6 +1,10 @@
-<?php
+<?php 
 
-class Conekta_Payee extends Conekta_Resource
+namespace Conekta;
+
+use \Conekta\Resource;
+
+class Payee extends Resource
 {
     public function loadFromArray($values = null)
     {
@@ -23,35 +27,35 @@ class Conekta_Payee extends Conekta_Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpCreate($class, $params);
+        return parent::_scpCreate($class, $params);
     }
 
     public function delete()
     {
-        return self::_delete();
+        return parent::_delete();
     }
 
     public function update($params = null)
     {
-        return self::_update($params);
+        return parent::_update($params);
     }
 
     public function createPayoutMethod($params = null)
     {
-        return self::_createMember('payout_methods', $params);
+        return parent::_createMember('payout_methods', $params);
     }
 }

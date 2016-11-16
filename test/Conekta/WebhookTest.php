@@ -1,6 +1,6 @@
 <?php
 
-class Conekta_WebhookTest extends UnitTestCase
+class WebhookTest extends UnitTestCase
 {
     public static $events = array("events" => 
         array("charge.created", "charge.paid", "charge.under_fraud_review",
@@ -21,8 +21,8 @@ class Conekta_WebhookTest extends UnitTestCase
     public function testSuccesfulWebhookCreate()
     {
         setApiKey();
-        $webhook = Conekta_Webhook::create(array_merge(self::$url, self::$events));
-        $this->assertTrue(strpos(get_class($webhook), 'Conekta_Webhook') !== false);
+        $webhook = \Conekta\Webhook::create(array_merge(self::$url, self::$events));
+        $this->assertTrue(strpos(get_class($webhook), 'Webhook') !== false);
         $this->assertTrue(strpos($webhook->webhook_url, self::$url["url"]) !== false);
         $webhook->update(array("url" => "http://www.example.com/my_listener"));
         $this->assertTrue(strpos($webhook->webhook_url, "http://www.example.com/my_listener") !== false);

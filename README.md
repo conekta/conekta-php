@@ -21,9 +21,9 @@ You can also install this library with composer:
 
 ## Usage
 ```php
-Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
+\Conekta\Conekta::setApiKey('1tv5yJp3xnVZ7eK67m4h');
 try {
-  $charge = Conekta_Charge::create(array(
+  $charge = \Conekta\Charge::create(array(
     "amount"=> 51000,
     "currency"=> "MXN",
     "description"=> "Pizza Delivery",

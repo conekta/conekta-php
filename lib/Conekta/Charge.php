@@ -1,31 +1,35 @@
-<?php
+<?php 
 
-class Conekta_Charge extends Conekta_Resource
+namespace Conekta;
+
+use \Conekta\Resource;
+
+class Charge extends Resource
 {
     public static function find($id)
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpCreate($class, $params);
+        return parent::_scpCreate($class, $params);
     }
 
     public function capture()
     {
-        return self::_customAction('post', 'capture', null);
+        return parent::_customAction('post', 'capture', null);
     }
 
     public function refund($amount = null)
@@ -35,7 +39,7 @@ class Conekta_Charge extends Conekta_Resource
             $params = array('amount' => $amount);
         }
 
-        return self::_customAction('post', 'refund', $params);
+        return parent::_customAction('post', 'refund', $params);
     }
 
     /**
@@ -45,13 +49,13 @@ class Conekta_Charge extends Conekta_Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function all($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 }

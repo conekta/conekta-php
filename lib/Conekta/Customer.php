@@ -1,6 +1,10 @@
-<?php
+<?php 
 
-class Conekta_Customer extends Conekta_Resource
+namespace Conekta;
+
+use \Conekta\Resource;
+
+class Customer extends Resource
 {
     public function loadFromArray($values = null)
     {
@@ -23,41 +27,41 @@ class Conekta_Customer extends Conekta_Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function where($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 
     public static function create($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpCreate($class, $params);
+        return parent::_scpCreate($class, $params);
     }
 
     public function delete()
     {
-        return self::_delete();
+        return parent::_delete();
     }
 
     public function update($params = null)
     {
-        return self::_update($params);
+        return parent::_update($params);
     }
 
     public function createCard($params = null)
     {
-        return self::_createMember('cards', $params);
+        return parent::_createMember('cards', $params);
     }
 
     public function createSubscription($params = null)
     {
-        return self::_createMember('subscription', $params);
+        return parent::_createMember('subscription', $params);
     }
 
     /**
@@ -67,13 +71,13 @@ class Conekta_Customer extends Conekta_Resource
     {
         $class = get_called_class();
 
-        return self::_scpFind($class, $id);
+        return parent::_scpFind($class, $id);
     }
 
     public static function all($params = null)
     {
         $class = get_called_class();
 
-        return self::_scpWhere($class, $params);
+        return parent::_scpWhere($class, $params);
     }
 }
