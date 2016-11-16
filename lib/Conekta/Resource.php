@@ -27,9 +27,13 @@ abstract class Resource extends Object
 
     public static function classUrl($class = null)
     {
-        if (!$class) {
-            $class = get_class($this);
+        if (empty($class)) {
+            throw new Conekta_NoConnectionError(
+                Conekta_Lang::translate('error.resource.id', Conekta_Lang::EN, array('RESOURCE' => "NULL")),
+                Conekta_Lang::translate('error.resource.id_purchaser', Conekta::$locale)
+            );
         }
+
         $base = self::_getBase($class, 'className', $class);
 
         return "/${base}s";
