@@ -43,13 +43,11 @@
 
 * Remove simpletest.
 * Change YAML to arrays.
-* Add support for namespaces.
 * (Thanks to https://github.com/joecohens)
 
 
 === 2.0.0 2016-01-25
 
-* Add namespaces.
 * Remove strpos warning in Object class.
 * Add Webhook and WebhookLog models.
 * Fix Charge specs.
@@ -70,3 +68,7 @@
 === 2.0.5 2016-07-05
 
 * Add Log model.
+
+=== 3.0.0 2016-11-16
+
+* Add namespaces to master.
