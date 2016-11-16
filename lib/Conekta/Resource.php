@@ -1,4 +1,13 @@
-<?php namespace Conekta;
+<?php 
+
+namespace Conekta;
+
+use \Conekta\Object;
+use \Conekta\Requestor;
+use \Conekta\Error;
+use \Conekta\Lang;
+use \Conekta\Util;
+use \Conekta\Conekta;
 
 abstract class Resource extends Object
 {
@@ -28,15 +37,14 @@ abstract class Resource extends Object
     public static function classUrl($class = null)
     {
         if (empty($class)) {
-            throw new Conekta_NoConnectionError(
-                Conekta_Lang::translate('error.resource.id', Conekta_Lang::EN, array('RESOURCE' => "NULL")),
-                Conekta_Lang::translate('error.resource.id_purchaser', Conekta::$locale)
+            throw new NoConnectionError(
+                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => "NULL")),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
-
+        
         $base = self::_getBase($class, 'className', $class);
-
-        return "/${base}s";
+        return "/{$base}s";
     }
 
     protected static function _scpWhere($class, $params)
@@ -77,15 +85,15 @@ abstract class Resource extends Object
         $id = $this->id;
         if (!$id) {
             throw new Error(
-            \Conekta\Conekta_Lang::translate('error.resource.id', array('RESOURCE' => get_class()), \Conekta\Conekta_Lang::EN),
-            \Conekta\Conekta_Lang::translate('error.resource.id_purchaser', null, \Conekta\Conekta::$locale)
+            Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
+            Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
 
-        return "$base/$extn";
+        return "{$base}/{$extn}";
     }
 
     protected function _delete($parent = null, $member = null)
@@ -134,7 +142,7 @@ abstract class Resource extends Object
             $instances = $this->$member;
             $instance = end($instances);
         } else {
-            $class = '\Conekta\\'.ucfirst($member);
+            $class = '\\Conekta\\' . ucfirst($member);
             $instance = new $class();
             $instance->loadFromArray($response);
             $this->$member = $instance;

@@ -1,5 +1,9 @@
-<?php namespace Conekta;
+<?php
 
-class Payment_Method extends Resource
+namespace Conekta;
+
+use \Conekta\Resource;
+
+class PaymentMethod extends Resource
 {
 }

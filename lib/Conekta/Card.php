@@ -1,4 +1,11 @@
-<?php namespace Conekta;
+<?php 
+
+namespace Conekta;
+
+use \Conekta\Resource;
+use \Conekta\Lang;
+use \Conekta\Error;
+use \Conekta\Conekta;
 
 class Card extends Resource
 {
@@ -7,25 +14,26 @@ class Card extends Resource
         $id = $this->id;
         if (!$id) {
             throw new Error(
-                \Conekta\Conekta_Lang::translate('error.resource.id', array('RESOURCE' => get_class()), \Conekta\Conekta_Lang::EN),
-                \Conekta\Conekta_Lang::translate('error.resource.id_purchaser', null, \Conekta\Conekta::$locale)
+                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
+
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
         $customerUrl = $this->customer->instanceUrl();
 
-        return "$customerUrl$base/$extn";
+        return $customerUrl . $base . "/{$extn}";
     }
 
     public function update($params = null)
     {
-        return self::_update($params);
+        return parent::_update($params);
     }
 
     public function delete()
     {
-        return self::_delete('customer', 'cards');
+        return parent::_delete('customer', 'cards');
     }
 }
