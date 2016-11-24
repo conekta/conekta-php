@@ -37,6 +37,7 @@ class Requestor
             'X-Conekta-Client-User-Agent: '.json_encode($user_agent),
             'User-Agent: Conekta/v1 PhpBindings/'.Conekta::VERSION,
             'Authorization: Basic '.base64_encode($this->apiKey.':'),
+            'Content-Type: application/json'
         );
 
         return $headers;
@@ -44,7 +45,10 @@ class Requestor
 
     public function request($meth, $url, $params = null)
     {
-        $params = self::encode($params);
+        if($meth == 'get'){
+            $params = self::encode($params);
+        }
+        $params = json_encode($params);
         $headers = $this->setHeaders();
         $curl = curl_init();
         $meth = strtolower($meth);
