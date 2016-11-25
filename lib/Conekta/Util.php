@@ -22,7 +22,8 @@ abstract class Util
         'customer'                    => '\Conekta\Customer',
         'event'                       => '\Conekta\Event',
         'plan'                        => '\Conekta\Plan',
-        'subscription'                => '\Conekta\Subscription'
+        'subscription'                => '\Conekta\Subscription',
+        'source'                      => '\Conekta\Source'
     );
 
     public static function convertToConektaObject($resp)
