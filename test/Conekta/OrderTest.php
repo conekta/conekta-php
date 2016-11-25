@@ -59,7 +59,7 @@ class OrderTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
-    public function testSuccesfulCustomerUpdate()
+    public function testSuccesfulOrderrUpdate()
     {
         setApiKey();
         $order = \Conekta\Order::create(array(
@@ -93,6 +93,47 @@ class OrderTest extends UnitTestCase
                 ),
                 'currency'    => 'USD'
             ));
+        $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+    }
+
+    public function testSuccesfulOrderFind()
+    {
+        setApiKey();
+        $order = \Conekta\Order::create(array(
+            'line_items'=> array(
+                array(
+                    'name'=> 'Box of cigarrettes',
+                    'description'=> 'Imported From Cuba.',
+                    'unit_price'=> 40000,
+                    'quantity'=> 3,
+                    'sku'=> 'cohb_s3',
+                    'category'=> 'expendables',
+                    'type' => 'physical',
+                    'tags' => array('cuban', 'cuban cigarrettes')
+                )
+            ),
+            'currency'    => 'mxn'
+        ));
+        $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+    }
+    public function testSuccesfulOrderWhere()
+    {
+        setApiKey();
+        $order = \Conekta\Order::create(array(
+            'line_items'=> array(
+                array(
+                    'name'=> 'Box of cigarrettes',
+                    'description'=> 'Imported From Cuba.',
+                    'unit_price'=> 40000,
+                    'quantity'=> 3,
+                    'sku'=> 'cohb_s3',
+                    'category'=> 'expendables',
+                    'type' => 'physical',
+                    'tags' => array('cuban', 'cuban cigarrettes')
+                )
+            ),
+            'currency'    => 'mxn'
+        ));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 }

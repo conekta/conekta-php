@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -11,10 +11,20 @@ class Customer extends Resource
         if (isset($values)) {
             parent::loadFromArray($values);
         }
-        foreach ($this->cards as $k => $v) {
-            if (isset($v->deleted) != true) {
-                $v->customer = $this;
-                $this->cards[$k] = $v;
+
+        if(isset($this -> cards)){
+            foreach ($this->cards as $k => $v) {
+                if (isset($v->deleted) != true) {
+                    $v->customer = $this;
+                    $this->cards[$k] = $v;
+                }
+            }
+        }elseif(isset($this -> sources)){
+            foreach ($this->sources as $k => $v) {
+                if (isset($v->deleted) != true) {
+                    $v->customer = $this;
+                    $this->sources[$k] = $v;
+                }
             }
         }
 
@@ -52,6 +62,11 @@ class Customer extends Resource
     public function update($params = null)
     {
         return parent::_update($params);
+    }
+
+    public function createSource($params = null)
+    {
+        return parent::_createMember('sources', $params);
     }
 
     public function createCard($params = null)
