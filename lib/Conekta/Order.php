@@ -31,4 +31,24 @@ class Order extends Resource
 
         return parent::_scpFind($class, $id);
     }
+
+    public function createTaxLine($params = null)
+    {
+        return parent::_createMember('tax_lines', $params);
+    }
+
+    public function createShippingLine($params = null)
+    {
+        return parent::_createMember('shipping_lines', $params);
+    }
+
+    public function createDiscountLine($params = null)
+    {
+        return parent::_createMember('discount_lines', $params);
+    }
+
+    public function createLineItem($params = null)
+    {
+        return parent::_createMember('line_items', $params);
+    }
 }

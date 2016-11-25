@@ -23,7 +23,11 @@ abstract class Util
         'event'                       => '\Conekta\Event',
         'plan'                        => '\Conekta\Plan',
         'subscription'                => '\Conekta\Subscription',
-        'source'                      => '\Conekta\Source'
+        'source'                      => '\Conekta\Source',
+        'tax_line'                    => '\Conekta\TaxLine',
+        'shiping_line'                => '\Conekta\ShippingLine',
+        'discount_line'               => '\Conekta\DiscountLine',
+        'line_item'                   => '\Conekta\LineItem'
     );
 
     public static function convertToConektaObject($resp)
