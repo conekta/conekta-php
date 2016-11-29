@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -42,7 +42,7 @@ abstract class Resource extends Object
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
-        
+
         $base = self::_getBase($class, 'className', $class);
         return "/{$base}s";
     }

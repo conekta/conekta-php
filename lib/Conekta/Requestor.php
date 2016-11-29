@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -43,41 +43,39 @@ class Requestor
         return $headers;
     }
 
-    public function request($meth, $url, $params = null)
+    public function request($method, $url, $params = null)
     {
-        if($meth == 'get'){
-            $params = self::encode($params);
-        }
-        $params = json_encode($params);
+        $json_params = json_encode($params);
         $headers = $this->setHeaders();
         $curl = curl_init();
-        $meth = strtolower($meth);
+        $method = strtolower($method);
         $opts = array();
-        $query = '';
-        if (count($params) > 0) {
-            $query = '?'.$params;
+
+        if(!is_null($params)){
+          $params = http_build_query($params);
+          $url = $url.'?'.$params;
         }
-        switch ($meth) {
+
+        switch ($method) {
             case 'get':
                 $opts[CURLOPT_HTTPGET] = 1;
-                $url = $url.$query;
                 break;
             case 'post':
                 $opts[CURLOPT_POST] = 1;
-                $opts[CURLOPT_POSTFIELDS] = $params;
+                $opts[CURLOPT_POSTFIELDS] = $json_params;
                 break;
             case 'put':
                 $opts[CURLOPT_RETURNTRANSFER] = 1;
                 $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
-                $opts[CURLOPT_POSTFIELDS] = $params;
+                $opts[CURLOPT_POSTFIELDS] = $json_params;
                 break;
             case 'delete':
                 $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-                $url = $url.$query;
                 break;
             default:
                 throw new Exception('Wrong method');
         }
+
         $url = $this->apiUrl($url);
         $opts[CURLOPT_URL] = $url;
         $opts[CURLOPT_RETURNTRANSFER] = true;
@@ -95,35 +93,5 @@ class Requestor
         }
 
         return json_decode($response, true);
-    }
-
-    public static function encode($arr, $prefix = null)
-    {
-        if (!is_array($arr)) {
-            return $arr;
-        }
-        $r = array();
-        foreach ($arr as $k => $v) {
-            if (is_null($v)) {
-                continue;
-            }
-
-            if ($prefix && $k && !is_int($k)) {
-                $k = $prefix.'['.$k.']';
-            } elseif ($prefix) {
-                $k = $prefix.'[]';
-            }
-
-            if (is_array($v)) {
-                $r[] = self::encode($v, $k, true);
-            } else {
-                if (is_bool($v)) {
-                    $v = $v ? 'true' : 'false';
-                }
-                $r[] = urlencode($k).'='.urlencode($v);
-            }
-        }
-
-        return implode('&', $r);
     }
 }
