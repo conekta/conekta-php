@@ -51,14 +51,10 @@ class Requestor
         $method = strtolower($method);
         $opts = array();
 
-        if(!is_null($params)){
-          $params = http_build_query($params);
-          $url = $url.'?'.$params;
-        }
-
         switch ($method) {
             case 'get':
                 $opts[CURLOPT_HTTPGET] = 1;
+                $url = $this->buildQueryParamsUrl($url, $params);
                 break;
             case 'post':
                 $opts[CURLOPT_POST] = 1;
@@ -71,6 +67,7 @@ class Requestor
                 break;
             case 'delete':
                 $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+                $url = $this->buildSegementParamsUrl($url, $params);
                 break;
             default:
                 throw new Exception('Wrong method');
@@ -93,5 +90,22 @@ class Requestor
         }
 
         return json_decode($response, true);
+    }
+
+    private function buildQueryParamsUrl($url, $params){
+      if(!is_null($params)){
+        $params = http_build_query($params);
+        $url = $url.'?'.$params;
+      }
+
+      return $url;
+    }
+
+    private function buildSegementParamsUrl($url, $params){
+      if(!is_array($params)){
+        $url = $url.urlencode($params);
+      }
+
+      return $url;
     }
 }
