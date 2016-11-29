@@ -22,7 +22,7 @@ class ShippingLine extends Resource
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
-        $customerUrl = $this->customer->instanceUrl();
+        $customerUrl = $this->order->instanceUrl();
 
         return $customerUrl . $base . "/{$extn}";
     }
@@ -34,6 +34,6 @@ class ShippingLine extends Resource
 
     public function delete()
     {
-        return parent::_delete('customer', 'shipping_lines');
+        return parent::_delete('order', 'shipping_lines');
     }
 }
