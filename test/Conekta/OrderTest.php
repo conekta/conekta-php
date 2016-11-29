@@ -91,8 +91,6 @@ class OrderTest extends UnitTestCase
     {
         setApiKey();
         $orders = \Conekta\Order::where();
-        echo "Printing orders";
-        echo $orders;
         $this->assertTrue(strpos(get_class($orders), 'Object') !== false);
         $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
     }
