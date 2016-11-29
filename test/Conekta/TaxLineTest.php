@@ -37,8 +37,6 @@ class TaxLineTest extends UnitTestCase
     {
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, self::$tax_line));
-        echo "Printing Taxline";
-        echo $order;
         $order->tax_lines[0]->delete();
 
 

@@ -18,7 +18,6 @@ require_once dirname(__FILE__).'/Conekta/Util.php';
 require_once dirname(__FILE__).'/Conekta/Requestor.php';
 require_once dirname(__FILE__).'/Conekta/Object.php';
 require_once dirname(__FILE__).'/Conekta/Resource.php';
-
 require_once dirname(__FILE__).'/Conekta/Charge.php';
 require_once dirname(__FILE__).'/Conekta/PaymentMethod.php';
 require_once dirname(__FILE__).'/Conekta/Customer.php';
@@ -39,3 +38,8 @@ require_once dirname(__FILE__).'/Conekta/Log.php';
 require_once dirname(__FILE__).'/Conekta/Order.php';
 require_once dirname(__FILE__).'/Conekta/Source.php';
 require_once dirname(__FILE__).'/Conekta/TaxLine.php';
+require_once dirname(__FILE__).'/Conekta/DiscountLine.php';
+require_once dirname(__FILE__).'/Conekta/ShippingLine.php';
+require_once dirname(__FILE__).'/Conekta/LineItem.php';
+require_once dirname(__FILE__).'/Conekta/ErrorList.php';
+

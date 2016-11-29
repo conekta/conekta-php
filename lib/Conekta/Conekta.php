@@ -6,9 +6,9 @@ abstract class Conekta
 {
     public static $apiKey;
     public static $apiBase = 'https://api.conekta.io';
-    public static $apiVersion = '1.1.0';
+    public static $apiVersion = '1.0.0';
     public static $locale = 'es';
-    const VERSION = '1.1.0';
+    const VERSION = '3.0.1';
     public static function setApiKey($apiKey)
     {
         self::$apiKey = $apiKey;
