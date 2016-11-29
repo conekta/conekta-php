@@ -118,4 +118,21 @@ class Requestor
 
       return $url;
     }
+
+    private function buildQueryParamsUrl($url, $params){
+      if(!is_null($params)){
+        $params = http_build_query($params);
+        $url = $url.'?'.$params;
+      }
+
+      return $url;
+    }
+
+    private function buildSegementParamsUrl($url, $params){
+      if(!is_array($params)){
+        $url = $url.urlencode($params);
+      }
+
+      return $url;
+    }
 }
