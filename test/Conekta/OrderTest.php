@@ -2,10 +2,8 @@
 
 class OrderTest extends UnitTestCase
 {
-    public function testSuccesfulCreateOrder()
-    {
-        setApiKey();
-        $order = \Conekta\Order::create(array(
+    public static $valid_order =
+        array(
             'line_items'=> array(
                 array(
                     'name'=> 'Box of Cohiba S1s',
@@ -18,35 +16,29 @@ class OrderTest extends UnitTestCase
                     'tags' => array('food', 'mexican food')
                 )
             ),
-            'currency'    => 'mxn',
-            'amount' => 35000
-        ));
+            'currency'    => 'mxn'
+        );
+
+    #Create order
+    public function testSuccesfulCreateOrder()
+    {
+        setApiKey();
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
+    #Create Order with charges
     public function testSuccesfulCreateOrderWithCharges()
     {
-        setApiKey();
-        $order = \Conekta\Order::create(array(
-            'line_items'=> array(
-                array(
-                    'name'=> 'Box of Cohiba S2s',
-                    'description'=> 'Imported From Mex.',
-                    'unit_price'=> 20000,
-                    'quantity'=> 1,
-                    'sku'=> 'cohb_s1',
-                    'category'=> 'food',
-                    'type' => 'physical',
-                    'tags' => array('food', 'mexican food')
-                )
-            ),
-            'charges'=> array(
+        $charges =
+        array(
+            'charges' => array(
                 array(
                     'source' => array(
-                    'type' => 'oxxo_cash',
-                    'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                        'type' => 'oxxo_cash',
+                        'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                     ),
-                'amount' => 20000
+                    'amount' => 20000
                 )
             ),
             'currency'    => 'mxn',
@@ -55,85 +47,53 @@ class OrderTest extends UnitTestCase
                 'phone' => '+5213353319758',
                 'email' => 'hola@hola.com'
             )
-        ));
+        );
+        setApiKey();
+        $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
+    #Update an order
     public function testSuccesfulOrderrUpdate()
     {
         setApiKey();
-        $order = \Conekta\Order::create(array(
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $updated_parameters = array(
             'line_items'=> array(
                 array(
-                    'name'=> 'Box of cigarrettes',
-                    'description'=> 'Imported From Cuba.',
-                    'unit_price'=> 40000,
-                    'quantity'=> 3,
-                    'sku'=> 'cohb_s3',
+                    'name'=> 'Box of chocolates',
+                    'description'=> 'Imported From Uruguay.',
+                    'unit_price'=> 30000,
+                    'quantity'=> 2,
+                    'sku'=> 'choc_s3',
                     'category'=> 'expendables',
                     'type' => 'physical',
-                    'tags' => array('cuban', 'cuban cigarrettes')
+                    'tags' => array('Chocolate', 'Sudamerican chocolates')
                 )
             ),
-            'currency'    => 'mxn'
-        ));
+            'currency'    => 'USD'
+        );
 
-        $order->update(array(
-                'line_items'=> array(
-                    array(
-                        'name'=> 'Box of chocolates',
-                        'description'=> 'Imported From Uruguay.',
-                        'unit_price'=> 30000,
-                        'quantity'=> 2,
-                        'sku'=> 'choc_s3',
-                        'category'=> 'expendables',
-                        'type' => 'physical',
-                        'tags' => array('Chocolate', 'Sudamerican chocolates')
-                    )
-                ),
-                'currency'    => 'USD'
-            ));
+        $order->update($updated_parameters);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
     public function testSuccesfulOrderFind()
     {
         setApiKey();
-        $order = \Conekta\Order::create(array(
-            'line_items'=> array(
-                array(
-                    'name'=> 'Box of cigarrettes',
-                    'description'=> 'Imported From Cuba.',
-                    'unit_price'=> 40000,
-                    'quantity'=> 3,
-                    'sku'=> 'cohb_s3',
-                    'category'=> 'expendables',
-                    'type' => 'physical',
-                    'tags' => array('cuban', 'cuban cigarrettes')
-                )
-            ),
-            'currency'    => 'mxn'
-        ));
+        $id = \Conekta\Order::create(array_merge(self::$valid_order))->id;
+        $order = \Conekta\Order::find($id);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
+
     public function testSuccesfulOrderWhere()
     {
         setApiKey();
-        $order = \Conekta\Order::create(array(
-            'line_items'=> array(
-                array(
-                    'name'=> 'Box of cigarrettes',
-                    'description'=> 'Imported From Cuba.',
-                    'unit_price'=> 40000,
-                    'quantity'=> 3,
-                    'sku'=> 'cohb_s3',
-                    'category'=> 'expendables',
-                    'type' => 'physical',
-                    'tags' => array('cuban', 'cuban cigarrettes')
-                )
-            ),
-            'currency'    => 'mxn'
-        ));
-        $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+        $orders = \Conekta\Order::where();
+        echo "Printing orders";
+        echo $orders;
+        $this->assertTrue(strpos(get_class($orders), 'Object') !== false);
+        $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
     }
 }

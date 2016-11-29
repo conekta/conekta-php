@@ -22,9 +22,9 @@ class DiscountLine extends Resource
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
-        $customerUrl = $this->customer->instanceUrl();
+        $orderUrl = $this->order->instanceUrl();
 
-        return $customerUrl . $base . "/{$extn}";
+        return $orderUrl . $base . "/{$extn}";
     }
 
     public function update($params = null)
@@ -34,6 +34,6 @@ class DiscountLine extends Resource
 
     public function delete()
     {
-        return parent::_delete('customer', 'discount_lines');
+        return parent::_delete('order', 'discount_lines');
     }
 }

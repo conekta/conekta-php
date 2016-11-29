@@ -1,6 +1,6 @@
 <?php
 
-class CustomerTest extends UnitTestCase
+class SourceTest extends UnitTestCase
 {
     public static $valid_customer =
         array('email' => 'hola@hola.com',

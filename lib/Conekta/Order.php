@@ -6,6 +6,23 @@ use \Conekta\Resource;
 
 class Order extends Resource
 {
+
+    public function loadFromArray($values = null)
+    {
+        if (isset($values)) {
+            parent::loadFromArray($values);
+        }
+
+        if(isset($this -> tax_lines)){
+            foreach ($this->tax_lines as $k => $v) {
+                if (isset($v->deleted) != true) {
+                    $v->order = $this;
+                    $this->tax_lines[$k] = $v;
+                }
+            }
+        }
+    }
+
     public static function where($params = null)
     {
         $class = get_called_class();

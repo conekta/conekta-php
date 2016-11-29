@@ -25,9 +25,8 @@ abstract class Util
         'subscription'                => '\Conekta\Subscription',
         'source'                      => '\Conekta\Source',
         'tax_line'                    => '\Conekta\TaxLine',
-        'shiping_line'                => '\Conekta\ShippingLine',
-        'discount_line'               => '\Conekta\DiscountLine',
-        'line_item'                   => '\Conekta\LineItem'
+        'shipping_line'               => '\Conekta\ShippingLine',
+        'discount_line'               => '\Conekta\DiscountLine'
     );
 
     public static function convertToConektaObject($resp)
