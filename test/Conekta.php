@@ -15,6 +15,10 @@ function unsetApiKey()
         $env = \Conekta\Conekta::setApiKey('');
     }
 }
+function setApiVersion($version)
+{
+    \Conekta\Conekta::setApiVersion($version);
+}
 
 // Load test suite via composer or manually
 $test_suite = @include_once dirname(__FILE__).'/simpletest/autorun.php';

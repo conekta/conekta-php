@@ -23,6 +23,7 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulCreateOrder()
     {
         setApiKey();
+        setApiVersion("1.1.0");
         $order = \Conekta\Order::create(array_merge(self::$valid_order));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
@@ -49,6 +50,7 @@ class OrderTest extends UnitTestCase
             )
         );
         setApiKey();
+        setApiVersion("1.1.0");
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
@@ -57,6 +59,7 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulOrderrUpdate()
     {
         setApiKey();
+        setApiVersion("1.1.0");
         $order = \Conekta\Order::create(array_merge(self::$valid_order));
 
         $updated_parameters = array(
@@ -82,6 +85,7 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulOrderFind()
     {
         setApiKey();
+        setApiVersion("1.1.0");
         $id = \Conekta\Order::create(array_merge(self::$valid_order))->id;
         $order = \Conekta\Order::find($id);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
@@ -90,7 +94,9 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulOrderWhere()
     {
         setApiKey();
+        setApiVersion("1.1.0");
         $orders = \Conekta\Order::where();
+
         $this->assertTrue(strpos(get_class($orders), 'Object') !== false);
         $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
     }
