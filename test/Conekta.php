@@ -58,3 +58,4 @@ require_once dirname(__FILE__).'/Conekta/LogTest.php';
 require_once dirname(__FILE__).'/Conekta/OrderTest.php';
 require_once dirname(__FILE__).'/Conekta/SourceTest.php';
 require_once dirname(__FILE__).'/Conekta/TaxLineTest.php';
+require_once dirname(__FILE__).'/Conekta/ConektaListTest.php';
