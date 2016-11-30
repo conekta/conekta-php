@@ -18,11 +18,13 @@ class Object extends ArrayObject
     public function _setVal($k, $v)
     {
         $this->_values[$k] = $v;
+        $this[$k] = $v;
     }
 
     public function _unsetKey($k)
     {
         unset($this->_values[$k]);
+        unset($k);
     }
 
     public function loadFromArray($values)
