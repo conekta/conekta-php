@@ -49,7 +49,7 @@ class ConektaList extends Object
 
     public function previous($options = array())
     {
-        if (sizeOf($this) >0) {
+        if (sizeOf($this) > 0) {
            if (isset($this->ending_before)) {
                $this->params['ending_before'] = end($this)->id;
            } else {
