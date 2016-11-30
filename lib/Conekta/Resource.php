@@ -48,7 +48,12 @@ abstract class Resource extends Object
 
     protected static function _scpWhere($class, $params)
     {
-        $instance = new Object();
+        if (Conekta::$apiVersion == "1.1.0") {
+           $base = self::_getBase($class, 'className', $class);
+           $instance = new ConektaList($base);
+        } else {
+           $instance = new Object();
+        }
         $requestor = new Requestor();
         $url = self::classUrl($class);
         $response = $requestor->request('get', $url, $params);
