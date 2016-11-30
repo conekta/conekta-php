@@ -22,7 +22,7 @@ abstract class Resource extends Object
         }
         $class = str_replace('_', '', $class);
         $name = urlencode($class);
-        $name = strtolower($name);
+        $name = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $name));
 
         return $name;
     }
