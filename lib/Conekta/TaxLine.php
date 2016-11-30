@@ -6,6 +6,7 @@ use \Conekta\Resource;
 use \Conekta\Lang;
 use \Conekta\Error;
 use \Conekta\Conekta;
+use \Conekta\ErrorList;
 
 class TaxLine extends Resource
 {
@@ -17,6 +18,7 @@ class TaxLine extends Resource
                 Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
+
         }
 
         $class = get_class($this);
