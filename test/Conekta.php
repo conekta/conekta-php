@@ -5,7 +5,7 @@ function setApiKey()
 {
     $apiEnvKey = getenv('CONEKTA_API');
     if (!$apiEnvKey) {
-        $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
+        $apiEnvKey = 'IWATSOFZc4ca4238a0b9';
     }
     \Conekta\Conekta::setApiKey($apiEnvKey);
 }
