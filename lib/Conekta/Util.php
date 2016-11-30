@@ -27,7 +27,8 @@ abstract class Util
         'tax_line'                    => '\Conekta\TaxLine',
         'shipping_line'               => '\Conekta\ShippingLine',
         'discount_line'               => '\Conekta\DiscountLine',
-        'conekta_list'                => '\Conekta\ConektaList'
+        'conekta_list'                => '\Conekta\ConektaList',
+        'shipping_contact'            => '\Conekta\ShippingContact'
     );
 
     public static function convertToConektaObject($resp)

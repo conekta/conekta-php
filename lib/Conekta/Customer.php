@@ -28,6 +28,15 @@ class Customer extends Resource
             }
         }
 
+        if(isset($this -> shipping_contacts)){
+            foreach ($this->shipping_contacts as $k => $v) {
+                if (isset($v->deleted) != true){
+                    $v->customer = $this;
+                    $this->shipping_contacts[$k] = $v;
+                }
+            }
+        }
+
         if (isset($this->subscription)) {
             $this->subscription->customer = $this;
         }
@@ -77,6 +86,11 @@ class Customer extends Resource
     public function createSubscription($params = null)
     {
         return parent::_createMember('subscription', $params);
+    }
+
+    public function createShippingContact($params = null)
+    {
+        return parent::_createMember('shipping_contacts', $params);
     }
 
     /**
