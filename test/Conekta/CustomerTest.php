@@ -2,17 +2,23 @@
 
 class CustomerTest extends UnitTestCase
 {
+    public static $valid_customer =
+        array('email' => 'hola@hola.com',
+              'name' => 'John Constantine',
+              'cards' => array('tok_test_visa_4242')
+        );
+
     public function testSuccesfulCustomerCreate()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $this->assertTrue(strpos(get_class($customer), 'Customer') !== false);
     }
 
     public function testSuccesfulCustomerFind()
     {
         setApiKey();
-        $c = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $c = \Conekta\Customer::create(self::$valid_customer);
         $customer = \Conekta\Customer::find($c->id);
         $this->assertTrue(strpos(get_class($customer), 'Customer') !== false);
     }
@@ -28,7 +34,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulDeleteCustomer()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->delete();
         $this->assertTrue($customer->deleted == true);
     }
@@ -36,7 +42,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulCustomerUpdate()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->update(
           array(
             'name'  => 'Logan',
@@ -49,7 +55,7 @@ class CustomerTest extends UnitTestCase
     {
         setApiKey();
         try {
-            $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4241')));
+            $customer = \Conekta\Customer::create(self::$valid_customer);
         } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'Object tok_test_visa_4241 could not be found.') !== false);
         }
@@ -58,7 +64,7 @@ class CustomerTest extends UnitTestCase
     public function testAddCardToCustomer()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->createCard(array('token' => 'tok_test_visa_1881'));
         $this->assertTrue(strpos(end($customer->cards)->last4, '1881') !== false);
     }
@@ -66,7 +72,7 @@ class CustomerTest extends UnitTestCase
     public function testDeleteCard()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $card = $customer->cards[0]->delete();
         $this->assertTrue($card->deleted == true);
     }
@@ -74,7 +80,7 @@ class CustomerTest extends UnitTestCase
     public function testUpdateCard()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->cards[0]->update(array('token' => 'tok_test_mastercard_4444', 'active' => false));
         $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);
     }
@@ -82,7 +88,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionCreate()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
     }
@@ -90,7 +96,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionUpdate()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         try {
             $plan = \Conekta\Plan::find('gold-plan2');
@@ -115,7 +121,7 @@ class CustomerTest extends UnitTestCase
     public function testUnsuccesfulSubscriptionCreate()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         try {
             $subscription = $customer->createSubscription(array(
                 'plan' => 'unexistent-plan', ));
@@ -127,7 +133,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionPause()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->pause();
@@ -137,7 +143,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionResume()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->pause();
@@ -148,7 +154,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionCancel()
     {
         setApiKey();
-        $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4242')));
+        $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->cancel();
