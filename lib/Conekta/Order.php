@@ -13,11 +13,17 @@ class Order extends Resource
             parent::loadFromArray($values);
         }
 
-        if(isset($this -> tax_lines)){
-            foreach ($this->tax_lines as $k => $v) {
+        $submodels = array(
+            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items'
+        );
+
+        foreach ($submodels as $submodel) {
+            $submodel_collection = $this->$submodel;
+
+            foreach ($submodel_collection as $k => $v){
                 if (isset($v->deleted) != true) {
                     $v->order = $this;
-                    $this->tax_lines[$k] = $v;
+                    $this->$submodel[$k] = $v;
                 }
             }
         }
