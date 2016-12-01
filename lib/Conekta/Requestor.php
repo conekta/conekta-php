@@ -4,6 +4,7 @@ namespace Conekta;
 
 use \Conekta\Conekta;
 use \Conekta\Error;
+use \Conekta\ErrorList;
 
 class Requestor
 {
@@ -12,6 +13,7 @@ class Requestor
     public function __construct()
     {
         $this->apiKey = Conekta::$apiKey;
+        $this->apiVersion = Conekta::$apiVersion;
     }
 
     public static function apiUrl($url = '')
@@ -85,11 +87,19 @@ class Requestor
         $response = curl_exec($curl);
         $response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
+
+        $json_response = json_decode($response, true);
+
         if ($response_code != 200) {
-            Error::errorHandler($response, $response_code);
+            if($this->apiVersion == '1.1.0'){
+                ErrorList::errorHandler($json_response , $response_code);
+            }else{
+                Error::errorHandler($json_response, $response_code);
+            }
+
         }
 
-        return json_decode($response, true);
+        return $json_response;
     }
 
     private function buildQueryParamsUrl($url, $params){

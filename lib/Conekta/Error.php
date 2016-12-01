@@ -20,14 +20,14 @@ class Error extends Exception
 
     public static function errorHandler($resp, $code)
     {
-        $resp = json_decode($resp, true);
+
         $message = isset($resp['message']) ? $resp['message'] : null;
         $message_to_purchaser = isset($resp['message_to_purchaser']) ? $resp['message_to_purchaser'] : null;
         $type = isset($resp['type']) ? $resp['type'] : null;
         $params = isset($resp['param']) ? $resp['param'] : null;
 
         if (isset($code) != true || $code == 0) {
-            throw new NoConnectionError(
+            return new NoConnectionError(
                 Lang::translate('error.requestor.connection', Lang::EN, array('BASE' => Conekta::$apiBase)),
                 Lang::translate('error.requestor.connection_purchaser', Conekta::$locale),
                 $type, $code, $params);
@@ -35,19 +35,19 @@ class Error extends Exception
 
         switch ($code) {
             case 400:
-                throw new MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
+                return new MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
             case 401:
-                throw new AuthenticationError($message, $message_to_purchaser, $type, $code, $params);
+                return new AuthenticationError($message, $message_to_purchaser, $type, $code, $params);
             case 402:
-                throw new ProcessingError($message, $message_to_purchaser, $type, $code, $params);
+                return new ProcessingError($message, $message_to_purchaser, $type, $code, $params);
             case 404:
-                throw new ResourceNotFoundError($message, $message_to_purchaser, $type, $code, $params);
+                return new ResourceNotFoundError($message, $message_to_purchaser, $type, $code, $params);
             case 422:
-                throw new ParameterValidationError($message, $message_to_purchaser, $type, $code, $params);
+                return new ParameterValidationError($message, $message_to_purchaser, $type, $code, $params);
             case 500:
-                throw new ApiError($message, $message_to_purchaser, $type, $code, $params);
+                return new ApiError($message, $message_to_purchaser, $type, $code, $params);
             default:
-                throw new self($message, $message_to_purchaser, $type, $code, $params);
+                return new self($message, $message_to_purchaser, $type, $code, $params);
                 
         }
     }
