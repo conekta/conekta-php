@@ -2,7 +2,6 @@
 
 namespace Conekta;
 
-use \Conekta\Lang;
 use \Conekta\Conekta;
 use \Exception;
 
@@ -10,7 +9,7 @@ class ErrorList extends Exception
 {
   public $details=[];
 
-    public static function errorHandler($response = null, $http_status=null)
+    public static function errorHandler($response = null, $http_status = null)
     {
         $exception = null;
         if(isset($response['details']))
