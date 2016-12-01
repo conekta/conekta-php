@@ -31,7 +31,7 @@ abstract class Util
         'shipping_contact'            => '\Conekta\ShippingContact',
         'line_item'                   => '\Conekta\LineItem',
         'order'                       => '\Conekta\Order',
-        'fiscal_entity'               => '\Conekta\FiscalEntity',
+        'fiscal_entity'               => '\Conekta\FiscalEntity'
     );
 
     public static function convertToConektaObject($resp)
