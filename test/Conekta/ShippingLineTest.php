@@ -56,4 +56,17 @@ class ShippingLineTest extends UnitTestCase
 
         $this->assertTrue($shipping_line->method == 'Air');
     }
+
+    public function testUnsuccessfulShippingLineUpdate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $shipping_line = $order->shipping_lines[0];
+        try{
+            $shipping_line->update(array('amount' => -1));
+        } catch (Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
 }

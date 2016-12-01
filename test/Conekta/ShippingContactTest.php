@@ -50,4 +50,17 @@ class ShippingContentTest extends UnitTestCase
 
         $this->assertTrue($shipping_contact->email == 'hola@hola.com');
     }
+
+    public function testUnsuccessfulShippingContactUpdate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $shipping_contact = $customer->shipping_contacts[0];
+        try{
+            $shipping_contact->update(array('email' => 123));
+        }catch (Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
 }

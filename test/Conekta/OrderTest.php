@@ -56,7 +56,7 @@ class OrderTest extends UnitTestCase
     }
 
     #Update an order
-    public function testSuccesfulOrderrUpdate()
+    public function testSuccesfulOrderUpdate()
     {
         setApiKey();
         setApiVersion('1.1.0');
@@ -82,6 +82,27 @@ class OrderTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
+    public function testUnsuccessfulOrderUpdate()
+    {
+        $charges = array(
+            array(
+                'source' => array(
+                    'type' => 'oxxo_cash'
+                ),
+                'amount' => 10
+            )
+        );
+
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        try {
+            $order->update(array('charges' => $charges));
+        } catch(Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
+
     public function testSuccesfulOrderFind()
     {
         setApiKey();
@@ -97,7 +118,9 @@ class OrderTest extends UnitTestCase
         setApiVersion("1.1.0");
         $orders = \Conekta\Order::where();
 
-        $this->assertTrue(strpos(get_class($orders), 'Object') !== false);
+        $this->assertTrue(strpos(get_class($orders), 'ConektaList') !== false);
+        $this->assertTrue(strpos($orders->elements_type, 'Order') !== false);
         $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
     }
+
 }

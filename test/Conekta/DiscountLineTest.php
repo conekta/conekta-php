@@ -52,4 +52,18 @@ class DiscountLineTest extends UnitTestCase
 
         $this->assertTrue($discount_line->amount == 11);
     }
+
+    public function testUnsuccessfulDiscountLineUpdate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $discount_line = $order->discount_lines[0];
+        try{
+            $discount_line->update(array('amount' => -1));
+        } catch(Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
+
 }
