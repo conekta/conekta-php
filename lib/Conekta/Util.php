@@ -30,7 +30,8 @@ abstract class Util
         'conekta_list'                => '\Conekta\ConektaList',
         'shipping_contact'            => '\Conekta\ShippingContact',
         'fiscal_entity'               => '\Conekta\FiscalEntity',
-        'line_item'                   => '\Conekta\LineItem'
+        'line_item'                   => '\Conekta\LineItem',
+        'lang'                        => '\Conekta\Lang'
     );
 
     public static function convertToConektaObject($resp)

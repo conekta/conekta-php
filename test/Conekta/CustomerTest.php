@@ -4,8 +4,8 @@ class CustomerTest extends UnitTestCase
 {
     public static $valid_customer =
         array('email' => 'hola@hola.com',
-              'name' => 'John Constantine',
-              'cards' => array('tok_test_visa_4242')
+            'name' => 'John Constantine',
+            'cards' => array('tok_test_visa_4242')
         );
 
     public function testSuccesfulCustomerCreate()
@@ -96,12 +96,12 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionUpdate()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         try {
             $plan = \Conekta\Plan::find('gold-plan2');
         } catch (Exception $e) {
-            // Plan does not exist
             $plan = \Conekta\Plan::create(array(
                     'id'                => 'gold-plan2',
                     'name'              => 'Gold Plan',
