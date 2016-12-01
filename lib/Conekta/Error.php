@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -8,19 +8,8 @@ use \Exception;
 
 class Error extends Exception
 {
-    public function __construct($message = null, $message_to_purchaser = null, $type = null, $code = null, $params = null)
+    public static function build($resp, $code)
     {
-        parent::__construct($message);
-        $this->message = $message;
-        $this->message_to_purchaser = $message_to_purchaser;
-        $this->type = $type;
-        $this->code = $code;
-        $this->params = $params;
-    }
-
-    public static function errorHandler($resp, $code)
-    {
-
         $message = isset($resp['message']) ? $resp['message'] : null;
         $message_to_purchaser = isset($resp['message_to_purchaser']) ? $resp['message_to_purchaser'] : null;
         $type = isset($resp['type']) ? $resp['type'] : null;
@@ -48,8 +37,22 @@ class Error extends Exception
                 return new ApiError($message, $message_to_purchaser, $type, $code, $params);
             default:
                 return new self($message, $message_to_purchaser, $type, $code, $params);
-                
         }
+    }
+
+    public function __construct($message = null, $message_to_purchaser = null, $type = null, $code = null, $params = null)
+    {
+        parent::__construct($message);
+        $this->message = $message;
+        $this->message_to_purchaser = $message_to_purchaser;
+        $this->type = $type;
+        $this->code = $code;
+        $this->params = $params;
+    }
+
+    public static function errorHandler($resp, $code)
+    {
+        throw self::build($resp, $code);
     }
 }
 
