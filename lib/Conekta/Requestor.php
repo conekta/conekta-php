@@ -54,25 +54,25 @@ class Requestor
         $opts = array();
 
         switch ($method) {
-            case 'get':
-                $opts[CURLOPT_HTTPGET] = 1;
-                $url = $this->buildQueryParamsUrl($url, $params);
-                break;
-            case 'post':
-                $opts[CURLOPT_POST] = 1;
-                $opts[CURLOPT_POSTFIELDS] = $json_params;
-                break;
-            case 'put':
-                $opts[CURLOPT_RETURNTRANSFER] = 1;
-                $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
-                $opts[CURLOPT_POSTFIELDS] = $json_params;
-                break;
-            case 'delete':
-                $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-                $url = $this->buildSegementParamsUrl($url, $params);
-                break;
-            default:
-                throw new Exception('Wrong method');
+        case 'get':
+            $opts[CURLOPT_HTTPGET] = 1;
+            $url = $this->buildQueryParamsUrl($url, $params);
+            break;
+        case 'post':
+            $opts[CURLOPT_POST] = 1;
+            $opts[CURLOPT_POSTFIELDS] = $json_params;
+            break;
+        case 'put':
+            $opts[CURLOPT_RETURNTRANSFER] = 1;
+            $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
+            $opts[CURLOPT_POSTFIELDS] = $json_params;
+            break;
+        case 'delete':
+            $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+            $url = $this->buildSegementParamsUrl($url, $params);
+            break;
+        default:
+            throw new Exception('Wrong method');
         }
 
         $url = $this->apiUrl($url);
@@ -102,37 +102,22 @@ class Requestor
         return $json_response;
     }
 
-    private function buildQueryParamsUrl($url, $params){
-      if(!is_null($params)){
-        $params = http_build_query($params);
-        $url = $url.'?'.$params;
-      }
+    private function buildQueryParamsUrl($url, $params)
+    {
+        if(!is_null($params)){
+            $params = http_build_query($params);
+            $url = $url.'?'.$params;
+        }
 
-      return $url;
+        return $url;
     }
 
-    private function buildSegementParamsUrl($url, $params){
-      if(!is_array($params)){
-        $url = $url.urlencode($params);
-      }
+    private function buildSegementParamsUrl($url, $params)
+    {
+        if(!is_array($params)){
+            $url = $url.urlencode($params);
+        }
 
-      return $url;
-    }
-
-    private function buildQueryParamsUrl($url, $params){
-      if(!is_null($params)){
-        $params = http_build_query($params);
-        $url = $url.'?'.$params;
-      }
-
-      return $url;
-    }
-
-    private function buildSegementParamsUrl($url, $params){
-      if(!is_array($params)){
-        $url = $url.urlencode($params);
-      }
-
-      return $url;
+        return $url;
     }
 }
