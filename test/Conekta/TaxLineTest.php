@@ -4,7 +4,7 @@ class TaxLineTest extends UnitTestCase
 {
     public static $valid_order =
         array(
-            'line_items'=> array(
+            'line_items' => array(
                 array(
                     'name'=> 'Box of Cohiba S1s',
                     'description'=> 'Imported From Mex.',
@@ -16,29 +16,38 @@ class TaxLineTest extends UnitTestCase
                     'tags' => array('food', 'mexican food')
                 )
             ),
+            'tax_lines' => array(
+                array(
+                    'description' => 'IVA',
+                    'amount' => 60
+                ),
+                array(
+                    'description' => 'ISR',
+                    'amount' => 100
+                )
+            ),
             'currency'    => 'mxn'
         );
 
-    public static $tax_line = array(
-            'tax_lines' => array(
-              array("description" => "IVA", "amount" => 600),
-              array("description" => "ISR", "amount" => 100)
-            )
-          );
-
-    public function testSuccesfulUpdateTaxLine()
+    public function testSuccessfulTaxLineDelete()
     {
         setApiKey();
-        $order = \Conekta\Order::create(array_merge(self::$valid_order, self::$tax_line));
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $tax_line = $order->tax_lines[0];
+        $tax_line->delete();
 
+        $this->assertTrue($tax_line->deleted == true);
     }
 
-    public function testSuccesfulDeleteTaxLine()
+    public function testSuccessfulTaxLineUpdate()
     {
         setApiKey();
-        $order = \Conekta\Order::create(array_merge(self::$valid_order, self::$tax_line));
-        $order->tax_lines[0]->delete();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $tax_line = $order->tax_lines[0];
+        $tax_line->update(array('amount' => 10));
 
-
+        $this->assertTrue($tax_line->amount == 10);
     }
 }
