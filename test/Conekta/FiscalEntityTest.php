@@ -46,4 +46,19 @@ class FiscalEntityTest extends UnitTestCase
 
         $this->assertTrue($customer->fiscal_entities[0]->company_name == 'Company name');
     }
+
+    public function testUnsuccessfulFiscalEntityUpdate()
+    {
+        setApiKey();
+        setApiVersion("1.1.0");
+        $customer = \Conekta\Customer::create(self::$valid_customer);
+
+        try {
+            $customer->fiscal_entities[0]->update(array(
+                'company_name' => 'Company name'
+            ));
+        } catch (Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
 }
