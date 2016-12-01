@@ -30,7 +30,7 @@ abstract class Util
         'conekta_list'                => '\Conekta\ConektaList',
         'shipping_contact'            => '\Conekta\ShippingContact',
         'line_item'                   => '\Conekta\LineItem',
-        'order'                       => '\Conekta\Order'
+        'order'                       => '\Conekta\Order',
         'fiscal_entity'               => '\Conekta\FiscalEntity',
     );
 
