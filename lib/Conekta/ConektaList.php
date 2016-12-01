@@ -67,7 +67,7 @@ class ConektaList extends Object
             $this->params['limit'] = $limit;
         }
 
-        $class = Util::$types[$this->elements_type];
+        $class = Util::$types[strtolower($this->elements_type)];
         $url = Resource::classUrl($class);
         $requestor = new Requestor();
         $response = $requestor->request('get', $url, $this->params);

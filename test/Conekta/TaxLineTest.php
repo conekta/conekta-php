@@ -50,4 +50,17 @@ class TaxLineTest extends UnitTestCase
 
         $this->assertTrue($tax_line->amount == 10);
     }
+
+    public function testUnsuccessfulTaxLineUpdate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $tax_line = $order->tax_lines[0];
+        try{
+            $tax_line->update(array('amount' => -1));
+        }catch (Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
 }
