@@ -64,4 +64,3 @@ require_once dirname(__FILE__).'/Conekta/ShippingLineTest.php';
 require_once dirname(__FILE__).'/Conekta/DiscountLineTest.php';
 require_once dirname(__FILE__).'/Conekta/LineItemTest.php';
 require_once dirname(__FILE__).'/Conekta/DiscountLineTest.php';
-require_once dirname(__FILE__).'/Conekta/TaxLineTest.php';
