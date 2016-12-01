@@ -44,3 +44,4 @@ require_once dirname(__FILE__).'/Conekta/LineItem.php';
 require_once dirname(__FILE__).'/Conekta/ErrorList.php';
 require_once dirname(__FILE__).'/Conekta/ConektaList.php';
 require_once dirname(__FILE__).'/Conekta/ShippingContact.php';
+require_once dirname(__FILE__).'/Conekta/FiscalEntity.php';

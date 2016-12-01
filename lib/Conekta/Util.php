@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -29,6 +29,7 @@ abstract class Util
         'discount_line'               => '\Conekta\DiscountLine',
         'conekta_list'                => '\Conekta\ConektaList',
         'shipping_contact'            => '\Conekta\ShippingContact',
+        'fiscal_entity'               => '\Conekta\FiscalEntity',
         'line_item'                   => '\Conekta\LineItem'
     );
 

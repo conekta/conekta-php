@@ -49,10 +49,10 @@ abstract class Resource extends Object
     protected static function _scpWhere($class, $params)
     {
         if (Conekta::$apiVersion == "1.1.0") {
-           $base = self::_getBase($class, 'className', $class);
-           $instance = new ConektaList($base);
+            $base = self::_getBase($class, 'className', $class);
+            $instance = new ConektaList($base);
         } else {
-           $instance = new Object();
+            $instance = new Object();
         }
         $requestor = new Requestor();
         $url = self::classUrl($class);
@@ -89,8 +89,8 @@ abstract class Resource extends Object
         $id = $this->id;
         if (!$id) {
             throw new Error(
-            Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
-            Lang::translate('error.resource.id_purchaser', Conekta::$locale)
+                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
         $class = get_class($this);
@@ -137,11 +137,19 @@ abstract class Resource extends Object
         $requestor = new Requestor();
         $url = $this->instanceUrl().'/'.$member;
         $response = $requestor->request('post', $url, $params);
-        if (strpos(get_class($this->$member), 'Object') !== false || strpos($member, 'cards') !== false || strpos($member, 'payout_methods') !== false) {
+
+        if (strpos(get_class($this->$member), 'Object') !== false ||
+            strpos($member, 'cards') !== false ||
+            strpos($member, 'payout_methods') !== false) {
             if (empty($this->$member)) {
                 $this->$member = new Object();
             }
-            $this->$member->loadFromArray(array_merge($this->$member->_toArray(), array($response)));
+
+            $this->$member->loadFromArray(array_merge(
+                $this->$member->_toArray(),
+                array($response)
+            ));
+
             $this->loadFromArray();
             $instances = $this->$member;
             $instance = end($instances);
@@ -165,6 +173,7 @@ abstract class Resource extends Object
         } else {
             $url = $this->instanceUrl();
         }
+
         $response = $requestor->request($method, $url, $params);
         $this->loadFromArray($response);
 

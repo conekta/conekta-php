@@ -12,18 +12,29 @@ class Customer extends Resource
             parent::loadFromArray($values);
         }
 
-        if(isset($this -> cards)){
+        if(isset($this->cards)){
             foreach ($this->cards as $k => $v) {
                 if (isset($v->deleted) != true) {
                     $v->customer = $this;
                     $this->cards[$k] = $v;
                 }
             }
-        }elseif(isset($this -> sources)){
+        }
+
+        if(isset($this->sources)){
             foreach ($this->sources as $k => $v) {
                 if (isset($v->deleted) != true) {
                     $v->customer = $this;
                     $this->sources[$k] = $v;
+                }
+            }
+        }
+
+        if(isset($this->fiscal_entities)){
+            foreach ($this->fiscal_entities as $k => $v) {
+                if (isset($v->deleted) != true) {
+                    $v->customer = $this;
+                    $this->fiscal_entities[$k] = $v;
                 }
             }
         }
@@ -76,6 +87,11 @@ class Customer extends Resource
     public function createSource($params = null)
     {
         return parent::_createMember('sources', $params);
+    }
+
+    public function createFiscalEntity($params = null)
+    {
+        return parent::_createMember('fiscal_entities', $params);
     }
 
     public function createCard($params = null)

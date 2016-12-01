@@ -7,7 +7,7 @@ use \Conekta\Lang;
 use \Conekta\Error;
 use \Conekta\Conekta;
 
-class Card extends Resource
+class FiscalEntity extends Resource
 {
     public function instanceUrl()
     {
@@ -20,20 +20,19 @@ class Card extends Resource
         }
 
         $class = get_class($this);
-        $base = $this->classUrl($class);
+        $base = '/fiscal_entities';
         $extn = urlencode($id);
         $customerUrl = $this->customer->instanceUrl();
 
         return $customerUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
-    {
-        return parent::_update($params);
+    public function delete() {
+        return parent::_delete('customer', 'fiscal_entities');
     }
 
-    public function delete()
-    {
-        return parent::_delete('customer', 'cards');
+    public function update($params = null) {
+        return parent::_update($params);
     }
 }
+
