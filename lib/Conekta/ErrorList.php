@@ -7,7 +7,7 @@ use \Exception;
 
 class ErrorList extends Exception
 {
-  public $details=[];
+    public $details = [];
 
     public function __construct()
     {
@@ -18,19 +18,16 @@ class ErrorList extends Exception
     {
         $exception = null;
         $errorList = new ErrorList;
-        if(isset($response['details']))
-        {
+        if(isset($response['details'])){
             foreach ($response['details'] as $error) {
                 array_push($errorList->details, self::buildError($error, $http_status));
             }
-            if (count($errorList->details) == 0)
-            {
+            if (count($errorList->details) == 0) {
                array_push($errorList->details, self::buildError(null, null));
             }
             $exception = $errorList;
         }
-        if(is_null($exception))
-        {
+        if(is_null($exception)) {
             array_push($errorList->details, self::buildError(null, null));
             $exception = $errorList;
         }
@@ -39,6 +36,6 @@ class ErrorList extends Exception
 
     private static function buildError($response, $http_status)
     {
-        return Error::errorHandler($response, $http_status);
+        return Error::build($response, $http_status);
     }
 }
