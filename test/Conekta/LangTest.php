@@ -8,12 +8,12 @@ class LangTest extends UnitTestCase
     {
         $this->assertEqual(
             'There was an error. Please contact system administrator.',
-            Lang::translate('error.resource.id_purchaser', null, Lang::EN)
+            Lang::translate('error.resource.id_purchaser', Lang::EN)
         );
 
         $this->assertEqual(
             'Hubo un error. Favor de contactar al administrador del sistema.',
-            Lang::translate('error.resource.id_purchaser', null, Lang::ES)
+            Lang::translate('error.resource.id_purchaser', Lang::ES)
         );
     }
 }

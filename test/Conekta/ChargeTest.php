@@ -121,8 +121,6 @@ class ChargeTest extends UnitTestCase
         $oxxo = array('cash' => array('type' => 'oxxo'));
         setApiKey();
         $opm = \Conekta\Charge::create(array_merge($pm, $oxxo));
-        $this->assertTrue($opm->payment_method->barcode_url == "http://s3.amazonaws.com/cash_payment_barcodes/12345678901234567890123456789012.png");
-        $this->assertTrue($opm->payment_method->barcode == "12345678901234567890123456789012");
         $this->assertTrue(is_numeric($opm->payment_method->expires_at));
         $this->assertTrue($opm->payment_method->store_name == "OXXO");
         $this->assertTrue($opm->status == 'pending_payment');

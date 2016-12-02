@@ -28,9 +28,13 @@ class ErrorTest extends UnitTestCase
     {
         setApiKey();
         try {
-            $customer = \Conekta\Customer::create(array('cards' => array(0 => 'tok_test_visa_4242')));
+            $customer = \Conekta\Customer::create(array(
+                'cards' => array('tok_test_visa_4243'),
+                'name' => 'Test Name',
+                'email' => 'test@conekta.io'
+            ));
         } catch (Exception $e) {
-            $this->assertTrue(strpos(get_class($e), 'ApiError') !== false);
+            $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') !== false);
         }
     }
 
