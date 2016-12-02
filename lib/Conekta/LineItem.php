@@ -11,12 +11,20 @@ class LineItem extends Resource
 {
     public function instanceUrl()
     {
+        $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
         if (!$id) {
-            throw new Error(
+            $error = new Error(
                 Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
+
+            if($this->apiVersion = '1.1.0'){
+                $errorList = new ErrorList();
+                $errorList->details = $error;
+                throw $errorList;
+            }
+            throw $error;
         }
 
         $class = get_class($this);

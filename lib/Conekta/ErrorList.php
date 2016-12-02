@@ -9,33 +9,33 @@ class ErrorList extends Exception
 {
     public $details = [];
 
+    public function __construct()
+    {
+        $this->details = [];
+    }
+
     public static function errorHandler($response = null, $http_status = null)
     {
         $exception = null;
-
-        if(isset($response['details'])) {
-            $errorList = new ErrorList;
-
+        $errorList = new ErrorList;
+        if(isset($response['details'])){
             foreach ($response['details'] as $error) {
                 array_push($errorList->details, self::buildError($error, $http_status));
             }
-
             if (count($errorList->details) == 0) {
-                array_push($errorList->details, self::buildError(null, null));
+               array_push($errorList->details, self::buildError(null, null));
             }
-
             $exception = $errorList;
         }
-
-        if($exception == null) {
-            $exception = self::buildError($response, $http_status);
+        if(is_null($exception)) {
+            array_push($errorList->details, self::buildError(null, null));
+            $exception = $errorList;
         }
-
         throw $exception;
     }
 
     private static function buildError($response, $http_status)
     {
-        Error::build($response, $http_status);
+        return Error::build($response, $http_status);
     }
 }
