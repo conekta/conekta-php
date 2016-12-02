@@ -14,6 +14,7 @@ class Requestor
     {
         $this->apiKey = Conekta::$apiKey;
         $this->apiVersion = Conekta::$apiVersion;
+        $this->plugin = Conekta::$plugin;
     }
 
     public static function apiUrl($url = '')
@@ -33,6 +34,10 @@ class Requestor
             'uname'            => php_uname(),
         );
 
+        if(strlen($this->plugin) > 0){
+            array_merge($user_agent, array('plugin' => $this->plugin));
+        }
+
         $headers = array(
             'Accept: application/vnd.conekta-v'.Conekta::$apiVersion.'+json',
             'Accept-Language: '.Conekta::$locale,
@@ -41,7 +46,7 @@ class Requestor
             'Authorization: Basic '.base64_encode($this->apiKey.':'),
             'Content-Type: application/json'
         );
-
+        
         return $headers;
     }
 

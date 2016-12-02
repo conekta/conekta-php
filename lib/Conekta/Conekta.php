@@ -8,7 +8,9 @@ abstract class Conekta
     public static $apiBase = 'https://api.conekta.io';
     public static $apiVersion = '1.0.0';
     public static $locale = 'es';
+    public static $plugin = '';
     const VERSION = '3.0.1';
+
     public static function setApiKey($apiKey)
     {
         self::$apiKey = $apiKey;
@@ -20,5 +22,9 @@ abstract class Conekta
     public static function setLocale($locale)
     {
         self::$locale = $locale;
+    }
+    public static function setPlugin($plugin)
+    {
+        self::$plugin = $plugin;
     }
 }

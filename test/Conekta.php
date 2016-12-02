@@ -20,6 +20,14 @@ function setApiVersion($version)
     \Conekta\Conekta::setApiVersion($version);
 }
 
+function setPlugin($plugin){
+    \Conekta\Conekta::setPlugin($plugin);
+}
+
+function setEnvLocale($locale){
+    \Conekta\Conekta::setLocale($locale);
+}
+
 // Load test suite via composer or manually
 $test_suite = @include_once dirname(__FILE__).'/simpletest/autorun.php';
 
@@ -65,4 +73,5 @@ require_once dirname(__FILE__).'/Conekta/LineItemTest.php';
 require_once dirname(__FILE__).'/Conekta/DiscountLineTest.php';
 require_once dirname(__FILE__).'/Conekta/FiscalEntityTest.php';
 require_once dirname(__FILE__).'/Conekta/ErrorListTest.php';
+require_once dirname(__FILE__).'/Conekta/ConektaTest.php';
 
