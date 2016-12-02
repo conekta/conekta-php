@@ -29,9 +29,10 @@ abstract class Util
         'discount_line'               => '\Conekta\DiscountLine',
         'conekta_list'                => '\Conekta\ConektaList',
         'shipping_contact'            => '\Conekta\ShippingContact',
-        'fiscal_entity'               => '\Conekta\FiscalEntity',
+        'lang'                        => '\Conekta\Lang',
         'line_item'                   => '\Conekta\LineItem',
-        'lang'                        => '\Conekta\Lang'
+        'order'                       => '\Conekta\Order',
+        'fiscal_entity'               => '\Conekta\FiscalEntity'
     );
 
     public static function convertToConektaObject($resp)

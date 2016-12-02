@@ -46,4 +46,18 @@ class LineItemTest extends UnitTestCase
 
         $this->assertTrue($line_item->unit_price == 1000);
     }
+
+    public function testUnsuccessfulLineItemUpdate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(self::$valid_order);
+        $line_item = $order->line_items[0];
+        try {
+            $line_item->update(array('unit_price' => -1));
+
+        } catch(Exception $e) {
+            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
+        }
+    }
 }
