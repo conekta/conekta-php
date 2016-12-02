@@ -13,6 +13,7 @@ class SourceTest extends UnitTestCase
 
     public function testSuccesfulDeleteSources()
     {
+        setApiVersion('1.1.0');
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $source = $customer->sources[0];
@@ -22,6 +23,7 @@ class SourceTest extends UnitTestCase
 
     public function testSuccesfulUpdateSources()
     {
+        setApiVersion('1.1.0');
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $source = $customer->sources[0];
@@ -30,6 +32,7 @@ class SourceTest extends UnitTestCase
     }
 
     public function testUnsuccesfulUpdateSources(){
+        setApiVersion('1.1.0');
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $source = $customer->sources[0];

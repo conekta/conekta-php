@@ -12,38 +12,19 @@ class Customer extends Resource
             parent::loadFromArray($values);
         }
 
-        if(isset($this->cards)){
-            foreach ($this->cards as $k => $v) {
-                if (isset($v->deleted) != true) {
-                    $v->customer = $this;
-                    $this->cards[$k] = $v;
-                }
-            }
-        }
+        $submodels = array(
+            'cards', 'sources', 'fiscal_entities', 'shipping_contacts'
+        );
 
-        if(isset($this->sources)){
-            foreach ($this->sources as $k => $v) {
-                if (isset($v->deleted) != true) {
-                    $v->customer = $this;
-                    $this->sources[$k] = $v;
-                }
-            }
-        }
+        foreach ($submodels as $submodel) {
+            if (isset($this->$submodel)) {
+                $submodel_collection = $this->$submodel;
 
-        if(isset($this->fiscal_entities)){
-            foreach ($this->fiscal_entities as $k => $v) {
-                if (isset($v->deleted) != true) {
-                    $v->customer = $this;
-                    $this->fiscal_entities[$k] = $v;
-                }
-            }
-        }
-
-        if(isset($this -> shipping_contacts)){
-            foreach ($this->shipping_contacts as $k => $v) {
-                if (isset($v->deleted) != true){
-                    $v->customer = $this;
-                    $this->shipping_contacts[$k] = $v;
+                foreach ($submodel_collection as $k => $v){
+                    if (isset($v->deleted) != true) {
+                        $v->customer = $this;
+                        $this->$submodel[$k] = $v;
+                    }
                 }
             }
         }
