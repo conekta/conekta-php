@@ -44,10 +44,10 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->update(
-          array(
-            'name'  => 'Logan',
-            'email' => 'logan@x-men.org',
-          ));
+            array(
+                'name'  => 'Logan',
+                'email' => 'logan@x-men.org',
+            ));
         $this->assertTrue(strpos($customer->name, 'Logan') !== false);
     }
 
@@ -61,7 +61,7 @@ class CustomerTest extends UnitTestCase
         }
     }
 
-    public function testAddCardToCustomer()
+   public function testAddCardToCustomer()
     {
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
@@ -103,15 +103,15 @@ class CustomerTest extends UnitTestCase
             $plan = \Conekta\Plan::find('gold-plan2');
         } catch (Exception $e) {
             $plan = \Conekta\Plan::create(array(
-                    'id'                => 'gold-plan2',
-                    'name'              => 'Gold Plan',
-                    'amount'            => 10000,
-                    'currency'          => 'MXN',
-                    'interval'          => 'month',
-                    'frequency'         => 1,
-                    'trial_period_days' => 15,
-                    'expiry_count'      => 12,
-                    )
+                'id'                => 'gold-plan2',
+                'name'              => 'Gold Plan',
+                'amount'            => 10000,
+                'currency'          => 'MXN',
+                'interval'          => 'month',
+                'frequency'         => 1,
+                'trial_period_days' => 15,
+                'expiry_count'      => 12,
+            )
             );
         }
         $subscription->update(array('plan' => $plan->id));
@@ -159,5 +159,60 @@ class CustomerTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->cancel();
         $this->assertTrue(strpos($subscription->status, 'canceled') !== false);
+    }
+
+    public function testSuccesfulSourceCreate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $source = $customer->createSource(array(
+            'token_id' => 'tok_test_visa_4242',
+            'type' => 'card'
+        ));
+
+        $this->assertTrue(strpos(get_class($source), 'Source') !== false);
+    }
+
+    public function testSuccesfulShippingContactCreate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $shippingContact = $customer->createShippingContact(array(
+            'email' => 'test@conekta.io',
+            'address' => array(
+                'street1' => 'Wallaaby',
+                'city' => 'Sydney',
+                'state' => 'P. Sherman',
+                'country' => 'MX',
+                'zip' => '78215'
+            )
+        ));
+        $this->assertTrue(strpos(get_class($shippingContact), 'ShippingContact') !== false);
+    }
+
+    public function testSuccesfulFiscalEntityCreate()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $fiscalEntity = $customer->createFiscalEntity(array(
+            'tax_id' => 'AMGH851205MN1',
+            'company_name' => 'Test SA de CV',
+            'email' => 'test@conekta.io',
+            'phone' => '+5213353319758',
+            'address' => array(
+                'street1' => '250 Alexis St',
+                'internal_number' => 19,
+                'external_number' => 10,
+                'city' => 'Red Deer',
+                'state' => 'Alberta',
+                'country' => 'MX',
+                'zip' => '78216'
+            )
+        ));
+
+        $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
     }
 }

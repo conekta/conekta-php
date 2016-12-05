@@ -74,4 +74,11 @@ class Order extends Resource
     {
         return parent::_createMember('line_items', $params);
     }
+
+    public function createFiscalEntity($params = null)
+    {
+        $order = parent::_update(array('fiscal_entity' => $params));
+
+        return $order->fiscal_entity;
+    }
 }
