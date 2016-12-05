@@ -81,4 +81,10 @@ class Order extends Resource
 
         return $order->fiscal_entity;
     }
+
+    public function createCharge($params = null)
+    {
+        return parent::_createMember('charges', $params);
+    }
+
 }
