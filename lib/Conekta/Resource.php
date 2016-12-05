@@ -93,7 +93,7 @@ abstract class Resource extends Object
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
 
-            if($this->apiVersion = '1.1.0'){
+            if(Conekta::$apiVersion == "1.1.0"){
                 $errorList = new ErrorList();
                 $errorList->details = $error;
                 throw $errorList;
