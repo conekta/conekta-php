@@ -19,7 +19,6 @@ class OrderTest extends UnitTestCase
             'currency'    => 'mxn'
         );
 
-    #Create order
     public function testSuccesfulCreateOrder()
     {
         setApiKey();
@@ -28,7 +27,6 @@ class OrderTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
-    #Create Order with charges
     public function testSuccesfulCreateOrderWithCharges()
     {
         $charges =
@@ -123,4 +121,91 @@ class OrderTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
     }
 
+    public function testSuccessfulLineItem()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $lineItem = $order->createLineItem(array(
+            'name'=> 'Box of Cohiba S1s',
+            'description'=> 'Imported From Mex.',
+            'unit_price'=> 20000,
+            'quantity'=> 1,
+            'type' => 'physical',
+            'tags' => array('food', 'mexican food')
+        ));
+
+        $this->assertTrue(strpos(get_class($lineItem), 'LineItem') !== false);
+    }
+
+    public function testSuccessfulTaxLine()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $taxLine = $order->createTaxLine(array(
+            'description' => 'IVA',
+            'amount' => 60
+        ));
+
+        $this->assertTrue(strpos(get_class($taxLine), 'TaxLine') !== false);
+    }
+
+    public function testSuccessfulShippingLine()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $shippingLine = $order->createShippingLine(array(
+            'description' => 'Free Shipping',
+            'amount' => 0,
+            'tracking_number' => 'TRACK123',
+            'carrier' => 'USPS',
+            'method' => 'Train'
+        ));
+
+        $this->assertTrue(strpos(get_class($shippingLine), 'ShippingLine') !== false);
+    }
+
+    public function testSuccessfulDiscountLine()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $discountLine = $order->createDiscountLine(array(
+            'description' => 'Cupon de descuento',
+            'amount' => 10,
+            'kind' => 'loyalty'
+        ));
+
+        $this->assertTrue(strpos(get_class($discountLine), 'DiscountLine') !== false);
+    }
+
+    public function testSuccessfulFiscalEntity()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+
+        $fiscalEntity = $order->createFiscalEntity(array(
+            'tax_id' => 'AMGH851205MN1',
+            'company_name' => 'Test SA de CV',
+            'email' => 'test@conekta.io',
+            'phone' => '+5213353319758',
+            'address' => array(
+                'street1' => '250 Alexis St',
+                'internal_number' => 19,
+                'external_number' => 10,
+                'city' => 'Red Deer',
+                'state' => 'Alberta',
+                'country' => 'MX',
+                'zip' => '78216')
+        ));
+
+        $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
+    }
 }

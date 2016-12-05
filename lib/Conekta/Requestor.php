@@ -46,7 +46,7 @@ class Requestor
             'Authorization: Basic '.base64_encode($this->apiKey.':'),
             'Content-Type: application/json'
         );
-        
+
         return $headers;
     }
 
