@@ -35,7 +35,7 @@ class Requestor
         );
 
         if(strlen($this->plugin) > 0){
-            array_merge($user_agent, array('plugin' => $this->plugin));
+            $user_agent = array_merge($user_agent, array('plugin' => $this->plugin));
         }
 
         $headers = array(
@@ -99,7 +99,7 @@ class Requestor
             if($this->apiVersion == '1.1.0'){
                 ErrorList::errorHandler($json_response , $response_code);
             }else{
-                Error::errorHandler($json_response, $response_code);
+                throw Error::errorHandler($json_response, $response_code);
             }
 
         }
