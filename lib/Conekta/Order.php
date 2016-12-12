@@ -56,6 +56,11 @@ class Order extends Resource
         return parent::_scpFind($class, $id);
     }
 
+    public function capture()
+    {
+        return parent::_customAction('put', 'capture', null);
+    }
+
     public function createTaxLine($params = null)
     {
         return parent::_createMember('tax_lines', $params);

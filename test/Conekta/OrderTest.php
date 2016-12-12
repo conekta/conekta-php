@@ -231,4 +231,35 @@ class OrderTest extends UnitTestCase
 
         $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
     }
+
+    public function testSuccessfulCapture()
+    {
+        $charges =
+        array(
+            'capture' => false,
+            'charges' => array(
+                array(
+                    'source' => array(
+                        'type' => 'oxxo_cash',
+                        'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                    ),
+                    'amount' => 20000
+                )
+            ),
+            'currency'    => 'mxn',
+            'customer_info' => array(
+                'name' => 'John Constantine',
+                'phone' => '+5213353319758',
+                'email' => 'hola@hola.com'
+            )
+        );
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
+        $this->assertTrue($order->capture == false);
+
+        $order->capture();
+
+        $this->assertTrue($order->capture == true);
+    }
 }
