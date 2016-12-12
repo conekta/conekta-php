@@ -17,14 +17,35 @@ class Customer extends Resource
                 'sources', 'fiscal_entities', 'shipping_contacts'
             );
             foreach ($submodels as $submodel) {
-                $this->$submodel = new ConektaList($submodel, $values[$submodel]);
+                $submodel_list = new ConektaList($submodel, $values[$submodel]);
+                $submodel_list->loadFromArray($values[$submodel]);
+
+                foreach($submodel_list as $k => $v) {
+                    if (isset($v->deleted) != true) {
+                        $v->customer = $this;
+                        $this->$submodel->_setVal($k, $v);
+                    }
+                }
             }
         }
         else{
             $submodels = array(
                 'cards'
             );
-        }
+
+            foreach ($submodels as $submodel) {
+                if(isset($this->$submodel)) {
+                    $submodel_list = $this->$submodel;
+
+                    foreach ($submodel_list as $k => $v){
+                        if (isset($v->deleted) != true) {
+                            $v->customer = $this;
+                            $this->$submodel[$k] = $v;
+                        }
+                    }
+               }
+           }
+       }
 
         if (isset($this->subscription)) {
             $this->subscription->customer = $this;
