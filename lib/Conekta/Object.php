@@ -42,9 +42,11 @@ class Object extends ArrayObject
                 $this->$k = $v;
                 if ($k == "contextual_data") {
                     $this->contextual_data = new Object();
-                    foreach ($v as $k2 => $v2) {
-                        $this->contextual_data->$k2 = $v2;
-                        $this->contextual_data->_setVal($k2, $v2);
+                    if (is_array($v) || is_object($v)) {
+                        foreach ($v as $k2 => $v2) {
+                            $this->contextual_data->$k2 = $v2;
+                            $this->contextual_data->_setVal($k2, $v2);
+                        }
                     }
                 }
             }
