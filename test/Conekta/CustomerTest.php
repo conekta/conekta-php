@@ -180,6 +180,8 @@ class CustomerTest extends UnitTestCase
         setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $shippingContact = $customer->createShippingContact(array(
+            'receiver' => 'John Williams',
+            'phone' => '+523333350360',
             'email' => 'test@conekta.io',
             'address' => array(
                 'street1' => 'Wallaaby',

@@ -18,12 +18,13 @@ class Order extends Resource
         );
 
         foreach ($submodels as $submodel) {
-            $submodel_collection = $this->$submodel;
+            $submodel_list = new ConektaList($submodel, $values[$submodel]);
+            $submodel_list->loadFromArray($values[$submodel]);
 
-            foreach ($submodel_collection as $k => $v){
+            foreach ($submodel_list as $k => $v){
                 if (isset($v->deleted) != true) {
                     $v->order = $this;
-                    $this->$submodel[$k] = $v;
+                    $this->$submodel->_setVal($k, $v);
                 }
             }
         }

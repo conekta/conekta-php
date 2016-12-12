@@ -1,12 +1,14 @@
 <?php
 
-class ShippingContentTest extends UnitTestCase
+class ShippingContactTest extends UnitTestCase
 {
     public static $valid_customer =
         array('email' => 'hola@hola.com',
               'name' => 'John Constantine',
               'shipping_contacts' => array(
                   array(
+                      'receiver' => 'John Williams',
+                      'phone' => '+5213353319758',
                       'email' => 'thomas.logan@xmen.org',
                       'address' => array(
                           'street1' => '250 Alexis St',
@@ -17,6 +19,8 @@ class ShippingContentTest extends UnitTestCase
                       )
                   ),
                   array(
+                      'receiver' => 'John Williams',
+                      'phone' => '+5213353319758',
                       'email' => 'rogue@xmen.org',
                       'address' => array(
                           'street1' => '250 Alexis St',
