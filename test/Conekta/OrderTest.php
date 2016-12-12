@@ -19,6 +19,12 @@ class OrderTest extends UnitTestCase
             'currency'    => 'mxn'
         );
 
+    public static $valid_return = array(
+        'amount' => 20000,
+        'reason' => 'Reason return',
+        'currency' => 'MXN',
+    );
+
     public function testSuccesfulCreateOrder()
     {
         setApiKey();
@@ -30,23 +36,23 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulCreateOrderWithCharges()
     {
         $charges =
-        array(
-            'charges' => array(
-                array(
-                    'source' => array(
-                        'type' => 'oxxo_cash',
-                        'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
-                    ),
-                    'amount' => 20000
+            array(
+                'charges' => array(
+                    array(
+                        'source' => array(
+                            'type' => 'oxxo_cash',
+                            'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                        ),
+                        'amount' => 20000
+                    )
+                ),
+                'currency'    => 'mxn',
+                'customer_info' => array(
+                    'name' => 'John Constantine',
+                    'phone' => '+5213353319758',
+                    'email' => 'hola@hola.com'
                 )
-            ),
-            'currency'    => 'mxn',
-            'customer_info' => array(
-                'name' => 'John Constantine',
-                'phone' => '+5213353319758',
-                'email' => 'hola@hola.com'
-            )
-        );
+            );
         setApiKey();
         setApiVersion('1.1.0');
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
@@ -56,14 +62,14 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulCharge()
     {
         $other_params =
-        array(
-            'currency'    => 'mxn',
-            'customer_info' => array(
-                'name' => 'John Constantine',
-                'phone' => '+5213353319758',
-                'email' => 'hola@hola.com'
-            )
-        );
+            array(
+                'currency'    => 'mxn',
+                'customer_info' => array(
+                    'name' => 'John Constantine',
+                    'phone' => '+5213353319758',
+                    'email' => 'hola@hola.com'
+                )
+            );
         setApiKey();
         setApiVersion('1.1.0');
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $other_params));
@@ -227,39 +233,65 @@ class OrderTest extends UnitTestCase
                 'state' => 'Alberta',
                 'country' => 'MX',
                 'zip' => '78216')
-        ));
+            ));
 
         $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
+    }
+
+    public function testSuccessfulReturn()
+    {
+        $charges =
+            array(
+                'charges' => array(
+                    array(
+                        'source' => array(
+                            'type' => 'card',
+                            'token_id' => 'tok_test_visa_4242'
+                        ),
+                        'amount' => 20000
+                    )
+                ),
+                'currency'    => 'mxn',
+                'customer_info' => array(
+                    'name' => 'John Constantine',
+                    'phone' => '+5213353319758',
+                    'email' => 'hola@hola.com'
+                )
+            );
+        setApiKey();
+        setApiVersion('1.1.0');
+        $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
+        $order->createReturn(array_merge(self::$valid_return, array('order_id' => $order->id)));
+        $returnedOrder = \Conekta\Order::find($order->id);
+        $this->assertTrue($returnedOrder->status == 'returned');
     }
 
     public function testSuccessfulCapture()
     {
         $charges =
-        array(
-            'capture' => false,
-            'charges' => array(
-                array(
-                    'source' => array(
-                        'type' => 'oxxo_cash',
-                        'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
-                    ),
-                    'amount' => 20000
+            array(
+                'capture' => false,
+                'charges' => array(
+                    array(
+                        'source' => array(
+                            'type' => 'oxxo_cash',
+                            'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                        ),
+                        'amount' => 20000
+                    )
+                ),
+                'currency'    => 'mxn',
+                'customer_info' => array(
+                    'name' => 'John Constantine',
+                    'phone' => '+5213353319758',
+                    'email' => 'hola@hola.com'
                 )
-            ),
-            'currency'    => 'mxn',
-            'customer_info' => array(
-                'name' => 'John Constantine',
-                'phone' => '+5213353319758',
-                'email' => 'hola@hola.com'
-            )
-        );
+            );
         setApiKey();
         setApiVersion('1.1.0');
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
         $this->assertTrue($order->capture == false);
-
         $order->capture();
-
         $this->assertTrue($order->capture == true);
     }
 }

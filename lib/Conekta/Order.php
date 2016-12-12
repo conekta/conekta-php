@@ -93,4 +93,8 @@ class Order extends Resource
         return parent::_createMember('charges', $params);
     }
 
+    public function createReturn($params = null)
+    {
+      return parent::_createMember('returns', $params);
+    }
 }
