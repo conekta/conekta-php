@@ -12,27 +12,25 @@ class Customer extends Resource
             parent::loadFromArray($values);
         }
 
-        $submodels = array(
-            'cards', 'sources', 'fiscal_entities', 'shipping_contacts'
-        );
-
-        foreach ($submodels as $submodel) {
-            if (isset($this->$submodel)) {
-                $submodel_collection = $this->$submodel;
-
-                foreach ($submodel_collection as $k => $v){
-                    if (isset($v->deleted) != true) {
-                        $v->customer = $this;
-                        $this->$submodel[$k] = $v;
-                    }
-                }
+        if(Conekta::$apiVersion == '1.1.0'){
+            $submodels = array(
+                'sources', 'fiscal_entities', 'shipping_contacts'
+            );
+            foreach ($submodels as $submodel) {
+                $this->$submodel = new ConektaList($submodel, $values[$submodel]);
             }
+        }
+        else{
+            $submodels = array(
+                'cards'
+            );
         }
 
         if (isset($this->subscription)) {
             $this->subscription->customer = $this;
         }
     }
+
 
     public static function find($id)
     {
