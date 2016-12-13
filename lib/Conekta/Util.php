@@ -48,6 +48,14 @@ abstract class Util
                 return $instance;
             }
 
+            if (isset($resp['street1']) || isset($resp['street2'])) {
+                $class = '\Conekta\Address';
+                $instance = new $class();
+                $instance->loadFromArray($resp);
+
+                return $instance;
+            }
+
             if (current($resp)) {
                 $instance = new Object();
                 $instance->loadFromArray($resp);
