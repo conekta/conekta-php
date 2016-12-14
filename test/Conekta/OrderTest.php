@@ -29,7 +29,8 @@ class OrderTest extends UnitTestCase
     {
         setApiKey();
         setApiVersion("1.1.0");
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
+
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
@@ -57,6 +58,7 @@ class OrderTest extends UnitTestCase
         setApiVersion('1.1.0');
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+        $this->assertTrue(count($order->charges) > 0);
     }
 
     public function testSuccesfulCharge()
@@ -80,6 +82,8 @@ class OrderTest extends UnitTestCase
         $charge = $order->createCharge($charge_params);
 
         $this->assertTrue(strpos(get_class($charge), 'Charge') !== false);
+        $this->assertTrue(strpos(get_class($order->charges), 'ConektaList') !== false);
+        $this->assertTrue($order->charges->total == 1);
     }
 
     #Update an order
@@ -87,7 +91,7 @@ class OrderTest extends UnitTestCase
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
 
         $updated_parameters = array(
             'line_items'=> array(
@@ -122,7 +126,7 @@ class OrderTest extends UnitTestCase
 
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
         try {
             $order->update(array('charges' => $charges));
         } catch(Exception $e) {
@@ -134,7 +138,7 @@ class OrderTest extends UnitTestCase
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $id = \Conekta\Order::create(array_merge(self::$valid_order))->id;
+        $id = \Conekta\Order::create(self::$valid_order)->id;
         $order = \Conekta\Order::find($id);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
@@ -142,21 +146,22 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulOrderWhere()
     {
         setApiKey();
-        setApiVersion("1.1.0");
+        setApiVersion('1.1.0');
         $orders = \Conekta\Order::where();
 
         $this->assertTrue(strpos(get_class($orders), 'ConektaList') !== false);
         $this->assertTrue(strpos($orders->elements_type, 'Order') !== false);
         $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
+        $this->assertTrue(strpos(get_class(end($orders)), 'Order') !== false);
     }
 
     public function testSuccessfulLineItem()
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
 
-        $lineItem = $order->createLineItem(array(
+        $line_item = $order->createLineItem(array(
             'name'=> 'Box of Cohiba S1s',
             'description'=> 'Imported From Mex.',
             'unit_price'=> 20000,
@@ -165,30 +170,39 @@ class OrderTest extends UnitTestCase
             'tags' => array('food', 'mexican food')
         ));
 
-        $this->assertTrue(strpos(get_class($lineItem), 'LineItem') !== false);
+        $this->assertTrue(strpos(get_class($line_item), 'LineItem') !== false);
+        $this->assertTrue(strpos(get_class($order->line_items), 'ConektaList') !== false);
+        $this->assertTrue($order->line_items->total == 2);
     }
 
     public function testSuccessfulTaxLine()
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
 
-        $taxLine = $order->createTaxLine(array(
+        $tax_line = $order->createTaxLine(array(
             'description' => 'IVA',
             'amount' => 60
         ));
 
-        $this->assertTrue(strpos(get_class($taxLine), 'TaxLine') !== false);
+        $tax_line = $order->createTaxLine(array(
+            'description' => 'ISR',
+            'amount' => 6
+        ));
+
+        $this->assertTrue(strpos(get_class($tax_line), 'TaxLine') !== false);
+        $this->assertTrue(strpos(get_class($order->tax_lines), 'ConektaList') !== false);
+        $this->assertTrue($order->tax_lines->total == 2);
     }
 
     public function testSuccessfulShippingLine()
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
 
-        $shippingLine = $order->createShippingLine(array(
+        $shipping_line = $order->createShippingLine(array(
             'description' => 'Free Shipping',
             'amount' => 0,
             'tracking_number' => 'TRACK123',
@@ -196,31 +210,33 @@ class OrderTest extends UnitTestCase
             'method' => 'Train'
         ));
 
-        $this->assertTrue(strpos(get_class($shippingLine), 'ShippingLine') !== false);
+        $this->assertTrue(strpos(get_class($shipping_line), 'ShippingLine') !== false);
+        $this->assertTrue(strpos(get_class($order->shipping_lines), 'ConektaList') !== false);
+        $this->assertTrue($order->shipping_lines->total == 1);
     }
 
     public function testSuccessfulDiscountLine()
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
-
-        $discountLine = $order->createDiscountLine(array(
+        $order = \Conekta\Order::create(self::$valid_order);
+        $discount_line = $order->createDiscountLine(array(
             'description' => 'Cupon de descuento',
             'amount' => 10,
             'kind' => 'loyalty'
         ));
-
-        $this->assertTrue(strpos(get_class($discountLine), 'DiscountLine') !== false);
+        $this->assertTrue(strpos(get_class($discount_line), 'DiscountLine') !== false);
+        $this->assertTrue(strpos(get_class($order->discount_lines), 'ConektaList') !== false);
+        $this->assertTrue($order->discount_lines->total == 1);
     }
 
     public function testSuccessfulFiscalEntity()
     {
         setApiKey();
         setApiVersion('1.1.0');
-        $order = \Conekta\Order::create(array_merge(self::$valid_order));
+        $order = \Conekta\Order::create(self::$valid_order);
 
-        $fiscalEntity = $order->createFiscalEntity(array(
+        $fiscal_entity = $order->createFiscalEntity(array(
             'tax_id' => 'AMGH851205MN1',
             'company_name' => 'Test SA de CV',
             'email' => 'test@conekta.io',
@@ -235,7 +251,7 @@ class OrderTest extends UnitTestCase
                 'zip' => '78216')
             ));
 
-        $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
+        $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);
     }
 
     public function testSuccessfulReturn()

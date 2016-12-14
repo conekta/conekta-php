@@ -14,19 +14,22 @@ class Order extends Resource
         }
 
         $submodels = array(
-            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items'
+            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges'
         );
 
         foreach ($submodels as $submodel) {
-            $submodel_list = new ConektaList($submodel, $values[$submodel]);
+            $submodel_list = new ConektaList($submodel);
             $submodel_list->loadFromArray($values[$submodel]);
+            $this->$submodel->_values = $submodel_list;
+            $this->$submodel = $submodel_list;
 
-            foreach ($submodel_list as $k => $v){
-                if (isset($v->deleted) != true) {
-                    $v->order = $this;
-                    $this->$submodel->_setVal($k, $v);
-                }
+            foreach ($this->$submodel as $k => $v) {
+                $v->order = $this;
             }
+        }
+
+        if (isset($this->fiscal_entity)) {
+            $this->fiscal_entity->order = $this;
         }
     }
 
