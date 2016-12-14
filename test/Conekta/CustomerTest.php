@@ -31,6 +31,19 @@ class CustomerTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
     }
 
+    public function testSuccessfulCustomerNewWhere()
+    {
+        setApiKey();
+        setApiVersion('1.1.0');
+        $customers = \Conekta\Customer::where();
+
+        $this->assertTrue(strpos(get_class($customers), 'ConektaList') !== false);
+        $this->assertTrue(strpos($customers->elements_type, 'Customer') !== false);
+        $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
+        $this->assertTrue(strpos(get_class(end($customers)), 'Customer') !== false);
+        setApiVersion('1.0.0');
+    }
+
     public function testSuccesfulDeleteCustomer()
     {
         setApiKey();
@@ -172,6 +185,8 @@ class CustomerTest extends UnitTestCase
         ));
 
         $this->assertTrue(strpos(get_class($source), 'Source') !== false);
+        $this->assertTrue(strpos(get_class($customer->sources), 'ConektaList') !== false);
+        $this->assertTrue($customer->sources->total == 1);
     }
 
     public function testSuccesfulShippingContactCreate()
@@ -179,7 +194,7 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
-        $shippingContact = $customer->createShippingContact(array(
+        $shipping_contact = $customer->createShippingContact(array(
             'receiver' => 'John Williams',
             'phone' => '+523333350360',
             'email' => 'test@conekta.io',
@@ -191,7 +206,9 @@ class CustomerTest extends UnitTestCase
                 'zip' => '78215'
             )
         ));
-        $this->assertTrue(strpos(get_class($shippingContact), 'ShippingContact') !== false);
+        $this->assertTrue(strpos(get_class($shipping_contact), 'ShippingContact') !== false);
+        $this->assertTrue(strpos(get_class($customer->shipping_contacts), 'ConektaList') !== false);
+        $this->assertTrue($customer->shipping_contacts->total == 1);
     }
 
     public function testSuccesfulFiscalEntityCreate()
@@ -199,7 +216,7 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
-        $fiscalEntity = $customer->createFiscalEntity(array(
+        $fiscal_entity = $customer->createFiscalEntity(array(
             'tax_id' => 'AMGH851205MN1',
             'company_name' => 'Test SA de CV',
             'email' => 'test@conekta.io',
@@ -215,6 +232,8 @@ class CustomerTest extends UnitTestCase
             )
         ));
 
-        $this->assertTrue(strpos(get_class($fiscalEntity), 'FiscalEntity') !== false);
+        $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);
+        $this->assertTrue(strpos(get_class($customer->fiscal_entities), 'ConektaList') !== false);
+        $this->assertTrue($customer->fiscal_entities->total == 1);
     }
 }

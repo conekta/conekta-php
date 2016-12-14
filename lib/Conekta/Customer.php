@@ -19,12 +19,11 @@ class Customer extends Resource
             foreach ($submodels as $submodel) {
                 $submodel_list = new ConektaList($submodel, $values[$submodel]);
                 $submodel_list->loadFromArray($values[$submodel]);
+                $this->$submodel->_values = $submodel_list;
+                $this->$submodel = $submodel_list;
 
-                foreach($submodel_list as $k => $v) {
-                    if (isset($v->deleted) != true) {
-                        $v->customer = $this;
-                        $this->$submodel->_setVal($k, $v);
-                    }
+                foreach ($this->$submodel as $k => $v) {
+                    $v->customer = $this;
                 }
             }
         }
@@ -40,7 +39,7 @@ class Customer extends Resource
                     foreach ($submodel_list as $k => $v){
                         if (isset($v->deleted) != true) {
                             $v->customer = $this;
-                            $this->$submodel[$k] = $v;
+                            $this->$submodel->_setVal($k,$v);
                         }
                     }
                }

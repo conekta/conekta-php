@@ -35,4 +35,3 @@ class FiscalEntity extends Resource
         return parent::_update($params);
     }
 }
-

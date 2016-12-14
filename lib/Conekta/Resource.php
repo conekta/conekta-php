@@ -145,19 +145,29 @@ abstract class Resource extends Object
         $url = $this->instanceUrl().'/'.$member;
         $response = $requestor->request('post', $url, $params);
 
-        if (strpos(get_class($this->$member), 'Object') !== false ||
+        if (strpos(get_class($this->$member), 'ConektaList') !== false ||
+            strpos(get_class($this->$member), 'Object') !== false ||
             strpos($member, 'cards') !== false ||
             strpos($member, 'payout_methods') !== false) {
+
             if (empty($this->$member)) {
-                $this->$member = new Object();
+                if (Conekta::$apiVersion == '1.1.0') {
+                   $this->$member = new ConektaList($member);
+                } else {
+                    $this->$member = new Object();
+                }
             }
 
-            $this->$member->loadFromArray(array_merge(
-                $this->$member->_toArray(),
-                array($response)
-            ));
+            if (strpos(get_class($this->$member), 'ConektaList') !== false) {
+                $this->$member->addElement($response);
+            } else {
+                $this->$member->loadFromArray(array_merge(
+                    $this->$member->_toArray(),
+                    array($response)
+                ));
 
-            $this->loadFromArray();
+                $this->loadFromArray();
+            }
             $instances = $this->$member;
             $instance = end($instances);
         } else {

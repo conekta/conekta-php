@@ -17,9 +17,19 @@ class ConektaList extends Object
         $this->params = $params;
     }
 
+    public function addElement($element)
+    {
+        $element = Util::convertToConektaObject($element);
+        $this[$this->total] = $element;
+        $this->_values[$this->total] = $element;
+        $this->total = $this->total + 1;
+
+        return $this;
+    }
+
     public function loadFromArray($values = null)
     {
-        if(isset($values)) {
+        if (isset($values)) {
             $this->starting_after = $values['starting_after'];
             $this->ending_before = $values['ending_before'];
             $this->has_more = $values['has_more'];
@@ -28,7 +38,9 @@ class ConektaList extends Object
             foreach ($this as $key => $value) {
                 $this->_unsetKey($key);
             }
+        }
 
+        if (isset($values['data'])) {
             return parent::loadFromArray($values['data']);
         }
     }
