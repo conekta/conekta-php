@@ -48,12 +48,9 @@ class ConektaList extends Object
     public function next($options = array())
     {
         if (sizeOf($this) > 0) {
-            if (isset($this->ending_before)) {
-                $this->params['starting_after'] = $this[0]->id;
-            } else {
-                $this->params['starting_after'] = end($this)->id;
-            }
+            $this->params['starting_after'] = end($this)->id;
         }
+
         $this->params['ending_before'] = null;
 
         return $this->_moveCursor($options['limit']);
@@ -62,12 +59,9 @@ class ConektaList extends Object
     public function previous($options = array())
     {
         if (sizeOf($this) > 0) {
-           if (isset($this->ending_before)) {
-               $this->params['ending_before'] = end($this)->id;
-           } else {
-               $this->params['ending_before'] = $this[0]->id;
-           }
+            $this->params['ending_before'] = $this[0]->id;
         }
+
         $this->params['starting_after'] = null;
 
         return $this->_moveCursor($options['limit']);
