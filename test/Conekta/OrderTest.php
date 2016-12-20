@@ -16,7 +16,8 @@ class OrderTest extends UnitTestCase
                     'tags' => array('food', 'mexican food')
                 )
             ),
-            'currency'    => 'mxn'
+            'currency'    => 'mxn',
+            'metadata'    => array('test' => 'extra info')
         );
 
     public static $valid_return = array(
@@ -31,6 +32,7 @@ class OrderTest extends UnitTestCase
         setApiVersion("1.1.0");
         $order = \Conekta\Order::create(self::$valid_order);
 
+        $this->assertTrue(strpos($order->metadata["test"], 'extra info') !== false);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 
