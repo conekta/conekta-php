@@ -40,12 +40,12 @@ class Object extends ArrayObject
                     $k = "webhook_url";
                 }
                 $this->$k = $v;
-                if ($k == "contextual_data") {
-                    $this->contextual_data = new Object();
+                if ($k == "metadata") {
+                    $this->metadata = new Object();
                     if (is_array($v) || is_object($v)) {
                         foreach ($v as $k2 => $v2) {
-                            $this->contextual_data->$k2 = $v2;
-                            $this->contextual_data->_setVal($k2, $v2);
+                            $this->metadata->$k2 = $v2;
+                            $this->metadata->_setVal($k2, $v2);
                         }
                     }
                 }
