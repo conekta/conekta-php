@@ -87,6 +87,16 @@ abstract class Resource extends Object
     public function instanceUrl()
     {
         $id = $this->id;
+        $this->idValidator($id);
+        $class = get_class($this);
+        $base = $this->classUrl($class);
+        $extn = urlencode($id);
+
+        return "{$base}/{$extn}";
+    }
+
+    protected function idValidator($id)
+    {
         if (!$id) {
             $error = new Error(
                 Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
@@ -95,16 +105,11 @@ abstract class Resource extends Object
 
             if(Conekta::$apiVersion == "1.1.0"){
                 $errorList = new ErrorList();
-                $errorList->details = $error;
+                $errorList->details[] = $error;
                 throw $errorList;
             }
             throw $error;
         }
-        $class = get_class($this);
-        $base = $this->classUrl($class);
-        $extn = urlencode($id);
-
-        return "{$base}/{$extn}";
     }
 
     protected function _delete($parent = null, $member = null)

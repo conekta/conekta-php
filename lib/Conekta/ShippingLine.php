@@ -13,19 +13,7 @@ class ShippingLine extends Resource
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
-        if (!$id) {
-            $error = new Error(
-                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
-                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
-            );
-
-            if($this->apiVersion = '1.1.0'){
-                $errorList = new ErrorList();
-                $errorList->details = $error;
-                throw $errorList;
-            }
-            throw $error;
-        }
+        parent::idValidator($id);
 
         $class = get_class($this);
         $base = $this->classUrl($class);
