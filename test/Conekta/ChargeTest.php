@@ -76,6 +76,7 @@ class ChargeTest extends UnitTestCase
     public function testSuccesfulWhere()
     {
         setApiKey();
+		setApiVersion('1.0.0');
         $charges = \Conekta\Charge::where();
         $this->assertTrue(strpos(get_class($charges), 'Object') !== false);
         $this->assertTrue(strpos(get_class($charges[0]), 'Charge') !== false);
@@ -131,6 +132,7 @@ class ChargeTest extends UnitTestCase
         $pm = self::$intvalid_payment_method;
         $card = self::$valid_visa_card;
         setApiKey();
+		setApiVersion('1.0.0');
         try {
             $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         } catch (Exception $e) {
@@ -154,6 +156,7 @@ class ChargeTest extends UnitTestCase
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
         setApiKey();
+		setApiVersion('1.0.0');
         $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
         try {

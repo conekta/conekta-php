@@ -26,6 +26,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulCustomerWhere()
     {
         setApiKey();
+		setApiVersion('1.0.0');
         $customers = \Conekta\Customer::where();
         $this->assertTrue(strpos(get_class($customers), 'Object') !== false);
         $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
