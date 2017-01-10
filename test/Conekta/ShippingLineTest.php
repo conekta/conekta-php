@@ -38,7 +38,6 @@ class ShippingLineTest extends UnitTestCase
     public function testSuccessfulShippingLineDelete()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $shipping_line = $order->shipping_lines[0];
         $shipping_line->delete();
@@ -49,7 +48,6 @@ class ShippingLineTest extends UnitTestCase
     public function testSuccessfulShippingLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $shipping_line = $order->shipping_lines[0];
         $shipping_line->update(array('method' => 'Air'));
@@ -60,7 +58,6 @@ class ShippingLineTest extends UnitTestCase
     public function testUnsuccessfulShippingLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $shipping_line = $order->shipping_lines[0];
         try{

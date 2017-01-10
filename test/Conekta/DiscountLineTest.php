@@ -34,7 +34,6 @@ class DiscountLineTest extends UnitTestCase
     public function testSuccessfulDiscountLineDelete()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $discount_line = $order->discount_lines[0];
         $discount_line->delete();
@@ -45,7 +44,6 @@ class DiscountLineTest extends UnitTestCase
     public function testSuccessfulDiscountLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $discount_line = $order->discount_lines[0];
         $discount_line->update(array('amount' => 11));
@@ -56,7 +54,6 @@ class DiscountLineTest extends UnitTestCase
     public function testUnsuccessfulDiscountLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $discount_line = $order->discount_lines[0];
         try{

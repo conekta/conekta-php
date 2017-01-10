@@ -11,7 +11,6 @@ class ErrorListTest extends UnitTestCase
     public function testNoIdError()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         try {
             $customer = \Conekta\Customer::find('0');
         } catch (Exception $e) {
@@ -22,7 +21,6 @@ class ErrorListTest extends UnitTestCase
     public function testNoConnectionError()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $apiUrl = \Conekta\Conekta::$apiBase;
         \Conekta\Conekta::$apiBase = 'http://localhost:3001';
         try {
@@ -35,7 +33,6 @@ class ErrorListTest extends UnitTestCase
 
     public function testApiError(){
         setApiKey();
-        setApiVersion('1.1.0');
         try {
             $customer = \Conekta\Customer::create(self::$invalid_customer);
         } catch (Exception $e) {
@@ -46,7 +43,6 @@ class ErrorListTest extends UnitTestCase
     public function testResourceNotFoundError()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         try {
             $customer = \Conekta\Customer::find('1');
         } catch (Exception $e) {

@@ -26,7 +26,6 @@ class FiscalEntityTest extends UnitTestCase
     public function testSuccessfulFiscalEntityDelete()
     {
         setApiKey();
-        setApiVersion("1.1.0");
         $customer = \Conekta\Customer::create(self::$valid_customer);
 
         $fiscal_entity = $customer->fiscal_entities[0]->delete();
@@ -37,7 +36,6 @@ class FiscalEntityTest extends UnitTestCase
     public function testSuccessfulFiscalEntityUpdate()
     {
         setApiKey();
-        setApiVersion("1.1.0");
         $customer = \Conekta\Customer::create(self::$valid_customer);
 
         $customer->fiscal_entities[0]->update(array(
@@ -50,7 +48,6 @@ class FiscalEntityTest extends UnitTestCase
     public function testUnsuccessfulFiscalEntityUpdate()
     {
         setApiKey();
-        setApiVersion("1.1.0");
         $customer = \Conekta\Customer::create(self::$valid_customer);
 
         try {

@@ -28,7 +28,6 @@ class LineItemTest extends UnitTestCase
     public function testSuccessfulLineItemDelete()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $line_item = $order->line_items[0];
         $line_item->delete();
@@ -39,7 +38,6 @@ class LineItemTest extends UnitTestCase
     public function testSuccessfulLineItemUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $line_item = $order->line_items[0];
         $line_item->update(array('unit_price' => 1000));
@@ -50,7 +48,6 @@ class LineItemTest extends UnitTestCase
     public function testUnsuccessfulLineItemUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $line_item = $order->line_items[0];
         try {
