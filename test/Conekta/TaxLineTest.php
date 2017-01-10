@@ -32,7 +32,6 @@ class TaxLineTest extends UnitTestCase
     public function testSuccessfulTaxLineDelete()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $tax_line = $order->tax_lines[0];
         $tax_line->delete();
@@ -43,7 +42,6 @@ class TaxLineTest extends UnitTestCase
     public function testSuccessfulTaxLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $tax_line = $order->tax_lines[0];
         $tax_line->update(array('amount' => 10));
@@ -54,7 +52,6 @@ class TaxLineTest extends UnitTestCase
     public function testUnsuccessfulTaxLineUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $tax_line = $order->tax_lines[0];
         try {

@@ -36,7 +36,6 @@ class ShippingContactTest extends UnitTestCase
     public function testSuccessfulShippingContactDelete()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $shipping_contact = $customer->shipping_contacts[0];
         $shipping_contact->delete();
@@ -47,7 +46,6 @@ class ShippingContactTest extends UnitTestCase
     public function testSuccessfulShippingContactUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $shipping_contact = $customer->shipping_contacts[0];
         $shipping_contact->update(array('email' => 'hola@hola.com'));
@@ -58,7 +56,6 @@ class ShippingContactTest extends UnitTestCase
     public function testUnsuccessfulShippingContactUpdate()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $shipping_contact = $customer->shipping_contacts[0];
         try{

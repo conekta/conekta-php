@@ -18,6 +18,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulCustomerFind()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $c = \Conekta\Customer::create(self::$valid_customer);
         $customer = \Conekta\Customer::find($c->id);
         $this->assertTrue(strpos(get_class($customer), 'Customer') !== false);
@@ -26,7 +27,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulCustomerWhere()
     {
         setApiKey();
-		setApiVersion('1.0.0');
+        setApiVersion('1.0.0');
         $customers = \Conekta\Customer::where();
         $this->assertTrue(strpos(get_class($customers), 'Object') !== false);
         $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
@@ -37,17 +38,16 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.1.0');
         $customers = \Conekta\Customer::where();
-
         $this->assertTrue(strpos(get_class($customers), 'ConektaList') !== false);
         $this->assertTrue(strpos($customers->elements_type, 'Customer') !== false);
         $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
         $this->assertTrue(strpos(get_class(end($customers)), 'Customer') !== false);
-        setApiVersion('1.0.0');
     }
 
     public function testSuccesfulDeleteCustomer()
     {
         setApiKey();
+        setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->delete();
         $this->assertTrue($customer->deleted == true);
@@ -56,6 +56,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulCustomerUpdate()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->update(
             array(
@@ -68,6 +69,7 @@ class CustomerTest extends UnitTestCase
     public function testUnsuccesfulCustomerCreate()
     {
         setApiKey();
+        setApiVersion('1.1.0');
         try {
             $customer = \Conekta\Customer::create(self::$valid_customer);
         } catch (Exception $e) {
@@ -78,6 +80,7 @@ class CustomerTest extends UnitTestCase
    public function testAddCardToCustomer()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->createCard(array('token' => 'tok_test_visa_1881'));
         $this->assertTrue(strpos(end($customer->cards)->last4, '1881') !== false);
@@ -86,6 +89,7 @@ class CustomerTest extends UnitTestCase
     public function testDeleteCard()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $card = $customer->cards[0]->delete();
         $this->assertTrue($card->deleted == true);
@@ -94,14 +98,15 @@ class CustomerTest extends UnitTestCase
     public function testUpdateCard()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->cards[0]->update(array('token' => 'tok_test_mastercard_4444', 'active' => false));
-        $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);
-    }
+        $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);    }
 
     public function testSuccesfulSubscriptionCreate()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
@@ -135,6 +140,7 @@ class CustomerTest extends UnitTestCase
     public function testUnsuccesfulSubscriptionCreate()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         try {
             $subscription = $customer->createSubscription(array(
@@ -147,6 +153,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionPause()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
@@ -157,6 +164,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionResume()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
@@ -168,6 +176,7 @@ class CustomerTest extends UnitTestCase
     public function testSuccesfulSubscriptionCancel()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
