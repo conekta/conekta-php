@@ -101,7 +101,8 @@ class CustomerTest extends UnitTestCase
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $customer->cards[0]->update(array('token' => 'tok_test_mastercard_4444', 'active' => false));
-        $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);    }
+        $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);    
+    }
 
     public function testSuccesfulSubscriptionCreate()
     {
