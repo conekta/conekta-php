@@ -17,21 +17,22 @@ class ErrorList extends Exception
     public static function errorHandler($response = null, $http_status = null)
     {
         $exception = null;
-        $errorList = new ErrorList;
+        $error_list = new ErrorList;
         if(isset($response['details'])){
+            $error_list->message .= $response['details'][0]['message'];
             foreach ($response['details'] as $error) {
-                array_push($errorList->details, self::buildError($error, $http_status));
+                array_push($error_list->details, self::buildError($error, $http_status));
             }
-            if (count($errorList->details) == 0) {
-               array_push($errorList->details, self::buildError(null, null));
+            if (count($error_list->details) == 0) {
+               array_push($error_list->details, self::buildError(null, null));
             }
-            $exception = $errorList;
+            $exception = $error_list;
         }
         if(is_null($exception)) {
-            array_push($errorList->details, self::buildError(null, null));
-            $exception = $errorList;
+            array_push($error_list->details, self::buildError(null, null));
+            $exception = $error_list;
         }
-        throw $exception;
+        return $exception;
     }
 
     private static function buildError($response, $http_status)
