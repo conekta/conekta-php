@@ -213,9 +213,9 @@ class OrderTest extends UnitTestCase
         setApiKey();
         $order = \Conekta\Order::create(self::$valid_order);
         $discount_line = $order->createDiscountLine(array(
-            'description' => 'Cupon de descuento',
+            'code' => 'Cupon de descuento',
             'amount' => 10,
-            'kind' => 'loyalty'
+            'type' => 'loyalty'
         ));
         $this->assertTrue(strpos(get_class($discount_line), 'DiscountLine') !== false);
         $this->assertTrue(strpos(get_class($order->discount_lines), 'ConektaList') !== false);

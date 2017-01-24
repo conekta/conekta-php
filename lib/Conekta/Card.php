@@ -9,6 +9,7 @@ use \Conekta\Conekta;
 
 class Card extends Resource
 {
+
     public function instanceUrl()
     {
         $id = $this->id;

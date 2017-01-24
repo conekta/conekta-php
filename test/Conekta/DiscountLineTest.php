@@ -19,14 +19,14 @@ class DiscountLineTest extends UnitTestCase
             'currency'    => 'mxn',
             'discount_lines' => array(
                 array(
-                    'description' => 'Cupon de descuento',
+                    'code' => 'Cupon de descuento',
                     'amount' => 10,
-                    'kind' => 'loyalty'
+                    'type' => 'loyalty'
                 ),
                 array(
-                    'description' => 'Cupon de descuento',
+                    'code' => 'Cupon de descuento',
                     'amount' => 5,
-                    'kind' => 'loyalty'
+                    'type' => 'loyalty'
                 )
             )
         );

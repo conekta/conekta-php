@@ -190,14 +190,13 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.1.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
-        $source = $customer->createSource(array(
+        $source = $customer->createPaymentSource(array(
             'token_id' => 'tok_test_visa_4242',
             'type' => 'card'
         ));
-
-        $this->assertTrue(strpos(get_class($source), 'Source') !== false);
-        $this->assertTrue(strpos(get_class($customer->sources), 'ConektaList') !== false);
-        $this->assertTrue($customer->sources->total == 1);
+        $this->assertTrue(strpos(get_class($source), 'PaymentSource') !== false);
+        $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') !== false);
+        $this->assertTrue($customer->payment_sources->total == 1);
     }
 
     public function testSuccesfulShippingContactCreate()

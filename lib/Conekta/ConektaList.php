@@ -10,11 +10,14 @@ use \Conekta\Conekta;
 
 class ConektaList extends Object
 {
+
+
     public function __construct($elements_type, $params = array())
     {
         parent::__construct();
         $this->elements_type = $elements_type;
         $this->params = $params;
+        $this->total = 0;
     }
 
     public function addElement($element)
@@ -29,11 +32,10 @@ class ConektaList extends Object
 
     public function loadFromArray($values = null)
     {
+        echo "Load from array from Conekta list";
         if (isset($values)) {
-            $this->starting_after = $values['starting_after'];
-            $this->ending_before = $values['ending_before'];
             $this->has_more = $values['has_more'];
-            $this->total = $values['total'];
+            $this->total    = $values['total'];
 
             foreach ($this as $key => $value) {
                 $this->_unsetKey($key);
@@ -48,10 +50,10 @@ class ConektaList extends Object
     public function next($options = array())
     {
         if (sizeOf($this) > 0) {
-            $this->params['starting_after'] = end($this)->id;
+            $this->params['next_page_url'] = end($this)->id;
         }
 
-        $this->params['ending_before'] = null;
+        $this->params['previous_page_url'] = null;
 
         return $this->_moveCursor($options['limit']);
     }
@@ -59,10 +61,10 @@ class ConektaList extends Object
     public function previous($options = array())
     {
         if (sizeOf($this) > 0) {
-            $this->params['ending_before'] = $this[0]->id;
+            $this->params['previous_page_url'] = $this[0]->id;
         }
 
-        $this->params['starting_after'] = null;
+        $this->params['next_page_url'] = null;
 
         return $this->_moveCursor($options['limit']);
     }

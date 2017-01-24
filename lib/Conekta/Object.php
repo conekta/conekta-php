@@ -29,6 +29,9 @@ class Object extends ArrayObject
 
     public function loadFromArray($values)
     {
+
+        echo "Entering to load from Array from the class\n";
+        var_dump($values);
         foreach ($values as $k => $v) {
             if (is_array($v)) {
                 $v = Util::convertToConektaObject($v);

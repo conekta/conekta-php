@@ -14,16 +14,25 @@ class Customer extends Resource
 
         if(Conekta::$apiVersion == '1.1.0'){
             $submodels = array(
-                'sources', 'fiscal_entities', 'shipping_contacts'
+                'payment_sources', 'fiscal_entities', 'shipping_contacts'
             );
             foreach ($submodels as $submodel) {
-                $submodel_list = new ConektaList($submodel, $values[$submodel]);
-                $submodel_list->loadFromArray($values[$submodel]);
-                $this->$submodel->_values = $submodel_list;
-                $this->$submodel = $submodel_list;
-
-                foreach ($this->$submodel as $k => $v) {
-                    $v->customer = $this;
+                if(isset($values[$submodel])){
+                    echo "Enter 1\n";
+                    print_r($submodel);
+                    $submodel_list = new ConektaList($submodel, $values[$submodel]);
+                    $submodel_list->loadFromArray($values[$submodel]);
+                    $this->$submodel->_values = $submodel_list;
+                    $this->$submodel = $submodel_list;
+                    
+                    foreach ($this->$submodel as $k => $v) {
+                        $v->customer = $this;
+                    }
+                }else{
+                    echo "\nEnter 2\n";
+                    print_r($submodel);
+                    $this->$submodel = new ConektaList($submodel, array());
+                    
                 }
             }
         }
@@ -31,9 +40,10 @@ class Customer extends Resource
             $submodels = array(
                 'cards'
             );
-
             foreach ($submodels as $submodel) {
                 if(isset($this->$submodel)) {
+                    echo "\nEnter 3\n";
+                    print_r($submodel);
                     $submodel_list = $this->$submodel;
 
                     foreach ($submodel_list as $k => $v){
@@ -83,9 +93,9 @@ class Customer extends Resource
         return parent::_update($params);
     }
 
-    public function createSource($params = null)
+    public function createPaymentSource($params = null)
     {
-        return parent::_createMember('sources', $params);
+        return parent::_createMember('payment_sources', $params);
     }
 
     public function createFiscalEntity($params = null)
