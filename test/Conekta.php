@@ -56,4 +56,5 @@ require_once dirname(__FILE__).'/../lib/Conekta.php';
 
 // Include tests
 
+require_once dirname(__FILE__).'/Conekta/CustomerTest.php';
 require_once dirname(__FILE__).'/Conekta/SourceTest.php';

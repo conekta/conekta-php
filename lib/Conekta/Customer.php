@@ -17,22 +17,17 @@ class Customer extends Resource
                 'payment_sources', 'fiscal_entities', 'shipping_contacts'
             );
             foreach ($submodels as $submodel) {
-                if(isset($values[$submodel])){
-                    echo "Enter 1\n";
-                    print_r($submodel);
+                if (isset($values[$submodel])){
                     $submodel_list = new ConektaList($submodel, $values[$submodel]);
                     $submodel_list->loadFromArray($values[$submodel]);
                     $this->$submodel->_values = $submodel_list;
-                    $this->$submodel = $submodel_list;
-                    
-                    foreach ($this->$submodel as $k => $v) {
-                        $v->customer = $this;
-                    }
-                }else{
-                    echo "\nEnter 2\n";
-                    print_r($submodel);
-                    $this->$submodel = new ConektaList($submodel, array());
-                    
+                } else {
+                    $submodel_list = new ConektaList($submodel, array());
+                }
+                $this->$submodel = $submodel_list;
+
+                foreach ($this->$submodel as $k => $v) {
+                    $v->customer = $this;
                 }
             }
         }
@@ -42,8 +37,6 @@ class Customer extends Resource
             );
             foreach ($submodels as $submodel) {
                 if(isset($this->$submodel)) {
-                    echo "\nEnter 3\n";
-                    print_r($submodel);
                     $submodel_list = $this->$submodel;
 
                     foreach ($submodel_list as $k => $v){

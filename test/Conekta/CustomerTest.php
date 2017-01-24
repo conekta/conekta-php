@@ -2,11 +2,10 @@
 
 class CustomerTest extends UnitTestCase
 {
-    public static $valid_customer =
-        array('email' => 'hola@hola.com',
-            'name' => 'John Constantine',
-            'cards' => array('tok_test_visa_4242')
-        );
+    public static $valid_customer = array(
+        'email' => 'hola@hola.com',
+        'name'  => 'John Constantine'
+    );
 
     public function testSuccesfulCustomerCreate()
     {
@@ -90,7 +89,8 @@ class CustomerTest extends UnitTestCase
     {
         setApiKey();
         setApiVersion('1.0.0');
-        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $card = $customer->cards[0]->delete();
         $this->assertTrue($card->deleted == true);
     }
@@ -99,7 +99,8 @@ class CustomerTest extends UnitTestCase
     {
         setApiKey();
         setApiVersion('1.0.0');
-        $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $customer->cards[0]->update(array('token' => 'tok_test_mastercard_4444', 'active' => false));
         $this->assertTrue(strpos($customer->cards[0]->last4, '4444') !== false);    
     }

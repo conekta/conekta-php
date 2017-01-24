@@ -16,9 +16,9 @@ class SourceTest extends UnitTestCase
         setApiKey();
         $customer = \Conekta\Customer::create(self::$valid_customer);
         $payment_source = $customer->payment_sources[0];
-        echo "Printing customer\n";
-        var_dump($payment_source);
+
         $payment_source->delete();
+
         $this->assertTrue($payment_source->deleted == true);
     }
 

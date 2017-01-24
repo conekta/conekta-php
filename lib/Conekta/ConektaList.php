@@ -32,7 +32,6 @@ class ConektaList extends Object
 
     public function loadFromArray($values = null)
     {
-        echo "Load from array from Conekta list";
         if (isset($values)) {
             $this->has_more = $values['has_more'];
             $this->total    = $values['total'];
