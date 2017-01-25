@@ -42,7 +42,7 @@ class OrderTest extends UnitTestCase
             array(
                 'charges' => array(
                     array(
-                        'source' => array(
+                        'payment_source' => array(
                             'type' => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),
@@ -76,7 +76,7 @@ class OrderTest extends UnitTestCase
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $other_params));
         $charge_params = array(
-            'source' => array('type' => 'oxxo_cash'),
+            'payment_source' => array('type' => 'oxxo_cash'),
             'amount' => 20000
         );
         $charge = $order->createCharge($charge_params);
@@ -116,7 +116,7 @@ class OrderTest extends UnitTestCase
     {
         $charges = array(
             array(
-                'source' => array(
+                'payment_source' => array(
                     'type' => 'oxxo_cash'
                 ),
                 'amount' => 10
@@ -213,9 +213,9 @@ class OrderTest extends UnitTestCase
         setApiKey();
         $order = \Conekta\Order::create(self::$valid_order);
         $discount_line = $order->createDiscountLine(array(
-            'description' => 'Cupon de descuento',
+            'code' => 'Cupon de descuento',
             'amount' => 10,
-            'kind' => 'loyalty'
+            'type' => 'loyalty'
         ));
         $this->assertTrue(strpos(get_class($discount_line), 'DiscountLine') !== false);
         $this->assertTrue(strpos(get_class($order->discount_lines), 'ConektaList') !== false);
@@ -251,7 +251,7 @@ class OrderTest extends UnitTestCase
             array(
                 'charges' => array(
                     array(
-                        'source' => array(
+                        'payment_source' => array(
                             'type' => 'card',
                             'token_id' => 'tok_test_visa_4242'
                         ),
@@ -280,7 +280,7 @@ class OrderTest extends UnitTestCase
                 'capture' => false,
                 'charges' => array(
                     array(
-                        'source' => array(
+                        'payment_source' => array(
                             'type' => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),

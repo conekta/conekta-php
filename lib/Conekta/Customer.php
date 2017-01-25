@@ -6,6 +6,31 @@ use \Conekta\Resource;
 
 class Customer extends Resource
 {
+    var $livemode                    = "";
+    var $name                        = "";
+    var $email                       = "";
+    var $phone                       = "";
+    var $default_shipping_contact_id = "";
+    var $default_fiscal_entity_id    = "";
+    var $default_payment_source_id   = "";
+    var $referrer                    = "";
+    var $account_age                 = "";
+    var $paid_transactions           = "";
+    var $first_paid_at               = "";
+    var $corporate                   = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
     public function loadFromArray($values = null)
     {
         if (isset($values)) {
@@ -14,12 +39,16 @@ class Customer extends Resource
 
         if(Conekta::$apiVersion == '1.1.0'){
             $submodels = array(
-                'sources', 'fiscal_entities', 'shipping_contacts'
+                'payment_sources', 'fiscal_entities', 'shipping_contacts'
             );
             foreach ($submodels as $submodel) {
-                $submodel_list = new ConektaList($submodel, $values[$submodel]);
-                $submodel_list->loadFromArray($values[$submodel]);
-                $this->$submodel->_values = $submodel_list;
+                if (isset($values[$submodel])){
+                    $submodel_list = new ConektaList($submodel, $values[$submodel]);
+                    $submodel_list->loadFromArray($values[$submodel]);
+                    $this->$submodel->_values = $submodel_list;
+                } else {
+                    $submodel_list = new ConektaList($submodel, array());
+                }
                 $this->$submodel = $submodel_list;
 
                 foreach ($this->$submodel as $k => $v) {
@@ -31,7 +60,6 @@ class Customer extends Resource
             $submodels = array(
                 'cards'
             );
-
             foreach ($submodels as $submodel) {
                 if(isset($this->$submodel)) {
                     $submodel_list = $this->$submodel;
@@ -83,9 +111,9 @@ class Customer extends Resource
         return parent::_update($params);
     }
 
-    public function createSource($params = null)
+    public function createPaymentSource($params = null)
     {
-        return parent::_createMember('sources', $params);
+        return parent::_createMember('payment_sources', $params);
     }
 
     public function createFiscalEntity($params = null)

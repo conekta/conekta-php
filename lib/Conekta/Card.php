@@ -9,6 +9,29 @@ use \Conekta\Conekta;
 
 class Card extends Resource
 {
+    var $created_at = "";
+    var $last4      = "";
+    var $bin        = "";
+    var $name       = "";
+    var $exp_month  = "";
+    var $exp_year   = "";
+    var $brand      = "";
+    var $parent_id  = "";
+    var $default    = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
+
     public function instanceUrl()
     {
         $id = $this->id;

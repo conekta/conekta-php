@@ -9,6 +9,23 @@ use \Conekta\Conekta;
 
 class DiscountLine extends Resource
 {
+    var $code       = "";
+    var $amount     = "";
+    var $type       = "";
+    var $parent_id  = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
     public function instanceUrl()
     {
         $this->apiVersion = Conekta::$apiVersion;

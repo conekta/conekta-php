@@ -55,6 +55,7 @@ error_reporting(E_ALL | E_STRICT);
 require_once dirname(__FILE__).'/../lib/Conekta.php';
 
 // Include tests
+
 require_once dirname(__FILE__).'/Conekta/ChargeTest.php';
 require_once dirname(__FILE__).'/Conekta/CustomerTest.php';
 require_once dirname(__FILE__).'/Conekta/EventTest.php';
