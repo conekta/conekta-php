@@ -49,10 +49,10 @@ class ConektaList extends Object
     public function next($options = array())
     {
         if (sizeOf($this) > 0) {
-            $this->params['next_page_url'] = end($this)->id;
+            $this->params['next'] = end($this)->id;
         }
 
-        $this->params['previous_page_url'] = null;
+        $this->params['previous'] = null;
 
         return $this->_moveCursor($options['limit']);
     }
@@ -60,10 +60,10 @@ class ConektaList extends Object
     public function previous($options = array())
     {
         if (sizeOf($this) > 0) {
-            $this->params['previous_page_url'] = $this[0]->id;
+            $this->params['previous'] = $this[0]->id;
         }
 
-        $this->params['next_page_url'] = null;
+        $this->params['next'] = null;
 
         return $this->_moveCursor($options['limit']);
     }

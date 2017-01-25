@@ -14,7 +14,7 @@ class Order extends Resource
         }
 
         $submodels = array(
-            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges'
+            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges', 'returns'
         );
 
         foreach ($submodels as $submodel) {

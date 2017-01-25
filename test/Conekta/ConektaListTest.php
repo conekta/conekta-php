@@ -20,8 +20,8 @@ class ConektaListTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.1.0');
         $order_list = $this->createResponseMockUp();
-        $window = \Conekta\Order::where(array('limit' => 5, 'next' => $orders[14]->id));
-        //$this->assertTrue($window[0]->id == $order_list[15]->id);
+        $window = \Conekta\Order::where(array('limit' => 5, 'next' => $order_list[14]->id));
+        $this->assertTrue($window[0]->id == $order_list[15]->id);
         $window->previous(array('limit' => 1));
         $this->assertTrue($window[0]->id == $order_list[14]->id);
     }

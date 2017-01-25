@@ -110,8 +110,10 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
-        $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
+        $this->assertTrue(strpos(get_class($subscription), 'Conekta\Subscription') !== false);
     }
 
     public function testSuccesfulSubscriptionUpdate()
@@ -119,6 +121,8 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         try {
             $plan = \Conekta\Plan::find('gold-plan2');
@@ -148,7 +152,7 @@ class CustomerTest extends UnitTestCase
             $subscription = $customer->createSubscription(array(
                 'plan' => 'unexistent-plan', ));
         } catch (Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'Object Plan unexistent-plan could not be found.') !== false);
+            $this->assertTrue(strpos($e->getMessage(), 'The object Plan unexistent-plan could not be found.') !== false);
         }
     }
 
@@ -157,6 +161,8 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->pause();
@@ -168,6 +174,8 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->pause();
@@ -180,6 +188,8 @@ class CustomerTest extends UnitTestCase
         setApiKey();
         setApiVersion('1.0.0');
         $customer = \Conekta\Customer::create(self::$valid_customer);
+        $card = array('cards' => array('tok_test_visa_4242'));
+        $customer = \Conekta\Customer::create(array_merge(self::$valid_customer, $card));
         $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
         $this->assertTrue(strpos(get_class($subscription), 'Subscription') !== false);
         $subscription->cancel();
