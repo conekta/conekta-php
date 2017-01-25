@@ -9,13 +9,13 @@ use \Conekta\Conekta;
 
 class FiscalEntity extends Resource
 {
-    var $tax_id = "";
-    var $company_name = "";
-    var $phone = "";
-    var $email = "";
-    var $created_at = "";
-    var $parent_id = "";
-    var $default = ""; 
+    var $tax_id         = "";
+    var $company_name   = "";
+    var $phone          = "";
+    var $email          = "";
+    var $created_at     = "";
+    var $parent_id      = "";
+    var $default        = ""; 
 
     public function __get($property)
     {   

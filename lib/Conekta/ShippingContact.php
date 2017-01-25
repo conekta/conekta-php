@@ -9,7 +9,6 @@ use \Conekta\Conekta;
 
 class ShippingContact extends Resource
 {
-    var $email           = "";
     var $receiver        = "";
     var $phone           = "";
     var $between_streets = "";

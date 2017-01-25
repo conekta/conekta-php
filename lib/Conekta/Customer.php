@@ -6,18 +6,18 @@ use \Conekta\Resource;
 
 class Customer extends Resource
 {
-    var $livemode = "";
-    var $name  = "";
-    var $email = "";
-    var $phone = "";
+    var $livemode                    = "";
+    var $name                        = "";
+    var $email                       = "";
+    var $phone                       = "";
     var $default_shipping_contact_id = "";
-    var $default_fiscal_entity_id = "";
-    var $default_payment_source_id = "";
-    var $referrer = "";
-    var $account_age = "";
-    var $paid_transactions = "";
-    var $first_paid_at = "";
-    var $corporate = "";
+    var $default_fiscal_entity_id    = "";
+    var $default_payment_source_id   = "";
+    var $referrer                    = "";
+    var $account_age                 = "";
+    var $paid_transactions           = "";
+    var $first_paid_at               = "";
+    var $corporate                   = "";
 
     public function __get($property)
     {   

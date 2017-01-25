@@ -6,11 +6,11 @@ use \Conekta\Resource;
 
 class Event extends Resource
 {
-    var $data = "";
-    var $livemode = "";
+    var $data           = "";
+    var $livemode       = "";
     var $webhook_status = "";
-    var $created_at = "";
-    var $type = ""; 
+    var $created_at     = "";
+    var $type           = ""; 
 
     public function __get($property)
     {   

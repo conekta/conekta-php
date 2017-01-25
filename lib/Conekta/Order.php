@@ -6,15 +6,15 @@ use \Conekta\Resource;
 
 class Order extends Resource
 {
-    var $livemode = "";
-    var $amount = "";
-    var $status = "";
+    var $livemode    = "";
+    var $amount      = "";
+    var $status      = "";
     var $customer_id = "";
-    var $currency = "";
-    var $capture = "";
-    var $metadata = "";
-    var $created_at = "";
-    var $updated_at = "";
+    var $currency    = "";
+    var $capture     = "";
+    var $metadata    = "";
+    var $created_at  = "";
+    var $updated_at  = "";
     
     public function __get($property)
     {   

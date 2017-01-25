@@ -9,10 +9,10 @@ use \Conekta\Conekta;
 
 class DiscountLine extends Resource
 {
-    var $code = "";
-    var $amount = "";
-    var $type = "";
-    var $parent_id = "";
+    var $code       = "";
+    var $amount     = "";
+    var $type       = "";
+    var $parent_id  = "";
 
     public function __get($property)
     {   
