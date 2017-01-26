@@ -6,7 +6,7 @@ abstract class Conekta
 {
     public static $apiKey;
     public static $apiBase = 'https://api.conekta.io';
-    public static $apiVersion = '1.1.0';
+    public static $apiVersion = '2.0.0';
     public static $locale = 'es';
     public static $plugin = '';
     const VERSION = '3.1.0';

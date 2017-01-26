@@ -62,7 +62,6 @@ class ErrorTest extends UnitTestCase
         } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') !== false);
         }
-        setApiVersion('1.1.0');
     }
 
     public function testProcessingError()

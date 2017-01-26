@@ -29,7 +29,6 @@ class OrderTest extends UnitTestCase
     public function testSuccesfulCreateOrder()
     {
         setApiKey();
-        setApiVersion('1.1.0');
         $order = \Conekta\Order::create(self::$valid_order);
         $this->assertTrue(strpos($order->metadata["test"], 'extra info') !== false);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
