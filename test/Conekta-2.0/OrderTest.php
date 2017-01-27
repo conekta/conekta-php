@@ -233,8 +233,8 @@ class OrderTest extends UnitTestCase
             'phone' => '+5213353319758',
             'address' => array(
                 'street1' => '250 Alexis St',
-                'internal_number' => 19,
-                'external_number' => 10,
+                'internal_number' => '19',
+                'external_number' => '10',
                 'city' => 'Red Deer',
                 'state' => 'Alberta',
                 'country' => 'MX',
@@ -276,7 +276,7 @@ class OrderTest extends UnitTestCase
     {
         $charges =
             array(
-                'capture' => false,
+                'preauthorize' => true,
                 'charges' => array(
                     array(
                         'payment_source' => array(
@@ -295,8 +295,8 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
-        $this->assertTrue($order->capture == false);
+        $this->assertTrue($order->preauthorize == true);
         $order->capture();
-        $this->assertTrue($order->capture == true);
+        $this->assertTrue($order->preauthorize == false);
     }
 }

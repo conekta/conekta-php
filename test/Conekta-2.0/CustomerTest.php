@@ -87,8 +87,8 @@ class CustomerTest extends UnitTestCase
             'phone' => '+5213353319758',
             'address' => array(
                 'street1' => '250 Alexis St',
-                'internal_number' => 19,
-                'external_number' => 10,
+                'internal_number' => '19',
+                'external_number' => '10',
                 'city' => 'Red Deer',
                 'state' => 'Alberta',
                 'country' => 'MX',

@@ -13,12 +13,12 @@ class FiscalEntityTest extends UnitTestCase
             'phone' => '+5213353319758',
             'address' => array(
                 'street1' => '250 Alexis St',
-                'internal_number' => 19,
-                'external_number' => 10,
+                'internal_number' => "19",
+                'external_number' => '10',
                 'city' => 'Red Deer',
                 'state' => 'Alberta',
                 'country' => 'MX',
-                'zip' => '78216'
+                'postal_code' => '78216'
             )
         ))
     );
@@ -39,10 +39,10 @@ class FiscalEntityTest extends UnitTestCase
         $customer = \Conekta\Customer::create(self::$valid_customer);
 
         $customer->fiscal_entities[0]->update(array(
-            'company_name' => 'Company name'
+            'ame' => 'Another name'
         ));
 
-        $this->assertTrue($customer->fiscal_entities[0]->company_name == 'Company name');
+        $this->assertTrue($customer->fiscal_entities[0]->name == 'Another name');
     }
 
     public function testUnsuccessfulFiscalEntityUpdate()
@@ -52,7 +52,7 @@ class FiscalEntityTest extends UnitTestCase
 
         try {
             $customer->fiscal_entities[0]->update(array(
-                'company_name' => 'Company name'
+                'name' => 'Company name'
             ));
         } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);

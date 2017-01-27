@@ -116,7 +116,7 @@ class ChargeTest extends UnitTestCase
         setApiVersion('1.0.0');
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
-        $capture = array('capture' => false);
+        $capture = array('preauthorize' => true);
         setApiKey();
         $cpm = \Conekta\Charge::create(array_merge($pm, $card, $capture));
         $this->assertTrue($cpm->status == 'pre_authorized');
