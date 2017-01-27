@@ -238,7 +238,7 @@ class OrderTest extends UnitTestCase
                 'city' => 'Red Deer',
                 'state' => 'Alberta',
                 'country' => 'MX',
-                'zip' => '78216')
+                'postal_code' => '78216')
             ));
 
         $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);

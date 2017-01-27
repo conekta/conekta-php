@@ -48,7 +48,7 @@ abstract class Resource extends Object
 
     protected static function _scpWhere($class, $params)
     {
-        if (Conekta::$apiVersion == "1.1.0") {
+        if (Conekta::$apiVersion == "2.0.0") {
             $path = explode('\\', $class);
             $instance = new ConektaList(array_pop($path));
         } else {
@@ -103,7 +103,7 @@ abstract class Resource extends Object
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
 
-            if(Conekta::$apiVersion == "1.1.0"){
+            if(Conekta::$apiVersion == "2.0.0"){
                 $errorList = new ErrorList();
                 $errorList->details[] = $error;
                 throw $errorList;
@@ -156,7 +156,7 @@ abstract class Resource extends Object
             strpos($member, 'payout_methods') !== false) {
 
             if (empty($this->$member)) {
-                if (Conekta::$apiVersion == '1.1.0') {
+                if (Conekta::$apiVersion == '2.0.0') {
                    $this->$member = new ConektaList($member);
                 } else {
                     $this->$member = new Object();
@@ -177,6 +177,7 @@ abstract class Resource extends Object
             $instance = end($instances);
         } else {
             $class = '\\Conekta\\' . ucfirst($member);
+
             $instance = new $class();
             $instance->loadFromArray($response);
             $this->$member = $instance;

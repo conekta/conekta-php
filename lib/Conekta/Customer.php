@@ -37,7 +37,7 @@ class Customer extends Resource
             parent::loadFromArray($values);
         }
 
-        if(Conekta::$apiVersion == '1.1.0'){
+        if(Conekta::$apiVersion == '2.0.0'){
             $submodels = array(
                 'payment_sources', 'fiscal_entities', 'shipping_contacts'
             );

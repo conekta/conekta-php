@@ -68,7 +68,7 @@ class CustomerTest extends UnitTestCase
                 'city' => 'Sydney',
                 'state' => 'P. Sherman',
                 'country' => 'MX',
-                'zip' => '78215'
+                'postal_code' => '78215'
             )
         ));
         $this->assertTrue(strpos(get_class($shipping_contact), 'ShippingContact') !== false);
@@ -92,7 +92,7 @@ class CustomerTest extends UnitTestCase
                 'city' => 'Red Deer',
                 'state' => 'Alberta',
                 'country' => 'MX',
-                'zip' => '78216'
+                'postal_code' => '78216'
             )
         ));
 

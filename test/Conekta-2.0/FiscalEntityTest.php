@@ -8,7 +8,7 @@ class FiscalEntityTest extends UnitTestCase
         'email' => 'test@conekta.io',
         'fiscal_entities' => array(array(
             'tax_id' => 'AMGH851205MN1',
-            'company_name' => 'Test SA de CV',
+            'name' => 'Test SA de CV',
             'email' => 'test@conekta.io',
             'phone' => '+5213353319758',
             'address' => array(

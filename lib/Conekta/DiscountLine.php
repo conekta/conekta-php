@@ -36,7 +36,7 @@ class DiscountLine extends Resource
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
 
-            if($this->apiVersion = '1.1.0'){
+            if($this->apiVersion = '2.0.0'){
                 $errorList = new ErrorList();
                 array_push($errorList->details, $error);
                 throw $errorList;

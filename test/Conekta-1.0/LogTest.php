@@ -9,7 +9,6 @@ class LogTest extends UnitTestCase
         $logs = \Conekta\Log::where();
         $log = \Conekta\Log::find($logs[0]['id']);
         $this->assertTrue(strpos(get_class($log), 'Log') !== false);
-		setApiVersion('1.1.0');
     }
 
     public function testSuccesfulWhere()
