@@ -5,6 +5,7 @@ class PlanTest extends UnitTestCase
     public function testSuccesfulGetPlan()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $plans = \Conekta\Plan::where();
         $p = $plans[0];
         $plan = \Conekta\Plan::find($p->id);
@@ -14,6 +15,7 @@ class PlanTest extends UnitTestCase
     public function testSuccesfulWhere()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $plans = \Conekta\Plan::where();
         $this->assertTrue(strpos(get_class($plans), 'Object') !== false);
         $this->assertTrue(strpos(get_class($plans[0]), 'Plan') !== false);
@@ -22,6 +24,7 @@ class PlanTest extends UnitTestCase
     public function testSuccesfulPlanCreate()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $plans = \Conekta\Plan::where();
         $plan = \Conekta\Plan::create(array(
             'id'                => 'gold-plan'.substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1).substr(md5(time()), 1),
@@ -39,6 +42,7 @@ class PlanTest extends UnitTestCase
     public function testUpdatePlan()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $plans = \Conekta\Plan::where();
         $plan = $plans[0];
         $plan->update(array('name' => 'Silver Plan'));
@@ -48,6 +52,7 @@ class PlanTest extends UnitTestCase
     public function testDeletePlan()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $plans = \Conekta\Plan::where();
         $plan = $plans[0];
         $plan->delete();

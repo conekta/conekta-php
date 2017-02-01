@@ -6,6 +6,27 @@ use \Conekta\Resource;
 
 class Order extends Resource
 {
+    var $livemode    = "";
+    var $amount      = "";
+    var $status      = "";
+    var $customer_id = "";
+    var $currency    = "";
+    var $capture     = "";
+    var $metadata    = "";
+    var $created_at  = "";
+    var $updated_at  = "";
+    
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
 
     public function loadFromArray($values = null)
     {
@@ -14,17 +35,21 @@ class Order extends Resource
         }
 
         $submodels = array(
-            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges'
+            'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges', 'returns'
         );
 
         foreach ($submodels as $submodel) {
-            $submodel_list = new ConektaList($submodel);
-            $submodel_list->loadFromArray($values[$submodel]);
-            $this->$submodel->_values = $submodel_list;
-            $this->$submodel = $submodel_list;
+            if(isset($values[$submodel])){
+                $submodel_list = new ConektaList($submodel);
+                $submodel_list->loadFromArray($values[$submodel]);
+                $this->$submodel->_values = $submodel_list;
+                $this->$submodel = $submodel_list;
 
-            foreach ($this->$submodel as $k => $v) {
-                $v->order = $this;
+                foreach ($this->$submodel as $k => $v) {
+                    $v->order = $this;
+                }
+            }else{
+                $this->$submodel = new ConektaList($submodel, array());
             }
         }
 

@@ -9,6 +9,23 @@ use \Conekta\Conekta;
 
 class DiscountLine extends Resource
 {
+    var $code       = "";
+    var $amount     = "";
+    var $type       = "";
+    var $parent_id  = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
     public function instanceUrl()
     {
         $this->apiVersion = Conekta::$apiVersion;
@@ -19,7 +36,7 @@ class DiscountLine extends Resource
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
 
-            if($this->apiVersion = '1.1.0'){
+            if($this->apiVersion = '2.0.0'){
                 $errorList = new ErrorList();
                 array_push($errorList->details, $error);
                 throw $errorList;

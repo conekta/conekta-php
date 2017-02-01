@@ -40,7 +40,7 @@ $valid_order =
           'metadata'    => array('test' => 'extra info'),
           'charges'     => array(
               array(
-                  'source' => array(
+                  'payment_source' => array(
                       'type'       => 'oxxo_cash',
                       'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                    ),

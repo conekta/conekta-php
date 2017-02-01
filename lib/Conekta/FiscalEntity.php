@@ -9,6 +9,26 @@ use \Conekta\Conekta;
 
 class FiscalEntity extends Resource
 {
+    var $tax_id         = "";
+    var $company_name   = "";
+    var $phone          = "";
+    var $email          = "";
+    var $created_at     = "";
+    var $parent_id      = "";
+    var $default        = ""; 
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
     public function instanceUrl()
     {
         $id = $this->id;

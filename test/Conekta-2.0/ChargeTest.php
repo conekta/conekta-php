@@ -73,21 +73,11 @@ class ChargeTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($pm), 'Charge') !== false);
     }
 
-    public function testSuccesfulWhere()
-    {
-        setApiKey();
-        setApiVersion('1.0.0');
-        $charges = \Conekta\Charge::where();
-        $this->assertTrue(strpos(get_class($charges), 'Object') !== false);
-        $this->assertTrue(strpos(get_class($charges[0]), 'Charge') !== false);
-    }
-
     public function testSuccesfulBankPMCreate()
     {
         $pm = self::$valid_payment_method;
         $bank = array('bank' => array('type' => 'banorte'));
         setApiKey();
-        setApiVersion('1.1.0');
         $bpm = \Conekta\Charge::create(array_merge($pm, $bank));
         $this->assertTrue($bpm->payment_method->service_number == "127589");
         $this->assertTrue($bpm->payment_method->service_name == "Conekta");
@@ -101,7 +91,6 @@ class ChargeTest extends UnitTestCase
         $pm = self::$valid_payment_method;
         $spei = array('bank' => array('type' => 'spei'));
         setApiKey();
-        setApiVersion('1.1.0');
         $bpm = \Conekta\Charge::create(array_merge($pm, $spei));
         $this->assertTrue($bpm->payment_method->bank == "STP");
         $this->assertTrue(intval($bpm->payment_method->clabe) > 0);
@@ -114,7 +103,6 @@ class ChargeTest extends UnitTestCase
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
         setApiKey();
-        setApiVersion('1.1.0');
         $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
     }
@@ -124,63 +112,10 @@ class ChargeTest extends UnitTestCase
         $pm = self::$valid_payment_method;
         $oxxo = array('cash' => array('type' => 'oxxo'));
         setApiKey();
-        setApiVersion('1.1.0');
         $opm = \Conekta\Charge::create(array_merge($pm, $oxxo));
         $this->assertTrue(is_numeric($opm->payment_method->expires_at));
         $this->assertTrue($opm->payment_method->store_name == "OXXO");
         $this->assertTrue($opm->status == 'pending_payment');
     }
 
-    public function testUnsuccesfulPMCreate()
-    {
-        $pm = self::$intvalid_payment_method;
-        $card = self::$valid_visa_card;
-        setApiKey();
-        setApiVersion('1.0.0');
-        try {
-            $cpm = \Conekta\Charge::create(array_merge($pm, $card));
-        } catch (Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'The minimum for card payments is 3 pesos. Check that the amount is in cents as explained in the documentation.') !== false);
-        }
-    }
-
-    public function testSuccesfulRefund()
-    {
-        setApiVersion('1.0.0');
-        $pm = self::$valid_payment_method;
-        $card = self::$valid_visa_card;
-        setApiKey();
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card));
-        $this->assertTrue($cpm->status == 'paid');
-        $cpm->refund();
-        $this->assertTrue($cpm->status == 'refunded');
-    }
-
-    public function testUnsuccesfulRefund()
-    {
-        $pm = self::$valid_payment_method;
-        $card = self::$valid_visa_card;
-        setApiKey();
-        setApiVersion('1.0.0');
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card));
-        $this->assertTrue($cpm->status == 'paid');
-        try {
-            $cpm->refund(3000);
-        } catch (Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'The amount to refund exceeds the charge total') !== false);
-        }
-    }
-
-    public function testSuccesfulCapture()
-    {
-        setApiVersion('1.0.0');
-        $pm = self::$valid_payment_method;
-        $card = self::$valid_visa_card;
-        $capture = array('capture' => false);
-        setApiKey();
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card, $capture));
-        $this->assertTrue($cpm->status == 'pre_authorized');
-        $cpm->capture();
-        $this->assertTrue($cpm->status == 'paid');
-    }
 }

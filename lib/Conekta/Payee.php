@@ -6,6 +6,25 @@ use \Conekta\Resource;
 
 class Payee extends Resource
 {
+    var $email                  = "";
+    var $name                   = "";
+    var $phone                  = "";
+    var $livemode               = "";
+    var $default_destination_id = "";
+    var $created_at             = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
     public function loadFromArray($values = null)
     {
         if (isset($values)) {

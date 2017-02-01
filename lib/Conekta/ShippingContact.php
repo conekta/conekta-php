@@ -9,6 +9,25 @@ use \Conekta\Conekta;
 
 class ShippingContact extends Resource
 {
+    var $receiver        = "";
+    var $phone           = "";
+    var $between_streets = "";
+    var $parent_id       = "";
+    var $default         = "";
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+
+
     public function instanceUrl()
     {
         $id = $this->id;
