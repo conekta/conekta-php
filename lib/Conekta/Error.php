@@ -8,21 +8,24 @@ use \Exception;
 
 class Error extends Exception
 {
-    public static function build($resp, $code)
+    public static function build($resp, $http_code)
     {
         $message = isset($resp['message']) ? $resp['message'] : null;
         $message_to_purchaser = isset($resp['message_to_purchaser']) ? $resp['message_to_purchaser'] : null;
         $type = isset($resp['type']) ? $resp['type'] : null;
         $params = isset($resp['param']) ? $resp['param'] : null;
 
-        if (isset($code) != true || $code == 0) {
+        $debug_message = isset($resp['debug_message']) ? $resp['debug_message'] : null;
+        $code = isset($resp['code']) ? $resp['code'] : null;
+
+        if (isset($http_code) != true || $http_code == 0) {
             return new NoConnectionError(
                 Lang::translate('error.requestor.connection', Lang::EN, array('BASE' => Conekta::$apiBase)),
                 Lang::translate('error.requestor.connection_purchaser', Conekta::$locale),
-                $type, $code, $params);
+                $type, $http_code, $params);
         }
 
-        switch ($code) {
+        switch ($http_code) {
             case 400:
                 return new MalformedRequestError($message, $message_to_purchaser, $type, $code, $params);
             case 401:
@@ -50,9 +53,9 @@ class Error extends Exception
         $this->params = $params;
     }
 
-    public static function errorHandler($resp, $code)
+    public static function errorHandler($resp, $http_code)
     {
-        throw self::build($resp, $code);
+        throw self::build($resp, $http_code);
     }
 }
 
