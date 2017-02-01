@@ -43,9 +43,9 @@ class LineItem extends Resource
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
-        $customerUrl = $this->order->instanceUrl();
+        $orderUrl = $this->order->instanceUrl();
 
-        return $customerUrl . $base . "/{$extn}";
+        return $orderUrl . $base . "/{$extn}";
     }
 
     public function update($params = null)
