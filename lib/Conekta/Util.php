@@ -33,7 +33,8 @@ abstract class Util
         'line_item'                   => '\Conekta\LineItem',
         'order'                       => '\Conekta\Order',
         'fiscal_entity'               => '\Conekta\FiscalEntity',
-        'return'                      => '\Conekta\OrderReturn'
+        'return'                      => '\Conekta\OrderReturn',
+        'token'                       => '\Conekta\Token'
     );
 
     public static function convertToConektaObject($resp)
