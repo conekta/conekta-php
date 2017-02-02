@@ -8,6 +8,19 @@ use \Exception;
 
 class Error extends Exception
 {
+
+    public function __get($property)
+    {   
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+
+    public function  __isset($property)
+    {
+        return isset($this->$property);
+    }
+    
     public static function build($resp, $http_code)
     {
         $message = isset($resp['message']) ? $resp['message'] : null;
