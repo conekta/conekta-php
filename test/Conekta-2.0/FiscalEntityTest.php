@@ -39,7 +39,7 @@ class FiscalEntityTest extends UnitTestCase
         $customer = \Conekta\Customer::create(self::$valid_customer);
 
         $customer->fiscal_entities[0]->update(array(
-            'ame' => 'Another name'
+            'name' => 'Another name'
         ));
 
         $this->assertTrue($customer->fiscal_entities[0]->name == 'Another name');

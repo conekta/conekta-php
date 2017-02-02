@@ -22,7 +22,7 @@ class OrderTest extends UnitTestCase
 
     public static $valid_return = array(
         'amount' => 20000,
-        'reason' => 'Reason return',
+        'reason' => 'requested_by_client',
         'currency' => 'MXN',
     );
 

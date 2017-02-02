@@ -202,4 +202,12 @@ abstract class Resource extends Object
 
         return $this;
     }
+
+    protected function _createMemberWithRelation($member, $params, $parent)
+    {
+        $parent_class = strtolower((new \ReflectionClass($parent))->getShortName());
+        $child = self::_createMember($member, $params);
+        $child->$parent_class = $parent;
+        return $child;
+    }
 }

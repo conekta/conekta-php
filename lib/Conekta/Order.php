@@ -91,22 +91,22 @@ class Order extends Resource
 
     public function createTaxLine($params = null)
     {
-        return parent::_createMember('tax_lines', $params);
+        return parent::_createMemberWithRelation('tax_lines', $params, $this);
     }
 
     public function createShippingLine($params = null)
     {
-        return parent::_createMember('shipping_lines', $params);
+        return parent::_createMemberWithRelation('shipping_lines', $params, $this);
     }
 
     public function createDiscountLine($params = null)
     {
-        return parent::_createMember('discount_lines', $params);
+        return parent::_createMemberWithRelation('discount_lines', $params, $this);
     }
 
     public function createLineItem($params = null)
     {
-        return parent::_createMember('line_items', $params);
+        return parent::_createMemberWithRelation('line_items', $params, $this);
     }
 
     public function createFiscalEntity($params = null)

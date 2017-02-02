@@ -113,17 +113,17 @@ class Customer extends Resource
 
     public function createPaymentSource($params = null)
     {
-        return parent::_createMember('payment_sources', $params);
+        return parent::_createMemberWithRelation('payment_sources', $params, $this);
     }
 
     public function createFiscalEntity($params = null)
     {
-        return parent::_createMember('fiscal_entities', $params);
+        return parent::_createMemberWithRelation('fiscal_entities', $params, $this);
     }
 
     public function createCard($params = null)
     {
-        return parent::_createMember('cards', $params);
+        return parent::_createMemberWithRelation('cards', $params, $this);
     }
 
     public function createSubscription($params = null)
@@ -133,7 +133,7 @@ class Customer extends Resource
 
     public function createShippingContact($params = null)
     {
-        return parent::_createMember('shipping_contacts', $params);
+        return parent::_createMemberWithRelation('shipping_contacts', $params, $this);
     }
 
     /**
