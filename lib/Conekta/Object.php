@@ -18,11 +18,13 @@ class Object extends ArrayObject
     public function _setVal($k, $v)
     {
         $this->_values[$k] = $v;
+        $this[$k] = $v;
     }
 
     public function _unsetKey($k)
     {
         unset($this->_values[$k]);
+        unset($k);
     }
 
     public function loadFromArray($values)
@@ -38,6 +40,15 @@ class Object extends ArrayObject
                     $k = "webhook_url";
                 }
                 $this->$k = $v;
+                if ($k == "metadata") {
+                    $this->metadata = new Object();
+                    if (is_array($v) || is_object($v)) {
+                        foreach ($v as $k2 => $v2) {
+                            $this->metadata->$k2 = $v2;
+                            $this->metadata->_setVal($k2, $v2);
+                        }
+                    }
+                }
             }
             $this->_setVal($k, $v);
         }

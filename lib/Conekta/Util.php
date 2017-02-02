@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -22,7 +22,18 @@ abstract class Util
         'customer'                    => '\Conekta\Customer',
         'event'                       => '\Conekta\Event',
         'plan'                        => '\Conekta\Plan',
-        'subscription'                => '\Conekta\Subscription'
+        'subscription'                => '\Conekta\Subscription',
+        'payment_source'              => '\Conekta\PaymentSource',
+        'tax_line'                    => '\Conekta\TaxLine',
+        'shipping_line'               => '\Conekta\ShippingLine',
+        'discount_line'               => '\Conekta\DiscountLine',
+        'conekta_list'                => '\Conekta\ConektaList',
+        'shipping_contact'            => '\Conekta\ShippingContact',
+        'lang'                        => '\Conekta\Lang',
+        'line_item'                   => '\Conekta\LineItem',
+        'order'                       => '\Conekta\Order',
+        'fiscal_entity'               => '\Conekta\FiscalEntity',
+        'return'                      => '\Conekta\OrderReturn'
     );
 
     public static function convertToConektaObject($resp)
@@ -44,6 +55,7 @@ abstract class Util
 
                 return $instance;
             }
+
             if (current($resp)) {
                 $instance = new Object();
                 $instance->loadFromArray($resp);

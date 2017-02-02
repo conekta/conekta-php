@@ -7,17 +7,13 @@ use \Conekta\Lang;
 use \Conekta\Error;
 use \Conekta\Conekta;
 
-class Card extends Resource
+class ShippingContact extends Resource
 {
-    var $created_at = "";
-    var $last4      = "";
-    var $bin        = "";
-    var $name       = "";
-    var $exp_month  = "";
-    var $exp_year   = "";
-    var $brand      = "";
-    var $parent_id  = "";
-    var $default    = "";
+    var $receiver        = "";
+    var $phone           = "";
+    var $between_streets = "";
+    var $parent_id       = "";
+    var $default         = "";
 
     public function __get($property)
     {   
@@ -36,17 +32,10 @@ class Card extends Resource
     {
         $id = $this->id;
         if (!$id) {
-            $error = new Error(
+            throw new Error(
                 Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
-
-            if($this->apiVersion = '2.0.0'){
-                $errorList = new ErrorList();
-                array_push($errorList->details, $error);
-                throw $errorList;
-            }
-            throw $error;
         }
 
         $class = get_class($this);
@@ -64,6 +53,6 @@ class Card extends Resource
 
     public function delete()
     {
-        return parent::_delete('customer', 'cards');
+        return parent::_delete('customer', 'shipping_contacts');
     }
 }

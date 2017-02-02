@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -22,7 +22,7 @@ abstract class Resource extends Object
         }
         $class = str_replace('_', '', $class);
         $name = urlencode($class);
-        $name = strtolower($name);
+        $name = strtolower(preg_replace('/([a-z])([A-Z])/', '$1_$2', $name));
 
         return $name;
     }
@@ -42,14 +42,18 @@ abstract class Resource extends Object
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
             );
         }
-        
         $base = self::_getBase($class, 'className', $class);
         return "/{$base}s";
     }
 
     protected static function _scpWhere($class, $params)
     {
-        $instance = new Object();
+        if (Conekta::$apiVersion == "2.0.0") {
+            $path = explode('\\', $class);
+            $instance = new ConektaList(array_pop($path));
+        } else {
+            $instance = new Object();
+        }
         $requestor = new Requestor();
         $url = self::classUrl($class);
         $response = $requestor->request('get', $url, $params);
@@ -83,17 +87,29 @@ abstract class Resource extends Object
     public function instanceUrl()
     {
         $id = $this->id;
-        if (!$id) {
-            throw new Error(
-            Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
-            Lang::translate('error.resource.id_purchaser', Conekta::$locale)
-            );
-        }
+        $this->idValidator($id);
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
 
         return "{$base}/{$extn}";
+    }
+
+    protected function idValidator($id)
+    {
+        if (!$id) {
+            $error = new Error(
+                Lang::translate('error.resource.id', Lang::EN, array('RESOURCE' => get_class())),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
+            );
+
+            if(Conekta::$apiVersion == "2.0.0"){
+                $errorList = new ErrorList();
+                $errorList->details[] = $error;
+                throw $errorList;
+            }
+            throw $error;
+        }
     }
 
     protected function _delete($parent = null, $member = null)
@@ -133,16 +149,35 @@ abstract class Resource extends Object
         $requestor = new Requestor();
         $url = $this->instanceUrl().'/'.$member;
         $response = $requestor->request('post', $url, $params);
-        if (strpos(get_class($this->$member), 'Object') !== false || strpos($member, 'cards') !== false || strpos($member, 'payout_methods') !== false) {
+
+        if (strpos(get_class($this->$member), 'ConektaList') !== false ||
+            strpos(get_class($this->$member), 'Object') !== false ||
+            strpos($member, 'cards') !== false ||
+            strpos($member, 'payout_methods') !== false) {
+
             if (empty($this->$member)) {
-                $this->$member = new Object();
+                if (Conekta::$apiVersion == '2.0.0') {
+                   $this->$member = new ConektaList($member);
+                } else {
+                    $this->$member = new Object();
+                }
             }
-            $this->$member->loadFromArray(array_merge($this->$member->_toArray(), array($response)));
-            $this->loadFromArray();
+
+            if (strpos(get_class($this->$member), 'ConektaList') !== false) {
+                $this->$member->addElement($response);
+            } else {
+                $this->$member->loadFromArray(array_merge(
+                    $this->$member->_toArray(),
+                    array($response)
+                ));
+
+                $this->loadFromArray();
+            }
             $instances = $this->$member;
             $instance = end($instances);
         } else {
             $class = '\\Conekta\\' . ucfirst($member);
+
             $instance = new $class();
             $instance->loadFromArray($response);
             $this->$member = $instance;
@@ -161,9 +196,18 @@ abstract class Resource extends Object
         } else {
             $url = $this->instanceUrl();
         }
+
         $response = $requestor->request($method, $url, $params);
         $this->loadFromArray($response);
 
         return $this;
+    }
+
+    protected function _createMemberWithRelation($member, $params, $parent)
+    {
+        $parent_class = strtolower((new \ReflectionClass($parent))->getShortName());
+        $child = self::_createMember($member, $params);
+        $child->$parent_class = $parent;
+        return $child;
     }
 }

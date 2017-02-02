@@ -5,6 +5,7 @@ class PayoutTest extends UnitTestCase
     public function testSuccesfulGetPayout()
     {
         setApiKey();
+        setApiVersion('1.0.0');
         $payee = \Conekta\Payee::create(array(
             'name'  => 'John Doe',
             'email' => 'j_d@radcorp->com',

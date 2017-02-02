@@ -7,17 +7,12 @@ use \Conekta\Lang;
 use \Conekta\Error;
 use \Conekta\Conekta;
 
-class Card extends Resource
+class DiscountLine extends Resource
 {
-    var $created_at = "";
-    var $last4      = "";
-    var $bin        = "";
-    var $name       = "";
-    var $exp_month  = "";
-    var $exp_year   = "";
-    var $brand      = "";
+    var $code       = "";
+    var $amount     = "";
+    var $type       = "";
     var $parent_id  = "";
-    var $default    = "";
 
     public function __get($property)
     {   
@@ -31,9 +26,9 @@ class Card extends Resource
         return isset($this->$property);
     }
 
-
     public function instanceUrl()
     {
+        $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
         if (!$id) {
             $error = new Error(
@@ -52,9 +47,9 @@ class Card extends Resource
         $class = get_class($this);
         $base = $this->classUrl($class);
         $extn = urlencode($id);
-        $customerUrl = $this->customer->instanceUrl();
+        $orderUrl = $this->order->instanceUrl();
 
-        return $customerUrl . $base . "/{$extn}";
+        return $orderUrl . $base . "/{$extn}";
     }
 
     public function update($params = null)
@@ -64,6 +59,6 @@ class Card extends Resource
 
     public function delete()
     {
-        return parent::_delete('customer', 'cards');
+        return parent::_delete('order', 'discount_lines');
     }
 }
