@@ -32,7 +32,6 @@ abstract class Util
         'lang'                        => '\Conekta\Lang',
         'line_item'                   => '\Conekta\LineItem',
         'order'                       => '\Conekta\Order',
-        'fiscal_entity'               => '\Conekta\FiscalEntity',
         'return'                      => '\Conekta\OrderReturn',
         'token'                       => '\Conekta\Token'
     );

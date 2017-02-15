@@ -75,29 +75,4 @@ class CustomerTest extends UnitTestCase
         $this->assertTrue(strpos(get_class($customer->shipping_contacts), 'ConektaList') !== false);
         $this->assertTrue($customer->shipping_contacts->total == 1);
     }
-
-    public function testSuccesfulFiscalEntityCreate()
-    {
-        setApiKey();
-        $customer = \Conekta\Customer::create(self::$valid_customer);
-        $fiscal_entity = $customer->createFiscalEntity(array(
-            'tax_id' => 'AMGH851205MN1',
-            'company_name' => 'Test SA de CV',
-            'email' => 'test@conekta.io',
-            'phone' => '+5213353319758',
-            'address' => array(
-                'street1' => '250 Alexis St',
-                'internal_number' => '19',
-                'external_number' => '10',
-                'city' => 'Red Deer',
-                'state' => 'Alberta',
-                'country' => 'MX',
-                'postal_code' => '78216'
-            )
-        ));
-
-        $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);
-        $this->assertTrue(strpos(get_class($customer->fiscal_entities), 'ConektaList') !== false);
-        $this->assertTrue($customer->fiscal_entities->total == 1);
-    }
 }
