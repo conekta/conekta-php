@@ -67,6 +67,5 @@ require_once dirname(__FILE__).'/Conekta-2.0/ShippingContactTest.php';
 require_once dirname(__FILE__).'/Conekta-2.0/ShippingLineTest.php';
 require_once dirname(__FILE__).'/Conekta-2.0/LineItemTest.php';
 require_once dirname(__FILE__).'/Conekta-2.0/DiscountLineTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/FiscalEntityTest.php';
 require_once dirname(__FILE__).'/Conekta-2.0/ErrorListTest.php';
 require_once dirname(__FILE__).'/Conekta-2.0/ConektaTest.php';

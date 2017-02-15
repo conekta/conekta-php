@@ -11,7 +11,6 @@ class Customer extends Resource
     var $email                       = "";
     var $phone                       = "";
     var $default_shipping_contact_id = "";
-    var $default_fiscal_entity_id    = "";
     var $default_payment_source_id   = "";
     var $referrer                    = "";
     var $account_age                 = "";
@@ -39,7 +38,7 @@ class Customer extends Resource
 
         if(Conekta::$apiVersion == '2.0.0'){
             $submodels = array(
-                'payment_sources', 'fiscal_entities', 'shipping_contacts'
+                'payment_sources', 'shipping_contacts'
             );
             foreach ($submodels as $submodel) {
                 if (isset($values[$submodel])){
@@ -114,11 +113,6 @@ class Customer extends Resource
     public function createPaymentSource($params = null)
     {
         return parent::_createMemberWithRelation('payment_sources', $params, $this);
-    }
-
-    public function createFiscalEntity($params = null)
-    {
-        return parent::_createMemberWithRelation('fiscal_entities', $params, $this);
     }
 
     public function createCard($params = null)

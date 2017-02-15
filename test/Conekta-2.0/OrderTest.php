@@ -221,28 +221,6 @@ class OrderTest extends UnitTestCase
         $this->assertTrue($order->discount_lines->total == 1);
     }
 
-    public function testSuccessfulFiscalEntity()
-    {
-        setApiKey();
-        $order = \Conekta\Order::create(self::$valid_order);
-        $fiscal_entity = $order->createFiscalEntity(array(
-            'tax_id' => 'AMGH851205MN1',
-            'company_name' => 'Test SA de CV',
-            'email' => 'test@conekta.io',
-            'phone' => '+5213353319758',
-            'address' => array(
-                'street1' => '250 Alexis St',
-                'internal_number' => '19',
-                'external_number' => '10',
-                'city' => 'Red Deer',
-                'state' => 'Alberta',
-                'country' => 'MX',
-                'postal_code' => '78216')
-            ));
-
-        $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);
-    }
-
     public function testSuccessfulReturn()
     {
         $charges =

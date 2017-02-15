@@ -52,10 +52,6 @@ class Order extends Resource
                 $this->$submodel = new ConektaList($submodel, array());
             }
         }
-
-        if (isset($this->fiscal_entity)) {
-            $this->fiscal_entity->order = $this;
-        }
     }
 
     public static function where($params = null)
@@ -107,13 +103,6 @@ class Order extends Resource
     public function createLineItem($params = null)
     {
         return parent::_createMemberWithRelation('line_items', $params, $this);
-    }
-
-    public function createFiscalEntity($params = null)
-    {
-        $order = parent::_update(array('fiscal_entity' => $params));
-
-        return $order->fiscal_entity;
     }
 
     public function createCharge($params = null)
