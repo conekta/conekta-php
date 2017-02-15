@@ -56,17 +56,17 @@ require_once dirname(__FILE__).'/../lib/Conekta.php';
 
 // Include tests
 
-require_once dirname(__FILE__).'/Conekta-2.0/ChargeTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/CustomerTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/WebhookTest.php';
+/* require_once dirname(__FILE__).'/Conekta-2.0/ChargeTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/CustomerTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/WebhookTest.php'; */
 require_once dirname(__FILE__).'/Conekta-2.0/OrderTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/SourceTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/TaxLineTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/ConektaListTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/ShippingContactTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/ShippingLineTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/LineItemTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/DiscountLineTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/FiscalEntityTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/ErrorListTest.php';
-require_once dirname(__FILE__).'/Conekta-2.0/ConektaTest.php';
+/* require_once dirname(__FILE__).'/Conekta-2.0/SourceTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/TaxLineTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/ConektaListTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/ShippingContactTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/ShippingLineTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/LineItemTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/DiscountLineTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/FiscalEntityTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/ErrorListTest.php'; */
+/* require_once dirname(__FILE__).'/Conekta-2.0/ConektaTest.php'; */

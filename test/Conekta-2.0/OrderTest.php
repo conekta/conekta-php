@@ -41,7 +41,7 @@ class OrderTest extends UnitTestCase
             array(
                 'charges' => array(
                     array(
-                        'payment_source' => array(
+                        'payment_method' => array(
                             'type' => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),
@@ -75,7 +75,7 @@ class OrderTest extends UnitTestCase
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $other_params));
         $charge_params = array(
-            'payment_source' => array('type' => 'oxxo_cash'),
+            'payment_method' => array('type' => 'oxxo_cash'),
             'amount' => 20000
         );
         $charge = $order->createCharge($charge_params);
@@ -115,7 +115,7 @@ class OrderTest extends UnitTestCase
     {
         $charges = array(
             array(
-                'payment_source' => array(
+                'payment_method' => array(
                     'type' => 'oxxo_cash'
                 ),
                 'amount' => 10
@@ -250,7 +250,7 @@ class OrderTest extends UnitTestCase
             array(
                 'charges' => array(
                     array(
-                        'payment_source' => array(
+                        'payment_method' => array(
                             'type' => 'card',
                             'token_id' => 'tok_test_visa_4242'
                         ),
@@ -279,7 +279,7 @@ class OrderTest extends UnitTestCase
                 'preauthorize' => true,
                 'charges' => array(
                     array(
-                        'payment_source' => array(
+                        'payment_method' => array(
                             'type' => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),
