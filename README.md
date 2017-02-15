@@ -1,7 +1,7 @@
 
 ![alt tag](https://raw.github.com/conekta/conekta-php/master/readme_files/cover.png)
 
-# Conekta PHP v.3.1.0
+# Conekta PHP v.3.2.0
 
 This is a php library that allows interaction with https://api.conekta.io API.
 
@@ -70,7 +70,7 @@ In order to run tests you have to install SimpleTest (https://github.com/simplet
 
 Run test suite:
 
-    php ./test/Conekta.php
+    php ./test/Conekta-2.0.php
 
 License
 -------
