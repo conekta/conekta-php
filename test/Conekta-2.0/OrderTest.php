@@ -279,8 +279,8 @@ class OrderTest extends UnitTestCase
                 'charges'       => array(
                     array(
                         'payment_method' => array(
-                            'type'       => 'oxxo_cash',
-                            'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                            'type'     => 'card',
+                            'token_id' => 'tok_test_visa_4242'
                         ),
                         'amount' => 20000
                     )
@@ -294,8 +294,12 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
+        $this->assertTrue($order->payment_status == 'pre_authorized');
+        $this->assertTrue($order->charges[0]->status == 'pre_authorized');
+
         $order->capture();
 
-        $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+        $this->assertTrue($order->payment_status == 'paid');
+        $this->assertTrue($order->charges[0]->status == 'paid');
     }
 }
