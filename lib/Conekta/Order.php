@@ -112,6 +112,6 @@ class Order extends Resource
 
     public function refund($params = null)
     {
-      return parent::_customAction('post', 'refunds', $params);
+      return parent::_customAction('post', 'refund', $params);
     }
 }
