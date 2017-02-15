@@ -224,7 +224,6 @@ class OrderTest extends UnitTestCase
     public function testSuccessfulFiscalEntity()
     {
         setApiKey();
-        
         $order = \Conekta\Order::create(self::$valid_order);
         $fiscal_entity = $order->createFiscalEntity(array(
             'tax_id' => 'AMGH851205MN1',
@@ -276,11 +275,11 @@ class OrderTest extends UnitTestCase
     {
         $charges =
             array(
-                'preauthorize' => true,
-                'charges' => array(
+                'pre_authorize' => true,
+                'charges'       => array(
                     array(
                         'payment_method' => array(
-                            'type' => 'oxxo_cash',
+                            'type'       => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),
                         'amount' => 20000
@@ -295,8 +294,8 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
-        $this->assertTrue($order->preauthorize == true);
         $order->capture();
-        $this->assertTrue($order->preauthorize == false);
+
+        $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     }
 }
