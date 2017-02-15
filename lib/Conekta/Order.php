@@ -110,8 +110,8 @@ class Order extends Resource
         return parent::_createMember('charges', $params);
     }
 
-    public function createReturn($params = null)
+    public function refund($params = null)
     {
-      return parent::_createMember('returns', $params);
+      return parent::_customAction('post', 'refunds', $params);
     }
 }

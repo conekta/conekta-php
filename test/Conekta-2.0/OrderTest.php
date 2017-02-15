@@ -20,7 +20,7 @@ class OrderTest extends UnitTestCase
             'metadata'    => array('test' => 'extra info')
         );
 
-    public static $valid_return = array(
+    public static $valid_refund = array(
         'amount' => 20000,
         'reason' => 'requested_by_client',
         'currency' => 'MXN',
@@ -221,10 +221,9 @@ class OrderTest extends UnitTestCase
         $this->assertTrue($order->discount_lines->total == 1);
     }
 
-    public function testSuccessfulReturn()
+    public function testSuccessfulRefund()
     {
-        $charges =
-            array(
+        $charges = array(
                 'charges' => array(
                     array(
                         'payment_method' => array(
@@ -243,10 +242,10 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
-        $order->createReturn(array_merge(self::$valid_return, array('order_id' => $order->id)));
-        $returnedOrder = \Conekta\Order::find($order->id);
-        $this->assertTrue(strpos(get_class($order->returns[0]), 'OrderReturn') !== false);
-        $this->assertTrue($returnedOrder->payment_status == 'returned');
+        $order->refund(array_merge(self::$valid_refund, array('order_id' => $order->id)));
+        $refundedOrder = \Conekta\Order::find($order->id);
+
+        $this->assertTrue($refundedOrder->payment_status == 'refunded');
     }
 
     public function testSuccessfulCapture()
