@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Conekta;
 
@@ -25,7 +25,7 @@ class Charge extends Resource
     var $checkout_order_count       = "";
 
     public function __get($property)
-    {   
+    {
         if (property_exists($this, $property)) {
             return $this->$property;
         }

@@ -246,7 +246,7 @@ class OrderTest extends UnitTestCase
         $order->createReturn(array_merge(self::$valid_return, array('order_id' => $order->id)));
         $returnedOrder = \Conekta\Order::find($order->id);
         $this->assertTrue(strpos(get_class($order->returns[0]), 'OrderReturn') !== false);
-        $this->assertTrue($returnedOrder->status == 'returned');
+        $this->assertTrue($returnedOrder->payment_status == 'returned');
     }
 
     public function testSuccessfulCapture()
