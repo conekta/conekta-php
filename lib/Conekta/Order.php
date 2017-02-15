@@ -6,18 +6,18 @@ use \Conekta\Resource;
 
 class Order extends Resource
 {
-    var $livemode    = "";
-    var $amount      = "";
-    var $status      = "";
-    var $customer_id = "";
-    var $currency    = "";
-    var $capture     = "";
-    var $metadata    = "";
-    var $created_at  = "";
-    var $updated_at  = "";
-    
+    var $livemode       = "";
+    var $amount         = "";
+    var $payment_status = "";
+    var $customer_id    = "";
+    var $currency       = "";
+    var $capture        = "";
+    var $metadata       = "";
+    var $created_at     = "";
+    var $updated_at     = "";
+
     public function __get($property)
-    {   
+    {
         if (property_exists($this, $property)) {
             return $this->$property;
         }
@@ -51,10 +51,6 @@ class Order extends Resource
             }else{
                 $this->$submodel = new ConektaList($submodel, array());
             }
-        }
-
-        if (isset($this->fiscal_entity)) {
-            $this->fiscal_entity->order = $this;
         }
     }
 
@@ -109,20 +105,13 @@ class Order extends Resource
         return parent::_createMemberWithRelation('line_items', $params, $this);
     }
 
-    public function createFiscalEntity($params = null)
-    {
-        $order = parent::_update(array('fiscal_entity' => $params));
-
-        return $order->fiscal_entity;
-    }
-
     public function createCharge($params = null)
     {
         return parent::_createMember('charges', $params);
     }
 
-    public function createReturn($params = null)
+    public function refund($params = null)
     {
-      return parent::_createMember('returns', $params);
+      return parent::_customAction('post', 'refund', $params);
     }
 }

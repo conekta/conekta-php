@@ -20,7 +20,7 @@ class OrderTest extends UnitTestCase
             'metadata'    => array('test' => 'extra info')
         );
 
-    public static $valid_return = array(
+    public static $valid_refund = array(
         'amount' => 20000,
         'reason' => 'requested_by_client',
         'currency' => 'MXN',
@@ -41,7 +41,7 @@ class OrderTest extends UnitTestCase
             array(
                 'charges' => array(
                     array(
-                        'payment_source' => array(
+                        'payment_method' => array(
                             'type' => 'oxxo_cash',
                             'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
                         ),
@@ -75,7 +75,7 @@ class OrderTest extends UnitTestCase
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $other_params));
         $charge_params = array(
-            'payment_source' => array('type' => 'oxxo_cash'),
+            'payment_method' => array('type' => 'oxxo_cash'),
             'amount' => 20000
         );
         $charge = $order->createCharge($charge_params);
@@ -115,7 +115,7 @@ class OrderTest extends UnitTestCase
     {
         $charges = array(
             array(
-                'payment_source' => array(
+                'payment_method' => array(
                     'type' => 'oxxo_cash'
                 ),
                 'amount' => 10
@@ -221,36 +221,12 @@ class OrderTest extends UnitTestCase
         $this->assertTrue($order->discount_lines->total == 1);
     }
 
-    public function testSuccessfulFiscalEntity()
+    public function testSuccessfulRefund()
     {
-        setApiKey();
-        
-        $order = \Conekta\Order::create(self::$valid_order);
-        $fiscal_entity = $order->createFiscalEntity(array(
-            'tax_id' => 'AMGH851205MN1',
-            'company_name' => 'Test SA de CV',
-            'email' => 'test@conekta.io',
-            'phone' => '+5213353319758',
-            'address' => array(
-                'street1' => '250 Alexis St',
-                'internal_number' => '19',
-                'external_number' => '10',
-                'city' => 'Red Deer',
-                'state' => 'Alberta',
-                'country' => 'MX',
-                'postal_code' => '78216')
-            ));
-
-        $this->assertTrue(strpos(get_class($fiscal_entity), 'FiscalEntity') !== false);
-    }
-
-    public function testSuccessfulReturn()
-    {
-        $charges =
-            array(
+        $charges = array(
                 'charges' => array(
                     array(
-                        'payment_source' => array(
+                        'payment_method' => array(
                             'type' => 'card',
                             'token_id' => 'tok_test_visa_4242'
                         ),
@@ -266,22 +242,22 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
-        $order->createReturn(array_merge(self::$valid_return, array('order_id' => $order->id)));
-        $returnedOrder = \Conekta\Order::find($order->id);
-        $this->assertTrue(strpos(get_class($order->returns[0]), 'OrderReturn') !== false);
-        $this->assertTrue($returnedOrder->status == 'returned');
+        $order->refund(array_merge(self::$valid_refund, array('order_id' => $order->id)));
+        $refundedOrder = \Conekta\Order::find($order->id);
+
+        $this->assertTrue($refundedOrder->payment_status == 'refunded');
     }
 
     public function testSuccessfulCapture()
     {
         $charges =
             array(
-                'preauthorize' => true,
-                'charges' => array(
+                'pre_authorize' => true,
+                'charges'       => array(
                     array(
-                        'payment_source' => array(
-                            'type' => 'oxxo_cash',
-                            'expires_at' => strtotime(date("Y-m-d H:i:s")) + "36000"
+                        'payment_method' => array(
+                            'type'     => 'card',
+                            'token_id' => 'tok_test_visa_4242'
                         ),
                         'amount' => 20000
                     )
@@ -295,8 +271,12 @@ class OrderTest extends UnitTestCase
             );
         setApiKey();
         $order = \Conekta\Order::create(array_merge(self::$valid_order, $charges));
-        $this->assertTrue($order->preauthorize == true);
+        $this->assertTrue($order->payment_status == 'pre_authorized');
+        $this->assertTrue($order->charges[0]->status == 'pre_authorized');
+
         $order->capture();
-        $this->assertTrue($order->preauthorize == false);
+
+        $this->assertTrue($order->payment_status == 'paid');
+        $this->assertTrue($order->charges[0]->status == 'paid');
     }
 }

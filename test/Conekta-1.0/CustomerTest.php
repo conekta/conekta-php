@@ -115,7 +115,7 @@ class CustomerTest extends UnitTestCase
             $subscription = $customer->createSubscription(array(
                 'plan' => 'unexistent-plan', ));
         } catch (Exception $e) {
-            $this->assertTrue(strpos($e->getMessage(), 'The object Plan unexistent-plan could not be found.') !== false);
+            $this->assertTrue(strpos($e->getMessage(), 'The object Plan "unexistent-plan" could not be found.') !== false);
         }
     }
 
