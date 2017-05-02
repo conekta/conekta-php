@@ -1,7 +1,7 @@
 
 ![alt tag](https://raw.github.com/conekta/conekta-php/master/readme_files/cover.png)
 
-# Conekta PHP v.3.2.0
+# Conekta PHP v.3.3.0
 
 This is a php library that allows interaction with https://api.conekta.io API.
 
@@ -17,9 +17,10 @@ To get started, add the following to your PHP script:
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php": "3.2.0"
+  require: "conekta/conekta-php": "3.3.0"
 
 ## Usage
+
 ```php
 setApiKey();
 $valid_order =
@@ -32,7 +33,6 @@ $valid_order =
                 'quantity'    => 1,
                 'sku'         => 'cohb_s1',
                 'category'    => 'food',
-                'type'        => 'physical',
                 'tags'        => array('food', 'mexican food')
                 )
            ),
@@ -55,22 +55,60 @@ $valid_order =
             )
         );
 
-$order = \Conekta\Order::create($valid_order);
+try {
+  $order = \Conekta\Order::create($valid_order);
+} catch (\Conekta\ProcessingError $e){ 
+  echo $e->getMessage();
+} catch (\Conekta\ParameterValidationError $e){
+  echo $e->getMessage();
+} finally (\Conekta\Handler $e){
+  echo $e->getMessage();
+}
 ```
 
 ## Documentation
 
 Please see https://www.conekta.io/docs/api for up-to-date documentation.
 
-## Tests
+## Run Tests
 
-In order to run tests you have to install SimpleTest (https://github.com/simpletest/simpletest) via Composer (http://getcomposer.org/) (recommended way):
+Unit test based on php library PHPUnit to describe better memory usage, test status and test results.
 
-    composer.phar update --dev
+### Requeriments
+
+PHPUnit 6.1 requires PHP 7; using the latest version of PHP is highly recommended.
+
+### Installation
+for better usage install phpunit globally
+
+```
+$ wget https://phar.phpunit.de/phpunit-6.1.phar
+
+$ chmod +x phpunit-6.1.phar
+
+$ sudo mv phpunit-6.1.phar /usr/local/bin/phpunit
+
+$ phpunit --version
+
+ej. output
+PHPUnit 6.1.1 by Sebastian Bergmann and contributors.
+
+```
+
+php version used
+
+```
+PHP 7.0.17 (cli)
+```
 
 Run test suite:
 
-    php ./test/Conekta-2.0.php
+```
+phpunit test/Conekta-x.0
+```
+
+_note:_ for this phpunit version (6.1.x) only php 7 is supported for older php versions see phpunit <a href="https://phpunit.de/"> documentation</a>
+
 
 License
 -------

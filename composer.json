@@ -21,7 +21,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "simpletest/simpletest": "*"
+    "phpunit/phpunit": "*"
   },
   "autoload": {
     "classmap": ["lib/Conekta/"]
