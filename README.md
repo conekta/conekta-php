@@ -17,7 +17,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php": "3.1.0"
+  require: "conekta/conekta-php": "3.2.0"
 
 ## Usage
 ```php
@@ -54,7 +54,7 @@ $valid_order =
                 'email' => 'hola@hola.com'
             )
         );
-		
+
 $order = \Conekta\Order::create($valid_order);
 ```
 
@@ -79,6 +79,5 @@ Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LIC
 We are hiring
 -------------
 
-If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills. 
+If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills.
 Send your CV, github to quieroser@conekta.io
-
