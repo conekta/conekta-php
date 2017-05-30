@@ -1,19 +1,19 @@
 <?php
 
 use \Conekta\Lang;
+use PHPUnit\Framework\TestCase;
 
-class LangTest extends UnitTestCase
-{
-    public function testShouldTranslatesMessage()
-    {
-        $this->assertEqual(
-            'There was an error. Please contact system administrator.',
-            Lang::translate('error.resource.id_purchaser', Lang::EN)
-        );
+require_once dirname(__FILE__).'/../../lib/Conekta.php';
 
-        $this->assertEqual(
-            'Hubo un error. Favor de contactar al administrador del sistema.',
-            Lang::translate('error.resource.id_purchaser', Lang::ES)
-        );
-    }
+class LangTest extends TestCase
+{   
+	public function testShouldTranslatesMessage()
+	{
+		$langEnTest = Lang::translate('error.resource.id_purchaser', Lang::EN);
+		$langEsTest = Lang::translate('error.resource.id_purchaser', Lang::ES);
+		$langEnOut  = 'There was an error. Please contact system administrator.';
+		$langEsOut  = 'Hubo un error. Favor de contactar al administrador del sistema.';
+		$this->assertTrue( $langEnTest == $langEnOut);
+		$this->assertTrue( $langEsTest == $langEsOut);
+	}
 }

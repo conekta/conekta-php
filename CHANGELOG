@@ -82,3 +82,10 @@
 === 3.2.0 2017-02-15
 
 * Stable version of API 2.0.0.
+
+=== 3.3.0 2017-05-23
+
+* PHPUnit Test integration
+* Multihandler exception
+* CamelCase convention over variables
+* Stable version of API 2.0.0.
