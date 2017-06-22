@@ -56,7 +56,7 @@ class ConektaList extends Object
     return $this->_moveCursor($options['limit']);
   }
 
-  public function previous($options = array())
+  public function previous($options = array('limit' => 5))
   {
     if (sizeOf($this) > 0) {
       $this->params['previous'] = $this[0]->id;
