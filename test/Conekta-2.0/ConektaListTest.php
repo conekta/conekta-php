@@ -43,5 +43,19 @@ class ConektaListTest extends TestCase
     
     return $orderList;
   }
+  public function testSuccessfulEmptyNext()
+  {
+    $orderList = $this->createResponseMockUp();
+    $window = \Conekta\Order::where(array('limit' => 5)); 
+    $firstNext = $window->count();
+    $firtsOrderId = $window[0]->id;
+    $window->next(); //next => 5 order's
+    $actualOrderId = $window[0]->id;
+    $window->next(array('limit'=>10)); // next => 10 order's
+    $secondNext = $window->count();
+    $this->assertTrue($firstNext  == 5);
+    $this->assertTrue($secondNext == 10);
+    $this->assertTrue($firtsOrderId != $actualOrderId);
+  }
 
 }

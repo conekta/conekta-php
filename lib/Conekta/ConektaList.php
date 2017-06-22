@@ -46,14 +46,13 @@ class ConektaList extends Object
     }
   }
 
-  public function next($options = array())
+  public function next($options = array('limit' => 5))
   {
     if (sizeOf($this) > 0) {
       $this->params['next'] = end($this)->id;
     }
 
     $this->params['previous'] = null;
-
     return $this->_moveCursor($options['limit']);
   }
 
