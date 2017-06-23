@@ -46,7 +46,8 @@ class ConektaListTest extends TestCase
   public function testSuccessfulEmptyNext()
   {
     $orderList = $this->createResponseMockUp();
-    $window = \Conekta\Order::where(array('limit' => 5)); 
+    $window = \Conekta\Order::where(array('limit' => 5));
+
     $firtsOrderId = $window[0]->id;
     $window->next(); 
     $secondOrderId = $window[0]->id; 
@@ -68,6 +69,7 @@ class ConektaListTest extends TestCase
   {
     $orderList = $this->createResponseMockUp();
     $window = \Conekta\Order::where(array('limit' => 10)); 
+
     $firtsOrderId = $window[0]->id;
     $window->next(); 
     $firstNext = $window->count(); 
