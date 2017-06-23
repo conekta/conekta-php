@@ -43,5 +43,46 @@ class ConektaListTest extends TestCase
     
     return $orderList;
   }
+  public function testSuccessfulEmptyNext()
+  {
+    $orderList = $this->createResponseMockUp();
+    $window = \Conekta\Order::where(array('limit' => 5));
+
+    $firtsOrderId = $window[0]->id;
+    $window->next(); 
+    $secondOrderId = $window[0]->id; 
+    $firstNext = $window->count(); 
+    $actualOrderId = $window[0]->id;
+    $window->next(array('limit'=>10));
+    $secondNext = $window->count();
+
+    //first next witout params
+    $this->assertTrue($firstNext  == 5);
+
+    // second next with limit 10
+    $this->assertTrue($secondNext == 10);
+    
+    // first order id index's never be the same after a next
+    $this->assertTrue($firtsOrderId != $secondOrderId);
+  }
+  public function testSuccessfulEmptyPrevious()
+  {
+    $orderList = $this->createResponseMockUp();
+    $window = \Conekta\Order::where(array('limit' => 10)); 
+
+    $firtsOrderId = $window[0]->id;
+    $window->next(); 
+    $firstNext = $window->count(); 
+    $window->previous(); 
+    $returnNext = $window->count();
+    $window->previous(array('limit'=>10)); 
+    $secondOrderId = $window[0]->id; 
+
+    // after return both id's have to be the same 
+    $this->assertTrue($secondOrderId  == $firtsOrderId); 
+
+    //  next match after return  previous runs over same index's
+    $this->assertTrue($returnNext == $firstNext); 
+  }
 
 }
