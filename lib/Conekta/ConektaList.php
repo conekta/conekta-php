@@ -11,6 +11,7 @@ use \Conekta\Conekta;
 class ConektaList extends Object
 {
 
+  const LIMIT = array('limit' => 5);
 
   public function __construct($elements_type, $params = array())
   {
@@ -46,7 +47,7 @@ class ConektaList extends Object
     }
   }
 
-  public function next($options = array('limit' => 5))
+  public function next($options = self::LIMIT)
   {
     if (sizeOf($this) > 0) {
       $this->params['next'] = end($this)->id;
@@ -56,7 +57,7 @@ class ConektaList extends Object
     return $this->_moveCursor($options['limit']);
   }
 
-  public function previous($options = array('limit' => 5))
+  public function previous($options = self::LIMIT)
   {
     if (sizeOf($this) > 0) {
       $this->params['previous'] = $this[0]->id;
