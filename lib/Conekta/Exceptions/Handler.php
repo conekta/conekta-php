@@ -4,7 +4,6 @@ namespace Conekta;
 
 use \Conekta\Lang;
 use \Conekta\Conekta;
-use \Conekta\Exceptions;
 use \Exception;
 
 /**
