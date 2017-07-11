@@ -1,5 +1,4 @@
-
-![alt tag](https://raw.github.com/conekta/conekta-php/master/readme_files/cover.png)
+![README Cover Image](readme_cover.png)
 
 # Conekta PHP v.3.3.0
 
@@ -68,7 +67,7 @@ try {
 
 ## Documentation
 
-Please see https://www.conekta.io/docs/api for up-to-date documentation.
+Please see [developers.conekta.com/api](https://developers.conekta.com/api) for up-to-date documentation.
 
 ## Run Tests
 
@@ -110,12 +109,15 @@ phpunit test/Conekta-x.0
 _note:_ for this phpunit version (6.1.x) only php 7 is supported for older php versions see phpunit <a href="https://phpunit.de/"> documentation</a>
 
 
-License
--------
-Developed by [Conekta](https://www.conekta.io). Available with [MIT License](LICENSE).
+## License
 
-We are hiring
--------------
+Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT License](LICENSE).
+
+***
+
+
+## We are always hiring!
 
 If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills.
 Send your CV, github to quieroser@conekta.io
+
