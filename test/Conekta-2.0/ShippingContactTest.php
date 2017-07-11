@@ -1,66 +1,77 @@
 <?php
 
-class ShippingContactTest extends UnitTestCase
+use PHPUnit\Framework\TestCase;
+
+require_once dirname(__FILE__).'/../../lib/Conekta.php';
+
+class ShippingContactTest extends TestCase
 {
-    public static $valid_customer =
-        array('email' => 'hola@hola.com',
-              'name' => 'John Constantine',
-              'shipping_contacts' => array(
-                  array(
-                      'receiver' => 'Jack Bauer',
-                      'phone' => '+5213353319758',
-                      'email' => 'thomas.logan@xmen.org',
-                      'address' => array(
-                          'street1' => '250 Alexis St',
-                          'city' => 'Red Deer',
-                          'state' => 'Alberta',
-                          'country' => 'CA',
-                          'postal_code' => 'T4N 0B8'
-                      )
-                  ),
-                  array(
-                      'receiver' => 'John Williams',
-                      'phone' => '+5213353319758',
-                      'email' => 'rogue@xmen.org',
-                      'address' => array(
-                          'street1' => '250 Alexis St',
-                          'city' => 'Red Deer',
-                          'state' => 'Alberta',
-                          'country' => 'CA',
-                          'postal_code' => 'T4N 0B8'
-                      )
-                  )
-              )
-            );
-
-    public function testSuccessfulShippingContactDelete()
-    {
-        setApiKey();
-        $customer = \Conekta\Customer::create(self::$valid_customer);
-        $shipping_contact = $customer->shipping_contacts[0];
-        $shipping_contact->delete();
-
-        $this->assertTrue($shipping_contact->deleted == true);
+ function setApiKey()
+ {
+    $apiEnvKey = getenv('CONEKTA_API');
+    if (!$apiEnvKey) {
+      $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
     }
+    \Conekta\Conekta::setApiKey($apiEnvKey);
+ }
+  public static $validCustomer =  array('email' => 'hola@hola.com',
+    'name' => 'John Constantine',
+    'shipping_contacts' => array(
+      array(
+        'receiver' => 'Jack Bauer',
+        'phone' => '+5213353319758',
+        'email' => 'thomas.logan@xmen.org',
+        'address' => array(
+          'street1' => '250 Alexis St',
+          'city' => 'Red Deer',
+          'state' => 'Alberta',
+          'country' => 'CA',
+          'postal_code' => 'T4N 0B8'
+          )
+        ),
+      array(
+        'receiver' => 'John Williams',
+        'phone' => '+5213353319758',
+        'email' => 'rogue@xmen.org',
+        'address' => array(
+          'street1' => '250 Alexis St',
+          'city' => 'Red Deer',
+          'state' => 'Alberta',
+          'country' => 'CA',
+          'postal_code' => 'T4N 0B8'
+          )
+        )
+      )
+    );
 
-    public function testSuccessfulShippingContactUpdate()
-    {
-        setApiKey();
-        $customer = \Conekta\Customer::create(self::$valid_customer);
-        $shipping_contact = $customer->shipping_contacts[0];
-        $shipping_contact->update(array('receiver' => 'Tony Almeida'));
-        $this->assertTrue($shipping_contact->receiver == 'Tony Almeida');
-    }
+  public function testSuccessfulShippingContactDelete()
+  {
+    $this->setApiKey();
+    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $shippingContact = $customer->shipping_contacts[0];
+    $shippingContact->delete();
+    $this->assertTrue($shippingContact->deleted == true);
+  }
 
-    public function testUnsuccessfulShippingContactUpdate()
-    {
-        setApiKey();
-        $customer = \Conekta\Customer::create(self::$valid_customer);
-        $shipping_contact = $customer->shipping_contacts[0];
-        try{
-            $shipping_contact->update(array('email' => 123));
-        }catch (Exception $e) {
-            $this->assertTrue(strpos(get_class($e), 'ErrorList') == true);
-        }
+  public function testSuccessfulShippingContactUpdate()
+  {
+    $this->setApiKey();
+    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $shippingContact = $customer->shipping_contacts[0];
+    $shippingContact->update(array('receiver' => 'Tony Almeida'));
+    $this->assertTrue($shippingContact->receiver == 'Tony Almeida');
+  }
+
+  public function testUnsuccessfulShippingContactUpdate()
+  {
+    $this->setApiKey();
+    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $shippingContact = $customer->shipping_contacts[0];
+    try{
+      $shippingContact->update(array('phone' => ''));
+    }catch (Exception $e) {
+
+      $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
+  }
 }

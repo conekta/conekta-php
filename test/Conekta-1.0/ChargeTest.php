@@ -1,7 +1,23 @@
 <?php
 
-class ChargeTest extends UnitTestCase
+use PHPUnit\Framework\TestCase;
+
+require_once dirname(__FILE__).'/../../lib/Conekta.php';
+
+class ChargeTest extends TestCase
 {
+    function setApiKey()
+    {
+        $apiEnvKey = getenv('CONEKTA_API');
+        if (!$apiEnvKey) {
+            $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
+        }
+        \Conekta\Conekta::setApiKey($apiEnvKey);
+    }
+    function setApiVersion($version)
+    {
+        \Conekta\Conekta::setApiVersion($version);
+    }
     public static $valid_payment_method = array(
         'amount'      => 2000,
         'currency'    => 'mxn',
@@ -64,8 +80,8 @@ class ChargeTest extends UnitTestCase
 
     public function testSuccesfulWhere()
     {
-        setApiKey();
-        setApiVersion('1.0.0');
+        $this->setApiKey();
+        $this->setApiVersion('1.0.0');
         $charges = \Conekta\Charge::where();
         $this->assertTrue(strpos(get_class($charges), 'Object') !== false);
         $this->assertTrue(strpos(get_class($charges[0]), 'Charge') !== false);
@@ -75,8 +91,8 @@ class ChargeTest extends UnitTestCase
     {
         $pm = self::$intvalid_payment_method;
         $card = self::$valid_visa_card;
-        setApiKey();
-        setApiVersion('1.0.0');
+        $this->setApiKey();
+        $this->setApiVersion('1.0.0');
         try {
             $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         } catch (Exception $e) {
@@ -86,10 +102,10 @@ class ChargeTest extends UnitTestCase
 
     public function testSuccesfulRefund()
     {
-        setApiVersion('1.0.0');
+        $this->setApiVersion('1.0.0');
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
-        setApiKey();
+        $this->setApiKey();
         $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
         $cpm->refund();
@@ -100,8 +116,8 @@ class ChargeTest extends UnitTestCase
     {
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
-        setApiKey();
-        setApiVersion('1.0.0');
+        $this->setApiKey();
+        $this->setApiVersion('1.0.0');
         $cpm = \Conekta\Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
         try {
@@ -113,11 +129,11 @@ class ChargeTest extends UnitTestCase
 
     public function testSuccesfulCapture()
     {
-        setApiVersion('1.0.0');
+        $this->setApiVersion('1.0.0');
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
         $capture = array('capture' => false);
-        setApiKey();
+        $this->setApiKey();
         $cpm = \Conekta\Charge::create(array_merge($pm, $card, $capture));
         $this->assertTrue($cpm->status == 'pre_authorized');
         $cpm->capture();
