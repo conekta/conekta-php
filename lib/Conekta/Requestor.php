@@ -23,8 +23,17 @@ class Requestor
     return $apiBase . $url;
   }
 
+  private function additionalHeaders()
+  {
+    $userAgentPlugin = array(
+      'plugin_name' => Conekta::getPlugin(),
+      'plugin_version' => Conekta::getPluginVersion()
+    );
+    return $userAgentPlugin;
+  }
   private function setHeaders()
   {
+    $pluginsAgent = $this->additionalHeaders();
     $userAgent = array(
       'bindings_version' => Conekta::VERSION,
       'lang'             => 'php',
@@ -32,6 +41,10 @@ class Requestor
       'publisher'        => 'conekta',
       'uname'            => php_uname(),
       );
+
+    if(array_filter($pluginsAgent)){
+      $userAgent = array_merge($userAgent, $pluginsAgent);
+    }
 
     if(strlen($this->plugin) > 0){
       $userAgent = array_merge($userAgent, array('plugin' => $this->plugin));
