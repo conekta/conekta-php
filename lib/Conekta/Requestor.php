@@ -80,11 +80,7 @@ class Requestor
     if(array_filter($pluginAgent)){
       $userAgent = array_merge($userAgent, $pluginAgent);
     }
-
-    if(strlen($this->plugin) > 0){
-      $userAgent = array_merge($userAgent, array('plugin' => $this->plugin));
-    }
-
+    
     $headers = array(
       'Accept: application/vnd.conekta-v'.Conekta::$apiVersion.'+json',
       'Accept-Language: '.Conekta::$locale,
