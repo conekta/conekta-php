@@ -13,6 +13,9 @@ class ConektaTest extends TestCase
   function setPlugin($plugin){
     \Conekta\Conekta::setPlugin($plugin);
   }
+  function setPluginVersion($version){
+    \Conekta\Conekta::setPluginVersion($version);
+  }
   function setApiKey()
   {
     $apiEnvKey = getenv('CONEKTA_API');
@@ -32,8 +35,10 @@ class ConektaTest extends TestCase
   public function testPluginInitializerStyle()
   {
     $this->setApiKey();
-    $this->setPlugin('spree');
-    $this->assertTrue( \Conekta\Conekta::$plugin == 'spree');
+    $this->setPlugin('Magento 2');
+    $this->setPluginVersion('2.0.0');
+    $this->assertTrue( \Conekta\Conekta::getPlugin() == 'Magento 2');
+    $this->assertTrue( \Conekta\Conekta::getPluginVersion() == '2.0.0');
   }
 
 }
