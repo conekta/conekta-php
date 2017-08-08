@@ -1,10 +1,23 @@
 <?php
 
+/**
+  * @author Conekta
+  * @author Conekta Developers <soporte@conekta.com>
+  */
+
 namespace Conekta;
 
 use \Conekta\Conekta;
 use \Conekta\Exceptions;
 
+/**
+  * @method string  apiUrl($urls string)
+  * @method array() additionalPluginHeaders()
+  * @method array() setHeaders()
+  * @method json    request($method string, $url string, $params array())
+  * @method string  buildQueryParamsUrl($url string, $params arraay())
+  * @method string  buildSegmentParamsUrl($url string, $params arraay())
+  */
 class Requestor
 {
   public $apiKey;
@@ -16,6 +29,14 @@ class Requestor
     $this->plugin = Conekta::$plugin;
   }
 
+  /**
+   * Function apiUrl
+   *
+   * get Base path of conekta api i.e. https://api.conekta.com
+   *
+   * @param url (string) endpoint to concatenate
+   * @return (string)
+   */
   public static function apiUrl($url = '')
   {
     $apiBase = Conekta::$apiBase;
@@ -23,17 +44,31 @@ class Requestor
     return $apiBase . $url;
   }
 
-  private function additionalHeaders()
+  /**
+   * Function additionalPluginHeaders
+   *
+   * Set headers if is plugin implementation
+   *
+   * @return (array)
+   */
+  private function additionalPluginHeaders()
   {
-    $userAgentPlugin = array(
+    return array(
       'plugin_name' => Conekta::getPlugin(),
       'plugin_version' => Conekta::getPluginVersion()
     );
-    return $userAgentPlugin;
   }
+
+  /**
+   * Function setHeaders
+   *
+   * Set Standar headers for library
+   *
+   * @return (array)
+   */
   private function setHeaders()
   {
-    $pluginsAgent = $this->additionalHeaders();
+    $pluginAgent = $this->additionalPluginHeaders();
     $userAgent = array(
       'bindings_version' => Conekta::VERSION,
       'lang'             => 'php',
@@ -42,8 +77,8 @@ class Requestor
       'uname'            => php_uname(),
       );
 
-    if(array_filter($pluginsAgent)){
-      $userAgent = array_merge($userAgent, $pluginsAgent);
+    if(array_filter($pluginAgent)){
+      $userAgent = array_merge($userAgent, $pluginAgent);
     }
 
     if(strlen($this->plugin) > 0){
@@ -62,6 +97,16 @@ class Requestor
     return $headers;
   }
 
+  /**
+   * Function request
+   *
+   * Make api call 
+   *
+   * @param method (string) REST action [DELETE,PUT,POST,GET]
+   * @param url (string) endpoint to concatenate
+   * @param params (array) contains body request 
+   * @return (json)
+   */
   public function request($method, $url, $params = null)
   {
     $jsonParams = json_encode($params);
@@ -86,7 +131,7 @@ class Requestor
       break;
       case 'delete':
       $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-      $url = $this->buildSegementParamsUrl($url, $params);
+      $url = $this->buildSegmentParamsUrl($url, $params);
       break;
       default:
       throw new Exception('Wrong method');
@@ -114,6 +159,15 @@ class Requestor
     return $jsonResponse;
   }
 
+  /**
+   * Function buildQueryParamsUrl
+   *
+   * build body request into url 
+   *
+   * @param url (string) endpoint to concatenate
+   * @param params (array) contains body request
+   * @return (string)
+   */
   private function buildQueryParamsUrl($url, $params)
   {
     if(!is_null($params)){
@@ -124,7 +178,16 @@ class Requestor
     return $url;
   }
 
-  private function buildSegementParamsUrl($url, $params)
+  /**
+   * Function buildSegmentParamsUrl
+   *
+   * build body request for DELETE  action
+   *
+   * @param url (string) endpoint to concatenate
+   * @param params (array) contains body request
+   * @return (string)
+   */
+  private function buildSegmentParamsUrl($url, $params)
   {
     if(!is_array($params)){
       $url = $url.urlencode($params);

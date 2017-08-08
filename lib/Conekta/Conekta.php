@@ -12,30 +12,37 @@ abstract class Conekta
     public static $pluginVersion = '';
     const VERSION = '3.3.0';
 
+    
     public static function setApiKey($apiKey)
     {
         self::$apiKey = $apiKey;
     }
+    
     public static function setApiVersion($version)
     {
         self::$apiVersion = $version;
     }
+    
     public static function setLocale($locale)
     {
         self::$locale = $locale;
     }
+    
     public static function setPlugin($plugin = '')
     {
         self::$plugin = $plugin;
     }
+    
     public static function setPluginVersion($pluginVersion = '')
     {
         self::$pluginVersion = $pluginVersion;
     }
+    
     public static function getPlugin()
     {
         return self::$plugin;
     }
+    
     public static function getPluginVersion()
     {
         return self::$pluginVersion;
