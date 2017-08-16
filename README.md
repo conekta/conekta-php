@@ -16,7 +16,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php": "3.3.0"
+  require: "conekta/conekta-php": "3.4.0"
 
 ## Usage
 
