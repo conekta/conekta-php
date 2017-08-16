@@ -89,3 +89,7 @@
 * Multihandler exception
 * CamelCase convention over variables
 * Stable version of API 2.0.0.
+
+=== 3.4.0 2017-08-16
+
+* Header integration 
