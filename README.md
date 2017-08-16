@@ -1,6 +1,6 @@
 ![README Cover Image](readme_cover.png)
 
-# Conekta PHP v.3.3.0
+# Conekta PHP v.3.4.0
 
 This is a php library that allows interaction with https://api.conekta.io API.
 
