@@ -112,6 +112,22 @@ class Customer extends Resource
     return parent::_createMemberWithRelation('payment_sources', $params, $this);
   }
 
+  public function deletePaymentSource($paymentSourceId)
+  {
+    if (Conekta::$apiVersion == '2.0.0'){
+      $currentCustomer = $this;
+      $paymentSources = $currentCustomer->payment_sources;
+      $index = 0;
+      foreach ($paymentSources as $paymentSource) {
+        if ($paymentSource->id == $paymentSourceId){
+          $currentCustomer->payment_sources[$index]->delete();
+        }else{
+          $index += 1;
+        }
+      }
+    }
+  }
+
   public function createCard($params = null)
   {
     return parent::_createMemberWithRelation('cards', $params, $this);
