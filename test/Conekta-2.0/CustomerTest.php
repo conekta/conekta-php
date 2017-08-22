@@ -79,7 +79,7 @@ class CustomerTest extends TestCase
       'type' => 'card'
       ));
     $customer->deletePaymentSource($customer->default_payment_source_id);
-    $this->assertTrue($customer->payment_sources->total == 0);
+    $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') == false);
   }
 
   public function testSuccesfulShippingContactCreate()
