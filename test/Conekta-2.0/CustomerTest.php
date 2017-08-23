@@ -70,6 +70,21 @@ class CustomerTest extends TestCase
     $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') !== false);
     $this->assertTrue($customer->payment_sources->total == 1);
   }
+  public function testSuccessfulSourceDelete()
+  {
+    $this->setApiKey();
+    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $firstSource = $customer->createPaymentSource(array(
+      'token_id' => 'tok_test_visa_4242',
+      'type' => 'card'
+      ));
+    $secondSource = $customer->createPaymentSource(array(
+      'token_id' => 'tok_test_mastercard_4444',
+      'type' => 'card'
+      ));
+    $customer->deletePaymentSourceById($customer->payment_sources[1]->id);
+    $this->assertTrue($customer->payment_sources[1]->deleted);
+  }
 
   public function testSuccesfulShippingContactCreate()
   {
