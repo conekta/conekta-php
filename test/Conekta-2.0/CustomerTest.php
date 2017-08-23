@@ -74,12 +74,16 @@ class CustomerTest extends TestCase
   {
     $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
-    $source = $customer->createPaymentSource(array(
+    $firstSource = $customer->createPaymentSource(array(
       'token_id' => 'tok_test_visa_4242',
       'type' => 'card'
       ));
-    $customer->deletePaymentSource($customer->default_payment_source_id);
-    $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') == false);
+    $secondSource = $customer->createPaymentSource(array(
+      'token_id' => 'tok_test_mastercard_4444',
+      'type' => 'card'
+      ));
+    $customer->deletePaymentSourceById($customer->payment_sources[1]->id);
+    $this->assertTrue($customer->payment_sources[1]->deleted);
   }
 
   public function testSuccesfulShippingContactCreate()
