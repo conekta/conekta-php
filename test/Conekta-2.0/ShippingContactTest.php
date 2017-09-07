@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class ShippingContactTest extends TestCase
 {
- function setApiKey()
- {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
- }
   public static $validCustomer =  array('email' => 'hola@hola.com',
     'name' => 'John Constantine',
     'shipping_contacts' => array(
@@ -46,7 +39,7 @@ class ShippingContactTest extends TestCase
 
   public function testSuccessfulShippingContactDelete()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     $shippingContact->delete();
@@ -55,7 +48,7 @@ class ShippingContactTest extends TestCase
 
   public function testSuccessfulShippingContactUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     $shippingContact->update(array('receiver' => 'Tony Almeida'));
@@ -64,7 +57,7 @@ class ShippingContactTest extends TestCase
 
   public function testUnsuccessfulShippingContactUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     try{

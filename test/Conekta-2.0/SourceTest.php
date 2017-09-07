@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class SourceTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
   public static $validCustomer =
   array('email' => 'hola@hola.com',
     'name' => 'John Constantine',
@@ -25,7 +18,7 @@ class SourceTest extends TestCase
 
   public function testSuccesfulDeleteSources()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->delete();
@@ -34,7 +27,7 @@ class SourceTest extends TestCase
 
   public function testSuccesfulUpdateSources()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->update(array('exp_month' => '11'));
@@ -42,7 +35,7 @@ class SourceTest extends TestCase
   }
 
   public function testUnsuccesfulUpdateSources(){
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     try{

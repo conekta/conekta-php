@@ -3,19 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class ErrorTest extends TestCase
 {   
-
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
-
   function unsetApiKey()
   {
     if (isset($env) == false) {
@@ -52,7 +43,7 @@ class ErrorTest extends TestCase
 
   public function testNoIdError()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     try {
       $customer = \Conekta\Customer::find('0');
     } catch (Exception $e) {
@@ -62,7 +53,7 @@ class ErrorTest extends TestCase
 
   public function testNoConnectionError()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $apiUrl = \Conekta\Conekta::$apiBase;
     \Conekta\Conekta::$apiBase = 'http://localhost:3001';
     try {
@@ -74,7 +65,7 @@ class ErrorTest extends TestCase
   }
 
   public function testParameterValidationError(){
-    $this->setApiKey();
+    BaseTest::setApiKey();
     try {
       $customer = \Conekta\Customer::create(self::$invalidCustomer);
     } catch (Exception $e) {
@@ -84,7 +75,7 @@ class ErrorTest extends TestCase
 
   public function testResourceNotFoundError()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     try {
       $customer = \Conekta\Customer::find('2');
     } catch (Exception $e) {
@@ -99,11 +90,11 @@ class ErrorTest extends TestCase
     } catch (Exception $e){
       $this->assertTrue(strpos(get_class($e), 'AuthenticationError') == true);
     }
-    $this->setApiKey();
+    BaseTest::setApiKey();
   }
   public function testUnknowApiRequest()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $validVisaCard =array(
       'payment_method' => array(
         'type' => 'card',

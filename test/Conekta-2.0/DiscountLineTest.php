@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class DiscountLineTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
   public static $validOrder =
   array(
     'line_items'=> array(
@@ -44,7 +37,7 @@ class DiscountLineTest extends TestCase
 
   public function testSuccessfulDiscountLineDelete()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->delete();
@@ -54,7 +47,7 @@ class DiscountLineTest extends TestCase
 
   public function testSuccessfulDiscountLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->update(array('amount' => 11));
@@ -64,7 +57,7 @@ class DiscountLineTest extends TestCase
 
   public function testUnsuccessfulDiscountLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     try{

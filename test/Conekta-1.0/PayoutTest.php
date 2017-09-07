@@ -2,25 +2,14 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class PayoutTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
-  function setApiVersion($version)
-  {
-    \Conekta\Conekta::setApiVersion($version);
-  }
   public function testSuccesfulGetPayout()
   {
-    $this->setApiKey();
-    $this->setApiVersion('1.0.0');
+    BaseTest::setApiKey();
+    BaseTest::setApiVersion('1.0.0');
     $payee = \Conekta\Payee::create(array(
       'name'  => 'John Doe',
       'email' => 'j_d@radcorp->com',

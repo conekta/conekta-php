@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class WebhookTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
   public static $events = array("events" => 
     array("charge.created", "charge.paid", "charge.under_fraud_review",
       "charge.fraudulent", "charge.refunded", "charge.created", "customer.created",
@@ -32,7 +25,7 @@ class WebhookTest extends TestCase
 
   public function testSuccesfulWebhookCreate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $webhook = \Conekta\Webhook::create(array_merge(self::$url, self::$events));
     $this->assertTrue(strpos(get_class($webhook), 'Webhook') !== false);
     $this->assertTrue(strpos($webhook->webhook_url, self::$url["url"]) !== false);

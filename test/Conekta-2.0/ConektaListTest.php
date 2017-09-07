@@ -3,16 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
+
 class ConektaListTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
   public function testSuccessfulNext()
   {
     $orderList = $this->createResponseMockUp();
@@ -32,7 +26,7 @@ class ConektaListTest extends TestCase
   }
   
   protected function createResponseMockUp(){
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $overRootFolder   = "../support/fixtures/orders.json";
     $insideTestFolder = "test/support/fixtures/orders.json";
     $path = file_exists($overRootFolder) ? $overRootFolder: $insideTestFolder;

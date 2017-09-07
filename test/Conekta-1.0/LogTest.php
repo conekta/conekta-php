@@ -2,25 +2,14 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class LogTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
-  function setApiVersion($version)
-  {
-    \Conekta\Conekta::setApiVersion($version);
-  }
   public function testSuccesfulFind()
   {
-    $this->setApiKey();
-    $this->setApiVersion('1.0.0');
+    BaseTest::setApiKey();
+    BaseTest::setApiVersion('1.0.0');
     $logs = \Conekta\Log::where();
     $log = \Conekta\Log::find($logs[0]['id']);
     $this->assertTrue(strpos(get_class($log), 'Log') !== false);
@@ -28,8 +17,8 @@ class LogTest extends TestCase
 
   public function testSuccesfulWhere()
   {
-    $this->setApiKey();
-    $this->setApiVersion('1.0.0');
+    BaseTest::setApiKey();
+    BaseTest::setApiVersion('1.0.0');
     $logs = \Conekta\Log::where();
     $this->assertTrue(strpos(get_class($logs), 'Conekta\Object') !== false);
     $this->assertTrue(strpos(get_class($logs[0]), 'Conekta\Object') !== false);

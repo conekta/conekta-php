@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class ShippingLineTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
   public static $validOrder =
   array(
     'line_items'=> array(
@@ -48,7 +41,7 @@ class ShippingLineTest extends TestCase
 
   public function testSuccessfulShippingLineDelete()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->delete();
@@ -57,7 +50,7 @@ class ShippingLineTest extends TestCase
 
   public function testSuccessfulShippingLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->update(array('method' => 'Air'));
@@ -66,7 +59,7 @@ class ShippingLineTest extends TestCase
 
   public function testUnsuccessfulShippingLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     try{

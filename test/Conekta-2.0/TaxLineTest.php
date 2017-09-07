@@ -3,17 +3,10 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class TaxLineTest extends TestCase
 {
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }   
   public static $validOrder =
   array(
     'line_items' => array(
@@ -42,7 +35,7 @@ class TaxLineTest extends TestCase
 
   public function testSuccessfulTaxLineDelete()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->delete();
@@ -51,7 +44,7 @@ class TaxLineTest extends TestCase
 
   public function testSuccessfulTaxLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->update(array('amount' => 10));
@@ -60,7 +53,7 @@ class TaxLineTest extends TestCase
 
   public function testUnsuccessfulTaxLineUpdate()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     try {

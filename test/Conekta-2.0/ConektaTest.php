@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
 class ConektaTest extends TestCase
 {
@@ -16,14 +17,6 @@ class ConektaTest extends TestCase
   function setPluginVersion($version){
     \Conekta\Conekta::setPluginVersion($version);
   }
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
 
   public function testApiLocaleInitializerStyle()
   {
@@ -34,7 +27,7 @@ class ConektaTest extends TestCase
 
   public function testPluginInitializerStyle()
   {
-    $this->setApiKey();
+    BaseTest::setApiKey();
     $this->setPlugin('Magento 2');
     $this->setPluginVersion('2.0.0');
     $this->assertTrue( \Conekta\Conekta::getPlugin() == 'Magento 2');
