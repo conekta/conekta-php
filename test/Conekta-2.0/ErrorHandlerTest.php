@@ -3,8 +3,9 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ErrorHandlerTest extends TestCase
+class ErrorHandlerTest extends BaseTest
 {   
 
   public static $validOrder = array(
@@ -34,14 +35,6 @@ class ErrorHandlerTest extends TestCase
     'email' => 'hola@hola.com',
     'cards' => array('tok_test_visa_4241')
     );
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
 
   function unsetApiKey()
   {

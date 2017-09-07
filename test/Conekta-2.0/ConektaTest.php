@@ -3,8 +3,9 @@
 use PHPUnit\Framework\TestCase;
 
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
+require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ConektaTest extends TestCase
+class ConektaTest extends BaseTest
 {
 
   function setEnvLocale($locale){
@@ -15,14 +16,6 @@ class ConektaTest extends TestCase
   }
   function setPluginVersion($version){
     \Conekta\Conekta::setPluginVersion($version);
-  }
-  function setApiKey()
-  {
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = '1tv5yJp3xnVZ7eK67m4h';
-    }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
   }
 
   public function testApiLocaleInitializerStyle()
