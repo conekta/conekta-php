@@ -1,5 +1,5 @@
 ## [3.5.1](https://github.com/conekta/conekta-php/releases/tag/v3.5.1) - 2017-09-07
-### ### Changed
+### Changed
 - Refactorize tests functions code
 - Update API Keys in tests
 
