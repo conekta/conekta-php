@@ -11,7 +11,7 @@ class Api extends TestCase
   {   
     $apiEnvKey = getenv('CONEKTA_API');
     if (!$apiEnvKey) {
-      $apiEnvKey = 'SN2vakDK6CrWATiRWCyoZw';
+      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
     }
     \Conekta\Conekta::setApiKey($apiEnvKey);
   }
