@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ConektaTest extends TestCase
+class ConektaTest extends BaseTest
 {
 
   function setEnvLocale($locale){
@@ -27,7 +27,7 @@ class ConektaTest extends TestCase
 
   public function testPluginInitializerStyle()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $this->setPlugin('Magento 2');
     $this->setPluginVersion('2.0.0');
     $this->assertTrue( \Conekta\Conekta::getPlugin() == 'Magento 2');

@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ConektaListTest extends TestCase
+class ConektaListTest extends BaseTest
 {
   public function testSuccessfulNext()
   {
@@ -26,7 +26,7 @@ class ConektaListTest extends TestCase
   }
   
   protected function createResponseMockUp(){
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $overRootFolder   = "../support/fixtures/orders.json";
     $insideTestFolder = "test/support/fixtures/orders.json";
     $path = file_exists($overRootFolder) ? $overRootFolder: $insideTestFolder;

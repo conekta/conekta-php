@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class TaxLineTest extends TestCase
+class TaxLineTest extends BaseTest
 {
   public static $validOrder =
   array(
@@ -35,7 +35,7 @@ class TaxLineTest extends TestCase
 
   public function testSuccessfulTaxLineDelete()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->delete();
@@ -44,7 +44,7 @@ class TaxLineTest extends TestCase
 
   public function testSuccessfulTaxLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->update(array('amount' => 10));
@@ -53,7 +53,7 @@ class TaxLineTest extends TestCase
 
   public function testUnsuccessfulTaxLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     try {

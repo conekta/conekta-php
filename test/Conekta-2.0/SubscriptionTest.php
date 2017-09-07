@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class SubscriptionTest extends TestCase
+class SubscriptionTest extends BaseTest
 {
   public static $validCustomer = array(
         'email' => 'hola@hola.com',
@@ -14,7 +14,7 @@ class SubscriptionTest extends TestCase
 
   public function testSuccesfulSubscriptionCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
@@ -23,7 +23,7 @@ class SubscriptionTest extends TestCase
 
   public function testSuccesfulSubscriptionUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
@@ -48,7 +48,7 @@ class SubscriptionTest extends TestCase
 
   public function testUnsuccesfulSubscriptionCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     try {
@@ -61,7 +61,7 @@ class SubscriptionTest extends TestCase
 
   public function testSuccesfulSubscriptionPause()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
@@ -72,7 +72,7 @@ class SubscriptionTest extends TestCase
 
   public function testSuccesfulSubscriptionResume()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
@@ -84,7 +84,7 @@ class SubscriptionTest extends TestCase
 
   public function testSuccesfulSubscriptionCancel()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->createPaymentSource(self::$validVisaCard);
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));

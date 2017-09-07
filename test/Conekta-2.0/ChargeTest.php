@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ChargeTest extends TestCase
+class ChargeTest extends BaseTest
 {
 
   public static $validOrder = array(
@@ -38,7 +38,7 @@ class ChargeTest extends TestCase
   public static $oxxo = array('payment_method' => array('type' => 'oxxo_cash',), 'amount' => 20000);
   public function testCreateOrder()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $orderParams = array_merge(self::$validOrder, self::$otherParams);
     $order = \Conekta\Order::create($orderParams);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);

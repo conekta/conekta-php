@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class WebhookTest extends TestCase
+class WebhookTest extends BaseTest
 {
   public static $events = array("events" => 
     array("charge.created", "charge.paid", "charge.under_fraud_review",
@@ -24,8 +24,8 @@ class WebhookTest extends TestCase
 
   public function testSuccesfulWebhookCreate()
   {
-    BaseTest::setApiKey();
-    BaseTest::setApiVersion('1.0.0');
+    $this->setApiKey();
+    $this->setApiVersion('1.0.0');
     $webhook = \Conekta\Webhook::create(array_merge(self::$url, self::$events));
     $this->assertTrue(strpos(get_class($webhook), 'Webhook') !== false);
     $this->assertTrue(strpos($webhook->webhook_url, self::$url["url"]) !== false);

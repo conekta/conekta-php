@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class OrderTest extends TestCase
+class OrderTest extends BaseTest
 {
   public static $validOrder =
   array(
@@ -32,7 +32,7 @@ class OrderTest extends TestCase
 
   public function testSuccesfulCreateOrder()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $this->assertTrue(strpos($order->metadata["test"], 'extra info') !== false);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
@@ -58,7 +58,7 @@ class OrderTest extends TestCase
         'email' => 'hola@hola.com'
         )
       );
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     $this->assertTrue(count($order->charges) > 0);
@@ -75,7 +75,7 @@ class OrderTest extends TestCase
         'email' => 'hola@hola.com'
         )
       );
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(array_merge(self::$validOrder, $other_params));
     $charge_params = array(
       'payment_method' => array('type' => 'oxxo_cash'),
@@ -90,7 +90,7 @@ class OrderTest extends TestCase
     #Update an order
   public function testSuccesfulOrderUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
 
     $updated_parameters = array(
@@ -123,7 +123,7 @@ class OrderTest extends TestCase
         )
       );
 
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     try {
       $order->update(array('charges' => $charges));
@@ -134,7 +134,7 @@ class OrderTest extends TestCase
 
   public function testSuccesfulOrderFind()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $id = \Conekta\Order::create(self::$validOrder)->id;
     $order = \Conekta\Order::find($id);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
@@ -142,7 +142,7 @@ class OrderTest extends TestCase
 
   public function testSuccesfulOrderWhere()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $orders = \Conekta\Order::where();
     $this->assertTrue(strpos(get_class($orders), 'ConektaList') !== false);
     $this->assertTrue(strpos($orders->elements_type, 'Order') !== false);
@@ -152,7 +152,7 @@ class OrderTest extends TestCase
 
   public function testSuccessfulLineItem()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
 
     $line_item = $order->createLineItem(array(
@@ -170,7 +170,7 @@ class OrderTest extends TestCase
 
   public function testSuccessfulTaxLine()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
 
     $taxLine = $order->createTaxLine(array(
@@ -190,7 +190,7 @@ class OrderTest extends TestCase
 
   public function testSuccessfulShippingLine()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
 
     $shippingLine = $order->createShippingLine(array(
@@ -208,7 +208,7 @@ class OrderTest extends TestCase
 
   public function testSuccessfulDiscountLine()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->createDiscountLine(array(
       'code' => 'Cupon de descuento',
@@ -239,7 +239,7 @@ class OrderTest extends TestCase
         'email' => 'hola@hola.com'
         )
       );
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
     $order->refund(array_merge(self::$validRefund, array('order_id' => $order->id)));
     $refundedOrder = \Conekta\Order::find($order->id);
@@ -268,7 +268,7 @@ class OrderTest extends TestCase
         'email' => 'hola@hola.com'
         )
       );
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
     $this->assertTrue($order->payment_status == 'pre_authorized');
     $this->assertTrue($order->charges[0]->status == 'pre_authorized');

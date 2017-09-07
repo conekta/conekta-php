@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class SourceTest extends TestCase
+class SourceTest extends BaseTest
 {
   public static $validCustomer =
   array('email' => 'hola@hola.com',
@@ -18,7 +18,7 @@ class SourceTest extends TestCase
 
   public function testSuccesfulDeleteSources()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->delete();
@@ -27,7 +27,7 @@ class SourceTest extends TestCase
 
   public function testSuccesfulUpdateSources()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->update(array('exp_month' => '11'));
@@ -35,7 +35,7 @@ class SourceTest extends TestCase
   }
 
   public function testUnsuccesfulUpdateSources(){
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     try{

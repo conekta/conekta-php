@@ -2,9 +2,9 @@
 
 require_once dirname(__FILE__).'/../lib/Conekta.php';
 
-class BaseTest
+class BaseTest extends \PHPUnit\Framework\TestCase
 {
-  public static function setApiKey()
+  public function setApiKey()
   {   
     $apiEnvKey = getenv('CONEKTA_API');
     if (!$apiEnvKey) {
@@ -13,7 +13,7 @@ class BaseTest
     \Conekta\Conekta::setApiKey($apiEnvKey);
   }
 
-  public static function setApiVersion($version)
+  public function setApiVersion($version)
   {
     \Conekta\Conekta::setApiVersion($version);
   }

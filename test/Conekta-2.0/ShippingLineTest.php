@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class ShippingLineTest extends TestCase
+class ShippingLineTest extends BaseTest
 {
   public static $validOrder =
   array(
@@ -41,7 +41,7 @@ class ShippingLineTest extends TestCase
 
   public function testSuccessfulShippingLineDelete()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->delete();
@@ -50,7 +50,7 @@ class ShippingLineTest extends TestCase
 
   public function testSuccessfulShippingLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->update(array('method' => 'Air'));
@@ -59,7 +59,7 @@ class ShippingLineTest extends TestCase
 
   public function testUnsuccessfulShippingLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     try{

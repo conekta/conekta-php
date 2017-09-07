@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class CustomerTest extends TestCase
+class CustomerTest extends BaseTest
 {
   public static $validCustomer = array(
     'email' => 'hola@hola.com',
@@ -18,14 +18,14 @@ class CustomerTest extends TestCase
 
   public function testSuccesfulCustomerCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $this->assertTrue(strpos(get_class($customer), 'Customer') !== false);
   }
 
   public function testSuccessfulCustomerNewWhere()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customers = \Conekta\Customer::where();
     $this->assertTrue(strpos(get_class($customers), 'ConektaList') !== false);
     $this->assertTrue(strpos($customers->elements_type, 'Customer') !== false);
@@ -35,7 +35,7 @@ class CustomerTest extends TestCase
 
   public function testSuccesfulDeleteCustomer()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $customer->delete();
     $this->assertTrue($customer->deleted == true);
@@ -43,7 +43,7 @@ class CustomerTest extends TestCase
 
   public function testUnsuccesfulCustomerCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     try {
       $customer = \Conekta\Customer::create(self::$invalidCustomer);
     } catch (\Conekta\ParameterValidationError $e) {
@@ -53,7 +53,7 @@ class CustomerTest extends TestCase
 
   public function testSuccesfulSourceCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $source = $customer->createPaymentSource(array(
       'token_id' => 'tok_test_visa_4242',
@@ -65,7 +65,7 @@ class CustomerTest extends TestCase
   }
   public function testSuccessfulSourceDelete()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $firstSource = $customer->createPaymentSource(array(
       'token_id' => 'tok_test_visa_4242',
@@ -81,7 +81,7 @@ class CustomerTest extends TestCase
 
   public function testSuccesfulShippingContactCreate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $customer = \Conekta\Customer::create(self::$validCustomer);
     $shippingContact = $customer->createShippingContact(array(
       'receiver' => 'John Williams',

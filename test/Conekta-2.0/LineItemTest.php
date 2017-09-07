@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class LineItemTest extends TestCase
+class LineItemTest extends BaseTest
 {   
   public static $validOrder =
   array(
@@ -30,7 +30,7 @@ class LineItemTest extends TestCase
 
   public function testSuccessfulLineItemDelete()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $lineItem = $order->line_items[0];
     $lineItem->delete();
@@ -40,7 +40,7 @@ class LineItemTest extends TestCase
 
   public function testSuccessfulLineItemUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $lineItem = $order->line_items[0];
     $lineItem->update(array('unit_price' => 1000));
@@ -50,7 +50,7 @@ class LineItemTest extends TestCase
 
   public function testUnsuccessfulLineItemUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $lineItem = $order->line_items[0];
     try {

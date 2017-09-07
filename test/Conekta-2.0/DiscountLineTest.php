@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 require_once dirname(__FILE__).'/../../lib/Conekta.php';
 require_once dirname(__FILE__).'/../BaseTest.php';
 
-class DiscountLineTest extends TestCase
+class DiscountLineTest extends BaseTest
 {
   public static $validOrder =
   array(
@@ -37,7 +37,7 @@ class DiscountLineTest extends TestCase
 
   public function testSuccessfulDiscountLineDelete()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->delete();
@@ -47,7 +47,7 @@ class DiscountLineTest extends TestCase
 
   public function testSuccessfulDiscountLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->update(array('amount' => 11));
@@ -57,7 +57,7 @@ class DiscountLineTest extends TestCase
 
   public function testUnsuccessfulDiscountLineUpdate()
   {
-    BaseTest::setApiKey();
+    $this->setApiKey();
     $order = \Conekta\Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     try{
