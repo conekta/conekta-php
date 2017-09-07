@@ -1,3 +1,8 @@
+## [3.5.1](https://github.com/conekta/conekta-php/releases/tag/v3.5.1) - 2017-09-07
+### ### Changed
+- Refactorize tests functions code
+- Update API Keys in tests
+
 ## [3.5.0](https://github.com/conekta/conekta-php/releases/tag/v3.5.0) - 2017-08-27
 ### Feature
 - Delete payment source by id into Customer class
