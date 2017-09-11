@@ -2,13 +2,13 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Requestor;
 use \Conekta\Util;
 use \Conekta\Exceptions;
 use \Conekta\Conekta;
 
-class ConektaList extends Object
+class ConektaList extends ConektaObject
 {
 
   const LIMIT = 5;
@@ -75,7 +75,7 @@ class ConektaList extends Object
     }
 
     $class = Util::$types[strtolower($this->elements_type)];
-    $url = Resource::classUrl($class);
+    $url = ConektaResource::classUrl($class);
     $requestor = new Requestor();
     $response = $requestor->request('get', $url, $this->params);
 

@@ -2,8 +2,8 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class PaymentMethod extends Resource
+class PaymentMethod extends ConektaResource
 {
 }

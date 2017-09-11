@@ -2,8 +2,8 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class WebhookLog extends Resource
+class WebhookLog extends ConektaResource
 {
 }

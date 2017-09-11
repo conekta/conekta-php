@@ -2,14 +2,14 @@
 
 namespace Conekta;
 
-use \Conekta\Object;
+use \Conekta\ConektaObject;
 use \Conekta\Requestor;
 use \Conekta\Exceptions;
 use \Conekta\Lang;
 use \Conekta\Util;
 use \Conekta\Conekta;
 
-abstract class Resource extends Object
+abstract class ConektaResource extends ConektaObject
 {
   public static function className($class)
   {
@@ -52,7 +52,7 @@ abstract class Resource extends Object
       $path = explode('\\', $class);
       $instance = new ConektaList(array_pop($path));
     } else {
-      $instance = new Object();
+      $instance = new ConektaObject();
     }
     $requestor = new Requestor();
     $url = self::classUrl($class);
@@ -117,7 +117,7 @@ abstract class Resource extends Object
     self::_customAction('delete', null, null);
     if (isset($parent) && isset($member)) {
       $obj = $this->$parent->$member;
-      if (strpos(get_class($obj), 'Object') !== false) {
+      if (strpos(get_class($obj), 'ConektaObject') !== false) {
         foreach ($this->$parent->$member as $k => $v) {
           if (strpos($v->id, $this->id) !== false) {
             $this->$parent->$member->_values = Util::shiftArray($this->$parent->$member->_values, $k);
@@ -149,7 +149,7 @@ abstract class Resource extends Object
     $response = $requestor->request('post', $url, $params);
 
     if (strpos(get_class($this->$member), 'ConektaList') !== false ||
-      strpos(get_class($this->$member), 'Object') !== false ||
+      strpos(get_class($this->$member), 'ConektaObject') !== false ||
       strpos($member, 'cards') !== false ||
       strpos($member, 'payout_methods') !== false) {
 
@@ -157,7 +157,7 @@ abstract class Resource extends Object
         if (Conekta::$apiVersion == '2.0.0') {
          $this->$member = new ConektaList($member);
        } else {
-        $this->$member = new Object();
+        $this->$member = new ConektaObject();
       }
     }
 

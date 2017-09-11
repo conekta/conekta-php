@@ -72,7 +72,7 @@ class ChargeTest extends BaseTest
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
         $charges = \Conekta\Charge::where();
-        $this->assertTrue(strpos(get_class($charges), 'Object') !== false);
+        $this->assertTrue(strpos(get_class($charges), 'ConektaObject') !== false);
         $this->assertTrue(strpos(get_class($charges[0]), 'Charge') !== false);
     }
 

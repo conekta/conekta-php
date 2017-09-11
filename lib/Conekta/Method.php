@@ -2,8 +2,8 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Method extends Resource
+class Method extends ConektaResource
 {
 }

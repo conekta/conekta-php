@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Error;
 use \Conekta\Conekta;
 
-class PaymentSource extends Resource
+class PaymentSource extends ConektaResource
 {
   public function instanceUrl()
   {

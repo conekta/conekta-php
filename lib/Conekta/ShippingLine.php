@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Exceptions;
 use \Conekta\Conekta;
 
-class ShippingLine extends Resource
+class ShippingLine extends ConektaResource
 {
     public function instanceUrl()
     {

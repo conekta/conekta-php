@@ -5,7 +5,7 @@ namespace Conekta;
 use \ArrayObject;
 use \Conekta\Util;
 
-class Object extends ArrayObject
+class ConektaObject extends ArrayObject
 {
   protected $_values;
 
@@ -33,7 +33,7 @@ class Object extends ArrayObject
       if (is_array($val)) {
         $val = Util::convertToConektaObject($val);
       }
-      if (strpos(get_class($this), 'Object') !== false) {
+      if (strpos(get_class($this), 'ConektaObject') !== false) {
         $this[$object] = $val;
       } else {
         if (strpos($object, 'url') !== false && strpos(get_class($this), 'Webhook') !== false) {
@@ -41,7 +41,7 @@ class Object extends ArrayObject
         }
         $this->$object = $val;
         if ($object == "metadata") {
-          $this->metadata = new Object();
+          $this->metadata = new ConektaObject();
           if (is_array($val) || is_object($val)) {
             foreach ($val as $object2 => $val2) {
               $this->metadata->$object2 = $val2;
