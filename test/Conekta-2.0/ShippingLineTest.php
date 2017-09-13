@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ShippingLineTest extends BaseTest
 {
@@ -42,7 +39,7 @@ class ShippingLineTest extends BaseTest
   public function testSuccessfulShippingLineDelete()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->delete();
     $this->assertTrue($shippingLine->deleted == true);
@@ -51,7 +48,7 @@ class ShippingLineTest extends BaseTest
   public function testSuccessfulShippingLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     $shippingLine->update(array('method' => 'Air'));
     $this->assertTrue($shippingLine->method == 'Air');
@@ -60,11 +57,11 @@ class ShippingLineTest extends BaseTest
   public function testUnsuccessfulShippingLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $shippingLine = $order->shipping_lines[0];
     try{
       $shippingLine->update(array('amount' => -1));
-    } catch (Exception $e) {
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

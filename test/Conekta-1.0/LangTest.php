@@ -1,11 +1,8 @@
 <?php
 
-use \Conekta\Lang;
-use PHPUnit\Framework\TestCase;
+namespace Conekta;
 
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-
-class LangTest extends TestCase
+class LangTest extends BaseTest
 {   
 	public function testShouldTranslatesMessage()
 	{

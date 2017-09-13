@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class DiscountLineTest extends BaseTest
 {
@@ -38,7 +35,7 @@ class DiscountLineTest extends BaseTest
   public function testSuccessfulDiscountLineDelete()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->delete();
 
@@ -48,7 +45,7 @@ class DiscountLineTest extends BaseTest
   public function testSuccessfulDiscountLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     $discountLine->update(array('amount' => 11));
 
@@ -58,11 +55,11 @@ class DiscountLineTest extends BaseTest
   public function testUnsuccessfulDiscountLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $discountLine = $order->discount_lines[0];
     try{
       $discountLine->update(array('amount' => -1));
-    } catch(\Conekta\Handler $e) {
+    } catch(Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class OrderTest extends BaseTest
 {
@@ -33,7 +30,7 @@ class OrderTest extends BaseTest
   public function testSuccesfulCreateOrder()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $this->assertTrue(strpos($order->metadata["test"], 'extra info') !== false);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
 
@@ -59,7 +56,7 @@ class OrderTest extends BaseTest
         )
       );
     $this->setApiKey();
-    $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
+    $order = Order::create(array_merge(self::$validOrder, $charges));
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     $this->assertTrue(count($order->charges) > 0);
   }
@@ -76,7 +73,7 @@ class OrderTest extends BaseTest
         )
       );
     $this->setApiKey();
-    $order = \Conekta\Order::create(array_merge(self::$validOrder, $other_params));
+    $order = Order::create(array_merge(self::$validOrder, $other_params));
     $charge_params = array(
       'payment_method' => array('type' => 'oxxo_cash'),
       'amount' => 20000
@@ -91,7 +88,7 @@ class OrderTest extends BaseTest
   public function testSuccesfulOrderUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
 
     $updated_parameters = array(
       'line_items'=> array(
@@ -124,10 +121,10 @@ class OrderTest extends BaseTest
       );
 
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     try {
       $order->update(array('charges' => $charges));
-    } catch(\Conekta\Handler $e) {
+    } catch(Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }
@@ -135,15 +132,15 @@ class OrderTest extends BaseTest
   public function testSuccesfulOrderFind()
   {
     $this->setApiKey();
-    $id = \Conekta\Order::create(self::$validOrder)->id;
-    $order = \Conekta\Order::find($id);
+    $id = Order::create(self::$validOrder)->id;
+    $order = Order::find($id);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
   }
 
   public function testSuccesfulOrderWhere()
   {
     $this->setApiKey();
-    $orders = \Conekta\Order::where();
+    $orders = Order::where();
     $this->assertTrue(strpos(get_class($orders), 'ConektaList') !== false);
     $this->assertTrue(strpos($orders->elements_type, 'Order') !== false);
     $this->assertTrue(strpos(get_class($orders[0]), 'Order') !== false);
@@ -153,7 +150,7 @@ class OrderTest extends BaseTest
   public function testSuccessfulLineItem()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
 
     $line_item = $order->createLineItem(array(
       'name'=> 'Box of Cohiba S1s',
@@ -171,7 +168,7 @@ class OrderTest extends BaseTest
   public function testSuccessfulTaxLine()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
 
     $taxLine = $order->createTaxLine(array(
       'description' => 'IVA',
@@ -191,7 +188,7 @@ class OrderTest extends BaseTest
   public function testSuccessfulShippingLine()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
 
     $shippingLine = $order->createShippingLine(array(
       'description' => 'Free Shipping',
@@ -209,7 +206,7 @@ class OrderTest extends BaseTest
   public function testSuccessfulDiscountLine()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $discountLine = $order->createDiscountLine(array(
       'code' => 'Cupon de descuento',
       'amount' => 10,
@@ -240,9 +237,9 @@ class OrderTest extends BaseTest
         )
       );
     $this->setApiKey();
-    $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
+    $order = Order::create(array_merge(self::$validOrder, $charges));
     $order->refund(array_merge(self::$validRefund, array('order_id' => $order->id)));
-    $refundedOrder = \Conekta\Order::find($order->id);
+    $refundedOrder = Order::find($order->id);
 
     $this->assertTrue($refundedOrder->payment_status == 'refunded');
   }
@@ -269,7 +266,7 @@ class OrderTest extends BaseTest
         )
       );
     $this->setApiKey();
-    $order = \Conekta\Order::create(array_merge(self::$validOrder, $charges));
+    $order = Order::create(array_merge(self::$validOrder, $charges));
     $this->assertTrue($order->payment_status == 'pre_authorized');
     $this->assertTrue($order->charges[0]->status == 'pre_authorized');
 

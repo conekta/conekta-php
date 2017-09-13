@@ -1,8 +1,6 @@
 <?php
-use PHPUnit\Framework\TestCase;
 
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class LogTest extends BaseTest
 {
@@ -10,8 +8,8 @@ class LogTest extends BaseTest
   {
     $this->setApiKey();
     $this->setApiVersion('1.0.0');
-    $logs = \Conekta\Log::where();
-    $log = \Conekta\Log::find($logs[0]['id']);
+    $logs = Log::where();
+    $log = Log::find($logs[0]['id']);
     $this->assertTrue(strpos(get_class($log), 'Log') !== false);
   }
 
@@ -19,7 +17,7 @@ class LogTest extends BaseTest
   {
     $this->setApiKey();
     $this->setApiVersion('1.0.0');
-    $logs = \Conekta\Log::where();
+    $logs = Log::where();
     $this->assertTrue(strpos(get_class($logs), 'Conekta\ConektaObject') !== false);
     $this->assertTrue(strpos(get_class($logs[0]), 'Conekta\ConektaObject') !== false);
   }

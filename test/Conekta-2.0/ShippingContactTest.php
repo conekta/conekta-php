@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ShippingContactTest extends BaseTest
 {
@@ -40,7 +37,7 @@ class ShippingContactTest extends BaseTest
   public function testSuccessfulShippingContactDelete()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     $shippingContact->delete();
     $this->assertTrue($shippingContact->deleted == true);
@@ -49,7 +46,7 @@ class ShippingContactTest extends BaseTest
   public function testSuccessfulShippingContactUpdate()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     $shippingContact->update(array('receiver' => 'Tony Almeida'));
     $this->assertTrue($shippingContact->receiver == 'Tony Almeida');
@@ -58,11 +55,11 @@ class ShippingContactTest extends BaseTest
   public function testUnsuccessfulShippingContactUpdate()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $shippingContact = $customer->shipping_contacts[0];
     try{
       $shippingContact->update(array('phone' => ''));
-    }catch (Exception $e) {
+    }catch (Handler $e) {
 
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }

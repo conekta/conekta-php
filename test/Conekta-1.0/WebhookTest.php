@@ -1,8 +1,6 @@
 <?php
-use PHPUnit\Framework\TestCase;
 
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class WebhookTest extends BaseTest
 {
@@ -26,7 +24,7 @@ class WebhookTest extends BaseTest
   {
     $this->setApiKey();
     $this->setApiVersion('1.0.0');
-    $webhook = \Conekta\Webhook::create(array_merge(self::$url, self::$events));
+    $webhook = Webhook::create(array_merge(self::$url, self::$events));
     $this->assertTrue(strpos(get_class($webhook), 'Webhook') !== false);
     $this->assertTrue(strpos($webhook->webhook_url, self::$url["url"]) !== false);
     $webhook->update(array("url" => "http://www.example.com/my_listener"));

@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class TaxLineTest extends BaseTest
 {
@@ -36,7 +33,7 @@ class TaxLineTest extends BaseTest
   public function testSuccessfulTaxLineDelete()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->delete();
     $this->assertTrue($taxLine->deleted == true);
@@ -45,7 +42,7 @@ class TaxLineTest extends BaseTest
   public function testSuccessfulTaxLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     $taxLine->update(array('amount' => 10));
     $this->assertTrue($taxLine->amount == 10);
@@ -54,11 +51,11 @@ class TaxLineTest extends BaseTest
   public function testUnsuccessfulTaxLineUpdate()
   {
     $this->setApiKey();
-    $order = \Conekta\Order::create(self::$validOrder);
+    $order = Order::create(self::$validOrder);
     $taxLine = $order->tax_lines[0];
     try {
       $taxLine->update(array('amount' => -1));
-    } catch (Exception $e) {
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

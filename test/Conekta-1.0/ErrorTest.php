@@ -1,16 +1,13 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ErrorTest extends BaseTest
 {   
   function unsetApiKey()
   {
     if (isset($env) == false) {
-      $env = \Conekta\Conekta::setApiKey('');
+      $env = Conekta::setApiKey('');
     }
   }
   public static $validOrder = array(
@@ -45,8 +42,8 @@ class ErrorTest extends BaseTest
   {
     $this->setApiKey();
     try {
-      $customer = \Conekta\Customer::find('0');
-    } catch (Exception $e) {
+      $customer = Customer::find('0');
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }
@@ -54,21 +51,21 @@ class ErrorTest extends BaseTest
   public function testNoConnectionError()
   {
     $this->setApiKey();
-    $apiUrl = \Conekta\Conekta::$apiBase;
-    \Conekta\Conekta::$apiBase = 'http://localhost:3001';
+    $apiUrl = Conekta::$apiBase;
+    Conekta::$apiBase = 'http://localhost:3001';
     try {
-      $customer = \Conekta\Customer::create(array('cards' => array('tok_test_visa_4241')));
-    } catch (Exception $e) {
+      $customer = Customer::create(array('cards' => array('tok_test_visa_4241')));
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'NoConnectionError') == true);
     }
-    \Conekta\Conekta::$apiBase = $apiUrl;
+    Conekta::$apiBase = $apiUrl;
   }
 
   public function testParameterValidationError(){
     $this->setApiKey();
     try {
-      $customer = \Conekta\Customer::create(self::$invalidCustomer);
-    } catch (Exception $e) {
+      $customer = Customer::create(self::$invalidCustomer);
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }
@@ -77,8 +74,8 @@ class ErrorTest extends BaseTest
   {
     $this->setApiKey();
     try {
-      $customer = \Conekta\Customer::find('2');
-    } catch (Exception $e) {
+      $customer = Customer::find('2');
+    } catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ResourceNotFoundError') == true);
     }
   }
@@ -86,8 +83,8 @@ class ErrorTest extends BaseTest
   {
     $this->unsetApiKey();
     try {
-      $customer = \Conekta\Customer::create();
-    } catch (Exception $e){
+      $customer = Customer::create();
+    } catch (Handler $e){
       $this->assertTrue(strpos(get_class($e), 'AuthenticationError') == true);
     }
     $this->setApiKey();
@@ -103,9 +100,9 @@ class ErrorTest extends BaseTest
 
     try {
       $orderParams = array_merge(self::$validOrder, self::$otherParams);
-      $order  = \Conekta\Order::create($orderParams);
+      $order  = Order::create($orderParams);
       $charge = $order->createCharge($validVisaCard);
-    } catch (Exception $e){
+    } catch (Handler $e){
       $this->assertTrue(strpos(get_class($e), 'ResourceNotFoundError') == true);
     }
   }

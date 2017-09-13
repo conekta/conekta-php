@@ -1,21 +1,23 @@
 <?php
 
-require_once dirname(__FILE__).'/../lib/Conekta.php';
+namespace Conekta;
 
-class BaseTest extends \PHPUnit\Framework\TestCase
+use \PHPUnit\Framework\TestCase;
+
+class BaseTest extends TestCase
 {
-  public function setApiKey()
-  {   
-    $apiEnvKey = getenv('CONEKTA_API');
-    if (!$apiEnvKey) {
-      $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
+    public function setApiKey()
+    {
+        $apiEnvKey = getenv('CONEKTA_API');
+        if (!$apiEnvKey) {
+            $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
+        }
+        Conekta::setApiKey($apiEnvKey);
     }
-    \Conekta\Conekta::setApiKey($apiEnvKey);
-  }
 
-  public function setApiVersion($version)
-  {
-    \Conekta\Conekta::setApiVersion($version);
-  }
-  
+    public function setApiVersion($version)
+    {
+        Conekta::setApiVersion($version);
+    }
+
 }

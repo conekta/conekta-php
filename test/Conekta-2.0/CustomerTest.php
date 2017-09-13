@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class CustomerTest extends BaseTest
 {
@@ -19,14 +16,14 @@ class CustomerTest extends BaseTest
   public function testSuccesfulCustomerCreate()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $this->assertTrue(strpos(get_class($customer), 'Customer') !== false);
   }
 
   public function testSuccessfulCustomerNewWhere()
   {
     $this->setApiKey();
-    $customers = \Conekta\Customer::where();
+    $customers = Customer::where();
     $this->assertTrue(strpos(get_class($customers), 'ConektaList') !== false);
     $this->assertTrue(strpos($customers->elements_type, 'Customer') !== false);
     $this->assertTrue(strpos(get_class($customers[0]), 'Customer') !== false);
@@ -36,7 +33,7 @@ class CustomerTest extends BaseTest
   public function testSuccesfulDeleteCustomer()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $customer->delete();
     $this->assertTrue($customer->deleted == true);
   }
@@ -45,8 +42,8 @@ class CustomerTest extends BaseTest
   {
     $this->setApiKey();
     try {
-      $customer = \Conekta\Customer::create(self::$invalidCustomer);
-    } catch (\Conekta\ParameterValidationError $e) {
+      $customer = Customer::create(self::$invalidCustomer);
+    } catch (ParameterValidationError $e) {
       $this->assertTrue(strpos($e->getMessage(),"El parametro \"name\" es requerido") !== false);
     }
   }
@@ -54,7 +51,7 @@ class CustomerTest extends BaseTest
   public function testSuccesfulSourceCreate()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $source = $customer->createPaymentSource(array(
       'token_id' => 'tok_test_visa_4242',
       'type' => 'card'
@@ -66,7 +63,7 @@ class CustomerTest extends BaseTest
   public function testSuccessfulSourceDelete()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $firstSource = $customer->createPaymentSource(array(
       'token_id' => 'tok_test_visa_4242',
       'type' => 'card'
@@ -82,7 +79,7 @@ class CustomerTest extends BaseTest
   public function testSuccesfulShippingContactCreate()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $shippingContact = $customer->createShippingContact(array(
       'receiver' => 'John Williams',
       'phone' => '+523333350360',
