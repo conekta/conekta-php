@@ -1,3 +1,13 @@
+## [4.0.0](https://github.com/conekta/conekta-php/releases/tag/v4.0.0) - 2017-09-13
+### Feature
+- PHP 7 compatibility
+- Rename \Conekta\Object to \Conekta\ConekatObject
+- Rename \Conekta\Resource to \Conekta\ConektaResource
+- Use phpunit.xml to organize tests
+
+### Changed
+- Apply namespace in tests
+
 ## [3.5.1](https://github.com/conekta/conekta-php/releases/tag/v3.5.1) - 2017-09-07
 ### Changed
 - Refactorize tests functions code
