@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ChargeTest extends BaseTest
 {
@@ -71,7 +68,7 @@ class ChargeTest extends BaseTest
     {
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
-        $charges = \Conekta\Charge::where();
+        $charges = Charge::where();
         $this->assertTrue(strpos(get_class($charges), 'ConektaObject') !== false);
         $this->assertTrue(strpos(get_class($charges[0]), 'Charge') !== false);
     }
@@ -83,8 +80,8 @@ class ChargeTest extends BaseTest
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
         try {
-            $cpm = \Conekta\Charge::create(array_merge($pm, $card));
-        } catch (Exception $e) {
+            $cpm = Charge::create(array_merge($pm, $card));
+        } catch (Handler $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The minimum for card payments is 3 pesos. Check that the amount is in cents as explained in the documentation.') !== false);
         }
     }
@@ -95,7 +92,7 @@ class ChargeTest extends BaseTest
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
         $this->setApiKey();
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card));
+        $cpm = Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
         $cpm->refund();
         $this->assertTrue($cpm->status == 'refunded');
@@ -107,11 +104,11 @@ class ChargeTest extends BaseTest
         $card = self::$valid_visa_card;
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card));
+        $cpm = Charge::create(array_merge($pm, $card));
         $this->assertTrue($cpm->status == 'paid');
         try {
             $cpm->refund(3000);
-        } catch (Exception $e) {
+        } catch (Handler $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The amount to refund exceeds the charge total') !== false);
         }
     }
@@ -123,7 +120,7 @@ class ChargeTest extends BaseTest
         $card = self::$valid_visa_card;
         $capture = array('capture' => false);
         $this->setApiKey();
-        $cpm = \Conekta\Charge::create(array_merge($pm, $card, $capture));
+        $cpm = Charge::create(array_merge($pm, $card, $capture));
         $this->assertTrue($cpm->status == 'pre_authorized');
         $cpm->capture();
         $this->assertTrue($cpm->status == 'paid');

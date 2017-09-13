@@ -1,16 +1,13 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ConektaListTest extends BaseTest
 {
   public function testSuccessfulNext()
   {
     $orderList = $this->createResponseMockUp();
-    $window = \Conekta\Order::where(array('limit' => 5, "next" => $orderList[9]->id)); 
+    $window = Order::where(array('limit' => 5, "next" => $orderList[9]->id));
     $this->assertTrue($window[0]->id == $orderList[10]->id);
     $window->next(array('limit' => 1));
     $this->assertTrue($window[0]->id == $orderList[15]->id);
@@ -19,7 +16,7 @@ class ConektaListTest extends BaseTest
   public function testSuccessfulPrevious()
   {
     $orderList = $this->createResponseMockUp();
-    $window = \Conekta\Order::where(array('limit' => 5, 'next' => $orderList[14]->id));
+    $window = Order::where(array('limit' => 5, 'next' => $orderList[14]->id));
     $this->assertTrue($window[0]->id == $orderList[15]->id);
     $window->previous(array('limit' => 1));
     $this->assertTrue($window[0]->id == $orderList[14]->id);
@@ -32,7 +29,7 @@ class ConektaListTest extends BaseTest
     $path = file_exists($overRootFolder) ? $overRootFolder: $insideTestFolder;
     $object        = file_get_contents($path);
     $jsonResponse  = json_decode($object, true);
-    $orderList     = new \Conekta\ConektaList("Order", $jsonResponse);
+    $orderList     = new ConektaList("Order", $jsonResponse);
     $orderList->loadFromArray($jsonResponse);
     
     return $orderList;
@@ -40,7 +37,7 @@ class ConektaListTest extends BaseTest
   public function testSuccessfulEmptyNext()
   {
     $orderList = $this->createResponseMockUp();
-    $window = \Conekta\Order::where(array('limit' => 5));
+    $window = Order::where(array('limit' => 5));
 
     $firtsOrderId = $window[0]->id;
     $window->next(); 
@@ -62,7 +59,7 @@ class ConektaListTest extends BaseTest
   public function testSuccessfulEmptyPrevious()
   {
     $orderList = $this->createResponseMockUp();
-    $window = \Conekta\Order::where(array('limit' => 10)); 
+    $window = Order::where(array('limit' => 10));
 
     $firtsOrderId = $window[0]->id;
     $window->next(); 

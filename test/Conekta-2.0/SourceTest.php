@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class SourceTest extends BaseTest
 {
@@ -19,7 +16,7 @@ class SourceTest extends BaseTest
   public function testSuccesfulDeleteSources()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->delete();
     $this->assertTrue($paymentSource->deleted == true);
@@ -28,7 +25,7 @@ class SourceTest extends BaseTest
   public function testSuccesfulUpdateSources()
   {
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     $paymentSource->update(array('exp_month' => '11'));
     $this->assertTrue($paymentSource->exp_month == '11');
@@ -36,11 +33,11 @@ class SourceTest extends BaseTest
 
   public function testUnsuccesfulUpdateSources(){
     $this->setApiKey();
-    $customer = \Conekta\Customer::create(self::$validCustomer);
+    $customer = Customer::create(self::$validCustomer);
     $paymentSource = $customer->payment_sources[0];
     try{
       $paymentSource->update(array('token_id' => 'tok_test_visa_4241'));
-    }catch (Exception $e) {
+    }catch (Handler $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

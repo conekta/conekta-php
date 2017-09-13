@@ -1,9 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ChargeTest extends BaseTest
 {
@@ -40,7 +37,7 @@ class ChargeTest extends BaseTest
   {
     $this->setApiKey();
     $orderParams = array_merge(self::$validOrder, self::$otherParams);
-    $order = \Conekta\Order::create($orderParams);
+    $order = Order::create($orderParams);
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     
     return $order;
@@ -50,7 +47,7 @@ class ChargeTest extends BaseTest
   {
     $order  = $this->testCreateOrder(); 
     $charge = $order->createCharge(self::$chargeParams);
-    $filterCharges = \Conekta\Order::find($charge->id);
+    $filterCharges = Order::find($charge->id);
     $validCharge = $filterCharges->charges[0];
     $this->assertTrue(strpos(get_class($validCharge), 'Charge') !== false);
   }

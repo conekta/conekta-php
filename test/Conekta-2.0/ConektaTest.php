@@ -1,27 +1,24 @@
 <?php
  
-use PHPUnit\Framework\TestCase;
-
-require_once dirname(__FILE__).'/../../lib/Conekta.php';
-require_once dirname(__FILE__).'/../BaseTest.php';
+namespace Conekta;
 
 class ConektaTest extends BaseTest
 {
 
   function setEnvLocale($locale){
-    \Conekta\Conekta::setLocale($locale);
+    Conekta::setLocale($locale);
   }
   function setPlugin($plugin){
-    \Conekta\Conekta::setPlugin($plugin);
+    Conekta::setPlugin($plugin);
   }
   function setPluginVersion($version){
-    \Conekta\Conekta::setPluginVersion($version);
+    Conekta::setPluginVersion($version);
   }
 
   public function testApiLocaleInitializerStyle()
   {
     $this->setEnvLocale('en');
-    $this->assertTrue( \Conekta\Conekta::$locale == 'en');
+    $this->assertTrue( Conekta::$locale == 'en');
     $this->setEnvLocale('es');
   }
 
@@ -30,8 +27,8 @@ class ConektaTest extends BaseTest
     $this->setApiKey();
     $this->setPlugin('Magento 2');
     $this->setPluginVersion('2.0.0');
-    $this->assertTrue( \Conekta\Conekta::getPlugin() == 'Magento 2');
-    $this->assertTrue( \Conekta\Conekta::getPluginVersion() == '2.0.0');
+    $this->assertTrue( Conekta::getPlugin() == 'Magento 2');
+    $this->assertTrue( Conekta::getPluginVersion() == '2.0.0');
   }
 
 }
