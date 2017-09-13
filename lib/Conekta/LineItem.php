@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Exceptions;
 use \Conekta\Conekta;
 
-class LineItem extends Resource
+class LineItem extends ConektaResource
 {
   var $name        = "";
   var $description = "";

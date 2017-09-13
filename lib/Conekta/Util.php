@@ -2,7 +2,7 @@
 
 namespace Conekta;
 
-use \Conekta\Object;
+use \Conekta\ConektaObject;
 
 abstract class Util
 {
@@ -56,13 +56,13 @@ abstract class Util
       }
 
       if (current($resp)) {
-        $instance = new Object();
+        $instance = new ConektaObject();
         $instance->loadFromArray($resp);
 
         return $instance;
       }
 
-      return new Object();
+      return new ConektaObject();
     }
 
     return $resp;

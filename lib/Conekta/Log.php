@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Log extends Resource
+class Log extends ConektaResource
 {
   var $method         = "";
   var $url            = "";

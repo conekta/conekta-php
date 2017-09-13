@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Plan extends Resource
+class Plan extends ConektaResource
 {
   public static function find($id)
   {

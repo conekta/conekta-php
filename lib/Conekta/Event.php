@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Event extends Resource
+class Event extends ConektaResource
 {
   var $data          = "";
   var $livemode      = "";

@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Webhook extends Resource
+class Webhook extends ConektaResource
 {
   public static function find($id)
   {

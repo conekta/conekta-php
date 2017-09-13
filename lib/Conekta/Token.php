@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Token extends Resource
+class Token extends ConektaResource
 {
   public static function find($id)
   {

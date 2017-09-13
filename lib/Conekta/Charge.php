@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Charge extends Resource
+class Charge extends ConektaResource
 {
   var $livemode                = "";
   var $amount                  = "";

@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Conekta;
 use \Conekta\Exceptions;
 
-class Subscription extends Resource
+class Subscription extends ConektaResource
 {
   public function instanceUrl()
   {

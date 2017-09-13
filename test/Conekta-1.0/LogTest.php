@@ -20,7 +20,7 @@ class LogTest extends BaseTest
     $this->setApiKey();
     $this->setApiVersion('1.0.0');
     $logs = \Conekta\Log::where();
-    $this->assertTrue(strpos(get_class($logs), 'Conekta\Object') !== false);
-    $this->assertTrue(strpos(get_class($logs[0]), 'Conekta\Object') !== false);
+    $this->assertTrue(strpos(get_class($logs), 'Conekta\ConektaObject') !== false);
+    $this->assertTrue(strpos(get_class($logs[0]), 'Conekta\ConektaObject') !== false);
   }
 }

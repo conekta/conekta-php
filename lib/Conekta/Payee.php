@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Payee extends Resource
+class Payee extends ConektaResource
 {
   var $email                = "";
   var $name                 = "";

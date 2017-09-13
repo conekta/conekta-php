@@ -2,9 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 
-class Address extends Resource
+class Address extends ConektaResource
 {
   var $street1 = "";
   var $street2 = "";

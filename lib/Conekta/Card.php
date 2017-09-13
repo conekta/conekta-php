@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Exceptions;
 use \Conekta\Conekta;
 
-class Card extends Resource
+class Card extends ConektaResource
 {
   var $createdAt = "";
   var $last4     = "";

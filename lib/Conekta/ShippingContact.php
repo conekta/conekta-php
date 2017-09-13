@@ -2,12 +2,12 @@
 
 namespace Conekta;
 
-use \Conekta\Resource;
+use \Conekta\ConektaResource;
 use \Conekta\Lang;
 use \Conekta\Exceptions;
 use \Conekta\Conekta;
 
-class ShippingContact extends Resource
+class ShippingContact extends ConektaResource
 {
   var $receiver       = "";
   var $phone          = "";
