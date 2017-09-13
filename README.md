@@ -1,5 +1,8 @@
 ![README Cover Image](readme_cover.png)
-
+## [Warning] THIS VERSION IS DEPRECATED
+In order to get compatibility with php 7.0 ang higher we decide to branch 
+this repo with php-v3 version to keep compatibility with 
+>= 5.3 <= 5.6
 # Conekta PHP v.3.5.1
 
 This is a php library that allows interaction with https://api.conekta.io API.
