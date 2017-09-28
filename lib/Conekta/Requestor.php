@@ -8,7 +8,7 @@
 namespace Conekta;
 
 use \Conekta\Conekta;
-use \Conekta\Exceptions;
+use \Conekta\Handler;
 
 /**
   * @method string  apiUrl($urls string)
@@ -130,7 +130,7 @@ class Requestor
       $url = $this->buildSegmentParamsUrl($url, $params);
       break;
       default:
-      throw new Exception('Wrong method');
+      throw new \Exception('Wrong method');
     }
 
     $url = $this->apiUrl($url);

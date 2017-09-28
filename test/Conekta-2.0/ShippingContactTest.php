@@ -59,7 +59,7 @@ class ShippingContactTest extends BaseTest
     $shippingContact = $customer->shipping_contacts[0];
     try{
       $shippingContact->update(array('phone' => ''));
-    }catch (Handler $e) {
+    }catch (\Exception $e) {
 
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }

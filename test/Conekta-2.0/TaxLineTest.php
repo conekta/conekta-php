@@ -55,7 +55,7 @@ class TaxLineTest extends BaseTest
     $taxLine = $order->tax_lines[0];
     try {
       $taxLine->update(array('amount' => -1));
-    } catch (Handler $e) {
+    } catch (\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

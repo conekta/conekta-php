@@ -27,7 +27,7 @@ class SubscriptionTest extends BaseTest
     $subscription = $customer->createSubscription(array('plan' => 'gold-plan'));
     try {
       $plan = Plan::find('gold-plan2');
-    } catch (Handler $e) {
+    } catch (\Exception $e) {
       $plan = Plan::create(array(
         'id'                => 'gold-plan2',
         'name'              => 'Gold Plan',
@@ -52,7 +52,7 @@ class SubscriptionTest extends BaseTest
     try {
       $subscription = $customer->createSubscription(array(
         'plan' => 'unexistent-plan', ));
-    } catch (Handler $e) {
+    } catch (\Exception $e) {
       $this->assertTrue(strpos($e->getMessage(), 'El recurso no ha sido encontrado') !== false);
     }
   }

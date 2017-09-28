@@ -37,7 +37,7 @@ class SourceTest extends BaseTest
     $paymentSource = $customer->payment_sources[0];
     try{
       $paymentSource->update(array('token_id' => 'tok_test_visa_4241'));
-    }catch (Handler $e) {
+    }catch (\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }
