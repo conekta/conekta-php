@@ -93,7 +93,7 @@ class Handler extends Exception {
 
   public static function errorHandler($resp, $httpCode)
   {
-    throw self::build($resp, $httpCode);
+    throw Handler::build($resp, $httpCode);
   }
   public static function assignIfSet($parameter, $index)
   {

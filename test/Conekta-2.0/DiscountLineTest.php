@@ -59,7 +59,7 @@ class DiscountLineTest extends BaseTest
     $discountLine = $order->discount_lines[0];
     try{
       $discountLine->update(array('amount' => -1));
-    } catch(Handler $e) {
+    } catch(\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

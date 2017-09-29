@@ -81,7 +81,7 @@ class ChargeTest extends BaseTest
         $this->setApiVersion('1.0.0');
         try {
             $cpm = Charge::create(array_merge($pm, $card));
-        } catch (Handler $e) {
+        } catch (\Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The minimum for card payments is 3 pesos. Check that the amount is in cents as explained in the documentation.') !== false);
         }
     }
@@ -108,7 +108,7 @@ class ChargeTest extends BaseTest
         $this->assertTrue($cpm->status == 'paid');
         try {
             $cpm->refund(3000);
-        } catch (Handler $e) {
+        } catch (\Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The amount to refund exceeds the charge total') !== false);
         }
     }

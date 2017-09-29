@@ -53,7 +53,7 @@ class LineItemTest extends BaseTest
     try {
       $lineItem->update(array('unit_price' => -1));
 
-    } catch(Handler $e) {
+    } catch(\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

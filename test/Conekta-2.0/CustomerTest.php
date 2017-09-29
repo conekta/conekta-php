@@ -43,7 +43,7 @@ class CustomerTest extends BaseTest
     $this->setApiKey();
     try {
       $customer = Customer::create(self::$invalidCustomer);
-    } catch (ParameterValidationError $e) {
+    } catch (\Exception $e) {
       $this->assertTrue(strpos($e->getMessage(),"El parametro \"name\" es requerido") !== false);
     }
   }

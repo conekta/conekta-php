@@ -61,7 +61,7 @@ class ShippingLineTest extends BaseTest
     $shippingLine = $order->shipping_lines[0];
     try{
       $shippingLine->update(array('amount' => -1));
-    } catch (Handler $e) {
+    } catch (\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }

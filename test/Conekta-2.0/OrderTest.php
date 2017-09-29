@@ -124,7 +124,7 @@ class OrderTest extends BaseTest
     $order = Order::create(self::$validOrder);
     try {
       $order->update(array('charges' => $charges));
-    } catch(Handler $e) {
+    } catch(\Exception $e) {
       $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
     }
   }
