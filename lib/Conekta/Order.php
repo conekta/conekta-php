@@ -85,6 +85,11 @@ class Order extends ConektaResource
     return parent::_customAction('put', 'capture', null);
   }
 
+  public function void($params = null)
+  {
+    return parent::_customAction('post', 'void', $params);
+  }
+
   public function createTaxLine($params = null)
   {
     return parent::_createMemberWithRelation('tax_lines', $params, $this);

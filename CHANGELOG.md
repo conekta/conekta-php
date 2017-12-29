@@ -1,3 +1,7 @@
+## [4.0.1](https://github.com/conekta/conekta-php/releases/tag/v4.0.0) - 2017-09-13
+### Feature
+- Implement void action for orders
+
 ## [4.0.0](https://github.com/conekta/conekta-php/releases/tag/v4.0.0) - 2017-09-13
 ### Feature
 - PHP 7 compatibility
