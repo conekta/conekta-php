@@ -60,7 +60,7 @@ try {
   echo $e->getMessage();
 } catch (\Conekta\ParameterValidationError $e){
   echo $e->getMessage();
-} finally (\Conekta\Handler $e){
+} catch (\Conekta\Handler $e){
   echo $e->getMessage();
 }
 ```
