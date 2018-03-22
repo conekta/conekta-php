@@ -12,6 +12,13 @@ class CustomerTest extends BaseTest
     'email' => 'hola@hola.com',
     'names'  => 'John Constantine'
     );
+  public static $validRecurrentCustomer = array(
+    'name' => 'John Constantine',
+    'email' => 'john_constantine@conekta.com',
+    'payment_sources' => array(array(
+      'type' => 'oxxo_recurrent', 
+    )) 
+  );
 
   public function testSuccesfulCustomerCreate()
   {
@@ -57,9 +64,11 @@ class CustomerTest extends BaseTest
       'type' => 'card'
       ));
     $this->assertTrue(strpos(get_class($source), 'PaymentSource') !== false);
+    $this->assertTrue($source->isCard());
     $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') !== false);
     $this->assertTrue($customer->payment_sources->total == 1);
   }
+
   public function testSuccessfulSourceDelete()
   {
     $this->setApiKey();
@@ -96,5 +105,32 @@ class CustomerTest extends BaseTest
     $this->assertTrue(strpos(get_class($shippingContact), 'ShippingContact') !== false);
     $this->assertTrue(strpos(get_class($customer->shipping_contacts), 'ConektaList') !== false);
     $this->assertTrue($customer->shipping_contacts->total == 1);
+  }
+
+  public function testOfflineRecurrentSourceIsCreated()
+  {
+    $this->setApiKey();
+    $customer = Customer::create(self::$validCustomer);
+    $source = $customer->createPaymentSource(array(
+      'type' => 'oxxo_recurrent'
+    ));
+    $this->assertTrue(strpos(get_class($source), 'PaymentSource') !== false);
+    $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') !== false);
+    $this->assertTrue($customer->payment_sources->total == 1);
+    $this->assertEquals($source['type'], 'oxxo_recurrent');
+    $this->assertTrue(strlen($source['reference']) == 14);
+  }
+
+   public function testCustomerWithOfflineRecurrentSourceIsCreated()
+  {
+    $this->setApiKey();
+    $customer = Customer::create(self::$validRecurrentCustomer);
+    $source = $customer->payment_sources[0];
+    $this->assertTrue(strpos(get_class($source), 'PaymentSource') !== false);
+    $this->assertTrue(strpos(get_class($customer->payment_sources), 'ConektaList') !== false);
+    $this->assertTrue($customer->payment_sources->total == 1);
+    $this->assertEquals($source['type'], 'oxxo_recurrent');
+    $this->assertTrue($source->isOxxoRecurrent());
+    $this->assertTrue(strlen($source['reference']) == 14);
   }
 }

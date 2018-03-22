@@ -9,6 +9,9 @@ use \Conekta\Conekta;
 
 class PaymentSource extends ConektaResource
 {
+  const TYPE_CARD = 'card';
+  const TYPE_OXXO_RECURRENT = 'oxxo_recurrent';
+
   public function instanceUrl()
   {
     $this->apiVersion = Conekta::$apiVersion;
@@ -31,4 +34,23 @@ class PaymentSource extends ConektaResource
   {
     return parent::_delete('customer', 'payment_sources');
   }
+
+  /**
+   * Method for determine if is card
+   * @return boolean
+   */
+  public function isCard()
+  {
+    return $this['type'] == self::TYPE_CARD;
+  }
+
+  /**
+   * Method for determine if is oxxo recurrent
+   * @return boolean
+   */
+  public function isOxxoRecurrent()
+  {
+    return $this['type'] == self::TYPE_OXXO_RECURRENT;
+  }
+
 }

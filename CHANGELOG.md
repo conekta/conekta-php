@@ -1,3 +1,7 @@
+## [4.0.2](https://github.com/conekta/conekta-php/releases/tag/v4.0.1) - 2018-03-22
+### Feature
+- Support to Oxxo recurrent
+
 ## [4.0.1](https://github.com/conekta/conekta-php/releases/tag/v4.0.1) - 2017-12-29
 ### Feature
 - Implement void action for orders
