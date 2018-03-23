@@ -148,7 +148,8 @@ abstract class ConektaResource extends ConektaObject
     $url = $this->instanceUrl().'/'.$member;
     $response = $requestor->request('post', $url, $params);
 
-    if (strpos(get_class($this->$member), 'ConektaList') !== false ||
+    if (is_null($this->$member) ||
+      strpos(get_class($this->$member), 'ConektaList') !== false ||
       strpos(get_class($this->$member), 'ConektaObject') !== false ||
       strpos($member, 'cards') !== false ||
       strpos($member, 'payout_methods') !== false) {
