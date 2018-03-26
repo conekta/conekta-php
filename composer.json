@@ -15,13 +15,13 @@
     }
   ],
   "require": {
-    "php": ">=5.3",
+    "php": "~7.0",
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "~6.1"
   },
   "autoload": {
     "classmap": ["lib/Conekta/"]
