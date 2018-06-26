@@ -275,4 +275,33 @@ class OrderTest extends BaseTest
     $this->assertTrue($order->payment_status == 'paid');
     $this->assertTrue($order->charges[0]->status == 'paid');
   }
+
+  public function testVoid()
+  {
+    $charges =
+    array(
+      'pre_authorize' => true,
+      'charges'       => array(
+        array(
+          'payment_method' => array(
+            'type'     => 'card',
+            'token_id' => 'tok_test_visa_4242'
+            ),
+          'amount' => 20000
+          )
+        ),
+      'currency'    => 'mxn',
+      'customer_info' => array(
+        'name' => 'John Constantine',
+        'phone' => '+5213353319758',
+        'email' => 'hola@hola.com'
+        )
+      );
+    $validOrder['PreAuth'] = true;
+    $this->setApiKey();
+    $order = Order::create(array_merge(self::$validOrder, $charges));
+    $res = $order->void($order["id"]);
+    echo $res;
+    $this->assertTrue($res["payment_status"] == "voided");
+  }
 }
