@@ -1,6 +1,6 @@
 ![README Cover Image](readme_cover.png)
 
-# Conekta PHP v.4.0.2
+# Conekta PHP v.4.0.4
 
 This is a php library that allows interaction with https://api.conekta.io API.
 
@@ -16,7 +16,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with composer:
 
-  require: "conekta/conekta-php": "4.0.2"
+  require: "conekta/conekta-php": "4.0.4"
 
 ## Usage
 
