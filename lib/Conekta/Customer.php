@@ -112,6 +112,11 @@ class Customer extends ConektaResource
     return parent::_createMemberWithRelation('payment_sources', $params, $this);
   }
 
+  public function createOfflineRecurrentReference($params = null)
+  {
+    return parent::_createMemberWithRelation('payment_sources', $params, $this);
+  }
+
   public function deletePaymentSourceById($paymentSourceId)
   {
     if (Conekta::$apiVersion == '2.0.0'){
