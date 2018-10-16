@@ -147,7 +147,7 @@ Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT L
 
    To create a pull request, you need to have made your code changes on a separate branch. This branch should be named like this: **feature/my_feature** or **fix/my_fix**.
 
-   Make sure that, if you add new features to our library, be sure to add the corresponding **unit tests**.
+   Make sure that, if you add new features to our library, be sure that corresponding **unit tests** are added.
 
    If you go to your repository on GitHub, you’ll see a Compare & pull request button. Click on that button.
 
