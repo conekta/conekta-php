@@ -125,7 +125,7 @@ Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT L
  
 2. Clone the repository
 ```
-    git clone "url you just copied"
+    git clone git@github.com:yourUserName/conekta-php.git
 ```
 3. Create a branch
 ```
@@ -145,7 +145,9 @@ Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT L
 ```
 6. Submit your changes for review, create a pull request
 
-   To create a pull request, you need to have made your code changes on a separate branch. This branch should be named like this: *feature/my_feature* or *fix/my_fix*.
+   To create a pull request, you need to have made your code changes on a separate branch. This branch should be named like this: **feature/my_feature** or **fix/my_fix**.
+
+   Make sure that, if you add new features to our library, be sure to add the corresponding **unit tests**.
 
    If you go to your repository on GitHub, you’ll see a Compare & pull request button. Click on that button.
 
