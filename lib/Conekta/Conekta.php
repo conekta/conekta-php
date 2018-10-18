@@ -47,4 +47,14 @@ abstract class Conekta
     {
         return self::$pluginVersion;
     }
+
+    public function setDisableSslVersionOnDev($disableSslVersionOnDev)
+    {
+        self::$disableSslVersionOnDev = $disableSslVersionOnDev;
+    }
+
+    public function getDisableSslVersionOnDev()
+    {
+        return self::$disableSslVersionOnDev;
+    }
 }
