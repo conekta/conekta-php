@@ -24,6 +24,7 @@ class Requestor
         $this->apiKey = Conekta::$apiKey;
         $this->apiVersion = Conekta::$apiVersion;
         $this->plugin = Conekta::$plugin;
+        $this->disableSslVersionOnDev = Conekta::$disableSslVersionOnDev;
     }
 
     /**
@@ -139,6 +140,9 @@ class Requestor
         $opts[CURLOPT_TIMEOUT] = 80;
         $opts[CURLOPT_RETURNTRANSFER] = true;
         $opts[CURLOPT_HTTPHEADER] = $headers;
+        if (!$this->disableSslVersionOnDev) {
+            $opts[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
+        }
         $opts[CURLOPT_CAINFO] = dirname(__FILE__).'/../ssl_data/ca_bundle.crt';
         curl_setopt_array($curl, $opts);
         $response = curl_exec($curl);
