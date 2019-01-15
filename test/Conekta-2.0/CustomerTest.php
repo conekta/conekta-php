@@ -12,6 +12,14 @@ class CustomerTest extends BaseTest
     'email' => 'hola@hola.com',
     'names'  => 'John Constantine'
     );
+  public static $validRecurrentCustomerWithCustomReference = array(
+    'name' => 'Rick Sanchez',
+    'email' => 'rick.sanchez@conekta.com',
+    'payment_sources' => array(array(
+      'type' => 'oxxo_recurrent',
+      'reference' => '5512345678'
+    ))
+  );
   public static $validRecurrentCustomer = array(
     'name' => 'John Constantine',
     'email' => 'john_constantine@conekta.com',
@@ -121,7 +129,30 @@ class CustomerTest extends BaseTest
     $this->assertTrue(strlen($source['reference']) == 14);
   }
 
-   public function testCustomerWithOfflineRecurrentSourceIsCreated()
+  public function testCustomerWithCustomReference()
+  {
+    $this->markTestIncomplete('Not ready yet');
+    $this->setApiKey();
+    Customer::create(self::$validRecurrentCustomerWithCustomReference);
+    $this->assertEquals($source['type'], 'oxxo_recurrent');
+    $this->assertTrue(strlen($source['reference']) == 10);
+    $this->assertEquals($source['reference'], '5512345678');
+  }
+
+  public function testAddCustomReferenceToCustomer()
+  {
+    $this->markTestIncomplete();
+    $this->setApiKey();
+    $customer = Customer::create(self::$validCustomer);
+    $source = $customer->createOfflineRecurrentReference(array(
+      'type' => 'oxxo_recurrent',
+      'reference' => '5587654321'
+    ));
+    $this->assertTrue(strlen($source['reference']) == 10);
+    $this->assertEquals($source['reference'], '5587654321');
+  }
+
+  public function testCustomerWithOfflineRecurrentSourceIsCreated()
   {
     $this->setApiKey();
     $customer = Customer::create(self::$validRecurrentCustomer);
