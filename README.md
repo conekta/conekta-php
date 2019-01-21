@@ -4,11 +4,15 @@
 
 # Conekta PHP v.4.0.4
 
-[![Made with PHP](https://img.shields.io/badge/made%20with-php-red.svg?style=for-the-badge&colorA=ED4040&colorB=C12C2D)](http://php.net) 
+[![Made with PHP](https://img.shields.io/badge/made%20with-php-red.svg?style=for-the-badge&colorA=8892be&colorB=4f5b93&logo=php&logoColor=white)](https://php.net) 
 [![By Conekta](https://img.shields.io/badge/by-conekta-red.svg?style=for-the-badge&colorA=ee6130&colorB=00a4ac)](https://conekta.com)
 </div>
 
-This is a php library that allows interaction with https://api.conekta.io API.
+This is a PHP library that allows interaction with [Conekta's API](https://api.conekta.io).
+
+## Requeriments
+
+PHPUnit 6.1 requires PHP 7; using the latest version of PHP is highly recommended.
 
 ## Installation
 
@@ -20,9 +24,9 @@ To get started, add the following to your PHP script:
 
     require_once("/path/to/conekta-php/lib/Conekta.php");
 
-You can also install this library with composer:
+You can also install this library with [Composer](https://github.com/composer/composer):
 
-  require: "conekta/conekta-php": "4.0.4"
+    require: "conekta/conekta-php": "4.0.4"
 
 ## Usage
 
@@ -73,20 +77,17 @@ try {
 
 ## Documentation
 
-Please see [developers.conekta.com/api](https://developers.conekta.com/api) for up-to-date documentation.
+Please visit the [official API reference](https://developers.conekta.com/api?language=php) for an up-to-date documentation.
 
 ## Run Tests
 
-Unit test based on php library PHPUnit to describe better memory usage, test status and test results.
+Unit test based on PHP library [PHPUnit](https://github.com/sebastianbergmann/phpunit) to describe better memory usage, test status and test results.
 
-### Requeriments
+### Installing PHPUnit
 
-PHPUnit 6.1 requires PHP 7; using the latest version of PHP is highly recommended.
+For better usage install PHPUnit globally:
 
-### Installation
-for better usage install phpunit globally
-
-```
+```bash
 $ wget https://phar.phpunit.de/phpunit-6.1.phar
 
 $ chmod +x phpunit-6.1.phar
@@ -100,7 +101,7 @@ PHPUnit 6.1.1 by Sebastian Bergmann and contributors.
 
 ```
 
-php version used
+PHP version used
 
 ```
 PHP 7.0.17 (cli)
@@ -112,14 +113,10 @@ Run test suite:
 phpunit test/Conekta-x.0
 ```
 
-_note:_ for this phpunit version (6.1.x) only php 7 is supported for older php versions see phpunit <a href="https://phpunit.de/"> documentation</a>
+_note:_ for this PHPUnit version (6.1.x) only PHP 7 is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
 
 
-## License
-
-Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT License](LICENSE).
-
-## How to contribute to the project
+## Contributing
 
 1. Fork the repository
  
@@ -153,7 +150,12 @@ Developed in Mexico by [Conekta](https://www.conekta.com). Available with [MIT L
 
 ***
 
-
 ## We are always hiring!
 
 If you are a comfortable working with a range of backend languages (Java, Python, Ruby, PHP, etc) and frameworks, you have solid foundation in data structures, algorithms and software design with strong analytical and debugging skills, check our open positions: https://www.conekta.com/careers
+
+---
+
+## License
+
+Developed in :mexico: Mexico by [Conekta](https://www.conekta.com). Available with [MIT License](LICENSE).
