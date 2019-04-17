@@ -9,3 +9,5 @@ RUN apk add --no-cache $PHPIZE_DEPS \
 	&& docker-php-ext-enable xdebug
 
 COPY --from=composer:1.8.5 /usr/bin/composer /usr/bin/composer
+
+RUN composer global require phpunit/phpunit:6.1
