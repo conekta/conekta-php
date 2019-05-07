@@ -1,11 +1,12 @@
-![README Cover Image](readme_cover.png)
-
 <div align="center">
+
+![banner](readme_files/banner.png)
 
 # Conekta PHP v.4.0.4
 
-[![Made with PHP](https://img.shields.io/badge/made%20with-php-red.svg?style=for-the-badge&colorA=8892be&colorB=4f5b93&logo=php&logoColor=white)](https://php.net) 
-[![By Conekta](https://img.shields.io/badge/by-conekta-red.svg?style=for-the-badge&colorA=ee6130&colorB=00a4ac)](https://conekta.com)
+![php badge](readme_files/php-badge.png)
+![conekta badge](readme_files/conekta-badge.png)
+
 </div>
 
 This is a PHP library that allows interaction with [Conekta's API](https://api.conekta.io).
@@ -66,7 +67,7 @@ $valid_order =
 
 try {
   $order = \Conekta\Order::create($valid_order);
-} catch (\Conekta\ProcessingError $e){ 
+} catch (\Conekta\ProcessingError $e){
   echo $e->getMessage();
 } catch (\Conekta\ParameterValidationError $e){
   echo $e->getMessage();
@@ -119,7 +120,7 @@ _note:_ for this PHPUnit version (6.1.x) only PHP 7 is supported for older PHP v
 ## Contributing
 
 1. Fork the repository
- 
+
 2. Clone the repository
 ```
     git clone git@github.com:yourUserName/conekta-php.git
@@ -130,7 +131,7 @@ _note:_ for this PHPUnit version (6.1.x) only PHP 7 is supported for older PHP v
     git pull origin develop
     # You should choose the name of your branch
     git checkout -b <feature/my_branch>
-```    
+```
 4. Make necessary changes and commit those changes
 ```
     git add .
