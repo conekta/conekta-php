@@ -116,6 +116,9 @@ phpunit test/Conekta-x.0
 
 _note:_ for this PHPUnit version (6.1.x) only PHP 7 is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
 
+## Changelong
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
 
