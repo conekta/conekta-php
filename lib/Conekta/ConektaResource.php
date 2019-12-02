@@ -148,42 +148,50 @@ abstract class ConektaResource extends ConektaObject
     $url = $this->instanceUrl().'/'.$member;
     $response = $requestor->request('post', $url, $params);
 
-    if (strpos(get_class($this->$member), 'ConektaList') !== false ||
-      strpos(get_class($this->$member), 'ConektaObject') !== false ||
+    if ((! empty($this->$member) &&
+      (strpos(get_class($this->$member), 'ConektaList') !== false ||
+      strpos(get_class($this->$member), 'ConektaObject') !== false)) ||
       strpos($member, 'cards') !== false ||
-      strpos($member, 'payout_methods') !== false) {
+      strpos($member, 'charges') !== false ||
+      strpos($member, 'discount_lines') !== false ||
+      strpos($member, 'line_items') !== false ||
+      strpos($member, 'payment_sources') !== false ||
+      strpos($member, 'payout_methods') !== false ||
+      strpos($member, 'shipping_contacts') !== false ||
+      strpos($member, 'shipping_lines') !== false ||
+      strpos($member, 'tax_lines') !== false){
 
       if (empty($this->$member)) {
         if (Conekta::$apiVersion == '2.0.0') {
-         $this->$member = new ConektaList($member);
-       } else {
-        $this->$member = new ConektaObject();
+          $this->$member = new ConektaList($member);
+        } else {
+          $this->$member = new ConektaObject();
+        }
       }
-    }
 
-    if (strpos(get_class($this->$member), 'ConektaList') !== false) {
-      $this->$member->addElement($response);
-    } else {
-      $this->$member->loadFromArray(array_merge(
-        $this->$member->_toArray(),
-        array($response)
+      if (strpos(get_class($this->$member), 'ConektaList') !== false) {
+        $this->$member->addElement($response);
+      } else {
+        $this->$member->loadFromArray(array_merge(
+          $this->$member->_toArray(),
+          array($response)
         ));
 
+        $this->loadFromArray();
+      }
+      $instances = $this->$member;
+      $instance = end($instances);
+    } else {
+      $class = '\\Conekta\\' . ucfirst($member);
+
+      $instance = new $class();
+      $instance->loadFromArray($response);
+      $this->$member = $instance;
+      $this->_setVal($member, $instance);
       $this->loadFromArray();
     }
-    $instances = $this->$member;
-    $instance = end($instances);
-  } else {
-    $class = '\\Conekta\\' . ucfirst($member);
 
-    $instance = new $class();
-    $instance->loadFromArray($response);
-    $this->$member = $instance;
-    $this->_setVal($member, $instance);
-    $this->loadFromArray();
-  }
-
-  return $instance;
+    return $instance;
   }
 
   protected function _customAction($method = 'post', $action = null, $params = null)
