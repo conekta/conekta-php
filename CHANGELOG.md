@@ -1,4 +1,12 @@
-## [4.0.2](https://github.com/conekta/conekta-php/releases/tag/v4.0.1) - 2018-03-22
+## [4.0.4](https://github.com/conekta/conekta-php/releases/tag/v4.0.4) - 2018-07-18
+### Feature
+- Oxxo recurrent implementation
+
+## [4.0.3](https://github.com/conekta/conekta-php/releases/tag/v4.0.3) - 2018-04-24
+### Feature
+- TLSv1.2 as mandatory
+
+## [4.0.2](https://github.com/conekta/conekta-php/releases/tag/v4.0.2) - 2018-03-22
 ### Feature
 - Support to Oxxo recurrent
 

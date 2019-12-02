@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  php:
+    build: ./.docker/php
+    volumes:
+      - ./:/opt/conekta-php
+    working_dir: /opt/conekta-php
+    environment:
+      - XDEBUG_CONFIG=
+          remote_host=${XDEBUG_REMOTE_HOST}
+          remote_port=9000
+          remote_enable=1
+          idekey=VSCODE
