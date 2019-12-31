@@ -2,7 +2,7 @@
 
 ![banner](readme_files/banner.png)
 
-# Conekta PHP v.4.0.4
+# Conekta PHP v.4.1.0
 
 ![php badge](readme_files/php-badge.png)
 ![conekta badge](readme_files/conekta-badge.png)
@@ -27,7 +27,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with [Composer](https://github.com/composer/composer):
 
-    require: "conekta/conekta-php": "4.0.4"
+    require: "conekta/conekta-php": "4.1.0"
 
 ## Usage
 
