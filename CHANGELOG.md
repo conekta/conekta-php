@@ -1,4 +1,8 @@
-## [4.0.4](https://github.com/conekta/conekta-php/releases/tag/v4.0.4) - 2018-07-18
+## [4.1.0](https://github.com/conekta/conekta-php/releases/tag/v4.1.0) - 2019-12-31
+### Feature
+- Correcting subscriptions errors in PHP 7.1+
+
+## [4.0.4](https://github.com/conekta/conekta-php/releases/tag/v4.0.4) - 2018-07-11
 ### Feature
 - Oxxo recurrent implementation
 
