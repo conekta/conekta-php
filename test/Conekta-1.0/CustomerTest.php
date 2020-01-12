@@ -48,7 +48,7 @@ class CustomerTest extends BaseTest
     $this->setApiVersion('1.0.0');
     $customer = Customer::create(self::$validCustomer);
     $customer->createCard(array('token' => 'tok_test_visa_1881'));
-    $this->assertTrue(strpos(end($customer->cards)->last4, '1881') !== false);
+    $this->assertTrue(strpos($customer->cards[0]->last4, '1881') !== false);
   }
 
   public function testDeleteCard()

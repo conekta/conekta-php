@@ -2,7 +2,7 @@
 
 ![banner](readme_files/banner.png)
 
-# Conekta PHP v.4.1.0
+# Conekta PHP
 
 ![php badge](readme_files/php-badge.png)
 ![conekta badge](readme_files/conekta-badge.png)
@@ -13,7 +13,7 @@ This is a PHP library that allows interaction with [Conekta's API](https://api.c
 
 ## Requeriments
 
-PHPUnit 6.1 requires PHP 7; using the latest version of PHP is highly recommended.
+PHPUnit ~8 requires PHP 7.2+; using the latest version of PHP is highly recommended.
 
 ## Installation
 
@@ -27,7 +27,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with [Composer](https://github.com/composer/composer):
 
-    require: "conekta/conekta-php": "4.1.0"
+    require: "conekta/conekta-php": "4.2.0"
 
 ## Usage
 
@@ -89,23 +89,23 @@ Unit test based on PHP library [PHPUnit](https://github.com/sebastianbergmann/ph
 For better usage install PHPUnit globally:
 
 ```bash
-$ wget https://phar.phpunit.de/phpunit-6.1.phar
+$ wget https://phar.phpunit.de/phpunit-8.5.2.phar
 
-$ chmod +x phpunit-6.1.phar
+$ chmod +x phpunit-8.5.2.phar
 
-$ sudo mv phpunit-6.1.phar /usr/local/bin/phpunit
+$ sudo mv phpunit-8.5.2.phar /usr/local/bin/phpunit
 
 $ phpunit --version
 
 ej. output
-PHPUnit 6.1.1 by Sebastian Bergmann and contributors.
+PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
 
 ```
 
 PHP version used
 
 ```
-PHP 7.0.17 (cli)
+PHP 7.4.24 (cli)
 ```
 
 Run test suite:
@@ -114,9 +114,9 @@ Run test suite:
 phpunit test/Conekta-x.0
 ```
 
-_note:_ for this PHPUnit version (6.1.x) only PHP 7 is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
+_note:_ for this PHPUnit version (8.x) only PHP 7.2+ is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
 
-## Changelong
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 

@@ -8,5 +8,6 @@ composer.lock
 INSTALL.txt
 LICENSE.txt
 README.txt
+.phpunit.result.cache
 demos/
 extras/documentation
