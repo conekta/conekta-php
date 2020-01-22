@@ -24,8 +24,9 @@ class ConektaList extends ConektaObject
   public function addElement($element)
   {
     $element = Util::convertToConektaObject($element);
-    $this[$this->total] = $element;
-    $this->_values[$this->total] = $element;
+    $array_length = count($this->_values);
+    $this[$array_length] = $element;
+    $this->_values[$array_length] = $element;
     $this->total = $this->total + 1;
 
     return $this;

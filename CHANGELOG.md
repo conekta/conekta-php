@@ -1,3 +1,9 @@
+## [4.2.0](https://github.com/conekta/conekta-php/releases/tag/v4.2.0) - 2020-01-15
+### Feature
+- Fixing specs for PHP 7.4
+### Deprecating end(ConektaList)
+- Certain array functions (such as end) are no longer working as expected for ConektaList in PHP 7.4, though count, [] and each continue to be supported
+
 ## [4.1.0](https://github.com/conekta/conekta-php/releases/tag/v4.1.0) - 2019-12-31
 ### Feature
 - Correcting subscriptions errors in PHP 7.1+
