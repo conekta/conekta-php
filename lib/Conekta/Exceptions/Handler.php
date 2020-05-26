@@ -59,7 +59,7 @@ class Handler extends Exception {
         $debugMessage       = self::assignIfSet($params, 'debug_message');
         $code               = self::assignIfSet($params, 'code');
       } 
-    } else  {//API 1.0.0
+    } /*else  {//API 1.0.0
       //parameter validation
       $errorStack = $resp;
       $message            = self::assignIfSet($resp, 'message');
@@ -67,7 +67,7 @@ class Handler extends Exception {
       $param              = self::assignIfSet($resp, 'params');
       $debugMessage       = self::assignIfSet($resp, 'debug_message');
       $code               = self::assignIfSet($resp, 'code');
-    }
+    }*/
     $errorStack['type'] = ["error_type"=>$type,"error_code" => $httpCode];
     switch ($httpCode) {
       case 400:
