@@ -36,7 +36,7 @@ class ConektaList extends ConektaObject
   {
     if (isset($values)) {
       $this->has_more = $values['has_more'];
-      $this->total    = $values['total'];
+      $this->total    = count($values['data']);
 
       foreach ($this as $key => $value) {
         $this->_unsetKey($key);
