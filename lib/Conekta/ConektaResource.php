@@ -126,7 +126,7 @@ abstract class ConektaResource extends ConektaObject
             break;
           }
         }
-      } 
+      }
     }
 
     return $this;
@@ -214,7 +214,7 @@ abstract class ConektaResource extends ConektaObject
     $parent_class = strtolower((new \ReflectionClass($parent))->getShortName());
     $child = self::_createMember($member, $params);
     $child->$parent_class = $parent;
-    
+
     return $child;
   }
 }
