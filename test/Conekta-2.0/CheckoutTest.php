@@ -28,6 +28,34 @@ class CheckoutTest extends BaseTest
         )
       )
     );
+
+  public static $validCheckoutWithMsi = array(
+    'name' => "Payment Link Name",
+    'type' => "PaymentLink",
+    'recurrent' => false,
+    'allowed_payment_methods' => array("cash", "card", "bank_transfer"),
+    'needs_shipping_contact' => false,
+    'monthly_installments_enabled' => true,
+    'monthly_installments_options' => [3,6,12],
+    'order_template' => array(
+      'line_items' => array(array(
+        'name' => "Red Wine",
+        'unit_price' => 30000,
+        'quantity' => 10
+      )),
+      'metadata' => array(
+        'mycustomkey' => "12345",
+        'othercustomkey' => "abcd"
+      ),
+      'currency' => "MXN",
+      'customer_info' => array(
+        'name' => "Juan Perez",
+        'email' => "juan.perez@conekta.com",
+        'phone' => "5566982090"
+      )
+    )
+  );
+
   public static $invalidCheckout = array(
     'names'  => 'John Constantine'
   );
@@ -41,6 +69,23 @@ class CheckoutTest extends BaseTest
     $this->assertTrue(strpos(get_class($checkout), 'Checkout') !== false);
     $this->assertEquals(false, $checkout->livemode);
     $this->assertEquals(self::$validCheckout['name'], $checkout->name);
+    $this->assertEquals(false, $checkout->needs_shipping_contact);
+    $this->assertStringStartsWith("https://pay.conekta", $checkout->url);
+    $this->assertStringEndsWith($checkout->slug, $checkout->url);
+    $this->assertTrue(strlen($checkout->id) == 36);
+
+    return $checkout;
+  }
+
+  public function testSuccesfulCheckoutCreateWithMSI()
+  {
+    $this->setApiKey();
+    self::$validCheckoutWithMsi['name'] = 'Payment Link Name ' . time();
+    self::$validCheckoutWithMsi['expired_at'] = static::getExpiredAt();
+    $checkout = Checkout::create(self::$validCheckoutWithMsi);
+    $this->assertTrue(strpos(get_class($checkout), 'Checkout') !== false);
+    $this->assertEquals(false, $checkout->livemode);
+    $this->assertEquals(self::$validCheckoutWithMsi['name'], $checkout->name);
     $this->assertEquals(false, $checkout->needs_shipping_contact);
     $this->assertStringStartsWith("https://pay.conekta", $checkout->url);
     $this->assertStringEndsWith($checkout->slug, $checkout->url);
