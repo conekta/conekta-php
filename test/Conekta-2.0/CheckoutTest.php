@@ -90,6 +90,8 @@ class CheckoutTest extends BaseTest
     $this->assertStringStartsWith("https://pay.conekta", $checkout->url);
     $this->assertStringEndsWith($checkout->slug, $checkout->url);
     $this->assertTrue(strlen($checkout->id) == 36);
+    $this->assertTrue($checkout->monthly_installments_enabled);
+    $this->assertEquals([3, 6, 12], (array) $checkout->monthly_installments_options);
 
     return $checkout;
   }
