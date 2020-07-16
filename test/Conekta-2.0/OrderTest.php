@@ -21,6 +21,34 @@ class OrderTest extends BaseTest
     'metadata'    => array('test' => 'extra info')
     );
 
+  public static $validOrderWithCheckout =
+    array(
+      'line_items'=> array(
+        array(
+          'name'=> 'Box of Cohiba S1s',
+          'description'=> 'Imported From Mex.',
+          'unit_price'=> 120000,
+          'quantity'=> 1,
+          'sku'=> 'cohbs1',
+          'category'=> 'food',
+          'tags' => array('food', 'mexican food')
+        )
+      ),
+      'checkout'    => array(
+        'multifactor_authentication' => false,
+        'allowed_payment_methods' => array("cash", "card", "bank_transfer"),
+        'monthly_installments_enabled' => true,
+        'monthly_installments_options' => array(3, 6, 9, 12)
+      ),
+      'customer_info' => array(
+        'name' =>  'Juan Perez',
+        'email' => 'juan.perez@mail.com',
+        'phone' => '5566982090'
+      ),
+      'currency'    => 'mxn',
+      'metadata'    => array('test' => 'extra info')
+    );
+
   public static $validRefund = array(
     'amount' => 20000,
     'reason' => 'requested_by_client',
@@ -82,6 +110,24 @@ class OrderTest extends BaseTest
     $this->assertTrue(strpos(get_class($charge), 'Charge') !== false);
     $this->assertTrue(strpos(get_class($order->charges), 'ConektaList') !== false);
     $this->assertTrue($order->charges->total == 1);
+  }
+
+  public function testSuccesfulCreateOrderWithCheckout()
+  {
+    $this->setApiKey();
+    self::$validOrderWithCheckout['checkout']['expires_at'] = static::getExpiredAt();
+    $order = Order::create(self::$validOrderWithCheckout);
+    $this->assertTrue(strpos($order->metadata["test"], 'extra info') !== false);
+    $this->assertTrue(strpos(get_class($order), 'Order') !== false);
+    $this->assertTrue(strpos(get_class($order->checkout), 'Checkout') !== false);
+
+    $this->assertEquals(false, $order->checkout->multifactor_authentication);
+    $this->assertEquals(array("cash", "card", "bank_transfer"), (array) $order->checkout->allowed_payment_methods);
+    $this->assertEquals(true, $order->checkout->monthly_installments_enabled);
+    $this->assertEquals(array(3, 6, 9, 12), (array) $order->checkout->monthly_installments_options);
+    $this->assertTrue( strlen($order->checkout->id) == 36);
+    $this->assertEquals('checkout', $order->checkout->object);
+    $this->assertEquals('Integration', $order->checkout->type);
   }
 
     #Update an order
@@ -303,5 +349,12 @@ class OrderTest extends BaseTest
     $res = $order->void($order["id"]);
     echo $res;
     $this->assertTrue($res["payment_status"] == "voided");
+  }
+
+  public static function getExpiredAt()
+  {
+    $datetime = new \Datetime();
+    $datetime->add(new \DateInterval('P3D'));
+    return $datetime->format('U');
   }
 }
