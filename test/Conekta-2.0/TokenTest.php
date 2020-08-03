@@ -17,7 +17,6 @@ class TokenTest extends BaseTest
     $this->assertTrue(strpos(get_class($token), 'Token') !== false);
     $this->assertTrue(strpos(get_class($token->checkout), 'Checkout') !== false);
 
-    $this->assertEquals(false, $token->checkout->multifactor_authentication);
     $this->assertEquals(array("card"), (array) $token->checkout->allowed_payment_methods);
     $this->assertEquals(false, $token->checkout->monthly_installments_enabled);
     $this->assertEquals(array(), (array) $token->checkout->monthly_installments_options);

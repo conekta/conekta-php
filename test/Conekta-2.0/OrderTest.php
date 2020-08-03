@@ -35,7 +35,6 @@ class OrderTest extends BaseTest
         )
       ),
       'checkout'    => array(
-        'multifactor_authentication' => false,
         'allowed_payment_methods' => array("cash", "card", "bank_transfer"),
         'monthly_installments_enabled' => true,
         'monthly_installments_options' => array(3, 6, 9, 12)
@@ -121,7 +120,6 @@ class OrderTest extends BaseTest
     $this->assertTrue(strpos(get_class($order), 'Order') !== false);
     $this->assertTrue(strpos(get_class($order->checkout), 'Checkout') !== false);
 
-    $this->assertEquals(false, $order->checkout->multifactor_authentication);
     $this->assertEquals(array("cash", "card", "bank_transfer"), (array) $order->checkout->allowed_payment_methods);
     $this->assertEquals(true, $order->checkout->monthly_installments_enabled);
     $this->assertEquals(array(3, 6, 9, 12), (array) $order->checkout->monthly_installments_options);
