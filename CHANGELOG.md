@@ -1,3 +1,8 @@
+## [4.3.0](https://github.com/conekta/conekta-php/releases/tag/v4.2.0) - 2020-06-08
+### Deprecating end(ConektaList)
+- Removing Total from ConektaList, this will be disabled in the future in favor of
+  pagination via `has_more`
+
 ## [4.2.0](https://github.com/conekta/conekta-php/releases/tag/v4.2.0) - 2020-01-15
 ### Feature
 - Fixing specs for PHP 7.4
