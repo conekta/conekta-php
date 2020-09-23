@@ -1,6 +1,9 @@
 ## [4.3.0](https://github.com/conekta/conekta-php/releases/tag/v4.3.0) - 2020-07-07
 ### Feature
 - Add models to support payment link (aka checkout).
+- Add methods to support conekta components.
+- Add methods to support hosted payment.
+- Add methods to support multipayments links.
 
 ## [4.2.0](https://github.com/conekta/conekta-php/releases/tag/v4.2.0) - 2020-01-15
 ### Feature
