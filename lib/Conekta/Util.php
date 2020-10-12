@@ -32,7 +32,8 @@ abstract class Util
     'lang'                        => '\Conekta\Lang',
     'line_item'                   => '\Conekta\LineItem',
     'order'                       => '\Conekta\Order',
-    'token'                       => '\Conekta\Token'
+    'token'                       => '\Conekta\Token',
+    'checkout'                    => '\Conekta\Checkout',
     );
 
   public static function convertToConektaObject($resp)

@@ -42,6 +42,7 @@ require_once dirname(__FILE__).'/Conekta/ShippingLine.php';
 require_once dirname(__FILE__).'/Conekta/LineItem.php';
 require_once dirname(__FILE__).'/Conekta/ConektaList.php';
 require_once dirname(__FILE__).'/Conekta/ShippingContact.php';
+require_once dirname(__FILE__).'/Conekta/Checkout.php';
 require_once dirname(__FILE__).'/Conekta/Exceptions/Handler.php';
 require_once dirname(__FILE__).'/Conekta/Exceptions/ApiError.php';
 require_once dirname(__FILE__).'/Conekta/Exceptions/AuthenticationError.php';

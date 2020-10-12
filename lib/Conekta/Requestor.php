@@ -80,7 +80,7 @@ class Requestor
     if(array_filter($pluginAgent)){
       $userAgent = array_merge($userAgent, $pluginAgent);
     }
-    
+
     $headers = array(
       'Accept: application/vnd.conekta-v'.Conekta::$apiVersion.'+json',
       'Accept-Language: '.Conekta::$locale,
@@ -96,11 +96,11 @@ class Requestor
   /**
    * Function request
    *
-   * Make api call 
+   * Make api call
    *
    * @param method (string) REST action [DELETE,PUT,POST,GET]
    * @param url (string) endpoint to concatenate
-   * @param params (array) contains body request 
+   * @param params (array) contains body request
    * @return (json)
    */
   public function request($method, $url, $params = null)
@@ -159,7 +159,7 @@ class Requestor
   /**
    * Function buildQueryParamsUrl
    *
-   * build body request into url 
+   * build body request into url
    *
    * @param url (string) endpoint to concatenate
    * @param params (array) contains body request

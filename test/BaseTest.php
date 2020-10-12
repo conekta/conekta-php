@@ -12,6 +12,10 @@ class BaseTest extends TestCase
         if (!$apiEnvKey) {
             $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
         }
+        $apiBase = getenv('CONEKTA_API_BASE');
+        if ($apiBase) {
+            Conekta::setApiBase($apiBase);
+        }
         Conekta::setApiKey($apiEnvKey);
     }
 
