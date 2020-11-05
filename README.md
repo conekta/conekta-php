@@ -9,7 +9,7 @@
 
 </div>
 
-This is a PHP library that allows interaction with [Conekta's API](https://api.conekta.io).
+This is a PHP library that allows interaction with [Conekta's API](https://developers.conekta.com/reference/autenticaci%C3%B3n).
 
 ## Requeriments
 
@@ -78,7 +78,7 @@ try {
 
 ## Documentation
 
-Please visit the [official API reference](https://developers.conekta.com/api?language=php) for an up-to-date documentation.
+Please visit the [official API reference](https://developers.conekta.com/reference/autenticaci%C3%B3n) for an up-to-date documentation.
 
 ## Run Tests
 
