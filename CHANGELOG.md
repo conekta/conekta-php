@@ -1,3 +1,7 @@
+## [5.0.0](https://github.com/conekta/conekta-php/releases/tag/v5.0.0) - 2022-06-15
+### Feature
+- Upgrade php version to 8.0
+
 ## [4.3.0](https://github.com/conekta/conekta-php/releases/tag/v4.3.0) - 2020-07-07
 ### Feature
 - Add models to support payment link (aka checkout).
