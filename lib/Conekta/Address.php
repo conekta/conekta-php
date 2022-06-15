@@ -1,29 +1,26 @@
-<?php 
+<?php
 
 namespace Conekta;
 
-use \Conekta\ConektaResource;
-
 class Address extends ConektaResource
 {
-  var $street1 = "";
-  var $street2 = "";
-  var $street3 = "";
-  var $city    = "";
-  var $state   = "";
-  var $zip     = "";
-  var $country = "";
+    public string $street1 = '';
+    public string $street2 = '';
+    public string $street3 = '';
+    public string $city = '';
+    public string $state = '';
+    public string $zip = '';
+    public string $country = '';
 
-	public function __get($property)
-  {   
-    if (property_exists($this, $property)) {
-      return $this->$property;
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->{$property};
+        }
     }
-  }
 
-  public function  __isset($property)
-  {
-    return isset($this->$property);
-  }
-
+    public function __isset($property)
+    {
+        return isset($this->{$property});
+    }
 }
