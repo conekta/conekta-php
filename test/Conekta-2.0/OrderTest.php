@@ -404,7 +404,6 @@ class OrderTest extends BaseTest
         $this->setApiKey();
         $order = Order::create(array_merge(self::$validOrder, $charges));
         $res = $order->void([$order['id']]);
-        echo $res;
         $this->assertTrue($res['payment_status'] == 'voided');
     }
 
