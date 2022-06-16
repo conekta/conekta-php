@@ -1,4 +1,7 @@
-## [5.0.0](https://github.com/conekta/conekta-php/releases/tag/v5.0.0) - 2022-06-15
+## [5.0.0](https://github.com/conekta/conekta-php/pull/204) - 2022-06-15
+
+[Full Changelog](https://github.com/conekta/conekta-php/compare/v4.3.0...feature/MT-342-upgrade-to-php-8.1)
+
 ### Feature
 - Upgrade php version to 8.0
 
