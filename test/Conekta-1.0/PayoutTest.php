@@ -6,7 +6,6 @@ class PayoutTest extends BaseTest
 {
     public function testSuccesfulGetPayout()
     {
-        Conekta::$apiBase = 'http://www.....com';
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
         $payee = Payee::create([
