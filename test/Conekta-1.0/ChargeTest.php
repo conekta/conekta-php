@@ -4,65 +4,65 @@ namespace Conekta;
 
 class ChargeTest extends BaseTest
 {
-    public static $valid_payment_method = array(
+    public static $valid_payment_method = [
         'amount'      => 2000,
         'currency'    => 'mxn',
         'description' => 'Some desc',
-        'details'=> array(
-            'name'=> 'Arnulfo Quimare',
-            'phone'=> '403-342-0642',
-            'email'=> 'logan@x-men.org',
-            'customer'=> array(
-                'logged_in'=> true,
-                'successful_purchases'=> 14,
-                'created_at'=> 1379784950,
-                'updated_at'=> 1379784950,
-                'offline_payments'=> 4,
-                'score'=> 9
-            ),
-            'line_items'=> array(
-                array(
-                    'name'=> 'Box of Cohiba S1s',
-                    'description'=> 'Imported From Mex.',
-                    'unit_price'=> 20000,
-                    'quantity'=> 1,
-                    'sku'=> 'cohb_s1',
-                    'category'=> 'food'
-                )
-            )
-        )
-    );
+        'details'     => [
+            'name'     => 'Arnulfo Quimare',
+            'phone'    => '403-342-0642',
+            'email'    => 'logan@x-men.org',
+            'customer' => [
+                'logged_in'            => true,
+                'successful_purchases' => 14,
+                'created_at'           => 1379784950,
+                'updated_at'           => 1379784950,
+                'offline_payments'     => 4,
+                'score'                => 9
+            ],
+            'line_items' => [
+                [
+                    'name'        => 'Box of Cohiba S1s',
+                    'description' => 'Imported From Mex.',
+                    'unit_price'  => 20000,
+                    'quantity'    => 1,
+                    'sku'         => 'cohb_s1',
+                    'category'    => 'food'
+                ]
+            ]
+        ]
+    ];
 
-    public static $intvalid_payment_method = array(
+    public static $intvalid_payment_method = [
         'amount'      => 10,
         'currency'    => 'mxn',
         'description' => 'Some desc',
-        'details'=> array(
-            'name'=> 'Arnulfo Quimare',
-            'phone'=> '403-342-0642',
-            'email'=> 'logan@x-men.org',
-            'customer'=> array(
-                'logged_in'=> true,
-                'successful_purchases'=> 14,
-                'created_at'=> 1379784950,
-                'updated_at'=> 1379784950,
-                'offline_payments'=> 4,
-                'score'=> 9
-            ),
-            'line_items'=> array(
-                array(
-                    'name'=> 'Box of Cohiba S1s',
-                    'description'=> 'Imported From Mex.',
-                    'unit_price'=> 20000,
-                    'quantity'=> 1,
-                    'sku'=> 'cohb_s1',
-                    'category'=> 'food'
-                )
-            )
-        )
-    );
+        'details'     => [
+            'name'     => 'Arnulfo Quimare',
+            'phone'    => '403-342-0642',
+            'email'    => 'logan@x-men.org',
+            'customer' => [
+                'logged_in'            => true,
+                'successful_purchases' => 14,
+                'created_at'           => 1379784950,
+                'updated_at'           => 1379784950,
+                'offline_payments'     => 4,
+                'score'                => 9
+            ],
+            'line_items' => [
+                [
+                    'name'        => 'Box of Cohiba S1s',
+                    'description' => 'Imported From Mex.',
+                    'unit_price'  => 20000,
+                    'quantity'    => 1,
+                    'sku'         => 'cohb_s1',
+                    'category'    => 'food'
+                ]
+            ]
+        ]
+    ];
 
-    public static $valid_visa_card = array('card' => 'tok_test_visa_4242');
+    public static $valid_visa_card = ['card' => 'tok_test_visa_4242'];
 
     public function testSuccesfulWhere()
     {
@@ -118,7 +118,7 @@ class ChargeTest extends BaseTest
         $this->setApiVersion('1.0.0');
         $pm = self::$valid_payment_method;
         $card = self::$valid_visa_card;
-        $capture = array('capture' => false);
+        $capture = ['capture' => false];
         $this->setApiKey();
         $cpm = Charge::create(array_merge($pm, $card, $capture));
         $this->assertTrue($cpm->status == 'pre_authorized');

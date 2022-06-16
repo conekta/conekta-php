@@ -2,9 +2,8 @@
 
 namespace Conekta;
 
-use \Conekta\Conekta;
-use \Conekta\Exceptions;
-use \Exception;
+use Conekta\{Conekta, Exceptions};
+
 class NoConnectionError extends Handler
 {
 }

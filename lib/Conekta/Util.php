@@ -2,11 +2,9 @@
 
 namespace Conekta;
 
-use \Conekta\ConektaObject;
-
 abstract class Util
 {
-  public static $types = array(
+    public static array $types = [
     'webhook'                     => '\Conekta\Webhook',
     'webhook_log'                 => '\Conekta\WebhookLog',
     'billing_address'             => '\Conekta\Address',
@@ -34,52 +32,52 @@ abstract class Util
     'order'                       => '\Conekta\Order',
     'token'                       => '\Conekta\Token',
     'checkout'                    => '\Conekta\Checkout',
-    );
+    ];
 
-  public static function convertToConektaObject($resp)
-  {
-    $types = self::$types;
-    if (is_array($resp)) {
-      if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
-        $class = $types[$resp['object']];
-        $instance = new $class();
-        $instance->loadFromArray($resp);
+    public static function convertToConektaObject($resp)
+    {
+        $types = self::$types;
+        if (is_array($resp)) {
+            if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
+                $class = $types[$resp['object']];
+                $instance = new $class();
+                $instance->loadFromArray($resp);
 
-        return $instance;
-      }
+                return $instance;
+            }
 
-      if (isset($resp['street1']) || isset($resp['street2'])) {
-        $class = '\Conekta\Address';
-        $instance = new $class();
-        $instance->loadFromArray($resp);
+            if (isset($resp['street1']) || isset($resp['street2'])) {
+                $class = '\Conekta\Address';
+                $instance = new $class();
+                $instance->loadFromArray($resp);
 
-        return $instance;
-      }
+                return $instance;
+            }
 
-      if (current($resp)) {
-        $instance = new ConektaObject();
-        $instance->loadFromArray($resp);
+            if (current($resp)) {
+                $instance = new ConektaObject();
+                $instance->loadFromArray($resp);
 
-        return $instance;
-      }
+                return $instance;
+            }
 
-      return new ConektaObject();
+            return new ConektaObject();
+        }
+
+        return $resp;
     }
 
-    return $resp;
-  }
+    public static function shiftArray($array, $object)
+    {
+        unset($array[$object]);
+        end($array);
+        $lastKey = key($array);
 
-  public static function shiftArray($array, $object)
-  {
-    unset($array[$object]);
-    end($array);
-    $lastKey = key($array);
+        for ($i = $object; $i < $lastKey; ++$i) {
+            $array[$i] = $array[$i + 1];
+            unset($array[$i + 1]);
+        }
 
-    for ($i = $object; $i < $lastKey; ++$i) {
-      $array[$i] = $array[$i + 1];
-      unset($array[$i + 1]);
+        return $array;
     }
-
-    return $array;
-  }
 }
