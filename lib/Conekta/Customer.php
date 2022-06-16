@@ -4,17 +4,17 @@ namespace Conekta;
 
 class Customer extends ConektaResource
 {
-    public string $livemode = '';
-    public string $name = '';
-    public string $email = '';
-    public string $phone = '';
-    public string $defaultShippingContactId = '';
-    public string $defaultPaymentSourceId = '';
-    public string $referrer = '';
-    public string $accountAge = '';
-    public string $paidTransactions = '';
-    public string $firstPaidAt = '';
-    public string $corporate = '';
+    public string $livemode;
+    public string $name;
+    public string $email;
+    public string $phone;
+    public string $defaultShippingContactId;
+    public string $defaultPaymentSourceId;
+    public string $referrer;
+    public string $accountAge;
+    public string $paidTransactions;
+    public string $firstPaidAt;
+    public string $corporate;
 
     public function __get($property)
     {

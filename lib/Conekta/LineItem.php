@@ -6,16 +6,16 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class LineItem extends ConektaResource
 {
-    public string $name = '';
-    public string $description = '';
-    public string $unitPrice = '';
-    public string $quantity = '';
-    public string $sku = '';
-    public string $shippable = '';
-    public string $tags = '';
-    public string $brand = '';
-    public string $type = '';
-    public string $parentId = '';
+    public string $name;
+    public string $description;
+    public string $unitPrice;
+    public string $quantity;
+    public string $sku;
+    public string $shippable;
+    public string $tags;
+    public string $brand;
+    public string $type;
+    public string $parentId;
 
     public function __get($property)
     {

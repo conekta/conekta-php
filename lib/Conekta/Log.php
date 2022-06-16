@@ -4,16 +4,16 @@ namespace Conekta;
 
 class Log extends ConektaResource
 {
-    public string $method = '';
-    public string $url = '';
-    public string $status = '';
-    public string $version = '';
-    public string $ipAddress = '';
-    public string $related = '';
-    public string $requestBody = '';
-    public string $requestHeaders = '';
-    public string $createdAt = '';
-    public string $queryString = '';
+    public string $method;
+    public string $url;
+    public string $status;
+    public string $version;
+    public string $ipAddress;
+    public string $related;
+    public string $requestBody;
+    public string $requestHeaders;
+    public string $createdAt;
+    public string $queryString;
 
     public function __get($property)
     {

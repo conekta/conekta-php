@@ -4,23 +4,23 @@ namespace Conekta;
 
 class Charge extends ConektaResource
 {
-    public string $livemode = '';
-    public string $amount = '';
-    public string $createdAt = '';
-    public string $currency = '';
-    public string $description = '';
-    public string $referenceId = '';
-    public string $failureCode = '';
-    public string $failureMessage = '';
-    public string $fee = '';
-    public string $monthlyInstallments = '';
-    public string $deviceFingerprint = '';
-    public string $status = '';
-    public string $exchangeRate = '';
-    public string $foreignCurrency = '';
-    public string $amountInForeignCurrency = '';
-    public string $checkoutId = '';
-    public string $checkoutOrderCount = '';
+    public string $livemode;
+    public string $amount;
+    public string $createdAt;
+    public string $currency;
+    public string $description;
+    public string $referenceId;
+    public string $failureCode;
+    public string $failureMessage;
+    public string $fee;
+    public string $monthlyInstallments;
+    public string $deviceFingerprint;
+    public string $status;
+    public string $exchangeRate;
+    public string $foreignCurrency;
+    public string $amountInForeignCurrency;
+    public string $checkoutId;
+    public string $checkoutOrderCount;
 
     public function __get($property)
     {
