@@ -6,15 +6,15 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class Card extends ConektaResource
 {
-    public string $createdAt;
-    public string $last4;
-    public string $bin;
-    public string $name;
-    public string $expMonth;
-    public string $expYear;
-    public string $brand;
-    public string $parentId;
-    public string $default;
+     public $createdAt = '';
+     public $last4 = '';
+     public $bin = '';
+     public $name = '';
+     public $expMonth = '';
+     public $expYear = '';
+     public $brand = '';
+     public $parentId = '';
+     public $default = '';
 
     public function __get($property)
     {

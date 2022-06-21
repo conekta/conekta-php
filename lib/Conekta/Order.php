@@ -4,15 +4,15 @@ namespace Conekta;
 
 class Order extends ConektaResource
 {
-    public string $livemode;
-    public string $amount;
-    public string $paymentStatus;
-    public string $customerId;
-    public string $currency;
-    public string $capture;
-    public string $metadata;
-    public string $createdAt;
-    public string $updatedAt;
+     public $livemode = '';
+     public $amount = '';
+     public $paymentStatus = '';
+     public $customerId = '';
+     public $currency = '';
+     public $capture = '';
+     public $metadata = '';
+     public $createdAt = '';
+     public $updatedAt = '';
 
     public function __get($property)
     {

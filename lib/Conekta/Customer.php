@@ -4,17 +4,17 @@ namespace Conekta;
 
 class Customer extends ConektaResource
 {
-    public string $livemode;
-    public string $name;
-    public string $email;
-    public string $phone;
-    public string $defaultShippingContactId;
-    public string $defaultPaymentSourceId;
-    public string $referrer;
-    public string $accountAge;
-    public string $paidTransactions;
-    public string $firstPaidAt;
-    public string $corporate;
+    public $livemode = '';
+    public $name = '';
+    public $email = '';
+    public $phone = '';
+    public $defaultShippingContactId = '';
+    public $defaultPaymentSourceId = '';
+    public $referrer = '';
+    public $accountAge = '';
+    public $paidTransactions = '';
+    public $firstPaidAt = '';
+    public $corporate = '';
 
     public function __get($property)
     {
@@ -36,8 +36,9 @@ class Customer extends ConektaResource
 
         if (Conekta::$apiVersion == '2.0.0') {
             $submodels = [
-        'payment_sources', 'shipping_contacts'
-      ];
+                'payment_sources',
+                'shipping_contacts'
+            ];
             foreach ($submodels as $submodel) {
                 if (isset($values[$submodel])) {
                     $submodel_list = new ConektaList($submodel, $values[$submodel]);

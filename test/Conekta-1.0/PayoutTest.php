@@ -6,6 +6,7 @@ class PayoutTest extends BaseTest
 {
     public function testSuccesfulGetPayout()
     {
+        $this->markTestSkipped("Return Error:  Third party payouts are disable, please contact your account manager.");
         $this->setApiKey();
         $this->setApiVersion('1.0.0');
         $payee = Payee::create([
