@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/conekta/conekta-php/pull/206) - 2022-06-15
+
+[Full Changelog](https://github.com/conekta/conekta-php/compare/v5.0.0...v5.0.1)
+
+### Fix
+- Revert Changes
+
 ## [5.0.0](https://github.com/conekta/conekta-php/pull/204) - 2022-06-15
 
 [Full Changelog](https://github.com/conekta/conekta-php/compare/v4.3.0...v5.0.0)

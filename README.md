@@ -27,7 +27,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with [Composer](https://github.com/composer/composer):
 
-    require: "conekta/conekta-php": "5.0.0"
+    require: "conekta/conekta-php": "5.0.1"
 
 ## Usage
 
