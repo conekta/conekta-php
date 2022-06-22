@@ -4,13 +4,13 @@ namespace Conekta;
 
 abstract class Conekta
 {
-    public static string $apiKey;
-    public static string $apiBase = 'https://api.conekta.io';
-    public static string $apiVersion = '2.0.0';
-    public static string $locale = 'es';
-    public static string $plugin;
-    public static string $pluginVersion;
-    public const VERSION = '5.0.0';
+    public static $apiKey = '';
+    public static $apiBase = 'https://api.conekta.io';
+    public static $apiVersion = '2.0.0';
+    public static $locale = 'es';
+    public static $plugin = '';
+    public static $pluginVersion = '';
+    public const VERSION = '5.0.1';
 
     public static function setApiBase($apiBase)
     {

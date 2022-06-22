@@ -6,10 +6,10 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class DiscountLine extends ConektaResource
 {
-    public string $code;
-    public string $amount;
-    public string $type;
-    public string $parentId;
+     public $code = '';
+     public $amount = '';
+     public $type = '';
+     public $parentId = '';
 
     public function __get($property)
     {

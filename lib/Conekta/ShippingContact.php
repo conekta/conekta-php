@@ -6,11 +6,11 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class ShippingContact extends ConektaResource
 {
-    public string $receiver;
-    public string $phone;
-    public string $betweenStreets;
-    public string $parentId;
-    public string $default;
+     public $receiver = '';
+     public $phone = '';
+     public $betweenStreets = '';
+     public $parentId = '';
+     public $default = '';
 
     public function __get($property)
     {

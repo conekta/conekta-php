@@ -4,13 +4,13 @@ namespace Conekta;
 
 class Address extends ConektaResource
 {
-    public string $street1;
-    public string $street2;
-    public string $street3;
-    public string $city;
-    public string $state;
-    public string $zip;
-    public string $country;
+     public $street1 = '';
+     public $street2 = '';
+     public $street3 = '';
+     public $city = '';
+     public $state = '';
+     public $zip = '';
+     public $country = '';
 
     public function __get($property)
     {

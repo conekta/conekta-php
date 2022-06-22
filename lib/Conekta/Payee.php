@@ -4,12 +4,12 @@ namespace Conekta;
 
 class Payee extends ConektaResource
 {
-    public string $email;
-    public string $name;
-    public string $phone;
-    public string $livemode;
-    public string $defaultDestinationId;
-    public string $createdAt;
+     public $email = '';
+     public $name = '';
+     public $phone = '';
+     public $livemode = '';
+     public $defaultDestinationId = '';
+     public $createdAt = '';
 
     public function __get($property)
     {

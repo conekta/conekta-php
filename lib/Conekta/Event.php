@@ -4,11 +4,11 @@ namespace Conekta;
 
 class Event extends ConektaResource
 {
-    public string $data;
-    public string $livemode;
-    public string $webhookStatus;
-    public string $createdAt;
-    public string $type;
+     public $data = '';
+     public $livemode = '';
+     public $webhookStatus = '';
+     public $createdAt = '';
+     public $type = '';
 
     public function __get($property)
     {
