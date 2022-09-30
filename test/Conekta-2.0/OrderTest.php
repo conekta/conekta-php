@@ -24,7 +24,7 @@ class OrderTest extends BaseTest
         'metadata' => ['test' => 'extra info']
     ];
 
-    public static $validOrderWithCheckout = [
+    public static $orderWithCheckout = [
         'line_items' => [
             [
                 'name' => 'Box of Cohiba S1s',
@@ -51,7 +51,7 @@ class OrderTest extends BaseTest
         'metadata' => ['test' => 'extra info']
     ];
 
-    public static $validOrderWithCheckoutRedirection = [
+    public static $orderWithRedirection = [
         'line_items' => [
             [
                 'name' => 'Box of Cohiba S1s',
@@ -148,8 +148,8 @@ class OrderTest extends BaseTest
         if (Conekta::$apiBase == 'https://api.conekta.io') {
             $this->markTestSkipped('This test should be run in staging.');
         }
-        self::$validOrderWithCheckout['checkout']['expires_at'] = static::getExpiredAt();
-        $order = Order::create(self::$validOrderWithCheckout);
+        self::$orderWithCheckout['checkout']['expires_at'] = static::getExpiredAt();
+        $order = Order::create(self::$orderWithCheckout);
         $this->assertTrue(strpos($order->metadata['test'], 'extra info') !== false);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
         $this->assertTrue(strpos(get_class($order->checkout), 'Checkout') !== false);
@@ -178,8 +178,8 @@ class OrderTest extends BaseTest
         if (Conekta::$apiBase == 'https://api.conekta.io') {
             $this->markTestSkipped('This test should be run in staging.');
         }
-        self::$validOrderWithCheckoutRedirection['checkout']['expires_at'] = static::getExpiredAt();
-        $order = Order::create(self::$validOrderWithCheckoutRedirection);
+        self::$orderWithRedirection['checkout']['expires_at'] = static::getExpiredAt();
+        $order = Order::create(self::$orderWithRedirection);
         $this->assertTrue(strpos($order->metadata['test'], 'extra info') !== false);
         $this->assertTrue(strpos(get_class($order), 'Order') !== false);
         $this->assertTrue(strpos(get_class($order->checkout), 'Checkout') !== false);
