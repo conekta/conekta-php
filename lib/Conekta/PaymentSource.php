@@ -2,14 +2,22 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Error, Lang};
-
 class PaymentSource extends ConektaResource
 {
+    /**
+     * @const string
+     */
     public const TYPE_CARD = 'card';
+    /**
+     * @const string
+     */
     public const TYPE_OXXO_RECURRENT = 'oxxo_recurrent';
 
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -22,12 +30,35 @@ class PaymentSource extends ConektaResource
         return $customerUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return PaymentSource
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): PaymentSource
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return PaymentSource
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): PaymentSource
     {
         return parent::_delete('customer', 'payment_sources');
     }
@@ -36,7 +67,7 @@ class PaymentSource extends ConektaResource
      * Method for determine if is card
      * @return boolean
      */
-    public function isCard()
+    public function isCard(): bool
     {
         return $this['type'] == self::TYPE_CARD;
     }
@@ -45,7 +76,7 @@ class PaymentSource extends ConektaResource
      * Method for determine if is oxxo recurrent
      * @return boolean
      */
-    public function isOxxoRecurrent()
+    public function isOxxoRecurrent(): bool
     {
         return $this['type'] == self::TYPE_OXXO_RECURRENT;
     }

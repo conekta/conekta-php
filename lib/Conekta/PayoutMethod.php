@@ -2,11 +2,14 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class PayoutMethod extends ConektaResource
 {
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -19,12 +22,35 @@ class PayoutMethod extends ConektaResource
         return $payeeUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return PayoutMethod
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): PayoutMethod
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return PayoutMethod
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): PayoutMethod
     {
         return parent::_delete('payee', 'payout_methods');
     }

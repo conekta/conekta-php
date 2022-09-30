@@ -28,15 +28,15 @@ class PlanTest extends BaseTest
         $this->setApiVersion('1.0.0');
         $plans = Plan::where();
         $plan = Plan::create([
-      'id'                => 'gold-plan' . substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1) . substr(md5(time()), 1),
-      'name'              => 'Gold Plan',
-      'amount'            => 10000,
-      'currency'          => 'MXN',
-      'interval'          => 'month',
-      'frequency'         => 10,
-      'trial_period_days' => 15,
-      'expiry_count'      => 12,
-      ]);
+            'id' => 'gold-plan' . substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(0, 50), 1) . substr(md5(time()), 1),
+            'name' => 'Gold Plan',
+            'amount' => 10000,
+            'currency' => 'MXN',
+            'interval' => 'month',
+            'frequency' => 10,
+            'trial_period_days' => 15,
+            'expiry_count' => 12,
+        ]);
         $this->assertTrue(strpos(get_class($plan), 'Plan') !== false);
     }
 

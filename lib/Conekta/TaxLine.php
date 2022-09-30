@@ -2,11 +2,14 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class TaxLine extends ConektaResource
 {
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -19,12 +22,35 @@ class TaxLine extends ConektaResource
         return $orderUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return TaxLine
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): TaxLine
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return TaxLine
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): TaxLine
     {
         return parent::_delete('order', 'tax_lines');
     }

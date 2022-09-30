@@ -27,7 +27,7 @@ To get started, add the following to your PHP script:
 
 You can also install this library with [Composer](https://github.com/composer/composer):
 
-    require: "conekta/conekta-php": "5.0.1"
+    require: "conekta/conekta-php": "5.0.2"
 
 ## Usage
 
@@ -96,10 +96,6 @@ $ chmod +x phpunit-8.5.2.phar
 $ sudo mv phpunit-8.5.2.phar /usr/local/bin/phpunit
 
 $ phpunit --version
-
-ej. output
-PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
-
 ```
 
 PHP version used

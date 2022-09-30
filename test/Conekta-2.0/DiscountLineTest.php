@@ -2,34 +2,35 @@
 
 namespace Conekta;
 
+use Exception;
+
 class DiscountLineTest extends BaseTest
 {
-    public static $validOrder
-  = [
-    'line_items' => [
-      [
-        'name'        => 'Box of Cohiba S1s',
-        'description' => 'Imported From Mex.',
-        'unit_price'  => 20000,
-        'quantity'    => 1,
-        'sku'         => 'cohb_s1',
-        'category'    => 'food',
-        'tags'        => ['food', 'mexican food']
-        ]
-      ],
-    'currency'       => 'mxn',
-    'discount_lines' => [
-      [
-        'code'   => 'Cupon de descuento',
-        'amount' => 10,
-        'type'   => 'loyalty'
+    public static $validOrder = [
+        'line_items' => [
+            [
+                'name' => 'Box of Cohiba S1s',
+                'description' => 'Imported From Mex.',
+                'unit_price' => 20000,
+                'quantity' => 1,
+                'sku' => 'cohb_s1',
+                'category' => 'food',
+                'tags' => ['food', 'mexican food']
+            ]
         ],
-      [
-        'code'   => 'Cupon de descuento',
-        'amount' => 5,
-        'type'   => 'loyalty'
+        'currency' => 'mxn',
+        'discount_lines' => [
+            [
+                'code' => 'Cupon de descuento',
+                'amount' => 10,
+                'type' => 'loyalty'
+            ],
+            [
+                'code' => 'Cupon de descuento',
+                'amount' => 5,
+                'type' => 'loyalty'
+            ]
         ]
-      ]
     ];
 
     public function testSuccessfulDiscountLineDelete()
@@ -59,7 +60,7 @@ class DiscountLineTest extends BaseTest
         $discountLine = $order->discount_lines[0];
         try {
             $discountLine->update(['amount' => -1]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
         }
     }

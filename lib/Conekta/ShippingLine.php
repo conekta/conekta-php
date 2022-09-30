@@ -2,11 +2,14 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class ShippingLine extends ConektaResource
 {
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -19,12 +22,35 @@ class ShippingLine extends ConektaResource
         return $orderUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return ShippingLine
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): ShippingLine
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return ShippingLine
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): ShippingLine
     {
         return parent::_delete('order', 'shipping_lines');
     }

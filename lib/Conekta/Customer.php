@@ -16,6 +16,106 @@ class Customer extends ConektaResource
     public $firstPaidAt = '';
     public $corporate = '';
 
+    /**
+     * @param $id
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public static function find($id): mixed
+    {
+        $class = get_called_class();
+
+        return parent::_scpFind($class, $id);
+    }
+
+    /**
+     * @param $params
+     * @return ConektaList|ConektaObject
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public static function where($params = null): ConektaList|ConektaObject
+    {
+        $class = get_called_class();
+
+        return parent::_scpWhere($class, $params);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public static function create($params = null): mixed
+    {
+        $class = get_called_class();
+
+        return parent::_scpCreate($class, $params);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @deprecated
+     */
+    public static function retrieve($id): mixed
+    {
+        $class = get_called_class();
+
+        return parent::_scpFind($class, $id);
+    }
+
+    /**
+     * @param $params
+     * @return ConektaList|ConektaObject
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public static function all($params = null): ConektaList|ConektaObject
+    {
+        $class = get_called_class();
+
+        return parent::_scpWhere($class, $params);
+    }
+
+    /**
+     * @param $property
+     * @return void
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) {
@@ -23,50 +123,34 @@ class Customer extends ConektaResource
         }
     }
 
+    /**
+     * @param $property
+     * @return bool
+     */
     public function __isset($property)
     {
         return isset($this->{$property});
     }
 
-    public function loadFromArray($values = null)
+    /**
+     * @param $values
+     * @return void
+     */
+    public function loadFromArray($values = null): void
     {
         if (isset($values)) {
             parent::loadFromArray($values);
         }
 
         if (Conekta::$apiVersion == '2.0.0') {
-            $submodels = [
+            $this->createSubmodelsWithLists($values, [
                 'payment_sources',
                 'shipping_contacts'
-            ];
-            foreach ($submodels as $submodel) {
-                if (isset($values[$submodel])) {
-                    $submodel_list = new ConektaList($submodel, $values[$submodel]);
-                    $submodel_list->loadFromArray($values[$submodel]);
-                    $this->{$submodel}->_values = $submodel_list;
-                } else {
-                    $submodel_list = new ConektaList($submodel, []);
-                }
-                $this->{$submodel} = $submodel_list;
-
-                foreach ($this->{$submodel} as $object => $val) {
-                    $val->customer = $this;
-                }
-            }
+            ]);
         } else {
-            $submodels = ['cards'];
-            foreach ($submodels as $submodel) {
-                if (isset($this->{$submodel})) {
-                    $submodel_list = $this->{$submodel};
-
-                    foreach ($submodel_list as $object => $val) {
-                        if (isset($val->deleted) != true) {
-                            $val->customer = $this;
-                            $this->{$submodel}->_setVal($object, $val);
-                        }
-                    }
-                }
-            }
+            $this->createSubmodels([
+                'cards'
+            ]);
         }
 
         if (isset($this->subscription)) {
@@ -74,48 +158,104 @@ class Customer extends ConektaResource
         }
     }
 
-    public static function find($id)
+    /**
+     * @param $values
+     * @param $submodels
+     * @return void
+     */
+    protected function createSubmodelsWithLists($values, $submodels): void
     {
-        $class = get_called_class();
+        foreach ($submodels as $submodel) {
+            if (isset($values[$submodel])) {
+                $submodel_list = new ConektaList($submodel, $values[$submodel]);
+                $submodel_list->loadFromArray($values[$submodel]);
+            } else {
+                $submodel_list = new ConektaList($submodel, []);
+            }
+            $this->{$submodel} = $submodel_list;
 
-        return parent::_scpFind($class, $id);
+            foreach ($this->{$submodel} as $val) {
+                $val->customer = $this;
+            }
+        }
     }
 
-    public static function where($params = null)
+    /**
+     * @param $submodels
+     * @return void
+     */
+    protected function createSubmodels($submodels): void
     {
-        $class = get_called_class();
+        foreach ($submodels as $submodel) {
+            if (isset($this->{$submodel})) {
+                $submodel_list = $this->{$submodel};
 
-        return parent::_scpWhere($class, $params);
+                foreach ($submodel_list as $object => $val) {
+                    if (!isset($val->deleted)) {
+                        $val->customer = $this;
+                        $this->{$submodel}->_setVal($object, $val);
+                    }
+                }
+            }
+        }
     }
 
-    public static function create($params = null)
-    {
-        $class = get_called_class();
-
-        return parent::_scpCreate($class, $params);
-    }
-
-    public function delete()
-    {
-        return parent::_delete();
-    }
-
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return Customer
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): Customer
     {
         return parent::_update($params);
     }
 
-    public function createPaymentSource($params = null)
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function createPaymentSource($params = null): mixed
     {
         return parent::_createMemberWithRelation('payment_sources', $params, $this);
     }
 
-    public function createOfflineRecurrentReference($params = null)
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function createOfflineRecurrentReference($params = null): mixed
     {
         return parent::_createMemberWithRelation('payment_sources', $params, $this);
     }
 
-    public function deletePaymentSourceById($paymentSourceId)
+    /**
+     * @param $paymentSourceId
+     * @return void
+     */
+    public function deletePaymentSourceById($paymentSourceId): void
     {
         if (Conekta::$apiVersion == '2.0.0') {
             $currentCustomer = $this;
@@ -131,35 +271,70 @@ class Customer extends ConektaResource
         }
     }
 
-    public function createCard($params = null)
+    /**
+     * @return Customer
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): Customer
+    {
+        return parent::_delete();
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function createCard($params = null): mixed
     {
         return parent::_createMemberWithRelation('cards', $params, $this);
     }
 
-    public function createSubscription($params = null)
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function createSubscription($params = null): mixed
     {
         return parent::_createMember('subscription', $params);
     }
 
-    public function createShippingContact($params = null)
+    /**
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function createShippingContact($params = null): mixed
     {
         return parent::_createMemberWithRelation('shipping_contacts', $params, $this);
-    }
-
-    /**
-     * @deprecated
-     */
-    public static function retrieve($id)
-    {
-        $class = get_called_class();
-
-        return parent::_scpFind($class, $id);
-    }
-
-    public static function all($params = null)
-    {
-        $class = get_called_class();
-
-        return parent::_scpWhere($class, $params);
     }
 }

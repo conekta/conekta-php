@@ -2,33 +2,34 @@
 
 namespace Conekta;
 
+use Exception;
+
 class TaxLineTest extends BaseTest
 {
-    public static $validOrder
-  = [
-    'line_items' => [
-      [
-        'name'        => 'Box of Cohiba S1s',
-        'description' => 'Imported From Mex.',
-        'unit_price'  => 20000,
-        'quantity'    => 1,
-        'sku'         => 'cohb_s1',
-        'category'    => 'food',
-        'tags'        => ['food', 'mexican food']
-        ]
-      ],
-    'tax_lines' => [
-      [
-        'description' => 'IVA',
-        'amount'      => 60
-        ],
-      [
-        'description' => 'ISR',
-        'amount'      => 100
-        ]
-      ],
-    'currency' => 'mxn'
-    ];
+    public static $validOrder = [
+            'line_items' => [
+                [
+                    'name' => 'Box of Cohiba S1s',
+                    'description' => 'Imported From Mex.',
+                    'unit_price' => 20000,
+                    'quantity' => 1,
+                    'sku' => 'cohb_s1',
+                    'category' => 'food',
+                    'tags' => ['food', 'mexican food']
+                ]
+            ],
+            'tax_lines' => [
+                [
+                    'description' => 'IVA',
+                    'amount' => 60
+                ],
+                [
+                    'description' => 'ISR',
+                    'amount' => 100
+                ]
+            ],
+            'currency' => 'mxn'
+        ];
 
     public function testSuccessfulTaxLineDelete()
     {
@@ -55,7 +56,7 @@ class TaxLineTest extends BaseTest
         $taxLine = $order->tax_lines[0];
         try {
             $taxLine->update(['amount' => -1]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
         }
     }

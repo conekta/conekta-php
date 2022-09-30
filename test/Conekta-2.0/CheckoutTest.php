@@ -2,63 +2,67 @@
 
 namespace Conekta;
 
+use DateInterval;
+use Datetime;
+use Exception;
+
 class CheckoutTest extends BaseTest
 {
     public static $validCheckout = [
-      'name'                    => 'Payment Link Name',
-      'type'                    => 'PaymentLink',
-      'recurrent'               => false,
-      'allowed_payment_methods' => ['cash', 'card', 'bank_transfer'],
-      'needs_shipping_contact'  => false,
-      'order_template'          => [
-        'line_items' => [[
-          'name'       => 'Red Wine',
-          'unit_price' => 1000,
-          'quantity'   => 10
-        ]],
-        'metadata' => [
-          'mycustomkey'    => '12345',
-          'othercustomkey' => 'abcd'
-        ],
-        'currency'      => 'MXN',
-        'customer_info' => [
-          'name'  => 'Juan Perez',
-          'email' => 'juan.perez@conekta.com',
-          'phone' => '5566982090'
+        'name' => 'Payment Link Name',
+        'type' => 'PaymentLink',
+        'recurrent' => false,
+        'allowed_payment_methods' => ['cash', 'card', 'bank_transfer'],
+        'needs_shipping_contact' => false,
+        'order_template' => [
+            'line_items' => [[
+                'name' => 'Red Wine',
+                'unit_price' => 1000,
+                'quantity' => 10
+            ]],
+            'metadata' => [
+                'mycustomkey' => '12345',
+                'othercustomkey' => 'abcd'
+            ],
+            'currency' => 'MXN',
+            'customer_info' => [
+                'name' => 'Juan Perez',
+                'email' => 'juan.perez@conekta.com',
+                'phone' => '5566982090'
+            ]
         ]
-      ]
     ];
 
     public static $validCheckoutWithMsi = [
-    'name'                         => 'Payment Link Name',
-    'type'                         => 'PaymentLink',
-    'recurrent'                    => false,
-    'allowed_payment_methods'      => ['cash', 'card', 'bank_transfer'],
-    'needs_shipping_contact'       => false,
-    'monthly_installments_enabled' => true,
-    'monthly_installments_options' => [3,6,12],
-    'order_template'               => [
-      'line_items' => [[
-        'name'       => 'Red Wine',
-        'unit_price' => 30000,
-        'quantity'   => 10
-      ]],
-      'metadata' => [
-        'mycustomkey'    => '12345',
-        'othercustomkey' => 'abcd'
-      ],
-      'currency'      => 'MXN',
-      'customer_info' => [
-        'name'  => 'Juan Perez',
-        'email' => 'juan.perez@conekta.com',
-        'phone' => '5566982090'
-      ]
-    ]
-  ];
+        'name' => 'Payment Link Name',
+        'type' => 'PaymentLink',
+        'recurrent' => false,
+        'allowed_payment_methods' => ['cash', 'card', 'bank_transfer'],
+        'needs_shipping_contact' => false,
+        'monthly_installments_enabled' => true,
+        'monthly_installments_options' => [3, 6, 12],
+        'order_template' => [
+            'line_items' => [[
+                'name' => 'Red Wine',
+                'unit_price' => 30000,
+                'quantity' => 10
+            ]],
+            'metadata' => [
+                'mycustomkey' => '12345',
+                'othercustomkey' => 'abcd'
+            ],
+            'currency' => 'MXN',
+            'customer_info' => [
+                'name' => 'Juan Perez',
+                'email' => 'juan.perez@conekta.com',
+                'phone' => '5566982090'
+            ]
+        ]
+    ];
 
     public static $invalidCheckout = [
-    'names' => 'John Constantine'
-  ];
+        'names' => 'John Constantine'
+    ];
 
     public function setUp(): void
     {
@@ -66,22 +70,6 @@ class CheckoutTest extends BaseTest
         if (Conekta::$apiBase == 'https://api.conekta.io') {
             $this->markTestSkipped('This test should be run in staging.');
         }
-    }
-
-    public function testSuccesfulCheckoutCreate()
-    {
-        self::$validCheckout['name'] = 'Payment Link Name ' . time();
-        self::$validCheckout['expired_at'] = static::getExpiredAt();
-        $checkout = Checkout::create(self::$validCheckout);
-        $this->assertTrue(strpos(get_class($checkout), 'Checkout') !== false);
-        $this->assertEquals(false, $checkout->livemode);
-        $this->assertEquals(self::$validCheckout['name'], $checkout->name);
-        $this->assertEquals(false, $checkout->needs_shipping_contact);
-        $this->assertStringStartsWith('https://pay.conekta', $checkout->url);
-        $this->assertStringEndsWith($checkout->slug, $checkout->url);
-        $this->assertTrue(strlen($checkout->id) == 36);
-
-        return $checkout;
     }
 
     public function testSuccesfulCheckoutCreateWithMSI()
@@ -97,9 +85,16 @@ class CheckoutTest extends BaseTest
         $this->assertStringEndsWith($checkout->slug, $checkout->url);
         $this->assertTrue(strlen($checkout->id) == 36);
         $this->assertTrue($checkout->monthly_installments_enabled);
-        $this->assertEquals([3, 6, 12], (array) $checkout->monthly_installments_options);
+        $this->assertEquals([3, 6, 12], (array)$checkout->monthly_installments_options);
 
         return $checkout;
+    }
+
+    public static function getExpiredAt()
+    {
+        $datetime = new Datetime();
+        $datetime->add(new DateInterval('P3D'));
+        return $datetime->format('U');
     }
 
     public function testSuccesfulCheckoutCreateWithRecurrent()
@@ -136,6 +131,22 @@ class CheckoutTest extends BaseTest
         $this->assertTrue(strpos(get_class($filterCheckout), 'Checkout') !== false);
     }
 
+    public function testSuccesfulCheckoutCreate()
+    {
+        self::$validCheckout['name'] = 'Payment Link Name ' . time();
+        self::$validCheckout['expired_at'] = static::getExpiredAt();
+        $checkout = Checkout::create(self::$validCheckout);
+        $this->assertTrue(strpos(get_class($checkout), 'Checkout') !== false);
+        $this->assertEquals(false, $checkout->livemode);
+        $this->assertEquals(self::$validCheckout['name'], $checkout->name);
+        $this->assertEquals(false, $checkout->needs_shipping_contact);
+        $this->assertStringStartsWith('https://pay.conekta', $checkout->url);
+        $this->assertStringEndsWith($checkout->slug, $checkout->url);
+        $this->assertTrue(strlen($checkout->id) == 36);
+
+        return $checkout;
+    }
+
     public function testSuccesfulSendEmail()
     {
         $checkout = $this->testSuccesfulCheckoutCreate();
@@ -159,7 +170,7 @@ class CheckoutTest extends BaseTest
         $checkout = $this->testSuccesfulCheckoutCreate();
         try {
             $checkout->sendSms(['phone' => '555555555']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'Las notificaciones sms no estan activas.') !== false);
         }
     }
@@ -168,15 +179,8 @@ class CheckoutTest extends BaseTest
     {
         try {
             $checkout = Checkout::create(self::$invalidCheckout);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'El parametro "order_template" es requerido') !== false);
         }
-    }
-
-    public static function getExpiredAt()
-    {
-        $datetime = new \Datetime();
-        $datetime->add(new \DateInterval('P3D'));
-        return $datetime->format('U');
     }
 }

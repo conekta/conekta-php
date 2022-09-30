@@ -2,12 +2,14 @@
 
 namespace Conekta;
 
+use Exception;
+
 class CustomerTest extends BaseTest
 {
     public static $validCustomer = [
-    'email' => 'hola@hola.com',
-    'name'  => 'John Constantine'
-  ];
+        'email' => 'hola@hola.com',
+        'name' => 'John Constantine'
+    ];
 
     public function testSuccesfulCustomerFind()
     {
@@ -34,9 +36,9 @@ class CustomerTest extends BaseTest
         $customer = Customer::create(self::$validCustomer);
         $customer->update(
             [
-        'name'  => 'Logan',
-        'email' => 'logan@x-men.org',
-        ]
+                'name' => 'Logan',
+                'email' => 'logan@x-men.org',
+            ]
         );
         $this->assertTrue(strpos($customer->name, 'Logan') !== false);
     }
@@ -91,18 +93,18 @@ class CustomerTest extends BaseTest
         $subscription = $customer->createSubscription(['plan' => 'gold-plan']);
         try {
             $plan = Plan::find('gold-plan2');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $plan = Plan::create(
                 [
-        'id'                => 'gold-plan2',
-        'name'              => 'Gold Plan',
-        'amount'            => 10000,
-        'currency'          => 'MXN',
-        'interval'          => 'month',
-        'frequency'         => 1,
-        'trial_period_days' => 15,
-        'expiry_count'      => 12,
-        ]
+                    'id' => 'gold-plan2',
+                    'name' => 'Gold Plan',
+                    'amount' => 10000,
+                    'currency' => 'MXN',
+                    'interval' => 'month',
+                    'frequency' => 1,
+                    'trial_period_days' => 15,
+                    'expiry_count' => 12,
+                ]
             );
         }
         $subscription->update(['plan' => $plan->id]);
@@ -116,8 +118,8 @@ class CustomerTest extends BaseTest
         $customer = Customer::create(self::$validCustomer);
         try {
             $subscription = $customer->createSubscription([
-        'plan' => 'unexistent-plan', ]);
-        } catch (\Exception $e) {
+                'plan' => 'unexistent-plan',]);
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The object Plan "unexistent-plan" could not be found.') !== false);
         }
     }

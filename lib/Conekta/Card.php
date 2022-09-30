@@ -2,20 +2,22 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class Card extends ConektaResource
 {
-     public $createdAt = '';
-     public $last4 = '';
-     public $bin = '';
-     public $name = '';
-     public $expMonth = '';
-     public $expYear = '';
-     public $brand = '';
-     public $parentId = '';
-     public $default = '';
+    public $createdAt = '';
+    public $last4 = '';
+    public $bin = '';
+    public $name = '';
+    public $expMonth = '';
+    public $expYear = '';
+    public $brand = '';
+    public $parentId = '';
+    public $default = '';
 
+    /**
+     * @param $property
+     * @return void
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) {
@@ -23,12 +25,21 @@ class Card extends ConektaResource
         }
     }
 
+    /**
+     * @param $property
+     * @return bool
+     */
     public function __isset($property)
     {
         return isset($this->{$property});
     }
 
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -41,12 +52,35 @@ class Card extends ConektaResource
         return $customerUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param null $params
+     * @return Card
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): Card
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return Card
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): Card
     {
         return parent::_delete('customer', 'cards');
     }

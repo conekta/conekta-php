@@ -5,9 +5,9 @@ namespace Conekta;
 class TokenTest extends BaseTest
 {
     public static $validTokenWithCheckout = [
-      'checkout' => [
-        'returns_control_on' => 'Token'
-      ],
+        'checkout' => [
+            'returns_control_on' => 'Token'
+        ],
     ];
 
     public function testSuccesfulCreateTokenWithCheckout()
@@ -21,9 +21,9 @@ class TokenTest extends BaseTest
         $this->assertTrue(strpos(get_class($token->checkout), 'Checkout') !== false);
 
         $this->assertEquals(false, $token->checkout->multifactor_authentication);
-        $this->assertEquals(['card'], (array) $token->checkout->allowed_payment_methods);
+        $this->assertEquals(['card'], (array)$token->checkout->allowed_payment_methods);
         $this->assertEquals(false, $token->checkout->monthly_installments_enabled);
-        $this->assertEquals([], (array) $token->checkout->monthly_installments_options);
+        $this->assertEquals([], (array)$token->checkout->monthly_installments_options);
         $this->assertTrue(strlen($token->checkout->id) == 36);
         $this->assertEquals('checkout', $token->checkout->object);
         $this->assertEquals('Integration', $token->checkout->type);

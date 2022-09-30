@@ -2,38 +2,40 @@
 
 namespace Conekta;
 
+use Exception;
+
 class ShippingContactTest extends BaseTest
 {
     public static $validCustomer = [
-    'email'             => 'hola@hola.com',
-    'name'              => 'John Constantine',
-    'shipping_contacts' => [
-      [
-        'receiver' => 'Jack Bauer',
-        'phone'    => '+5213353319758',
-        'email'    => 'thomas.logan@xmen.org',
-        'address'  => [
-          'street1'     => '250 Alexis St',
-          'city'        => 'Red Deer',
-          'state'       => 'Alberta',
-          'country'     => 'CA',
-          'postal_code' => 'T4N 0B8'
+        'email' => 'hola@hola.com',
+        'name' => 'John Constantine',
+        'shipping_contacts' => [
+            [
+                'receiver' => 'Jack Bauer',
+                'phone' => '+5213353319758',
+                'email' => 'thomas.logan@xmen.org',
+                'address' => [
+                    'street1' => '250 Alexis St',
+                    'city' => 'Red Deer',
+                    'state' => 'Alberta',
+                    'country' => 'CA',
+                    'postal_code' => 'T4N 0B8'
+                ]
+            ],
+            [
+                'receiver' => 'John Williams',
+                'phone' => '+5213353319758',
+                'email' => 'rogue@xmen.org',
+                'address' => [
+                    'street1' => '250 Alexis St',
+                    'city' => 'Red Deer',
+                    'state' => 'Alberta',
+                    'country' => 'CA',
+                    'postal_code' => 'T4N 0B8'
+                ]
+            ]
         ]
-      ],
-      [
-        'receiver' => 'John Williams',
-        'phone'    => '+5213353319758',
-        'email'    => 'rogue@xmen.org',
-        'address'  => [
-          'street1'     => '250 Alexis St',
-          'city'        => 'Red Deer',
-          'state'       => 'Alberta',
-          'country'     => 'CA',
-          'postal_code' => 'T4N 0B8'
-        ]
-      ]
-    ]
-  ];
+    ];
 
     public function testSuccessfulShippingContactDelete()
     {
@@ -60,7 +62,7 @@ class ShippingContactTest extends BaseTest
         $shippingContact = $customer->shipping_contacts[0];
         try {
             $shippingContact->update(['phone' => '']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
         }
     }

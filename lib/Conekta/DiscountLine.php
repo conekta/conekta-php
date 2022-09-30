@@ -2,15 +2,17 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class DiscountLine extends ConektaResource
 {
-     public $code = '';
-     public $amount = '';
-     public $type = '';
-     public $parentId = '';
+    public $code = '';
+    public $amount = '';
+    public $type = '';
+    public $parentId = '';
 
+    /**
+     * @param $property
+     * @return void
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) {
@@ -18,12 +20,21 @@ class DiscountLine extends ConektaResource
         }
     }
 
+    /**
+     * @param $property
+     * @return bool
+     */
     public function __isset($property)
     {
         return isset($this->{$property});
     }
 
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -36,12 +47,27 @@ class DiscountLine extends ConektaResource
         return $orderUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return DiscountLine
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): DiscountLine
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return DiscountLine
+     */
+    public function delete(): DiscountLine
     {
         return parent::_delete('order', 'discount_lines');
     }

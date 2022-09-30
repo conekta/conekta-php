@@ -2,13 +2,15 @@
 
 namespace Conekta;
 
+use Exception;
+
 class SubscriptionTest extends BaseTest
 {
     public static $validCustomer = [
         'email' => 'hola@hola.com',
-        'name'  => 'John Constantine'
-        ];
-    public static $validVisaCard = ['type' => 'card','token_id' => 'tok_test_visa_4242'];
+        'name' => 'John Constantine'
+    ];
+    public static $validVisaCard = ['type' => 'card', 'token_id' => 'tok_test_visa_4242'];
 
     public function testSuccesfulSubscriptionCreate()
     {
@@ -27,18 +29,18 @@ class SubscriptionTest extends BaseTest
         $subscription = $customer->createSubscription(['plan' => 'gold-plan']);
         try {
             $plan = Plan::find('gold-plan2');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $plan = Plan::create(
                 [
-        'id'                => 'gold-plan2',
-        'name'              => 'Gold Plan',
-        'amount'            => 10000,
-        'currency'          => 'MXN',
-        'interval'          => 'month',
-        'frequency'         => 1,
-        'trial_period_days' => 15,
-        'expiry_count'      => 12,
-        ]
+                    'id' => 'gold-plan2',
+                    'name' => 'Gold Plan',
+                    'amount' => 10000,
+                    'currency' => 'MXN',
+                    'interval' => 'month',
+                    'frequency' => 1,
+                    'trial_period_days' => 15,
+                    'expiry_count' => 12,
+                ]
             );
         }
         $subscription->update(['plan' => $plan->id]);
@@ -52,8 +54,8 @@ class SubscriptionTest extends BaseTest
         $customer->createPaymentSource(self::$validVisaCard);
         try {
             $subscription = $customer->createSubscription([
-        'plan' => 'unexistent-plan', ]);
-        } catch (\Exception $e) {
+                'plan' => 'unexistent-plan',]);
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'El recurso no ha sido encontrado') !== false);
         }
     }

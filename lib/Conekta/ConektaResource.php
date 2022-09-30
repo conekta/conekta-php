@@ -2,11 +2,15 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaObject, Lang, NoConnectionError, Requestor, Util};
+use ReflectionClass;
 
 abstract class ConektaResource extends ConektaObject
 {
-    public static function className($class)
+    /**
+     * @param $class
+     * @return string
+     */
+    public static function className($class): string
     {
         // Useful for namespaces: Foo\Charge
         if ($postfix = strrchr($class, '\\')) {
@@ -22,26 +26,20 @@ abstract class ConektaResource extends ConektaObject
         return $name;
     }
 
-    protected static function _getBase($class, $method)
-    {
-        $args = array_slice(func_get_args(), 2);
-
-        return call_user_func_array([$class, $method], $args);
-    }
-
-    public static function classUrl($class = null)
-    {
-        if (empty($class)) {
-            throw new NoConnectionError(
-                Lang::translate('error.resource.id', Lang::EN, ['RESOURCE' => 'NULL']),
-                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
-            );
-        }
-        $base = self::_getBase($class, 'className', $class);
-        return "/{$base}s";
-    }
-
-    protected static function _scpWhere($class, $params)
+    /**
+     * @param $class
+     * @param $params
+     * @return ConektaList|ConektaObject
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected static function _scpWhere($class, $params): ConektaList|ConektaObject
     {
         if (Conekta::$apiVersion == '2.0.0') {
             $path = explode('\\', $class);
@@ -57,7 +55,49 @@ abstract class ConektaResource extends ConektaObject
         return $instance;
     }
 
-    protected static function _scpFind($class, $id)
+    /**
+     * @param $class
+     * @return string
+     * @throws NoConnectionError
+     */
+    public static function classUrl($class = null): string
+    {
+        if (empty($class)) {
+            throw new NoConnectionError(
+                Lang::translate('error.resource.id', Lang::EN, ['RESOURCE' => 'NULL']),
+                Lang::translate('error.resource.id_purchaser', Conekta::$locale)
+            );
+        }
+        $base = self::_getBase($class, 'className', $class);
+        return "/{$base}s";
+    }
+
+    /**
+     * @param $class
+     * @param $method
+     * @return mixed
+     */
+    protected static function _getBase($class, $method): mixed
+    {
+        $args = array_slice(func_get_args(), 2);
+
+        return call_user_func_array([$class, $method], $args);
+    }
+
+    /**
+     * @param $class
+     * @param $id
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected static function _scpFind($class, $id): mixed
     {
         $instance = new $class($id);
         $requestor = new Requestor();
@@ -68,19 +108,12 @@ abstract class ConektaResource extends ConektaObject
         return $instance;
     }
 
-    protected static function _scpCreate($class, $params)
-    {
-        $requestor = new Requestor();
-        $url = self::classUrl($class);
-        $params = is_array($params) ? $params : [];
-        $response = $requestor->request('post', $url, $params);
-        $instance = new $class();
-        $instance->loadFromArray($response);
-
-        return $instance;
-    }
-
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws ParameterValidationError
+     * @throws NoConnectionError
+     */
+    public function instanceUrl(): string
     {
         $id = $this->id;
         $this->idValidator($id);
@@ -91,9 +124,14 @@ abstract class ConektaResource extends ConektaObject
         return "{$base}/{$extn}";
     }
 
-    protected function idValidator($id)
+    /**
+     * @param $id
+     * @return void
+     * @throws ParameterValidationError
+     */
+    protected function idValidator($id): void
     {
-        if (! $id) {
+        if (!$id) {
             $error = new ParameterValidationError(
                 Lang::translate('error.resource.id', Lang::EN, ['RESOURCE' => get_class()]),
                 Lang::translate('error.resource.id_purchaser', Conekta::$locale)
@@ -108,7 +146,45 @@ abstract class ConektaResource extends ConektaObject
         }
     }
 
-    protected function _delete($parent = null, $member = null)
+    /**
+     * @param $class
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected static function _scpCreate($class, $params): mixed
+    {
+        $requestor = new Requestor();
+        $url = self::classUrl($class);
+        $params = is_array($params) ? $params : [];
+        $response = $requestor->request('post', $url, $params);
+        $instance = new $class();
+        $instance->loadFromArray($response);
+
+        return $instance;
+    }
+
+    /**
+     * @param null $parent
+     * @param null $member
+     * @return $this
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected function _delete($parent = null, $member = null): static
     {
         self::_customAction('delete', null, null);
         if (isset($parent, $member)) {
@@ -128,7 +204,48 @@ abstract class ConektaResource extends ConektaObject
         return $this;
     }
 
-    protected function _update($params)
+    /**
+     * @param $method
+     * @param $action
+     * @param array|null $params
+     * @return $this
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected function _customAction($method = 'post', $action = null, ?array $params = []): static
+    {
+        $requestor = new Requestor();
+        if (isset($action)) {
+            $url = $this->instanceUrl() . '/' . $action;
+        } else {
+            $url = $this->instanceUrl();
+        }
+
+        $response = $requestor->request($method, $url, $params);
+        $this->loadFromArray($response);
+
+        return $this;
+    }
+
+    /**
+     * @param $params
+     * @return $this
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected function _update($params): static
     {
         $requestor = new Requestor();
         $url = $this->instanceUrl();
@@ -138,42 +255,62 @@ abstract class ConektaResource extends ConektaObject
         return $this;
     }
 
-    protected function _createMember($member, $params)
+    /**
+     * @param $member
+     * @param $params
+     * @param $parent
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected function _createMemberWithRelation($member, $params, $parent): mixed
+    {
+        $parent_class = strtolower((new ReflectionClass($parent))->getShortName());
+        $child = self::_createMember($member, $params);
+        $child->{$parent_class} = $parent;
+
+        return $child;
+    }
+
+    /**
+     * @param $member
+     * @param $params
+     * @return mixed
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     * @throws NoConnectionError
+     */
+    protected function _createMember($member, $params): mixed
     {
         $requestor = new Requestor();
         $url = $this->instanceUrl() . '/' . $member;
         $response = $requestor->request('post', $url, $params);
 
-        if ((! empty($this->{$member})
-      && (strpos(get_class($this->{$member}), 'ConektaList') !== false
-      || strpos(get_class($this->{$member}), 'ConektaObject') !== false))
-      || strpos($member, 'cards') !== false
-      || strpos($member, 'charges') !== false
-      || strpos($member, 'discount_lines') !== false
-      || strpos($member, 'line_items') !== false
-      || strpos($member, 'payment_sources') !== false
-      || strpos($member, 'payout_methods') !== false
-      || strpos($member, 'shipping_contacts') !== false
-      || strpos($member, 'shipping_lines') !== false
-      || strpos($member, 'tax_lines') !== false) {
-            if (empty($this->{$member})) {
-                if (Conekta::$apiVersion == '2.0.0') {
-                    $this->{$member} = new ConektaList($member);
-                } else {
-                    $this->{$member} = new ConektaObject();
-                }
-            }
-
-            if (strpos(get_class($this->{$member}), 'ConektaList') !== false) {
-                $this->{$member}->addElement($response);
-            } else {
-                $this->{$member}->loadFromArray(array_merge(
-                    $this->{$member}->_toArray(),
-                    [$response]
-                ));
-
-                $this->loadFromArray();
-            }
+        if ((!empty($this->{$member})
+                && (str_contains(get_class($this->{$member}), 'ConektaList')
+                    || str_contains(get_class($this->{$member}), 'ConektaObject')))
+            || str_contains($member, 'cards')
+            || str_contains($member, 'charges')
+            || str_contains($member, 'discount_lines')
+            || str_contains($member, 'line_items')
+            || str_contains($member, 'payment_sources')
+            || str_contains($member, 'payout_methods')
+            || str_contains($member, 'shipping_contacts')
+            || str_contains($member, 'shipping_lines')
+            || str_contains($member, 'tax_lines')) {
+            $this->createMemberProperty($member);
+            $this->setMemberValues($member, $response);
             $instances = $this->{$member};
             $instance = $instances[count($instances) - 1];
         } else {
@@ -189,27 +326,33 @@ abstract class ConektaResource extends ConektaObject
         return $instance;
     }
 
-    protected function _customAction($method = 'post', $action = null, ?array $params = [])
+    /**
+     * @param $member
+     * @return void
+     */
+    protected function createMemberProperty($member): void
     {
-        $requestor = new Requestor();
-        if (isset($action)) {
-            $url = $this->instanceUrl() . '/' . $action;
-        } else {
-            $url = $this->instanceUrl();
+        if (empty($this->{$member})) {
+            $this->{$member} = (Conekta::$apiVersion == '2.0.0') ? new ConektaList($member) : new ConektaObject();
         }
-
-        $response = $requestor->request($method, $url, $params);
-        $this->loadFromArray($response);
-
-        return $this;
     }
 
-    protected function _createMemberWithRelation($member, $params, $parent)
+    /**
+     * @param $member
+     * @param $response
+     * @return void
+     */
+    protected function setMemberValues($member, $response): void
     {
-        $parent_class = strtolower((new \ReflectionClass($parent))->getShortName());
-        $child = self::_createMember($member, $params);
-        $child->{$parent_class} = $parent;
+        if (str_contains(get_class($this->{$member}), 'ConektaList')) {
+            $this->{$member}->addElement($response);
+        } else {
+            $this->{$member}->loadFromArray(array_merge(
+                $this->{$member}->_toArray(),
+                [$response]
+            ));
 
-        return $child;
+            $this->loadFromArray();
+        }
     }
 }

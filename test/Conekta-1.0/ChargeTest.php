@@ -2,61 +2,63 @@
 
 namespace Conekta;
 
+use Exception;
+
 class ChargeTest extends BaseTest
 {
     public static $valid_payment_method = [
-        'amount'      => 2000,
-        'currency'    => 'mxn',
+        'amount' => 2000,
+        'currency' => 'mxn',
         'description' => 'Some desc',
-        'details'     => [
-            'name'     => 'Arnulfo Quimare',
-            'phone'    => '403-342-0642',
-            'email'    => 'logan@x-men.org',
+        'details' => [
+            'name' => 'Arnulfo Quimare',
+            'phone' => '403-342-0642',
+            'email' => 'logan@x-men.org',
             'customer' => [
-                'logged_in'            => true,
+                'logged_in' => true,
                 'successful_purchases' => 14,
-                'created_at'           => 1379784950,
-                'updated_at'           => 1379784950,
-                'offline_payments'     => 4,
-                'score'                => 9
+                'created_at' => 1379784950,
+                'updated_at' => 1379784950,
+                'offline_payments' => 4,
+                'score' => 9
             ],
             'line_items' => [
                 [
-                    'name'        => 'Box of Cohiba S1s',
+                    'name' => 'Box of Cohiba S1s',
                     'description' => 'Imported From Mex.',
-                    'unit_price'  => 20000,
-                    'quantity'    => 1,
-                    'sku'         => 'cohb_s1',
-                    'category'    => 'food'
+                    'unit_price' => 20000,
+                    'quantity' => 1,
+                    'sku' => 'cohb_s1',
+                    'category' => 'food'
                 ]
             ]
         ]
     ];
 
     public static $intvalid_payment_method = [
-        'amount'      => 10,
-        'currency'    => 'mxn',
+        'amount' => 10,
+        'currency' => 'mxn',
         'description' => 'Some desc',
-        'details'     => [
-            'name'     => 'Arnulfo Quimare',
-            'phone'    => '403-342-0642',
-            'email'    => 'logan@x-men.org',
+        'details' => [
+            'name' => 'Arnulfo Quimare',
+            'phone' => '403-342-0642',
+            'email' => 'logan@x-men.org',
             'customer' => [
-                'logged_in'            => true,
+                'logged_in' => true,
                 'successful_purchases' => 14,
-                'created_at'           => 1379784950,
-                'updated_at'           => 1379784950,
-                'offline_payments'     => 4,
-                'score'                => 9
+                'created_at' => 1379784950,
+                'updated_at' => 1379784950,
+                'offline_payments' => 4,
+                'score' => 9
             ],
             'line_items' => [
                 [
-                    'name'        => 'Box of Cohiba S1s',
+                    'name' => 'Box of Cohiba S1s',
                     'description' => 'Imported From Mex.',
-                    'unit_price'  => 20000,
-                    'quantity'    => 1,
-                    'sku'         => 'cohb_s1',
-                    'category'    => 'food'
+                    'unit_price' => 20000,
+                    'quantity' => 1,
+                    'sku' => 'cohb_s1',
+                    'category' => 'food'
                 ]
             ]
         ]
@@ -81,7 +83,7 @@ class ChargeTest extends BaseTest
         $this->setApiVersion('1.0.0');
         try {
             $cpm = Charge::create(array_merge($pm, $card));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The minimum for card payments is 3 pesos. Check that the amount is in cents as explained in the documentation.') !== false);
         }
     }
@@ -108,7 +110,7 @@ class ChargeTest extends BaseTest
         $this->assertTrue($cpm->status == 'paid');
         try {
             $cpm->refund(3000);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos($e->getMessage(), 'The amount to refund exceeds the charge total') !== false);
         }
     }

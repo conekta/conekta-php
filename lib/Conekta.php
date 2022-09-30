@@ -1,15 +1,15 @@
 <?php
 
-if (! function_exists('curl_init')) {
+if (!function_exists('curl_init')) {
     throw new Exception('Conekta needs the CURL PHP extension.');
 }
-if (! function_exists('json_decode')) {
+if (!function_exists('json_decode')) {
     throw new Exception('Conekta needs the JSON PHP extension.');
 }
-if (! function_exists('mb_detect_encoding')) {
+if (!function_exists('mb_detect_encoding')) {
     throw new Exception('Conekta needs the Multibyte String PHP extension.');
 }
-if (! function_exists('get_called_class')) {
+if (!function_exists('get_called_class')) {
     throw new Exception('Conekta needs to be run on PHP >= 5.3.0.');
 }
 require_once dirname(__FILE__) . '/Conekta/Lang.php';

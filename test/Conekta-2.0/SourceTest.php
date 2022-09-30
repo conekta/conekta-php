@@ -2,15 +2,17 @@
 
 namespace Conekta;
 
+use Exception;
+
 class SourceTest extends BaseTest
 {
-    public static $validCustomer
-  = ['email'          => 'hola@hola.com',
-    'name'            => 'John Constantine',
-    'payment_sources' => [[
-      'token_id' => 'tok_test_visa_4242',
-      'type'     => 'card'
-      ]]
+    public static $validCustomer = [
+        'email' => 'hola@hola.com',
+        'name' => 'John Constantine',
+        'payment_sources' => [[
+            'token_id' => 'tok_test_visa_4242',
+            'type' => 'card'
+        ]]
     ];
 
     public function testSuccesfulDeleteSources()
@@ -38,7 +40,7 @@ class SourceTest extends BaseTest
         $paymentSource = $customer->payment_sources[0];
         try {
             $paymentSource->update(['token_id' => 'tok_test_visa_4241']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertTrue(strpos(get_class($e), 'ParameterValidationError') == true);
         }
     }

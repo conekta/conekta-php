@@ -2,16 +2,18 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class ShippingContact extends ConektaResource
 {
-     public $receiver = '';
-     public $phone = '';
-     public $betweenStreets = '';
-     public $parentId = '';
-     public $default = '';
+    public $receiver = '';
+    public $phone = '';
+    public $betweenStreets = '';
+    public $parentId = '';
+    public $default = '';
 
+    /**
+     * @param $property
+     * @return void
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) {
@@ -19,12 +21,21 @@ class ShippingContact extends ConektaResource
         }
     }
 
+    /**
+     * @param $property
+     * @return bool
+     */
     public function __isset($property)
     {
         return isset($this->{$property});
     }
 
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -37,12 +48,35 @@ class ShippingContact extends ConektaResource
         return $customerUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return ShippingContact
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): ShippingContact
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    /**
+     * @return ShippingContact
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function delete(): ShippingContact
     {
         return parent::_delete('customer', 'shipping_contacts');
     }

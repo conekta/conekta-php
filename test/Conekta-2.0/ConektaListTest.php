@@ -13,15 +13,6 @@ class ConektaListTest extends BaseTest
         $this->assertTrue($window[0]->id == $orderList[15]->id);
     }
 
-    public function testSuccessfulPrevious()
-    {
-        $orderList = $this->createResponseMockUp();
-        $window = Order::where(['limit' => 5, 'next' => $orderList[14]->id]);
-        $this->assertTrue($window[0]->id == $orderList[15]->id);
-        $window->previous(['limit' => 1]);
-        $this->assertTrue($window[0]->id == $orderList[14]->id);
-    }
-
     protected function createResponseMockUp()
     {
         $this->setApiKey();
@@ -35,6 +26,16 @@ class ConektaListTest extends BaseTest
 
         return $orderList;
     }
+
+    public function testSuccessfulPrevious()
+    {
+        $orderList = $this->createResponseMockUp();
+        $window = Order::where(['limit' => 5, 'next' => $orderList[14]->id]);
+        $this->assertTrue($window[0]->id == $orderList[15]->id);
+        $window->previous(['limit' => 1]);
+        $this->assertTrue($window[0]->id == $orderList[14]->id);
+    }
+
     public function testSuccessfulEmptyNext()
     {
         $orderList = $this->createResponseMockUp();
@@ -57,6 +58,7 @@ class ConektaListTest extends BaseTest
         // first order id index's never be the same after a next
         $this->assertTrue($firtsOrderId != $secondOrderId);
     }
+
     public function testSuccessfulEmptyPrevious()
     {
         $orderList = $this->createResponseMockUp();

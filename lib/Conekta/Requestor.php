@@ -7,81 +7,17 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, Handler};
+use Exception;
 
 class Requestor
 {
-    public string $apiKey;
+    public $apiKey;
 
     public function __construct()
     {
         $this->apiKey = Conekta::$apiKey;
         $this->apiVersion = Conekta::$apiVersion;
         $this->plugin = Conekta::$plugin;
-    }
-
-    /**
-     * Function apiUrl
-     *
-     * get Base path of conekta api i.e. https://api.conekta.com
-     *
-     * @param url (string) endpoint to concatenate
-     * @return (string)
-     */
-    public static function apiUrl($url = '')
-    {
-        $apiBase = Conekta::$apiBase;
-
-        return $apiBase . $url;
-    }
-
-    /**
-     * Function additionalPluginHeaders
-     *
-     * Set headers if is plugin implementation
-     *
-     * @return (array)
-     */
-    private function additionalPluginHeaders()
-    {
-        return [
-      'plugin_name'    => Conekta::getPlugin(),
-      'plugin_version' => Conekta::getPluginVersion()
-    ];
-    }
-
-    /**
-     * Function setHeaders
-     *
-     * Set Standar headers for library
-     *
-     * @return (array)
-     */
-    private function setHeaders()
-    {
-        $pluginAgent = $this->additionalPluginHeaders();
-        $userAgent = [
-      'bindings_version' => Conekta::VERSION,
-      'lang'             => 'php',
-      'lang_version'     => phpversion(),
-      'publisher'        => 'conekta',
-      'uname'            => php_uname(),
-    ];
-
-        if (array_filter($pluginAgent)) {
-            $userAgent = array_merge($userAgent, $pluginAgent);
-        }
-
-        $headers = [
-      'Accept: application/vnd.conekta-v' . Conekta::$apiVersion . '+json',
-      'Accept-Language: ' . Conekta::$locale,
-      'X-Conekta-Client-User-Agent: ' . json_encode($userAgent),
-      'User-Agent: Conekta/v1 PhpBindings/' . Conekta::VERSION,
-      'Authorization: Basic ' . base64_encode($this->apiKey . ':'),
-      'Content-Type: application/json'
-    ];
-
-        return $headers;
     }
 
     /**
@@ -100,9 +36,9 @@ class Requestor
      * @throws ParameterValidationError
      * @throws ProcessingError
      * @throws ResourceNotFoundError
-     * @throws \Conekta\Handler
+     * @throws Handler
      */
-    public function request($method, $url, ?array $params = [])
+    public function request($method, $url, ?array $params = []): mixed
     {
         $jsonParams = json_encode($params);
         $headers = $this->setHeaders();
@@ -110,28 +46,28 @@ class Requestor
         $method = strtolower($method);
         $opts = [];
 
-        $params = ! empty($params) ? $params : [];
+        $params = !empty($params) ? $params : [];
 
         switch ($method) {
-      case 'get':
-        $opts[CURLOPT_HTTPGET] = 1;
-        $url = $this->buildQueryParamsUrl($url, $params);
-        break;
-      case 'post':
-        $opts[CURLOPT_POST] = 1;
-        $opts[CURLOPT_POSTFIELDS] = $jsonParams;
-        break;
-      case 'put':
-        $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
-        $opts[CURLOPT_POSTFIELDS] = $jsonParams;
-        break;
-      case 'delete':
-        $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
-        $url = $this->buildSegmentParamsUrl($url, $params);
-        break;
-      default:
-        throw new \Exception('Wrong method');
-    }
+            case 'get':
+                $opts[CURLOPT_HTTPGET] = 1;
+                $url = $this->buildQueryParamsUrl($url, $params);
+                break;
+            case 'post':
+                $opts[CURLOPT_POST] = 1;
+                $opts[CURLOPT_POSTFIELDS] = $jsonParams;
+                break;
+            case 'put':
+                $opts[CURLOPT_CUSTOMREQUEST] = 'PUT';
+                $opts[CURLOPT_POSTFIELDS] = $jsonParams;
+                break;
+            case 'delete':
+                $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+                $url = $this->buildSegmentParamsUrl($url, $params);
+                break;
+            default:
+                throw new Exception('Wrong method');
+        }
 
         $url = $this->apiUrl($url);
         $opts[CURLOPT_URL] = $url;
@@ -156,17 +92,64 @@ class Requestor
     }
 
     /**
+     * Function setHeaders
+     *
+     * Set Standar headers for library
+     *
+     * @return array
+     */
+    private function setHeaders(): array
+    {
+        $pluginAgent = $this->additionalPluginHeaders();
+        $userAgent = [
+            'bindings_version' => Conekta::VERSION,
+            'lang' => 'php',
+            'lang_version' => phpversion(),
+            'publisher' => 'conekta',
+            'uname' => php_uname(),
+        ];
+
+        if (array_filter($pluginAgent)) {
+            $userAgent = array_merge($userAgent, $pluginAgent);
+        }
+
+        return [
+            'Accept: application/vnd.conekta-v' . Conekta::$apiVersion . '+json',
+            'Accept-Language: ' . Conekta::$locale,
+            'X-Conekta-Client-User-Agent: ' . json_encode($userAgent),
+            'User-Agent: Conekta/v1 PhpBindings/' . Conekta::VERSION,
+            'Authorization: Basic ' . base64_encode($this->apiKey . ':'),
+            'Content-Type: application/json'
+        ];
+    }
+
+    /**
+     * Function additionalPluginHeaders
+     *
+     * Set headers if is plugin implementation
+     *
+     * @return array
+     */
+    private function additionalPluginHeaders(): array
+    {
+        return [
+            'plugin_name' => Conekta::getPlugin(),
+            'plugin_version' => Conekta::getPluginVersion()
+        ];
+    }
+
+    /**
      * Function buildQueryParamsUrl
      *
      * build body request into url
      *
-     * @param url (string) endpoint to concatenate
-     * @param params (array) contains body request
-     * @return (string)
+     * @param $url
+     * @param $params
+     * @return mixed|string
      */
-    private function buildQueryParamsUrl($url, $params)
+    private function buildQueryParamsUrl($url, $params): mixed
     {
-        if (! is_null($params)) {
+        if (!is_null($params)) {
             $params = http_build_query($params);
             $url = $url . '?' . $params;
         }
@@ -179,16 +162,31 @@ class Requestor
      *
      * build body request for DELETE  action
      *
-     * @param url (string) endpoint to concatenate
-     * @param params (array) contains body request
-     * @return (string)
+     * @param $url
+     * @param array $params
+     * @return mixed|string
      */
-    private function buildSegmentParamsUrl($url, array $params)
+    private function buildSegmentParamsUrl($url, array $params): mixed
     {
-        if (! is_array($params)) {
+        if (!is_array($params)) {
             $url = $url . urlencode($params);
         }
 
         return $url;
+    }
+
+    /**
+     * Function apiUrl
+     *
+     * get Base path of conekta api i.e. https://api.conekta.com
+     *
+     * @param $url
+     * @return string
+     */
+    public static function apiUrl($url = ''): string
+    {
+        $apiBase = Conekta::$apiBase;
+
+        return $apiBase . $url;
     }
 }

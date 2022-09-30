@@ -4,12 +4,27 @@ namespace Conekta;
 
 class Lang
 {
+    /**
+     * @const string
+     */
     public const EN = 'en';
+    /**
+     * @const string
+     */
     public const ES = 'es';
 
+    /**
+     * @var array
+     */
     protected static array $cache = [];
 
-    public static function translate($key, $locale, $parameters = [])
+    /**
+     * @param $key
+     * @param $locale
+     * @param array $parameters
+     * @return array|mixed|string|string[]
+     */
+    public static function translate($key, $locale, array $parameters = []): mixed
     {
         $parameters = str_replace('Conekta\\', '', $parameters);
 
@@ -22,7 +37,7 @@ class Lang
             $result = $result[$val];
         }
 
-        if (is_array($parameters) && ! empty($parameters)) {
+        if (is_array($parameters) && !empty($parameters)) {
             foreach ($parameters as $object => $val) {
                 $result = str_replace($object, $val, $result);
             }
@@ -31,9 +46,13 @@ class Lang
         return $result;
     }
 
-    protected static function readDirectory($directory)
+    /**
+     * @param $directory
+     * @return array
+     */
+    protected static function readDirectory($directory): array
     {
-        if (! empty(self::$cache)) {
+        if (!empty(self::$cache)) {
             return self::$cache;
         }
 

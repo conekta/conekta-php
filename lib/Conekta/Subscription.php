@@ -2,11 +2,13 @@
 
 namespace Conekta;
 
-use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
-
 class Subscription extends ConektaResource
 {
-    public function instanceUrl()
+    /**
+     * @return string
+     * @throws ParameterValidationError
+     */
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -18,22 +20,67 @@ class Subscription extends ConektaResource
         return $customerUrl . $base;
     }
 
-    public function update($params = null)
+    /**
+     * @param $params
+     * @return Subscription
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function update($params = null): Subscription
     {
         return parent::_update($params);
     }
 
-    public function cancel()
+    /**
+     * @return Subscription
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function cancel(): Subscription
     {
         return parent::_customAction('post', 'cancel');
     }
 
-    public function pause()
+    /**
+     * @return Subscription
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function pause(): Subscription
     {
         return parent::_customAction('post', 'pause');
     }
 
-    public function resume()
+    /**
+     * @return Subscription
+     * @throws ApiError
+     * @throws AuthenticationError
+     * @throws Handler
+     * @throws MalformedRequestError
+     * @throws NoConnectionError
+     * @throws ParameterValidationError
+     * @throws ProcessingError
+     * @throws ResourceNotFoundError
+     */
+    public function resume(): Subscription
     {
         return parent::_customAction('post', 'resume');
     }
