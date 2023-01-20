@@ -10,6 +10,6 @@ RUN apk add --no-cache $PHPIZE_DEPS \
 
 COPY --from=composer:2.5.1 /usr/bin/composer /usr/bin/composer
 
-RUN composer global require phpunit/phpunit ^8
+RUN composer global require phpunit/phpunit  ~9
 
 RUN echo 'alias phpunit="./vendor/bin/phpunit"' >> ~/.bashrc
