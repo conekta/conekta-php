@@ -13,7 +13,7 @@ This is a PHP library that allows interaction with [Conekta's API](https://api.c
 
 ## Requeriments
 
-PHPUnit ~8 requires PHP 8.0+; using the latest version of PHP is highly recommended.
+PHPUnit ~9 requires PHP 8.0+; using the latest version of PHP is highly recommended.
 
 ## Installation
 
@@ -89,16 +89,16 @@ Unit test based on PHP library [PHPUnit](https://github.com/sebastianbergmann/ph
 For better usage install PHPUnit globally:
 
 ```bash
-$ wget https://phar.phpunit.de/phpunit-8.5.2.phar
+$ wget https://phar.phpunit.de/phpunit-9.3.0.phar
 
-$ chmod +x phpunit-8.5.2.phar
+$ chmod +x phpunit-9.3.0.phar
 
-$ sudo mv phpunit-8.5.2.phar /usr/local/bin/phpunit
+$ sudo mv phpunit-9.3.0.phar /usr/local/bin/phpunit
 
 $ phpunit --version
 
 ej. output
-PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
+PHPUnit 9.3.0 by Sebastian Bergmann and contributors.
 
 ```
 
@@ -114,7 +114,7 @@ Run test suite:
 phpunit test/Conekta-x.0
 ```
 
-_note:_ for this PHPUnit version (8.x) only PHP 8.0+ is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
+_note:_ for this PHPUnit version (9.x) only PHP 8.0+ is supported for older PHP versions see PHPunit <a href="https://phpunit.de/"> documentation</a>
 
 ## Changelog
 
