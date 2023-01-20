@@ -2,14 +2,14 @@
 
 namespace Conekta;
 
-use \PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class BaseTest extends TestCase
 {
     public function setApiKey()
     {
         $apiEnvKey = getenv('CONEKTA_API');
-        if (!$apiEnvKey) {
+        if (! $apiEnvKey) {
             $apiEnvKey = 'key_ZLy4aP2szht1HqzkCezDEA';
         }
         $apiBase = getenv('CONEKTA_API_BASE');
@@ -23,5 +23,4 @@ class BaseTest extends TestCase
     {
         Conekta::setApiVersion($version);
     }
-
 }
