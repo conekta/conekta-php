@@ -16,8 +16,8 @@ class LineItem extends ConektaResource
      public $brand = '';
      public $type = '';
      public $parentId = '';
-     private string $apiVersion;
-     private $order;
+     public string $apiVersion;
+     public $order;
 
     public function __get($property)
     {

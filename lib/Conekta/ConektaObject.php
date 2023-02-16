@@ -13,7 +13,7 @@ class ConektaObject extends ArrayObject
     /**
      * @var mixed|null
      */
-    protected mixed $id;
+    public mixed $id;
 
     public function __construct($id = null)
     {

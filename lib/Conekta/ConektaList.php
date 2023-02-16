@@ -7,11 +7,9 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Requestor, Util};
 class ConektaList extends ConektaObject
 {
     public const LIMIT = 5;
-
-    private mixed $params;
-    private int $total;
+    public mixed $params;
+    public int $total;
     public $elements_type;
-
     public $has_more;
 
     public function __construct($elements_type, $params = [])

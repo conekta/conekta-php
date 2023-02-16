@@ -57,7 +57,7 @@ class CustomerTest extends BaseTest
         }
     }
 
-    public function testSuccesfulSourceCreate()
+    public function testSuccessfulSourceCreate()
     {
         $this->setApiKey();
         $customer = Customer::create(self::$validCustomer);

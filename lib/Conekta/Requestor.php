@@ -13,8 +13,8 @@ use Exception;
 class Requestor
 {
     public string $apiKey;
-    private string $plugin;
-    private string $apiVersion;
+    public string $plugin;
+    public string $apiVersion;
 
     public function __construct()
     {

@@ -90,7 +90,7 @@ class Customer extends ConektaResource
         return parent::_scpWhere($class, $params);
     }
 
-    public static function create($params = null)
+    public static function create($params = null) : Customer
     {
         $class = get_called_class();
 
@@ -138,7 +138,7 @@ class Customer extends ConektaResource
         return parent::_createMemberWithRelation('cards', $params, $this);
     }
 
-    public function createSubscription($params = null)
+    public function createSubscription($params = null) : Subscription
     {
         return parent::_createMember('subscription', $params);
     }

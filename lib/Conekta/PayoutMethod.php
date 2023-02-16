@@ -6,8 +6,8 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class PayoutMethod extends ConektaResource
 {
-    private string $apiVersion;
-    private $payee;
+    public string $apiVersion;
+    public $payee;
     public function instanceUrl()
     {
         $this->apiVersion = Conekta::$apiVersion;

@@ -8,8 +8,8 @@ class PaymentSource extends ConektaResource
 {
     public const TYPE_CARD = 'card';
     public const TYPE_OXXO_RECURRENT = 'oxxo_recurrent';
-    private string $apiVersion;
-    private $customer;
+    public string $apiVersion;
+    public $customer;
 
     public function instanceUrl(): string
     {

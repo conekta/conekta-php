@@ -191,14 +191,14 @@ abstract class ConektaResource extends ConektaObject
 
     protected function _customAction($method = 'post', $action = null, ?array $params = [])
     {
-        $requestor = new Requestor();
+        $requester = new Requestor();
         if (isset($action)) {
             $url = $this->instanceUrl() . '/' . $action;
         } else {
             $url = $this->instanceUrl();
         }
 
-        $response = $requestor->request($method, $url, $params);
+        $response = $requester->request($method, $url, $params);
         $this->loadFromArray($response);
 
         return $this;

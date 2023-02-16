@@ -6,8 +6,8 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class ShippingLine extends ConektaResource
 {
-    private string $apiVersion;
-    private $order;
+    public string $apiVersion;
+    public $order;
     public function instanceUrl()
     {
         $this->apiVersion = Conekta::$apiVersion;

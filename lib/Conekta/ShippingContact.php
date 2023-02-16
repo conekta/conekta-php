@@ -11,8 +11,8 @@ class ShippingContact extends ConektaResource
      public $betweenStreets = '';
      public $parentId = '';
      public $default = '';
-     private string $apiVersion;
-     private $customer;
+     public string $apiVersion;
+     public $customer;
 
     public function __get($property)
     {
