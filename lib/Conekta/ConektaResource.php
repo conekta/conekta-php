@@ -172,7 +172,7 @@ abstract class ConektaResource extends ConektaObject
                     [$response]
                 ));
 
-                $this->loadFromArray();
+                $this->loadFromArray(); /** @phpstan-ignore-line */
             }
             $instances = $this->{$member};
             $instance = $instances[count($instances) - 1];
@@ -183,7 +183,7 @@ abstract class ConektaResource extends ConektaObject
             $instance->loadFromArray($response);
             $this->{$member} = $instance;
             $this->_setVal($member, $instance);
-            $this->loadFromArray();
+            $this->loadFromArray(); /** @phpstan-ignore-line */
         }
 
         return $instance;
@@ -191,14 +191,14 @@ abstract class ConektaResource extends ConektaObject
 
     protected function _customAction($method = 'post', $action = null, ?array $params = [])
     {
-        $requestor = new Requestor();
+        $requester = new Requestor();
         if (isset($action)) {
             $url = $this->instanceUrl() . '/' . $action;
         } else {
             $url = $this->instanceUrl();
         }
 
-        $response = $requestor->request($method, $url, $params);
+        $response = $requester->request($method, $url, $params);
         $this->loadFromArray($response);
 
         return $this;

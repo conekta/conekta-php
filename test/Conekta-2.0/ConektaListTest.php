@@ -24,7 +24,7 @@ class ConektaListTest extends BaseTest
         $this->assertTrue($window[0]->id == $orderList[14]->id);
     }
 
-    protected function createResponseMockUp()
+    protected function createResponseMockUp(): ConektaList
     {
         $this->setApiKey();
         $overRootFolder = '../support/fixtures/orders.json';

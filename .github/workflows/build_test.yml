@@ -32,6 +32,13 @@ jobs:
         uses: ramsey/composer-install@v2
         with:
           dependency-versions: ${{ matrix.dependency-versions }}
-
+      - name: phpstan
+        uses: php-actions/phpstan@v3
+        with:
+          path: lib/
+          php_version: ${{ matrix.php-version }}
+          command: --version
+          level: 2
+          php_extensions: xdebug
       - name: Run PHPUnit
         run: vendor/bin/phpunit  test/Conekta-2.0

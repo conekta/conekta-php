@@ -15,6 +15,8 @@ class Card extends ConektaResource
      public $brand = '';
      public $parentId = '';
      public $default = '';
+     public string $apiVersion;
+     public $customer;
 
     public function __get($property)
     {

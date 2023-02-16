@@ -13,6 +13,12 @@ class Order extends ConektaResource
      public $metadata = '';
      public $createdAt = '';
      public $updatedAt = '';
+     public $tax_lines;
+     public $shipping_lines;
+     public $returns;
+     public $discount_lines;
+     public $line_items;
+     public $charges;
 
     public function __get($property)
     {
@@ -32,22 +38,22 @@ class Order extends ConektaResource
             parent::loadFromArray($values);
         }
 
-        $submodels = [
+        $submodules = [
       'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges', 'returns'
       ];
 
-        foreach ($submodels as $submodel) {
-            if (isset($values[$submodel])) {
-                $submodelList = new ConektaList($submodel);
-                $submodelList->loadFromArray($values[$submodel]);
-                $this->{$submodel}->_values = $submodelList;
-                $this->{$submodel} = $submodelList;
+        foreach ($submodules as $submodule) {
+            if (isset($values[$submodule])) {
+                $submoduleList = new ConektaList($submodule);
+                $submoduleList->loadFromArray($values[$submodule]);
+                $this->{$submodule}->_values = $submoduleList;
+                $this->{$submodule} = $submoduleList;
 
-                foreach ($this->{$submodel} as $object => $val) {
+                foreach ($this->{$submodule} as $val) {
                     $val->order = $this;
                 }
             } else {
-                $this->{$submodel} = new ConektaList($submodel, []);
+                $this->{$submodule} = new ConektaList($submodule, []);
             }
         }
     }

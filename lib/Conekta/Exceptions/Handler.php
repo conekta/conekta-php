@@ -6,7 +6,6 @@ use Exception;
 
 /**
  * @construct __construct(String $message, String $messageToPurchaser, String $type, String $code, String $params, Array $errorStack)
- * @method void object __get()
  */
 class Handler extends Exception
 {
@@ -40,6 +39,10 @@ class Handler extends Exception
      */
     public static function build($httpCode, $resp = null)
     {
+        $param = '';
+        $messageToPurchaser = '';
+        $message = '';
+        $code = '';
         if (! isset($httpCode) || $httpCode == 0) {
             return new NoConnectionError(
                 Lang::translate('error.requestor.connection', Lang::EN, ['BASE' => Conekta::$apiBase]),

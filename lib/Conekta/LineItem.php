@@ -16,6 +16,8 @@ class LineItem extends ConektaResource
      public $brand = '';
      public $type = '';
      public $parentId = '';
+     public string $apiVersion;
+     public $order;
 
     public function __get($property)
     {
@@ -29,7 +31,7 @@ class LineItem extends ConektaResource
         return isset($this->{$property});
     }
 
-    public function instanceUrl()
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;
@@ -42,12 +44,12 @@ class LineItem extends ConektaResource
         return $orderUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    public function update($params = null): LineItem
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    public function delete(): LineItem
     {
         return parent::_delete('order', 'line_items');
     }

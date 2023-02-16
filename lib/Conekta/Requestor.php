@@ -8,10 +8,13 @@
 namespace Conekta;
 
 use Conekta\{Conekta, Handler};
+use Exception;
 
 class Requestor
 {
     public string $apiKey;
+    public string $plugin;
+    public string $apiVersion;
 
     public function __construct()
     {
@@ -25,10 +28,10 @@ class Requestor
      *
      * get Base path of conekta api i.e. https://api.conekta.com
      *
-     * @param url (string) endpoint to concatenate
+     * @param string $url $url (string) endpoint to concatenate
      * @return (string)
      */
-    public static function apiUrl($url = '')
+    public static function apiUrl(string $url = ''): string
     {
         $apiBase = Conekta::$apiBase;
 
@@ -42,7 +45,7 @@ class Requestor
      *
      * @return (array)
      */
-    private function additionalPluginHeaders()
+    private function additionalPluginHeaders(): array
     {
         return [
       'plugin_name'    => Conekta::getPlugin(),
@@ -57,7 +60,7 @@ class Requestor
      *
      * @return (array)
      */
-    private function setHeaders()
+    private function setHeaders(): array
     {
         $pluginAgent = $this->additionalPluginHeaders();
         $userAgent = [
@@ -101,6 +104,7 @@ class Requestor
      * @throws ProcessingError
      * @throws ResourceNotFoundError
      * @throws \Conekta\Handler
+     * @throws Exception
      */
     public function request($method, $url, ?array $params = [])
     {
@@ -130,7 +134,7 @@ class Requestor
         $url = $this->buildSegmentParamsUrl($url, $params);
         break;
       default:
-        throw new \Exception('Wrong method');
+        throw new Exception('Wrong method');
     }
 
         $url = $this->apiUrl($url);
@@ -160,11 +164,11 @@ class Requestor
      *
      * build body request into url
      *
-     * @param url (string) endpoint to concatenate
-     * @param params (array) contains body request
+     * @param string $url $url (string) endpoint to concatenate
+     * @param mixed $params (array) contains body request
      * @return (string)
      */
-    private function buildQueryParamsUrl($url, $params)
+    private function buildQueryParamsUrl(string $url, $params)
     {
         if (! is_null($params)) {
             $params = http_build_query($params);
@@ -179,11 +183,11 @@ class Requestor
      *
      * build body request for DELETE  action
      *
-     * @param url (string) endpoint to concatenate
-     * @param params (array) contains body request
+     * @param string $url $url (string) endpoint to concatenate
+     * @param array $params $params (array) contains body request
      * @return (string)
      */
-    private function buildSegmentParamsUrl($url, array $params)
+    private function buildSegmentParamsUrl(string $url, array $params): string
     {
         if (! is_array($params)) {
             $url = $url . urlencode($params);
