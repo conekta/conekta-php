@@ -2,121 +2,119 @@
 
 namespace Conekta;
 
-use \Conekta\ConektaResource;
-
 class Order extends ConektaResource
 {
-  var $livemode      = "";
-  var $amount        = "";
-  var $paymentStatus = "";
-  var $customerId    = "";
-  var $currency      = "";
-  var $capture       = "";
-  var $metadata      = "";
-  var $createdAt     = "";
-  var $updatedAt     = "";
+     public $livemode = '';
+     public $amount = '';
+     public $paymentStatus = '';
+     public $customerId = '';
+     public $currency = '';
+     public $capture = '';
+     public $metadata = '';
+     public $createdAt = '';
+     public $updatedAt = '';
 
-  public function __get($property)
-  {
-    if (property_exists($this, $property)) {
-      return $this->$property;
-    }
-  }
-
-  public function  __isset($property)
-  {
-    return isset($this->$property);
-  }
-
-  public function loadFromArray($values = null)
-  {
-    if (isset($values)) {
-      parent::loadFromArray($values);
-    }
-
-    $submodels = array(
-      'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges', 'returns'
-      );
-
-    foreach ($submodels as $submodel) {
-      if(isset($values[$submodel])){
-        $submodelList = new ConektaList($submodel);
-        $submodelList->loadFromArray($values[$submodel]);
-        $this->$submodel->_values = $submodelList;
-        $this->$submodel = $submodelList;
-
-        foreach ($this->$submodel as $object => $val) {
-          $val->order = $this;
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->{$property};
         }
-      }else{
-        $this->$submodel = new ConektaList($submodel, array());
-      }
     }
-  }
 
-  public static function where($params = null)
-  {
-    $class = get_called_class();
+    public function __isset($property)
+    {
+        return isset($this->{$property});
+    }
 
-    return parent::_scpWhere($class, $params);
-  }
+    public function loadFromArray($values = null)
+    {
+        if (isset($values)) {
+            parent::loadFromArray($values);
+        }
 
-  public function update($params = null)
-  {
-    return parent::_update($params);
-  }
+        $submodels = [
+      'tax_lines', 'shipping_lines', 'discount_lines', 'line_items', 'charges', 'returns'
+      ];
 
-  public static function create($params = null)
-  {
-    $class = get_called_class();
+        foreach ($submodels as $submodel) {
+            if (isset($values[$submodel])) {
+                $submodelList = new ConektaList($submodel);
+                $submodelList->loadFromArray($values[$submodel]);
+                $this->{$submodel}->_values = $submodelList;
+                $this->{$submodel} = $submodelList;
 
-    return parent::_scpCreate($class, $params);
-  }
+                foreach ($this->{$submodel} as $object => $val) {
+                    $val->order = $this;
+                }
+            } else {
+                $this->{$submodel} = new ConektaList($submodel, []);
+            }
+        }
+    }
 
-  public static function find($id)
-  {
-    $class = get_called_class();
+    public static function where($params = null)
+    {
+        $class = get_called_class();
 
-    return parent::_scpFind($class, $id);
-  }
+        return parent::_scpWhere($class, $params);
+    }
 
-  public function capture()
-  {
-    return parent::_customAction('put', 'capture', null);
-  }
+    public function update($params = null)
+    {
+        return parent::_update($params);
+    }
 
-  public function void($params = null)
-  {
-    return parent::_customAction('post', 'void', $params);
-  }
+    public static function create($params = null)
+    {
+        $class = get_called_class();
 
-  public function createTaxLine($params = null)
-  {
-    return parent::_createMemberWithRelation('tax_lines', $params, $this);
-  }
+        return parent::_scpCreate($class, $params);
+    }
 
-  public function createShippingLine($params = null)
-  {
-    return parent::_createMemberWithRelation('shipping_lines', $params, $this);
-  }
+    public static function find($id)
+    {
+        $class = get_called_class();
 
-  public function createDiscountLine($params = null)
-  {
-    return parent::_createMemberWithRelation('discount_lines', $params, $this);
-  }
+        return parent::_scpFind($class, $id);
+    }
 
-  public function createLineItem($params = null)
-  {
-    return parent::_createMemberWithRelation('line_items', $params, $this);
-  }
+    public function capture()
+    {
+        return parent::_customAction('put', 'capture', null);
+    }
 
-  public function createCharge($params = null)
-  {
-    return parent::_createMember('charges', $params);
-  }
+    public function void(?array $params = [])
+    {
+        return parent::_customAction('post', 'void', $params);
+    }
 
-  public function refund($params = null)
-  {
-    return parent::_customAction('post', 'refund', $params);
-  }
+    public function createTaxLine($params = null)
+    {
+        return parent::_createMemberWithRelation('tax_lines', $params, $this);
+    }
+
+    public function createShippingLine($params = null)
+    {
+        return parent::_createMemberWithRelation('shipping_lines', $params, $this);
+    }
+
+    public function createDiscountLine($params = null)
+    {
+        return parent::_createMemberWithRelation('discount_lines', $params, $this);
+    }
+
+    public function createLineItem($params = null)
+    {
+        return parent::_createMemberWithRelation('line_items', $params, $this);
+    }
+
+    public function createCharge($params = null)
+    {
+        return parent::_createMember('charges', $params);
+    }
+
+    public function refund($params = null)
+    {
+        return parent::_customAction('post', 'refund', $params);
+    }
 }

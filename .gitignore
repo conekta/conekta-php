@@ -1,4 +1,5 @@
 # OS
+.docker
 .DS_Store
 *~
 # Composer
@@ -11,3 +12,8 @@ README.txt
 .phpunit.result.cache
 demos/
 extras/documentation
+/.idea
+.php-cs-fixer.cache
+.php-cs-fixer.php
+.env.dist
+.env
