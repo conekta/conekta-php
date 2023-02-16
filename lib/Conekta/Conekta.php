@@ -10,7 +10,7 @@ abstract class Conekta
     public static $locale = 'es';
     public static $plugin = '';
     public static $pluginVersion = '';
-    public const VERSION = '5.0.1';
+    public const VERSION = '5.0.2';
 
     public static function setApiBase($apiBase)
     {
