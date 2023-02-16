@@ -49,7 +49,7 @@ class Order extends ConektaResource
                 $this->{$submodule}->_values = $submoduleList;
                 $this->{$submodule} = $submoduleList;
 
-                foreach ($this->{$submodule} as $object => $val) {
+                foreach ($this->{$submodule} as $val) {
                     $val->order = $this;
                 }
             } else {
