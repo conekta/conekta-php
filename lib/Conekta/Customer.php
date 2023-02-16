@@ -15,6 +15,8 @@ class Customer extends ConektaResource
     public $paidTransactions = '';
     public $firstPaidAt = '';
     public $corporate = '';
+    public $payment_sources;
+    public $shipping_contacts;
 
     public function __get($property)
     {

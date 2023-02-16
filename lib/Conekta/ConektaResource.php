@@ -172,7 +172,7 @@ abstract class ConektaResource extends ConektaObject
                     [$response]
                 ));
 
-                $this->loadFromArray();
+                //$this->loadFromArray();
             }
             $instances = $this->{$member};
             $instance = $instances[count($instances) - 1];
@@ -183,7 +183,7 @@ abstract class ConektaResource extends ConektaObject
             $instance->loadFromArray($response);
             $this->{$member} = $instance;
             $this->_setVal($member, $instance);
-            $this->loadFromArray();
+            //$this->loadFromArray();
         }
 
         return $instance;

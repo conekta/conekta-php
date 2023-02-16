@@ -4,12 +4,13 @@ namespace Conekta;
 
 class Payee extends ConektaResource
 {
-     public $email = '';
-     public $name = '';
-     public $phone = '';
+     public string $email = '';
+     public string $name = '';
+     public string $phone = '';
      public $livemode = '';
-     public $defaultDestinationId = '';
-     public $createdAt = '';
+     public string $defaultDestinationId = '';
+     public string $createdAt = '';
+     public $payout_methods;
 
     public function __get($property)
     {
@@ -29,7 +30,7 @@ class Payee extends ConektaResource
             parent::loadFromArray($values);
         }
         foreach ($this->payout_methods as $object => $val) {
-            if (isset($val->deleted) != true) {
+            if (!isset($val->deleted)) {
                 $val->payee = &$this;
                 $this->payout_methods[$object] = $val;
             }
@@ -61,12 +62,12 @@ class Payee extends ConektaResource
         return parent::_scpCreate($class, $params);
     }
 
-    public function delete()
+    public function delete(): Payee
     {
         return parent::_delete();
     }
 
-    public function update($params = null)
+    public function update($params = null): Payee
     {
         return parent::_update($params);
     }

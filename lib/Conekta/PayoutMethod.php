@@ -6,6 +6,8 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class PayoutMethod extends ConektaResource
 {
+    private string $apiVersion;
+    private $payee;
     public function instanceUrl()
     {
         $this->apiVersion = Conekta::$apiVersion;
@@ -19,12 +21,12 @@ class PayoutMethod extends ConektaResource
         return $payeeUrl . $base . "/{$extn}";
     }
 
-    public function update($params = null)
+    public function update($params = null): PayoutMethod
     {
         return parent::_update($params);
     }
 
-    public function delete()
+    public function delete(): PayoutMethod
     {
         return parent::_delete('payee', 'payout_methods');
     }

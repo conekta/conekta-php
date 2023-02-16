@@ -6,7 +6,9 @@ use Conekta\{Conekta, ConektaResource, Exceptions, Lang};
 
 class TaxLine extends ConektaResource
 {
-    public function instanceUrl()
+    private string $apiVersion;
+    private $order;
+    public function instanceUrl(): string
     {
         $this->apiVersion = Conekta::$apiVersion;
         $id = $this->id;

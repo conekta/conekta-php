@@ -6,7 +6,14 @@ use ArrayObject;
 
 class ConektaObject extends ArrayObject
 {
-    protected $_values;
+    /**
+     * @var array|ConektaList
+     */
+    protected array|ConektaList $_values;
+    /**
+     * @var mixed|null
+     */
+    protected mixed $id;
 
     public function __construct($id = null)
     {

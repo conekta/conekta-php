@@ -8,6 +8,12 @@ class ConektaList extends ConektaObject
 {
     public const LIMIT = 5;
 
+    private mixed $params;
+    private int $total;
+    public $elements_type;
+
+    public $has_more;
+
     public function __construct($elements_type, $params = [])
     {
         parent::__construct();
@@ -16,7 +22,7 @@ class ConektaList extends ConektaObject
         $this->total = 0;
     }
 
-    public function addElement($element)
+    public function addElement($element): static
     {
         $element = Util::convertToConektaObject($element);
         $array_length = count($this->_values);
@@ -73,8 +79,8 @@ class ConektaList extends ConektaObject
 
         $class = Util::$types[strtolower($this->elements_type)];
         $url = ConektaResource::classUrl($class);
-        $requestor = new Requestor();
-        $response = $requestor->request('get', $url, $this->params);
+        $requester = new Requestor();
+        $response = $requester->request('get', $url, $this->params);
 
         return $this->loadFromArray($response);
     }

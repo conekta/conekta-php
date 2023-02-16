@@ -10,6 +10,8 @@ class DiscountLine extends ConektaResource
      public $amount = '';
      public $type = '';
      public $parentId = '';
+     private string $apiVersion;
+     private $order;
 
     public function __get($property)
     {
