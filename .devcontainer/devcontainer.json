@@ -7,6 +7,21 @@
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
+	},
+	"containerEnv": {
+		"BASE_PATH" : "http://host.docker.internal:3000"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"DEVSENSE.phptools-vscode",
+				"github.vscode-github-actions",
+				"bmewburn.vscode-intelephense-client",
+				"GitHub.copilot",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.makefile-tools"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

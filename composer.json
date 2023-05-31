@@ -1,30 +1,40 @@
 {
-  "name": "conekta/conekta-php",
-  "description": "Conekta PHP Library",
-  "keywords": [
-    "conekta",
-    "payment processing",
-    "api"
-  ],
-  "homepage": "https://www.conekta.io/",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Conekta  and contributors",
-      "homepage": "https://github.com/conekta/conekta-php/contributors"
+    "name": "conekta/conekta-php",
+    "version": "6.0.0-beta.1",
+    "description": "Conekta PHP Library",
+    "type": "library",
+    "keywords": [
+        "php",
+        "sdk",
+        "rest",
+        "api",
+        "conekta"
+    ],
+    "homepage": "https://www.conekta.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "engineering@conekta.com",
+            "homepage": "https://github.com/conekta/conekta-php/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5",
+        "phpstan/phpstan": "1.10.15"
+    },
+    "autoload": {
+        "psr-4": { "Conekta\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Conekta\\Test\\" : "test/" }
     }
-  ],
-  "require": {
-    "php": ">=8.0",
-    "ext-curl": "*",
-    "ext-json": "*",
-    "ext-mbstring": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~9",
-    "phpstan/phpstan": "1.10.15"
-  },
-  "autoload": {
-    "classmap": ["lib/Conekta/"]
-  }
 }

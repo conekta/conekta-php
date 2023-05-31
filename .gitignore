@@ -1,19 +1,15 @@
-# OS
-.docker
-.DS_Store
-*~
-# Composer
-composer.lock
-/vendor
+# ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
 
-INSTALL.txt
-LICENSE.txt
-README.txt
-.phpunit.result.cache
-demos/
-extras/documentation
-/.idea
+composer.phar
+/vendor/
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+composer.lock
+
+# php-cs-fixer cache
+.php_cs.cache
 .php-cs-fixer.cache
-.php-cs-fixer.php
-.env.dist
-.env
+
+# PHPUnit cache
+.phpunit.result.cache
