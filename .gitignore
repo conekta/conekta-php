@@ -1,15 +1,35 @@
-# ref: https://github.com/github/gitignore/blob/master/Composer.gitignore
+# Ignore build files
+build/*
 
-composer.phar
+# Mac OS X dumps these all over the place.
+.DS_Store
+
+# Ignore the SimpleTest library if it is installed to /test/.
+/test/simpletest/
+
+# Ignore the /vendor/ directory for people using composer
 /vendor/
 
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# If the vendor directory isn't being commited the composer.lock file should also be ignored
 composer.lock
 
-# php-cs-fixer cache
+# Ignore PHPUnit coverage file
+clover.xml
+
+# Ignore IDE's configuration files
+.idea
+
+# Ignore PHP CS Fixer local config and cache
+.php_cs
 .php_cs.cache
 .php-cs-fixer.cache
 
-# PHPUnit cache
+# Ignore PHPStan local config
+.phpstan.neon
+
+# Ignore phpDocumentor's local config and artifacts
+.phpdoc/*
+phpdoc.xml
+
+# Ignore cached PHPUnit results.
 .phpunit.result.cache
