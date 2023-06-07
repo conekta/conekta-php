@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * SubscriptionResponse Class Doc Comment
@@ -42,99 +42,99 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubscriptionResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'subscription_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'billing_cycle_start' => 'int',
-        'billing_cycle_end' => 'int',
-        'canceled_at' => 'int',
-        'card_id' => 'string',
-        'charge_id' => 'string',
-        'created_at' => 'int',
-        'customer_custom_reference' => 'string',
-        'customer_id' => 'string',
-        'id' => 'string',
+        'billing_cycle_start'         => 'int',
+        'billing_cycle_end'           => 'int',
+        'canceled_at'                 => 'int',
+        'card_id'                     => 'string',
+        'charge_id'                   => 'string',
+        'created_at'                  => 'int',
+        'customer_custom_reference'   => 'string',
+        'customer_id'                 => 'string',
+        'id'                          => 'string',
         'last_billing_cycle_order_id' => 'string',
-        'object' => 'string',
-        'paused_at' => 'int',
-        'plan_id' => 'string',
-        'status' => 'string',
-        'subscription_start' => 'int',
-        'trial_start' => 'int',
-        'trial_end' => 'int'
+        'object'                      => 'string',
+        'paused_at'                   => 'int',
+        'plan_id'                     => 'string',
+        'status'                      => 'string',
+        'subscription_start'          => 'int',
+        'trial_start'                 => 'int',
+        'trial_end'                   => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'billing_cycle_start' => 'int64',
-        'billing_cycle_end' => 'int64',
-        'canceled_at' => 'int64',
-        'card_id' => null,
-        'charge_id' => null,
-        'created_at' => 'int64',
-        'customer_custom_reference' => null,
-        'customer_id' => null,
-        'id' => null,
+        'billing_cycle_start'         => 'int64',
+        'billing_cycle_end'           => 'int64',
+        'canceled_at'                 => 'int64',
+        'card_id'                     => null,
+        'charge_id'                   => null,
+        'created_at'                  => 'int64',
+        'customer_custom_reference'   => null,
+        'customer_id'                 => null,
+        'id'                          => null,
         'last_billing_cycle_order_id' => null,
-        'object' => null,
-        'paused_at' => 'int64',
-        'plan_id' => null,
-        'status' => null,
-        'subscription_start' => null,
-        'trial_start' => 'int64',
-        'trial_end' => 'int64'
+        'object'                      => null,
+        'paused_at'                   => 'int64',
+        'plan_id'                     => null,
+        'status'                      => null,
+        'subscription_start'          => null,
+        'trial_start'                 => 'int64',
+        'trial_end'                   => 'int64'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'billing_cycle_start' => true,
-		'billing_cycle_end' => true,
-		'canceled_at' => true,
-		'card_id' => false,
-		'charge_id' => true,
-		'created_at' => false,
-		'customer_custom_reference' => false,
-		'customer_id' => false,
-		'id' => false,
-		'last_billing_cycle_order_id' => false,
-		'object' => false,
-		'paused_at' => true,
-		'plan_id' => false,
-		'status' => false,
-		'subscription_start' => false,
-		'trial_start' => true,
-		'trial_end' => true
+        'billing_cycle_start'         => true,
+        'billing_cycle_end'           => true,
+        'canceled_at'                 => true,
+        'card_id'                     => false,
+        'charge_id'                   => true,
+        'created_at'                  => false,
+        'customer_custom_reference'   => false,
+        'customer_id'                 => false,
+        'id'                          => false,
+        'last_billing_cycle_order_id' => false,
+        'object'                      => false,
+        'paused_at'                   => true,
+        'plan_id'                     => false,
+        'status'                      => false,
+        'subscription_start'          => false,
+        'trial_start'                 => true,
+        'trial_end'                   => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -216,23 +216,23 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'billing_cycle_start' => 'billing_cycle_start',
-        'billing_cycle_end' => 'billing_cycle_end',
-        'canceled_at' => 'canceled_at',
-        'card_id' => 'card_id',
-        'charge_id' => 'charge_id',
-        'created_at' => 'created_at',
-        'customer_custom_reference' => 'customer_custom_reference',
-        'customer_id' => 'customer_id',
-        'id' => 'id',
+        'billing_cycle_start'         => 'billing_cycle_start',
+        'billing_cycle_end'           => 'billing_cycle_end',
+        'canceled_at'                 => 'canceled_at',
+        'card_id'                     => 'card_id',
+        'charge_id'                   => 'charge_id',
+        'created_at'                  => 'created_at',
+        'customer_custom_reference'   => 'customer_custom_reference',
+        'customer_id'                 => 'customer_id',
+        'id'                          => 'id',
         'last_billing_cycle_order_id' => 'last_billing_cycle_order_id',
-        'object' => 'object',
-        'paused_at' => 'paused_at',
-        'plan_id' => 'plan_id',
-        'status' => 'status',
-        'subscription_start' => 'subscription_start',
-        'trial_start' => 'trial_start',
-        'trial_end' => 'trial_end'
+        'object'                      => 'object',
+        'paused_at'                   => 'paused_at',
+        'plan_id'                     => 'plan_id',
+        'status'                      => 'status',
+        'subscription_start'          => 'subscription_start',
+        'trial_start'                 => 'trial_start',
+        'trial_end'                   => 'trial_end'
     ];
 
     /**
@@ -241,23 +241,23 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'billing_cycle_start' => 'setBillingCycleStart',
-        'billing_cycle_end' => 'setBillingCycleEnd',
-        'canceled_at' => 'setCanceledAt',
-        'card_id' => 'setCardId',
-        'charge_id' => 'setChargeId',
-        'created_at' => 'setCreatedAt',
-        'customer_custom_reference' => 'setCustomerCustomReference',
-        'customer_id' => 'setCustomerId',
-        'id' => 'setId',
+        'billing_cycle_start'         => 'setBillingCycleStart',
+        'billing_cycle_end'           => 'setBillingCycleEnd',
+        'canceled_at'                 => 'setCanceledAt',
+        'card_id'                     => 'setCardId',
+        'charge_id'                   => 'setChargeId',
+        'created_at'                  => 'setCreatedAt',
+        'customer_custom_reference'   => 'setCustomerCustomReference',
+        'customer_id'                 => 'setCustomerId',
+        'id'                          => 'setId',
         'last_billing_cycle_order_id' => 'setLastBillingCycleOrderId',
-        'object' => 'setObject',
-        'paused_at' => 'setPausedAt',
-        'plan_id' => 'setPlanId',
-        'status' => 'setStatus',
-        'subscription_start' => 'setSubscriptionStart',
-        'trial_start' => 'setTrialStart',
-        'trial_end' => 'setTrialEnd'
+        'object'                      => 'setObject',
+        'paused_at'                   => 'setPausedAt',
+        'plan_id'                     => 'setPlanId',
+        'status'                      => 'setStatus',
+        'subscription_start'          => 'setSubscriptionStart',
+        'trial_start'                 => 'setTrialStart',
+        'trial_end'                   => 'setTrialEnd'
     ];
 
     /**
@@ -266,23 +266,23 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'billing_cycle_start' => 'getBillingCycleStart',
-        'billing_cycle_end' => 'getBillingCycleEnd',
-        'canceled_at' => 'getCanceledAt',
-        'card_id' => 'getCardId',
-        'charge_id' => 'getChargeId',
-        'created_at' => 'getCreatedAt',
-        'customer_custom_reference' => 'getCustomerCustomReference',
-        'customer_id' => 'getCustomerId',
-        'id' => 'getId',
+        'billing_cycle_start'         => 'getBillingCycleStart',
+        'billing_cycle_end'           => 'getBillingCycleEnd',
+        'canceled_at'                 => 'getCanceledAt',
+        'card_id'                     => 'getCardId',
+        'charge_id'                   => 'getChargeId',
+        'created_at'                  => 'getCreatedAt',
+        'customer_custom_reference'   => 'getCustomerCustomReference',
+        'customer_id'                 => 'getCustomerId',
+        'id'                          => 'getId',
         'last_billing_cycle_order_id' => 'getLastBillingCycleOrderId',
-        'object' => 'getObject',
-        'paused_at' => 'getPausedAt',
-        'plan_id' => 'getPlanId',
-        'status' => 'getStatus',
-        'subscription_start' => 'getSubscriptionStart',
-        'trial_start' => 'getTrialStart',
-        'trial_end' => 'getTrialEnd'
+        'object'                      => 'getObject',
+        'paused_at'                   => 'getPausedAt',
+        'plan_id'                     => 'getPlanId',
+        'status'                      => 'getStatus',
+        'subscription_start'          => 'getSubscriptionStart',
+        'trial_start'                 => 'getTrialStart',
+        'trial_end'                   => 'getTrialEnd'
     ];
 
     /**
@@ -326,7 +326,6 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -362,14 +361,14 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -402,7 +401,6 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets billing_cycle_start
      *
@@ -427,7 +425,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('billing_cycle_start', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -461,7 +459,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('billing_cycle_end', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -495,7 +493,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('canceled_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -556,7 +554,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('charge_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -752,7 +750,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('paused_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -867,7 +865,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('trial_start', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -901,7 +899,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('trial_end', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -974,7 +972,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1000,5 +998,3 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * Checkout Class Doc Comment
@@ -42,81 +42,81 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
+class Checkout implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'checkout';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'allowed_payment_methods' => 'string[]',
-        'expires_at' => 'int',
+        'allowed_payment_methods'      => 'string[]',
+        'expires_at'                   => 'int',
         'monthly_installments_enabled' => 'bool',
         'monthly_installments_options' => 'int[]',
-        'name' => 'string',
-        'needs_shipping_contact' => 'bool',
-        'on_demand_enabled' => 'bool',
-        'order_template' => '\Conekta\Model\CheckoutOrderTemplate',
-        'payments_limit_count' => 'int',
-        'recurrent' => 'bool',
-        'type' => 'string'
+        'name'                         => 'string',
+        'needs_shipping_contact'       => 'bool',
+        'on_demand_enabled'            => 'bool',
+        'order_template'               => '\Conekta\Model\CheckoutOrderTemplate',
+        'payments_limit_count'         => 'int',
+        'recurrent'                    => 'bool',
+        'type'                         => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'allowed_payment_methods' => null,
-        'expires_at' => 'int64',
+        'allowed_payment_methods'      => null,
+        'expires_at'                   => 'int64',
         'monthly_installments_enabled' => null,
         'monthly_installments_options' => 'int8',
-        'name' => null,
-        'needs_shipping_contact' => null,
-        'on_demand_enabled' => null,
-        'order_template' => null,
-        'payments_limit_count' => 'int8',
-        'recurrent' => null,
-        'type' => null
+        'name'                         => null,
+        'needs_shipping_contact'       => null,
+        'on_demand_enabled'            => null,
+        'order_template'               => null,
+        'payments_limit_count'         => 'int8',
+        'recurrent'                    => null,
+        'type'                         => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'allowed_payment_methods' => false,
-		'expires_at' => false,
-		'monthly_installments_enabled' => false,
-		'monthly_installments_options' => false,
-		'name' => false,
-		'needs_shipping_contact' => false,
-		'on_demand_enabled' => true,
-		'order_template' => false,
-		'payments_limit_count' => false,
-		'recurrent' => false,
-		'type' => false
+        'allowed_payment_methods'      => false,
+        'expires_at'                   => false,
+        'monthly_installments_enabled' => false,
+        'monthly_installments_options' => false,
+        'name'                         => false,
+        'needs_shipping_contact'       => false,
+        'on_demand_enabled'            => true,
+        'order_template'               => false,
+        'payments_limit_count'         => false,
+        'recurrent'                    => false,
+        'type'                         => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -198,17 +198,17 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'allowed_payment_methods' => 'allowed_payment_methods',
-        'expires_at' => 'expires_at',
+        'allowed_payment_methods'      => 'allowed_payment_methods',
+        'expires_at'                   => 'expires_at',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
         'monthly_installments_options' => 'monthly_installments_options',
-        'name' => 'name',
-        'needs_shipping_contact' => 'needs_shipping_contact',
-        'on_demand_enabled' => 'on_demand_enabled',
-        'order_template' => 'order_template',
-        'payments_limit_count' => 'payments_limit_count',
-        'recurrent' => 'recurrent',
-        'type' => 'type'
+        'name'                         => 'name',
+        'needs_shipping_contact'       => 'needs_shipping_contact',
+        'on_demand_enabled'            => 'on_demand_enabled',
+        'order_template'               => 'order_template',
+        'payments_limit_count'         => 'payments_limit_count',
+        'recurrent'                    => 'recurrent',
+        'type'                         => 'type'
     ];
 
     /**
@@ -217,17 +217,17 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'allowed_payment_methods' => 'setAllowedPaymentMethods',
-        'expires_at' => 'setExpiresAt',
+        'allowed_payment_methods'      => 'setAllowedPaymentMethods',
+        'expires_at'                   => 'setExpiresAt',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
-        'name' => 'setName',
-        'needs_shipping_contact' => 'setNeedsShippingContact',
-        'on_demand_enabled' => 'setOnDemandEnabled',
-        'order_template' => 'setOrderTemplate',
-        'payments_limit_count' => 'setPaymentsLimitCount',
-        'recurrent' => 'setRecurrent',
-        'type' => 'setType'
+        'name'                         => 'setName',
+        'needs_shipping_contact'       => 'setNeedsShippingContact',
+        'on_demand_enabled'            => 'setOnDemandEnabled',
+        'order_template'               => 'setOrderTemplate',
+        'payments_limit_count'         => 'setPaymentsLimitCount',
+        'recurrent'                    => 'setRecurrent',
+        'type'                         => 'setType'
     ];
 
     /**
@@ -236,17 +236,17 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'allowed_payment_methods' => 'getAllowedPaymentMethods',
-        'expires_at' => 'getExpiresAt',
+        'allowed_payment_methods'      => 'getAllowedPaymentMethods',
+        'expires_at'                   => 'getExpiresAt',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
-        'name' => 'getName',
-        'needs_shipping_contact' => 'getNeedsShippingContact',
-        'on_demand_enabled' => 'getOnDemandEnabled',
-        'order_template' => 'getOrderTemplate',
-        'payments_limit_count' => 'getPaymentsLimitCount',
-        'recurrent' => 'getRecurrent',
-        'type' => 'getType'
+        'name'                         => 'getName',
+        'needs_shipping_contact'       => 'getNeedsShippingContact',
+        'on_demand_enabled'            => 'getOnDemandEnabled',
+        'order_template'               => 'getOrderTemplate',
+        'payments_limit_count'         => 'getPaymentsLimitCount',
+        'recurrent'                    => 'getRecurrent',
+        'type'                         => 'getType'
     ];
 
     /**
@@ -290,7 +290,6 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -320,14 +319,14 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -377,7 +376,6 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets allowed_payment_methods
@@ -565,7 +563,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('on_demand_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -746,7 +744,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -772,5 +770,3 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

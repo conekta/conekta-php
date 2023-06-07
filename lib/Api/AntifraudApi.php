@@ -28,17 +28,10 @@
 
 namespace Conekta\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
-use Conekta\ApiException;
-use Conekta\Configuration;
-use Conekta\HeaderSelector;
-use Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, HeaderSelector, ObjectSerializer};
+use GuzzleHttp\Exception\{ConnectException, RequestException};
+use GuzzleHttp\Psr7\{MultipartStream, Request};
+use GuzzleHttp\{Client, ClientInterface, RequestOptions};
 
 /**
  * AntifraudApi Class Doc Comment
@@ -92,7 +85,7 @@ class AntifraudApi
         ],
     ];
 
-/**
+    /**
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
@@ -272,7 +265,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -391,15 +383,12 @@ class AntifraudApi
      */
     public function createRuleBlacklistRequest($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
-
         // verify the required parameter 'create_risk_rules_data' is set
         if ($create_risk_rules_data === null || (is_array($create_risk_rules_data) && count($create_risk_rules_data) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $create_risk_rules_data when calling createRuleBlacklist'
             );
         }
-
-
 
         $resourcePath = '/antifraud/blacklists';
         $formParams = [];
@@ -408,13 +397,10 @@ class AntifraudApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -441,14 +427,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -459,7 +444,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -633,7 +618,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -760,10 +744,6 @@ class AntifraudApi
      */
     public function createRuleWhitelistRequest($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
-
-
-
-
         $resourcePath = '/antifraud/whitelists';
         $formParams = [];
         $queryParams = [];
@@ -771,13 +751,10 @@ class AntifraudApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -804,14 +781,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -822,7 +798,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -998,7 +974,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1128,7 +1103,6 @@ class AntifraudApi
      */
     public function deleteRuleBlacklistRequest($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['deleteRuleBlacklist'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1136,16 +1110,12 @@ class AntifraudApi
             );
         }
 
-
-
-
         $resourcePath = '/antifraud/blacklists/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -1165,7 +1135,6 @@ class AntifraudApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1184,14 +1153,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1202,7 +1170,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1393,7 +1361,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1531,7 +1498,6 @@ class AntifraudApi
      */
     public function deleteRuleWhitelistRequest($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['deleteRuleWhitelist'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1539,16 +1505,12 @@ class AntifraudApi
             );
         }
 
-
-
-
         $resourcePath = '/antifraud/whitelists/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -1568,7 +1530,6 @@ class AntifraudApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1587,14 +1548,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1605,7 +1565,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1762,7 +1722,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1878,9 +1837,6 @@ class AntifraudApi
      */
     public function getRuleBlacklistRequest($accept_language = 'es', string $contentType = self::contentTypes['getRuleBlacklist'][0])
     {
-
-
-
         $resourcePath = '/antifraud/blacklists';
         $formParams = [];
         $queryParams = [];
@@ -1888,13 +1844,10 @@ class AntifraudApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -1914,14 +1867,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1932,7 +1884,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2104,7 +2056,6 @@ class AntifraudApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2228,9 +2179,6 @@ class AntifraudApi
      */
     public function getRuleWhitelistRequest($accept_language = 'es', string $contentType = self::contentTypes['getRuleWhitelist'][0])
     {
-
-
-
         $resourcePath = '/antifraud/whitelists';
         $formParams = [];
         $queryParams = [];
@@ -2238,13 +2186,10 @@ class AntifraudApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -2264,14 +2209,13 @@ class AntifraudApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -2282,7 +2226,7 @@ class AntifraudApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2305,24 +2249,5 @@ class AntifraudApi
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
     }
 }

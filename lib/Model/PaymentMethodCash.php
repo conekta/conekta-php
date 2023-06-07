@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodCash Class Doc Comment
@@ -41,78 +41,78 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCash implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_cash';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'object' => 'string',
-        'auth_code' => 'int',
-        'cashier_id' => 'string',
-        'reference' => 'string',
-        'barcode_url' => 'string',
-        'expires_at' => 'int',
+        'type'         => 'string',
+        'object'       => 'string',
+        'auth_code'    => 'int',
+        'cashier_id'   => 'string',
+        'reference'    => 'string',
+        'barcode_url'  => 'string',
+        'expires_at'   => 'int',
         'service_name' => 'string',
-        'store' => 'string',
-        'store_name' => 'string'
+        'store'        => 'string',
+        'store_name'   => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'object' => null,
-        'auth_code' => null,
-        'cashier_id' => null,
-        'reference' => null,
-        'barcode_url' => null,
-        'expires_at' => 'int64',
+        'type'         => null,
+        'object'       => null,
+        'auth_code'    => null,
+        'cashier_id'   => null,
+        'reference'    => null,
+        'barcode_url'  => null,
+        'expires_at'   => 'int64',
         'service_name' => null,
-        'store' => null,
-        'store_name' => null
+        'store'        => null,
+        'store_name'   => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'object' => false,
-		'auth_code' => true,
-		'cashier_id' => true,
-		'reference' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'service_name' => false,
-		'store' => true,
-		'store_name' => false
+        'type'         => false,
+        'object'       => false,
+        'auth_code'    => true,
+        'cashier_id'   => true,
+        'reference'    => false,
+        'barcode_url'  => false,
+        'expires_at'   => false,
+        'service_name' => false,
+        'store'        => true,
+        'store_name'   => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -194,16 +194,16 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'object' => 'object',
-        'auth_code' => 'auth_code',
-        'cashier_id' => 'cashier_id',
-        'reference' => 'reference',
-        'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
+        'type'         => 'type',
+        'object'       => 'object',
+        'auth_code'    => 'auth_code',
+        'cashier_id'   => 'cashier_id',
+        'reference'    => 'reference',
+        'barcode_url'  => 'barcode_url',
+        'expires_at'   => 'expires_at',
         'service_name' => 'service_name',
-        'store' => 'store',
-        'store_name' => 'store_name'
+        'store'        => 'store',
+        'store_name'   => 'store_name'
     ];
 
     /**
@@ -212,16 +212,16 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'object' => 'setObject',
-        'auth_code' => 'setAuthCode',
-        'cashier_id' => 'setCashierId',
-        'reference' => 'setReference',
-        'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
+        'type'         => 'setType',
+        'object'       => 'setObject',
+        'auth_code'    => 'setAuthCode',
+        'cashier_id'   => 'setCashierId',
+        'reference'    => 'setReference',
+        'barcode_url'  => 'setBarcodeUrl',
+        'expires_at'   => 'setExpiresAt',
         'service_name' => 'setServiceName',
-        'store' => 'setStore',
-        'store_name' => 'setStoreName'
+        'store'        => 'setStore',
+        'store_name'   => 'setStoreName'
     ];
 
     /**
@@ -230,16 +230,16 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'object' => 'getObject',
-        'auth_code' => 'getAuthCode',
-        'cashier_id' => 'getCashierId',
-        'reference' => 'getReference',
-        'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
+        'type'         => 'getType',
+        'object'       => 'getObject',
+        'auth_code'    => 'getAuthCode',
+        'cashier_id'   => 'getCashierId',
+        'reference'    => 'getReference',
+        'barcode_url'  => 'getBarcodeUrl',
+        'expires_at'   => 'getExpiresAt',
         'service_name' => 'getServiceName',
-        'store' => 'getStore',
-        'store_name' => 'getStoreName'
+        'store'        => 'getStore',
+        'store_name'   => 'getStoreName'
     ];
 
     /**
@@ -283,7 +283,6 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -312,14 +311,14 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -354,7 +353,6 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -434,7 +432,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('auth_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -468,7 +466,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('cashier_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -610,7 +608,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('store', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -710,7 +708,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -736,5 +734,3 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

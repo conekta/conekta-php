@@ -29,9 +29,7 @@
 namespace Conekta\Test\Api;
 
 use Conekta\Api\EventsApi;
-use \Conekta\Configuration;
-use \Conekta\ApiException;
-use \Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, ObjectSerializer};
 use PHPUnit\Framework\TestCase;
 
 use function PHPUnit\Framework\assertNotNull;
@@ -46,7 +44,6 @@ use function PHPUnit\Framework\assertNotNull;
  */
 class EventsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */

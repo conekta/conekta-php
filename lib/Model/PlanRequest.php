@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PlanRequest Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PlanRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'plan_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'currency' => 'string',
-        'expiry_count' => 'int',
-        'frequency' => 'int',
-        'id' => 'string',
-        'interval' => 'string',
-        'name' => 'string',
+        'amount'            => 'int',
+        'currency'          => 'string',
+        'expiry_count'      => 'int',
+        'frequency'         => 'int',
+        'id'                => 'string',
+        'interval'          => 'string',
+        'name'              => 'string',
         'trial_period_days' => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null,
-        'expiry_count' => null,
-        'frequency' => null,
-        'id' => null,
-        'interval' => null,
-        'name' => null,
+        'amount'            => null,
+        'currency'          => null,
+        'expiry_count'      => null,
+        'frequency'         => null,
+        'id'                => null,
+        'interval'          => null,
+        'name'              => null,
         'trial_period_days' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'currency' => false,
-		'expiry_count' => false,
-		'frequency' => false,
-		'id' => false,
-		'interval' => false,
-		'name' => false,
-		'trial_period_days' => false
+        'amount'            => false,
+        'currency'          => false,
+        'expiry_count'      => false,
+        'frequency'         => false,
+        'id'                => false,
+        'interval'          => false,
+        'name'              => false,
+        'trial_period_days' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -189,13 +189,13 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency',
-        'expiry_count' => 'expiry_count',
-        'frequency' => 'frequency',
-        'id' => 'id',
-        'interval' => 'interval',
-        'name' => 'name',
+        'amount'            => 'amount',
+        'currency'          => 'currency',
+        'expiry_count'      => 'expiry_count',
+        'frequency'         => 'frequency',
+        'id'                => 'id',
+        'interval'          => 'interval',
+        'name'              => 'name',
         'trial_period_days' => 'trial_period_days'
     ];
 
@@ -205,13 +205,13 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'expiry_count' => 'setExpiryCount',
-        'frequency' => 'setFrequency',
-        'id' => 'setId',
-        'interval' => 'setInterval',
-        'name' => 'setName',
+        'amount'            => 'setAmount',
+        'currency'          => 'setCurrency',
+        'expiry_count'      => 'setExpiryCount',
+        'frequency'         => 'setFrequency',
+        'id'                => 'setId',
+        'interval'          => 'setInterval',
+        'name'              => 'setName',
         'trial_period_days' => 'setTrialPeriodDays'
     ];
 
@@ -221,13 +221,13 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'expiry_count' => 'getExpiryCount',
-        'frequency' => 'getFrequency',
-        'id' => 'getId',
-        'interval' => 'getInterval',
-        'name' => 'getName',
+        'amount'            => 'getAmount',
+        'currency'          => 'getCurrency',
+        'expiry_count'      => 'getExpiryCount',
+        'frequency'         => 'getFrequency',
+        'id'                => 'getId',
+        'interval'          => 'getInterval',
+        'name'              => 'getName',
         'trial_period_days' => 'getTrialPeriodDays'
     ];
 
@@ -318,14 +318,14 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -351,7 +351,7 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
+        if (! is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
             $invalidProperties[] = "invalid value for 'currency', the character length must be smaller than or equal to 3.";
         }
 
@@ -366,7 +366,7 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "'interval' can't be null";
         }
         $allowedValues = $this->getIntervalAllowableValues();
-        if (!is_null($this->container['interval']) && !in_array($this->container['interval'], $allowedValues, true)) {
+        if (! is_null($this->container['interval']) && ! in_array($this->container['interval'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'interval', must be one of '%s'",
                 $this->container['interval'],
@@ -390,7 +390,6 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -564,7 +563,7 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable interval cannot be null');
         }
         $allowedValues = $this->getIntervalAllowableValues();
-        if (!in_array($interval, $allowedValues, true)) {
+        if (! in_array($interval, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'interval', must be one of '%s'",
@@ -695,7 +694,7 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -721,5 +720,3 @@ class PlanRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

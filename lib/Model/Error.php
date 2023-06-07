@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * Error Class Doc Comment
@@ -42,60 +42,60 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class Error implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'error';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'details' => '\Conekta\Model\DetailsError[]',
-        'log_id' => 'string',
-        'type' => 'string',
-        'object' => 'string'
+        'log_id'  => 'string',
+        'type'    => 'string',
+        'object'  => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'details' => null,
-        'log_id' => null,
-        'type' => null,
-        'object' => null
+        'log_id'  => null,
+        'type'    => null,
+        'object'  => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'details' => false,
-		'log_id' => true,
-		'type' => false,
-		'object' => false
+        'log_id'  => true,
+        'type'    => false,
+        'object'  => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -178,9 +178,9 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'details' => 'details',
-        'log_id' => 'log_id',
-        'type' => 'type',
-        'object' => 'object'
+        'log_id'  => 'log_id',
+        'type'    => 'type',
+        'object'  => 'object'
     ];
 
     /**
@@ -190,9 +190,9 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'details' => 'setDetails',
-        'log_id' => 'setLogId',
-        'type' => 'setType',
-        'object' => 'setObject'
+        'log_id'  => 'setLogId',
+        'type'    => 'setType',
+        'object'  => 'setObject'
     ];
 
     /**
@@ -202,9 +202,9 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'details' => 'getDetails',
-        'log_id' => 'getLogId',
-        'type' => 'getType',
-        'object' => 'getObject'
+        'log_id'  => 'getLogId',
+        'type'    => 'getType',
+        'object'  => 'getObject'
     ];
 
     /**
@@ -248,7 +248,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -271,14 +270,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -310,7 +309,6 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets details
@@ -363,7 +361,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('log_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -490,7 +488,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -516,5 +514,3 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

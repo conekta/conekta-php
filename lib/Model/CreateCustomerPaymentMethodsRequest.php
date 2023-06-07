@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CreateCustomerPaymentMethodsRequest Class Doc Comment
@@ -42,57 +42,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCustomerPaymentMethodsRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'CreateCustomerPaymentMethods_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'token_id' => 'string',
+        'type'       => 'string',
+        'token_id'   => 'string',
         'expires_at' => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'token_id' => null,
+        'type'       => null,
+        'token_id'   => null,
         'expires_at' => 'int64'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'token_id' => false,
-		'expires_at' => false
+        'type'       => false,
+        'token_id'   => false,
+        'expires_at' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -174,8 +174,8 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'token_id' => 'token_id',
+        'type'       => 'type',
+        'token_id'   => 'token_id',
         'expires_at' => 'expires_at'
     ];
 
@@ -185,8 +185,8 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'token_id' => 'setTokenId',
+        'type'       => 'setType',
+        'token_id'   => 'setTokenId',
         'expires_at' => 'setExpiresAt'
     ];
 
@@ -196,8 +196,8 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'token_id' => 'getTokenId',
+        'type'       => 'getType',
+        'token_id'   => 'getTokenId',
         'expires_at' => 'getExpiresAt'
     ];
 
@@ -242,7 +242,6 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -264,14 +263,14 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -309,7 +308,6 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -455,7 +453,7 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -481,5 +479,3 @@ class CreateCustomerPaymentMethodsRequest implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

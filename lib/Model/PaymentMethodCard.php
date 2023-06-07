@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodCard Class Doc Comment
@@ -41,84 +41,84 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCard implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_card';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'object' => 'string',
-        'account_type' => 'string',
-        'auth_code' => 'string',
-        'brand' => 'string',
-        'country' => 'string',
-        'exp_month' => 'string',
-        'exp_year' => 'string',
+        'type'             => 'string',
+        'object'           => 'string',
+        'account_type'     => 'string',
+        'auth_code'        => 'string',
+        'brand'            => 'string',
+        'country'          => 'string',
+        'exp_month'        => 'string',
+        'exp_year'         => 'string',
         'fraud_indicators' => 'mixed[]',
-        'issuer' => 'string',
-        'last4' => 'string',
-        'name' => 'string'
+        'issuer'           => 'string',
+        'last4'            => 'string',
+        'name'             => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'object' => null,
-        'account_type' => null,
-        'auth_code' => null,
-        'brand' => null,
-        'country' => null,
-        'exp_month' => null,
-        'exp_year' => null,
+        'type'             => null,
+        'object'           => null,
+        'account_type'     => null,
+        'auth_code'        => null,
+        'brand'            => null,
+        'country'          => null,
+        'exp_month'        => null,
+        'exp_year'         => null,
         'fraud_indicators' => null,
-        'issuer' => null,
-        'last4' => null,
-        'name' => null
+        'issuer'           => null,
+        'last4'            => null,
+        'name'             => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'object' => false,
-		'account_type' => false,
-		'auth_code' => false,
-		'brand' => false,
-		'country' => false,
-		'exp_month' => false,
-		'exp_year' => false,
-		'fraud_indicators' => false,
-		'issuer' => false,
-		'last4' => false,
-		'name' => false
+        'type'             => false,
+        'object'           => false,
+        'account_type'     => false,
+        'auth_code'        => false,
+        'brand'            => false,
+        'country'          => false,
+        'exp_month'        => false,
+        'exp_year'         => false,
+        'fraud_indicators' => false,
+        'issuer'           => false,
+        'last4'            => false,
+        'name'             => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -200,18 +200,18 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'object' => 'object',
-        'account_type' => 'account_type',
-        'auth_code' => 'auth_code',
-        'brand' => 'brand',
-        'country' => 'country',
-        'exp_month' => 'exp_month',
-        'exp_year' => 'exp_year',
+        'type'             => 'type',
+        'object'           => 'object',
+        'account_type'     => 'account_type',
+        'auth_code'        => 'auth_code',
+        'brand'            => 'brand',
+        'country'          => 'country',
+        'exp_month'        => 'exp_month',
+        'exp_year'         => 'exp_year',
         'fraud_indicators' => 'fraud_indicators',
-        'issuer' => 'issuer',
-        'last4' => 'last4',
-        'name' => 'name'
+        'issuer'           => 'issuer',
+        'last4'            => 'last4',
+        'name'             => 'name'
     ];
 
     /**
@@ -220,18 +220,18 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'object' => 'setObject',
-        'account_type' => 'setAccountType',
-        'auth_code' => 'setAuthCode',
-        'brand' => 'setBrand',
-        'country' => 'setCountry',
-        'exp_month' => 'setExpMonth',
-        'exp_year' => 'setExpYear',
+        'type'             => 'setType',
+        'object'           => 'setObject',
+        'account_type'     => 'setAccountType',
+        'auth_code'        => 'setAuthCode',
+        'brand'            => 'setBrand',
+        'country'          => 'setCountry',
+        'exp_month'        => 'setExpMonth',
+        'exp_year'         => 'setExpYear',
         'fraud_indicators' => 'setFraudIndicators',
-        'issuer' => 'setIssuer',
-        'last4' => 'setLast4',
-        'name' => 'setName'
+        'issuer'           => 'setIssuer',
+        'last4'            => 'setLast4',
+        'name'             => 'setName'
     ];
 
     /**
@@ -240,18 +240,18 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'object' => 'getObject',
-        'account_type' => 'getAccountType',
-        'auth_code' => 'getAuthCode',
-        'brand' => 'getBrand',
-        'country' => 'getCountry',
-        'exp_month' => 'getExpMonth',
-        'exp_year' => 'getExpYear',
+        'type'             => 'getType',
+        'object'           => 'getObject',
+        'account_type'     => 'getAccountType',
+        'auth_code'        => 'getAuthCode',
+        'brand'            => 'getBrand',
+        'country'          => 'getCountry',
+        'exp_month'        => 'getExpMonth',
+        'exp_year'         => 'getExpYear',
         'fraud_indicators' => 'getFraudIndicators',
-        'issuer' => 'getIssuer',
-        'last4' => 'getLast4',
-        'name' => 'getName'
+        'issuer'           => 'getIssuer',
+        'last4'            => 'getLast4',
+        'name'             => 'getName'
     ];
 
     /**
@@ -295,7 +295,6 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -326,14 +325,14 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -368,7 +367,6 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -757,7 +755,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -783,5 +781,3 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

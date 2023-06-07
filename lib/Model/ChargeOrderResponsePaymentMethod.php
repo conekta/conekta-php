@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ChargeOrderResponsePaymentMethod Class Doc Comment
@@ -41,150 +41,150 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeOrderResponsePaymentMethod implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = 'object';
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'charge_order_response_payment_method';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'object' => 'string',
-        'auth_code' => 'string',
-        'cashier_id' => 'string',
-        'reference' => 'string',
-        'barcode_url' => 'string',
-        'expires_at' => 'int',
-        'service_name' => 'string',
-        'store' => 'string',
-        'store_name' => 'string',
-        'account_type' => 'string',
-        'brand' => 'string',
-        'country' => 'string',
-        'exp_month' => 'string',
-        'exp_year' => 'string',
-        'fraud_indicators' => 'mixed[]',
-        'issuer' => 'string',
-        'last4' => 'string',
-        'name' => 'string',
-        'bank' => 'string',
-        'clabe' => 'string',
-        'description' => 'string',
-        'executed_at' => 'int',
-        'issuing_account_bank' => 'string',
-        'issuing_account_number' => 'string',
-        'issuing_account_holder_name' => 'string',
-        'issuing_account_tax_id' => 'string',
-        'payment_attempts' => 'mixed[]',
+        'type'                          => 'string',
+        'object'                        => 'string',
+        'auth_code'                     => 'string',
+        'cashier_id'                    => 'string',
+        'reference'                     => 'string',
+        'barcode_url'                   => 'string',
+        'expires_at'                    => 'int',
+        'service_name'                  => 'string',
+        'store'                         => 'string',
+        'store_name'                    => 'string',
+        'account_type'                  => 'string',
+        'brand'                         => 'string',
+        'country'                       => 'string',
+        'exp_month'                     => 'string',
+        'exp_year'                      => 'string',
+        'fraud_indicators'              => 'mixed[]',
+        'issuer'                        => 'string',
+        'last4'                         => 'string',
+        'name'                          => 'string',
+        'bank'                          => 'string',
+        'clabe'                         => 'string',
+        'description'                   => 'string',
+        'executed_at'                   => 'int',
+        'issuing_account_bank'          => 'string',
+        'issuing_account_number'        => 'string',
+        'issuing_account_holder_name'   => 'string',
+        'issuing_account_tax_id'        => 'string',
+        'payment_attempts'              => 'mixed[]',
         'receiving_account_holder_name' => 'string',
-        'receiving_account_number' => 'string',
-        'receiving_account_bank' => 'string',
-        'receiving_account_tax_id' => 'string',
-        'reference_number' => 'string',
-        'tracking_code' => 'string'
+        'receiving_account_number'      => 'string',
+        'receiving_account_bank'        => 'string',
+        'receiving_account_tax_id'      => 'string',
+        'reference_number'              => 'string',
+        'tracking_code'                 => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'object' => null,
-        'auth_code' => null,
-        'cashier_id' => null,
-        'reference' => null,
-        'barcode_url' => null,
-        'expires_at' => 'int64',
-        'service_name' => null,
-        'store' => null,
-        'store_name' => null,
-        'account_type' => null,
-        'brand' => null,
-        'country' => null,
-        'exp_month' => null,
-        'exp_year' => null,
-        'fraud_indicators' => null,
-        'issuer' => null,
-        'last4' => null,
-        'name' => null,
-        'bank' => null,
-        'clabe' => null,
-        'description' => null,
-        'executed_at' => null,
-        'issuing_account_bank' => null,
-        'issuing_account_number' => null,
-        'issuing_account_holder_name' => null,
-        'issuing_account_tax_id' => null,
-        'payment_attempts' => null,
+        'type'                          => null,
+        'object'                        => null,
+        'auth_code'                     => null,
+        'cashier_id'                    => null,
+        'reference'                     => null,
+        'barcode_url'                   => null,
+        'expires_at'                    => 'int64',
+        'service_name'                  => null,
+        'store'                         => null,
+        'store_name'                    => null,
+        'account_type'                  => null,
+        'brand'                         => null,
+        'country'                       => null,
+        'exp_month'                     => null,
+        'exp_year'                      => null,
+        'fraud_indicators'              => null,
+        'issuer'                        => null,
+        'last4'                         => null,
+        'name'                          => null,
+        'bank'                          => null,
+        'clabe'                         => null,
+        'description'                   => null,
+        'executed_at'                   => null,
+        'issuing_account_bank'          => null,
+        'issuing_account_number'        => null,
+        'issuing_account_holder_name'   => null,
+        'issuing_account_tax_id'        => null,
+        'payment_attempts'              => null,
         'receiving_account_holder_name' => null,
-        'receiving_account_number' => null,
-        'receiving_account_bank' => null,
-        'receiving_account_tax_id' => null,
-        'reference_number' => null,
-        'tracking_code' => null
+        'receiving_account_number'      => null,
+        'receiving_account_bank'        => null,
+        'receiving_account_tax_id'      => null,
+        'reference_number'              => null,
+        'tracking_code'                 => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'object' => false,
-		'auth_code' => false,
-		'cashier_id' => true,
-		'reference' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'service_name' => false,
-		'store' => true,
-		'store_name' => false,
-		'account_type' => false,
-		'brand' => false,
-		'country' => false,
-		'exp_month' => false,
-		'exp_year' => false,
-		'fraud_indicators' => false,
-		'issuer' => false,
-		'last4' => false,
-		'name' => false,
-		'bank' => false,
-		'clabe' => false,
-		'description' => true,
-		'executed_at' => true,
-		'issuing_account_bank' => true,
-		'issuing_account_number' => true,
-		'issuing_account_holder_name' => true,
-		'issuing_account_tax_id' => true,
-		'payment_attempts' => false,
-		'receiving_account_holder_name' => true,
-		'receiving_account_number' => false,
-		'receiving_account_bank' => false,
-		'receiving_account_tax_id' => true,
-		'reference_number' => true,
-		'tracking_code' => true
+        'type'                          => false,
+        'object'                        => false,
+        'auth_code'                     => false,
+        'cashier_id'                    => true,
+        'reference'                     => false,
+        'barcode_url'                   => false,
+        'expires_at'                    => false,
+        'service_name'                  => false,
+        'store'                         => true,
+        'store_name'                    => false,
+        'account_type'                  => false,
+        'brand'                         => false,
+        'country'                       => false,
+        'exp_month'                     => false,
+        'exp_year'                      => false,
+        'fraud_indicators'              => false,
+        'issuer'                        => false,
+        'last4'                         => false,
+        'name'                          => false,
+        'bank'                          => false,
+        'clabe'                         => false,
+        'description'                   => true,
+        'executed_at'                   => true,
+        'issuing_account_bank'          => true,
+        'issuing_account_number'        => true,
+        'issuing_account_holder_name'   => true,
+        'issuing_account_tax_id'        => true,
+        'payment_attempts'              => false,
+        'receiving_account_holder_name' => true,
+        'receiving_account_number'      => false,
+        'receiving_account_bank'        => false,
+        'receiving_account_tax_id'      => true,
+        'reference_number'              => true,
+        'tracking_code'                 => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -266,40 +266,40 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'object' => 'object',
-        'auth_code' => 'auth_code',
-        'cashier_id' => 'cashier_id',
-        'reference' => 'reference',
-        'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
-        'service_name' => 'service_name',
-        'store' => 'store',
-        'store_name' => 'store_name',
-        'account_type' => 'account_type',
-        'brand' => 'brand',
-        'country' => 'country',
-        'exp_month' => 'exp_month',
-        'exp_year' => 'exp_year',
-        'fraud_indicators' => 'fraud_indicators',
-        'issuer' => 'issuer',
-        'last4' => 'last4',
-        'name' => 'name',
-        'bank' => 'bank',
-        'clabe' => 'clabe',
-        'description' => 'description',
-        'executed_at' => 'executed_at',
-        'issuing_account_bank' => 'issuing_account_bank',
-        'issuing_account_number' => 'issuing_account_number',
-        'issuing_account_holder_name' => 'issuing_account_holder_name',
-        'issuing_account_tax_id' => 'issuing_account_tax_id',
-        'payment_attempts' => 'payment_attempts',
+        'type'                          => 'type',
+        'object'                        => 'object',
+        'auth_code'                     => 'auth_code',
+        'cashier_id'                    => 'cashier_id',
+        'reference'                     => 'reference',
+        'barcode_url'                   => 'barcode_url',
+        'expires_at'                    => 'expires_at',
+        'service_name'                  => 'service_name',
+        'store'                         => 'store',
+        'store_name'                    => 'store_name',
+        'account_type'                  => 'account_type',
+        'brand'                         => 'brand',
+        'country'                       => 'country',
+        'exp_month'                     => 'exp_month',
+        'exp_year'                      => 'exp_year',
+        'fraud_indicators'              => 'fraud_indicators',
+        'issuer'                        => 'issuer',
+        'last4'                         => 'last4',
+        'name'                          => 'name',
+        'bank'                          => 'bank',
+        'clabe'                         => 'clabe',
+        'description'                   => 'description',
+        'executed_at'                   => 'executed_at',
+        'issuing_account_bank'          => 'issuing_account_bank',
+        'issuing_account_number'        => 'issuing_account_number',
+        'issuing_account_holder_name'   => 'issuing_account_holder_name',
+        'issuing_account_tax_id'        => 'issuing_account_tax_id',
+        'payment_attempts'              => 'payment_attempts',
         'receiving_account_holder_name' => 'receiving_account_holder_name',
-        'receiving_account_number' => 'receiving_account_number',
-        'receiving_account_bank' => 'receiving_account_bank',
-        'receiving_account_tax_id' => 'receiving_account_tax_id',
-        'reference_number' => 'reference_number',
-        'tracking_code' => 'tracking_code'
+        'receiving_account_number'      => 'receiving_account_number',
+        'receiving_account_bank'        => 'receiving_account_bank',
+        'receiving_account_tax_id'      => 'receiving_account_tax_id',
+        'reference_number'              => 'reference_number',
+        'tracking_code'                 => 'tracking_code'
     ];
 
     /**
@@ -308,40 +308,40 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'object' => 'setObject',
-        'auth_code' => 'setAuthCode',
-        'cashier_id' => 'setCashierId',
-        'reference' => 'setReference',
-        'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
-        'service_name' => 'setServiceName',
-        'store' => 'setStore',
-        'store_name' => 'setStoreName',
-        'account_type' => 'setAccountType',
-        'brand' => 'setBrand',
-        'country' => 'setCountry',
-        'exp_month' => 'setExpMonth',
-        'exp_year' => 'setExpYear',
-        'fraud_indicators' => 'setFraudIndicators',
-        'issuer' => 'setIssuer',
-        'last4' => 'setLast4',
-        'name' => 'setName',
-        'bank' => 'setBank',
-        'clabe' => 'setClabe',
-        'description' => 'setDescription',
-        'executed_at' => 'setExecutedAt',
-        'issuing_account_bank' => 'setIssuingAccountBank',
-        'issuing_account_number' => 'setIssuingAccountNumber',
-        'issuing_account_holder_name' => 'setIssuingAccountHolderName',
-        'issuing_account_tax_id' => 'setIssuingAccountTaxId',
-        'payment_attempts' => 'setPaymentAttempts',
+        'type'                          => 'setType',
+        'object'                        => 'setObject',
+        'auth_code'                     => 'setAuthCode',
+        'cashier_id'                    => 'setCashierId',
+        'reference'                     => 'setReference',
+        'barcode_url'                   => 'setBarcodeUrl',
+        'expires_at'                    => 'setExpiresAt',
+        'service_name'                  => 'setServiceName',
+        'store'                         => 'setStore',
+        'store_name'                    => 'setStoreName',
+        'account_type'                  => 'setAccountType',
+        'brand'                         => 'setBrand',
+        'country'                       => 'setCountry',
+        'exp_month'                     => 'setExpMonth',
+        'exp_year'                      => 'setExpYear',
+        'fraud_indicators'              => 'setFraudIndicators',
+        'issuer'                        => 'setIssuer',
+        'last4'                         => 'setLast4',
+        'name'                          => 'setName',
+        'bank'                          => 'setBank',
+        'clabe'                         => 'setClabe',
+        'description'                   => 'setDescription',
+        'executed_at'                   => 'setExecutedAt',
+        'issuing_account_bank'          => 'setIssuingAccountBank',
+        'issuing_account_number'        => 'setIssuingAccountNumber',
+        'issuing_account_holder_name'   => 'setIssuingAccountHolderName',
+        'issuing_account_tax_id'        => 'setIssuingAccountTaxId',
+        'payment_attempts'              => 'setPaymentAttempts',
         'receiving_account_holder_name' => 'setReceivingAccountHolderName',
-        'receiving_account_number' => 'setReceivingAccountNumber',
-        'receiving_account_bank' => 'setReceivingAccountBank',
-        'receiving_account_tax_id' => 'setReceivingAccountTaxId',
-        'reference_number' => 'setReferenceNumber',
-        'tracking_code' => 'setTrackingCode'
+        'receiving_account_number'      => 'setReceivingAccountNumber',
+        'receiving_account_bank'        => 'setReceivingAccountBank',
+        'receiving_account_tax_id'      => 'setReceivingAccountTaxId',
+        'reference_number'              => 'setReferenceNumber',
+        'tracking_code'                 => 'setTrackingCode'
     ];
 
     /**
@@ -350,40 +350,40 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'object' => 'getObject',
-        'auth_code' => 'getAuthCode',
-        'cashier_id' => 'getCashierId',
-        'reference' => 'getReference',
-        'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
-        'service_name' => 'getServiceName',
-        'store' => 'getStore',
-        'store_name' => 'getStoreName',
-        'account_type' => 'getAccountType',
-        'brand' => 'getBrand',
-        'country' => 'getCountry',
-        'exp_month' => 'getExpMonth',
-        'exp_year' => 'getExpYear',
-        'fraud_indicators' => 'getFraudIndicators',
-        'issuer' => 'getIssuer',
-        'last4' => 'getLast4',
-        'name' => 'getName',
-        'bank' => 'getBank',
-        'clabe' => 'getClabe',
-        'description' => 'getDescription',
-        'executed_at' => 'getExecutedAt',
-        'issuing_account_bank' => 'getIssuingAccountBank',
-        'issuing_account_number' => 'getIssuingAccountNumber',
-        'issuing_account_holder_name' => 'getIssuingAccountHolderName',
-        'issuing_account_tax_id' => 'getIssuingAccountTaxId',
-        'payment_attempts' => 'getPaymentAttempts',
+        'type'                          => 'getType',
+        'object'                        => 'getObject',
+        'auth_code'                     => 'getAuthCode',
+        'cashier_id'                    => 'getCashierId',
+        'reference'                     => 'getReference',
+        'barcode_url'                   => 'getBarcodeUrl',
+        'expires_at'                    => 'getExpiresAt',
+        'service_name'                  => 'getServiceName',
+        'store'                         => 'getStore',
+        'store_name'                    => 'getStoreName',
+        'account_type'                  => 'getAccountType',
+        'brand'                         => 'getBrand',
+        'country'                       => 'getCountry',
+        'exp_month'                     => 'getExpMonth',
+        'exp_year'                      => 'getExpYear',
+        'fraud_indicators'              => 'getFraudIndicators',
+        'issuer'                        => 'getIssuer',
+        'last4'                         => 'getLast4',
+        'name'                          => 'getName',
+        'bank'                          => 'getBank',
+        'clabe'                         => 'getClabe',
+        'description'                   => 'getDescription',
+        'executed_at'                   => 'getExecutedAt',
+        'issuing_account_bank'          => 'getIssuingAccountBank',
+        'issuing_account_number'        => 'getIssuingAccountNumber',
+        'issuing_account_holder_name'   => 'getIssuingAccountHolderName',
+        'issuing_account_tax_id'        => 'getIssuingAccountTaxId',
+        'payment_attempts'              => 'getPaymentAttempts',
         'receiving_account_holder_name' => 'getReceivingAccountHolderName',
-        'receiving_account_number' => 'getReceivingAccountNumber',
-        'receiving_account_bank' => 'getReceivingAccountBank',
-        'receiving_account_tax_id' => 'getReceivingAccountTaxId',
-        'reference_number' => 'getReferenceNumber',
-        'tracking_code' => 'getTrackingCode'
+        'receiving_account_number'      => 'getReceivingAccountNumber',
+        'receiving_account_bank'        => 'getReceivingAccountBank',
+        'receiving_account_tax_id'      => 'getReceivingAccountTaxId',
+        'reference_number'              => 'getReferenceNumber',
+        'tracking_code'                 => 'getTrackingCode'
     ];
 
     /**
@@ -426,7 +426,6 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
     {
         return self::$openAPIModelName;
     }
-
 
     /**
      * Associative array for storing property values
@@ -483,14 +482,14 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -525,7 +524,6 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -632,7 +630,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('cashier_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -774,7 +772,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('store', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1132,7 +1130,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1166,7 +1164,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('executed_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1200,7 +1198,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_bank', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1234,7 +1232,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1268,7 +1266,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1302,7 +1300,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1363,7 +1361,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('receiving_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1451,7 +1449,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('receiving_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1485,7 +1483,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('reference_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1519,7 +1517,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('tracking_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1592,7 +1590,7 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1618,5 +1616,3 @@ class ChargeOrderResponsePaymentMethod implements ModelInterface, ArrayAccess, \
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

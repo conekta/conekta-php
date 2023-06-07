@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * DiscountLinesResponseAllOf Class Doc Comment
@@ -41,57 +41,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class DiscountLinesResponseAllOf implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'discount_lines_response_allOf';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'object' => 'string',
+        'id'        => 'string',
+        'object'    => 'string',
         'parent_id' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'id' => null,
-        'object' => null,
+        'id'        => null,
+        'object'    => null,
         'parent_id' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'id' => false,
-		'object' => false,
-		'parent_id' => false
+        'id'        => false,
+        'object'    => false,
+        'parent_id' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -173,8 +173,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object' => 'object',
+        'id'        => 'id',
+        'object'    => 'object',
         'parent_id' => 'parent_id'
     ];
 
@@ -184,8 +184,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object' => 'setObject',
+        'id'        => 'setId',
+        'object'    => 'setObject',
         'parent_id' => 'setParentId'
     ];
 
@@ -195,8 +195,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object' => 'getObject',
+        'id'        => 'getId',
+        'object'    => 'getObject',
         'parent_id' => 'getParentId'
     ];
 
@@ -241,7 +241,6 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -263,14 +262,14 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -302,7 +301,6 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -448,7 +446,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -474,5 +472,3 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

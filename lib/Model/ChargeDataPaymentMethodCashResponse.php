@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ChargeDataPaymentMethodCashResponse Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeDataPaymentMethodCashResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'charge_data_payment_method_cash_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'auth_code' => 'int',
-        'cashier_id' => 'string',
-        'reference' => 'string',
-        'barcode_url' => 'string',
-        'expires_at' => 'int',
+        'auth_code'    => 'int',
+        'cashier_id'   => 'string',
+        'reference'    => 'string',
+        'barcode_url'  => 'string',
+        'expires_at'   => 'int',
         'service_name' => 'string',
-        'store' => 'string',
-        'store_name' => 'string'
+        'store'        => 'string',
+        'store_name'   => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'auth_code' => null,
-        'cashier_id' => null,
-        'reference' => null,
-        'barcode_url' => null,
-        'expires_at' => 'int64',
+        'auth_code'    => null,
+        'cashier_id'   => null,
+        'reference'    => null,
+        'barcode_url'  => null,
+        'expires_at'   => 'int64',
         'service_name' => null,
-        'store' => null,
-        'store_name' => null
+        'store'        => null,
+        'store_name'   => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'auth_code' => true,
-		'cashier_id' => true,
-		'reference' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'service_name' => false,
-		'store' => true,
-		'store_name' => false
+        'auth_code'    => true,
+        'cashier_id'   => true,
+        'reference'    => false,
+        'barcode_url'  => false,
+        'expires_at'   => false,
+        'service_name' => false,
+        'store'        => true,
+        'store_name'   => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -189,14 +189,14 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'auth_code' => 'auth_code',
-        'cashier_id' => 'cashier_id',
-        'reference' => 'reference',
-        'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
+        'auth_code'    => 'auth_code',
+        'cashier_id'   => 'cashier_id',
+        'reference'    => 'reference',
+        'barcode_url'  => 'barcode_url',
+        'expires_at'   => 'expires_at',
         'service_name' => 'service_name',
-        'store' => 'store',
-        'store_name' => 'store_name'
+        'store'        => 'store',
+        'store_name'   => 'store_name'
     ];
 
     /**
@@ -205,14 +205,14 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'auth_code' => 'setAuthCode',
-        'cashier_id' => 'setCashierId',
-        'reference' => 'setReference',
-        'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
+        'auth_code'    => 'setAuthCode',
+        'cashier_id'   => 'setCashierId',
+        'reference'    => 'setReference',
+        'barcode_url'  => 'setBarcodeUrl',
+        'expires_at'   => 'setExpiresAt',
         'service_name' => 'setServiceName',
-        'store' => 'setStore',
-        'store_name' => 'setStoreName'
+        'store'        => 'setStore',
+        'store_name'   => 'setStoreName'
     ];
 
     /**
@@ -221,14 +221,14 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'auth_code' => 'getAuthCode',
-        'cashier_id' => 'getCashierId',
-        'reference' => 'getReference',
-        'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
+        'auth_code'    => 'getAuthCode',
+        'cashier_id'   => 'getCashierId',
+        'reference'    => 'getReference',
+        'barcode_url'  => 'getBarcodeUrl',
+        'expires_at'   => 'getExpiresAt',
         'service_name' => 'getServiceName',
-        'store' => 'getStore',
-        'store_name' => 'getStoreName'
+        'store'        => 'getStore',
+        'store_name'   => 'getStoreName'
     ];
 
     /**
@@ -272,7 +272,6 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -299,14 +298,14 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -339,7 +338,6 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets auth_code
      *
@@ -364,7 +362,7 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('auth_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -398,7 +396,7 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('cashier_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -540,7 +538,7 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('store', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -640,7 +638,7 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -666,5 +664,3 @@ class ChargeDataPaymentMethodCashResponse implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

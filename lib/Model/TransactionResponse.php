@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * TransactionResponse Class Doc Comment
@@ -42,81 +42,81 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TransactionResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'transaction_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'charge' => 'string',
+        'amount'     => 'int',
+        'charge'     => 'string',
         'created_at' => 'int',
-        'currency' => 'string',
-        'fee' => 'int',
-        'id' => 'string',
-        'livemode' => 'bool',
-        'net' => 'int',
-        'object' => 'string',
-        'status' => 'string',
-        'type' => 'string'
+        'currency'   => 'string',
+        'fee'        => 'int',
+        'id'         => 'string',
+        'livemode'   => 'bool',
+        'net'        => 'int',
+        'object'     => 'string',
+        'status'     => 'string',
+        'type'       => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'amount' => 'int64',
-        'charge' => null,
+        'amount'     => 'int64',
+        'charge'     => null,
         'created_at' => 'int64',
-        'currency' => null,
-        'fee' => 'int64',
-        'id' => null,
-        'livemode' => null,
-        'net' => 'int64',
-        'object' => null,
-        'status' => null,
-        'type' => null
+        'currency'   => null,
+        'fee'        => 'int64',
+        'id'         => null,
+        'livemode'   => null,
+        'net'        => 'int64',
+        'object'     => null,
+        'status'     => null,
+        'type'       => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'charge' => false,
-		'created_at' => false,
-		'currency' => false,
-		'fee' => false,
-		'id' => false,
-		'livemode' => false,
-		'net' => false,
-		'object' => false,
-		'status' => false,
-		'type' => false
+        'amount'     => false,
+        'charge'     => false,
+        'created_at' => false,
+        'currency'   => false,
+        'fee'        => false,
+        'id'         => false,
+        'livemode'   => false,
+        'net'        => false,
+        'object'     => false,
+        'status'     => false,
+        'type'       => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -198,17 +198,17 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'charge' => 'charge',
+        'amount'     => 'amount',
+        'charge'     => 'charge',
         'created_at' => 'created_at',
-        'currency' => 'currency',
-        'fee' => 'fee',
-        'id' => 'id',
-        'livemode' => 'livemode',
-        'net' => 'net',
-        'object' => 'object',
-        'status' => 'status',
-        'type' => 'type'
+        'currency'   => 'currency',
+        'fee'        => 'fee',
+        'id'         => 'id',
+        'livemode'   => 'livemode',
+        'net'        => 'net',
+        'object'     => 'object',
+        'status'     => 'status',
+        'type'       => 'type'
     ];
 
     /**
@@ -217,17 +217,17 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'charge' => 'setCharge',
+        'amount'     => 'setAmount',
+        'charge'     => 'setCharge',
         'created_at' => 'setCreatedAt',
-        'currency' => 'setCurrency',
-        'fee' => 'setFee',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
-        'net' => 'setNet',
-        'object' => 'setObject',
-        'status' => 'setStatus',
-        'type' => 'setType'
+        'currency'   => 'setCurrency',
+        'fee'        => 'setFee',
+        'id'         => 'setId',
+        'livemode'   => 'setLivemode',
+        'net'        => 'setNet',
+        'object'     => 'setObject',
+        'status'     => 'setStatus',
+        'type'       => 'setType'
     ];
 
     /**
@@ -236,17 +236,17 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'charge' => 'getCharge',
+        'amount'     => 'getAmount',
+        'charge'     => 'getCharge',
         'created_at' => 'getCreatedAt',
-        'currency' => 'getCurrency',
-        'fee' => 'getFee',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
-        'net' => 'getNet',
-        'object' => 'getObject',
-        'status' => 'getStatus',
-        'type' => 'getType'
+        'currency'   => 'getCurrency',
+        'fee'        => 'getFee',
+        'id'         => 'getId',
+        'livemode'   => 'getLivemode',
+        'net'        => 'getNet',
+        'object'     => 'getObject',
+        'status'     => 'getStatus',
+        'type'       => 'getType'
     ];
 
     /**
@@ -290,7 +290,6 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -320,14 +319,14 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -396,7 +395,6 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -762,7 +760,7 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -788,5 +786,3 @@ class TransactionResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

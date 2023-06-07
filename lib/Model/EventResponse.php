@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * EventResponse Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EventResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'event_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'created_at' => 'int',
-        'data' => 'array<string,mixed>',
-        'id' => 'string',
-        'livemode' => 'bool',
-        'object' => 'string',
-        'type' => 'string',
-        'webhook_logs' => '\Conekta\Model\WebhookLog[]',
+        'created_at'     => 'int',
+        'data'           => 'array<string,mixed>',
+        'id'             => 'string',
+        'livemode'       => 'bool',
+        'object'         => 'string',
+        'type'           => 'string',
+        'webhook_logs'   => '\Conekta\Model\WebhookLog[]',
         'webhook_status' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'created_at' => 'int64',
-        'data' => null,
-        'id' => null,
-        'livemode' => null,
-        'object' => null,
-        'type' => null,
-        'webhook_logs' => null,
+        'created_at'     => 'int64',
+        'data'           => null,
+        'id'             => null,
+        'livemode'       => null,
+        'object'         => null,
+        'type'           => null,
+        'webhook_logs'   => null,
         'webhook_status' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'created_at' => false,
-		'data' => false,
-		'id' => false,
-		'livemode' => false,
-		'object' => false,
-		'type' => false,
-		'webhook_logs' => false,
-		'webhook_status' => false
+        'created_at'     => false,
+        'data'           => false,
+        'id'             => false,
+        'livemode'       => false,
+        'object'         => false,
+        'type'           => false,
+        'webhook_logs'   => false,
+        'webhook_status' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -189,13 +189,13 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'created_at',
-        'data' => 'data',
-        'id' => 'id',
-        'livemode' => 'livemode',
-        'object' => 'object',
-        'type' => 'type',
-        'webhook_logs' => 'webhook_logs',
+        'created_at'     => 'created_at',
+        'data'           => 'data',
+        'id'             => 'id',
+        'livemode'       => 'livemode',
+        'object'         => 'object',
+        'type'           => 'type',
+        'webhook_logs'   => 'webhook_logs',
         'webhook_status' => 'webhook_status'
     ];
 
@@ -205,13 +205,13 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'data' => 'setData',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
-        'object' => 'setObject',
-        'type' => 'setType',
-        'webhook_logs' => 'setWebhookLogs',
+        'created_at'     => 'setCreatedAt',
+        'data'           => 'setData',
+        'id'             => 'setId',
+        'livemode'       => 'setLivemode',
+        'object'         => 'setObject',
+        'type'           => 'setType',
+        'webhook_logs'   => 'setWebhookLogs',
         'webhook_status' => 'setWebhookStatus'
     ];
 
@@ -221,13 +221,13 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'data' => 'getData',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
-        'object' => 'getObject',
-        'type' => 'getType',
-        'webhook_logs' => 'getWebhookLogs',
+        'created_at'     => 'getCreatedAt',
+        'data'           => 'getData',
+        'id'             => 'getId',
+        'livemode'       => 'getLivemode',
+        'object'         => 'getObject',
+        'type'           => 'getType',
+        'webhook_logs'   => 'getWebhookLogs',
         'webhook_status' => 'getWebhookStatus'
     ];
 
@@ -272,7 +272,6 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -299,14 +298,14 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -325,7 +324,7 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['data']) && (count($this->container['data']) > 100)) {
+        if (! is_null($this->container['data']) && (count($this->container['data']) > 100)) {
             $invalidProperties[] = "invalid value for 'data', number of items must be less than or equal to 100.";
         }
 
@@ -342,7 +341,6 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets created_at
@@ -627,7 +625,7 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -653,5 +651,3 @@ class EventResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

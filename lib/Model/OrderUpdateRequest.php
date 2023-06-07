@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * OrderUpdateRequest Class Doc Comment
@@ -42,81 +42,81 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderUpdateRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'order_update_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'charges' => '\Conekta\Model\ChargeRequest[]',
-        'checkout' => '\Conekta\Model\CheckoutRequest',
-        'currency' => 'string',
-        'customer_info' => '\Conekta\Model\OrderRequestCustomerInfo',
-        'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]',
-        'line_items' => '\Conekta\Model\Product[]',
-        'metadata' => 'array<string,string>',
-        'pre_authorize' => 'bool',
+        'charges'          => '\Conekta\Model\ChargeRequest[]',
+        'checkout'         => '\Conekta\Model\CheckoutRequest',
+        'currency'         => 'string',
+        'customer_info'    => '\Conekta\Model\OrderRequestCustomerInfo',
+        'discount_lines'   => '\Conekta\Model\OrderDiscountLinesRequest[]',
+        'line_items'       => '\Conekta\Model\Product[]',
+        'metadata'         => 'array<string,string>',
+        'pre_authorize'    => 'bool',
         'shipping_contact' => '\Conekta\Model\CustomerShippingContacts',
-        'shipping_lines' => '\Conekta\Model\ShippingRequest[]',
-        'tax_lines' => '\Conekta\Model\OrderTaxRequest[]'
+        'shipping_lines'   => '\Conekta\Model\ShippingRequest[]',
+        'tax_lines'        => '\Conekta\Model\OrderTaxRequest[]'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'charges' => null,
-        'checkout' => null,
-        'currency' => null,
-        'customer_info' => null,
-        'discount_lines' => null,
-        'line_items' => null,
-        'metadata' => null,
-        'pre_authorize' => null,
+        'charges'          => null,
+        'checkout'         => null,
+        'currency'         => null,
+        'customer_info'    => null,
+        'discount_lines'   => null,
+        'line_items'       => null,
+        'metadata'         => null,
+        'pre_authorize'    => null,
         'shipping_contact' => null,
-        'shipping_lines' => null,
-        'tax_lines' => null
+        'shipping_lines'   => null,
+        'tax_lines'        => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'charges' => false,
-		'checkout' => false,
-		'currency' => false,
-		'customer_info' => false,
-		'discount_lines' => false,
-		'line_items' => false,
-		'metadata' => false,
-		'pre_authorize' => false,
-		'shipping_contact' => false,
-		'shipping_lines' => false,
-		'tax_lines' => false
+        'charges'          => false,
+        'checkout'         => false,
+        'currency'         => false,
+        'customer_info'    => false,
+        'discount_lines'   => false,
+        'line_items'       => false,
+        'metadata'         => false,
+        'pre_authorize'    => false,
+        'shipping_contact' => false,
+        'shipping_lines'   => false,
+        'tax_lines'        => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -198,17 +198,17 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'charges' => 'charges',
-        'checkout' => 'checkout',
-        'currency' => 'currency',
-        'customer_info' => 'customer_info',
-        'discount_lines' => 'discount_lines',
-        'line_items' => 'line_items',
-        'metadata' => 'metadata',
-        'pre_authorize' => 'pre_authorize',
+        'charges'          => 'charges',
+        'checkout'         => 'checkout',
+        'currency'         => 'currency',
+        'customer_info'    => 'customer_info',
+        'discount_lines'   => 'discount_lines',
+        'line_items'       => 'line_items',
+        'metadata'         => 'metadata',
+        'pre_authorize'    => 'pre_authorize',
         'shipping_contact' => 'shipping_contact',
-        'shipping_lines' => 'shipping_lines',
-        'tax_lines' => 'tax_lines'
+        'shipping_lines'   => 'shipping_lines',
+        'tax_lines'        => 'tax_lines'
     ];
 
     /**
@@ -217,17 +217,17 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'charges' => 'setCharges',
-        'checkout' => 'setCheckout',
-        'currency' => 'setCurrency',
-        'customer_info' => 'setCustomerInfo',
-        'discount_lines' => 'setDiscountLines',
-        'line_items' => 'setLineItems',
-        'metadata' => 'setMetadata',
-        'pre_authorize' => 'setPreAuthorize',
+        'charges'          => 'setCharges',
+        'checkout'         => 'setCheckout',
+        'currency'         => 'setCurrency',
+        'customer_info'    => 'setCustomerInfo',
+        'discount_lines'   => 'setDiscountLines',
+        'line_items'       => 'setLineItems',
+        'metadata'         => 'setMetadata',
+        'pre_authorize'    => 'setPreAuthorize',
         'shipping_contact' => 'setShippingContact',
-        'shipping_lines' => 'setShippingLines',
-        'tax_lines' => 'setTaxLines'
+        'shipping_lines'   => 'setShippingLines',
+        'tax_lines'        => 'setTaxLines'
     ];
 
     /**
@@ -236,17 +236,17 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'charges' => 'getCharges',
-        'checkout' => 'getCheckout',
-        'currency' => 'getCurrency',
-        'customer_info' => 'getCustomerInfo',
-        'discount_lines' => 'getDiscountLines',
-        'line_items' => 'getLineItems',
-        'metadata' => 'getMetadata',
-        'pre_authorize' => 'getPreAuthorize',
+        'charges'          => 'getCharges',
+        'checkout'         => 'getCheckout',
+        'currency'         => 'getCurrency',
+        'customer_info'    => 'getCustomerInfo',
+        'discount_lines'   => 'getDiscountLines',
+        'line_items'       => 'getLineItems',
+        'metadata'         => 'getMetadata',
+        'pre_authorize'    => 'getPreAuthorize',
         'shipping_contact' => 'getShippingContact',
-        'shipping_lines' => 'getShippingLines',
-        'tax_lines' => 'getTaxLines'
+        'shipping_lines'   => 'getShippingLines',
+        'tax_lines'        => 'getTaxLines'
     ];
 
     /**
@@ -290,7 +290,6 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -320,14 +319,14 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -346,7 +345,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
+        if (! is_null($this->container['currency']) && (mb_strlen($this->container['currency']) > 3)) {
             $invalidProperties[] = "invalid value for 'currency', the character length must be smaller than or equal to 3.";
         }
 
@@ -363,7 +362,6 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets charges
@@ -729,7 +727,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -755,5 +753,3 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

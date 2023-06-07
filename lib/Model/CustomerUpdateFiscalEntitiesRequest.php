@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CustomerUpdateFiscalEntitiesRequest Class Doc Comment
@@ -41,66 +41,66 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerUpdateFiscalEntitiesRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'customer_update_fiscal_entities_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'address' => '\Conekta\Model\CustomerFiscalEntitiesRequestAddress',
-        'tax_id' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
-        'metadata' => 'array<string,object>',
+        'address'      => '\Conekta\Model\CustomerFiscalEntitiesRequestAddress',
+        'tax_id'       => 'string',
+        'email'        => 'string',
+        'phone'        => 'string',
+        'metadata'     => 'array<string,object>',
         'company_name' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'address' => null,
-        'tax_id' => null,
-        'email' => null,
-        'phone' => null,
-        'metadata' => null,
+        'address'      => null,
+        'tax_id'       => null,
+        'email'        => null,
+        'phone'        => null,
+        'metadata'     => null,
         'company_name' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'address' => false,
-		'tax_id' => false,
-		'email' => false,
-		'phone' => false,
-		'metadata' => false,
-		'company_name' => false
+        'address'      => false,
+        'tax_id'       => false,
+        'email'        => false,
+        'phone'        => false,
+        'metadata'     => false,
+        'company_name' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -182,11 +182,11 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'address' => 'address',
-        'tax_id' => 'tax_id',
-        'email' => 'email',
-        'phone' => 'phone',
-        'metadata' => 'metadata',
+        'address'      => 'address',
+        'tax_id'       => 'tax_id',
+        'email'        => 'email',
+        'phone'        => 'phone',
+        'metadata'     => 'metadata',
         'company_name' => 'company_name'
     ];
 
@@ -196,11 +196,11 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'address' => 'setAddress',
-        'tax_id' => 'setTaxId',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
-        'metadata' => 'setMetadata',
+        'address'      => 'setAddress',
+        'tax_id'       => 'setTaxId',
+        'email'        => 'setEmail',
+        'phone'        => 'setPhone',
+        'metadata'     => 'setMetadata',
         'company_name' => 'setCompanyName'
     ];
 
@@ -210,11 +210,11 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'address' => 'getAddress',
-        'tax_id' => 'getTaxId',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
-        'metadata' => 'getMetadata',
+        'address'      => 'getAddress',
+        'tax_id'       => 'getTaxId',
+        'email'        => 'getEmail',
+        'phone'        => 'getPhone',
+        'metadata'     => 'getMetadata',
         'company_name' => 'getCompanyName'
     ];
 
@@ -259,7 +259,6 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -284,14 +283,14 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -323,7 +322,6 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets address
@@ -550,7 +548,7 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -576,5 +574,3 @@ class CustomerUpdateFiscalEntitiesRequest implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * UpdateCustomerPaymentMethodsResponse Class Doc Comment
@@ -41,108 +41,108 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCustomerPaymentMethodsResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = 'type';
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'update_customer_payment_methods_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'id' => 'string',
-        'object' => 'string',
-        'created_at' => 'int',
-        'parent_id' => 'string',
-        'reference' => 'string',
-        'barcode' => 'string',
-        'barcode_url' => 'string',
-        'expires_at' => 'string',
-        'provider' => 'string',
-        'last4' => 'string',
-        'bin' => 'string',
-        'card_type' => 'string',
-        'exp_month' => 'string',
-        'exp_year' => 'string',
-        'brand' => 'string',
-        'name' => 'string',
-        'default' => 'bool',
-        'visible_on_checkout' => 'bool',
+        'type'                  => 'string',
+        'id'                    => 'string',
+        'object'                => 'string',
+        'created_at'            => 'int',
+        'parent_id'             => 'string',
+        'reference'             => 'string',
+        'barcode'               => 'string',
+        'barcode_url'           => 'string',
+        'expires_at'            => 'string',
+        'provider'              => 'string',
+        'last4'                 => 'string',
+        'bin'                   => 'string',
+        'card_type'             => 'string',
+        'exp_month'             => 'string',
+        'exp_year'              => 'string',
+        'brand'                 => 'string',
+        'name'                  => 'string',
+        'default'               => 'bool',
+        'visible_on_checkout'   => 'bool',
         'payment_source_status' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'id' => null,
-        'object' => null,
-        'created_at' => 'int64',
-        'parent_id' => null,
-        'reference' => null,
-        'barcode' => null,
-        'barcode_url' => null,
-        'expires_at' => null,
-        'provider' => null,
-        'last4' => null,
-        'bin' => null,
-        'card_type' => null,
-        'exp_month' => null,
-        'exp_year' => null,
-        'brand' => null,
-        'name' => null,
-        'default' => null,
-        'visible_on_checkout' => null,
+        'type'                  => null,
+        'id'                    => null,
+        'object'                => null,
+        'created_at'            => 'int64',
+        'parent_id'             => null,
+        'reference'             => null,
+        'barcode'               => null,
+        'barcode_url'           => null,
+        'expires_at'            => null,
+        'provider'              => null,
+        'last4'                 => null,
+        'bin'                   => null,
+        'card_type'             => null,
+        'exp_month'             => null,
+        'exp_year'              => null,
+        'brand'                 => null,
+        'name'                  => null,
+        'default'               => null,
+        'visible_on_checkout'   => null,
         'payment_source_status' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'id' => false,
-		'object' => false,
-		'created_at' => false,
-		'parent_id' => false,
-		'reference' => false,
-		'barcode' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'provider' => false,
-		'last4' => false,
-		'bin' => false,
-		'card_type' => false,
-		'exp_month' => false,
-		'exp_year' => false,
-		'brand' => false,
-		'name' => false,
-		'default' => false,
-		'visible_on_checkout' => false,
-		'payment_source_status' => false
+        'type'                  => false,
+        'id'                    => false,
+        'object'                => false,
+        'created_at'            => false,
+        'parent_id'             => false,
+        'reference'             => false,
+        'barcode'               => false,
+        'barcode_url'           => false,
+        'expires_at'            => false,
+        'provider'              => false,
+        'last4'                 => false,
+        'bin'                   => false,
+        'card_type'             => false,
+        'exp_month'             => false,
+        'exp_year'              => false,
+        'brand'                 => false,
+        'name'                  => false,
+        'default'               => false,
+        'visible_on_checkout'   => false,
+        'payment_source_status' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -224,25 +224,25 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id',
-        'object' => 'object',
-        'created_at' => 'created_at',
-        'parent_id' => 'parent_id',
-        'reference' => 'reference',
-        'barcode' => 'barcode',
-        'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
-        'provider' => 'provider',
-        'last4' => 'last4',
-        'bin' => 'bin',
-        'card_type' => 'card_type',
-        'exp_month' => 'exp_month',
-        'exp_year' => 'exp_year',
-        'brand' => 'brand',
-        'name' => 'name',
-        'default' => 'default',
-        'visible_on_checkout' => 'visible_on_checkout',
+        'type'                  => 'type',
+        'id'                    => 'id',
+        'object'                => 'object',
+        'created_at'            => 'created_at',
+        'parent_id'             => 'parent_id',
+        'reference'             => 'reference',
+        'barcode'               => 'barcode',
+        'barcode_url'           => 'barcode_url',
+        'expires_at'            => 'expires_at',
+        'provider'              => 'provider',
+        'last4'                 => 'last4',
+        'bin'                   => 'bin',
+        'card_type'             => 'card_type',
+        'exp_month'             => 'exp_month',
+        'exp_year'              => 'exp_year',
+        'brand'                 => 'brand',
+        'name'                  => 'name',
+        'default'               => 'default',
+        'visible_on_checkout'   => 'visible_on_checkout',
         'payment_source_status' => 'payment_source_status'
     ];
 
@@ -252,25 +252,25 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId',
-        'object' => 'setObject',
-        'created_at' => 'setCreatedAt',
-        'parent_id' => 'setParentId',
-        'reference' => 'setReference',
-        'barcode' => 'setBarcode',
-        'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
-        'provider' => 'setProvider',
-        'last4' => 'setLast4',
-        'bin' => 'setBin',
-        'card_type' => 'setCardType',
-        'exp_month' => 'setExpMonth',
-        'exp_year' => 'setExpYear',
-        'brand' => 'setBrand',
-        'name' => 'setName',
-        'default' => 'setDefault',
-        'visible_on_checkout' => 'setVisibleOnCheckout',
+        'type'                  => 'setType',
+        'id'                    => 'setId',
+        'object'                => 'setObject',
+        'created_at'            => 'setCreatedAt',
+        'parent_id'             => 'setParentId',
+        'reference'             => 'setReference',
+        'barcode'               => 'setBarcode',
+        'barcode_url'           => 'setBarcodeUrl',
+        'expires_at'            => 'setExpiresAt',
+        'provider'              => 'setProvider',
+        'last4'                 => 'setLast4',
+        'bin'                   => 'setBin',
+        'card_type'             => 'setCardType',
+        'exp_month'             => 'setExpMonth',
+        'exp_year'              => 'setExpYear',
+        'brand'                 => 'setBrand',
+        'name'                  => 'setName',
+        'default'               => 'setDefault',
+        'visible_on_checkout'   => 'setVisibleOnCheckout',
         'payment_source_status' => 'setPaymentSourceStatus'
     ];
 
@@ -280,25 +280,25 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId',
-        'object' => 'getObject',
-        'created_at' => 'getCreatedAt',
-        'parent_id' => 'getParentId',
-        'reference' => 'getReference',
-        'barcode' => 'getBarcode',
-        'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
-        'provider' => 'getProvider',
-        'last4' => 'getLast4',
-        'bin' => 'getBin',
-        'card_type' => 'getCardType',
-        'exp_month' => 'getExpMonth',
-        'exp_year' => 'getExpYear',
-        'brand' => 'getBrand',
-        'name' => 'getName',
-        'default' => 'getDefault',
-        'visible_on_checkout' => 'getVisibleOnCheckout',
+        'type'                  => 'getType',
+        'id'                    => 'getId',
+        'object'                => 'getObject',
+        'created_at'            => 'getCreatedAt',
+        'parent_id'             => 'getParentId',
+        'reference'             => 'getReference',
+        'barcode'               => 'getBarcode',
+        'barcode_url'           => 'getBarcodeUrl',
+        'expires_at'            => 'getExpiresAt',
+        'provider'              => 'getProvider',
+        'last4'                 => 'getLast4',
+        'bin'                   => 'getBin',
+        'card_type'             => 'getCardType',
+        'exp_month'             => 'getExpMonth',
+        'exp_year'              => 'getExpYear',
+        'brand'                 => 'getBrand',
+        'name'                  => 'getName',
+        'default'               => 'getDefault',
+        'visible_on_checkout'   => 'getVisibleOnCheckout',
         'payment_source_status' => 'getPaymentSourceStatus'
     ];
 
@@ -343,7 +343,6 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -385,14 +384,14 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -436,7 +435,6 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -1041,7 +1039,7 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1067,5 +1065,3 @@ class UpdateCustomerPaymentMethodsResponse implements ModelInterface, ArrayAcces
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

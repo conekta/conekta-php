@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CheckoutResponse Class Doc Comment
@@ -42,123 +42,123 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckoutResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'checkout_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'allowed_payment_methods' => 'string[]',
-        'can_not_expire' => 'bool',
-        'emails_sent' => 'int',
-        'exclude_card_networks' => 'object[]',
-        'expires_at' => 'int',
-        'failure_url' => 'string',
-        'force_3ds_flow' => 'bool',
-        'id' => 'string',
-        'livemode' => 'bool',
-        'metadata' => 'array<string,mixed>',
+        'allowed_payment_methods'      => 'string[]',
+        'can_not_expire'               => 'bool',
+        'emails_sent'                  => 'int',
+        'exclude_card_networks'        => 'object[]',
+        'expires_at'                   => 'int',
+        'failure_url'                  => 'string',
+        'force_3ds_flow'               => 'bool',
+        'id'                           => 'string',
+        'livemode'                     => 'bool',
+        'metadata'                     => 'array<string,mixed>',
         'monthly_installments_enabled' => 'bool',
         'monthly_installments_options' => 'int[]',
-        'name' => 'string',
-        'needs_shipping_contact' => 'bool',
-        'object' => 'string',
-        'paid_payments_count' => 'int',
-        'payments_limit_count' => 'int',
-        'recurrent' => 'bool',
-        'slug' => 'string',
-        'sms_sent' => 'int',
-        'starts_at' => 'int',
-        'status' => 'string',
-        'success_url' => 'string',
-        'type' => 'string',
-        'url' => 'string'
+        'name'                         => 'string',
+        'needs_shipping_contact'       => 'bool',
+        'object'                       => 'string',
+        'paid_payments_count'          => 'int',
+        'payments_limit_count'         => 'int',
+        'recurrent'                    => 'bool',
+        'slug'                         => 'string',
+        'sms_sent'                     => 'int',
+        'starts_at'                    => 'int',
+        'status'                       => 'string',
+        'success_url'                  => 'string',
+        'type'                         => 'string',
+        'url'                          => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'allowed_payment_methods' => null,
-        'can_not_expire' => null,
-        'emails_sent' => null,
-        'exclude_card_networks' => null,
-        'expires_at' => 'int64',
-        'failure_url' => null,
-        'force_3ds_flow' => null,
-        'id' => null,
-        'livemode' => null,
-        'metadata' => null,
+        'allowed_payment_methods'      => null,
+        'can_not_expire'               => null,
+        'emails_sent'                  => null,
+        'exclude_card_networks'        => null,
+        'expires_at'                   => 'int64',
+        'failure_url'                  => null,
+        'force_3ds_flow'               => null,
+        'id'                           => null,
+        'livemode'                     => null,
+        'metadata'                     => null,
         'monthly_installments_enabled' => null,
         'monthly_installments_options' => 'int8',
-        'name' => null,
-        'needs_shipping_contact' => null,
-        'object' => null,
-        'paid_payments_count' => null,
-        'payments_limit_count' => 'int8',
-        'recurrent' => null,
-        'slug' => null,
-        'sms_sent' => null,
-        'starts_at' => null,
-        'status' => null,
-        'success_url' => null,
-        'type' => null,
-        'url' => 'uri'
+        'name'                         => null,
+        'needs_shipping_contact'       => null,
+        'object'                       => null,
+        'paid_payments_count'          => null,
+        'payments_limit_count'         => 'int8',
+        'recurrent'                    => null,
+        'slug'                         => null,
+        'sms_sent'                     => null,
+        'starts_at'                    => null,
+        'status'                       => null,
+        'success_url'                  => null,
+        'type'                         => null,
+        'url'                          => 'uri'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'allowed_payment_methods' => false,
-		'can_not_expire' => false,
-		'emails_sent' => false,
-		'exclude_card_networks' => false,
-		'expires_at' => false,
-		'failure_url' => false,
-		'force_3ds_flow' => false,
-		'id' => false,
-		'livemode' => false,
-		'metadata' => false,
-		'monthly_installments_enabled' => false,
-		'monthly_installments_options' => false,
-		'name' => false,
-		'needs_shipping_contact' => false,
-		'object' => false,
-		'paid_payments_count' => false,
-		'payments_limit_count' => true,
-		'recurrent' => false,
-		'slug' => false,
-		'sms_sent' => false,
-		'starts_at' => false,
-		'status' => false,
-		'success_url' => false,
-		'type' => false,
-		'url' => false
+        'allowed_payment_methods'      => false,
+        'can_not_expire'               => false,
+        'emails_sent'                  => false,
+        'exclude_card_networks'        => false,
+        'expires_at'                   => false,
+        'failure_url'                  => false,
+        'force_3ds_flow'               => false,
+        'id'                           => false,
+        'livemode'                     => false,
+        'metadata'                     => false,
+        'monthly_installments_enabled' => false,
+        'monthly_installments_options' => false,
+        'name'                         => false,
+        'needs_shipping_contact'       => false,
+        'object'                       => false,
+        'paid_payments_count'          => false,
+        'payments_limit_count'         => true,
+        'recurrent'                    => false,
+        'slug'                         => false,
+        'sms_sent'                     => false,
+        'starts_at'                    => false,
+        'status'                       => false,
+        'success_url'                  => false,
+        'type'                         => false,
+        'url'                          => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -240,31 +240,31 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'allowed_payment_methods' => 'allowed_payment_methods',
-        'can_not_expire' => 'can_not_expire',
-        'emails_sent' => 'emails_sent',
-        'exclude_card_networks' => 'exclude_card_networks',
-        'expires_at' => 'expires_at',
-        'failure_url' => 'failure_url',
-        'force_3ds_flow' => 'force_3ds_flow',
-        'id' => 'id',
-        'livemode' => 'livemode',
-        'metadata' => 'metadata',
+        'allowed_payment_methods'      => 'allowed_payment_methods',
+        'can_not_expire'               => 'can_not_expire',
+        'emails_sent'                  => 'emails_sent',
+        'exclude_card_networks'        => 'exclude_card_networks',
+        'expires_at'                   => 'expires_at',
+        'failure_url'                  => 'failure_url',
+        'force_3ds_flow'               => 'force_3ds_flow',
+        'id'                           => 'id',
+        'livemode'                     => 'livemode',
+        'metadata'                     => 'metadata',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
         'monthly_installments_options' => 'monthly_installments_options',
-        'name' => 'name',
-        'needs_shipping_contact' => 'needs_shipping_contact',
-        'object' => 'object',
-        'paid_payments_count' => 'paid_payments_count',
-        'payments_limit_count' => 'payments_limit_count',
-        'recurrent' => 'recurrent',
-        'slug' => 'slug',
-        'sms_sent' => 'sms_sent',
-        'starts_at' => 'starts_at',
-        'status' => 'status',
-        'success_url' => 'success_url',
-        'type' => 'type',
-        'url' => 'url'
+        'name'                         => 'name',
+        'needs_shipping_contact'       => 'needs_shipping_contact',
+        'object'                       => 'object',
+        'paid_payments_count'          => 'paid_payments_count',
+        'payments_limit_count'         => 'payments_limit_count',
+        'recurrent'                    => 'recurrent',
+        'slug'                         => 'slug',
+        'sms_sent'                     => 'sms_sent',
+        'starts_at'                    => 'starts_at',
+        'status'                       => 'status',
+        'success_url'                  => 'success_url',
+        'type'                         => 'type',
+        'url'                          => 'url'
     ];
 
     /**
@@ -273,31 +273,31 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'allowed_payment_methods' => 'setAllowedPaymentMethods',
-        'can_not_expire' => 'setCanNotExpire',
-        'emails_sent' => 'setEmailsSent',
-        'exclude_card_networks' => 'setExcludeCardNetworks',
-        'expires_at' => 'setExpiresAt',
-        'failure_url' => 'setFailureUrl',
-        'force_3ds_flow' => 'setForce3dsFlow',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
-        'metadata' => 'setMetadata',
+        'allowed_payment_methods'      => 'setAllowedPaymentMethods',
+        'can_not_expire'               => 'setCanNotExpire',
+        'emails_sent'                  => 'setEmailsSent',
+        'exclude_card_networks'        => 'setExcludeCardNetworks',
+        'expires_at'                   => 'setExpiresAt',
+        'failure_url'                  => 'setFailureUrl',
+        'force_3ds_flow'               => 'setForce3dsFlow',
+        'id'                           => 'setId',
+        'livemode'                     => 'setLivemode',
+        'metadata'                     => 'setMetadata',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
-        'name' => 'setName',
-        'needs_shipping_contact' => 'setNeedsShippingContact',
-        'object' => 'setObject',
-        'paid_payments_count' => 'setPaidPaymentsCount',
-        'payments_limit_count' => 'setPaymentsLimitCount',
-        'recurrent' => 'setRecurrent',
-        'slug' => 'setSlug',
-        'sms_sent' => 'setSmsSent',
-        'starts_at' => 'setStartsAt',
-        'status' => 'setStatus',
-        'success_url' => 'setSuccessUrl',
-        'type' => 'setType',
-        'url' => 'setUrl'
+        'name'                         => 'setName',
+        'needs_shipping_contact'       => 'setNeedsShippingContact',
+        'object'                       => 'setObject',
+        'paid_payments_count'          => 'setPaidPaymentsCount',
+        'payments_limit_count'         => 'setPaymentsLimitCount',
+        'recurrent'                    => 'setRecurrent',
+        'slug'                         => 'setSlug',
+        'sms_sent'                     => 'setSmsSent',
+        'starts_at'                    => 'setStartsAt',
+        'status'                       => 'setStatus',
+        'success_url'                  => 'setSuccessUrl',
+        'type'                         => 'setType',
+        'url'                          => 'setUrl'
     ];
 
     /**
@@ -306,31 +306,31 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'allowed_payment_methods' => 'getAllowedPaymentMethods',
-        'can_not_expire' => 'getCanNotExpire',
-        'emails_sent' => 'getEmailsSent',
-        'exclude_card_networks' => 'getExcludeCardNetworks',
-        'expires_at' => 'getExpiresAt',
-        'failure_url' => 'getFailureUrl',
-        'force_3ds_flow' => 'getForce3dsFlow',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
-        'metadata' => 'getMetadata',
+        'allowed_payment_methods'      => 'getAllowedPaymentMethods',
+        'can_not_expire'               => 'getCanNotExpire',
+        'emails_sent'                  => 'getEmailsSent',
+        'exclude_card_networks'        => 'getExcludeCardNetworks',
+        'expires_at'                   => 'getExpiresAt',
+        'failure_url'                  => 'getFailureUrl',
+        'force_3ds_flow'               => 'getForce3dsFlow',
+        'id'                           => 'getId',
+        'livemode'                     => 'getLivemode',
+        'metadata'                     => 'getMetadata',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
-        'name' => 'getName',
-        'needs_shipping_contact' => 'getNeedsShippingContact',
-        'object' => 'getObject',
-        'paid_payments_count' => 'getPaidPaymentsCount',
-        'payments_limit_count' => 'getPaymentsLimitCount',
-        'recurrent' => 'getRecurrent',
-        'slug' => 'getSlug',
-        'sms_sent' => 'getSmsSent',
-        'starts_at' => 'getStartsAt',
-        'status' => 'getStatus',
-        'success_url' => 'getSuccessUrl',
-        'type' => 'getType',
-        'url' => 'getUrl'
+        'name'                         => 'getName',
+        'needs_shipping_contact'       => 'getNeedsShippingContact',
+        'object'                       => 'getObject',
+        'paid_payments_count'          => 'getPaidPaymentsCount',
+        'payments_limit_count'         => 'getPaymentsLimitCount',
+        'recurrent'                    => 'getRecurrent',
+        'slug'                         => 'getSlug',
+        'sms_sent'                     => 'getSmsSent',
+        'starts_at'                    => 'getStartsAt',
+        'status'                       => 'getStatus',
+        'success_url'                  => 'getSuccessUrl',
+        'type'                         => 'getType',
+        'url'                          => 'getUrl'
     ];
 
     /**
@@ -373,7 +373,6 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return self::$openAPIModelName;
     }
-
 
     /**
      * Associative array for storing property values
@@ -418,14 +417,14 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -469,7 +468,6 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets allowed_payment_methods
@@ -927,7 +925,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('payments_limit_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1216,7 +1214,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1242,5 +1240,3 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

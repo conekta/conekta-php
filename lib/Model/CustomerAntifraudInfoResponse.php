@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CustomerAntifraudInfoResponse Class Doc Comment
@@ -41,54 +41,54 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerAntifraudInfoResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'customer_antifraud_info_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'first_paid_at' => 'int',
+        'first_paid_at'      => 'int',
         'account_created_at' => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'first_paid_at' => null,
+        'first_paid_at'      => null,
         'account_created_at' => 'int64'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'first_paid_at' => false,
-		'account_created_at' => false
+        'first_paid_at'      => false,
+        'account_created_at' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -170,7 +170,7 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'first_paid_at' => 'first_paid_at',
+        'first_paid_at'      => 'first_paid_at',
         'account_created_at' => 'account_created_at'
     ];
 
@@ -180,7 +180,7 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'first_paid_at' => 'setFirstPaidAt',
+        'first_paid_at'      => 'setFirstPaidAt',
         'account_created_at' => 'setAccountCreatedAt'
     ];
 
@@ -190,7 +190,7 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'first_paid_at' => 'getFirstPaidAt',
+        'first_paid_at'      => 'getFirstPaidAt',
         'account_created_at' => 'getAccountCreatedAt'
     ];
 
@@ -235,7 +235,6 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -256,14 +255,14 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -295,7 +294,6 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets first_paid_at
@@ -414,7 +412,7 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -440,5 +438,3 @@ class CustomerAntifraudInfoResponse implements ModelInterface, ArrayAccess, \Jso
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

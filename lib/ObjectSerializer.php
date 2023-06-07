@@ -29,8 +29,8 @@
 
 namespace Conekta;
 
-use GuzzleHttp\Psr7\Utils;
 use Conekta\Model\ModelInterface;
+use GuzzleHttp\Psr7\Utils;
 
 /**
  * ObjectSerializer Class Doc Comment
@@ -87,15 +87,15 @@ class ObjectSerializer
                 $formats = $data::openAPIFormats();
                 foreach ($data::openAPITypes() as $property => $openAPIType) {
                     $getter = $data::getters()[$property];
-                    $value = $data->$getter();
-                    if ($value !== null && !in_array($openAPIType, ['\DateTime', '\SplFileObject', 'array', 'bool', 'boolean', 'byte', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+                    $value = $data->{$getter}();
+                    if ($value !== null && ! in_array($openAPIType, ['\DateTime', '\SplFileObject', 'array', 'bool', 'boolean', 'byte', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
                         $callable = [$openAPIType, 'getAllowableEnumValues'];
                         if (is_callable($callable)) {
                             /** array $callable */
                             $allowedEnumTypes = $callable();
-                            if (!in_array($value, $allowedEnumTypes, true)) {
+                            if (! in_array($value, $allowedEnumTypes, true)) {
                                 $imploded = implode("', '", $allowedEnumTypes);
-                                throw new \InvalidArgumentException("Invalid value for enum '$openAPIType', must be one of: '$imploded'");
+                                throw new \InvalidArgumentException("Invalid value for enum '{$openAPIType}', must be one of: '{$imploded}'");
                             }
                         }
                     }
@@ -104,7 +104,7 @@ class ObjectSerializer
                     }
                 }
             } else {
-                foreach($data as $property => $value) {
+                foreach ($data as $property => $value) {
                     $values[$property] = self::sanitizeForSerialization($value);
                 }
             }
@@ -140,7 +140,9 @@ class ObjectSerializer
      */
     public static function sanitizeTimestamp($timestamp)
     {
-        if (!is_string($timestamp)) return $timestamp;
+        if (! is_string($timestamp)) {
+            return $timestamp;
+        }
 
         return preg_replace('/(:\d{2}.\d{6})\d*/', '$1', $timestamp);
     }
@@ -169,7 +171,7 @@ class ObjectSerializer
     private static function isEmptyValue($value, string $openApiType): bool
     {
         # If empty() returns false, it is not empty regardless of its type.
-        if (!empty($value)) {
+        if (! empty($value)) {
             return false;
         }
 
@@ -185,17 +187,14 @@ class ObjectSerializer
             case 'int':
             case 'integer':
                 return $value !== 0;
-
             case 'number':
             case 'float':
                 return $value !== 0 && $value !== 0.0;
-
-            # For boolean values, '' is considered empty
+                # For boolean values, '' is considered empty
             case 'bool':
             case 'boolean':
-                return !in_array($value, [false, 0], true);
-
-            # For all the other types, any value at this point can be considered empty.
+                return ! in_array($value, [false, 0], true);
+                # For all the other types, any value at this point can be considered empty.
             default:
                 return true;
         }
@@ -222,7 +221,6 @@ class ObjectSerializer
         bool $explode = true,
         bool $required = true
     ): array {
-
         # Check if we should omit this parameter from the query. This should only happen when:
         #  - Parameter is NOT required; AND
         #  - its value is set to a value that is equivalent to "empty", depending on its OpenAPI type. For
@@ -236,7 +234,7 @@ class ObjectSerializer
         }
 
         # Handle DateTime objects in query
-        if($openApiType === "\\DateTime" && $value instanceof \DateTime) {
+        if ($openApiType === '\\DateTime' && $value instanceof \DateTime) {
             return ["{$paramName}" => $value->format(self::$dateTimeFormat)];
         }
 
@@ -246,7 +244,9 @@ class ObjectSerializer
         // since \GuzzleHttp\Psr7\Query::build fails with nested arrays
         // need to flatten array first
         $flattenArray = function ($arr, $name, &$result = []) use (&$flattenArray, $style, $explode) {
-            if (!is_array($arr)) return $arr;
+            if (! is_array($arr)) {
+                return $arr;
+            }
 
             foreach ($arr as $k => $v) {
                 $prop = ($style === 'deepObject') ? $prop = "{$name}[{$k}]" : $k;
@@ -254,7 +254,7 @@ class ObjectSerializer
                 if (is_array($v)) {
                     $flattenArray($v, $prop, $result);
                 } else {
-                    if ($style !== 'deepObject' && !$explode) {
+                    if ($style !== 'deepObject' && ! $explode) {
                         // push key itself
                         $result[] = $prop;
                     }
@@ -347,7 +347,8 @@ class ObjectSerializer
     {
         if ($value instanceof \DateTime) { // datetime in ISO8601 format
             return $value->format(self::$dateTimeFormat);
-        } elseif (is_bool($value)) {
+        }
+        if (is_bool($value)) {
             return $value ? 'true' : 'false';
         } else {
             return (string) $value;
@@ -375,14 +376,11 @@ class ObjectSerializer
             case 'pipeDelimited':
             case 'pipes':
                 return implode('|', $collection);
-
             case 'tsv':
                 return implode("\t", $collection);
-
             case 'spaceDelimited':
             case 'ssv':
                 return implode(' ', $collection);
-
             case 'simple':
             case 'csv':
                 // Deliberate fall through. CSV is default format.
@@ -410,8 +408,8 @@ class ObjectSerializer
         if (strcasecmp(substr($class, -2), '[]') === 0) {
             $data = is_string($data) ? json_decode($data) : $data;
 
-            if (!is_array($data)) {
-                throw new \InvalidArgumentException("Invalid array '$class'");
+            if (! is_array($data)) {
+                throw new \InvalidArgumentException("Invalid array '{$class}'");
             }
 
             $subClass = substr($class, 0, -2);
@@ -427,7 +425,7 @@ class ObjectSerializer
             settype($data, 'array');
             $inner = substr($class, 4, -1);
             $deserialized = [];
-            if (strrpos($inner, ",") !== false) {
+            if (strrpos($inner, ',') !== false) {
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
@@ -440,7 +438,8 @@ class ObjectSerializer
         if ($class === 'object') {
             settype($data, 'array');
             return $data;
-        } elseif ($class === 'mixed') {
+        }
+        if ($class === 'mixed') {
             settype($data, gettype($data));
             return $data;
         }
@@ -452,7 +451,7 @@ class ObjectSerializer
             // what is meant. The invalid empty string is probably to
             // be interpreted as a missing field/value. Let's handle
             // this graceful.
-            if (!empty($data)) {
+            if (! empty($data)) {
                 try {
                     return new \DateTime($data);
                 } catch (\Exception $exception) {
@@ -474,7 +473,7 @@ class ObjectSerializer
             // determine file name
             if (
                 is_array($httpHeaders)
-                && array_key_exists('Content-Disposition', $httpHeaders) 
+                && array_key_exists('Content-Disposition', $httpHeaders)
                 && preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)
             ) {
                 $filename = Configuration::getDefaultConfiguration()->getTempFolderPath() . DIRECTORY_SEPARATOR . self::sanitizeFilename($match[1]);
@@ -497,11 +496,10 @@ class ObjectSerializer
             return $data;
         }
 
-
         if (method_exists($class, 'getAllowableEnumValues')) {
-            if (!in_array($data, $class::getAllowableEnumValues(), true)) {
+            if (! in_array($data, $class::getAllowableEnumValues(), true)) {
                 $imploded = implode("', '", $class::getAllowableEnumValues());
-                throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
+                throw new \InvalidArgumentException("Invalid value for enum '{$class}', must be one of: '{$imploded}'");
             }
             return $data;
         } else {
@@ -513,7 +511,7 @@ class ObjectSerializer
 
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
-            if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
+            if (! empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
                 $subclass = '\Conekta\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
@@ -525,13 +523,13 @@ class ObjectSerializer
             foreach ($instance::openAPITypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
 
-                if (!isset($propertySetter)) {
+                if (! isset($propertySetter)) {
                     continue;
                 }
 
-                if (!isset($data->{$instance::attributeMap()[$property]})) {
+                if (! isset($data->{$instance::attributeMap()[$property]})) {
                     if ($instance::isNullable($property)) {
-                        $instance->$propertySetter(null);
+                        $instance->{$propertySetter}(null);
                     }
 
                     continue;
@@ -539,7 +537,7 @@ class ObjectSerializer
 
                 if (isset($data->{$instance::attributeMap()[$property]})) {
                     $propertyValue = $data->{$instance::attributeMap()[$property]};
-                    $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
+                    $instance->{$propertySetter}(self::deserialize($propertyValue, $type, null));
                 }
             }
             return $instance;

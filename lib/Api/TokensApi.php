@@ -28,17 +28,10 @@
 
 namespace Conekta\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
-use Conekta\ApiException;
-use Conekta\Configuration;
-use Conekta\HeaderSelector;
-use Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, HeaderSelector, ObjectSerializer};
+use GuzzleHttp\Exception\{ConnectException, RequestException};
+use GuzzleHttp\Psr7\{MultipartStream, Request};
+use GuzzleHttp\{Client, ClientInterface, RequestOptions};
 
 /**
  * TokensApi Class Doc Comment
@@ -77,7 +70,7 @@ class TokensApi
         ],
     ];
 
-/**
+    /**
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
@@ -272,7 +265,6 @@ class TokensApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -399,15 +391,12 @@ class TokensApi
      */
     public function createTokenRequest($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
-
         // verify the required parameter 'token' is set
         if ($token === null || (is_array($token) && count($token) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $token when calling createToken'
             );
         }
-
-
 
         $resourcePath = '/tokens';
         $formParams = [];
@@ -416,13 +405,10 @@ class TokensApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -449,14 +435,13 @@ class TokensApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -467,7 +452,7 @@ class TokensApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -503,7 +488,7 @@ class TokensApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
+            if (! $options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }

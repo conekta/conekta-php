@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * UpdateCustomer Class Doc Comment
@@ -42,90 +42,90 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateCustomer implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'update_customer';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'antifraud_info' => '\Conekta\Model\UpdateCustomerAntifraudInfo',
-        'default_payment_source_id' => 'string',
-        'email' => 'string',
-        'name' => 'string',
-        'phone' => 'string',
-        'plan_id' => 'string',
+        'antifraud_info'              => '\Conekta\Model\UpdateCustomerAntifraudInfo',
+        'default_payment_source_id'   => 'string',
+        'email'                       => 'string',
+        'name'                        => 'string',
+        'phone'                       => 'string',
+        'plan_id'                     => 'string',
         'default_shipping_contact_id' => 'string',
-        'corporate' => 'bool',
-        'custom_reference' => 'string',
-        'fiscal_entities' => '\Conekta\Model\CustomerFiscalEntitiesRequest[]',
-        'metadata' => 'array<string,mixed>',
-        'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsRequest[]',
-        'shipping_contacts' => '\Conekta\Model\CustomerShippingContacts[]',
-        'subscription' => '\Conekta\Model\SubscriptionRequest'
+        'corporate'                   => 'bool',
+        'custom_reference'            => 'string',
+        'fiscal_entities'             => '\Conekta\Model\CustomerFiscalEntitiesRequest[]',
+        'metadata'                    => 'array<string,mixed>',
+        'payment_sources'             => '\Conekta\Model\CustomerPaymentMethodsRequest[]',
+        'shipping_contacts'           => '\Conekta\Model\CustomerShippingContacts[]',
+        'subscription'                => '\Conekta\Model\SubscriptionRequest'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'antifraud_info' => null,
-        'default_payment_source_id' => null,
-        'email' => null,
-        'name' => null,
-        'phone' => null,
-        'plan_id' => null,
+        'antifraud_info'              => null,
+        'default_payment_source_id'   => null,
+        'email'                       => null,
+        'name'                        => null,
+        'phone'                       => null,
+        'plan_id'                     => null,
         'default_shipping_contact_id' => null,
-        'corporate' => null,
-        'custom_reference' => null,
-        'fiscal_entities' => null,
-        'metadata' => null,
-        'payment_sources' => null,
-        'shipping_contacts' => null,
-        'subscription' => null
+        'corporate'                   => null,
+        'custom_reference'            => null,
+        'fiscal_entities'             => null,
+        'metadata'                    => null,
+        'payment_sources'             => null,
+        'shipping_contacts'           => null,
+        'subscription'                => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'antifraud_info' => true,
-		'default_payment_source_id' => false,
-		'email' => false,
-		'name' => false,
-		'phone' => false,
-		'plan_id' => false,
-		'default_shipping_contact_id' => false,
-		'corporate' => false,
-		'custom_reference' => false,
-		'fiscal_entities' => false,
-		'metadata' => false,
-		'payment_sources' => false,
-		'shipping_contacts' => false,
-		'subscription' => false
+        'antifraud_info'              => true,
+        'default_payment_source_id'   => false,
+        'email'                       => false,
+        'name'                        => false,
+        'phone'                       => false,
+        'plan_id'                     => false,
+        'default_shipping_contact_id' => false,
+        'corporate'                   => false,
+        'custom_reference'            => false,
+        'fiscal_entities'             => false,
+        'metadata'                    => false,
+        'payment_sources'             => false,
+        'shipping_contacts'           => false,
+        'subscription'                => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -207,20 +207,20 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'antifraud_info' => 'antifraud_info',
-        'default_payment_source_id' => 'default_payment_source_id',
-        'email' => 'email',
-        'name' => 'name',
-        'phone' => 'phone',
-        'plan_id' => 'plan_id',
+        'antifraud_info'              => 'antifraud_info',
+        'default_payment_source_id'   => 'default_payment_source_id',
+        'email'                       => 'email',
+        'name'                        => 'name',
+        'phone'                       => 'phone',
+        'plan_id'                     => 'plan_id',
         'default_shipping_contact_id' => 'default_shipping_contact_id',
-        'corporate' => 'corporate',
-        'custom_reference' => 'custom_reference',
-        'fiscal_entities' => 'fiscal_entities',
-        'metadata' => 'metadata',
-        'payment_sources' => 'payment_sources',
-        'shipping_contacts' => 'shipping_contacts',
-        'subscription' => 'subscription'
+        'corporate'                   => 'corporate',
+        'custom_reference'            => 'custom_reference',
+        'fiscal_entities'             => 'fiscal_entities',
+        'metadata'                    => 'metadata',
+        'payment_sources'             => 'payment_sources',
+        'shipping_contacts'           => 'shipping_contacts',
+        'subscription'                => 'subscription'
     ];
 
     /**
@@ -229,20 +229,20 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'antifraud_info' => 'setAntifraudInfo',
-        'default_payment_source_id' => 'setDefaultPaymentSourceId',
-        'email' => 'setEmail',
-        'name' => 'setName',
-        'phone' => 'setPhone',
-        'plan_id' => 'setPlanId',
+        'antifraud_info'              => 'setAntifraudInfo',
+        'default_payment_source_id'   => 'setDefaultPaymentSourceId',
+        'email'                       => 'setEmail',
+        'name'                        => 'setName',
+        'phone'                       => 'setPhone',
+        'plan_id'                     => 'setPlanId',
         'default_shipping_contact_id' => 'setDefaultShippingContactId',
-        'corporate' => 'setCorporate',
-        'custom_reference' => 'setCustomReference',
-        'fiscal_entities' => 'setFiscalEntities',
-        'metadata' => 'setMetadata',
-        'payment_sources' => 'setPaymentSources',
-        'shipping_contacts' => 'setShippingContacts',
-        'subscription' => 'setSubscription'
+        'corporate'                   => 'setCorporate',
+        'custom_reference'            => 'setCustomReference',
+        'fiscal_entities'             => 'setFiscalEntities',
+        'metadata'                    => 'setMetadata',
+        'payment_sources'             => 'setPaymentSources',
+        'shipping_contacts'           => 'setShippingContacts',
+        'subscription'                => 'setSubscription'
     ];
 
     /**
@@ -251,20 +251,20 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'antifraud_info' => 'getAntifraudInfo',
-        'default_payment_source_id' => 'getDefaultPaymentSourceId',
-        'email' => 'getEmail',
-        'name' => 'getName',
-        'phone' => 'getPhone',
-        'plan_id' => 'getPlanId',
+        'antifraud_info'              => 'getAntifraudInfo',
+        'default_payment_source_id'   => 'getDefaultPaymentSourceId',
+        'email'                       => 'getEmail',
+        'name'                        => 'getName',
+        'phone'                       => 'getPhone',
+        'plan_id'                     => 'getPlanId',
         'default_shipping_contact_id' => 'getDefaultShippingContactId',
-        'corporate' => 'getCorporate',
-        'custom_reference' => 'getCustomReference',
-        'fiscal_entities' => 'getFiscalEntities',
-        'metadata' => 'getMetadata',
-        'payment_sources' => 'getPaymentSources',
-        'shipping_contacts' => 'getShippingContacts',
-        'subscription' => 'getSubscription'
+        'corporate'                   => 'getCorporate',
+        'custom_reference'            => 'getCustomReference',
+        'fiscal_entities'             => 'getFiscalEntities',
+        'metadata'                    => 'getMetadata',
+        'payment_sources'             => 'getPaymentSources',
+        'shipping_contacts'           => 'getShippingContacts',
+        'subscription'                => 'getSubscription'
     ];
 
     /**
@@ -308,7 +308,6 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -341,14 +340,14 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -367,7 +366,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+        if (! is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
             $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
         }
 
@@ -384,7 +383,6 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets antifraud_info
@@ -410,7 +408,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('antifraud_info', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -838,7 +836,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -864,5 +862,3 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

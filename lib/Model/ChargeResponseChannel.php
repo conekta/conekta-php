@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ChargeResponseChannel Class Doc Comment
@@ -41,60 +41,60 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeResponseChannel implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'charge_response_channel';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'segment' => 'string',
-        'checkout_request_id' => 'string',
+        'segment'               => 'string',
+        'checkout_request_id'   => 'string',
         'checkout_request_type' => 'string',
-        'id' => 'string'
+        'id'                    => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'segment' => null,
-        'checkout_request_id' => null,
+        'segment'               => null,
+        'checkout_request_id'   => null,
         'checkout_request_type' => null,
-        'id' => null
+        'id'                    => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'segment' => false,
-		'checkout_request_id' => false,
-		'checkout_request_type' => false,
-		'id' => false
+        'segment'               => false,
+        'checkout_request_id'   => false,
+        'checkout_request_type' => false,
+        'id'                    => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -176,10 +176,10 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'segment' => 'segment',
-        'checkout_request_id' => 'checkout_request_id',
+        'segment'               => 'segment',
+        'checkout_request_id'   => 'checkout_request_id',
         'checkout_request_type' => 'checkout_request_type',
-        'id' => 'id'
+        'id'                    => 'id'
     ];
 
     /**
@@ -188,10 +188,10 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'segment' => 'setSegment',
-        'checkout_request_id' => 'setCheckoutRequestId',
+        'segment'               => 'setSegment',
+        'checkout_request_id'   => 'setCheckoutRequestId',
         'checkout_request_type' => 'setCheckoutRequestType',
-        'id' => 'setId'
+        'id'                    => 'setId'
     ];
 
     /**
@@ -200,10 +200,10 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'segment' => 'getSegment',
-        'checkout_request_id' => 'getCheckoutRequestId',
+        'segment'               => 'getSegment',
+        'checkout_request_id'   => 'getCheckoutRequestId',
         'checkout_request_type' => 'getCheckoutRequestType',
-        'id' => 'getId'
+        'id'                    => 'getId'
     ];
 
     /**
@@ -247,7 +247,6 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -270,14 +269,14 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -309,7 +308,6 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets segment
@@ -482,7 +480,7 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -508,5 +506,3 @@ class ChargeResponseChannel implements ModelInterface, ArrayAccess, \JsonSeriali
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

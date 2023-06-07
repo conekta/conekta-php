@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodCashResponse Class Doc Comment
@@ -41,78 +41,78 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCashResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_cash_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'id' => 'string',
-        'object' => 'string',
-        'created_at' => 'int',
-        'parent_id' => 'string',
-        'reference' => 'string',
-        'barcode' => 'string',
+        'type'        => 'string',
+        'id'          => 'string',
+        'object'      => 'string',
+        'created_at'  => 'int',
+        'parent_id'   => 'string',
+        'reference'   => 'string',
+        'barcode'     => 'string',
         'barcode_url' => 'string',
-        'expires_at' => 'int',
-        'provider' => 'string'
+        'expires_at'  => 'int',
+        'provider'    => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'id' => null,
-        'object' => null,
-        'created_at' => 'int64',
-        'parent_id' => null,
-        'reference' => null,
-        'barcode' => null,
+        'type'        => null,
+        'id'          => null,
+        'object'      => null,
+        'created_at'  => 'int64',
+        'parent_id'   => null,
+        'reference'   => null,
+        'barcode'     => null,
         'barcode_url' => null,
-        'expires_at' => 'int64',
-        'provider' => null
+        'expires_at'  => 'int64',
+        'provider'    => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'id' => false,
-		'object' => false,
-		'created_at' => false,
-		'parent_id' => false,
-		'reference' => false,
-		'barcode' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'provider' => false
+        'type'        => false,
+        'id'          => false,
+        'object'      => false,
+        'created_at'  => false,
+        'parent_id'   => false,
+        'reference'   => false,
+        'barcode'     => false,
+        'barcode_url' => false,
+        'expires_at'  => false,
+        'provider'    => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -194,16 +194,16 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id',
-        'object' => 'object',
-        'created_at' => 'created_at',
-        'parent_id' => 'parent_id',
-        'reference' => 'reference',
-        'barcode' => 'barcode',
+        'type'        => 'type',
+        'id'          => 'id',
+        'object'      => 'object',
+        'created_at'  => 'created_at',
+        'parent_id'   => 'parent_id',
+        'reference'   => 'reference',
+        'barcode'     => 'barcode',
         'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
-        'provider' => 'provider'
+        'expires_at'  => 'expires_at',
+        'provider'    => 'provider'
     ];
 
     /**
@@ -212,16 +212,16 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId',
-        'object' => 'setObject',
-        'created_at' => 'setCreatedAt',
-        'parent_id' => 'setParentId',
-        'reference' => 'setReference',
-        'barcode' => 'setBarcode',
+        'type'        => 'setType',
+        'id'          => 'setId',
+        'object'      => 'setObject',
+        'created_at'  => 'setCreatedAt',
+        'parent_id'   => 'setParentId',
+        'reference'   => 'setReference',
+        'barcode'     => 'setBarcode',
         'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
-        'provider' => 'setProvider'
+        'expires_at'  => 'setExpiresAt',
+        'provider'    => 'setProvider'
     ];
 
     /**
@@ -230,16 +230,16 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId',
-        'object' => 'getObject',
-        'created_at' => 'getCreatedAt',
-        'parent_id' => 'getParentId',
-        'reference' => 'getReference',
-        'barcode' => 'getBarcode',
+        'type'        => 'getType',
+        'id'          => 'getId',
+        'object'      => 'getObject',
+        'created_at'  => 'getCreatedAt',
+        'parent_id'   => 'getParentId',
+        'reference'   => 'getReference',
+        'barcode'     => 'getBarcode',
         'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
-        'provider' => 'getProvider'
+        'expires_at'  => 'getExpiresAt',
+        'provider'    => 'getProvider'
     ];
 
     /**
@@ -283,7 +283,6 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -312,14 +311,14 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -363,7 +362,6 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -698,7 +696,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -724,5 +722,3 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

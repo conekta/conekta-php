@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodSpeiRecurrent Class Doc Comment
@@ -41,69 +41,69 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodSpeiRecurrent implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_spei_recurrent';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'id' => 'string',
-        'object' => 'string',
+        'type'       => 'string',
+        'id'         => 'string',
+        'object'     => 'string',
         'created_at' => 'int',
-        'parent_id' => 'string',
-        'reference' => 'string',
+        'parent_id'  => 'string',
+        'reference'  => 'string',
         'expires_at' => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'id' => null,
-        'object' => null,
+        'type'       => null,
+        'id'         => null,
+        'object'     => null,
         'created_at' => 'int64',
-        'parent_id' => null,
-        'reference' => null,
+        'parent_id'  => null,
+        'reference'  => null,
         'expires_at' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'id' => false,
-		'object' => false,
-		'created_at' => false,
-		'parent_id' => false,
-		'reference' => false,
-		'expires_at' => false
+        'type'       => false,
+        'id'         => false,
+        'object'     => false,
+        'created_at' => false,
+        'parent_id'  => false,
+        'reference'  => false,
+        'expires_at' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -185,12 +185,12 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'id' => 'id',
-        'object' => 'object',
+        'type'       => 'type',
+        'id'         => 'id',
+        'object'     => 'object',
         'created_at' => 'created_at',
-        'parent_id' => 'parent_id',
-        'reference' => 'reference',
+        'parent_id'  => 'parent_id',
+        'reference'  => 'reference',
         'expires_at' => 'expires_at'
     ];
 
@@ -200,12 +200,12 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'id' => 'setId',
-        'object' => 'setObject',
+        'type'       => 'setType',
+        'id'         => 'setId',
+        'object'     => 'setObject',
         'created_at' => 'setCreatedAt',
-        'parent_id' => 'setParentId',
-        'reference' => 'setReference',
+        'parent_id'  => 'setParentId',
+        'reference'  => 'setReference',
         'expires_at' => 'setExpiresAt'
     ];
 
@@ -215,12 +215,12 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'id' => 'getId',
-        'object' => 'getObject',
+        'type'       => 'getType',
+        'id'         => 'getId',
+        'object'     => 'getObject',
         'created_at' => 'getCreatedAt',
-        'parent_id' => 'getParentId',
-        'reference' => 'getReference',
+        'parent_id'  => 'getParentId',
+        'reference'  => 'getReference',
         'expires_at' => 'getExpiresAt'
     ];
 
@@ -265,7 +265,6 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -291,14 +290,14 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -342,7 +341,6 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -596,7 +594,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -622,5 +620,3 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

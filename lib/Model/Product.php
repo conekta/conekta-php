@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * Product Class Doc Comment
@@ -41,75 +41,75 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Product implements ModelInterface, ArrayAccess, \JsonSerializable
+class Product implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'product';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'antifraud_info' => 'array<string,mixed>',
-        'brand' => 'string',
-        'description' => 'string',
-        'metadata' => 'array<string,string>',
-        'name' => 'string',
-        'quantity' => 'int',
-        'sku' => 'string',
-        'tags' => 'string[]',
-        'unit_price' => 'int'
+        'brand'          => 'string',
+        'description'    => 'string',
+        'metadata'       => 'array<string,string>',
+        'name'           => 'string',
+        'quantity'       => 'int',
+        'sku'            => 'string',
+        'tags'           => 'string[]',
+        'unit_price'     => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'antifraud_info' => null,
-        'brand' => null,
-        'description' => null,
-        'metadata' => null,
-        'name' => null,
-        'quantity' => 'int32',
-        'sku' => null,
-        'tags' => null,
-        'unit_price' => 'int32'
+        'brand'          => null,
+        'description'    => null,
+        'metadata'       => null,
+        'name'           => null,
+        'quantity'       => 'int32',
+        'sku'            => null,
+        'tags'           => null,
+        'unit_price'     => 'int32'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'antifraud_info' => false,
-		'brand' => false,
-		'description' => false,
-		'metadata' => false,
-		'name' => false,
-		'quantity' => false,
-		'sku' => false,
-		'tags' => false,
-		'unit_price' => false
+        'brand'          => false,
+        'description'    => false,
+        'metadata'       => false,
+        'name'           => false,
+        'quantity'       => false,
+        'sku'            => false,
+        'tags'           => false,
+        'unit_price'     => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -192,14 +192,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'antifraud_info' => 'antifraud_info',
-        'brand' => 'brand',
-        'description' => 'description',
-        'metadata' => 'metadata',
-        'name' => 'name',
-        'quantity' => 'quantity',
-        'sku' => 'sku',
-        'tags' => 'tags',
-        'unit_price' => 'unit_price'
+        'brand'          => 'brand',
+        'description'    => 'description',
+        'metadata'       => 'metadata',
+        'name'           => 'name',
+        'quantity'       => 'quantity',
+        'sku'            => 'sku',
+        'tags'           => 'tags',
+        'unit_price'     => 'unit_price'
     ];
 
     /**
@@ -209,14 +209,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'antifraud_info' => 'setAntifraudInfo',
-        'brand' => 'setBrand',
-        'description' => 'setDescription',
-        'metadata' => 'setMetadata',
-        'name' => 'setName',
-        'quantity' => 'setQuantity',
-        'sku' => 'setSku',
-        'tags' => 'setTags',
-        'unit_price' => 'setUnitPrice'
+        'brand'          => 'setBrand',
+        'description'    => 'setDescription',
+        'metadata'       => 'setMetadata',
+        'name'           => 'setName',
+        'quantity'       => 'setQuantity',
+        'sku'            => 'setSku',
+        'tags'           => 'setTags',
+        'unit_price'     => 'setUnitPrice'
     ];
 
     /**
@@ -226,14 +226,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'antifraud_info' => 'getAntifraudInfo',
-        'brand' => 'getBrand',
-        'description' => 'getDescription',
-        'metadata' => 'getMetadata',
-        'name' => 'getName',
-        'quantity' => 'getQuantity',
-        'sku' => 'getSku',
-        'tags' => 'getTags',
-        'unit_price' => 'getUnitPrice'
+        'brand'          => 'getBrand',
+        'description'    => 'getDescription',
+        'metadata'       => 'getMetadata',
+        'name'           => 'getName',
+        'quantity'       => 'getQuantity',
+        'sku'            => 'getSku',
+        'tags'           => 'getTags',
+        'unit_price'     => 'getUnitPrice'
     ];
 
     /**
@@ -277,7 +277,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -305,14 +304,14 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -331,11 +330,11 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 250)) {
+        if (! is_null($this->container['description']) && (mb_strlen($this->container['description']) > 250)) {
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 250.";
         }
 
-        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+        if (! is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
             $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
         }
 
@@ -369,7 +368,6 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets antifraud_info
@@ -695,7 +693,7 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -721,5 +719,3 @@ class Product implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

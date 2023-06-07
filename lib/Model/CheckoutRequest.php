@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CheckoutRequest Class Doc Comment
@@ -42,75 +42,75 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckoutRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'checkout_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'allowed_payment_methods' => 'string[]',
-        'expires_at' => 'int',
-        'failure_url' => 'string',
+        'allowed_payment_methods'      => 'string[]',
+        'expires_at'                   => 'int',
+        'failure_url'                  => 'string',
         'monthly_installments_enabled' => 'bool',
         'monthly_installments_options' => 'int[]',
-        'name' => 'string',
-        'on_demand_enabled' => 'bool',
-        'success_url' => 'string',
-        'type' => 'string'
+        'name'                         => 'string',
+        'on_demand_enabled'            => 'bool',
+        'success_url'                  => 'string',
+        'type'                         => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'allowed_payment_methods' => null,
-        'expires_at' => 'int64',
-        'failure_url' => null,
+        'allowed_payment_methods'      => null,
+        'expires_at'                   => 'int64',
+        'failure_url'                  => null,
         'monthly_installments_enabled' => null,
         'monthly_installments_options' => 'int8',
-        'name' => null,
-        'on_demand_enabled' => null,
-        'success_url' => null,
-        'type' => null
+        'name'                         => null,
+        'on_demand_enabled'            => null,
+        'success_url'                  => null,
+        'type'                         => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'allowed_payment_methods' => false,
-		'expires_at' => false,
-		'failure_url' => false,
-		'monthly_installments_enabled' => false,
-		'monthly_installments_options' => false,
-		'name' => false,
-		'on_demand_enabled' => false,
-		'success_url' => false,
-		'type' => false
+        'allowed_payment_methods'      => false,
+        'expires_at'                   => false,
+        'failure_url'                  => false,
+        'monthly_installments_enabled' => false,
+        'monthly_installments_options' => false,
+        'name'                         => false,
+        'on_demand_enabled'            => false,
+        'success_url'                  => false,
+        'type'                         => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -192,15 +192,15 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'allowed_payment_methods' => 'allowed_payment_methods',
-        'expires_at' => 'expires_at',
-        'failure_url' => 'failure_url',
+        'allowed_payment_methods'      => 'allowed_payment_methods',
+        'expires_at'                   => 'expires_at',
+        'failure_url'                  => 'failure_url',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
         'monthly_installments_options' => 'monthly_installments_options',
-        'name' => 'name',
-        'on_demand_enabled' => 'on_demand_enabled',
-        'success_url' => 'success_url',
-        'type' => 'type'
+        'name'                         => 'name',
+        'on_demand_enabled'            => 'on_demand_enabled',
+        'success_url'                  => 'success_url',
+        'type'                         => 'type'
     ];
 
     /**
@@ -209,15 +209,15 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'allowed_payment_methods' => 'setAllowedPaymentMethods',
-        'expires_at' => 'setExpiresAt',
-        'failure_url' => 'setFailureUrl',
+        'allowed_payment_methods'      => 'setAllowedPaymentMethods',
+        'expires_at'                   => 'setExpiresAt',
+        'failure_url'                  => 'setFailureUrl',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
-        'name' => 'setName',
-        'on_demand_enabled' => 'setOnDemandEnabled',
-        'success_url' => 'setSuccessUrl',
-        'type' => 'setType'
+        'name'                         => 'setName',
+        'on_demand_enabled'            => 'setOnDemandEnabled',
+        'success_url'                  => 'setSuccessUrl',
+        'type'                         => 'setType'
     ];
 
     /**
@@ -226,15 +226,15 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'allowed_payment_methods' => 'getAllowedPaymentMethods',
-        'expires_at' => 'getExpiresAt',
-        'failure_url' => 'getFailureUrl',
+        'allowed_payment_methods'      => 'getAllowedPaymentMethods',
+        'expires_at'                   => 'getExpiresAt',
+        'failure_url'                  => 'getFailureUrl',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
-        'name' => 'getName',
-        'on_demand_enabled' => 'getOnDemandEnabled',
-        'success_url' => 'getSuccessUrl',
-        'type' => 'getType'
+        'name'                         => 'getName',
+        'on_demand_enabled'            => 'getOnDemandEnabled',
+        'success_url'                  => 'getSuccessUrl',
+        'type'                         => 'getType'
     ];
 
     /**
@@ -278,7 +278,6 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -306,14 +305,14 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -348,7 +347,6 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets allowed_payment_methods
@@ -656,7 +654,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -682,5 +680,3 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

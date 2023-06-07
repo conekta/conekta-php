@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * OrderResponseDiscountLines Class Doc Comment
@@ -41,57 +41,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderResponseDiscountLines implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'order_response_discount_lines';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'has_more' => 'bool',
-        'object' => 'string',
-        'data' => '\Conekta\Model\DiscountLinesDataResponse[]'
+        'object'   => 'string',
+        'data'     => '\Conekta\Model\DiscountLinesDataResponse[]'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'has_more' => null,
-        'object' => null,
-        'data' => null
+        'object'   => null,
+        'data'     => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'has_more' => false,
-		'object' => false,
-		'data' => false
+        'object'   => false,
+        'data'     => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -174,8 +174,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'has_more' => 'has_more',
-        'object' => 'object',
-        'data' => 'data'
+        'object'   => 'object',
+        'data'     => 'data'
     ];
 
     /**
@@ -185,8 +185,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'has_more' => 'setHasMore',
-        'object' => 'setObject',
-        'data' => 'setData'
+        'object'   => 'setObject',
+        'data'     => 'setData'
     ];
 
     /**
@@ -196,8 +196,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'has_more' => 'getHasMore',
-        'object' => 'getObject',
-        'data' => 'getData'
+        'object'   => 'getObject',
+        'data'     => 'getData'
     ];
 
     /**
@@ -241,7 +241,6 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -263,14 +262,14 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -308,7 +307,6 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets has_more
@@ -454,7 +452,7 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -480,5 +478,3 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

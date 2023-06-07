@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * WebhookUpdateRequest Class Doc Comment
@@ -42,57 +42,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookUpdateRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'webhook_update_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'synchronous' => 'bool',
+        'url'               => 'string',
+        'synchronous'       => 'bool',
         'subscribed_events' => 'string[]'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'url' => 'url',
-        'synchronous' => null,
+        'url'               => 'url',
+        'synchronous'       => null,
         'subscribed_events' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'url' => false,
-		'synchronous' => false,
-		'subscribed_events' => false
+        'url'               => false,
+        'synchronous'       => false,
+        'subscribed_events' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -174,8 +174,8 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'synchronous' => 'synchronous',
+        'url'               => 'url',
+        'synchronous'       => 'synchronous',
         'subscribed_events' => 'subscribed_events'
     ];
 
@@ -185,8 +185,8 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'synchronous' => 'setSynchronous',
+        'url'               => 'setUrl',
+        'synchronous'       => 'setSynchronous',
         'subscribed_events' => 'setSubscribedEvents'
     ];
 
@@ -196,8 +196,8 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'synchronous' => 'getSynchronous',
+        'url'               => 'getUrl',
+        'synchronous'       => 'getSynchronous',
         'subscribed_events' => 'getSubscribedEvents'
     ];
 
@@ -242,7 +242,6 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -264,14 +263,14 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -293,7 +292,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if (!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $this->container['url'])) {
+        if (! preg_match('/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/', $this->container['url'])) {
             $invalidProperties[] = "invalid value for 'url', must be conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.";
         }
 
@@ -310,7 +309,6 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets url
@@ -335,8 +333,8 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $url))) {
-            throw new \InvalidArgumentException("invalid value for \$url when calling WebhookUpdateRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.");
+        if ((! preg_match('/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/', $url))) {
+            throw new \InvalidArgumentException('invalid value for $url when calling WebhookUpdateRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.');
         }
 
         $this->container['url'] = $url;
@@ -461,7 +459,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -487,5 +485,3 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

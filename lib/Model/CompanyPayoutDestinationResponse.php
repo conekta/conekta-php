@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CompanyPayoutDestinationResponse Class Doc Comment
@@ -42,66 +42,66 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyPayoutDestinationResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'company_payout_destination_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'object' => 'string',
-        'currency' => 'string',
+        'object'              => 'string',
+        'currency'            => 'string',
         'account_holder_name' => 'string',
-        'bank' => 'string',
-        'type' => 'string',
-        'account_number' => 'string'
+        'bank'                => 'string',
+        'type'                => 'string',
+        'account_number'      => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'object' => null,
-        'currency' => null,
+        'object'              => null,
+        'currency'            => null,
         'account_holder_name' => null,
-        'bank' => null,
-        'type' => null,
-        'account_number' => null
+        'bank'                => null,
+        'type'                => null,
+        'account_number'      => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'object' => false,
-		'currency' => false,
-		'account_holder_name' => false,
-		'bank' => false,
-		'type' => false,
-		'account_number' => false
+        'object'              => false,
+        'currency'            => false,
+        'account_holder_name' => false,
+        'bank'                => false,
+        'type'                => false,
+        'account_number'      => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -183,12 +183,12 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'currency' => 'currency',
+        'object'              => 'object',
+        'currency'            => 'currency',
         'account_holder_name' => 'account_holder_name',
-        'bank' => 'bank',
-        'type' => 'type',
-        'account_number' => 'account_number'
+        'bank'                => 'bank',
+        'type'                => 'type',
+        'account_number'      => 'account_number'
     ];
 
     /**
@@ -197,12 +197,12 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'currency' => 'setCurrency',
+        'object'              => 'setObject',
+        'currency'            => 'setCurrency',
         'account_holder_name' => 'setAccountHolderName',
-        'bank' => 'setBank',
-        'type' => 'setType',
-        'account_number' => 'setAccountNumber'
+        'bank'                => 'setBank',
+        'type'                => 'setType',
+        'account_number'      => 'setAccountNumber'
     ];
 
     /**
@@ -211,12 +211,12 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'currency' => 'getCurrency',
+        'object'              => 'getObject',
+        'currency'            => 'getCurrency',
         'account_holder_name' => 'getAccountHolderName',
-        'bank' => 'getBank',
-        'type' => 'getType',
-        'account_number' => 'getAccountNumber'
+        'bank'                => 'getBank',
+        'type'                => 'getType',
+        'account_number'      => 'getAccountNumber'
     ];
 
     /**
@@ -311,14 +311,14 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -338,7 +338,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
         $invalidProperties = [];
 
         $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+        if (! is_null($this->container['object']) && ! in_array($this->container['object'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'object', must be one of '%s'",
                 $this->container['object'],
@@ -347,7 +347,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
         }
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if (! is_null($this->container['type']) && ! in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
@@ -368,7 +368,6 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets object
@@ -393,7 +392,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
+        if (! in_array($object, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'object', must be one of '%s'",
@@ -511,7 +510,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        if (! in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",
@@ -615,7 +614,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -641,5 +640,3 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

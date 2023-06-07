@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ChargeOrderResponse Class Doc Comment
@@ -41,108 +41,108 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeOrderResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'charge_order_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'channel' => '\Conekta\Model\ChargeResponseChannel',
-        'created_at' => 'int',
-        'currency' => 'string',
-        'customer_id' => 'string',
-        'description' => 'string',
-        'device_fingerprint' => 'string',
-        'failure_code' => 'string',
-        'failure_message' => 'string',
-        'fee' => 'int',
-        'id' => 'string',
-        'livemode' => 'bool',
+        'amount'               => 'int',
+        'channel'              => '\Conekta\Model\ChargeResponseChannel',
+        'created_at'           => 'int',
+        'currency'             => 'string',
+        'customer_id'          => 'string',
+        'description'          => 'string',
+        'device_fingerprint'   => 'string',
+        'failure_code'         => 'string',
+        'failure_message'      => 'string',
+        'fee'                  => 'int',
+        'id'                   => 'string',
+        'livemode'             => 'bool',
         'monthly_installments' => 'int',
-        'object' => 'string',
-        'order_id' => 'string',
-        'paid_at' => 'int',
-        'payment_method' => '\Conekta\Model\ChargeOrderResponsePaymentMethod',
-        'reference_id' => 'string',
-        'refunds' => 'object[]',
-        'status' => 'string'
+        'object'               => 'string',
+        'order_id'             => 'string',
+        'paid_at'              => 'int',
+        'payment_method'       => '\Conekta\Model\ChargeOrderResponsePaymentMethod',
+        'reference_id'         => 'string',
+        'refunds'              => 'object[]',
+        'status'               => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'channel' => null,
-        'created_at' => 'int64',
-        'currency' => null,
-        'customer_id' => null,
-        'description' => null,
-        'device_fingerprint' => null,
-        'failure_code' => null,
-        'failure_message' => null,
-        'fee' => null,
-        'id' => null,
-        'livemode' => null,
+        'amount'               => null,
+        'channel'              => null,
+        'created_at'           => 'int64',
+        'currency'             => null,
+        'customer_id'          => null,
+        'description'          => null,
+        'device_fingerprint'   => null,
+        'failure_code'         => null,
+        'failure_message'      => null,
+        'fee'                  => null,
+        'id'                   => null,
+        'livemode'             => null,
         'monthly_installments' => null,
-        'object' => null,
-        'order_id' => null,
-        'paid_at' => null,
-        'payment_method' => null,
-        'reference_id' => null,
-        'refunds' => null,
-        'status' => null
+        'object'               => null,
+        'order_id'             => null,
+        'paid_at'              => null,
+        'payment_method'       => null,
+        'reference_id'         => null,
+        'refunds'              => null,
+        'status'               => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'channel' => false,
-		'created_at' => false,
-		'currency' => false,
-		'customer_id' => false,
-		'description' => false,
-		'device_fingerprint' => true,
-		'failure_code' => false,
-		'failure_message' => false,
-		'fee' => false,
-		'id' => false,
-		'livemode' => false,
-		'monthly_installments' => true,
-		'object' => false,
-		'order_id' => false,
-		'paid_at' => true,
-		'payment_method' => false,
-		'reference_id' => true,
-		'refunds' => false,
-		'status' => false
+        'amount'               => false,
+        'channel'              => false,
+        'created_at'           => false,
+        'currency'             => false,
+        'customer_id'          => false,
+        'description'          => false,
+        'device_fingerprint'   => true,
+        'failure_code'         => false,
+        'failure_message'      => false,
+        'fee'                  => false,
+        'id'                   => false,
+        'livemode'             => false,
+        'monthly_installments' => true,
+        'object'               => false,
+        'order_id'             => false,
+        'paid_at'              => true,
+        'payment_method'       => false,
+        'reference_id'         => true,
+        'refunds'              => false,
+        'status'               => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -224,26 +224,26 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'channel' => 'channel',
-        'created_at' => 'created_at',
-        'currency' => 'currency',
-        'customer_id' => 'customer_id',
-        'description' => 'description',
-        'device_fingerprint' => 'device_fingerprint',
-        'failure_code' => 'failure_code',
-        'failure_message' => 'failure_message',
-        'fee' => 'fee',
-        'id' => 'id',
-        'livemode' => 'livemode',
+        'amount'               => 'amount',
+        'channel'              => 'channel',
+        'created_at'           => 'created_at',
+        'currency'             => 'currency',
+        'customer_id'          => 'customer_id',
+        'description'          => 'description',
+        'device_fingerprint'   => 'device_fingerprint',
+        'failure_code'         => 'failure_code',
+        'failure_message'      => 'failure_message',
+        'fee'                  => 'fee',
+        'id'                   => 'id',
+        'livemode'             => 'livemode',
         'monthly_installments' => 'monthly_installments',
-        'object' => 'object',
-        'order_id' => 'order_id',
-        'paid_at' => 'paid_at',
-        'payment_method' => 'payment_method',
-        'reference_id' => 'reference_id',
-        'refunds' => 'refunds',
-        'status' => 'status'
+        'object'               => 'object',
+        'order_id'             => 'order_id',
+        'paid_at'              => 'paid_at',
+        'payment_method'       => 'payment_method',
+        'reference_id'         => 'reference_id',
+        'refunds'              => 'refunds',
+        'status'               => 'status'
     ];
 
     /**
@@ -252,26 +252,26 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'channel' => 'setChannel',
-        'created_at' => 'setCreatedAt',
-        'currency' => 'setCurrency',
-        'customer_id' => 'setCustomerId',
-        'description' => 'setDescription',
-        'device_fingerprint' => 'setDeviceFingerprint',
-        'failure_code' => 'setFailureCode',
-        'failure_message' => 'setFailureMessage',
-        'fee' => 'setFee',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
+        'amount'               => 'setAmount',
+        'channel'              => 'setChannel',
+        'created_at'           => 'setCreatedAt',
+        'currency'             => 'setCurrency',
+        'customer_id'          => 'setCustomerId',
+        'description'          => 'setDescription',
+        'device_fingerprint'   => 'setDeviceFingerprint',
+        'failure_code'         => 'setFailureCode',
+        'failure_message'      => 'setFailureMessage',
+        'fee'                  => 'setFee',
+        'id'                   => 'setId',
+        'livemode'             => 'setLivemode',
         'monthly_installments' => 'setMonthlyInstallments',
-        'object' => 'setObject',
-        'order_id' => 'setOrderId',
-        'paid_at' => 'setPaidAt',
-        'payment_method' => 'setPaymentMethod',
-        'reference_id' => 'setReferenceId',
-        'refunds' => 'setRefunds',
-        'status' => 'setStatus'
+        'object'               => 'setObject',
+        'order_id'             => 'setOrderId',
+        'paid_at'              => 'setPaidAt',
+        'payment_method'       => 'setPaymentMethod',
+        'reference_id'         => 'setReferenceId',
+        'refunds'              => 'setRefunds',
+        'status'               => 'setStatus'
     ];
 
     /**
@@ -280,26 +280,26 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'channel' => 'getChannel',
-        'created_at' => 'getCreatedAt',
-        'currency' => 'getCurrency',
-        'customer_id' => 'getCustomerId',
-        'description' => 'getDescription',
-        'device_fingerprint' => 'getDeviceFingerprint',
-        'failure_code' => 'getFailureCode',
-        'failure_message' => 'getFailureMessage',
-        'fee' => 'getFee',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
+        'amount'               => 'getAmount',
+        'channel'              => 'getChannel',
+        'created_at'           => 'getCreatedAt',
+        'currency'             => 'getCurrency',
+        'customer_id'          => 'getCustomerId',
+        'description'          => 'getDescription',
+        'device_fingerprint'   => 'getDeviceFingerprint',
+        'failure_code'         => 'getFailureCode',
+        'failure_message'      => 'getFailureMessage',
+        'fee'                  => 'getFee',
+        'id'                   => 'getId',
+        'livemode'             => 'getLivemode',
         'monthly_installments' => 'getMonthlyInstallments',
-        'object' => 'getObject',
-        'order_id' => 'getOrderId',
-        'paid_at' => 'getPaidAt',
-        'payment_method' => 'getPaymentMethod',
-        'reference_id' => 'getReferenceId',
-        'refunds' => 'getRefunds',
-        'status' => 'getStatus'
+        'object'               => 'getObject',
+        'order_id'             => 'getOrderId',
+        'paid_at'              => 'getPaidAt',
+        'payment_method'       => 'getPaymentMethod',
+        'reference_id'         => 'getReferenceId',
+        'refunds'              => 'getRefunds',
+        'status'               => 'getStatus'
     ];
 
     /**
@@ -343,7 +343,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -382,14 +381,14 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -421,7 +420,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -609,7 +607,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('device_fingerprint', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -778,7 +776,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('monthly_installments', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -866,7 +864,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('paid_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -927,7 +925,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('reference_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1054,7 +1052,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1080,5 +1078,3 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

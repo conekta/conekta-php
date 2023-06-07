@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CompanyResponse Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'company_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'created_at' => 'int',
-        'name' => 'string',
-        'object' => 'string',
-        'parent_company_id' => 'string',
+        'id'                     => 'string',
+        'created_at'             => 'int',
+        'name'                   => 'string',
+        'object'                 => 'string',
+        'parent_company_id'      => 'string',
         'use_parent_fiscal_data' => 'bool',
-        'payout_destination' => '\Conekta\Model\CompanyPayoutDestinationResponse',
-        'fiscal_info' => '\Conekta\Model\CompanyFiscalInfoResponse'
+        'payout_destination'     => '\Conekta\Model\CompanyPayoutDestinationResponse',
+        'fiscal_info'            => '\Conekta\Model\CompanyFiscalInfoResponse'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'id' => null,
-        'created_at' => 'int64',
-        'name' => null,
-        'object' => null,
-        'parent_company_id' => null,
+        'id'                     => null,
+        'created_at'             => 'int64',
+        'name'                   => null,
+        'object'                 => null,
+        'parent_company_id'      => null,
         'use_parent_fiscal_data' => null,
-        'payout_destination' => null,
-        'fiscal_info' => null
+        'payout_destination'     => null,
+        'fiscal_info'            => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'id' => false,
-		'created_at' => false,
-		'name' => false,
-		'object' => false,
-		'parent_company_id' => false,
-		'use_parent_fiscal_data' => false,
-		'payout_destination' => false,
-		'fiscal_info' => false
+        'id'                     => false,
+        'created_at'             => false,
+        'name'                   => false,
+        'object'                 => false,
+        'parent_company_id'      => false,
+        'use_parent_fiscal_data' => false,
+        'payout_destination'     => false,
+        'fiscal_info'            => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -189,14 +189,14 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'created_at' => 'created_at',
-        'name' => 'name',
-        'object' => 'object',
-        'parent_company_id' => 'parent_company_id',
+        'id'                     => 'id',
+        'created_at'             => 'created_at',
+        'name'                   => 'name',
+        'object'                 => 'object',
+        'parent_company_id'      => 'parent_company_id',
         'use_parent_fiscal_data' => 'use_parent_fiscal_data',
-        'payout_destination' => 'payout_destination',
-        'fiscal_info' => 'fiscal_info'
+        'payout_destination'     => 'payout_destination',
+        'fiscal_info'            => 'fiscal_info'
     ];
 
     /**
@@ -205,14 +205,14 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'name' => 'setName',
-        'object' => 'setObject',
-        'parent_company_id' => 'setParentCompanyId',
+        'id'                     => 'setId',
+        'created_at'             => 'setCreatedAt',
+        'name'                   => 'setName',
+        'object'                 => 'setObject',
+        'parent_company_id'      => 'setParentCompanyId',
         'use_parent_fiscal_data' => 'setUseParentFiscalData',
-        'payout_destination' => 'setPayoutDestination',
-        'fiscal_info' => 'setFiscalInfo'
+        'payout_destination'     => 'setPayoutDestination',
+        'fiscal_info'            => 'setFiscalInfo'
     ];
 
     /**
@@ -221,14 +221,14 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'name' => 'getName',
-        'object' => 'getObject',
-        'parent_company_id' => 'getParentCompanyId',
+        'id'                     => 'getId',
+        'created_at'             => 'getCreatedAt',
+        'name'                   => 'getName',
+        'object'                 => 'getObject',
+        'parent_company_id'      => 'getParentCompanyId',
         'use_parent_fiscal_data' => 'getUseParentFiscalData',
-        'payout_destination' => 'getPayoutDestination',
-        'fiscal_info' => 'getFiscalInfo'
+        'payout_destination'     => 'getPayoutDestination',
+        'fiscal_info'            => 'getFiscalInfo'
     ];
 
     /**
@@ -312,14 +312,14 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -339,7 +339,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $invalidProperties = [];
 
         $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+        if (! is_null($this->container['object']) && ! in_array($this->container['object'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'object', must be one of '%s'",
                 $this->container['object'],
@@ -360,7 +360,6 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -466,7 +465,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
+        if (! in_array($object, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'object', must be one of '%s'",
@@ -651,7 +650,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -677,5 +676,3 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

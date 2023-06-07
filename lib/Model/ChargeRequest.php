@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ChargeRequest Class Doc Comment
@@ -42,60 +42,60 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'charge_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'amount' => 'int',
+        'amount'               => 'int',
         'monthly_installments' => 'int',
-        'payment_method' => '\Conekta\Model\ChargeRequestPaymentMethod',
-        'reference_id' => 'string'
+        'payment_method'       => '\Conekta\Model\ChargeRequestPaymentMethod',
+        'reference_id'         => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'amount' => null,
+        'amount'               => null,
         'monthly_installments' => 'int8',
-        'payment_method' => null,
-        'reference_id' => null
+        'payment_method'       => null,
+        'reference_id'         => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'monthly_installments' => false,
-		'payment_method' => false,
-		'reference_id' => false
+        'amount'               => false,
+        'monthly_installments' => false,
+        'payment_method'       => false,
+        'reference_id'         => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -177,10 +177,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
+        'amount'               => 'amount',
         'monthly_installments' => 'monthly_installments',
-        'payment_method' => 'payment_method',
-        'reference_id' => 'reference_id'
+        'payment_method'       => 'payment_method',
+        'reference_id'         => 'reference_id'
     ];
 
     /**
@@ -189,10 +189,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
+        'amount'               => 'setAmount',
         'monthly_installments' => 'setMonthlyInstallments',
-        'payment_method' => 'setPaymentMethod',
-        'reference_id' => 'setReferenceId'
+        'payment_method'       => 'setPaymentMethod',
+        'reference_id'         => 'setReferenceId'
     ];
 
     /**
@@ -201,10 +201,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
+        'amount'               => 'getAmount',
         'monthly_installments' => 'getMonthlyInstallments',
-        'payment_method' => 'getPaymentMethod',
-        'reference_id' => 'getReferenceId'
+        'payment_method'       => 'getPaymentMethod',
+        'reference_id'         => 'getReferenceId'
     ];
 
     /**
@@ -248,7 +248,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -271,14 +270,14 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -313,7 +312,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -486,7 +484,7 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -512,5 +510,3 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

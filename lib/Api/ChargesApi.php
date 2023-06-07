@@ -28,17 +28,10 @@
 
 namespace Conekta\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
-use Conekta\ApiException;
-use Conekta\Configuration;
-use Conekta\HeaderSelector;
-use Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, HeaderSelector, ObjectSerializer};
+use GuzzleHttp\Exception\{ConnectException, RequestException};
+use GuzzleHttp\Psr7\{MultipartStream, Request};
+use GuzzleHttp\{Client, ClientInterface, RequestOptions};
 
 /**
  * ChargesApi Class Doc Comment
@@ -80,7 +73,7 @@ class ChargesApi
         ],
     ];
 
-/**
+    /**
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
@@ -268,7 +261,6 @@ class ChargesApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -399,19 +391,12 @@ class ChargesApi
      */
     public function getChargesRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getCharges'][0])
     {
-
-
-
         if ($limit !== null && $limit > 250) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ChargesApi.getCharges, must be smaller than or equal to 250.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ChargesApi.getCharges, must be bigger than or equal to 1.');
         }
-        
-
-
-
 
         $resourcePath = '/charges';
         $formParams = [];
@@ -466,8 +451,6 @@ class ChargesApi
             $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -486,14 +469,13 @@ class ChargesApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -504,7 +486,7 @@ class ChargesApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -697,7 +679,6 @@ class ChargesApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -838,7 +819,6 @@ class ChargesApi
      */
     public function ordersCreateChargeRequest($id, $charge_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersCreateCharge'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -853,16 +833,12 @@ class ChargesApi
             );
         }
 
-
-
-
         $resourcePath = '/orders/{id}/charges';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -881,7 +857,6 @@ class ChargesApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -908,14 +883,13 @@ class ChargesApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -926,7 +900,7 @@ class ChargesApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -962,7 +936,7 @@ class ChargesApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
+            if (! $options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }

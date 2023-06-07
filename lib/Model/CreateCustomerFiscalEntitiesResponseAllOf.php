@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CreateCustomerFiscalEntitiesResponseAllOf Class Doc Comment
@@ -41,63 +41,63 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCustomerFiscalEntitiesResponseAllOf implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'create_customer_fiscal_entities_response_allOf';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'object' => 'string',
+        'id'         => 'string',
+        'object'     => 'string',
         'created_at' => 'int',
-        'parent_id' => 'string',
-        'default' => 'bool'
+        'parent_id'  => 'string',
+        'default'    => 'bool'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'id' => null,
-        'object' => null,
+        'id'         => null,
+        'object'     => null,
         'created_at' => 'int64',
-        'parent_id' => null,
-        'default' => null
+        'parent_id'  => null,
+        'default'    => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'id' => false,
-		'object' => false,
-		'created_at' => false,
-		'parent_id' => false,
-		'default' => false
+        'id'         => false,
+        'object'     => false,
+        'created_at' => false,
+        'parent_id'  => false,
+        'default'    => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -179,11 +179,11 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object' => 'object',
+        'id'         => 'id',
+        'object'     => 'object',
         'created_at' => 'created_at',
-        'parent_id' => 'parent_id',
-        'default' => 'default'
+        'parent_id'  => 'parent_id',
+        'default'    => 'default'
     ];
 
     /**
@@ -192,11 +192,11 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object' => 'setObject',
+        'id'         => 'setId',
+        'object'     => 'setObject',
         'created_at' => 'setCreatedAt',
-        'parent_id' => 'setParentId',
-        'default' => 'setDefault'
+        'parent_id'  => 'setParentId',
+        'default'    => 'setDefault'
     ];
 
     /**
@@ -205,11 +205,11 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object' => 'getObject',
+        'id'         => 'getId',
+        'object'     => 'getObject',
         'created_at' => 'getCreatedAt',
-        'parent_id' => 'getParentId',
-        'default' => 'getDefault'
+        'parent_id'  => 'getParentId',
+        'default'    => 'getDefault'
     ];
 
     /**
@@ -253,7 +253,6 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -277,14 +276,14 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -325,7 +324,6 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets id
@@ -525,7 +523,7 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -551,5 +549,3 @@ class CreateCustomerFiscalEntitiesResponseAllOf implements ModelInterface, Array
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

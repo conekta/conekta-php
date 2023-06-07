@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * LogsResponseData Class Doc Comment
@@ -41,108 +41,108 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
+class LogsResponseData implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'logs_response_data';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'created_at' => 'int',
-        'id' => 'string',
-        'ip_address' => 'string',
-        'livemode' => 'bool',
-        'loggable_id' => 'string',
-        'loggable_type' => 'string',
-        'method' => 'string',
-        'oauth_token_id' => 'string',
-        'query_string' => 'array<string,mixed>',
-        'related' => 'string',
-        'request_body' => 'object',
-        'request_headers' => 'array<string,string>',
-        'response_body' => 'object',
+        'created_at'       => 'int',
+        'id'               => 'string',
+        'ip_address'       => 'string',
+        'livemode'         => 'bool',
+        'loggable_id'      => 'string',
+        'loggable_type'    => 'string',
+        'method'           => 'string',
+        'oauth_token_id'   => 'string',
+        'query_string'     => 'array<string,mixed>',
+        'related'          => 'string',
+        'request_body'     => 'object',
+        'request_headers'  => 'array<string,string>',
+        'response_body'    => 'object',
         'response_headers' => 'array<string,string>',
-        'searchable_tags' => 'string[]',
-        'status' => 'string',
-        'updated_at' => 'string',
-        'url' => 'string',
-        'user_account_id' => 'string',
-        'version' => 'string'
+        'searchable_tags'  => 'string[]',
+        'status'           => 'string',
+        'updated_at'       => 'string',
+        'url'              => 'string',
+        'user_account_id'  => 'string',
+        'version'          => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'created_at' => 'int64',
-        'id' => null,
-        'ip_address' => 'ipv4',
-        'livemode' => null,
-        'loggable_id' => null,
-        'loggable_type' => null,
-        'method' => null,
-        'oauth_token_id' => null,
-        'query_string' => null,
-        'related' => null,
-        'request_body' => null,
-        'request_headers' => null,
-        'response_body' => null,
+        'created_at'       => 'int64',
+        'id'               => null,
+        'ip_address'       => 'ipv4',
+        'livemode'         => null,
+        'loggable_id'      => null,
+        'loggable_type'    => null,
+        'method'           => null,
+        'oauth_token_id'   => null,
+        'query_string'     => null,
+        'related'          => null,
+        'request_body'     => null,
+        'request_headers'  => null,
+        'response_body'    => null,
         'response_headers' => null,
-        'searchable_tags' => null,
-        'status' => null,
-        'updated_at' => null,
-        'url' => null,
-        'user_account_id' => null,
-        'version' => null
+        'searchable_tags'  => null,
+        'status'           => null,
+        'updated_at'       => null,
+        'url'              => null,
+        'user_account_id'  => null,
+        'version'          => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'created_at' => false,
-		'id' => false,
-		'ip_address' => false,
-		'livemode' => false,
-		'loggable_id' => true,
-		'loggable_type' => true,
-		'method' => false,
-		'oauth_token_id' => true,
-		'query_string' => false,
-		'related' => false,
-		'request_body' => false,
-		'request_headers' => false,
-		'response_body' => false,
-		'response_headers' => false,
-		'searchable_tags' => false,
-		'status' => false,
-		'updated_at' => false,
-		'url' => false,
-		'user_account_id' => false,
-		'version' => false
+        'created_at'       => false,
+        'id'               => false,
+        'ip_address'       => false,
+        'livemode'         => false,
+        'loggable_id'      => true,
+        'loggable_type'    => true,
+        'method'           => false,
+        'oauth_token_id'   => true,
+        'query_string'     => false,
+        'related'          => false,
+        'request_body'     => false,
+        'request_headers'  => false,
+        'response_body'    => false,
+        'response_headers' => false,
+        'searchable_tags'  => false,
+        'status'           => false,
+        'updated_at'       => false,
+        'url'              => false,
+        'user_account_id'  => false,
+        'version'          => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -224,26 +224,26 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'created_at',
-        'id' => 'id',
-        'ip_address' => 'ip_address',
-        'livemode' => 'livemode',
-        'loggable_id' => 'loggable_id',
-        'loggable_type' => 'loggable_type',
-        'method' => 'method',
-        'oauth_token_id' => 'oauth_token_id',
-        'query_string' => 'query_string',
-        'related' => 'related',
-        'request_body' => 'request_body',
-        'request_headers' => 'request_headers',
-        'response_body' => 'response_body',
+        'created_at'       => 'created_at',
+        'id'               => 'id',
+        'ip_address'       => 'ip_address',
+        'livemode'         => 'livemode',
+        'loggable_id'      => 'loggable_id',
+        'loggable_type'    => 'loggable_type',
+        'method'           => 'method',
+        'oauth_token_id'   => 'oauth_token_id',
+        'query_string'     => 'query_string',
+        'related'          => 'related',
+        'request_body'     => 'request_body',
+        'request_headers'  => 'request_headers',
+        'response_body'    => 'response_body',
         'response_headers' => 'response_headers',
-        'searchable_tags' => 'searchable_tags',
-        'status' => 'status',
-        'updated_at' => 'updated_at',
-        'url' => 'url',
-        'user_account_id' => 'user_account_id',
-        'version' => 'version'
+        'searchable_tags'  => 'searchable_tags',
+        'status'           => 'status',
+        'updated_at'       => 'updated_at',
+        'url'              => 'url',
+        'user_account_id'  => 'user_account_id',
+        'version'          => 'version'
     ];
 
     /**
@@ -252,26 +252,26 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'id' => 'setId',
-        'ip_address' => 'setIpAddress',
-        'livemode' => 'setLivemode',
-        'loggable_id' => 'setLoggableId',
-        'loggable_type' => 'setLoggableType',
-        'method' => 'setMethod',
-        'oauth_token_id' => 'setOauthTokenId',
-        'query_string' => 'setQueryString',
-        'related' => 'setRelated',
-        'request_body' => 'setRequestBody',
-        'request_headers' => 'setRequestHeaders',
-        'response_body' => 'setResponseBody',
+        'created_at'       => 'setCreatedAt',
+        'id'               => 'setId',
+        'ip_address'       => 'setIpAddress',
+        'livemode'         => 'setLivemode',
+        'loggable_id'      => 'setLoggableId',
+        'loggable_type'    => 'setLoggableType',
+        'method'           => 'setMethod',
+        'oauth_token_id'   => 'setOauthTokenId',
+        'query_string'     => 'setQueryString',
+        'related'          => 'setRelated',
+        'request_body'     => 'setRequestBody',
+        'request_headers'  => 'setRequestHeaders',
+        'response_body'    => 'setResponseBody',
         'response_headers' => 'setResponseHeaders',
-        'searchable_tags' => 'setSearchableTags',
-        'status' => 'setStatus',
-        'updated_at' => 'setUpdatedAt',
-        'url' => 'setUrl',
-        'user_account_id' => 'setUserAccountId',
-        'version' => 'setVersion'
+        'searchable_tags'  => 'setSearchableTags',
+        'status'           => 'setStatus',
+        'updated_at'       => 'setUpdatedAt',
+        'url'              => 'setUrl',
+        'user_account_id'  => 'setUserAccountId',
+        'version'          => 'setVersion'
     ];
 
     /**
@@ -280,26 +280,26 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'id' => 'getId',
-        'ip_address' => 'getIpAddress',
-        'livemode' => 'getLivemode',
-        'loggable_id' => 'getLoggableId',
-        'loggable_type' => 'getLoggableType',
-        'method' => 'getMethod',
-        'oauth_token_id' => 'getOauthTokenId',
-        'query_string' => 'getQueryString',
-        'related' => 'getRelated',
-        'request_body' => 'getRequestBody',
-        'request_headers' => 'getRequestHeaders',
-        'response_body' => 'getResponseBody',
+        'created_at'       => 'getCreatedAt',
+        'id'               => 'getId',
+        'ip_address'       => 'getIpAddress',
+        'livemode'         => 'getLivemode',
+        'loggable_id'      => 'getLoggableId',
+        'loggable_type'    => 'getLoggableType',
+        'method'           => 'getMethod',
+        'oauth_token_id'   => 'getOauthTokenId',
+        'query_string'     => 'getQueryString',
+        'related'          => 'getRelated',
+        'request_body'     => 'getRequestBody',
+        'request_headers'  => 'getRequestHeaders',
+        'response_body'    => 'getResponseBody',
         'response_headers' => 'getResponseHeaders',
-        'searchable_tags' => 'getSearchableTags',
-        'status' => 'getStatus',
-        'updated_at' => 'getUpdatedAt',
-        'url' => 'getUrl',
-        'user_account_id' => 'getUserAccountId',
-        'version' => 'getVersion'
+        'searchable_tags'  => 'getSearchableTags',
+        'status'           => 'getStatus',
+        'updated_at'       => 'getUpdatedAt',
+        'url'              => 'getUrl',
+        'user_account_id'  => 'getUserAccountId',
+        'version'          => 'getVersion'
     ];
 
     /**
@@ -343,7 +343,6 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -382,14 +381,14 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -421,7 +420,6 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets created_at
@@ -555,7 +553,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('loggable_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -589,7 +587,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('loggable_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -650,7 +648,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('oauth_token_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1047,7 +1045,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1073,5 +1071,3 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

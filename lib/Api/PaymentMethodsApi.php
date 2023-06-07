@@ -28,17 +28,10 @@
 
 namespace Conekta\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
-use Conekta\ApiException;
-use Conekta\Configuration;
-use Conekta\HeaderSelector;
-use Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, HeaderSelector, ObjectSerializer};
+use GuzzleHttp\Exception\{ConnectException, RequestException};
+use GuzzleHttp\Psr7\{MultipartStream, Request};
+use GuzzleHttp\{Client, ClientInterface, RequestOptions};
 
 /**
  * PaymentMethodsApi Class Doc Comment
@@ -86,7 +79,7 @@ class PaymentMethodsApi
         ],
     ];
 
-/**
+    /**
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
@@ -300,7 +293,6 @@ class PaymentMethodsApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -441,7 +433,6 @@ class PaymentMethodsApi
      */
     public function createCustomerPaymentMethodsRequest($id, $create_customer_payment_methods_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerPaymentMethods'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -456,16 +447,12 @@ class PaymentMethodsApi
             );
         }
 
-
-
-
         $resourcePath = '/customers/{id}/payment_sources';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -484,7 +471,6 @@ class PaymentMethodsApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -511,14 +497,13 @@ class PaymentMethodsApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -529,7 +514,7 @@ class PaymentMethodsApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -722,7 +707,6 @@ class PaymentMethodsApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -863,7 +847,6 @@ class PaymentMethodsApi
      */
     public function deleteCustomerPaymentMethodsRequest($id, $payment_method_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['deleteCustomerPaymentMethods'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -878,16 +861,12 @@ class PaymentMethodsApi
             );
         }
 
-
-
-
         $resourcePath = '/customers/{id}/payment_sources/{payment_method_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -915,7 +894,6 @@ class PaymentMethodsApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -934,14 +912,13 @@ class PaymentMethodsApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -952,7 +929,7 @@ class PaymentMethodsApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1136,7 +1113,6 @@ class PaymentMethodsApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1278,7 +1254,6 @@ class PaymentMethodsApi
      */
     public function getCustomerPaymentMethodsRequest($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getCustomerPaymentMethods'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1286,18 +1261,12 @@ class PaymentMethodsApi
             );
         }
 
-
-
         if ($limit !== null && $limit > 250) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentMethodsApi.getCustomerPaymentMethods, must be smaller than or equal to 250.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PaymentMethodsApi.getCustomerPaymentMethods, must be bigger than or equal to 1.');
         }
-        
-
-
-
 
         $resourcePath = '/customers/{id}/payment_sources';
         $formParams = [];
@@ -1361,7 +1330,6 @@ class PaymentMethodsApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1380,14 +1348,13 @@ class PaymentMethodsApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1398,7 +1365,7 @@ class PaymentMethodsApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1593,7 +1560,6 @@ class PaymentMethodsApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1737,7 +1703,6 @@ class PaymentMethodsApi
      */
     public function updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1759,16 +1724,12 @@ class PaymentMethodsApi
             );
         }
 
-
-
-
         $resourcePath = '/customers/{id}/payment_sources/{payment_method_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -1796,7 +1757,6 @@ class PaymentMethodsApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1822,14 +1782,13 @@ class PaymentMethodsApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1840,7 +1799,7 @@ class PaymentMethodsApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1876,7 +1835,7 @@ class PaymentMethodsApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
+            if (! $options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }

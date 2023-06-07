@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * UpdateOrderDiscountLinesRequest Class Doc Comment
@@ -42,57 +42,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateOrderDiscountLinesRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'update_order_discount_lines_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'amount' => 'int',
-        'code' => 'string',
-        'type' => 'string'
+        'code'   => 'string',
+        'type'   => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'amount' => 'int64',
-        'code' => null,
-        'type' => null
+        'code'   => null,
+        'type'   => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'amount' => false,
-		'code' => false,
-		'type' => false
+        'code'   => false,
+        'type'   => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -175,8 +175,8 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'code' => 'code',
-        'type' => 'type'
+        'code'   => 'code',
+        'type'   => 'type'
     ];
 
     /**
@@ -186,8 +186,8 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'code' => 'setCode',
-        'type' => 'setType'
+        'code'   => 'setCode',
+        'type'   => 'setType'
     ];
 
     /**
@@ -197,8 +197,8 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'code' => 'getCode',
-        'type' => 'getType'
+        'code'   => 'getCode',
+        'type'   => 'getType'
     ];
 
     /**
@@ -242,7 +242,6 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -264,14 +263,14 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -290,7 +289,7 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
+        if (! is_null($this->container['amount']) && ($this->container['amount'] < 0)) {
             $invalidProperties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
         }
 
@@ -307,7 +306,6 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -458,7 +456,7 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -484,5 +482,3 @@ class UpdateOrderDiscountLinesRequest implements ModelInterface, ArrayAccess, \J
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

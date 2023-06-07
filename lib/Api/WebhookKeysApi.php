@@ -28,17 +28,10 @@
 
 namespace Conekta\Api;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\RequestOptions;
-use Conekta\ApiException;
-use Conekta\Configuration;
-use Conekta\HeaderSelector;
-use Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, HeaderSelector, ObjectSerializer};
+use GuzzleHttp\Exception\{ConnectException, RequestException};
+use GuzzleHttp\Psr7\{MultipartStream, Request};
+use GuzzleHttp\{Client, ClientInterface, RequestOptions};
 
 /**
  * WebhookKeysApi Class Doc Comment
@@ -89,7 +82,7 @@ class WebhookKeysApi
         ],
     ];
 
-/**
+    /**
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
@@ -269,7 +262,6 @@ class WebhookKeysApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -388,10 +380,6 @@ class WebhookKeysApi
      */
     public function createWebhookKeyRequest($accept_language = 'es', $webhook_key_request = null, string $contentType = self::contentTypes['createWebhookKey'][0])
     {
-
-
-
-
         $resourcePath = '/webhook_keys';
         $formParams = [];
         $queryParams = [];
@@ -399,13 +387,10 @@ class WebhookKeysApi
         $httpBody = '';
         $multipart = false;
 
-
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
         }
-
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -432,14 +417,13 @@ class WebhookKeysApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -450,7 +434,7 @@ class WebhookKeysApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -624,7 +608,6 @@ class WebhookKeysApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -751,7 +734,6 @@ class WebhookKeysApi
      */
     public function deleteWebhookKeyRequest($id, $accept_language = 'es', string $contentType = self::contentTypes['deleteWebhookKey'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -759,15 +741,12 @@ class WebhookKeysApi
             );
         }
 
-
-
         $resourcePath = '/webhook_keys/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -782,7 +761,6 @@ class WebhookKeysApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -802,14 +780,13 @@ class WebhookKeysApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -820,7 +797,7 @@ class WebhookKeysApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -996,7 +973,6 @@ class WebhookKeysApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1126,7 +1102,6 @@ class WebhookKeysApi
      */
     public function getWebhookKeyRequest($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getWebhookKey'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1134,16 +1109,12 @@ class WebhookKeysApi
             );
         }
 
-
-
-
         $resourcePath = '/webhook_keys/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -1163,7 +1134,6 @@ class WebhookKeysApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1182,14 +1152,13 @@ class WebhookKeysApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1200,7 +1169,7 @@ class WebhookKeysApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1367,7 +1336,6 @@ class WebhookKeysApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1498,19 +1466,12 @@ class WebhookKeysApi
      */
     public function getWebhookKeysRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhookKeys'][0])
     {
-
-
-
         if ($limit !== null && $limit > 250) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling WebhookKeysApi.getWebhookKeys, must be smaller than or equal to 250.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling WebhookKeysApi.getWebhookKeys, must be bigger than or equal to 1.');
         }
-        
-
-
-
 
         $resourcePath = '/webhook_keys';
         $formParams = [];
@@ -1565,8 +1526,6 @@ class WebhookKeysApi
             $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
         }
 
-
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
             $contentType,
@@ -1585,14 +1544,13 @@ class WebhookKeysApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1603,7 +1561,7 @@ class WebhookKeysApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1779,7 +1737,6 @@ class WebhookKeysApi
                 $response->getStatusCode(),
                 $response->getHeaders()
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1909,7 +1866,6 @@ class WebhookKeysApi
      */
     public function updateWebhookKeyRequest($id, $accept_language = 'es', $webhook_key_update_request = null, string $contentType = self::contentTypes['updateWebhookKey'][0])
     {
-
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1917,16 +1873,12 @@ class WebhookKeysApi
             );
         }
 
-
-
-
         $resourcePath = '/webhook_keys/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
 
         // header params
         if ($accept_language !== null) {
@@ -1941,7 +1893,6 @@ class WebhookKeysApi
                 $resourcePath
             );
         }
-
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/vnd.conekta-v2.1.0+json', ],
@@ -1968,14 +1919,13 @@ class WebhookKeysApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name' => $formParamName,
+                            'name'     => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the form parameters
                 $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
@@ -1986,7 +1936,7 @@ class WebhookKeysApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
+        if (! empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2022,7 +1972,7 @@ class WebhookKeysApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
+            if (! $options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }

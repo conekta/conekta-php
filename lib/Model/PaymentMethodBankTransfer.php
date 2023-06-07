@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodBankTransfer Class Doc Comment
@@ -41,102 +41,102 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodBankTransfer implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_bank_transfer';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'object' => 'string',
-        'bank' => 'string',
-        'clabe' => 'string',
-        'description' => 'string',
-        'executed_at' => 'int',
-        'expires_at' => 'int',
-        'issuing_account_bank' => 'string',
-        'issuing_account_number' => 'string',
-        'issuing_account_holder_name' => 'string',
-        'issuing_account_tax_id' => 'string',
-        'payment_attempts' => 'mixed[]',
+        'type'                          => 'string',
+        'object'                        => 'string',
+        'bank'                          => 'string',
+        'clabe'                         => 'string',
+        'description'                   => 'string',
+        'executed_at'                   => 'int',
+        'expires_at'                    => 'int',
+        'issuing_account_bank'          => 'string',
+        'issuing_account_number'        => 'string',
+        'issuing_account_holder_name'   => 'string',
+        'issuing_account_tax_id'        => 'string',
+        'payment_attempts'              => 'mixed[]',
         'receiving_account_holder_name' => 'string',
-        'receiving_account_number' => 'string',
-        'receiving_account_bank' => 'string',
-        'receiving_account_tax_id' => 'string',
-        'reference_number' => 'string',
-        'tracking_code' => 'string'
+        'receiving_account_number'      => 'string',
+        'receiving_account_bank'        => 'string',
+        'receiving_account_tax_id'      => 'string',
+        'reference_number'              => 'string',
+        'tracking_code'                 => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'type' => null,
-        'object' => null,
-        'bank' => null,
-        'clabe' => null,
-        'description' => null,
-        'executed_at' => null,
-        'expires_at' => 'int64',
-        'issuing_account_bank' => null,
-        'issuing_account_number' => null,
-        'issuing_account_holder_name' => null,
-        'issuing_account_tax_id' => null,
-        'payment_attempts' => null,
+        'type'                          => null,
+        'object'                        => null,
+        'bank'                          => null,
+        'clabe'                         => null,
+        'description'                   => null,
+        'executed_at'                   => null,
+        'expires_at'                    => 'int64',
+        'issuing_account_bank'          => null,
+        'issuing_account_number'        => null,
+        'issuing_account_holder_name'   => null,
+        'issuing_account_tax_id'        => null,
+        'payment_attempts'              => null,
         'receiving_account_holder_name' => null,
-        'receiving_account_number' => null,
-        'receiving_account_bank' => null,
-        'receiving_account_tax_id' => null,
-        'reference_number' => null,
-        'tracking_code' => null
+        'receiving_account_number'      => null,
+        'receiving_account_bank'        => null,
+        'receiving_account_tax_id'      => null,
+        'reference_number'              => null,
+        'tracking_code'                 => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'type' => false,
-		'object' => false,
-		'bank' => false,
-		'clabe' => false,
-		'description' => true,
-		'executed_at' => true,
-		'expires_at' => false,
-		'issuing_account_bank' => true,
-		'issuing_account_number' => true,
-		'issuing_account_holder_name' => true,
-		'issuing_account_tax_id' => true,
-		'payment_attempts' => false,
-		'receiving_account_holder_name' => true,
-		'receiving_account_number' => false,
-		'receiving_account_bank' => false,
-		'receiving_account_tax_id' => true,
-		'reference_number' => true,
-		'tracking_code' => true
+        'type'                          => false,
+        'object'                        => false,
+        'bank'                          => false,
+        'clabe'                         => false,
+        'description'                   => true,
+        'executed_at'                   => true,
+        'expires_at'                    => false,
+        'issuing_account_bank'          => true,
+        'issuing_account_number'        => true,
+        'issuing_account_holder_name'   => true,
+        'issuing_account_tax_id'        => true,
+        'payment_attempts'              => false,
+        'receiving_account_holder_name' => true,
+        'receiving_account_number'      => false,
+        'receiving_account_bank'        => false,
+        'receiving_account_tax_id'      => true,
+        'reference_number'              => true,
+        'tracking_code'                 => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -218,24 +218,24 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'object' => 'object',
-        'bank' => 'bank',
-        'clabe' => 'clabe',
-        'description' => 'description',
-        'executed_at' => 'executed_at',
-        'expires_at' => 'expires_at',
-        'issuing_account_bank' => 'issuing_account_bank',
-        'issuing_account_number' => 'issuing_account_number',
-        'issuing_account_holder_name' => 'issuing_account_holder_name',
-        'issuing_account_tax_id' => 'issuing_account_tax_id',
-        'payment_attempts' => 'payment_attempts',
+        'type'                          => 'type',
+        'object'                        => 'object',
+        'bank'                          => 'bank',
+        'clabe'                         => 'clabe',
+        'description'                   => 'description',
+        'executed_at'                   => 'executed_at',
+        'expires_at'                    => 'expires_at',
+        'issuing_account_bank'          => 'issuing_account_bank',
+        'issuing_account_number'        => 'issuing_account_number',
+        'issuing_account_holder_name'   => 'issuing_account_holder_name',
+        'issuing_account_tax_id'        => 'issuing_account_tax_id',
+        'payment_attempts'              => 'payment_attempts',
         'receiving_account_holder_name' => 'receiving_account_holder_name',
-        'receiving_account_number' => 'receiving_account_number',
-        'receiving_account_bank' => 'receiving_account_bank',
-        'receiving_account_tax_id' => 'receiving_account_tax_id',
-        'reference_number' => 'reference_number',
-        'tracking_code' => 'tracking_code'
+        'receiving_account_number'      => 'receiving_account_number',
+        'receiving_account_bank'        => 'receiving_account_bank',
+        'receiving_account_tax_id'      => 'receiving_account_tax_id',
+        'reference_number'              => 'reference_number',
+        'tracking_code'                 => 'tracking_code'
     ];
 
     /**
@@ -244,24 +244,24 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'object' => 'setObject',
-        'bank' => 'setBank',
-        'clabe' => 'setClabe',
-        'description' => 'setDescription',
-        'executed_at' => 'setExecutedAt',
-        'expires_at' => 'setExpiresAt',
-        'issuing_account_bank' => 'setIssuingAccountBank',
-        'issuing_account_number' => 'setIssuingAccountNumber',
-        'issuing_account_holder_name' => 'setIssuingAccountHolderName',
-        'issuing_account_tax_id' => 'setIssuingAccountTaxId',
-        'payment_attempts' => 'setPaymentAttempts',
+        'type'                          => 'setType',
+        'object'                        => 'setObject',
+        'bank'                          => 'setBank',
+        'clabe'                         => 'setClabe',
+        'description'                   => 'setDescription',
+        'executed_at'                   => 'setExecutedAt',
+        'expires_at'                    => 'setExpiresAt',
+        'issuing_account_bank'          => 'setIssuingAccountBank',
+        'issuing_account_number'        => 'setIssuingAccountNumber',
+        'issuing_account_holder_name'   => 'setIssuingAccountHolderName',
+        'issuing_account_tax_id'        => 'setIssuingAccountTaxId',
+        'payment_attempts'              => 'setPaymentAttempts',
         'receiving_account_holder_name' => 'setReceivingAccountHolderName',
-        'receiving_account_number' => 'setReceivingAccountNumber',
-        'receiving_account_bank' => 'setReceivingAccountBank',
-        'receiving_account_tax_id' => 'setReceivingAccountTaxId',
-        'reference_number' => 'setReferenceNumber',
-        'tracking_code' => 'setTrackingCode'
+        'receiving_account_number'      => 'setReceivingAccountNumber',
+        'receiving_account_bank'        => 'setReceivingAccountBank',
+        'receiving_account_tax_id'      => 'setReceivingAccountTaxId',
+        'reference_number'              => 'setReferenceNumber',
+        'tracking_code'                 => 'setTrackingCode'
     ];
 
     /**
@@ -270,24 +270,24 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'object' => 'getObject',
-        'bank' => 'getBank',
-        'clabe' => 'getClabe',
-        'description' => 'getDescription',
-        'executed_at' => 'getExecutedAt',
-        'expires_at' => 'getExpiresAt',
-        'issuing_account_bank' => 'getIssuingAccountBank',
-        'issuing_account_number' => 'getIssuingAccountNumber',
-        'issuing_account_holder_name' => 'getIssuingAccountHolderName',
-        'issuing_account_tax_id' => 'getIssuingAccountTaxId',
-        'payment_attempts' => 'getPaymentAttempts',
+        'type'                          => 'getType',
+        'object'                        => 'getObject',
+        'bank'                          => 'getBank',
+        'clabe'                         => 'getClabe',
+        'description'                   => 'getDescription',
+        'executed_at'                   => 'getExecutedAt',
+        'expires_at'                    => 'getExpiresAt',
+        'issuing_account_bank'          => 'getIssuingAccountBank',
+        'issuing_account_number'        => 'getIssuingAccountNumber',
+        'issuing_account_holder_name'   => 'getIssuingAccountHolderName',
+        'issuing_account_tax_id'        => 'getIssuingAccountTaxId',
+        'payment_attempts'              => 'getPaymentAttempts',
         'receiving_account_holder_name' => 'getReceivingAccountHolderName',
-        'receiving_account_number' => 'getReceivingAccountNumber',
-        'receiving_account_bank' => 'getReceivingAccountBank',
-        'receiving_account_tax_id' => 'getReceivingAccountTaxId',
-        'reference_number' => 'getReferenceNumber',
-        'tracking_code' => 'getTrackingCode'
+        'receiving_account_number'      => 'getReceivingAccountNumber',
+        'receiving_account_bank'        => 'getReceivingAccountBank',
+        'receiving_account_tax_id'      => 'getReceivingAccountTaxId',
+        'reference_number'              => 'getReferenceNumber',
+        'tracking_code'                 => 'getTrackingCode'
     ];
 
     /**
@@ -331,7 +331,6 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -368,14 +367,14 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -410,7 +409,6 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets type
@@ -544,7 +542,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -578,7 +576,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('executed_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -639,7 +637,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_bank', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -673,7 +671,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -707,7 +705,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -741,7 +739,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('issuing_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -802,7 +800,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('receiving_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -890,7 +888,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('receiving_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -924,7 +922,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('reference_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -958,7 +956,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('tracking_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -1031,7 +1029,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1057,5 +1055,3 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CustomerInfoResponse Class Doc Comment
@@ -41,63 +41,63 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerInfoResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'customer_info_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
+        'name'      => 'string',
+        'email'     => 'string',
+        'phone'     => 'string',
         'corporate' => 'bool',
-        'object' => 'string'
+        'object'    => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'name' => null,
-        'email' => 'email',
-        'phone' => null,
+        'name'      => null,
+        'email'     => 'email',
+        'phone'     => null,
         'corporate' => null,
-        'object' => null
+        'object'    => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'name' => false,
-		'email' => false,
-		'phone' => false,
-		'corporate' => false,
-		'object' => false
+        'name'      => false,
+        'email'     => false,
+        'phone'     => false,
+        'corporate' => false,
+        'object'    => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -179,11 +179,11 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'email' => 'email',
-        'phone' => 'phone',
+        'name'      => 'name',
+        'email'     => 'email',
+        'phone'     => 'phone',
         'corporate' => 'corporate',
-        'object' => 'object'
+        'object'    => 'object'
     ];
 
     /**
@@ -192,11 +192,11 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
+        'name'      => 'setName',
+        'email'     => 'setEmail',
+        'phone'     => 'setPhone',
         'corporate' => 'setCorporate',
-        'object' => 'setObject'
+        'object'    => 'setObject'
     ];
 
     /**
@@ -205,11 +205,11 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
+        'name'      => 'getName',
+        'email'     => 'getEmail',
+        'phone'     => 'getPhone',
         'corporate' => 'getCorporate',
-        'object' => 'getObject'
+        'object'    => 'getObject'
     ];
 
     /**
@@ -253,7 +253,6 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -277,14 +276,14 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -316,7 +315,6 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets name
@@ -516,7 +514,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -542,5 +540,3 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

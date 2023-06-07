@@ -28,9 +28,7 @@
 
 namespace Conekta\Test\Api;
 
-use \Conekta\Configuration;
-use \Conekta\ApiException;
-use \Conekta\ObjectSerializer;
+use Conekta\{ApiException, Configuration, ObjectSerializer};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -43,7 +41,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ShippingContactsApiTest extends TestCase
 {
-
     /**
      * Setup before running any test cases
      */

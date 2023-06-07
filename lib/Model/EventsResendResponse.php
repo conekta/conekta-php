@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * EventsResendResponse Class Doc Comment
@@ -42,66 +42,66 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EventsResendResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'events_resend_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'failed_attempts' => 'int',
-        'id' => 'string',
-        'last_attempted_at' => 'int',
+        'failed_attempts'           => 'int',
+        'id'                        => 'string',
+        'last_attempted_at'         => 'int',
         'last_http_response_status' => 'int',
-        'response_data' => 'array<string,mixed>',
-        'url' => 'string'
+        'response_data'             => 'array<string,mixed>',
+        'url'                       => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'failed_attempts' => null,
-        'id' => null,
-        'last_attempted_at' => null,
+        'failed_attempts'           => null,
+        'id'                        => null,
+        'last_attempted_at'         => null,
         'last_http_response_status' => 'int32',
-        'response_data' => null,
-        'url' => 'uri'
+        'response_data'             => null,
+        'url'                       => 'uri'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'failed_attempts' => false,
-		'id' => false,
-		'last_attempted_at' => false,
-		'last_http_response_status' => false,
-		'response_data' => false,
-		'url' => false
+        'failed_attempts'           => false,
+        'id'                        => false,
+        'last_attempted_at'         => false,
+        'last_http_response_status' => false,
+        'response_data'             => false,
+        'url'                       => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -183,12 +183,12 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'failed_attempts' => 'failed_attempts',
-        'id' => 'id',
-        'last_attempted_at' => 'last_attempted_at',
+        'failed_attempts'           => 'failed_attempts',
+        'id'                        => 'id',
+        'last_attempted_at'         => 'last_attempted_at',
         'last_http_response_status' => 'last_http_response_status',
-        'response_data' => 'response_data',
-        'url' => 'url'
+        'response_data'             => 'response_data',
+        'url'                       => 'url'
     ];
 
     /**
@@ -197,12 +197,12 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'failed_attempts' => 'setFailedAttempts',
-        'id' => 'setId',
-        'last_attempted_at' => 'setLastAttemptedAt',
+        'failed_attempts'           => 'setFailedAttempts',
+        'id'                        => 'setId',
+        'last_attempted_at'         => 'setLastAttemptedAt',
         'last_http_response_status' => 'setLastHttpResponseStatus',
-        'response_data' => 'setResponseData',
-        'url' => 'setUrl'
+        'response_data'             => 'setResponseData',
+        'url'                       => 'setUrl'
     ];
 
     /**
@@ -211,12 +211,12 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'failed_attempts' => 'getFailedAttempts',
-        'id' => 'getId',
-        'last_attempted_at' => 'getLastAttemptedAt',
+        'failed_attempts'           => 'getFailedAttempts',
+        'id'                        => 'getId',
+        'last_attempted_at'         => 'getLastAttemptedAt',
         'last_http_response_status' => 'getLastHttpResponseStatus',
-        'response_data' => 'getResponseData',
-        'url' => 'getUrl'
+        'response_data'             => 'getResponseData',
+        'url'                       => 'getUrl'
     ];
 
     /**
@@ -260,7 +260,6 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -285,14 +284,14 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -311,7 +310,7 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['response_data']) && (count($this->container['response_data']) > 100)) {
+        if (! is_null($this->container['response_data']) && (count($this->container['response_data']) > 100)) {
             $invalidProperties[] = "invalid value for 'response_data', number of items must be less than or equal to 100.";
         }
 
@@ -328,7 +327,6 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets failed_attempts
@@ -559,7 +557,7 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -585,5 +583,3 @@ class EventsResendResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

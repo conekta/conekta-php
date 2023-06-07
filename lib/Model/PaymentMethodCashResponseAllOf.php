@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * PaymentMethodCashResponseAllOf Class Doc Comment
@@ -42,63 +42,63 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCashResponseAllOf implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'payment_method_cash_response_allOf';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'reference' => 'string',
-        'barcode' => 'string',
+        'reference'   => 'string',
+        'barcode'     => 'string',
         'barcode_url' => 'string',
-        'expires_at' => 'int',
-        'provider' => 'string'
+        'expires_at'  => 'int',
+        'provider'    => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'reference' => null,
-        'barcode' => null,
+        'reference'   => null,
+        'barcode'     => null,
         'barcode_url' => null,
-        'expires_at' => 'int64',
-        'provider' => null
+        'expires_at'  => 'int64',
+        'provider'    => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'reference' => false,
-		'barcode' => false,
-		'barcode_url' => false,
-		'expires_at' => false,
-		'provider' => false
+        'reference'   => false,
+        'barcode'     => false,
+        'barcode_url' => false,
+        'expires_at'  => false,
+        'provider'    => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -180,11 +180,11 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'reference' => 'reference',
-        'barcode' => 'barcode',
+        'reference'   => 'reference',
+        'barcode'     => 'barcode',
         'barcode_url' => 'barcode_url',
-        'expires_at' => 'expires_at',
-        'provider' => 'provider'
+        'expires_at'  => 'expires_at',
+        'provider'    => 'provider'
     ];
 
     /**
@@ -193,11 +193,11 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'reference' => 'setReference',
-        'barcode' => 'setBarcode',
+        'reference'   => 'setReference',
+        'barcode'     => 'setBarcode',
         'barcode_url' => 'setBarcodeUrl',
-        'expires_at' => 'setExpiresAt',
-        'provider' => 'setProvider'
+        'expires_at'  => 'setExpiresAt',
+        'provider'    => 'setProvider'
     ];
 
     /**
@@ -206,11 +206,11 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'reference' => 'getReference',
-        'barcode' => 'getBarcode',
+        'reference'   => 'getReference',
+        'barcode'     => 'getBarcode',
         'barcode_url' => 'getBarcodeUrl',
-        'expires_at' => 'getExpiresAt',
-        'provider' => 'getProvider'
+        'expires_at'  => 'getExpiresAt',
+        'provider'    => 'getProvider'
     ];
 
     /**
@@ -254,7 +254,6 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -278,14 +277,14 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -317,7 +316,6 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets reference
@@ -517,7 +515,7 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -543,5 +541,3 @@ class PaymentMethodCashResponseAllOf implements ModelInterface, ArrayAccess, \Js
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

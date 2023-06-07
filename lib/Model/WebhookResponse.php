@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * WebhookResponse Class Doc Comment
@@ -42,78 +42,78 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'webhook_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'deleted' => 'bool',
+        'deleted'             => 'bool',
         'development_enabled' => 'bool',
-        'id' => 'string',
-        'livemode' => 'bool',
-        'object' => 'string',
-        'production_enabled' => 'bool',
-        'status' => 'string',
-        'subscribed_events' => 'string[]',
-        'synchronous' => 'bool',
-        'url' => 'string'
+        'id'                  => 'string',
+        'livemode'            => 'bool',
+        'object'              => 'string',
+        'production_enabled'  => 'bool',
+        'status'              => 'string',
+        'subscribed_events'   => 'string[]',
+        'synchronous'         => 'bool',
+        'url'                 => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'deleted' => null,
+        'deleted'             => null,
         'development_enabled' => null,
-        'id' => null,
-        'livemode' => null,
-        'object' => null,
-        'production_enabled' => null,
-        'status' => null,
-        'subscribed_events' => null,
-        'synchronous' => null,
-        'url' => null
+        'id'                  => null,
+        'livemode'            => null,
+        'object'              => null,
+        'production_enabled'  => null,
+        'status'              => null,
+        'subscribed_events'   => null,
+        'synchronous'         => null,
+        'url'                 => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'deleted' => true,
-		'development_enabled' => false,
-		'id' => false,
-		'livemode' => false,
-		'object' => false,
-		'production_enabled' => false,
-		'status' => false,
-		'subscribed_events' => false,
-		'synchronous' => false,
-		'url' => false
+        'deleted'             => true,
+        'development_enabled' => false,
+        'id'                  => false,
+        'livemode'            => false,
+        'object'              => false,
+        'production_enabled'  => false,
+        'status'              => false,
+        'subscribed_events'   => false,
+        'synchronous'         => false,
+        'url'                 => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -195,16 +195,16 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'deleted' => 'deleted',
+        'deleted'             => 'deleted',
         'development_enabled' => 'development_enabled',
-        'id' => 'id',
-        'livemode' => 'livemode',
-        'object' => 'object',
-        'production_enabled' => 'production_enabled',
-        'status' => 'status',
-        'subscribed_events' => 'subscribed_events',
-        'synchronous' => 'synchronous',
-        'url' => 'url'
+        'id'                  => 'id',
+        'livemode'            => 'livemode',
+        'object'              => 'object',
+        'production_enabled'  => 'production_enabled',
+        'status'              => 'status',
+        'subscribed_events'   => 'subscribed_events',
+        'synchronous'         => 'synchronous',
+        'url'                 => 'url'
     ];
 
     /**
@@ -213,16 +213,16 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'deleted' => 'setDeleted',
+        'deleted'             => 'setDeleted',
         'development_enabled' => 'setDevelopmentEnabled',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
-        'object' => 'setObject',
-        'production_enabled' => 'setProductionEnabled',
-        'status' => 'setStatus',
-        'subscribed_events' => 'setSubscribedEvents',
-        'synchronous' => 'setSynchronous',
-        'url' => 'setUrl'
+        'id'                  => 'setId',
+        'livemode'            => 'setLivemode',
+        'object'              => 'setObject',
+        'production_enabled'  => 'setProductionEnabled',
+        'status'              => 'setStatus',
+        'subscribed_events'   => 'setSubscribedEvents',
+        'synchronous'         => 'setSynchronous',
+        'url'                 => 'setUrl'
     ];
 
     /**
@@ -231,16 +231,16 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'deleted' => 'getDeleted',
+        'deleted'             => 'getDeleted',
         'development_enabled' => 'getDevelopmentEnabled',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
-        'object' => 'getObject',
-        'production_enabled' => 'getProductionEnabled',
-        'status' => 'getStatus',
-        'subscribed_events' => 'getSubscribedEvents',
-        'synchronous' => 'getSynchronous',
-        'url' => 'getUrl'
+        'id'                  => 'getId',
+        'livemode'            => 'getLivemode',
+        'object'              => 'getObject',
+        'production_enabled'  => 'getProductionEnabled',
+        'status'              => 'getStatus',
+        'subscribed_events'   => 'getSubscribedEvents',
+        'synchronous'         => 'getSynchronous',
+        'url'                 => 'getUrl'
     ];
 
     /**
@@ -284,7 +284,6 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -313,14 +312,14 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -353,7 +352,6 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
      * Gets deleted
      *
@@ -378,7 +376,7 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('deleted', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -694,7 +692,7 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -720,5 +718,3 @@ class WebhookResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

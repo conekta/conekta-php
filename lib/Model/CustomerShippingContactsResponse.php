@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CustomerShippingContactsResponse Class Doc Comment
@@ -42,78 +42,78 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerShippingContactsResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'customer_shipping_contacts_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'phone' => 'string',
-        'receiver' => 'string',
+        'phone'           => 'string',
+        'receiver'        => 'string',
         'between_streets' => 'string',
-        'address' => '\Conekta\Model\CustomerShippingContactsResponseAddress',
-        'parent_id' => 'string',
-        'default' => 'bool',
-        'id' => 'string',
-        'created_at' => 'int',
-        'object' => 'string',
-        'deleted' => 'bool'
+        'address'         => '\Conekta\Model\CustomerShippingContactsResponseAddress',
+        'parent_id'       => 'string',
+        'default'         => 'bool',
+        'id'              => 'string',
+        'created_at'      => 'int',
+        'object'          => 'string',
+        'deleted'         => 'bool'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'phone' => null,
-        'receiver' => null,
+        'phone'           => null,
+        'receiver'        => null,
         'between_streets' => null,
-        'address' => null,
-        'parent_id' => null,
-        'default' => null,
-        'id' => null,
-        'created_at' => 'int64',
-        'object' => null,
-        'deleted' => null
+        'address'         => null,
+        'parent_id'       => null,
+        'default'         => null,
+        'id'              => null,
+        'created_at'      => 'int64',
+        'object'          => null,
+        'deleted'         => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'phone' => false,
-		'receiver' => false,
-		'between_streets' => true,
-		'address' => false,
-		'parent_id' => false,
-		'default' => false,
-		'id' => false,
-		'created_at' => false,
-		'object' => false,
-		'deleted' => false
+        'phone'           => false,
+        'receiver'        => false,
+        'between_streets' => true,
+        'address'         => false,
+        'parent_id'       => false,
+        'default'         => false,
+        'id'              => false,
+        'created_at'      => false,
+        'object'          => false,
+        'deleted'         => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -195,16 +195,16 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone' => 'phone',
-        'receiver' => 'receiver',
+        'phone'           => 'phone',
+        'receiver'        => 'receiver',
         'between_streets' => 'between_streets',
-        'address' => 'address',
-        'parent_id' => 'parent_id',
-        'default' => 'default',
-        'id' => 'id',
-        'created_at' => 'created_at',
-        'object' => 'object',
-        'deleted' => 'deleted'
+        'address'         => 'address',
+        'parent_id'       => 'parent_id',
+        'default'         => 'default',
+        'id'              => 'id',
+        'created_at'      => 'created_at',
+        'object'          => 'object',
+        'deleted'         => 'deleted'
     ];
 
     /**
@@ -213,16 +213,16 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'phone' => 'setPhone',
-        'receiver' => 'setReceiver',
+        'phone'           => 'setPhone',
+        'receiver'        => 'setReceiver',
         'between_streets' => 'setBetweenStreets',
-        'address' => 'setAddress',
-        'parent_id' => 'setParentId',
-        'default' => 'setDefault',
-        'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'object' => 'setObject',
-        'deleted' => 'setDeleted'
+        'address'         => 'setAddress',
+        'parent_id'       => 'setParentId',
+        'default'         => 'setDefault',
+        'id'              => 'setId',
+        'created_at'      => 'setCreatedAt',
+        'object'          => 'setObject',
+        'deleted'         => 'setDeleted'
     ];
 
     /**
@@ -231,16 +231,16 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'phone' => 'getPhone',
-        'receiver' => 'getReceiver',
+        'phone'           => 'getPhone',
+        'receiver'        => 'getReceiver',
         'between_streets' => 'getBetweenStreets',
-        'address' => 'getAddress',
-        'parent_id' => 'getParentId',
-        'default' => 'getDefault',
-        'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'object' => 'getObject',
-        'deleted' => 'getDeleted'
+        'address'         => 'getAddress',
+        'parent_id'       => 'getParentId',
+        'default'         => 'getDefault',
+        'id'              => 'getId',
+        'created_at'      => 'getCreatedAt',
+        'object'          => 'getObject',
+        'deleted'         => 'getDeleted'
     ];
 
     /**
@@ -284,7 +284,6 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -313,14 +312,14 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -352,7 +351,6 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets phone
@@ -432,7 +430,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('between_streets', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -694,7 +692,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -720,5 +718,3 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

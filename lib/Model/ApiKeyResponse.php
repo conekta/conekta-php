@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * ApiKeyResponse Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiKeyResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'api-key_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'active' => 'bool',
-        'created_at' => 'int',
+        'active'      => 'bool',
+        'created_at'  => 'int',
         'description' => 'string',
-        'id' => 'string',
-        'livemode' => 'bool',
-        'object' => 'string',
-        'prefix' => 'string',
-        'role' => 'string'
+        'id'          => 'string',
+        'livemode'    => 'bool',
+        'object'      => 'string',
+        'prefix'      => 'string',
+        'role'        => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'active' => null,
-        'created_at' => 'int64',
+        'active'      => null,
+        'created_at'  => 'int64',
         'description' => null,
-        'id' => null,
-        'livemode' => null,
-        'object' => null,
-        'prefix' => null,
-        'role' => null
+        'id'          => null,
+        'livemode'    => null,
+        'object'      => null,
+        'prefix'      => null,
+        'role'        => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'active' => false,
-		'created_at' => false,
-		'description' => false,
-		'id' => false,
-		'livemode' => false,
-		'object' => false,
-		'prefix' => false,
-		'role' => false
+        'active'      => false,
+        'created_at'  => false,
+        'description' => false,
+        'id'          => false,
+        'livemode'    => false,
+        'object'      => false,
+        'prefix'      => false,
+        'role'        => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -189,14 +189,14 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'active' => 'active',
-        'created_at' => 'created_at',
+        'active'      => 'active',
+        'created_at'  => 'created_at',
         'description' => 'description',
-        'id' => 'id',
-        'livemode' => 'livemode',
-        'object' => 'object',
-        'prefix' => 'prefix',
-        'role' => 'role'
+        'id'          => 'id',
+        'livemode'    => 'livemode',
+        'object'      => 'object',
+        'prefix'      => 'prefix',
+        'role'        => 'role'
     ];
 
     /**
@@ -205,14 +205,14 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'active' => 'setActive',
-        'created_at' => 'setCreatedAt',
+        'active'      => 'setActive',
+        'created_at'  => 'setCreatedAt',
         'description' => 'setDescription',
-        'id' => 'setId',
-        'livemode' => 'setLivemode',
-        'object' => 'setObject',
-        'prefix' => 'setPrefix',
-        'role' => 'setRole'
+        'id'          => 'setId',
+        'livemode'    => 'setLivemode',
+        'object'      => 'setObject',
+        'prefix'      => 'setPrefix',
+        'role'        => 'setRole'
     ];
 
     /**
@@ -221,14 +221,14 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'active' => 'getActive',
-        'created_at' => 'getCreatedAt',
+        'active'      => 'getActive',
+        'created_at'  => 'getCreatedAt',
         'description' => 'getDescription',
-        'id' => 'getId',
-        'livemode' => 'getLivemode',
-        'object' => 'getObject',
-        'prefix' => 'getPrefix',
-        'role' => 'getRole'
+        'id'          => 'getId',
+        'livemode'    => 'getLivemode',
+        'object'      => 'getObject',
+        'prefix'      => 'getPrefix',
+        'role'        => 'getRole'
     ];
 
     /**
@@ -272,7 +272,6 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -299,14 +298,14 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -338,7 +337,6 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets active
@@ -619,7 +617,7 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -645,5 +643,3 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

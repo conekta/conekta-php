@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * OrderResponse Class Doc Comment
@@ -42,105 +42,105 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'order_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'amount_refunded' => 'int',
-        'channel' => '\Conekta\Model\ChargeResponseChannel',
-        'charges' => '\Conekta\Model\OrderResponseCharges',
-        'checkout' => '\Conekta\Model\OrderResponseCheckout',
-        'created_at' => 'int',
-        'currency' => 'string',
-        'customer_info' => '\Conekta\Model\OrderResponseCustomerInfo',
-        'discount_lines' => '\Conekta\Model\OrderResponseDiscountLines',
-        'fiscal_entity' => '\Conekta\Model\OrderResponseFiscalEntity',
-        'id' => 'string',
-        'is_refundable' => 'bool',
-        'line_items' => '\Conekta\Model\OrderResponseProducts',
-        'livemode' => 'bool',
-        'metadata' => 'array<string,mixed>',
-        'object' => 'string',
-        'payment_status' => 'string',
+        'amount'           => 'int',
+        'amount_refunded'  => 'int',
+        'channel'          => '\Conekta\Model\ChargeResponseChannel',
+        'charges'          => '\Conekta\Model\OrderResponseCharges',
+        'checkout'         => '\Conekta\Model\OrderResponseCheckout',
+        'created_at'       => 'int',
+        'currency'         => 'string',
+        'customer_info'    => '\Conekta\Model\OrderResponseCustomerInfo',
+        'discount_lines'   => '\Conekta\Model\OrderResponseDiscountLines',
+        'fiscal_entity'    => '\Conekta\Model\OrderResponseFiscalEntity',
+        'id'               => 'string',
+        'is_refundable'    => 'bool',
+        'line_items'       => '\Conekta\Model\OrderResponseProducts',
+        'livemode'         => 'bool',
+        'metadata'         => 'array<string,mixed>',
+        'object'           => 'string',
+        'payment_status'   => 'string',
         'shipping_contact' => '\Conekta\Model\OrderResponseShippingContact',
-        'updated_at' => 'int'
+        'updated_at'       => 'int'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'amount_refunded' => null,
-        'channel' => null,
-        'charges' => null,
-        'checkout' => null,
-        'created_at' => 'int64',
-        'currency' => null,
-        'customer_info' => null,
-        'discount_lines' => null,
-        'fiscal_entity' => null,
-        'id' => null,
-        'is_refundable' => null,
-        'line_items' => null,
-        'livemode' => null,
-        'metadata' => null,
-        'object' => null,
-        'payment_status' => null,
+        'amount'           => null,
+        'amount_refunded'  => null,
+        'channel'          => null,
+        'charges'          => null,
+        'checkout'         => null,
+        'created_at'       => 'int64',
+        'currency'         => null,
+        'customer_info'    => null,
+        'discount_lines'   => null,
+        'fiscal_entity'    => null,
+        'id'               => null,
+        'is_refundable'    => null,
+        'line_items'       => null,
+        'livemode'         => null,
+        'metadata'         => null,
+        'object'           => null,
+        'payment_status'   => null,
         'shipping_contact' => null,
-        'updated_at' => 'int64'
+        'updated_at'       => 'int64'
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'amount_refunded' => false,
-		'channel' => false,
-		'charges' => false,
-		'checkout' => false,
-		'created_at' => false,
-		'currency' => false,
-		'customer_info' => false,
-		'discount_lines' => false,
-		'fiscal_entity' => false,
-		'id' => false,
-		'is_refundable' => false,
-		'line_items' => false,
-		'livemode' => false,
-		'metadata' => false,
-		'object' => false,
-		'payment_status' => false,
-		'shipping_contact' => false,
-		'updated_at' => false
+        'amount'           => false,
+        'amount_refunded'  => false,
+        'channel'          => false,
+        'charges'          => false,
+        'checkout'         => false,
+        'created_at'       => false,
+        'currency'         => false,
+        'customer_info'    => false,
+        'discount_lines'   => false,
+        'fiscal_entity'    => false,
+        'id'               => false,
+        'is_refundable'    => false,
+        'line_items'       => false,
+        'livemode'         => false,
+        'metadata'         => false,
+        'object'           => false,
+        'payment_status'   => false,
+        'shipping_contact' => false,
+        'updated_at'       => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -222,25 +222,25 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'amount_refunded' => 'amount_refunded',
-        'channel' => 'channel',
-        'charges' => 'charges',
-        'checkout' => 'checkout',
-        'created_at' => 'created_at',
-        'currency' => 'currency',
-        'customer_info' => 'customer_info',
-        'discount_lines' => 'discount_lines',
-        'fiscal_entity' => 'fiscal_entity',
-        'id' => 'id',
-        'is_refundable' => 'is_refundable',
-        'line_items' => 'line_items',
-        'livemode' => 'livemode',
-        'metadata' => 'metadata',
-        'object' => 'object',
-        'payment_status' => 'payment_status',
+        'amount'           => 'amount',
+        'amount_refunded'  => 'amount_refunded',
+        'channel'          => 'channel',
+        'charges'          => 'charges',
+        'checkout'         => 'checkout',
+        'created_at'       => 'created_at',
+        'currency'         => 'currency',
+        'customer_info'    => 'customer_info',
+        'discount_lines'   => 'discount_lines',
+        'fiscal_entity'    => 'fiscal_entity',
+        'id'               => 'id',
+        'is_refundable'    => 'is_refundable',
+        'line_items'       => 'line_items',
+        'livemode'         => 'livemode',
+        'metadata'         => 'metadata',
+        'object'           => 'object',
+        'payment_status'   => 'payment_status',
         'shipping_contact' => 'shipping_contact',
-        'updated_at' => 'updated_at'
+        'updated_at'       => 'updated_at'
     ];
 
     /**
@@ -249,25 +249,25 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'amount_refunded' => 'setAmountRefunded',
-        'channel' => 'setChannel',
-        'charges' => 'setCharges',
-        'checkout' => 'setCheckout',
-        'created_at' => 'setCreatedAt',
-        'currency' => 'setCurrency',
-        'customer_info' => 'setCustomerInfo',
-        'discount_lines' => 'setDiscountLines',
-        'fiscal_entity' => 'setFiscalEntity',
-        'id' => 'setId',
-        'is_refundable' => 'setIsRefundable',
-        'line_items' => 'setLineItems',
-        'livemode' => 'setLivemode',
-        'metadata' => 'setMetadata',
-        'object' => 'setObject',
-        'payment_status' => 'setPaymentStatus',
+        'amount'           => 'setAmount',
+        'amount_refunded'  => 'setAmountRefunded',
+        'channel'          => 'setChannel',
+        'charges'          => 'setCharges',
+        'checkout'         => 'setCheckout',
+        'created_at'       => 'setCreatedAt',
+        'currency'         => 'setCurrency',
+        'customer_info'    => 'setCustomerInfo',
+        'discount_lines'   => 'setDiscountLines',
+        'fiscal_entity'    => 'setFiscalEntity',
+        'id'               => 'setId',
+        'is_refundable'    => 'setIsRefundable',
+        'line_items'       => 'setLineItems',
+        'livemode'         => 'setLivemode',
+        'metadata'         => 'setMetadata',
+        'object'           => 'setObject',
+        'payment_status'   => 'setPaymentStatus',
         'shipping_contact' => 'setShippingContact',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at'       => 'setUpdatedAt'
     ];
 
     /**
@@ -276,25 +276,25 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'amount_refunded' => 'getAmountRefunded',
-        'channel' => 'getChannel',
-        'charges' => 'getCharges',
-        'checkout' => 'getCheckout',
-        'created_at' => 'getCreatedAt',
-        'currency' => 'getCurrency',
-        'customer_info' => 'getCustomerInfo',
-        'discount_lines' => 'getDiscountLines',
-        'fiscal_entity' => 'getFiscalEntity',
-        'id' => 'getId',
-        'is_refundable' => 'getIsRefundable',
-        'line_items' => 'getLineItems',
-        'livemode' => 'getLivemode',
-        'metadata' => 'getMetadata',
-        'object' => 'getObject',
-        'payment_status' => 'getPaymentStatus',
+        'amount'           => 'getAmount',
+        'amount_refunded'  => 'getAmountRefunded',
+        'channel'          => 'getChannel',
+        'charges'          => 'getCharges',
+        'checkout'         => 'getCheckout',
+        'created_at'       => 'getCreatedAt',
+        'currency'         => 'getCurrency',
+        'customer_info'    => 'getCustomerInfo',
+        'discount_lines'   => 'getDiscountLines',
+        'fiscal_entity'    => 'getFiscalEntity',
+        'id'               => 'getId',
+        'is_refundable'    => 'getIsRefundable',
+        'line_items'       => 'getLineItems',
+        'livemode'         => 'getLivemode',
+        'metadata'         => 'getMetadata',
+        'object'           => 'getObject',
+        'payment_status'   => 'getPaymentStatus',
         'shipping_contact' => 'getShippingContact',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at'       => 'getUpdatedAt'
     ];
 
     /**
@@ -338,7 +338,6 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -376,14 +375,14 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -402,7 +401,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+        if (! is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
             $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
         }
 
@@ -419,7 +418,6 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets amount
@@ -1001,7 +999,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -1027,5 +1025,3 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

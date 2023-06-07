@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * OrderResponseShippingContactAllOf Class Doc Comment
@@ -41,57 +41,57 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderResponseShippingContactAllOf implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'order_response_shipping_contact_allOf';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'created_at' => 'int',
-        'id' => 'string',
-        'object' => 'string'
+        'id'         => 'string',
+        'object'     => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'created_at' => 'int64',
-        'id' => null,
-        'object' => null
+        'id'         => null,
+        'object'     => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'created_at' => false,
-		'id' => false,
-		'object' => false
+        'id'         => false,
+        'object'     => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -174,8 +174,8 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'created_at' => 'created_at',
-        'id' => 'id',
-        'object' => 'object'
+        'id'         => 'id',
+        'object'     => 'object'
     ];
 
     /**
@@ -185,8 +185,8 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'created_at' => 'setCreatedAt',
-        'id' => 'setId',
-        'object' => 'setObject'
+        'id'         => 'setId',
+        'object'     => 'setObject'
     ];
 
     /**
@@ -196,8 +196,8 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'created_at' => 'getCreatedAt',
-        'id' => 'getId',
-        'object' => 'getObject'
+        'id'         => 'getId',
+        'object'     => 'getObject'
     ];
 
     /**
@@ -241,7 +241,6 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -263,14 +262,14 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -302,7 +301,6 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets created_at
@@ -448,7 +446,7 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -474,5 +472,3 @@ class OrderResponseShippingContactAllOf implements ModelInterface, ArrayAccess, 
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

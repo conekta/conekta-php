@@ -310,7 +310,7 @@ class Configuration
      */
     public function setUserAgent($userAgent)
     {
-        if (!is_string($userAgent)) {
+        if (! is_string($userAgent)) {
             throw new \InvalidArgumentException('User-agent must be a string.');
         }
 
@@ -430,7 +430,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (Conekta) Debug Report:' . PHP_EOL;
+        $report = 'PHP SDK (Conekta) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 2.1.0' . PHP_EOL;
@@ -474,20 +474,20 @@ class Configuration
     {
         return [
             [
-                "url" => "https://api.conekta.io",
-                "description" => "Conekta main server",
+                'url'         => 'https://api.conekta.io',
+                'description' => 'Conekta main server',
             ]
         ];
     }
 
     /**
-    * Returns URL based on host settings, index and variables
-    *
-    * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
-    * @param int        $hostIndex    index of the host settings
-    * @param array|null $variables    hash of variable and the corresponding value (optional)
-    * @return string URL based on host settings
-    */
+     * Returns URL based on host settings, index and variables
+     *
+     * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
+     * @param int        $hostIndex    index of the host settings
+     * @param array|null $variables    hash of variable and the corresponding value (optional)
+     * @return string URL based on host settings
+     */
     public static function getHostString(array $hostsSettings, $hostIndex, array $variables = null)
     {
         if (null === $variables) {
@@ -496,23 +496,23 @@ class Configuration
 
         // check array index out of bound
         if ($hostIndex < 0 || $hostIndex >= count($hostsSettings)) {
-            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than ".count($hostsSettings));
+            throw new \InvalidArgumentException("Invalid index {$hostIndex} when selecting the host. Must be less than " . count($hostsSettings));
         }
 
         $host = $hostsSettings[$hostIndex];
-        $url = $host["url"];
+        $url = $host['url'];
 
         // go through variable and assign a value
-        foreach ($host["variables"] ?? [] as $name => $variable) {
+        foreach ($host['variables'] ?? [] as $name => $variable) {
             if (array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
-                if (!isset($variable['enum_values']) || in_array($variables[$name], $variable["enum_values"], true)) { // check to see if the value is in the enum
-                    $url = str_replace("{".$name."}", $variables[$name], $url);
+                if (! isset($variable['enum_values']) || in_array($variables[$name], $variable['enum_values'], true)) { // check to see if the value is in the enum
+                    $url = str_replace('{' . $name . '}', $variables[$name], $url);
                 } else {
-                    throw new \InvalidArgumentException("The variable `$name` in the host URL has invalid value ".$variables[$name].". Must be ".join(',', $variable["enum_values"]).".");
+                    throw new \InvalidArgumentException("The variable `{$name}` in the host URL has invalid value " . $variables[$name] . '. Must be ' . join(',', $variable['enum_values']) . '.');
                 }
             } else {
                 // use default value
-                $url = str_replace("{".$name."}", $variable["default_value"], $url);
+                $url = str_replace('{' . $name . '}', $variable['default_value'], $url);
             }
         }
 

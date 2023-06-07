@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * TokenCard Class Doc Comment
@@ -41,66 +41,66 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
+class TokenCard implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'token_card';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'cvc' => 'string',
+        'cvc'                => 'string',
         'device_fingerprint' => 'string',
-        'exp_month' => 'string',
-        'exp_year' => 'string',
-        'name' => 'string',
-        'number' => 'string'
+        'exp_month'          => 'string',
+        'exp_year'           => 'string',
+        'name'               => 'string',
+        'number'             => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'cvc' => null,
+        'cvc'                => null,
         'device_fingerprint' => null,
-        'exp_month' => null,
-        'exp_year' => null,
-        'name' => null,
-        'number' => null
+        'exp_month'          => null,
+        'exp_year'           => null,
+        'name'               => null,
+        'number'             => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'cvc' => false,
-		'device_fingerprint' => false,
-		'exp_month' => false,
-		'exp_year' => false,
-		'name' => false,
-		'number' => false
+        'cvc'                => false,
+        'device_fingerprint' => false,
+        'exp_month'          => false,
+        'exp_year'           => false,
+        'name'               => false,
+        'number'             => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -182,12 +182,12 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'cvc' => 'cvc',
+        'cvc'                => 'cvc',
         'device_fingerprint' => 'device_fingerprint',
-        'exp_month' => 'exp_month',
-        'exp_year' => 'exp_year',
-        'name' => 'name',
-        'number' => 'number'
+        'exp_month'          => 'exp_month',
+        'exp_year'           => 'exp_year',
+        'name'               => 'name',
+        'number'             => 'number'
     ];
 
     /**
@@ -196,12 +196,12 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'cvc' => 'setCvc',
+        'cvc'                => 'setCvc',
         'device_fingerprint' => 'setDeviceFingerprint',
-        'exp_month' => 'setExpMonth',
-        'exp_year' => 'setExpYear',
-        'name' => 'setName',
-        'number' => 'setNumber'
+        'exp_month'          => 'setExpMonth',
+        'exp_year'           => 'setExpYear',
+        'name'               => 'setName',
+        'number'             => 'setNumber'
     ];
 
     /**
@@ -210,12 +210,12 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'cvc' => 'getCvc',
+        'cvc'                => 'getCvc',
         'device_fingerprint' => 'getDeviceFingerprint',
-        'exp_month' => 'getExpMonth',
-        'exp_year' => 'getExpYear',
-        'name' => 'getName',
-        'number' => 'getNumber'
+        'exp_month'          => 'getExpMonth',
+        'exp_year'           => 'getExpYear',
+        'name'               => 'getName',
+        'number'             => 'getNumber'
     ];
 
     /**
@@ -259,7 +259,6 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -284,14 +283,14 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -350,7 +349,6 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets cvc
@@ -589,7 +587,7 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -615,5 +613,3 @@ class TokenCard implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

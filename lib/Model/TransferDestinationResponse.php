@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * TransferDestinationResponse Class Doc Comment
@@ -42,72 +42,72 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TransferDestinationResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'transfer_destination_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
         'account_holder' => 'string',
         'account_number' => 'string',
-        'bank' => 'string',
-        'created_at' => 'int',
-        'id' => 'string',
-        'object' => 'string',
-        'payee_id' => 'string',
-        'type' => 'string'
+        'bank'           => 'string',
+        'created_at'     => 'int',
+        'id'             => 'string',
+        'object'         => 'string',
+        'payee_id'       => 'string',
+        'type'           => 'string'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
         'account_holder' => null,
         'account_number' => null,
-        'bank' => null,
-        'created_at' => 'int64',
-        'id' => null,
-        'object' => null,
-        'payee_id' => null,
-        'type' => null
+        'bank'           => null,
+        'created_at'     => 'int64',
+        'id'             => null,
+        'object'         => null,
+        'payee_id'       => null,
+        'type'           => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
         'account_holder' => false,
-		'account_number' => false,
-		'bank' => false,
-		'created_at' => false,
-		'id' => false,
-		'object' => false,
-		'payee_id' => false,
-		'type' => false
+        'account_number' => false,
+        'bank'           => false,
+        'created_at'     => false,
+        'id'             => false,
+        'object'         => false,
+        'payee_id'       => false,
+        'type'           => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -191,12 +191,12 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'account_holder' => 'account_holder',
         'account_number' => 'account_number',
-        'bank' => 'bank',
-        'created_at' => 'created_at',
-        'id' => 'id',
-        'object' => 'object',
-        'payee_id' => 'payee_id',
-        'type' => 'type'
+        'bank'           => 'bank',
+        'created_at'     => 'created_at',
+        'id'             => 'id',
+        'object'         => 'object',
+        'payee_id'       => 'payee_id',
+        'type'           => 'type'
     ];
 
     /**
@@ -207,12 +207,12 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'account_holder' => 'setAccountHolder',
         'account_number' => 'setAccountNumber',
-        'bank' => 'setBank',
-        'created_at' => 'setCreatedAt',
-        'id' => 'setId',
-        'object' => 'setObject',
-        'payee_id' => 'setPayeeId',
-        'type' => 'setType'
+        'bank'           => 'setBank',
+        'created_at'     => 'setCreatedAt',
+        'id'             => 'setId',
+        'object'         => 'setObject',
+        'payee_id'       => 'setPayeeId',
+        'type'           => 'setType'
     ];
 
     /**
@@ -223,12 +223,12 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'account_holder' => 'getAccountHolder',
         'account_number' => 'getAccountNumber',
-        'bank' => 'getBank',
-        'created_at' => 'getCreatedAt',
-        'id' => 'getId',
-        'object' => 'getObject',
-        'payee_id' => 'getPayeeId',
-        'type' => 'getType'
+        'bank'           => 'getBank',
+        'created_at'     => 'getCreatedAt',
+        'id'             => 'getId',
+        'object'         => 'getObject',
+        'payee_id'       => 'getPayeeId',
+        'type'           => 'getType'
     ];
 
     /**
@@ -272,7 +272,6 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -299,14 +298,14 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -338,7 +337,6 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets account_holder
@@ -619,7 +617,7 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -645,5 +643,3 @@ class TransferDestinationResponse implements ModelInterface, ArrayAccess, \JsonS
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

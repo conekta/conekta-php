@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CustomerUpdateShippingContacts Class Doc Comment
@@ -42,69 +42,69 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerUpdateShippingContacts implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'customer_update_shipping_contacts';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'phone' => 'string',
-        'receiver' => 'string',
+        'phone'           => 'string',
+        'receiver'        => 'string',
         'between_streets' => 'string',
-        'address' => '\Conekta\Model\CustomerShippingContactsAddress',
-        'parent_id' => 'string',
-        'default' => 'bool',
-        'deleted' => 'bool'
+        'address'         => '\Conekta\Model\CustomerShippingContactsAddress',
+        'parent_id'       => 'string',
+        'default'         => 'bool',
+        'deleted'         => 'bool'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'phone' => null,
-        'receiver' => null,
+        'phone'           => null,
+        'receiver'        => null,
         'between_streets' => null,
-        'address' => null,
-        'parent_id' => null,
-        'default' => null,
-        'deleted' => null
+        'address'         => null,
+        'parent_id'       => null,
+        'default'         => null,
+        'deleted'         => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'phone' => false,
-		'receiver' => false,
-		'between_streets' => false,
-		'address' => false,
-		'parent_id' => false,
-		'default' => true,
-		'deleted' => true
+        'phone'           => false,
+        'receiver'        => false,
+        'between_streets' => false,
+        'address'         => false,
+        'parent_id'       => false,
+        'default'         => true,
+        'deleted'         => true
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -186,13 +186,13 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone' => 'phone',
-        'receiver' => 'receiver',
+        'phone'           => 'phone',
+        'receiver'        => 'receiver',
         'between_streets' => 'between_streets',
-        'address' => 'address',
-        'parent_id' => 'parent_id',
-        'default' => 'default',
-        'deleted' => 'deleted'
+        'address'         => 'address',
+        'parent_id'       => 'parent_id',
+        'default'         => 'default',
+        'deleted'         => 'deleted'
     ];
 
     /**
@@ -201,13 +201,13 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'phone' => 'setPhone',
-        'receiver' => 'setReceiver',
+        'phone'           => 'setPhone',
+        'receiver'        => 'setReceiver',
         'between_streets' => 'setBetweenStreets',
-        'address' => 'setAddress',
-        'parent_id' => 'setParentId',
-        'default' => 'setDefault',
-        'deleted' => 'setDeleted'
+        'address'         => 'setAddress',
+        'parent_id'       => 'setParentId',
+        'default'         => 'setDefault',
+        'deleted'         => 'setDeleted'
     ];
 
     /**
@@ -216,13 +216,13 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'phone' => 'getPhone',
-        'receiver' => 'getReceiver',
+        'phone'           => 'getPhone',
+        'receiver'        => 'getReceiver',
         'between_streets' => 'getBetweenStreets',
-        'address' => 'getAddress',
-        'parent_id' => 'getParentId',
-        'default' => 'getDefault',
-        'deleted' => 'getDeleted'
+        'address'         => 'getAddress',
+        'parent_id'       => 'getParentId',
+        'default'         => 'getDefault',
+        'deleted'         => 'getDeleted'
     ];
 
     /**
@@ -266,7 +266,6 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -292,14 +291,14 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -331,7 +330,6 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets phone
@@ -492,7 +490,7 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('default', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -526,7 +524,7 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
             $index = array_search('deleted', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
@@ -599,7 +597,7 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -625,5 +623,3 @@ class CustomerUpdateShippingContacts implements ModelInterface, ArrayAccess, \Js
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

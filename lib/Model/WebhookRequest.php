@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * WebhookRequest Class Doc Comment
@@ -42,54 +42,54 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookRequest implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'webhook_request';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'url' => 'string',
+        'url'         => 'string',
         'synchronous' => 'bool'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'url' => 'url',
+        'url'         => 'url',
         'synchronous' => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'url' => false,
-		'synchronous' => false
+        'url'         => false,
+        'synchronous' => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -171,7 +171,7 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
+        'url'         => 'url',
         'synchronous' => 'synchronous'
     ];
 
@@ -181,7 +181,7 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
+        'url'         => 'setUrl',
         'synchronous' => 'setSynchronous'
     ];
 
@@ -191,7 +191,7 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
+        'url'         => 'getUrl',
         'synchronous' => 'getSynchronous'
     ];
 
@@ -236,7 +236,6 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-
     /**
      * Associative array for storing property values
      *
@@ -257,14 +256,14 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -286,7 +285,7 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if (!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $this->container['url'])) {
+        if (! preg_match('/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/', $this->container['url'])) {
             $invalidProperties[] = "invalid value for 'url', must be conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.";
         }
 
@@ -306,7 +305,6 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets url
@@ -331,8 +329,8 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
 
-        if ((!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $url))) {
-            throw new \InvalidArgumentException("invalid value for \$url when calling WebhookRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.");
+        if ((! preg_match('/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/', $url))) {
+            throw new \InvalidArgumentException('invalid value for $url when calling WebhookRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.');
         }
 
         $this->container['url'] = $url;
@@ -430,7 +428,7 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -456,5 +454,3 @@ class WebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

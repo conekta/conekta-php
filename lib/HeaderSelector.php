@@ -37,9 +37,7 @@ namespace Conekta;
  * @link     https://openapi-generator.tech
  */
 class HeaderSelector
-{ 
-    
-   
+{
     private static function _isDisabled($disableFunctionsOutput, $functionName)
     {
         $disabledFunctions = \explode(',', $disableFunctionsOutput);
@@ -66,8 +64,8 @@ class HeaderSelector
             $headers['Accept'] = $accept;
         }
 
-        if (!$isMultipart) {
-            if($contentType === '') {
+        if (! $isMultipart) {
+            if ($contentType === '') {
                 $contentType = 'application/json';
             }
 
@@ -110,23 +108,22 @@ class HeaderSelector
     }
 
     /**
-    * Create an Accept header string from the given "Accept" headers array, recalculating all weights
-    *
-    * @param string[] $accept            Array of Accept Headers
-    * @param string[] $headersWithJson   Array of Accept Headers of type "json"
-    *
-    * @return string "Accept" Header (e.g. "application/json, text/html; q=0.9")
-    */
+     * Create an Accept header string from the given "Accept" headers array, recalculating all weights
+     *
+     * @param string[] $accept            Array of Accept Headers
+     * @param string[] $headersWithJson   Array of Accept Headers of type "json"
+     *
+     * @return string "Accept" Header (e.g. "application/json, text/html; q=0.9")
+     */
     private function getAcceptHeaderWithAdjustedWeight(array $accept, array $headersWithJson): string
     {
         $processedHeaders = [
             'withApplicationJson' => [],
-            'withJson' => [],
-            'withoutJson' => [],
+            'withJson'            => [],
+            'withoutJson'         => [],
         ];
 
         foreach ($accept as $header) {
-
             $headerData = $this->getHeaderAndWeight($header);
 
             if (stripos($headerData['header'], 'application/json') === 0) {
@@ -143,7 +140,7 @@ class HeaderSelector
 
         $hasMoreThan28Headers = count($accept) > 28;
 
-        foreach($processedHeaders as $headers) {
+        foreach ($processedHeaders as $headers) {
             if (count($headers) > 0) {
                 $acceptHeaders[] = $this->adjustWeight($headers, $currentWeight, $hasMoreThan28Headers);
             }
@@ -193,8 +190,7 @@ class HeaderSelector
 
         $acceptHeaders = [];
         foreach ($headers as $index => $header) {
-            if($index > 0 && $headers[$index - 1]['weight'] > $header['weight'])
-            {
+            if ($index > 0 && $headers[$index - 1]['weight'] > $header['weight']) {
                 $currentWeight = $this->getNextWeight($currentWeight, $hasMoreThan28Headers);
             }
 
@@ -215,7 +211,7 @@ class HeaderSelector
      */
     private function buildAcceptHeader(string $header, int $weight): string
     {
-        if($weight === 1000) {
+        if ($weight === 1000) {
             return $header;
         }
 
@@ -254,23 +250,23 @@ class HeaderSelector
             return $currentWeight - 1;
         }
 
-        return $currentWeight - 10 ** floor( log10($currentWeight - 1) );
+        return $currentWeight - 10 ** floor(log10($currentWeight - 1));
     }
     public function getConektaUserAgent(): array
     {
-       $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
-       $uname = $uname_disabled ? '(disabled)' : \php_uname();
+        $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
+        $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
-      $userAgent = [
-        'bindings_version' => "6.0.0-beta.1",
-        'lang'             => 'php',
-        'lang_version'     => phpversion(),
-        'publisher'        => 'conekta',
-        'uname'            => $uname,
-      ];
-       $headers = [];
-       $headers['X-Conekta-Client-User-Agent'] = json_encode($userAgent);
+        $userAgent = [
+          'bindings_version' => '6.0.0-beta.1',
+          'lang'             => 'php',
+          'lang_version'     => phpversion(),
+          'publisher'        => 'conekta',
+          'uname'            => $uname,
+        ];
+        $headers = [];
+        $headers['X-Conekta-Client-User-Agent'] = json_encode($userAgent);
 
-       return $headers;
+        return $headers;
     }
 }

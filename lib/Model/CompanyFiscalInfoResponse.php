@@ -29,8 +29,8 @@
 
 namespace Conekta\Model;
 
-use \ArrayAccess;
-use \Conekta\ObjectSerializer;
+use ArrayAccess;
+use Conekta\ObjectSerializer;
 
 /**
  * CompanyFiscalInfoResponse Class Doc Comment
@@ -42,69 +42,69 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyFiscalInfoResponse implements \JsonSerializable, ArrayAccess, ModelInterface
 {
     public const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $openAPIModelName = 'company_fiscal_info_response';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
     protected static $openAPITypes = [
-        'object' => 'string',
-        'tax_id' => 'string',
-        'legal_entity_name' => 'string',
-        'business_type' => 'string',
-        'phone' => 'string',
+        'object'                        => 'string',
+        'tax_id'                        => 'string',
+        'legal_entity_name'             => 'string',
+        'business_type'                 => 'string',
+        'phone'                         => 'string',
         'physical_person_business_type' => 'string',
-        'address' => '\Conekta\Model\CompanyFiscalInfoAddressResponse'
+        'address'                       => '\Conekta\Model\CompanyFiscalInfoAddressResponse'
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      * @phpstan-var array<string, string|null>
-      * @psalm-var array<string, string|null>
-      */
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var string[]
+     * @phpstan-var array<string, string|null>
+     * @psalm-var array<string, string|null>
+     */
     protected static $openAPIFormats = [
-        'object' => null,
-        'tax_id' => null,
-        'legal_entity_name' => null,
-        'business_type' => null,
-        'phone' => null,
+        'object'                        => null,
+        'tax_id'                        => null,
+        'legal_entity_name'             => null,
+        'business_type'                 => null,
+        'phone'                         => null,
         'physical_person_business_type' => null,
-        'address' => null
+        'address'                       => null
     ];
 
     /**
-      * Array of nullable properties. Used for (de)serialization
-      *
-      * @var boolean[]
-      */
+     * Array of nullable properties. Used for (de)serialization
+     *
+     * @var boolean[]
+     */
     protected static array $openAPINullables = [
-        'object' => false,
-		'tax_id' => false,
-		'legal_entity_name' => false,
-		'business_type' => false,
-		'phone' => false,
-		'physical_person_business_type' => false,
-		'address' => false
+        'object'                        => false,
+        'tax_id'                        => false,
+        'legal_entity_name'             => false,
+        'business_type'                 => false,
+        'phone'                         => false,
+        'physical_person_business_type' => false,
+        'address'                       => false
     ];
 
     /**
-      * If a nullable field gets set to null, insert it here
-      *
-      * @var boolean[]
-      */
+     * If a nullable field gets set to null, insert it here
+     *
+     * @var boolean[]
+     */
     protected array $openAPINullablesSetToNull = [];
 
     /**
@@ -186,13 +186,13 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'tax_id' => 'tax_id',
-        'legal_entity_name' => 'legal_entity_name',
-        'business_type' => 'business_type',
-        'phone' => 'phone',
+        'object'                        => 'object',
+        'tax_id'                        => 'tax_id',
+        'legal_entity_name'             => 'legal_entity_name',
+        'business_type'                 => 'business_type',
+        'phone'                         => 'phone',
         'physical_person_business_type' => 'physical_person_business_type',
-        'address' => 'address'
+        'address'                       => 'address'
     ];
 
     /**
@@ -201,13 +201,13 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'tax_id' => 'setTaxId',
-        'legal_entity_name' => 'setLegalEntityName',
-        'business_type' => 'setBusinessType',
-        'phone' => 'setPhone',
+        'object'                        => 'setObject',
+        'tax_id'                        => 'setTaxId',
+        'legal_entity_name'             => 'setLegalEntityName',
+        'business_type'                 => 'setBusinessType',
+        'phone'                         => 'setPhone',
         'physical_person_business_type' => 'setPhysicalPersonBusinessType',
-        'address' => 'setAddress'
+        'address'                       => 'setAddress'
     ];
 
     /**
@@ -216,13 +216,13 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'tax_id' => 'getTaxId',
-        'legal_entity_name' => 'getLegalEntityName',
-        'business_type' => 'getBusinessType',
-        'phone' => 'getPhone',
+        'object'                        => 'getObject',
+        'tax_id'                        => 'getTaxId',
+        'legal_entity_name'             => 'getLegalEntityName',
+        'business_type'                 => 'getBusinessType',
+        'phone'                         => 'getPhone',
         'physical_person_business_type' => 'getPhysicalPersonBusinessType',
-        'address' => 'getAddress'
+        'address'                       => 'getAddress'
     ];
 
     /**
@@ -305,14 +305,14 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-    * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
-    * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
-    * $this->openAPINullablesSetToNull array
-    *
-    * @param string $variableName
-    * @param array  $fields
-    * @param mixed  $defaultValue
-    */
+     * Sets $this->container[$variableName] to the given data or to the given default Value; if $variableName
+     * is nullable and its value is set to null in the $fields array, then mark it as "set to null" in the
+     * $this->openAPINullablesSetToNull array
+     *
+     * @param string $variableName
+     * @param array  $fields
+     * @param mixed  $defaultValue
+     */
     private function setIfExists(string $variableName, array $fields, $defaultValue): void
     {
         if (self::isNullable($variableName) && array_key_exists($variableName, $fields) && is_null($fields[$variableName])) {
@@ -332,7 +332,7 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
         $invalidProperties = [];
 
         $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+        if (! is_null($this->container['object']) && ! in_array($this->container['object'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'object', must be one of '%s'",
                 $this->container['object'],
@@ -353,7 +353,6 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         return count($this->listInvalidProperties()) === 0;
     }
-
 
     /**
      * Gets object
@@ -378,7 +377,7 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
+        if (! in_array($object, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'object', must be one of '%s'",
@@ -617,7 +616,7 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -643,5 +642,3 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
