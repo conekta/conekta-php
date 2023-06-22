@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentMethodCard
+ * ApiKeyResponseOnDelete
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * PaymentMethodCard Class Doc Comment
+ * ApiKeyResponseOnDelete Class Doc Comment
  *
  * @category Class
+ * @description api keys model
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiKeyResponseOnDelete implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'payment_method_card';
+    protected static $openAPIModelName = 'api_key_response_on_delete';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,19 +59,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
+        'active' => 'bool',
+        'created_at' => 'int',
+        'description' => 'string',
+        'livemode' => 'bool',
+        'prefix' => 'string',
+        'id' => 'string',
         'object' => 'string',
-        'account_type' => 'string',
-        'auth_code' => 'string',
-        'brand' => 'string',
-        'contract_id' => 'string',
-        'country' => 'string',
-        'exp_month' => 'string',
-        'exp_year' => 'string',
-        'fraud_indicators' => 'mixed[]',
-        'issuer' => 'string',
-        'last4' => 'string',
-        'name' => 'string'
+        'deleted' => 'bool',
+        'role' => 'string'
     ];
 
     /**
@@ -81,19 +78,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
+        'active' => null,
+        'created_at' => 'int64',
+        'description' => null,
+        'livemode' => null,
+        'prefix' => null,
+        'id' => null,
         'object' => null,
-        'account_type' => null,
-        'auth_code' => null,
-        'brand' => null,
-        'contract_id' => null,
-        'country' => null,
-        'exp_month' => null,
-        'exp_year' => null,
-        'fraud_indicators' => null,
-        'issuer' => null,
-        'last4' => null,
-        'name' => null
+        'deleted' => null,
+        'role' => null
     ];
 
     /**
@@ -102,19 +95,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
+        'active' => false,
+		'created_at' => false,
+		'description' => false,
+		'livemode' => false,
+		'prefix' => false,
+		'id' => false,
 		'object' => false,
-		'account_type' => false,
-		'auth_code' => false,
-		'brand' => false,
-		'contract_id' => false,
-		'country' => false,
-		'exp_month' => false,
-		'exp_year' => false,
-		'fraud_indicators' => false,
-		'issuer' => false,
-		'last4' => false,
-		'name' => false
+		'deleted' => false,
+		'role' => false
     ];
 
     /**
@@ -203,19 +192,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
+        'active' => 'active',
+        'created_at' => 'created_at',
+        'description' => 'description',
+        'livemode' => 'livemode',
+        'prefix' => 'prefix',
+        'id' => 'id',
         'object' => 'object',
-        'account_type' => 'account_type',
-        'auth_code' => 'auth_code',
-        'brand' => 'brand',
-        'contract_id' => 'contract_id',
-        'country' => 'country',
-        'exp_month' => 'exp_month',
-        'exp_year' => 'exp_year',
-        'fraud_indicators' => 'fraud_indicators',
-        'issuer' => 'issuer',
-        'last4' => 'last4',
-        'name' => 'name'
+        'deleted' => 'deleted',
+        'role' => 'role'
     ];
 
     /**
@@ -224,19 +209,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
+        'active' => 'setActive',
+        'created_at' => 'setCreatedAt',
+        'description' => 'setDescription',
+        'livemode' => 'setLivemode',
+        'prefix' => 'setPrefix',
+        'id' => 'setId',
         'object' => 'setObject',
-        'account_type' => 'setAccountType',
-        'auth_code' => 'setAuthCode',
-        'brand' => 'setBrand',
-        'contract_id' => 'setContractId',
-        'country' => 'setCountry',
-        'exp_month' => 'setExpMonth',
-        'exp_year' => 'setExpYear',
-        'fraud_indicators' => 'setFraudIndicators',
-        'issuer' => 'setIssuer',
-        'last4' => 'setLast4',
-        'name' => 'setName'
+        'deleted' => 'setDeleted',
+        'role' => 'setRole'
     ];
 
     /**
@@ -245,19 +226,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
+        'active' => 'getActive',
+        'created_at' => 'getCreatedAt',
+        'description' => 'getDescription',
+        'livemode' => 'getLivemode',
+        'prefix' => 'getPrefix',
+        'id' => 'getId',
         'object' => 'getObject',
-        'account_type' => 'getAccountType',
-        'auth_code' => 'getAuthCode',
-        'brand' => 'getBrand',
-        'contract_id' => 'getContractId',
-        'country' => 'getCountry',
-        'exp_month' => 'getExpMonth',
-        'exp_year' => 'getExpYear',
-        'fraud_indicators' => 'getFraudIndicators',
-        'issuer' => 'getIssuer',
-        'last4' => 'getLast4',
-        'name' => 'getName'
+        'deleted' => 'getDeleted',
+        'role' => 'getRole'
     ];
 
     /**
@@ -317,19 +294,15 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('livemode', $data ?? [], null);
+        $this->setIfExists('prefix', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('account_type', $data ?? [], null);
-        $this->setIfExists('auth_code', $data ?? [], null);
-        $this->setIfExists('brand', $data ?? [], null);
-        $this->setIfExists('contract_id', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('exp_month', $data ?? [], null);
-        $this->setIfExists('exp_year', $data ?? [], null);
-        $this->setIfExists('fraud_indicators', $data ?? [], null);
-        $this->setIfExists('issuer', $data ?? [], null);
-        $this->setIfExists('last4', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('deleted', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], null);
     }
 
     /**
@@ -359,17 +332,6 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
-        }
-
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -386,28 +348,163 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets type
+     * Gets active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getType()
+    public function getActive()
     {
-        return $this->container['type'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets type
+     * Sets active
      *
-     * @param string|null $type type
+     * @param bool|null $active Indicates if the api key is active
      *
      * @return self
      */
-    public function setType($type)
+    public function setActive($active)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return int|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param int|null $created_at Unix timestamp in seconds of when the api key was created
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A name or brief explanation of what this api key is used for
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets livemode
+     *
+     * @return bool|null
+     */
+    public function getLivemode()
+    {
+        return $this->container['livemode'];
+    }
+
+    /**
+     * Sets livemode
+     *
+     * @param bool|null $livemode Indicates if the api key is in production
+     *
+     * @return self
+     */
+    public function setLivemode($livemode)
+    {
+        if (is_null($livemode)) {
+            throw new \InvalidArgumentException('non-nullable livemode cannot be null');
+        }
+        $this->container['livemode'] = $livemode;
+
+        return $this;
+    }
+
+    /**
+     * Gets prefix
+     *
+     * @return string|null
+     */
+    public function getPrefix()
+    {
+        return $this->container['prefix'];
+    }
+
+    /**
+     * Sets prefix
+     *
+     * @param string|null $prefix The first few characters of the authentication_token
+     *
+     * @return self
+     */
+    public function setPrefix($prefix)
+    {
+        if (is_null($prefix)) {
+            throw new \InvalidArgumentException('non-nullable prefix cannot be null');
+        }
+        $this->container['prefix'] = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Unique identifier of the api key
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -415,7 +512,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets object
      *
-     * @return string
+     * @return string|null
      */
     public function getObject()
     {
@@ -425,7 +522,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets object
      *
-     * @param string $object object
+     * @param string|null $object Object name, value is 'api_key'
      *
      * @return self
      */
@@ -440,305 +537,55 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets account_type
+     * Gets deleted
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getAccountType()
+    public function getDeleted()
     {
-        return $this->container['account_type'];
+        return $this->container['deleted'];
     }
 
     /**
-     * Sets account_type
+     * Sets deleted
      *
-     * @param string|null $account_type account_type
+     * @param bool|null $deleted Indicates if the api key was deleted
      *
      * @return self
      */
-    public function setAccountType($account_type)
+    public function setDeleted($deleted)
     {
-        if (is_null($account_type)) {
-            throw new \InvalidArgumentException('non-nullable account_type cannot be null');
+        if (is_null($deleted)) {
+            throw new \InvalidArgumentException('non-nullable deleted cannot be null');
         }
-        $this->container['account_type'] = $account_type;
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }
 
     /**
-     * Gets auth_code
+     * Gets role
      *
      * @return string|null
      */
-    public function getAuthCode()
+    public function getRole()
     {
-        return $this->container['auth_code'];
+        return $this->container['role'];
     }
 
     /**
-     * Sets auth_code
+     * Sets role
      *
-     * @param string|null $auth_code auth_code
+     * @param string|null $role Indicates if the api key is private or public
      *
      * @return self
      */
-    public function setAuthCode($auth_code)
+    public function setRole($role)
     {
-        if (is_null($auth_code)) {
-            throw new \InvalidArgumentException('non-nullable auth_code cannot be null');
+        if (is_null($role)) {
+            throw new \InvalidArgumentException('non-nullable role cannot be null');
         }
-        $this->container['auth_code'] = $auth_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand
-     *
-     * @return string|null
-     */
-    public function getBrand()
-    {
-        return $this->container['brand'];
-    }
-
-    /**
-     * Sets brand
-     *
-     * @param string|null $brand brand
-     *
-     * @return self
-     */
-    public function setBrand($brand)
-    {
-        if (is_null($brand)) {
-            throw new \InvalidArgumentException('non-nullable brand cannot be null');
-        }
-        $this->container['brand'] = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Gets contract_id
-     *
-     * @return string|null
-     */
-    public function getContractId()
-    {
-        return $this->container['contract_id'];
-    }
-
-    /**
-     * Sets contract_id
-     *
-     * @param string|null $contract_id Id sent for recurrent charges.
-     *
-     * @return self
-     */
-    public function setContractId($contract_id)
-    {
-        if (is_null($contract_id)) {
-            throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
-        }
-        if ((mb_strlen($contract_id) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling PaymentMethodCard., must be smaller than or equal to 10.');
-        }
-        if ((mb_strlen($contract_id) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling PaymentMethodCard., must be bigger than or equal to 10.');
-        }
-
-        $this->container['contract_id'] = $contract_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country country
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
-        }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets exp_month
-     *
-     * @return string|null
-     */
-    public function getExpMonth()
-    {
-        return $this->container['exp_month'];
-    }
-
-    /**
-     * Sets exp_month
-     *
-     * @param string|null $exp_month exp_month
-     *
-     * @return self
-     */
-    public function setExpMonth($exp_month)
-    {
-        if (is_null($exp_month)) {
-            throw new \InvalidArgumentException('non-nullable exp_month cannot be null');
-        }
-        $this->container['exp_month'] = $exp_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets exp_year
-     *
-     * @return string|null
-     */
-    public function getExpYear()
-    {
-        return $this->container['exp_year'];
-    }
-
-    /**
-     * Sets exp_year
-     *
-     * @param string|null $exp_year exp_year
-     *
-     * @return self
-     */
-    public function setExpYear($exp_year)
-    {
-        if (is_null($exp_year)) {
-            throw new \InvalidArgumentException('non-nullable exp_year cannot be null');
-        }
-        $this->container['exp_year'] = $exp_year;
-
-        return $this;
-    }
-
-    /**
-     * Gets fraud_indicators
-     *
-     * @return mixed[]|null
-     */
-    public function getFraudIndicators()
-    {
-        return $this->container['fraud_indicators'];
-    }
-
-    /**
-     * Sets fraud_indicators
-     *
-     * @param mixed[]|null $fraud_indicators fraud_indicators
-     *
-     * @return self
-     */
-    public function setFraudIndicators($fraud_indicators)
-    {
-        if (is_null($fraud_indicators)) {
-            throw new \InvalidArgumentException('non-nullable fraud_indicators cannot be null');
-        }
-        $this->container['fraud_indicators'] = $fraud_indicators;
-
-        return $this;
-    }
-
-    /**
-     * Gets issuer
-     *
-     * @return string|null
-     */
-    public function getIssuer()
-    {
-        return $this->container['issuer'];
-    }
-
-    /**
-     * Sets issuer
-     *
-     * @param string|null $issuer issuer
-     *
-     * @return self
-     */
-    public function setIssuer($issuer)
-    {
-        if (is_null($issuer)) {
-            throw new \InvalidArgumentException('non-nullable issuer cannot be null');
-        }
-        $this->container['issuer'] = $issuer;
-
-        return $this;
-    }
-
-    /**
-     * Gets last4
-     *
-     * @return string|null
-     */
-    public function getLast4()
-    {
-        return $this->container['last4'];
-    }
-
-    /**
-     * Sets last4
-     *
-     * @param string|null $last4 last4
-     *
-     * @return self
-     */
-    public function setLast4($last4)
-    {
-        if (is_null($last4)) {
-            throw new \InvalidArgumentException('non-nullable last4 cannot be null');
-        }
-        $this->container['last4'] = $last4;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
+        $this->container['role'] = $role;
 
         return $this;
     }

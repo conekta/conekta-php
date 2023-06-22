@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **metadata** | **array<string,mixed>** | Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format. | [optional]
 **object** | **string** | String representing the object’s type. Objects of the same type share the same value. | [optional]
 **payment_status** | **string** | The payment status of the order. | [optional]
+**processing_mode** | **string** | Indicates the processing mode for the order, either ecommerce, recurrent or validation. | [optional]
 **shipping_contact** | [**\Conekta\Model\OrderResponseShippingContact**](OrderResponseShippingContact.md) |  | [optional]
 **updated_at** | **int** | The time at which the object was last updated in seconds since the Unix epoch | [optional]
 

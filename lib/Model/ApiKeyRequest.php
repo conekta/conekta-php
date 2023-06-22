@@ -50,7 +50,7 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'api-key_request';
+    protected static $openAPIModelName = 'api_key_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'active' => 'bool',
         'description' => 'string',
         'role' => 'string'
     ];
@@ -71,7 +70,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'active' => null,
         'description' => null,
         'role' => null
     ];
@@ -82,8 +80,7 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'active' => false,
-		'description' => false,
+        'description' => false,
 		'role' => false
     ];
 
@@ -173,7 +170,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'active' => 'active',
         'description' => 'description',
         'role' => 'role'
     ];
@@ -184,7 +180,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'active' => 'setActive',
         'description' => 'setDescription',
         'role' => 'setRole'
     ];
@@ -195,7 +190,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'active' => 'getActive',
         'description' => 'getDescription',
         'role' => 'getRole'
     ];
@@ -257,7 +251,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('role', $data ?? [], null);
     }
@@ -289,12 +282,6 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['active'] === null) {
-            $invalidProperties[] = "'active' can't be null";
-        }
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if ($this->container['role'] === null) {
             $invalidProperties[] = "'role' can't be null";
         }
@@ -314,36 +301,9 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets active
-     *
-     * @return bool
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool $active Indicates if the api key is active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
      * Gets description
      *
-     * @return string
+     * @return string|null
      */
     public function getDescription()
     {
@@ -353,7 +313,7 @@ class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string $description Detail of the use that will be given to the api key
+     * @param string|null $description A name or brief explanation of what this api key is used for
      *
      * @return self
      */

@@ -61,12 +61,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => 'bool',
         'created_at' => 'int',
         'description' => 'string',
-        'id' => 'string',
         'livemode' => 'bool',
-        'object' => 'string',
         'prefix' => 'string',
-        'role' => 'string',
-        'deleted' => 'bool'
+        'id' => 'string',
+        'object' => 'string',
+        'deleted' => 'bool',
+        'role' => 'string'
     ];
 
     /**
@@ -80,12 +80,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => null,
         'created_at' => 'int64',
         'description' => null,
-        'id' => null,
         'livemode' => null,
-        'object' => null,
         'prefix' => null,
-        'role' => null,
-        'deleted' => null
+        'id' => null,
+        'object' => null,
+        'deleted' => null,
+        'role' => null
     ];
 
     /**
@@ -97,12 +97,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => false,
 		'created_at' => false,
 		'description' => false,
-		'id' => false,
 		'livemode' => false,
-		'object' => false,
 		'prefix' => false,
-		'role' => false,
-		'deleted' => false
+		'id' => false,
+		'object' => false,
+		'deleted' => false,
+		'role' => false
     ];
 
     /**
@@ -194,12 +194,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => 'active',
         'created_at' => 'created_at',
         'description' => 'description',
-        'id' => 'id',
         'livemode' => 'livemode',
-        'object' => 'object',
         'prefix' => 'prefix',
-        'role' => 'role',
-        'deleted' => 'deleted'
+        'id' => 'id',
+        'object' => 'object',
+        'deleted' => 'deleted',
+        'role' => 'role'
     ];
 
     /**
@@ -211,12 +211,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
         'description' => 'setDescription',
-        'id' => 'setId',
         'livemode' => 'setLivemode',
-        'object' => 'setObject',
         'prefix' => 'setPrefix',
-        'role' => 'setRole',
-        'deleted' => 'setDeleted'
+        'id' => 'setId',
+        'object' => 'setObject',
+        'deleted' => 'setDeleted',
+        'role' => 'setRole'
     ];
 
     /**
@@ -228,12 +228,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
         'description' => 'getDescription',
-        'id' => 'getId',
         'livemode' => 'getLivemode',
-        'object' => 'getObject',
         'prefix' => 'getPrefix',
-        'role' => 'getRole',
-        'deleted' => 'getDeleted'
+        'id' => 'getId',
+        'object' => 'getObject',
+        'deleted' => 'getDeleted',
+        'role' => 'getRole'
     ];
 
     /**
@@ -296,12 +296,12 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('prefix', $data ?? [], null);
-        $this->setIfExists('role', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], null);
     }
 
     /**
@@ -386,7 +386,7 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets created_at
      *
-     * @param int|null $created_at Unix timestamp in seconds with the creation date of the api key
+     * @param int|null $created_at Unix timestamp in seconds of when the api key was created
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets description
      *
-     * @param string|null $description Detail of the use that will be given to the api key
+     * @param string|null $description A name or brief explanation of what this api key is used for
      *
      * @return self
      */
@@ -423,33 +423,6 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Unique identifier of the api key
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }
@@ -467,7 +440,7 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets livemode
      *
-     * @param bool|null $livemode Indicates if the api key is in live mode
+     * @param bool|null $livemode Indicates if the api key is in production
      *
      * @return self
      */
@@ -477,33 +450,6 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable livemode cannot be null');
         }
         $this->container['livemode'] = $livemode;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object Object name, value is api_key
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
 
         return $this;
     }
@@ -536,28 +482,55 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets role
+     * Gets id
      *
      * @return string|null
      */
-    public function getRole()
+    public function getId()
     {
-        return $this->container['role'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets role
+     * Sets id
      *
-     * @param string|null $role Indicates the user account private=owner or public=public
+     * @param string|null $id Unique identifier of the api key
      *
      * @return self
      */
-    public function setRole($role)
+    public function setId($id)
     {
-        if (is_null($role)) {
-            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['role'] = $role;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string|null
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string|null $object Object name, value is 'api_key'
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
 
         return $this;
     }
@@ -585,6 +558,33 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable deleted cannot be null');
         }
         $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets role
+     *
+     * @return string|null
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string|null $role Indicates if the api key is private or public
+     *
+     * @return self
+     */
+    public function setRole($role)
+    {
+        if (is_null($role)) {
+            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        }
+        $this->container['role'] = $role;
 
         return $this;
     }

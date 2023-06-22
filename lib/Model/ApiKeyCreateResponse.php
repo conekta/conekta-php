@@ -61,9 +61,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => 'string',
         'active' => 'bool',
         'created_at' => 'int',
+        'updated_at' => 'int',
+        'deactivated_at' => 'int',
         'description' => 'string',
         'id' => 'string',
         'livemode' => 'bool',
+        'deleted' => 'bool',
         'object' => 'string',
         'prefix' => 'string',
         'role' => 'string'
@@ -80,9 +83,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => null,
         'active' => null,
         'created_at' => 'int64',
+        'updated_at' => 'int64',
+        'deactivated_at' => 'int64',
         'description' => null,
         'id' => null,
         'livemode' => null,
+        'deleted' => null,
         'object' => null,
         'prefix' => null,
         'role' => null
@@ -97,9 +103,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => false,
 		'active' => false,
 		'created_at' => false,
+		'updated_at' => false,
+		'deactivated_at' => true,
 		'description' => false,
 		'id' => false,
 		'livemode' => false,
+		'deleted' => false,
 		'object' => false,
 		'prefix' => false,
 		'role' => false
@@ -194,9 +203,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => 'authentication_token',
         'active' => 'active',
         'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'deactivated_at' => 'deactivated_at',
         'description' => 'description',
         'id' => 'id',
         'livemode' => 'livemode',
+        'deleted' => 'deleted',
         'object' => 'object',
         'prefix' => 'prefix',
         'role' => 'role'
@@ -211,9 +223,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => 'setAuthenticationToken',
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'deactivated_at' => 'setDeactivatedAt',
         'description' => 'setDescription',
         'id' => 'setId',
         'livemode' => 'setLivemode',
+        'deleted' => 'setDeleted',
         'object' => 'setObject',
         'prefix' => 'setPrefix',
         'role' => 'setRole'
@@ -228,9 +243,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'authentication_token' => 'getAuthenticationToken',
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'deactivated_at' => 'getDeactivatedAt',
         'description' => 'getDescription',
         'id' => 'getId',
         'livemode' => 'getLivemode',
+        'deleted' => 'getDeleted',
         'object' => 'getObject',
         'prefix' => 'getPrefix',
         'role' => 'getRole'
@@ -296,9 +314,12 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('authentication_token', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('deactivated_at', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
+        $this->setIfExists('deleted', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('prefix', $data ?? [], null);
         $this->setIfExists('role', $data ?? [], null);
@@ -359,7 +380,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets authentication_token
      *
-     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key
+     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
      *
      * @return self
      */
@@ -413,7 +434,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets created_at
      *
-     * @param int|null $created_at Unix timestamp in seconds with the creation date of the api key
+     * @param int|null $created_at Unix timestamp in seconds of when the api key was created
      *
      * @return self
      */
@@ -423,6 +444,67 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return int|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param int|null $updated_at Unix timestamp in seconds of when the api key was last updated
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deactivated_at
+     *
+     * @return int|null
+     */
+    public function getDeactivatedAt()
+    {
+        return $this->container['deactivated_at'];
+    }
+
+    /**
+     * Sets deactivated_at
+     *
+     * @param int|null $deactivated_at Unix timestamp in seconds of when the api key was deleted
+     *
+     * @return self
+     */
+    public function setDeactivatedAt($deactivated_at)
+    {
+        if (is_null($deactivated_at)) {
+            array_push($this->openAPINullablesSetToNull, 'deactivated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deactivated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deactivated_at'] = $deactivated_at;
 
         return $this;
     }
@@ -440,7 +522,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets description
      *
-     * @param string|null $description Detail of the use that will be given to the api key
+     * @param string|null $description A name or brief explanation of what this api key is used for
      *
      * @return self
      */
@@ -494,7 +576,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets livemode
      *
-     * @param bool|null $livemode Indicates if the api key is in live mode
+     * @param bool|null $livemode Indicates if the api key is in production
      *
      * @return self
      */
@@ -504,6 +586,33 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable livemode cannot be null');
         }
         $this->container['livemode'] = $livemode;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted
+     *
+     * @return bool|null
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool|null $deleted Indicates if the api key was deleted
+     *
+     * @return self
+     */
+    public function setDeleted($deleted)
+    {
+        if (is_null($deleted)) {
+            throw new \InvalidArgumentException('non-nullable deleted cannot be null');
+        }
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }
@@ -521,7 +630,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object
      *
-     * @param string|null $object Object name, value is api_key
+     * @param string|null $object Object name, value is 'api_key'
      *
      * @return self
      */
@@ -575,7 +684,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets role
      *
-     * @param string|null $role Indicates the user account private=owner or public=public
+     * @param string|null $role Indicates if the api key is private or public
      *
      * @return self
      */

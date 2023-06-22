@@ -204,7 +204,7 @@ try {
 ## `getApiKeys()`
 
 ```php
-getApiKeys($accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\GetApiKeysResponse
+getApiKeys($accept_language, $x_child_company_id, $limit, $next, $previous, $search): \Conekta\Model\GetApiKeysResponse
 ```
 
 Get list of Api Keys
@@ -231,12 +231,12 @@ $apiInstance = new Conekta\Api\ApiKeysApi(
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 $limit = 20; // int | The numbers of items to return, the maximum value is 250
-$search = 'search_example'; // string | General order search, e.g. by mail, reference etc.
 $next = 'next_example'; // string | next page
 $previous = 'previous_example'; // string | previous page
+$search = 'search_example'; // string | General search, e.g. by id, description, prefix
 
 try {
-    $result = $apiInstance->getApiKeys($accept_language, $x_child_company_id, $limit, $search, $next, $previous);
+    $result = $apiInstance->getApiKeys($accept_language, $x_child_company_id, $limit, $next, $previous, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApiKeysApi->getApiKeys: ', $e->getMessage(), PHP_EOL;
@@ -250,9 +250,9 @@ try {
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 | **limit** | **int**| The numbers of items to return, the maximum value is 250 | [optional] [default to 20] |
-| **search** | **string**| General order search, e.g. by mail, reference etc. | [optional] |
 | **next** | **string**| next page | [optional] |
 | **previous** | **string**| previous page | [optional] |
+| **search** | **string**| General search, e.g. by id, description, prefix | [optional] |
 
 ### Return type
 

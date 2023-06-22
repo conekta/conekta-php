@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **store_name** | **string** |  | [optional]
 **account_type** | **string** |  | [optional]
 **brand** | **string** |  | [optional]
+**contract_id** | **string** | Id sent for recurrent charges. | [optional]
 **country** | **string** |  | [optional]
 **exp_month** | **string** |  | [optional]
 **exp_year** | **string** |  | [optional]

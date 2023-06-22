@@ -337,7 +337,7 @@ class ApiKeyUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string|null $description Detail of the use that will be given to the api key
+     * @param string|null $description A name or brief explanation of what this api key is used for
      *
      * @return self
      */

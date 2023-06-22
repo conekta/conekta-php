@@ -303,7 +303,7 @@ class ApiKeyCreateResponseAllOf implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets authentication_token
      *
-     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key
+     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
      *
      * @return self
      */

@@ -62,6 +62,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => 'string',
         'auth_code' => 'string',
         'brand' => 'string',
+        'contract_id' => 'string',
         'country' => 'string',
         'exp_month' => 'string',
         'exp_year' => 'string',
@@ -82,6 +83,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => null,
         'auth_code' => null,
         'brand' => null,
+        'contract_id' => null,
         'country' => null,
         'exp_month' => null,
         'exp_year' => null,
@@ -100,6 +102,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => false,
 		'auth_code' => false,
 		'brand' => false,
+		'contract_id' => false,
 		'country' => false,
 		'exp_month' => false,
 		'exp_year' => false,
@@ -198,6 +201,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => 'account_type',
         'auth_code' => 'auth_code',
         'brand' => 'brand',
+        'contract_id' => 'contract_id',
         'country' => 'country',
         'exp_month' => 'exp_month',
         'exp_year' => 'exp_year',
@@ -216,6 +220,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => 'setAccountType',
         'auth_code' => 'setAuthCode',
         'brand' => 'setBrand',
+        'contract_id' => 'setContractId',
         'country' => 'setCountry',
         'exp_month' => 'setExpMonth',
         'exp_year' => 'setExpYear',
@@ -234,6 +239,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         'account_type' => 'getAccountType',
         'auth_code' => 'getAuthCode',
         'brand' => 'getBrand',
+        'contract_id' => 'getContractId',
         'country' => 'getCountry',
         'exp_month' => 'getExpMonth',
         'exp_year' => 'getExpYear',
@@ -303,6 +309,7 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
         $this->setIfExists('account_type', $data ?? [], null);
         $this->setIfExists('auth_code', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('contract_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('exp_month', $data ?? [], null);
         $this->setIfExists('exp_year', $data ?? [], null);
@@ -338,6 +345,14 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
+        }
 
         return $invalidProperties;
     }
@@ -431,6 +446,40 @@ class ChargeDataPaymentMethodCardResponse implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable brand cannot be null');
         }
         $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets contract_id
+     *
+     * @return string|null
+     */
+    public function getContractId()
+    {
+        return $this->container['contract_id'];
+    }
+
+    /**
+     * Sets contract_id
+     *
+     * @param string|null $contract_id Id sent for recurrent charges.
+     *
+     * @return self
+     */
+    public function setContractId($contract_id)
+    {
+        if (is_null($contract_id)) {
+            throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
+        }
+        if ((mb_strlen($contract_id) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeDataPaymentMethodCardResponse., must be smaller than or equal to 10.');
+        }
+        if ((mb_strlen($contract_id) < 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeDataPaymentMethodCardResponse., must be bigger than or equal to 10.');
+        }
+
+        $this->container['contract_id'] = $contract_id;
 
         return $this;
     }

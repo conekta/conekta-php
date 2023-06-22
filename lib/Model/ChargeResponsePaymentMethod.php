@@ -70,6 +70,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'store_name' => 'string',
         'account_type' => 'string',
         'brand' => 'string',
+        'contract_id' => 'string',
         'country' => 'string',
         'exp_month' => 'string',
         'exp_year' => 'string',
@@ -114,6 +115,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'store_name' => null,
         'account_type' => null,
         'brand' => null,
+        'contract_id' => null,
         'country' => null,
         'exp_month' => null,
         'exp_year' => null,
@@ -156,6 +158,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
 		'store_name' => false,
 		'account_type' => false,
 		'brand' => false,
+		'contract_id' => false,
 		'country' => false,
 		'exp_month' => false,
 		'exp_year' => false,
@@ -278,6 +281,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'store_name' => 'store_name',
         'account_type' => 'account_type',
         'brand' => 'brand',
+        'contract_id' => 'contract_id',
         'country' => 'country',
         'exp_month' => 'exp_month',
         'exp_year' => 'exp_year',
@@ -320,6 +324,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'store_name' => 'setStoreName',
         'account_type' => 'setAccountType',
         'brand' => 'setBrand',
+        'contract_id' => 'setContractId',
         'country' => 'setCountry',
         'exp_month' => 'setExpMonth',
         'exp_year' => 'setExpYear',
@@ -362,6 +367,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'store_name' => 'getStoreName',
         'account_type' => 'getAccountType',
         'brand' => 'getBrand',
+        'contract_id' => 'getContractId',
         'country' => 'getCountry',
         'exp_month' => 'getExpMonth',
         'exp_year' => 'getExpYear',
@@ -455,6 +461,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('store_name', $data ?? [], null);
         $this->setIfExists('account_type', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('contract_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('exp_month', $data ?? [], null);
         $this->setIfExists('exp_year', $data ?? [], null);
@@ -512,6 +519,14 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -861,6 +876,40 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable brand cannot be null');
         }
         $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets contract_id
+     *
+     * @return string|null
+     */
+    public function getContractId()
+    {
+        return $this->container['contract_id'];
+    }
+
+    /**
+     * Sets contract_id
+     *
+     * @param string|null $contract_id Id sent for recurrent charges.
+     *
+     * @return self
+     */
+    public function setContractId($contract_id)
+    {
+        if (is_null($contract_id)) {
+            throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
+        }
+        if ((mb_strlen($contract_id) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeResponsePaymentMethod., must be smaller than or equal to 10.');
+        }
+        if ((mb_strlen($contract_id) < 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeResponsePaymentMethod., must be bigger than or equal to 10.');
+        }
+
+        $this->container['contract_id'] = $contract_id;
 
         return $this;
     }

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **metadata** | **array<string,mixed>** |  | [optional]
 **needs_shipping_contact** | **bool** | Allows you to fill out the shipping information at checkout | [optional]
 **pre_authorize** | **bool** | Indicates whether the order charges must be preauthorized | [optional] [default to false]
+**processing_mode** | **string** | Indicates the processing mode for the order, either ecommerce, recurrent or validation. | [optional]
 **shipping_contact** | [**\Conekta\Model\CustomerShippingContacts**](CustomerShippingContacts.md) |  | [optional]
 **shipping_lines** | [**\Conekta\Model\ShippingRequest[]**](ShippingRequest.md) | List of [shipping costs](https://developers.conekta.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products. | [optional]
 **tax_lines** | [**\Conekta\Model\OrderTaxRequest[]**](OrderTaxRequest.md) | List of [taxes](https://developers.conekta.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order. | [optional]

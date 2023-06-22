@@ -68,6 +68,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'array<string,mixed>',
         'needs_shipping_contact' => 'bool',
         'pre_authorize' => 'bool',
+        'processing_mode' => 'string',
         'shipping_contact' => '\Conekta\Model\CustomerShippingContacts',
         'shipping_lines' => '\Conekta\Model\ShippingRequest[]',
         'tax_lines' => '\Conekta\Model\OrderTaxRequest[]'
@@ -90,6 +91,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => null,
         'needs_shipping_contact' => null,
         'pre_authorize' => null,
+        'processing_mode' => null,
         'shipping_contact' => null,
         'shipping_lines' => null,
         'tax_lines' => null
@@ -110,6 +112,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 		'metadata' => false,
 		'needs_shipping_contact' => false,
 		'pre_authorize' => false,
+		'processing_mode' => false,
 		'shipping_contact' => false,
 		'shipping_lines' => false,
 		'tax_lines' => false
@@ -210,6 +213,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'metadata',
         'needs_shipping_contact' => 'needs_shipping_contact',
         'pre_authorize' => 'pre_authorize',
+        'processing_mode' => 'processing_mode',
         'shipping_contact' => 'shipping_contact',
         'shipping_lines' => 'shipping_lines',
         'tax_lines' => 'tax_lines'
@@ -230,6 +234,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'setMetadata',
         'needs_shipping_contact' => 'setNeedsShippingContact',
         'pre_authorize' => 'setPreAuthorize',
+        'processing_mode' => 'setProcessingMode',
         'shipping_contact' => 'setShippingContact',
         'shipping_lines' => 'setShippingLines',
         'tax_lines' => 'setTaxLines'
@@ -250,6 +255,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'getMetadata',
         'needs_shipping_contact' => 'getNeedsShippingContact',
         'pre_authorize' => 'getPreAuthorize',
+        'processing_mode' => 'getProcessingMode',
         'shipping_contact' => 'getShippingContact',
         'shipping_lines' => 'getShippingLines',
         'tax_lines' => 'getTaxLines'
@@ -321,6 +327,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('needs_shipping_contact', $data ?? [], null);
         $this->setIfExists('pre_authorize', $data ?? [], false);
+        $this->setIfExists('processing_mode', $data ?? [], null);
         $this->setIfExists('shipping_contact', $data ?? [], null);
         $this->setIfExists('shipping_lines', $data ?? [], null);
         $this->setIfExists('tax_lines', $data ?? [], null);
@@ -632,6 +639,33 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable pre_authorize cannot be null');
         }
         $this->container['pre_authorize'] = $pre_authorize;
+
+        return $this;
+    }
+
+    /**
+     * Gets processing_mode
+     *
+     * @return string|null
+     */
+    public function getProcessingMode()
+    {
+        return $this->container['processing_mode'];
+    }
+
+    /**
+     * Sets processing_mode
+     *
+     * @param string|null $processing_mode Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+     *
+     * @return self
+     */
+    public function setProcessingMode($processing_mode)
+    {
+        if (is_null($processing_mode)) {
+            throw new \InvalidArgumentException('non-nullable processing_mode cannot be null');
+        }
+        $this->container['processing_mode'] = $processing_mode;
 
         return $this;
     }

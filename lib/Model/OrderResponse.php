@@ -76,6 +76,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'array<string,mixed>',
         'object' => 'string',
         'payment_status' => 'string',
+        'processing_mode' => 'string',
         'shipping_contact' => '\Conekta\Model\OrderResponseShippingContact',
         'updated_at' => 'int'
     ];
@@ -105,6 +106,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => null,
         'object' => null,
         'payment_status' => null,
+        'processing_mode' => null,
         'shipping_contact' => null,
         'updated_at' => 'int64'
     ];
@@ -132,6 +134,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 		'metadata' => false,
 		'object' => false,
 		'payment_status' => false,
+		'processing_mode' => false,
 		'shipping_contact' => false,
 		'updated_at' => false
     ];
@@ -239,6 +242,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'metadata',
         'object' => 'object',
         'payment_status' => 'payment_status',
+        'processing_mode' => 'processing_mode',
         'shipping_contact' => 'shipping_contact',
         'updated_at' => 'updated_at'
     ];
@@ -266,6 +270,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'setMetadata',
         'object' => 'setObject',
         'payment_status' => 'setPaymentStatus',
+        'processing_mode' => 'setProcessingMode',
         'shipping_contact' => 'setShippingContact',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -293,6 +298,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'metadata' => 'getMetadata',
         'object' => 'getObject',
         'payment_status' => 'getPaymentStatus',
+        'processing_mode' => 'getProcessingMode',
         'shipping_contact' => 'getShippingContact',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -371,6 +377,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('payment_status', $data ?? [], null);
+        $this->setIfExists('processing_mode', $data ?? [], null);
         $this->setIfExists('shipping_contact', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -880,6 +887,33 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable payment_status cannot be null');
         }
         $this->container['payment_status'] = $payment_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets processing_mode
+     *
+     * @return string|null
+     */
+    public function getProcessingMode()
+    {
+        return $this->container['processing_mode'];
+    }
+
+    /**
+     * Sets processing_mode
+     *
+     * @param string|null $processing_mode Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+     *
+     * @return self
+     */
+    public function setProcessingMode($processing_mode)
+    {
+        if (is_null($processing_mode)) {
+            throw new \InvalidArgumentException('non-nullable processing_mode cannot be null');
+        }
+        $this->container['processing_mode'] = $processing_mode;
 
         return $this;
     }

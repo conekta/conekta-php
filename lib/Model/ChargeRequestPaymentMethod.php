@@ -62,7 +62,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => 'int',
         'type' => 'string',
         'token_id' => 'string',
-        'payment_source_id' => 'string'
+        'payment_source_id' => 'string',
+        'contract_id' => 'string'
     ];
 
     /**
@@ -76,7 +77,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => 'int64',
         'type' => null,
         'token_id' => null,
-        'payment_source_id' => null
+        'payment_source_id' => null,
+        'contract_id' => null
     ];
 
     /**
@@ -88,7 +90,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => false,
 		'type' => false,
 		'token_id' => false,
-		'payment_source_id' => false
+		'payment_source_id' => false,
+		'contract_id' => false
     ];
 
     /**
@@ -180,7 +183,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => 'expires_at',
         'type' => 'type',
         'token_id' => 'token_id',
-        'payment_source_id' => 'payment_source_id'
+        'payment_source_id' => 'payment_source_id',
+        'contract_id' => 'contract_id'
     ];
 
     /**
@@ -192,7 +196,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => 'setExpiresAt',
         'type' => 'setType',
         'token_id' => 'setTokenId',
-        'payment_source_id' => 'setPaymentSourceId'
+        'payment_source_id' => 'setPaymentSourceId',
+        'contract_id' => 'setContractId'
     ];
 
     /**
@@ -204,7 +209,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'expires_at' => 'getExpiresAt',
         'type' => 'getType',
         'token_id' => 'getTokenId',
-        'payment_source_id' => 'getPaymentSourceId'
+        'payment_source_id' => 'getPaymentSourceId',
+        'contract_id' => 'getContractId'
     ];
 
     /**
@@ -268,6 +274,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
         $this->setIfExists('payment_source_id', $data ?? [], null);
+        $this->setIfExists('contract_id', $data ?? [], null);
     }
 
     /**
@@ -300,6 +307,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
+        }
+
+        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
+            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
+        }
+
         return $invalidProperties;
     }
 
@@ -419,6 +434,40 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable payment_source_id cannot be null');
         }
         $this->container['payment_source_id'] = $payment_source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contract_id
+     *
+     * @return string|null
+     */
+    public function getContractId()
+    {
+        return $this->container['contract_id'];
+    }
+
+    /**
+     * Sets contract_id
+     *
+     * @param string|null $contract_id Optional id sent to indicate the bank contract for recurrent card charges.
+     *
+     * @return self
+     */
+    public function setContractId($contract_id)
+    {
+        if (is_null($contract_id)) {
+            throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
+        }
+        if ((mb_strlen($contract_id) > 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeRequestPaymentMethod., must be smaller than or equal to 10.');
+        }
+        if ((mb_strlen($contract_id) < 10)) {
+            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeRequestPaymentMethod., must be bigger than or equal to 10.');
+        }
+
+        $this->container['contract_id'] = $contract_id;
 
         return $this;
     }

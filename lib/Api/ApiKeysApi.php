@@ -1272,18 +1272,18 @@ class ApiKeysApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $search General search, e.g. by id, description, prefix (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiKeys'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\GetApiKeysResponse|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function getApiKeys($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getApiKeys'][0])
+    public function getApiKeys($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getApiKeys'][0])
     {
-        list($response) = $this->getApiKeysWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        list($response) = $this->getApiKeysWithHttpInfo($accept_language, $x_child_company_id, $limit, $next, $previous, $search, $contentType);
         return $response;
     }
 
@@ -1295,18 +1295,18 @@ class ApiKeysApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $search General search, e.g. by id, description, prefix (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiKeys'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\GetApiKeysResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiKeysWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getApiKeys'][0])
+    public function getApiKeysWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getApiKeys'][0])
     {
-        $request = $this->getApiKeysRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getApiKeysRequest($accept_language, $x_child_company_id, $limit, $next, $previous, $search, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1446,17 +1446,17 @@ class ApiKeysApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $search General search, e.g. by id, description, prefix (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiKeysAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getApiKeys'][0])
+    public function getApiKeysAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getApiKeys'][0])
     {
-        return $this->getApiKeysAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType)
+        return $this->getApiKeysAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $next, $previous, $search, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1472,18 +1472,18 @@ class ApiKeysApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $search General search, e.g. by id, description, prefix (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiKeysAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getApiKeys'][0])
+    public function getApiKeysAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getApiKeys'][0])
     {
         $returnType = '\Conekta\Model\GetApiKeysResponse';
-        $request = $this->getApiKeysRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getApiKeysRequest($accept_language, $x_child_company_id, $limit, $next, $previous, $search, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1527,15 +1527,15 @@ class ApiKeysApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $search General search, e.g. by id, description, prefix (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiKeysRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getApiKeys'][0])
+    public function getApiKeysRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $search = null, string $contentType = self::contentTypes['getApiKeys'][0])
     {
 
 
@@ -1569,15 +1569,6 @@ class ApiKeysApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $next,
             'next', // param base name
             'string', // openApiType
@@ -1589,6 +1580,15 @@ class ApiKeysApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $previous,
             'previous', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -2065,6 +2065,7 @@ class ApiKeysApi
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
+        $options[RequestOptions::SSL_KEY] = __DIR__ . '../ssl_data/ca_bundle.crt';
 
         return $options;
     }
