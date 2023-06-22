@@ -29,7 +29,13 @@
 namespace Conekta\Api;
 
 use Conekta\Model\OrderUpdateRequest;
-use Conekta\{ApiException, Configuration, HeaderSelector, Model\Error, Model\OrderResponse, ObjectSerializer};
+use Conekta\{ApiException,
+    Configuration,
+    HeaderSelector,
+    Model\Error,
+    Model\OrderRequest,
+    Model\OrderResponse,
+    ObjectSerializer};
 use GuzzleHttp\Exception\{ConnectException, GuzzleException, RequestException};
 use GuzzleHttp\Psr7\{MultipartStream, Request};
 use GuzzleHttp\{Client, ClientInterface, Promise\PromiseInterface, RequestOptions};
@@ -45,33 +51,16 @@ use InvalidArgumentException;
  */
 class OrdersApi extends BaseApi
 {
-    /** @var string[] $contentTypes * */
-    public const contentTypes = [
-        'cancelOrder' => [
-            'application/json',
-        ],
-        'createOrder' => [
-            'application/json',
-        ],
-        'getOrderById' => [
-            'application/json',
-        ],
-        'getOrders' => [
-            'application/json',
-        ],
-        'orderCancelRefund' => [
-            'application/json',
-        ],
-        'orderRefund' => [
-            'application/json',
-        ],
-        'ordersCreateCapture' => [
-            'application/json',
-        ],
-        'updateOrder' => [
-            'application/json',
-        ],
+    /** @var string[] $resourcePath */
+    private const  resourcePath = [
+        'cancel_order' => '/orders/{id}/cancel',
+        'create' => '/orders'
     ];
+    /** @var string $orderResponseClass */
+    private const modelResponseClass = '\Conekta\Model\OrderResponse';
+
+    /** @var string $orderResponseClass */
+    private const modelErrorClass = '\Conekta\Model\Error';
 
     /**
      * Operation cancelOrder
@@ -79,17 +68,21 @@ class OrdersApi extends BaseApi
      * Cancel Order
      *
      * @param string $id Identifier of the resource (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param string $acceptLanguage
+     * @param string|null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @return OrderResponse|Error
-     * @throws InvalidArgumentException
      * @throws ApiException on non-2xx response
+     * @throws GuzzleException on non-2xx response
      */
-    public function cancelOrder(string $id, string $accept_language = 'es', string $x_child_company_id = null, string $contentType = self::contentTypes['cancelOrder'][0])
-    {
-        list($response) = $this->cancelOrderWithHttpInfo($id, $accept_language, $x_child_company_id, $contentType);
+    public function cancelOrder(
+        string $id,
+        string $acceptLanguage = 'es',
+        string $xChildCompanyID = null,
+        string $contentType = self::contentTypes['default'][0]
+    ) {
+        list($response) = $this->cancelOrderWithHttpInfo($id, $acceptLanguage, $xChildCompanyID, $contentType);
         return $response;
     }
 
@@ -99,120 +92,37 @@ class OrdersApi extends BaseApi
      * Cancel Order
      *
      * @param string $id Identifier of the resource (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
-     * @return array of \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     * @throws InvalidArgumentException
-     * @throws ApiException|GuzzleException on non-2xx response
+     * @return array of \Conekta\Model\OrderResponse|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
      */
-    public function cancelOrderWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelOrder'][0])
-    {
-        $request = $this->cancelOrderRequest($id, $accept_language, $x_child_company_id, $contentType);
+    public function cancelOrderWithHttpInfo(
+        string $id,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['cancelOrder'][0]
+    ): array {
+        $request = $this->cancelOrderRequest($id, $acceptLanguage, $xChildCompanyID, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int)$e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string)$e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int)$e->getCode(),
-                    null,
-                    null
-                );
+            $response = $this->getResponse($request, $options);
+
+            if ($response->getStatusCode() < 200 || $response->getStatusCode() > 299) {
+                throw $this->getResponseApiException('[%d] Error connecting to the API (%s)', $request, $response);
             }
 
-            $statusCode = $response->getStatusCode();
+            $content = $this->getContent($response, self::modelResponseClass);
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string)$request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string)$response->getBody()
-                );
-            }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\Conekta\Model\OrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\OrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\OrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Conekta\Model\OrderResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string)$response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return $this->getArrayResponse($content, self::modelResponseClass, $response);
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\OrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+            $serializedClass = $e->getCode() == 200 ? self::modelResponseClass : self::modelErrorClass;
+            $data = ObjectSerializer::deserialize($e->getResponseBody(), $serializedClass, $e->getResponseHeaders());
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
@@ -223,16 +133,19 @@ class OrdersApi extends BaseApi
      * Cancel Order
      *
      * @param string $id Identifier of the resource (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['default'] to see the possible values for this operation
      *
      * @return PromiseInterface
-     * @throws InvalidArgumentException
      */
-    public function cancelOrderAsync($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelOrder'][0])
-    {
-        return $this->cancelOrderAsyncWithHttpInfo($id, $accept_language, $x_child_company_id, $contentType)
+    public function cancelOrderAsync(
+        string $id,
+        string $acceptLanguage = 'es',
+               $xChildCompanyID = null,
+        string $contentType = self::contentTypes['default'][0]
+    ): PromiseInterface {
+        return $this->cancelOrderAsyncWithHttpInfo($id, $acceptLanguage, $xChildCompanyID, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -246,50 +159,34 @@ class OrdersApi extends BaseApi
      * Cancel Order
      *
      * @param string $id Identifier of the resource (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
+     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['default'] to see the possible values for this operation
      *
      * @return PromiseInterface
-     * @throws InvalidArgumentException
      */
-    public function cancelOrderAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelOrder'][0])
+    public function cancelOrderAsyncWithHttpInfo(
+        string $id,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['default'][0]
+    ): PromiseInterface
     {
-        $returnType = '\Conekta\Model\OrderResponse';
-        $request = $this->cancelOrderRequest($id, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->cancelOrderRequest($id, $acceptLanguage, $xChildCompanyID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
+                function ($response) {
+                    $content = $this->getContent($response, self::modelResponseClass);
 
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return $this->getArrayResponse($content, self::modelResponseClass, $response);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string)$response->getBody()
-                    );
+                    $request = $exception->getRequest();
+
+                    throw $this->getResponseApiException('[%d] Error connecting to the API (%s)', $request, $response);
                 }
             );
     }
@@ -298,105 +195,29 @@ class OrdersApi extends BaseApi
      * Create request for operation 'cancelOrder'
      *
      * @param string $id Identifier of the resource (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
+     * @param string $contentType
      *
      * @return Request
-     * @throws InvalidArgumentException
      */
-    public function cancelOrderRequest($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelOrder'][0])
+    public function cancelOrderRequest(
+        string $id,
+        string $acceptLanguage = 'es',
+               $xChildCompanyID = null,
+        string $contentType = self::contentTypes['default'][0]
+    ): Request
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $id when calling cancelOrder'
-            );
-        }
-
-        $resourcePath = '/orders/{id}/cancel';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // header params
-        if ($accept_language !== null) {
-            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
-        }
-        // header params
-        if ($x_child_company_id !== null) {
-            $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
-        }
-
         // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/vnd.conekta-v2.1.0+json',],
-            $contentType,
-            $multipart
-        );
-        $headers = array_merge(
-            $this->headerSelector->getConektaUserAgent(),
-            $headers
+        $resourcePath = str_replace(
+            '{' . 'id' . '}',
+            ObjectSerializer::toPathValue($id),
+            self::resourcePath['cancel_order']
         );
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name'     => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
+        $headers = $this->buildHeaders($contentType, $acceptLanguage, $xChildCompanyID);
 
-        // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->getRequest(self::methodPost, $this->getUri($resourcePath), $headers);
     }
 
     /**
@@ -404,18 +225,22 @@ class OrdersApi extends BaseApi
      *
      * Create order
      *
-     * @param \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param OrderRequest $orderRequest
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
-     * @return OrderResponse|Error|Error|Error|Error
-     * @throws InvalidArgumentException
+     * @return OrderResponse|Error
      * @throws ApiException on non-2xx response
+     * @throws GuzzleException
      */
-    public function createOrder($order_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createOrder'][0])
-    {
-        list($response) = $this->createOrderWithHttpInfo($order_request, $accept_language, $x_child_company_id, $contentType);
+    public function createOrder(
+        OrderRequest $orderRequest,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['createOrder'][0]
+    ) {
+        list($response) = $this->createOrderWithHttpInfo($orderRequest, $acceptLanguage, $xChildCompanyID, $contentType);
         return $response;
     }
 
@@ -424,178 +249,37 @@ class OrdersApi extends BaseApi
      *
      * Create order
      *
-     * @param \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param OrderRequest $orderRequest
+     * @param string $acceptLanguage
+     * @param string|null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @return array of \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     * @throws InvalidArgumentException
      * @throws ApiException on non-2xx response
      */
-    public function createOrderWithHttpInfo($order_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createOrder'][0])
-    {
-        $request = $this->createOrderRequest($order_request, $accept_language, $x_child_company_id, $contentType);
+    public function createOrderWithHttpInfo(
+        OrderRequest $orderRequest,
+        string $acceptLanguage = 'es',
+        string $xChildCompanyID = null,
+        string $contentType = self::contentTypes['createOrder'][0]
+    ): array {
+        $request = $this->createOrderRequest($orderRequest, $acceptLanguage, $xChildCompanyID, $contentType);
 
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException|ConnectException $e) {
-                throw $this->buildException($e);
+            $response = $this->getResponse($request);
+
+            if ($response->getStatusCode() < 200 || $response->getStatusCode() > 299) {
+                throw $this->getResponseApiException('[%d] Error connecting to the API (%s)', $request, $response);
             }
 
-            $statusCode = $response->getStatusCode();
+            $content = $this->getContent($response, self::modelResponseClass);
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string)$request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string)$response->getBody()
-                );
-            }
-
-            switch ($statusCode) {
-                case 200:
-                    if ('\Conekta\Model\OrderResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\OrderResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\OrderResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 401:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 402:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 500:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Conekta\Model\OrderResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string)$response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return $this->getArrayResponse($content, self::modelResponseClass, $response);
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\OrderResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 402:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
+            $serializedClass = $e->getCode() == 200 ? self::modelResponseClass : self::modelErrorClass;
+            $data = ObjectSerializer::deserialize($e->getResponseBody(), $serializedClass, $e->getResponseHeaders());
+            $e->setResponseObject($data);
+
             throw $e;
         }
     }
@@ -605,17 +289,20 @@ class OrdersApi extends BaseApi
      *
      * Create order
      *
-     * @param \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param OrderRequest $orderRequest
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @return PromiseInterface
-     * @throws InvalidArgumentException
      */
-    public function createOrderAsync($order_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createOrder'][0])
-    {
-        return $this->createOrderAsyncWithHttpInfo($order_request, $accept_language, $x_child_company_id, $contentType)
+    public function createOrderAsync(
+        OrderRequest $orderRequest,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['createOrder'][0]
+    ): PromiseInterface {
+        return $this->createOrderAsyncWithHttpInfo($orderRequest, $acceptLanguage, $xChildCompanyID, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -628,51 +315,34 @@ class OrdersApi extends BaseApi
      *
      * Create order
      *
-     * @param \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param OrderRequest $orderRequest
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @return PromiseInterface
-     * @throws InvalidArgumentException
      */
-    public function createOrderAsyncWithHttpInfo($order_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createOrder'][0])
-    {
-        $returnType = '\Conekta\Model\OrderResponse';
-        $request = $this->createOrderRequest($order_request, $accept_language, $x_child_company_id, $contentType);
+    public function createOrderAsyncWithHttpInfo(
+        OrderRequest $orderRequest,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['createOrder'][0]
+    ): PromiseInterface {
+        $request = $this->createOrderRequest($orderRequest, $acceptLanguage, $xChildCompanyID, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string)$response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
+                function ($response) {
+                    $content = $this->getContent($response, self::modelResponseClass);
 
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return $this->getArrayResponse($content, self::modelResponseClass, $response);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string)$response->getBody()
-                    );
+                    $request = $exception->getRequest();
+
+                    throw  $this->getResponseApiException('[%d] Error connecting to the API (%s)', $request, $response);
                 }
             );
     }
@@ -680,24 +350,23 @@ class OrdersApi extends BaseApi
     /**
      * Create request for operation 'createOrder'
      *
-     * @param \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param OrderRequest $orderRequest
+     * @param string $acceptLanguage
+     * @param null $xChildCompanyID
      * @param string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @return Request
-     * @throws InvalidArgumentException
      */
-    public function createOrderRequest($order_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createOrder'][0])
-    {
+    public function createOrderRequest(
+        OrderRequest $orderRequest,
+        string $acceptLanguage = 'es',
+        $xChildCompanyID = null,
+        string $contentType = self::contentTypes['createOrder'][0]
+    ): Request {
         // verify the required parameter 'order_request' is set
-        if ($order_request === null || (is_array($order_request) && count($order_request) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $order_request when calling createOrder'
-            );
-        }
 
-        $resourcePath = '/orders';
+
+        $resourcePath = self::resourcePath['create'];
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -722,6 +391,7 @@ class OrdersApi extends BaseApi
             $this->headerSelector->getConektaUserAgent(),
             $headers
         );
+        $headers = $this->buildHeaders($contentType, $acceptLanguage, $xChildCompanyID);
 
         // for model (json/xml)
         if (isset($order_request)) {
@@ -738,7 +408,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -755,7 +425,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1110,7 +780,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -1127,7 +797,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1446,7 +1116,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -1463,7 +1133,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -1824,7 +1494,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -1841,7 +1511,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2177,7 +1847,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -2194,7 +1864,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2542,7 +2212,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -2559,7 +2229,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
@@ -2827,7 +2497,8 @@ class OrdersApi extends BaseApi
         $order_update_request,
         $accept_language = 'es',
         string $contentType = self::contentTypes['updateOrder'][0]
-    ): Request {
+    ): Request
+    {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new InvalidArgumentException(
@@ -2888,7 +2559,7 @@ class OrdersApi extends BaseApi
                     $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
                     foreach ($formParamValueItems as $formParamValueItem) {
                         $multipartContents[] = [
-                            'name'     => $formParamName,
+                            'name' => $formParamName,
                             'contents' => $formParamValueItem
                         ];
                     }
@@ -2905,7 +2576,7 @@ class OrdersApi extends BaseApi
         }
 
         // this endpoint requires Bearer authentication (access token)
-        if (! empty($this->config->getAccessToken())) {
+        if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
         }
 
