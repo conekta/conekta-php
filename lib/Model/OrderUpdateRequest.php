@@ -62,7 +62,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'charges' => '\Conekta\Model\ChargeRequest[]',
         'checkout' => '\Conekta\Model\CheckoutRequest',
         'currency' => 'string',
-        'customer_info' => '\Conekta\Model\OrderRequestCustomerInfo',
+        'customer_info' => '\Conekta\Model\OrderUpdateRequestCustomerInfo',
         'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]',
         'line_items' => '\Conekta\Model\Product[]',
         'metadata' => 'array<string,string>',
@@ -453,7 +453,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets customer_info
      *
-     * @return \Conekta\Model\OrderRequestCustomerInfo|null
+     * @return \Conekta\Model\OrderUpdateRequestCustomerInfo|null
      */
     public function getCustomerInfo()
     {
@@ -463,7 +463,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets customer_info
      *
-     * @param \Conekta\Model\OrderRequestCustomerInfo|null $customer_info customer_info
+     * @param \Conekta\Model\OrderUpdateRequestCustomerInfo|null $customer_info customer_info
      *
      * @return self
      */

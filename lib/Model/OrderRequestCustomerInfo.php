@@ -36,6 +36,7 @@ use \Conekta\ObjectSerializer;
  * OrderRequestCustomerInfo Class Doc Comment
  *
  * @category Class
+ * @description Customer information
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

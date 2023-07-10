@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **customer_info** | [**\Conekta\Model\OrderRequestCustomerInfo**](OrderRequestCustomerInfo.md) |  |
 **discount_lines** | [**\Conekta\Model\OrderDiscountLinesRequest[]**](OrderDiscountLinesRequest.md) | List of [discounts](https://developers.conekta.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount. | [optional]
 **line_items** | [**\Conekta\Model\Product[]**](Product.md) | List of [products](https://developers.conekta.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product. |
-**metadata** | **array<string,mixed>** |  | [optional]
+**metadata** | **array<string,mixed>** | Metadata associated with the order | [optional]
 **needs_shipping_contact** | **bool** | Allows you to fill out the shipping information at checkout | [optional]
 **pre_authorize** | **bool** | Indicates whether the order charges must be preauthorized | [optional] [default to false]
 **processing_mode** | **string** | Indicates the processing mode for the order, either ecommerce, recurrent or validation. | [optional]

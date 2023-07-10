@@ -1,6 +1,6 @@
 <?php
 /**
- * TokensApi
+ * BalancesApi
  * PHP version 7.4
  *
  * @category Class
@@ -41,14 +41,14 @@ use Conekta\HeaderSelector;
 use Conekta\ObjectSerializer;
 
 /**
- * TokensApi Class Doc Comment
+ * BalancesApi Class Doc Comment
  *
  * @category Class
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TokensApi
+class BalancesApi
 {
     /**
      * @var ClientInterface
@@ -72,7 +72,7 @@ class TokensApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createToken' => [
+        'getBalance' => [
             'application/json',
         ],
     ];
@@ -124,40 +124,38 @@ class TokensApi
     }
 
     /**
-     * Operation createToken
+     * Operation getBalance
      *
-     * Create Token
+     * Get a company&#39;s balance
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\TokenResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\BalanceResponse|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createToken($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function getBalance($accept_language = 'es', string $contentType = self::contentTypes['getBalance'][0])
     {
-        list($response) = $this->createTokenWithHttpInfo($token, $accept_language, $contentType);
+        list($response) = $this->getBalanceWithHttpInfo($accept_language, $contentType);
         return $response;
     }
 
     /**
-     * Operation createTokenWithHttpInfo
+     * Operation getBalanceWithHttpInfo
      *
-     * Create Token
+     * Get a company&#39;s balance
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\TokenResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\BalanceResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTokenWithHttpInfo($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function getBalanceWithHttpInfo($accept_language = 'es', string $contentType = self::contentTypes['getBalance'][0])
     {
-        $request = $this->createTokenRequest($token, $accept_language, $contentType);
+        $request = $this->getBalanceRequest($accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,36 +194,21 @@ class TokensApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\TokenResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\BalanceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\TokenResponse' !== 'string') {
+                        if ('\Conekta\Model\BalanceResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\TokenResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\BalanceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 401:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
                     if ('\Conekta\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -257,7 +240,7 @@ class TokensApi
                     ];
             }
 
-            $returnType = '\Conekta\Model\TokenResponse';
+            $returnType = '\Conekta\Model\BalanceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -278,20 +261,12 @@ class TokensApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\TokenResponse',
+                        '\Conekta\Model\BalanceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
                 case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Conekta\Model\Error',
@@ -313,20 +288,19 @@ class TokensApi
     }
 
     /**
-     * Operation createTokenAsync
+     * Operation getBalanceAsync
      *
-     * Create Token
+     * Get a company&#39;s balance
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsync($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function getBalanceAsync($accept_language = 'es', string $contentType = self::contentTypes['getBalance'][0])
     {
-        return $this->createTokenAsyncWithHttpInfo($token, $accept_language, $contentType)
+        return $this->getBalanceAsyncWithHttpInfo($accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -335,21 +309,20 @@ class TokensApi
     }
 
     /**
-     * Operation createTokenAsyncWithHttpInfo
+     * Operation getBalanceAsyncWithHttpInfo
      *
-     * Create Token
+     * Get a company&#39;s balance
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsyncWithHttpInfo($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function getBalanceAsyncWithHttpInfo($accept_language = 'es', string $contentType = self::contentTypes['getBalance'][0])
     {
-        $returnType = '\Conekta\Model\TokenResponse';
-        $request = $this->createTokenRequest($token, $accept_language, $contentType);
+        $returnType = '\Conekta\Model\BalanceResponse';
+        $request = $this->getBalanceRequest($accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -388,28 +361,20 @@ class TokensApi
     }
 
     /**
-     * Create request for operation 'createToken'
+     * Create request for operation 'getBalance'
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTokenRequest($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function getBalanceRequest($accept_language = 'es', string $contentType = self::contentTypes['getBalance'][0])
     {
 
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling createToken'
-            );
-        }
 
 
-
-        $resourcePath = '/tokens';
+        $resourcePath = '/balances';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -435,14 +400,7 @@ class TokensApi
         );
 
         // for model (json/xml)
-        if (isset($token)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($token));
-            } else {
-                $httpBody = $token;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -485,7 +443,7 @@ class TokensApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

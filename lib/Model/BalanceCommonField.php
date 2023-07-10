@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscountLinesResponseAllOf
+ * BalanceCommonField
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * DiscountLinesResponseAllOf Class Doc Comment
+ * BalanceCommonField Class Doc Comment
  *
  * @category Class
+ * @description balance common fields model
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class BalanceCommonField implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'discount_lines_response_allOf';
+    protected static $openAPIModelName = 'balance_common_field';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'object' => 'string',
-        'parent_id' => 'string'
+        'amount' => 'int',
+        'currency' => 'string'
     ];
 
     /**
@@ -71,9 +71,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'object' => null,
-        'parent_id' => null
+        'amount' => 'int64',
+        'currency' => null
     ];
 
     /**
@@ -82,9 +81,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'object' => false,
-		'parent_id' => false
+        'amount' => false,
+		'currency' => false
     ];
 
     /**
@@ -173,9 +171,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object' => 'object',
-        'parent_id' => 'parent_id'
+        'amount' => 'amount',
+        'currency' => 'currency'
     ];
 
     /**
@@ -184,9 +181,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object' => 'setObject',
-        'parent_id' => 'setParentId'
+        'amount' => 'setAmount',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -195,9 +191,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object' => 'getObject',
-        'parent_id' => 'getParentId'
+        'amount' => 'getAmount',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -257,9 +252,8 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -289,15 +283,6 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
-        if ($this->container['parent_id'] === null) {
-            $invalidProperties[] = "'parent_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -314,82 +299,55 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets id
+     * Gets amount
      *
-     * @return string
+     * @return int|null
      */
-    public function getId()
+    public function getAmount()
     {
-        return $this->container['id'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets id
+     * Sets amount
      *
-     * @param string $id The discount line id
+     * @param int|null $amount The balance's amount
      *
      * @return self
      */
-    public function setId($id)
+    public function setAmount($amount)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets object
+     * Gets currency
      *
-     * @return string
+     * @return string|null
      */
-    public function getObject()
+    public function getCurrency()
     {
-        return $this->container['object'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets object
+     * Sets currency
      *
-     * @param string $object The object name
+     * @param string|null $currency The balance's currency
      *
      * @return self
      */
-    public function setObject($object)
+    public function setCurrency($currency)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_id
-     *
-     * @return string
-     */
-    public function getParentId()
-    {
-        return $this->container['parent_id'];
-    }
-
-    /**
-     * Sets parent_id
-     *
-     * @param string $parent_id The order id
-     *
-     * @return self
-     */
-    public function setParentId($parent_id)
-    {
-        if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
-        }
-        $this->container['parent_id'] = $parent_id;
+        $this->container['currency'] = $currency;
 
         return $this;
     }

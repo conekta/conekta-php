@@ -571,7 +571,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param array<string,mixed>|null $metadata metadata
+     * @param array<string,mixed>|null $metadata Metadata associated with the order
      *
      * @return self
      */

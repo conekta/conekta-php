@@ -303,7 +303,7 @@ class ChargeResponseRefundsAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \Conekta\Model\ChargeResponseRefundsData[]|null $data data
+     * @param \Conekta\Model\ChargeResponseRefundsData[]|null $data refunds
      *
      * @return self
      */

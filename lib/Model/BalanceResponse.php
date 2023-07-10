@@ -1,6 +1,6 @@
 <?php
 /**
- * CheckoutRequest
+ * BalanceResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CheckoutRequest Class Doc Comment
+ * BalanceResponse Class Doc Comment
  *
  * @category Class
- * @description [Checkout](https://developers.conekta.com/v2.1.0/reference/payment-link) details
+ * @description balance model
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'checkout_request';
+    protected static $openAPIModelName = 'balance_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'allowed_payment_methods' => 'string[]',
-        'expires_at' => 'int',
-        'failure_url' => 'string',
-        'monthly_installments_enabled' => 'bool',
-        'monthly_installments_options' => 'int[]',
-        'name' => 'string',
-        'on_demand_enabled' => 'bool',
-        'success_url' => 'string',
-        'type' => 'string'
+        'available' => '\Conekta\Model\BalanceCommonField[]',
+        'cashout_retention_amount' => '\Conekta\Model\BalanceCommonField[]',
+        'conekta_retention' => '\Conekta\Model\BalanceCommonField[]',
+        'gateway' => '\Conekta\Model\BalanceCommonField[]',
+        'pending' => '\Conekta\Model\BalanceCommonField[]',
+        'retained' => '\Conekta\Model\BalanceCommonField[]',
+        'retention_amount' => '\Conekta\Model\BalanceCommonField[]',
+        'target_collateral_amount' => 'object',
+        'target_retention_amount' => '\Conekta\Model\BalanceCommonField[]',
+        'temporarily_retained' => '\Conekta\Model\BalanceCommonField[]'
     ];
 
     /**
@@ -78,15 +79,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'allowed_payment_methods' => null,
-        'expires_at' => 'int64',
-        'failure_url' => null,
-        'monthly_installments_enabled' => null,
-        'monthly_installments_options' => 'int8',
-        'name' => null,
-        'on_demand_enabled' => null,
-        'success_url' => null,
-        'type' => null
+        'available' => null,
+        'cashout_retention_amount' => null,
+        'conekta_retention' => null,
+        'gateway' => null,
+        'pending' => null,
+        'retained' => null,
+        'retention_amount' => null,
+        'target_collateral_amount' => null,
+        'target_retention_amount' => null,
+        'temporarily_retained' => null
     ];
 
     /**
@@ -95,15 +97,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'allowed_payment_methods' => false,
-		'expires_at' => false,
-		'failure_url' => false,
-		'monthly_installments_enabled' => false,
-		'monthly_installments_options' => false,
-		'name' => false,
-		'on_demand_enabled' => false,
-		'success_url' => false,
-		'type' => false
+        'available' => false,
+		'cashout_retention_amount' => false,
+		'conekta_retention' => false,
+		'gateway' => false,
+		'pending' => false,
+		'retained' => false,
+		'retention_amount' => false,
+		'target_collateral_amount' => false,
+		'target_retention_amount' => false,
+		'temporarily_retained' => false
     ];
 
     /**
@@ -192,15 +195,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'allowed_payment_methods' => 'allowed_payment_methods',
-        'expires_at' => 'expires_at',
-        'failure_url' => 'failure_url',
-        'monthly_installments_enabled' => 'monthly_installments_enabled',
-        'monthly_installments_options' => 'monthly_installments_options',
-        'name' => 'name',
-        'on_demand_enabled' => 'on_demand_enabled',
-        'success_url' => 'success_url',
-        'type' => 'type'
+        'available' => 'available',
+        'cashout_retention_amount' => 'cashout_retention_amount',
+        'conekta_retention' => 'conekta_retention',
+        'gateway' => 'gateway',
+        'pending' => 'pending',
+        'retained' => 'retained',
+        'retention_amount' => 'retention_amount',
+        'target_collateral_amount' => 'target_collateral_amount',
+        'target_retention_amount' => 'target_retention_amount',
+        'temporarily_retained' => 'temporarily_retained'
     ];
 
     /**
@@ -209,15 +213,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'allowed_payment_methods' => 'setAllowedPaymentMethods',
-        'expires_at' => 'setExpiresAt',
-        'failure_url' => 'setFailureUrl',
-        'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
-        'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
-        'name' => 'setName',
-        'on_demand_enabled' => 'setOnDemandEnabled',
-        'success_url' => 'setSuccessUrl',
-        'type' => 'setType'
+        'available' => 'setAvailable',
+        'cashout_retention_amount' => 'setCashoutRetentionAmount',
+        'conekta_retention' => 'setConektaRetention',
+        'gateway' => 'setGateway',
+        'pending' => 'setPending',
+        'retained' => 'setRetained',
+        'retention_amount' => 'setRetentionAmount',
+        'target_collateral_amount' => 'setTargetCollateralAmount',
+        'target_retention_amount' => 'setTargetRetentionAmount',
+        'temporarily_retained' => 'setTemporarilyRetained'
     ];
 
     /**
@@ -226,15 +231,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'allowed_payment_methods' => 'getAllowedPaymentMethods',
-        'expires_at' => 'getExpiresAt',
-        'failure_url' => 'getFailureUrl',
-        'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
-        'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
-        'name' => 'getName',
-        'on_demand_enabled' => 'getOnDemandEnabled',
-        'success_url' => 'getSuccessUrl',
-        'type' => 'getType'
+        'available' => 'getAvailable',
+        'cashout_retention_amount' => 'getCashoutRetentionAmount',
+        'conekta_retention' => 'getConektaRetention',
+        'gateway' => 'getGateway',
+        'pending' => 'getPending',
+        'retained' => 'getRetained',
+        'retention_amount' => 'getRetentionAmount',
+        'target_collateral_amount' => 'getTargetCollateralAmount',
+        'target_retention_amount' => 'getTargetRetentionAmount',
+        'temporarily_retained' => 'getTemporarilyRetained'
     ];
 
     /**
@@ -294,15 +300,16 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('allowed_payment_methods', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('failure_url', $data ?? [], null);
-        $this->setIfExists('monthly_installments_enabled', $data ?? [], null);
-        $this->setIfExists('monthly_installments_options', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('on_demand_enabled', $data ?? [], null);
-        $this->setIfExists('success_url', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('available', $data ?? [], null);
+        $this->setIfExists('cashout_retention_amount', $data ?? [], null);
+        $this->setIfExists('conekta_retention', $data ?? [], null);
+        $this->setIfExists('gateway', $data ?? [], null);
+        $this->setIfExists('pending', $data ?? [], null);
+        $this->setIfExists('retained', $data ?? [], null);
+        $this->setIfExists('retention_amount', $data ?? [], null);
+        $this->setIfExists('target_collateral_amount', $data ?? [], null);
+        $this->setIfExists('target_retention_amount', $data ?? [], null);
+        $this->setIfExists('temporarily_retained', $data ?? [], null);
     }
 
     /**
@@ -332,9 +339,6 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['allowed_payment_methods'] === null) {
-            $invalidProperties[] = "'allowed_payment_methods' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -351,244 +355,271 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets allowed_payment_methods
+     * Gets available
      *
-     * @return string[]
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getAllowedPaymentMethods()
+    public function getAvailable()
     {
-        return $this->container['allowed_payment_methods'];
+        return $this->container['available'];
     }
 
     /**
-     * Sets allowed_payment_methods
+     * Sets available
      *
-     * @param string[] $allowed_payment_methods Are the payment methods available for this link
+     * @param \Conekta\Model\BalanceCommonField[]|null $available The balance's available
      *
      * @return self
      */
-    public function setAllowedPaymentMethods($allowed_payment_methods)
+    public function setAvailable($available)
     {
-        if (is_null($allowed_payment_methods)) {
-            throw new \InvalidArgumentException('non-nullable allowed_payment_methods cannot be null');
+        if (is_null($available)) {
+            throw new \InvalidArgumentException('non-nullable available cannot be null');
         }
-        $this->container['allowed_payment_methods'] = $allowed_payment_methods;
+        $this->container['available'] = $available;
 
         return $this;
     }
 
     /**
-     * Gets expires_at
+     * Gets cashout_retention_amount
      *
-     * @return int|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getExpiresAt()
+    public function getCashoutRetentionAmount()
     {
-        return $this->container['expires_at'];
+        return $this->container['cashout_retention_amount'];
     }
 
     /**
-     * Sets expires_at
+     * Sets cashout_retention_amount
      *
-     * @param int|null $expires_at Unix timestamp of checkout expiration
+     * @param \Conekta\Model\BalanceCommonField[]|null $cashout_retention_amount The balance's cashout retention amount
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setCashoutRetentionAmount($cashout_retention_amount)
     {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        if (is_null($cashout_retention_amount)) {
+            throw new \InvalidArgumentException('non-nullable cashout_retention_amount cannot be null');
         }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['cashout_retention_amount'] = $cashout_retention_amount;
 
         return $this;
     }
 
     /**
-     * Gets failure_url
+     * Gets conekta_retention
      *
-     * @return string|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getFailureUrl()
+    public function getConektaRetention()
     {
-        return $this->container['failure_url'];
+        return $this->container['conekta_retention'];
     }
 
     /**
-     * Sets failure_url
+     * Sets conekta_retention
      *
-     * @param string|null $failure_url Redirection url back to the site in case of failed payment, applies only to HostedPayment.
+     * @param \Conekta\Model\BalanceCommonField[]|null $conekta_retention The balance's conekta retention
      *
      * @return self
      */
-    public function setFailureUrl($failure_url)
+    public function setConektaRetention($conekta_retention)
     {
-        if (is_null($failure_url)) {
-            throw new \InvalidArgumentException('non-nullable failure_url cannot be null');
+        if (is_null($conekta_retention)) {
+            throw new \InvalidArgumentException('non-nullable conekta_retention cannot be null');
         }
-        $this->container['failure_url'] = $failure_url;
+        $this->container['conekta_retention'] = $conekta_retention;
 
         return $this;
     }
 
     /**
-     * Gets monthly_installments_enabled
+     * Gets gateway
      *
-     * @return bool|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getMonthlyInstallmentsEnabled()
+    public function getGateway()
     {
-        return $this->container['monthly_installments_enabled'];
+        return $this->container['gateway'];
     }
 
     /**
-     * Sets monthly_installments_enabled
+     * Sets gateway
      *
-     * @param bool|null $monthly_installments_enabled monthly_installments_enabled
+     * @param \Conekta\Model\BalanceCommonField[]|null $gateway The balance's gateway
      *
      * @return self
      */
-    public function setMonthlyInstallmentsEnabled($monthly_installments_enabled)
+    public function setGateway($gateway)
     {
-        if (is_null($monthly_installments_enabled)) {
-            throw new \InvalidArgumentException('non-nullable monthly_installments_enabled cannot be null');
+        if (is_null($gateway)) {
+            throw new \InvalidArgumentException('non-nullable gateway cannot be null');
         }
-        $this->container['monthly_installments_enabled'] = $monthly_installments_enabled;
+        $this->container['gateway'] = $gateway;
 
         return $this;
     }
 
     /**
-     * Gets monthly_installments_options
+     * Gets pending
      *
-     * @return int[]|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getMonthlyInstallmentsOptions()
+    public function getPending()
     {
-        return $this->container['monthly_installments_options'];
+        return $this->container['pending'];
     }
 
     /**
-     * Sets monthly_installments_options
+     * Sets pending
      *
-     * @param int[]|null $monthly_installments_options monthly_installments_options
+     * @param \Conekta\Model\BalanceCommonField[]|null $pending The balance's pending
      *
      * @return self
      */
-    public function setMonthlyInstallmentsOptions($monthly_installments_options)
+    public function setPending($pending)
     {
-        if (is_null($monthly_installments_options)) {
-            throw new \InvalidArgumentException('non-nullable monthly_installments_options cannot be null');
+        if (is_null($pending)) {
+            throw new \InvalidArgumentException('non-nullable pending cannot be null');
         }
-        $this->container['monthly_installments_options'] = $monthly_installments_options;
+        $this->container['pending'] = $pending;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets retained
      *
-     * @return string|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getName()
+    public function getRetained()
     {
-        return $this->container['name'];
+        return $this->container['retained'];
     }
 
     /**
-     * Sets name
+     * Sets retained
      *
-     * @param string|null $name Reason for payment
+     * @param \Conekta\Model\BalanceCommonField[]|null $retained The balance's retained
      *
      * @return self
      */
-    public function setName($name)
+    public function setRetained($retained)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($retained)) {
+            throw new \InvalidArgumentException('non-nullable retained cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['retained'] = $retained;
 
         return $this;
     }
 
     /**
-     * Gets on_demand_enabled
+     * Gets retention_amount
      *
-     * @return bool|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getOnDemandEnabled()
+    public function getRetentionAmount()
     {
-        return $this->container['on_demand_enabled'];
+        return $this->container['retention_amount'];
     }
 
     /**
-     * Sets on_demand_enabled
+     * Sets retention_amount
      *
-     * @param bool|null $on_demand_enabled on_demand_enabled
+     * @param \Conekta\Model\BalanceCommonField[]|null $retention_amount The balance's retention amount
      *
      * @return self
      */
-    public function setOnDemandEnabled($on_demand_enabled)
+    public function setRetentionAmount($retention_amount)
     {
-        if (is_null($on_demand_enabled)) {
-            throw new \InvalidArgumentException('non-nullable on_demand_enabled cannot be null');
+        if (is_null($retention_amount)) {
+            throw new \InvalidArgumentException('non-nullable retention_amount cannot be null');
         }
-        $this->container['on_demand_enabled'] = $on_demand_enabled;
+        $this->container['retention_amount'] = $retention_amount;
 
         return $this;
     }
 
     /**
-     * Gets success_url
+     * Gets target_collateral_amount
      *
-     * @return string|null
+     * @return object|null
      */
-    public function getSuccessUrl()
+    public function getTargetCollateralAmount()
     {
-        return $this->container['success_url'];
+        return $this->container['target_collateral_amount'];
     }
 
     /**
-     * Sets success_url
+     * Sets target_collateral_amount
      *
-     * @param string|null $success_url Redirection url back to the site in case of successful payment, applies only to HostedPayment
+     * @param object|null $target_collateral_amount The balance's target collateral amount
      *
      * @return self
      */
-    public function setSuccessUrl($success_url)
+    public function setTargetCollateralAmount($target_collateral_amount)
     {
-        if (is_null($success_url)) {
-            throw new \InvalidArgumentException('non-nullable success_url cannot be null');
+        if (is_null($target_collateral_amount)) {
+            throw new \InvalidArgumentException('non-nullable target_collateral_amount cannot be null');
         }
-        $this->container['success_url'] = $success_url;
+        $this->container['target_collateral_amount'] = $target_collateral_amount;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets target_retention_amount
      *
-     * @return string|null
+     * @return \Conekta\Model\BalanceCommonField[]|null
      */
-    public function getType()
+    public function getTargetRetentionAmount()
     {
-        return $this->container['type'];
+        return $this->container['target_retention_amount'];
     }
 
     /**
-     * Sets type
+     * Sets target_retention_amount
      *
-     * @param string|null $type This field represents the type of checkout
+     * @param \Conekta\Model\BalanceCommonField[]|null $target_retention_amount The balance's target retention amount
      *
      * @return self
      */
-    public function setType($type)
+    public function setTargetRetentionAmount($target_retention_amount)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($target_retention_amount)) {
+            throw new \InvalidArgumentException('non-nullable target_retention_amount cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['target_retention_amount'] = $target_retention_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets temporarily_retained
+     *
+     * @return \Conekta\Model\BalanceCommonField[]|null
+     */
+    public function getTemporarilyRetained()
+    {
+        return $this->container['temporarily_retained'];
+    }
+
+    /**
+     * Sets temporarily_retained
+     *
+     * @param \Conekta\Model\BalanceCommonField[]|null $temporarily_retained The balance's temporarily retained
+     *
+     * @return self
+     */
+    public function setTemporarilyRetained($temporarily_retained)
+    {
+        if (is_null($temporarily_retained)) {
+            throw new \InvalidArgumentException('non-nullable temporarily_retained cannot be null');
+        }
+        $this->container['temporarily_retained'] = $temporarily_retained;
 
         return $this;
     }

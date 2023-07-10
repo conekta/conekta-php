@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscountLinesResponseAllOf
+ * GetOrderDiscountLinesResponseAllOf
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * DiscountLinesResponseAllOf Class Doc Comment
+ * GetOrderDiscountLinesResponseAllOf Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrderDiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'discount_lines_response_allOf';
+    protected static $openAPIModelName = 'get_order_discount_lines_response_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'object' => 'string',
-        'parent_id' => 'string'
+        'data' => '\Conekta\Model\DiscountLinesResponse[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'object' => null,
-        'parent_id' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'object' => false,
-		'parent_id' => false
+        'data' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'object' => 'object',
-        'parent_id' => 'parent_id'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'object' => 'setObject',
-        'parent_id' => 'setParentId'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'object' => 'getObject',
-        'parent_id' => 'getParentId'
+        'data' => 'getData'
     ];
 
     /**
@@ -257,9 +245,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -289,15 +275,6 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
-        if ($this->container['parent_id'] === null) {
-            $invalidProperties[] = "'parent_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -314,82 +291,28 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets id
+     * Gets data
      *
-     * @return string
+     * @return \Conekta\Model\DiscountLinesResponse[]|null
      */
-    public function getId()
+    public function getData()
     {
-        return $this->container['id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets id
+     * Sets data
      *
-     * @param string $id The discount line id
+     * @param \Conekta\Model\DiscountLinesResponse[]|null $data data
      *
      * @return self
      */
-    public function setId($id)
+    public function setData($data)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object The object name
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_id
-     *
-     * @return string
-     */
-    public function getParentId()
-    {
-        return $this->container['parent_id'];
-    }
-
-    /**
-     * Sets parent_id
-     *
-     * @param string $parent_id The order id
-     *
-     * @return self
-     */
-    public function setParentId($parent_id)
-    {
-        if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
-        }
-        $this->container['parent_id'] = $parent_id;
+        $this->container['data'] = $data;
 
         return $this;
     }

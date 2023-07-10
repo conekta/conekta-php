@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscountLinesResponseAllOf
+ * OrderUpdateRequestCustomerInfo
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * DiscountLinesResponseAllOf Class Doc Comment
+ * OrderUpdateRequestCustomerInfo Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderUpdateRequestCustomerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'discount_lines_response_allOf';
+    protected static $openAPIModelName = 'order_update_request_customer_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'name' => 'string',
+        'email' => 'string',
+        'phone' => 'string',
+        'corporate' => 'bool',
         'object' => 'string',
-        'parent_id' => 'string'
+        'customer_id' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'name' => null,
+        'email' => 'email',
+        'phone' => null,
+        'corporate' => null,
         'object' => null,
-        'parent_id' => null
+        'customer_id' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'name' => false,
+		'email' => false,
+		'phone' => false,
+		'corporate' => false,
 		'object' => false,
-		'parent_id' => false
+		'customer_id' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'name' => 'name',
+        'email' => 'email',
+        'phone' => 'phone',
+        'corporate' => 'corporate',
         'object' => 'object',
-        'parent_id' => 'parent_id'
+        'customer_id' => 'customer_id'
     ];
 
     /**
@@ -184,9 +196,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'name' => 'setName',
+        'email' => 'setEmail',
+        'phone' => 'setPhone',
+        'corporate' => 'setCorporate',
         'object' => 'setObject',
-        'parent_id' => 'setParentId'
+        'customer_id' => 'setCustomerId'
     ];
 
     /**
@@ -195,9 +210,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'name' => 'getName',
+        'email' => 'getEmail',
+        'phone' => 'getPhone',
+        'corporate' => 'getCorporate',
         'object' => 'getObject',
-        'parent_id' => 'getParentId'
+        'customer_id' => 'getCustomerId'
     ];
 
     /**
@@ -257,9 +275,12 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
+        $this->setIfExists('corporate', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
     }
 
     /**
@@ -289,14 +310,17 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
         }
-        if ($this->container['parent_id'] === null) {
-            $invalidProperties[] = "'parent_id' can't be null";
+        if ($this->container['phone'] === null) {
+            $invalidProperties[] = "'phone' can't be null";
+        }
+        if ($this->container['customer_id'] === null) {
+            $invalidProperties[] = "'customer_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -314,28 +338,109 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets id
+     * Gets name
      *
      * @return string
      */
-    public function getId()
+    public function getName()
     {
-        return $this->container['id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets id
+     * Sets name
      *
-     * @param string $id The discount line id
+     * @param string $name name
      *
      * @return self
      */
-    public function setId($id)
+    public function setName($name)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string $email email
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        if (is_null($email)) {
+            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        }
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string $phone phone
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        }
+        $this->container['phone'] = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets corporate
+     *
+     * @return bool|null
+     */
+    public function getCorporate()
+    {
+        return $this->container['corporate'];
+    }
+
+    /**
+     * Sets corporate
+     *
+     * @param bool|null $corporate corporate
+     *
+     * @return self
+     */
+    public function setCorporate($corporate)
+    {
+        if (is_null($corporate)) {
+            throw new \InvalidArgumentException('non-nullable corporate cannot be null');
+        }
+        $this->container['corporate'] = $corporate;
 
         return $this;
     }
@@ -343,7 +448,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets object
      *
-     * @return string
+     * @return string|null
      */
     public function getObject()
     {
@@ -353,7 +458,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets object
      *
-     * @param string $object The object name
+     * @param string|null $object object
      *
      * @return self
      */
@@ -368,28 +473,28 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets parent_id
+     * Gets customer_id
      *
      * @return string
      */
-    public function getParentId()
+    public function getCustomerId()
     {
-        return $this->container['parent_id'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets parent_id
+     * Sets customer_id
      *
-     * @param string $parent_id The order id
+     * @param string $customer_id customer_id
      *
      * @return self
      */
-    public function setParentId($parent_id)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $this->container['parent_id'] = $parent_id;
+        $this->container['customer_id'] = $customer_id;
 
         return $this;
     }

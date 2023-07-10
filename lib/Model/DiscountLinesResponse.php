@@ -323,6 +323,15 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['parent_id'] === null) {
+            $invalidProperties[] = "'parent_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -427,7 +436,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -437,7 +446,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id The discount line id
      *
      * @return self
      */
@@ -454,7 +463,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets object
      *
-     * @return string|null
+     * @return string
      */
     public function getObject()
     {
@@ -464,7 +473,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets object
      *
-     * @param string|null $object object
+     * @param string $object The object name
      *
      * @return self
      */
@@ -481,7 +490,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets parent_id
      *
-     * @return string|null
+     * @return string
      */
     public function getParentId()
     {
@@ -491,7 +500,7 @@ class DiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets parent_id
      *
-     * @param string|null $parent_id parent_id
+     * @param string $parent_id The order id
      *
      * @return self
      */

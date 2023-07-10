@@ -78,6 +78,12 @@ class DiscountsApi
         'ordersDeleteDiscountLines' => [
             'application/json',
         ],
+        'ordersGetDiscountLine' => [
+            'application/json',
+        ],
+        'ordersGetDiscountLines' => [
+            'application/json',
+        ],
         'ordersUpdateDiscountLines' => [
             'application/json',
         ],
@@ -534,7 +540,7 @@ class DiscountsApi
      * Delete Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersDeleteDiscountLines'] to see the possible values for this operation
@@ -555,7 +561,7 @@ class DiscountsApi
      * Delete Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersDeleteDiscountLines'] to see the possible values for this operation
@@ -750,7 +756,7 @@ class DiscountsApi
      * Delete Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersDeleteDiscountLines'] to see the possible values for this operation
@@ -774,7 +780,7 @@ class DiscountsApi
      * Delete Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersDeleteDiscountLines'] to see the possible values for this operation
@@ -827,7 +833,7 @@ class DiscountsApi
      * Create request for operation 'ordersDeleteDiscountLines'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersDeleteDiscountLines'] to see the possible values for this operation
@@ -952,12 +958,858 @@ class DiscountsApi
     }
 
     /**
+     * Operation ordersGetDiscountLine
+     *
+     * Get Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLine'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Conekta\Model\DiscountLinesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     */
+    public function ordersGetDiscountLine($id, $discount_lines_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersGetDiscountLine'][0])
+    {
+        list($response) = $this->ordersGetDiscountLineWithHttpInfo($id, $discount_lines_id, $accept_language, $x_child_company_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation ordersGetDiscountLineWithHttpInfo
+     *
+     * Get Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLine'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Conekta\Model\DiscountLinesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function ordersGetDiscountLineWithHttpInfo($id, $discount_lines_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersGetDiscountLine'][0])
+    {
+        $request = $this->ordersGetDiscountLineRequest($id, $discount_lines_id, $accept_language, $x_child_company_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Conekta\Model\DiscountLinesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\DiscountLinesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\DiscountLinesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Conekta\Model\DiscountLinesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\DiscountLinesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation ordersGetDiscountLineAsync
+     *
+     * Get Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLine'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function ordersGetDiscountLineAsync($id, $discount_lines_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersGetDiscountLine'][0])
+    {
+        return $this->ordersGetDiscountLineAsyncWithHttpInfo($id, $discount_lines_id, $accept_language, $x_child_company_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation ordersGetDiscountLineAsyncWithHttpInfo
+     *
+     * Get Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLine'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function ordersGetDiscountLineAsyncWithHttpInfo($id, $discount_lines_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersGetDiscountLine'][0])
+    {
+        $returnType = '\Conekta\Model\DiscountLinesResponse';
+        $request = $this->ordersGetDiscountLineRequest($id, $discount_lines_id, $accept_language, $x_child_company_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'ordersGetDiscountLine'
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLine'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function ordersGetDiscountLineRequest($id, $discount_lines_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersGetDiscountLine'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling ordersGetDiscountLine'
+            );
+        }
+
+        // verify the required parameter 'discount_lines_id' is set
+        if ($discount_lines_id === null || (is_array($discount_lines_id) && count($discount_lines_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $discount_lines_id when calling ordersGetDiscountLine'
+            );
+        }
+
+
+
+
+        $resourcePath = '/orders/{id}/discount_lines/{discount_lines_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($accept_language !== null) {
+            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
+        }
+        // header params
+        if ($x_child_company_id !== null) {
+            $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
+        }
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($discount_lines_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'discount_lines_id' . '}',
+                ObjectSerializer::toPathValue($discount_lines_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.conekta-v2.1.0+json', ],
+            $contentType,
+            $multipart
+        );
+        $headers = array_merge(
+            $this->headerSelector->getConektaUserAgent(),
+            $headers
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation ordersGetDiscountLines
+     *
+     * Get a List of Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $next next page (optional)
+     * @param  string $previous previous page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLines'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Conekta\Model\GetOrderDiscountLinesResponse|\Conekta\Model\Error|\Conekta\Model\Error
+     */
+    public function ordersGetDiscountLines($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['ordersGetDiscountLines'][0])
+    {
+        list($response) = $this->ordersGetDiscountLinesWithHttpInfo($id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation ordersGetDiscountLinesWithHttpInfo
+     *
+     * Get a List of Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $next next page (optional)
+     * @param  string $previous previous page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLines'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Conekta\Model\GetOrderDiscountLinesResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function ordersGetDiscountLinesWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['ordersGetDiscountLines'][0])
+    {
+        $request = $this->ordersGetDiscountLinesRequest($id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Conekta\Model\GetOrderDiscountLinesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\GetOrderDiscountLinesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\GetOrderDiscountLinesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Conekta\Model\GetOrderDiscountLinesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\GetOrderDiscountLinesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation ordersGetDiscountLinesAsync
+     *
+     * Get a List of Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $next next page (optional)
+     * @param  string $previous previous page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLines'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function ordersGetDiscountLinesAsync($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['ordersGetDiscountLines'][0])
+    {
+        return $this->ordersGetDiscountLinesAsyncWithHttpInfo($id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation ordersGetDiscountLinesAsyncWithHttpInfo
+     *
+     * Get a List of Discount
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $next next page (optional)
+     * @param  string $previous previous page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLines'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function ordersGetDiscountLinesAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['ordersGetDiscountLines'][0])
+    {
+        $returnType = '\Conekta\Model\GetOrderDiscountLinesResponse';
+        $request = $this->ordersGetDiscountLinesRequest($id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'ordersGetDiscountLines'
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $next next page (optional)
+     * @param  string $previous previous page (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersGetDiscountLines'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function ordersGetDiscountLinesRequest($id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['ordersGetDiscountLines'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling ordersGetDiscountLines'
+            );
+        }
+
+
+
+        if ($limit !== null && $limit > 250) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscountsApi.ordersGetDiscountLines, must be smaller than or equal to 250.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscountsApi.ordersGetDiscountLines, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+
+        $resourcePath = '/orders/{id}/discount_lines';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next,
+            'next', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $previous,
+            'previous', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+
+        // header params
+        if ($accept_language !== null) {
+            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
+        }
+        // header params
+        if ($x_child_company_id !== null) {
+            $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
+        }
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.conekta-v2.1.0+json', ],
+            $contentType,
+            $multipart
+        );
+        $headers = array_merge(
+            $this->headerSelector->getConektaUserAgent(),
+            $headers
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation ordersUpdateDiscountLines
      *
      * Update Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  \Conekta\Model\UpdateOrderDiscountLinesRequest $update_order_discount_lines_request requested field for a discount lines (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -979,7 +1831,7 @@ class DiscountsApi
      * Update Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  \Conekta\Model\UpdateOrderDiscountLinesRequest $update_order_discount_lines_request requested field for a discount lines (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1175,7 +2027,7 @@ class DiscountsApi
      * Update Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  \Conekta\Model\UpdateOrderDiscountLinesRequest $update_order_discount_lines_request requested field for a discount lines (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1200,7 +2052,7 @@ class DiscountsApi
      * Update Discount
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  \Conekta\Model\UpdateOrderDiscountLinesRequest $update_order_discount_lines_request requested field for a discount lines (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1254,7 +2106,7 @@ class DiscountsApi
      * Create request for operation 'ordersUpdateDiscountLines'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $discount_lines_id identifier (required)
+     * @param  string $discount_lines_id discount line id identifier (required)
      * @param  \Conekta\Model\UpdateOrderDiscountLinesRequest $update_order_discount_lines_request requested field for a discount lines (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1408,7 +2260,7 @@ class DiscountsApi
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
-        $options[RequestOptions::SSL_KEY] = __DIR__ . '../ssl_data/ca_bundle.crt';
+        $options[RequestOptions::SSL_KEY] = __DIR__ . '/../ssl_data/ca_bundle.crt';
 
         return $options;
     }

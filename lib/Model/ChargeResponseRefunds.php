@@ -459,7 +459,7 @@ class ChargeResponseRefunds implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \Conekta\Model\ChargeResponseRefundsData[]|null $data data
+     * @param \Conekta\Model\ChargeResponseRefundsData[]|null $data refunds
      *
      * @return self
      */

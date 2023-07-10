@@ -10,6 +10,7 @@ composer.json
 conekta.png
 docs/Api/AntifraudApi.md
 docs/Api/ApiKeysApi.md
+docs/Api/BalancesApi.md
 docs/Api/ChargesApi.md
 docs/Api/CompaniesApi.md
 docs/Api/CustomersApi.md
@@ -36,6 +37,8 @@ docs/Model/ApiKeyRequest.md
 docs/Model/ApiKeyResponse.md
 docs/Model/ApiKeyResponseOnDelete.md
 docs/Model/ApiKeyUpdateRequest.md
+docs/Model/BalanceCommonField.md
+docs/Model/BalanceResponse.md
 docs/Model/BlacklistRuleResponse.md
 docs/Model/ChargeDataPaymentMethodBankTransferResponse.md
 docs/Model/ChargeDataPaymentMethodCardResponse.md
@@ -121,6 +124,8 @@ docs/Model/GetCompaniesResponseAllOf.md
 docs/Model/GetCustomerPaymentMethodDataResponse.md
 docs/Model/GetEventsResponse.md
 docs/Model/GetEventsResponseAllOf.md
+docs/Model/GetOrderDiscountLinesResponse.md
+docs/Model/GetOrderDiscountLinesResponseAllOf.md
 docs/Model/GetOrdersResponse.md
 docs/Model/GetPaymentMethodResponse.md
 docs/Model/GetPaymentMethodResponseAllOf.md
@@ -159,6 +164,7 @@ docs/Model/OrderResponseShippingContact.md
 docs/Model/OrderResponseShippingContactAllOf.md
 docs/Model/OrderTaxRequest.md
 docs/Model/OrderUpdateRequest.md
+docs/Model/OrderUpdateRequestCustomerInfo.md
 docs/Model/OrdersResponse.md
 docs/Model/Page.md
 docs/Model/Pagination.md
@@ -229,6 +235,7 @@ docs/Model/WebhookUpdateRequest.md
 docs/Model/WhitelistlistRuleResponse.md
 lib/Api/AntifraudApi.php
 lib/Api/ApiKeysApi.php
+lib/Api/BalancesApi.php
 lib/Api/ChargesApi.php
 lib/Api/CompaniesApi.php
 lib/Api/CustomersApi.php
@@ -258,6 +265,8 @@ lib/Model/ApiKeyRequest.php
 lib/Model/ApiKeyResponse.php
 lib/Model/ApiKeyResponseOnDelete.php
 lib/Model/ApiKeyUpdateRequest.php
+lib/Model/BalanceCommonField.php
+lib/Model/BalanceResponse.php
 lib/Model/BlacklistRuleResponse.php
 lib/Model/ChargeDataPaymentMethodBankTransferResponse.php
 lib/Model/ChargeDataPaymentMethodCardResponse.php
@@ -343,6 +352,8 @@ lib/Model/GetCompaniesResponseAllOf.php
 lib/Model/GetCustomerPaymentMethodDataResponse.php
 lib/Model/GetEventsResponse.php
 lib/Model/GetEventsResponseAllOf.php
+lib/Model/GetOrderDiscountLinesResponse.php
+lib/Model/GetOrderDiscountLinesResponseAllOf.php
 lib/Model/GetOrdersResponse.php
 lib/Model/GetPaymentMethodResponse.php
 lib/Model/GetPaymentMethodResponseAllOf.php
@@ -382,6 +393,7 @@ lib/Model/OrderResponseShippingContact.php
 lib/Model/OrderResponseShippingContactAllOf.php
 lib/Model/OrderTaxRequest.php
 lib/Model/OrderUpdateRequest.php
+lib/Model/OrderUpdateRequestCustomerInfo.php
 lib/Model/OrdersResponse.php
 lib/Model/Page.php
 lib/Model/Pagination.php

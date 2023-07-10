@@ -1,6 +1,6 @@
 <?php
 /**
- * DiscountLinesResponseAllOf
+ * GetOrderDiscountLinesResponse
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * DiscountLinesResponseAllOf Class Doc Comment
+ * GetOrderDiscountLinesResponse Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetOrderDiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'discount_lines_response_allOf';
+    protected static $openAPIModelName = 'get_order_discount_lines_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'has_more' => 'bool',
         'object' => 'string',
-        'parent_id' => 'string'
+        'next_page_url' => 'string',
+        'previous_page_url' => 'string',
+        'data' => '\Conekta\Model\DiscountLinesResponse[]'
     ];
 
     /**
@@ -71,9 +73,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'has_more' => null,
         'object' => null,
-        'parent_id' => null
+        'next_page_url' => null,
+        'previous_page_url' => null,
+        'data' => null
     ];
 
     /**
@@ -82,9 +86,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'has_more' => false,
 		'object' => false,
-		'parent_id' => false
+		'next_page_url' => true,
+		'previous_page_url' => true,
+		'data' => false
     ];
 
     /**
@@ -173,9 +179,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'has_more' => 'has_more',
         'object' => 'object',
-        'parent_id' => 'parent_id'
+        'next_page_url' => 'next_page_url',
+        'previous_page_url' => 'previous_page_url',
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +192,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'has_more' => 'setHasMore',
         'object' => 'setObject',
-        'parent_id' => 'setParentId'
+        'next_page_url' => 'setNextPageUrl',
+        'previous_page_url' => 'setPreviousPageUrl',
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +205,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'has_more' => 'getHasMore',
         'object' => 'getObject',
-        'parent_id' => 'getParentId'
+        'next_page_url' => 'getNextPageUrl',
+        'previous_page_url' => 'getPreviousPageUrl',
+        'data' => 'getData'
     ];
 
     /**
@@ -257,9 +269,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('next_page_url', $data ?? [], null);
+        $this->setIfExists('previous_page_url', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -289,14 +303,11 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['has_more'] === null) {
+            $invalidProperties[] = "'has_more' can't be null";
         }
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
-        }
-        if ($this->container['parent_id'] === null) {
-            $invalidProperties[] = "'parent_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -314,28 +325,28 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets id
+     * Gets has_more
      *
-     * @return string
+     * @return bool
      */
-    public function getId()
+    public function getHasMore()
     {
-        return $this->container['id'];
+        return $this->container['has_more'];
     }
 
     /**
-     * Sets id
+     * Sets has_more
      *
-     * @param string $id The discount line id
+     * @param bool $has_more Indicates if there are more pages to be requested
      *
      * @return self
      */
-    public function setId($id)
+    public function setHasMore($has_more)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }
@@ -353,7 +364,7 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets object
      *
-     * @param string $object The object name
+     * @param string $object Object type, in this case is list
      *
      * @return self
      */
@@ -368,28 +379,96 @@ class DiscountLinesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets parent_id
+     * Gets next_page_url
      *
-     * @return string
+     * @return string|null
      */
-    public function getParentId()
+    public function getNextPageUrl()
     {
-        return $this->container['parent_id'];
+        return $this->container['next_page_url'];
     }
 
     /**
-     * Sets parent_id
+     * Sets next_page_url
      *
-     * @param string $parent_id The order id
+     * @param string|null $next_page_url URL of the next page.
      *
      * @return self
      */
-    public function setParentId($parent_id)
+    public function setNextPageUrl($next_page_url)
     {
-        if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        if (is_null($next_page_url)) {
+            array_push($this->openAPINullablesSetToNull, 'next_page_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_page_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['parent_id'] = $parent_id;
+        $this->container['next_page_url'] = $next_page_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_page_url
+     *
+     * @return string|null
+     */
+    public function getPreviousPageUrl()
+    {
+        return $this->container['previous_page_url'];
+    }
+
+    /**
+     * Sets previous_page_url
+     *
+     * @param string|null $previous_page_url Url of the previous page.
+     *
+     * @return self
+     */
+    public function setPreviousPageUrl($previous_page_url)
+    {
+        if (is_null($previous_page_url)) {
+            array_push($this->openAPINullablesSetToNull, 'previous_page_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous_page_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous_page_url'] = $previous_page_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \Conekta\Model\DiscountLinesResponse[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Conekta\Model\DiscountLinesResponse[]|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        }
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -541,7 +541,7 @@ class ShippingsApi
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\ShippingOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\ShippingOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function ordersDeleteShipping($id, $shipping_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersDeleteShipping'][0])
     {
@@ -562,7 +562,7 @@ class ShippingsApi
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\ShippingOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\ShippingOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function ordersDeleteShippingWithHttpInfo($id, $shipping_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersDeleteShipping'][0])
     {
@@ -664,6 +664,21 @@ class ShippingsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 428:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 500:
                     if ('\Conekta\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -724,6 +739,14 @@ class ShippingsApi
                     $e->setResponseObject($data);
                     break;
                 case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 428:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Conekta\Model\Error',
@@ -1408,7 +1431,7 @@ class ShippingsApi
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
-        $options[RequestOptions::SSL_KEY] = __DIR__ . '../ssl_data/ca_bundle.crt';
+        $options[RequestOptions::SSL_KEY] = __DIR__ . '/../ssl_data/ca_bundle.crt';
 
         return $options;
     }
