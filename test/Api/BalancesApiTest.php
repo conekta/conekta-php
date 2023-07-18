@@ -28,10 +28,6 @@
 
 namespace Conekta\Test\Api;
 
-<<<<<<< HEAD
-=======
-use Conekta\Api\BalancesApi;
->>>>>>> 22827a6 (Add tests)
 use \Conekta\Configuration;
 use \Conekta\ApiException;
 use \Conekta\ObjectSerializer;
@@ -48,21 +44,11 @@ use PHPUnit\Framework\TestCase;
 class BalancesApiTest extends TestCase
 {
 
-<<<<<<< HEAD
-=======
-    protected static BalancesApi $apiInstance;
-
->>>>>>> 22827a6 (Add tests)
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
-<<<<<<< HEAD
-=======
-        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
-        self::$apiInstance = new BalancesApi(null, $config);
->>>>>>> 22827a6 (Add tests)
     }
 
     /**

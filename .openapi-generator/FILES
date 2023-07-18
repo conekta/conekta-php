@@ -465,3 +465,4 @@ lib/Model/WhitelistlistRuleResponse.php
 lib/ObjectSerializer.php
 lib/ssl_data/ca_bundle.crt
 phpunit.xml.dist
+test/Api/BalancesApiTest.php
