@@ -28,13 +28,9 @@
 
 namespace Conekta\Test\Api;
 
-use Conekta\Api\EventsApi;
+use \Conekta\Api\EventsApi;
 use \Conekta\Configuration;
-use \Conekta\ApiException;
-use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
-
-use function PHPUnit\Framework\assertNotNull;
 
 /**
  * EventsApiTest Class Doc Comment
@@ -47,11 +43,15 @@ use function PHPUnit\Framework\assertNotNull;
 class EventsApiTest extends TestCase
 {
 
+    protected static EventsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new EventsApi(null, $config);
     }
 
     /**
@@ -83,19 +83,9 @@ class EventsApiTest extends TestCase
      */
     public function testGetEvent()
     {
-        // Configure Bearer authorization: bearerAuth
-        $config = Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN')->setHost('http://host.docker.internal:3000');
-        $apiInstance = new EventsApi(
-            // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-            // This is optional, `GuzzleHttp\Client` will be used as default.
-            null,
-            $config
-        );
-
-        $response = $apiInstance->getEvents();
-
-        assertNotNull($response);
-        print_r($response);
+        $accept_language = 'es';
+        $result = self::$apiInstance->getEvent('63fe3d2ddf70970001cfb41a', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -106,7 +96,9 @@ class EventsApiTest extends TestCase
      */
     public function testGetEvents()
     {
-        // TODO: implement
+        $accept_language = 'es';
+        $result = self::$apiInstance->getEvents($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -117,7 +109,8 @@ class EventsApiTest extends TestCase
      */
     public function testResendEvent()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->resendEvent('6463d6e35a4c3e001819e760', 'webhl_2tsv6NzWJHBWCkqGt', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

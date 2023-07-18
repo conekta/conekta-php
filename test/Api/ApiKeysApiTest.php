@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\ApiKeysApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\ApiKeyRequest;
+use Conekta\Model\ApiKeyUpdateRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class ApiKeysApiTest extends TestCase
 {
 
+    protected static ApiKeysApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new ApiKeysApi(null, $config);
     }
 
     /**
@@ -80,8 +87,10 @@ class ApiKeysApiTest extends TestCase
      */
     public function testCreateApiKey()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new ApiKeyRequest();
+        $result = self::$apiInstance->createApiKey($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +101,9 @@ class ApiKeysApiTest extends TestCase
      */
     public function testDeleteApiKey()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteApiKey('64625cc9f3e02c00163f5e4d', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +114,9 @@ class ApiKeysApiTest extends TestCase
      */
     public function testGetApiKey()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getApiKey('64625cc9f3e02c00163f5e4d', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +127,9 @@ class ApiKeysApiTest extends TestCase
      */
     public function testGetApiKeys()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getApiKeys($accept_language, null, 20);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,7 +140,9 @@ class ApiKeysApiTest extends TestCase
      */
     public function testUpdateApiKey()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new ApiKeyUpdateRequest();
+        $result = self::$apiInstance->updateApiKey('64625cc9f3e02c00163f5e4d', $accept_language, $rq);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

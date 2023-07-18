@@ -3,13 +3,11 @@
   <coverage processUncoveredFiles="true">
     <include>
       <directory suffix=".php">./lib/Api</directory>
-      <directory suffix=".php">./lib/Model</directory>
     </include>
   </coverage>
   <testsuites>
     <testsuite name="tests">
       <directory>./test/Api</directory>
-      <directory>./test/Model</directory>
     </testsuite>
   </testsuites>
   <php>

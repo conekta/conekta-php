@@ -28,8 +28,10 @@
 
 namespace Conekta\Test\Api;
 
+use \Conekta\Api\AntifraudApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\CreateRiskRulesData;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +46,15 @@ use PHPUnit\Framework\TestCase;
 class AntifraudApiTest extends TestCase
 {
 
+    protected static AntifraudApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new AntifraudApi(null, $config);
     }
 
     /**
@@ -80,8 +86,10 @@ class AntifraudApiTest extends TestCase
      */
     public function testCreateRuleBlacklist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CreateRiskRulesData();
+        $result = self::$apiInstance->createRuleBlacklist($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +100,10 @@ class AntifraudApiTest extends TestCase
      */
     public function testCreateRuleWhitelist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CreateRiskRulesData();
+        $result = self::$apiInstance->createRuleWhitelist($accept_language, $rq);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +114,9 @@ class AntifraudApiTest extends TestCase
      */
     public function testDeleteRuleBlacklist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteRuleBlacklist('618c3f2fdb8b8da9be376afe', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +127,9 @@ class AntifraudApiTest extends TestCase
      */
     public function testDeleteRuleWhitelist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteRuleWhitelist('618c3f2fdb8b8da9be376afe', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +140,9 @@ class AntifraudApiTest extends TestCase
      */
     public function testGetRuleBlacklist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getRuleBlacklist($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,7 +153,8 @@ class AntifraudApiTest extends TestCase
      */
     public function testGetRuleWhitelist()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getRuleWhitelist($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }
