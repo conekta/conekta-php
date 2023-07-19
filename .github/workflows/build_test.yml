@@ -46,4 +46,4 @@ jobs:
       - name: Run PHPUnit
         run: vendor/bin/phpunit  test/Conekta-2.0
         env:
-          BASE_PATH: http://localhost:3000
+          BASE_PATH: localhost:3000
