@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\SubscriptionsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\SubscriptionRequest;
+use Conekta\Model\SubscriptionUpdateRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class SubscriptionsApiTest extends TestCase
 {
 
+    protected static SubscriptionsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new SubscriptionsApi(null, $config);
     }
 
     /**
@@ -80,8 +87,9 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testCancelSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->cancelSubscription('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +100,12 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testCreateSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new SubscriptionRequest([
+            'plan_id' => 'id'
+        ]);
+        $result = self::$apiInstance->createSubscription('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +116,9 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testGetAllEventsFromSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getAllEventsFromSubscription('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +129,9 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testGetSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getSubscription('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +142,9 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testPauseSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->pauseSubscription('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,8 +155,9 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testResumeSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->resumeSubscription('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -152,7 +168,11 @@ class SubscriptionsApiTest extends TestCase
      */
     public function testUpdateSubscription()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new SubscriptionUpdateRequest([
+            'plan_id' => 'id'
+        ]);
+        $result = self::$apiInstance->updateSubscription('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

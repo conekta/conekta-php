@@ -28,6 +28,7 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\CompaniesApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
 use \Conekta\ObjectSerializer;
@@ -44,11 +45,15 @@ use PHPUnit\Framework\TestCase;
 class CompaniesApiTest extends TestCase
 {
 
+    protected static CompaniesApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new CompaniesApi(null, $config);
     }
 
     /**
@@ -80,8 +85,9 @@ class CompaniesApiTest extends TestCase
      */
     public function testGetCompanies()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCompanies($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,7 +98,8 @@ class CompaniesApiTest extends TestCase
      */
     public function testGetCompany()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCompany('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

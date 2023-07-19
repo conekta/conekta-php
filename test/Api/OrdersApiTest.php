@@ -28,8 +28,13 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\OrdersApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\OrderRefundRequest;
+use Conekta\Model\OrderRequest;
+use Conekta\Model\OrderResponse;
+use Conekta\Model\OrderUpdateRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +49,15 @@ use PHPUnit\Framework\TestCase;
 class OrdersApiTest extends TestCase
 {
 
+    protected static OrdersApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new OrdersApi(null, $config);
     }
 
     /**
@@ -80,8 +89,9 @@ class OrdersApiTest extends TestCase
      */
     public function testCancelOrder()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->cancelOrder('ord_2tqaGQYZyvBsMKEgs', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +102,12 @@ class OrdersApiTest extends TestCase
      */
     public function testCreateOrder()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new OrderRequest([
+            'currency' => 'MXN'
+        ]);
+        $result = self::$apiInstance->createOrder($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +118,9 @@ class OrdersApiTest extends TestCase
      */
     public function testGetOrderById()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getOrderById('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +131,9 @@ class OrdersApiTest extends TestCase
      */
     public function testGetOrders()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getOrders($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +144,9 @@ class OrdersApiTest extends TestCase
      */
     public function testOrderCancelRefund()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->orderCancelRefund('id','id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,8 +157,12 @@ class OrdersApiTest extends TestCase
      */
     public function testOrderRefund()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new OrderRefundRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->orderRefund('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -152,8 +173,9 @@ class OrdersApiTest extends TestCase
      */
     public function testOrdersCreateCapture()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->ordersCreateCapture('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -164,7 +186,11 @@ class OrdersApiTest extends TestCase
      */
     public function testUpdateOrder()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new OrderUpdateRequest([
+            'currency' => 'MXN'
+        ]);
+        $result = self::$apiInstance->updateOrder('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

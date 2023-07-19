@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\ProductsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\Product;
+use Conekta\Model\UpdateProduct;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class ProductsApiTest extends TestCase
 {
 
+    protected static ProductsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new ProductsApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class ProductsApiTest extends TestCase
      */
     public function testOrdersCreateProduct()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new Product([
+            'name' => 'test'
+        ]);
+        $result = self::$apiInstance->ordersCreateProduct('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class ProductsApiTest extends TestCase
      */
     public function testOrdersDeleteProduct()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->ordersDeleteProduct('id', 'id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,7 +116,11 @@ class ProductsApiTest extends TestCase
      */
     public function testOrdersUpdateProduct()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new UpdateProduct([
+            'name' => 'test'
+        ]);
+        $result = self::$apiInstance->ordersUpdateProduct('id', 'id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

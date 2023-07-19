@@ -28,8 +28,12 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\PaymentLinkApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\Checkout;
+use Conekta\Model\EmailCheckoutRequest;
+use Conekta\Model\SmsCheckoutRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +48,15 @@ use PHPUnit\Framework\TestCase;
 class PaymentLinkApiTest extends TestCase
 {
 
+    protected static PaymentLinkApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new PaymentLinkApi(null, $config);
     }
 
     /**
@@ -80,8 +88,9 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testCancelCheckout()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->cancelCheckout('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +101,13 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testCreateCheckout()
     {
-        // TODO: implement
         $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new Checkout();
+        $rq->setType('PaymentLink');
+        $rq->setRecurrent(false);
+        $result = self::$apiInstance->createCheckout($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +118,12 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testEmailCheckout()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new EmailCheckoutRequest([
+            'email' => 'test@test.com'
+        ]);
+        $result = self::$apiInstance->emailCheckout('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +134,9 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testGetCheckout()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCheckout('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +147,9 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testGetCheckouts()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCheckouts($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,7 +160,11 @@ class PaymentLinkApiTest extends TestCase
      */
     public function testSmsCheckout()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new SmsCheckoutRequest([
+            'phonenumber' => '55454545454'
+        ]);
+        $result = self::$apiInstance->smsCheckout('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

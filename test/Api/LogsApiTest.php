@@ -28,6 +28,7 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\LogsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
 use \Conekta\ObjectSerializer;
@@ -44,11 +45,15 @@ use PHPUnit\Framework\TestCase;
 class LogsApiTest extends TestCase
 {
 
+    protected static LogsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new LogsApi(null, $config);
     }
 
     /**
@@ -80,8 +85,9 @@ class LogsApiTest extends TestCase
      */
     public function testGetLogById()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getLogById('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,7 +98,8 @@ class LogsApiTest extends TestCase
      */
     public function testGetLogs()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getLogs('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

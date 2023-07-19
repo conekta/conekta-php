@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\ShippingContactsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\CustomerShippingContacts;
+use Conekta\Model\CustomerUpdateShippingContacts;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class ShippingContactsApiTest extends TestCase
 {
 
+    protected static ShippingContactsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new ShippingContactsApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class ShippingContactsApiTest extends TestCase
      */
     public function testCreateCustomerShippingContacts()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CustomerShippingContacts([
+            'phone' => '55555555'
+        ]);
+        $result = self::$apiInstance->createCustomerShippingContacts('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class ShippingContactsApiTest extends TestCase
      */
     public function testDeleteCustomerShippingContacts()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteCustomerShippingContacts('id', 'id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,7 +116,11 @@ class ShippingContactsApiTest extends TestCase
      */
     public function testUpdateCustomerShippingContacts()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CustomerUpdateShippingContacts([
+            'amount' => 1000
+        ]);
+        $result = self::$apiInstance->updateCustomerShippingContacts('id', 'id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

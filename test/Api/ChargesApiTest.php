@@ -28,9 +28,9 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\ChargesApi;
 use \Conekta\Configuration;
-use \Conekta\ApiException;
-use \Conekta\ObjectSerializer;
+use Conekta\Model\ChargeRequest;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,11 +44,15 @@ use PHPUnit\Framework\TestCase;
 class ChargesApiTest extends TestCase
 {
 
+    protected static ChargesApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new ChargesApi(null, $config);
     }
 
     /**
@@ -80,8 +84,9 @@ class ChargesApiTest extends TestCase
      */
     public function testGetCharges()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCharges($accept_language, null, 20);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,7 +97,11 @@ class ChargesApiTest extends TestCase
      */
     public function testOrdersCreateCharge()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new ChargeRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->ordersCreateCharge('ord_2tUigJ8DgBhbp6w5D', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

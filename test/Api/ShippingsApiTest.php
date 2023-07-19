@@ -28,8 +28,10 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\ShippingsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\ShippingRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +46,15 @@ use PHPUnit\Framework\TestCase;
 class ShippingsApiTest extends TestCase
 {
 
+    protected static ShippingsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new ShippingsApi(null, $config);
     }
 
     /**
@@ -80,8 +86,15 @@ class ShippingsApiTest extends TestCase
      */
     public function testOrdersCreateShipping()
     {
-        // TODO: implement
         $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new ShippingRequest([
+            'phone' => '55555555',
+            'carrier' => 'FedEx',
+            'tracking_number' => 'ASDA12312'
+        ]);
+        $result = self::$apiInstance->ordersCreateShipping('ord_2tUigJ8DgBhbp6w5D', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +105,9 @@ class ShippingsApiTest extends TestCase
      */
     public function testOrdersDeleteShipping()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->ordersDeleteShipping('ord_2tUigJ8DgBhbp6w5D', 'id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,7 +118,11 @@ class ShippingsApiTest extends TestCase
      */
     public function testOrdersUpdateShipping()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new ShippingRequest([
+            'phone' => '55555555'
+        ]);
+        $result = self::$apiInstance->ordersUpdateShipping('ord_2tUigJ8DgBhbp6w5D', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

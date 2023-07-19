@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\TaxesApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\OrderTaxRequest;
+use Conekta\Model\UpdateOrderTaxRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class TaxesApiTest extends TestCase
 {
 
+    protected static TaxesApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new TaxesApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class TaxesApiTest extends TestCase
      */
     public function testOrdersCreateTaxes()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new OrderTaxRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->ordersCreateTaxes('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class TaxesApiTest extends TestCase
      */
     public function testOrdersDeleteTaxes()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->ordersDeleteTaxes('id', 'tax_id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,7 +116,11 @@ class TaxesApiTest extends TestCase
      */
     public function testOrdersUpdateTaxes()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new UpdateOrderTaxRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->ordersUpdateTaxes('id', 'tax_id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

@@ -28,8 +28,13 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\CustomersApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\Customer;
+use Conekta\Model\CustomerFiscalEntitiesRequest;
+use Conekta\Model\CustomerUpdateFiscalEntitiesRequest;
+use Conekta\Model\UpdateCustomer;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +49,15 @@ use PHPUnit\Framework\TestCase;
 class CustomersApiTest extends TestCase
 {
 
+    protected static CustomersApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new CustomersApi(null, $config);
     }
 
     /**
@@ -80,8 +89,12 @@ class CustomersApiTest extends TestCase
      */
     public function testCreateCustomer()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new Customer([
+            'name' => 'test'
+        ]);
+        $result = self::$apiInstance->createCustomer($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +105,12 @@ class CustomersApiTest extends TestCase
      */
     public function testCreateCustomerFiscalEntities()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CustomerFiscalEntitiesRequest([
+            'company_name' => 'test'
+        ]);
+        $result = self::$apiInstance->createCustomerFiscalEntities('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +121,9 @@ class CustomersApiTest extends TestCase
      */
     public function testDeleteCustomerById()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteCustomerById('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +134,9 @@ class CustomersApiTest extends TestCase
      */
     public function testGetCustomerById()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCustomerById('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +147,9 @@ class CustomersApiTest extends TestCase
      */
     public function testGetCustomers()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCustomers($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,8 +160,12 @@ class CustomersApiTest extends TestCase
      */
     public function testUpdateCustomer()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new UpdateCustomer([
+            'name' => 'test'
+        ]);
+        $result = self::$apiInstance->updateCustomer('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -152,7 +176,11 @@ class CustomersApiTest extends TestCase
      */
     public function testUpdateCustomerFiscalEntities()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CustomerUpdateFiscalEntitiesRequest([
+            'email' => 'test'
+        ]);
+        $result = self::$apiInstance->updateCustomerFiscalEntities('id', 'id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

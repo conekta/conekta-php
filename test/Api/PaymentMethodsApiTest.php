@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\PaymentMethodsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\CreateCustomerPaymentMethodsRequest;
+use Conekta\Model\UpdatePaymentMethods;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class PaymentMethodsApiTest extends TestCase
 {
 
+    protected static PaymentMethodsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new PaymentMethodsApi(null, $config);
     }
 
     /**
@@ -80,8 +87,13 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testCreateCustomerPaymentMethods()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new CreateCustomerPaymentMethodsRequest([
+            'type' => 'oxxo_recurrent',
+            'token_id' => 'tokenID'
+        ]);
+        $result = self::$apiInstance->createCustomerPaymentMethods('cus_2tXyF9BwPG14UMkkg', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +104,9 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testDeleteCustomerPaymentMethods()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteCustomerPaymentMethods('cus_2tYENskzTjjgkGQLt', 'src_2tbd5Bgy67RL9oycM', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +117,9 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testGetCustomerPaymentMethods()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getCustomerPaymentMethods('cus_2tYENskzTjjgkGQLt', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,7 +130,11 @@ class PaymentMethodsApiTest extends TestCase
      */
     public function testUpdateCustomerPaymentMethods()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new UpdatePaymentMethods([
+            'name' => 'test'
+        ]);
+        $result = self::$apiInstance->updateCustomerPaymentMethods('cus_2tYENskzTjjgkGQLt', 'src_2tbd5Bgy67RL9oycM', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

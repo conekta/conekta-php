@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\DiscountsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\OrderDiscountLinesRequest;
+use Conekta\Model\UpdateOrderDiscountLinesRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class DiscountsApiTest extends TestCase
 {
 
+    protected static DiscountsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new DiscountsApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class DiscountsApiTest extends TestCase
      */
     public function testOrdersCreateDiscountLine()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new OrderDiscountLinesRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->ordersCreateDiscountLine('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class DiscountsApiTest extends TestCase
      */
     public function testOrdersDeleteDiscountLines()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->ordersDeleteDiscountLines('id', 'id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,7 +116,11 @@ class DiscountsApiTest extends TestCase
      */
     public function testOrdersUpdateDiscountLines()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new UpdateOrderDiscountLinesRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->ordersUpdateDiscountLines('id', 'id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

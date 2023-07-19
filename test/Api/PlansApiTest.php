@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\PlansApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\PlanRequest;
+use Conekta\Model\PlanUpdateRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class PlansApiTest extends TestCase
 {
 
+    protected static PlansApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new PlansApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class PlansApiTest extends TestCase
      */
     public function testCreatePlan()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new PlanRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->createPlan($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class PlansApiTest extends TestCase
      */
     public function testDeletePlan()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deletePlan('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +116,9 @@ class PlansApiTest extends TestCase
      */
     public function testGetPlan()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getPlan('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +129,9 @@ class PlansApiTest extends TestCase
      */
     public function testGetPlans()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getPlans('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,7 +142,11 @@ class PlansApiTest extends TestCase
      */
     public function testUpdatePlan()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new PlanUpdateRequest([
+            'amount' => 100
+        ]);
+        $result = self::$apiInstance->updatePlan('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }
