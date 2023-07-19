@@ -28,6 +28,7 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\TransfersApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
 use \Conekta\ObjectSerializer;
@@ -44,11 +45,15 @@ use PHPUnit\Framework\TestCase;
 class TransfersApiTest extends TestCase
 {
 
+    protected static TransfersApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new TransfersApi(null, $config);
     }
 
     /**
@@ -80,8 +85,9 @@ class TransfersApiTest extends TestCase
      */
     public function testGetTransfer()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getTransfer('64462930651b2600017b6d43', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,7 +98,8 @@ class TransfersApiTest extends TestCase
      */
     public function testGetTransfers()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getTransfers($accept_language, null, 5);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

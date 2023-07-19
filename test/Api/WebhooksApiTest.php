@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\WebhooksApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\WebhookRequest;
+use Conekta\Model\WebhookUpdateRequest;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class WebhooksApiTest extends TestCase
 {
 
+    protected static WebhooksApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new WebhooksApi(null, $config);
     }
 
     /**
@@ -80,8 +87,12 @@ class WebhooksApiTest extends TestCase
      */
     public function testCreateWebhook()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new WebhookRequest([
+            'url' => 'test.com'
+        ]);
+        $result = self::$apiInstance->createWebhook($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,8 +103,9 @@ class WebhooksApiTest extends TestCase
      */
     public function testDeleteWebhook()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->deleteWebhook('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -104,8 +116,9 @@ class WebhooksApiTest extends TestCase
      */
     public function testGetWebhook()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getWebhook('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -116,8 +129,9 @@ class WebhooksApiTest extends TestCase
      */
     public function testGetWebhooks()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getWebhooks($accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -128,8 +142,9 @@ class WebhooksApiTest extends TestCase
      */
     public function testTestWebhook()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->testWebhook('id', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -140,7 +155,11 @@ class WebhooksApiTest extends TestCase
      */
     public function testUpdateWebhook()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new WebhookUpdateRequest([
+            'url' => 'test.com'
+        ]);
+        $result = self::$apiInstance->updateWebhook('id', $rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

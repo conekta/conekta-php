@@ -28,8 +28,11 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\TokensApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
+use Conekta\Model\Token;
+use Conekta\Model\TokenCard;
 use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
@@ -44,11 +47,15 @@ use PHPUnit\Framework\TestCase;
 class TokensApiTest extends TestCase
 {
 
+    protected static TokensApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new TokensApi(null, $config);
     }
 
     /**
@@ -80,7 +87,13 @@ class TokensApiTest extends TestCase
      */
     public function testCreateToken()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $rq = new Token([
+            'card' => new TokenCard([
+                'number' => '5475040095304607'
+            ])
+        ]);
+        $result = self::$apiInstance->createToken($rq, $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }

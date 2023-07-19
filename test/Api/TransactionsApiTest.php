@@ -28,6 +28,7 @@
 
 namespace Conekta\Test\Api;
 
+use Conekta\Api\TransactionsApi;
 use \Conekta\Configuration;
 use \Conekta\ApiException;
 use \Conekta\ObjectSerializer;
@@ -44,11 +45,15 @@ use PHPUnit\Framework\TestCase;
 class TransactionsApiTest extends TestCase
 {
 
+    protected static TransactionsApi $apiInstance;
+
     /**
      * Setup before running any test cases
      */
     public static function setUpBeforeClass(): void
     {
+        $config = Configuration::getDefaultConfiguration()->setHost(BaseTest::$host);
+        self::$apiInstance = new TransactionsApi(null, $config);
     }
 
     /**
@@ -80,8 +85,9 @@ class TransactionsApiTest extends TestCase
      */
     public function testGetTransaction()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getTransaction('6456b6dfac0fd40001a64eb8', $accept_language);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 
     /**
@@ -92,7 +98,8 @@ class TransactionsApiTest extends TestCase
      */
     public function testGetTransactions()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $accept_language = 'es';
+        $result = self::$apiInstance->getTransactions($accept_language, null, 2);
+        $this->assertNotEmpty($result, 'expected not empty result');
     }
 }
