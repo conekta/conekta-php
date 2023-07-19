@@ -44,6 +44,6 @@ jobs:
           npm install -g @mockoon/cli
           npx mockoon-cli start --data https://raw.githubusercontent.com/conekta/openapi/20230613/mocks/conekta_api.json --port 3000
       - name: Run PHPUnit
-        run: vendor/bin/phpunit  test/Conekta-2.0
+        run: vendor/bin/phpunit
         env:
           BASE_PATH: localhost:3000
