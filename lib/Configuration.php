@@ -424,14 +424,34 @@ class Configuration
     }
 
     /**
+     *
+     * @param string $functionName
+     * @return boolean
+     *
+     */
+    public static function _isDisabled($functionName)
+    {
+        $disabledFunctions = \explode(',', \ini_get('disable_functions'));
+        foreach ($disabledFunctions as $disabledFunction) {
+            if (\trim($disabledFunction) === $functionName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Gets the essential information for debugging
      *
      * @return string The report for debugging
      */
     public static function toDebugReport()
     {
+        $uname_disabled = self::_isDisabled('php_uname');
+        $uname = $uname_disabled ? '(disabled)' : \php_uname();
         $report  = 'PHP SDK (Conekta) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
+        $report .= '    OS: ' . $uname . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 2.1.0' . PHP_EOL;
         $report .= '    SDK Package Version: 6.0.0' . PHP_EOL;
