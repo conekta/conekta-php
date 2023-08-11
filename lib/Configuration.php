@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.0';
+    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.1';
 
     /**
      * Debug switch (default set to false)
@@ -424,17 +424,39 @@ class Configuration
     }
 
     /**
+     * @static
+     *
+     * @param string $disableFunctionsOutput - String value of the 'disable_function' setting, as output by \ini_get('disable_functions')
+     * @param string $functionName - Name of the function we are interesting in seeing whether or not it is disabled
+     *
+     * @return bool
+     */
+    private static function _isDisabled($disableFunctionsOutput, $functionName)
+    {
+        $disabledFunctions = \explode(',', $disableFunctionsOutput);
+        foreach ($disabledFunctions as $disabledFunction) {
+            if (\trim($disabledFunction) === $functionName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Gets the essential information for debugging
      *
      * @return string The report for debugging
      */
     public static function toDebugReport()
     {
+        $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
+        $uname = $uname_disabled ? '(disabled)' : \php_uname();
         $report  = 'PHP SDK (Conekta) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
+        $report .= '    OS: ' . $uname . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 2.1.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 6.0.0' . PHP_EOL;
+        $report .= '    SDK Package Version: 6.0.1' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
