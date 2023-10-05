@@ -63,6 +63,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'string',
         'tax_id' => 'string',
         'id' => 'string',
+        'created_at' => 'int',
         'object' => 'string'
     ];
 
@@ -78,6 +79,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         'name' => null,
         'tax_id' => null,
         'id' => null,
+        'created_at' => 'int64',
         'object' => null
     ];
 
@@ -91,6 +93,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
 		'name' => true,
 		'tax_id' => true,
 		'id' => false,
+		'created_at' => false,
 		'object' => false
     ];
 
@@ -184,6 +187,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'name',
         'tax_id' => 'tax_id',
         'id' => 'id',
+        'created_at' => 'created_at',
         'object' => 'object'
     ];
 
@@ -197,6 +201,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'setName',
         'tax_id' => 'setTaxId',
         'id' => 'setId',
+        'created_at' => 'setCreatedAt',
         'object' => 'setObject'
     ];
 
@@ -210,6 +215,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'getName',
         'tax_id' => 'getTaxId',
         'id' => 'getId',
+        'created_at' => 'getCreatedAt',
         'object' => 'getObject'
     ];
 
@@ -274,6 +280,7 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('tax_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
     }
 
@@ -309,6 +316,9 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
@@ -446,6 +456,33 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return int
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param int $created_at The time at which the object was created in seconds since the Unix epoch
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
