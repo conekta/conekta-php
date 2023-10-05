@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **expires_at** | **int** | Method expiration date as unix timestamp | [optional]
+**monthly_installments** | **int** | How many months without interest to apply, it can be 3, 6, 9, 12 or 18 | [optional]
 **type** | **string** |  |
 **token_id** | **string** |  | [optional]
 **payment_source_id** | **string** |  | [optional]
