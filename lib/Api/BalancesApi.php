@@ -374,7 +374,7 @@ class BalancesApi
 
 
 
-        $resourcePath = '/balances';
+        $resourcePath = '/balance';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

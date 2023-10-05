@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookUpdateRequest
+ * OrderFiscalEntityAddressResponseAllOf
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * WebhookUpdateRequest Class Doc Comment
+ * OrderFiscalEntityAddressResponseAllOf Class Doc Comment
  *
  * @category Class
- * @description an updated webhook
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderFiscalEntityAddressResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'webhook_update_request';
+    protected static $openAPIModelName = 'order_fiscal_entity_address_response_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'synchronous' => 'bool',
-        'events' => 'string[]'
+        'object' => 'string'
     ];
 
     /**
@@ -72,9 +69,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'url',
-        'synchronous' => null,
-        'events' => null
+        'object' => null
     ];
 
     /**
@@ -83,9 +78,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-		'synchronous' => false,
-		'events' => false
+        'object' => false
     ];
 
     /**
@@ -174,9 +167,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'synchronous' => 'synchronous',
-        'events' => 'events'
+        'object' => 'object'
     ];
 
     /**
@@ -185,9 +176,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'synchronous' => 'setSynchronous',
-        'events' => 'setEvents'
+        'object' => 'setObject'
     ];
 
     /**
@@ -196,9 +185,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'synchronous' => 'getSynchronous',
-        'events' => 'getEvents'
+        'object' => 'getObject'
     ];
 
     /**
@@ -258,9 +245,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('synchronous', $data ?? [], false);
-        $this->setIfExists('events', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
     }
 
     /**
@@ -290,13 +275,6 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if (!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $this->container['url'])) {
-            $invalidProperties[] = "invalid value for 'url', must be conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -313,87 +291,28 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets url
+     * Gets object
      *
-     * @return string
+     * @return string|null
      */
-    public function getUrl()
+    public function getObject()
     {
-        return $this->container['url'];
+        return $this->container['object'];
     }
 
     /**
-     * Sets url
+     * Sets object
      *
-     * @param string $url Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
+     * @param string|null $object object
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setObject($object)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
-
-        if ((!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $url))) {
-            throw new \InvalidArgumentException("invalid value for \$url when calling WebhookUpdateRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.");
-        }
-
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets synchronous
-     *
-     * @return bool|null
-     */
-    public function getSynchronous()
-    {
-        return $this->container['synchronous'];
-    }
-
-    /**
-     * Sets synchronous
-     *
-     * @param bool|null $synchronous It is a value that allows to decide if the events will be synchronous or asynchronous. We recommend asynchronous = false
-     *
-     * @return self
-     */
-    public function setSynchronous($synchronous)
-    {
-        if (is_null($synchronous)) {
-            throw new \InvalidArgumentException('non-nullable synchronous cannot be null');
-        }
-        $this->container['synchronous'] = $synchronous;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events events
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $this->container['events'] = $events;
+        $this->container['object'] = $object;
 
         return $this;
     }

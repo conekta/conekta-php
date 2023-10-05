@@ -115,6 +115,7 @@ docs/Model/Error.md
 docs/Model/ErrorAllOf.md
 docs/Model/EventResponse.md
 docs/Model/EventsResendResponse.md
+docs/Model/FiscalEntityAddress.md
 docs/Model/GetApiKeysResponse.md
 docs/Model/GetApiKeysResponseAllOf.md
 docs/Model/GetChargesResponse.md
@@ -144,6 +145,10 @@ docs/Model/LogsResponse.md
 docs/Model/LogsResponseData.md
 docs/Model/OrderCaptureRequest.md
 docs/Model/OrderDiscountLinesRequest.md
+docs/Model/OrderFiscalEntityAddressResponse.md
+docs/Model/OrderFiscalEntityAddressResponseAllOf.md
+docs/Model/OrderFiscalEntityRequest.md
+docs/Model/OrderFiscalEntityResponse.md
 docs/Model/OrderRefundRequest.md
 docs/Model/OrderRequest.md
 docs/Model/OrderRequestCustomerInfo.md
@@ -155,9 +160,6 @@ docs/Model/OrderResponseCustomerInfo.md
 docs/Model/OrderResponseCustomerInfoAllOf.md
 docs/Model/OrderResponseDiscountLines.md
 docs/Model/OrderResponseDiscountLinesAllOf.md
-docs/Model/OrderResponseFiscalEntity.md
-docs/Model/OrderResponseFiscalEntityAddress.md
-docs/Model/OrderResponseFiscalEntityAddressAllOf.md
 docs/Model/OrderResponseProducts.md
 docs/Model/OrderResponseProductsAllOf.md
 docs/Model/OrderResponseShippingContact.md
@@ -343,6 +345,7 @@ lib/Model/Error.php
 lib/Model/ErrorAllOf.php
 lib/Model/EventResponse.php
 lib/Model/EventsResendResponse.php
+lib/Model/FiscalEntityAddress.php
 lib/Model/GetApiKeysResponse.php
 lib/Model/GetApiKeysResponseAllOf.php
 lib/Model/GetChargesResponse.php
@@ -373,6 +376,10 @@ lib/Model/LogsResponseData.php
 lib/Model/ModelInterface.php
 lib/Model/OrderCaptureRequest.php
 lib/Model/OrderDiscountLinesRequest.php
+lib/Model/OrderFiscalEntityAddressResponse.php
+lib/Model/OrderFiscalEntityAddressResponseAllOf.php
+lib/Model/OrderFiscalEntityRequest.php
+lib/Model/OrderFiscalEntityResponse.php
 lib/Model/OrderRefundRequest.php
 lib/Model/OrderRequest.php
 lib/Model/OrderRequestCustomerInfo.php
@@ -384,9 +391,6 @@ lib/Model/OrderResponseCustomerInfo.php
 lib/Model/OrderResponseCustomerInfoAllOf.php
 lib/Model/OrderResponseDiscountLines.php
 lib/Model/OrderResponseDiscountLinesAllOf.php
-lib/Model/OrderResponseFiscalEntity.php
-lib/Model/OrderResponseFiscalEntityAddress.php
-lib/Model/OrderResponseFiscalEntityAddressAllOf.php
 lib/Model/OrderResponseProducts.php
 lib/Model/OrderResponseProductsAllOf.php
 lib/Model/OrderResponseShippingContact.php

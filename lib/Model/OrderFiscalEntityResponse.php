@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookUpdateRequest
+ * OrderFiscalEntityResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * WebhookUpdateRequest Class Doc Comment
+ * OrderFiscalEntityResponse Class Doc Comment
  *
  * @category Class
- * @description an updated webhook
+ * @description Fiscal entity of the order, Currently it is a purely informative field
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'webhook_update_request';
+    protected static $openAPIModelName = 'order_fiscal_entity_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'synchronous' => 'bool',
-        'events' => 'string[]'
+        'address' => '\Conekta\Model\OrderFiscalEntityAddressResponse',
+        'name' => 'string',
+        'tax_id' => 'string',
+        'id' => 'string',
+        'object' => 'string'
     ];
 
     /**
@@ -72,9 +74,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'url',
-        'synchronous' => null,
-        'events' => null
+        'address' => null,
+        'name' => null,
+        'tax_id' => null,
+        'id' => null,
+        'object' => null
     ];
 
     /**
@@ -83,9 +87,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-		'synchronous' => false,
-		'events' => false
+        'address' => false,
+		'name' => true,
+		'tax_id' => true,
+		'id' => false,
+		'object' => false
     ];
 
     /**
@@ -174,9 +180,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'synchronous' => 'synchronous',
-        'events' => 'events'
+        'address' => 'address',
+        'name' => 'name',
+        'tax_id' => 'tax_id',
+        'id' => 'id',
+        'object' => 'object'
     ];
 
     /**
@@ -185,9 +193,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'synchronous' => 'setSynchronous',
-        'events' => 'setEvents'
+        'address' => 'setAddress',
+        'name' => 'setName',
+        'tax_id' => 'setTaxId',
+        'id' => 'setId',
+        'object' => 'setObject'
     ];
 
     /**
@@ -196,9 +206,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'synchronous' => 'getSynchronous',
-        'events' => 'getEvents'
+        'address' => 'getAddress',
+        'name' => 'getName',
+        'tax_id' => 'getTaxId',
+        'id' => 'getId',
+        'object' => 'getObject'
     ];
 
     /**
@@ -258,9 +270,11 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('synchronous', $data ?? [], false);
-        $this->setIfExists('events', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('tax_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
     }
 
     /**
@@ -290,13 +304,15 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
         }
-        if (!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $this->container['url'])) {
-            $invalidProperties[] = "invalid value for 'url', must be conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,87 +329,150 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets url
+     * Gets address
+     *
+     * @return \Conekta\Model\OrderFiscalEntityAddressResponse
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \Conekta\Model\OrderFiscalEntityAddressResponse $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the fiscal entity
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_id
+     *
+     * @return string|null
+     */
+    public function getTaxId()
+    {
+        return $this->container['tax_id'];
+    }
+
+    /**
+     * Sets tax_id
+     *
+     * @param string|null $tax_id Tax ID of the fiscal entity
+     *
+     * @return self
+     */
+    public function setTaxId($tax_id)
+    {
+        if (is_null($tax_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_id'] = $tax_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
      *
      * @return string
      */
-    public function getUrl()
+    public function getId()
     {
-        return $this->container['url'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets url
+     * Sets id
      *
-     * @param string $url Here you must place the URL of your Webhook remember that you must program what you will do with the events received. Also do not forget to handle the HTTPS protocol for greater security.
+     * @param string $id ID of the fiscal entity
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setId($id)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-
-        if ((!preg_match("/^(?!.*(localhost|127\\.0\\.0\\.1)).*$/", $url))) {
-            throw new \InvalidArgumentException("invalid value for \$url when calling WebhookUpdateRequest., must conform to the pattern /^(?!.*(localhost|127\\.0\\.0\\.1)).*$/.");
-        }
-
-        $this->container['url'] = $url;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets synchronous
+     * Gets object
      *
-     * @return bool|null
+     * @return string
      */
-    public function getSynchronous()
+    public function getObject()
     {
-        return $this->container['synchronous'];
+        return $this->container['object'];
     }
 
     /**
-     * Sets synchronous
+     * Sets object
      *
-     * @param bool|null $synchronous It is a value that allows to decide if the events will be synchronous or asynchronous. We recommend asynchronous = false
+     * @param string $object object
      *
      * @return self
      */
-    public function setSynchronous($synchronous)
+    public function setObject($object)
     {
-        if (is_null($synchronous)) {
-            throw new \InvalidArgumentException('non-nullable synchronous cannot be null');
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
-        $this->container['synchronous'] = $synchronous;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events events
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $this->container['events'] = $events;
+        $this->container['object'] = $object;
 
         return $this;
     }
