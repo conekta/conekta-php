@@ -59,7 +59,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'object' => 'string',
-        'custom_reference' => 'string',
+        'customer_custom_reference' => 'string',
         'name' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -76,7 +76,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'object' => null,
-        'custom_reference' => null,
+        'customer_custom_reference' => null,
         'name' => null,
         'email' => 'email',
         'phone' => null,
@@ -91,7 +91,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'object' => false,
-		'custom_reference' => true,
+		'customer_custom_reference' => true,
 		'name' => false,
 		'email' => false,
 		'phone' => false,
@@ -186,7 +186,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'object' => 'object',
-        'custom_reference' => 'custom_reference',
+        'customer_custom_reference' => 'customer_custom_reference',
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',
@@ -201,7 +201,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'object' => 'setObject',
-        'custom_reference' => 'setCustomReference',
+        'customer_custom_reference' => 'setCustomerCustomReference',
         'name' => 'setName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
@@ -216,7 +216,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'object' => 'getObject',
-        'custom_reference' => 'getCustomReference',
+        'customer_custom_reference' => 'getCustomerCustomReference',
         'name' => 'getName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
@@ -282,7 +282,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('custom_reference', $data ?? [], null);
+        $this->setIfExists('customer_custom_reference', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
@@ -360,35 +360,35 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets custom_reference
+     * Gets customer_custom_reference
      *
      * @return string|null
      */
-    public function getCustomReference()
+    public function getCustomerCustomReference()
     {
-        return $this->container['custom_reference'];
+        return $this->container['customer_custom_reference'];
     }
 
     /**
-     * Sets custom_reference
+     * Sets customer_custom_reference
      *
-     * @param string|null $custom_reference Custom reference
+     * @param string|null $customer_custom_reference Custom reference
      *
      * @return self
      */
-    public function setCustomReference($custom_reference)
+    public function setCustomerCustomReference($customer_custom_reference)
     {
-        if (is_null($custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'custom_reference');
+        if (is_null($customer_custom_reference)) {
+            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('custom_reference', $nullablesSetToNull);
+            $index = array_search('customer_custom_reference', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['custom_reference'] = $custom_reference;
+        $this->container['customer_custom_reference'] = $customer_custom_reference;
 
         return $this;
     }
