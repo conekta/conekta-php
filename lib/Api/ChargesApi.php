@@ -959,6 +959,7 @@ class ChargesApi
      *
      * Update a charge
      *
+     * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -968,9 +969,9 @@ class ChargesApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\ChargeResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateCharge($charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    public function updateCharge($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
     {
-        list($response) = $this->updateChargeWithHttpInfo($charge_update_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateChargeWithHttpInfo($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -979,6 +980,7 @@ class ChargesApi
      *
      * Update a charge
      *
+     * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -988,9 +990,9 @@ class ChargesApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\ChargeResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateChargeWithHttpInfo($charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    public function updateChargeWithHttpInfo($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
     {
-        $request = $this->updateChargeRequest($charge_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateChargeRequest($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1150,6 +1152,7 @@ class ChargesApi
      *
      * Update a charge
      *
+     * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1158,9 +1161,9 @@ class ChargesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateChargeAsync($charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    public function updateChargeAsync($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
     {
-        return $this->updateChargeAsyncWithHttpInfo($charge_update_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateChargeAsyncWithHttpInfo($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1173,6 +1176,7 @@ class ChargesApi
      *
      * Update a charge
      *
+     * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1181,10 +1185,10 @@ class ChargesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateChargeAsyncWithHttpInfo($charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    public function updateChargeAsyncWithHttpInfo($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
     {
         $returnType = '\Conekta\Model\ChargeResponse';
-        $request = $this->updateChargeRequest($charge_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateChargeRequest($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1225,6 +1229,7 @@ class ChargesApi
     /**
      * Create request for operation 'updateCharge'
      *
+     * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
@@ -1233,8 +1238,15 @@ class ChargesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateChargeRequest($charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    public function updateChargeRequest($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
     {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateCharge'
+            );
+        }
 
         // verify the required parameter 'charge_update_request' is set
         if ($charge_update_request === null || (is_array($charge_update_request) && count($charge_update_request) === 0)) {
@@ -1263,6 +1275,14 @@ class ChargesApi
             $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
         }
 
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(

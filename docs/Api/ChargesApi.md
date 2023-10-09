@@ -146,7 +146,7 @@ try {
 ## `updateCharge()`
 
 ```php
-updateCharge($charge_update_request, $accept_language, $x_child_company_id): \Conekta\Model\ChargeResponse
+updateCharge($id, $charge_update_request, $accept_language, $x_child_company_id): \Conekta\Model\ChargeResponse
 ```
 
 Update a charge
@@ -168,12 +168,13 @@ $apiInstance = new Conekta\Api\ChargesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $charge_update_request = new \Conekta\Model\ChargeUpdateRequest(); // \Conekta\Model\ChargeUpdateRequest | requested field for update a charge
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateCharge($charge_update_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateCharge($id, $charge_update_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ChargesApi->updateCharge: ', $e->getMessage(), PHP_EOL;
@@ -184,6 +185,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Identifier of the resource | |
 | **charge_update_request** | [**\Conekta\Model\ChargeUpdateRequest**](../Model/ChargeUpdateRequest.md)| requested field for update a charge | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
