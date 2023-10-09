@@ -92,7 +92,7 @@ Class | Method | HTTP request | Description
 *BalancesApi* | [**getBalance**](docs/Api/BalancesApi.md#getbalance) | **GET** /balance | Get a company&#39;s balance
 *ChargesApi* | [**getCharges**](docs/Api/ChargesApi.md#getcharges) | **GET** /charges | Get A List of Charges
 *ChargesApi* | [**ordersCreateCharge**](docs/Api/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
-*ChargesApi* | [**updateCharge**](docs/Api/ChargesApi.md#updatecharge) | **PUT** /charges{id} | Update a charge
+*ChargesApi* | [**updateCharge**](docs/Api/ChargesApi.md#updatecharge) | **PUT** /charges/{id} | Update a charge
 *CompaniesApi* | [**getCompanies**](docs/Api/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 *CompaniesApi* | [**getCompany**](docs/Api/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
 *CustomersApi* | [**createCustomer**](docs/Api/CustomersApi.md#createcustomer) | **POST** /customers | Create customer

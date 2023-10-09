@@ -1258,7 +1258,7 @@ class ChargesApi
 
 
 
-        $resourcePath = '/charges{id}';
+        $resourcePath = '/charges/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -6,7 +6,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**getCharges()**](ChargesApi.md#getCharges) | **GET** /charges | Get A List of Charges |
 | [**ordersCreateCharge()**](ChargesApi.md#ordersCreateCharge) | **POST** /orders/{id}/charges | Create charge |
-| [**updateCharge()**](ChargesApi.md#updateCharge) | **PUT** /charges{id} | Update a charge |
+| [**updateCharge()**](ChargesApi.md#updateCharge) | **PUT** /charges/{id} | Update a charge |
 
 
 ## `getCharges()`
