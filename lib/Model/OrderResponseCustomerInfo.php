@@ -59,6 +59,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'object' => 'string',
+        'custom_reference' => 'string',
         'name' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -75,6 +76,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'object' => null,
+        'custom_reference' => null,
         'name' => null,
         'email' => 'email',
         'phone' => null,
@@ -89,6 +91,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'object' => false,
+		'custom_reference' => true,
 		'name' => false,
 		'email' => false,
 		'phone' => false,
@@ -183,6 +186,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'object' => 'object',
+        'custom_reference' => 'custom_reference',
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',
@@ -197,6 +201,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'object' => 'setObject',
+        'custom_reference' => 'setCustomReference',
         'name' => 'setName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
@@ -211,6 +216,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'object' => 'getObject',
+        'custom_reference' => 'getCustomReference',
         'name' => 'getName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
@@ -276,6 +282,7 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('custom_reference', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
@@ -348,6 +355,40 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_reference
+     *
+     * @return string|null
+     */
+    public function getCustomReference()
+    {
+        return $this->container['custom_reference'];
+    }
+
+    /**
+     * Sets custom_reference
+     *
+     * @param string|null $custom_reference Custom reference
+     *
+     * @return self
+     */
+    public function setCustomReference($custom_reference)
+    {
+        if (is_null($custom_reference)) {
+            array_push($this->openAPINullablesSetToNull, 'custom_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('custom_reference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['custom_reference'] = $custom_reference;
 
         return $this;
     }

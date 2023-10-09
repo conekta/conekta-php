@@ -58,6 +58,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'custom_reference' => 'string',
         'name' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -73,6 +74,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'custom_reference' => null,
         'name' => null,
         'email' => 'email',
         'phone' => null,
@@ -86,7 +88,8 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
+        'custom_reference' => true,
+		'name' => false,
 		'email' => false,
 		'phone' => false,
 		'corporate' => false,
@@ -179,6 +182,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'custom_reference' => 'custom_reference',
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',
@@ -192,6 +196,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'custom_reference' => 'setCustomReference',
         'name' => 'setName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
@@ -205,6 +210,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'custom_reference' => 'getCustomReference',
         'name' => 'getName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
@@ -269,6 +275,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('custom_reference', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
@@ -317,6 +324,40 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets custom_reference
+     *
+     * @return string|null
+     */
+    public function getCustomReference()
+    {
+        return $this->container['custom_reference'];
+    }
+
+    /**
+     * Sets custom_reference
+     *
+     * @param string|null $custom_reference Custom reference
+     *
+     * @return self
+     */
+    public function setCustomReference($custom_reference)
+    {
+        if (is_null($custom_reference)) {
+            array_push($this->openAPINullablesSetToNull, 'custom_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('custom_reference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['custom_reference'] = $custom_reference;
+
+        return $this;
+    }
 
     /**
      * Gets name

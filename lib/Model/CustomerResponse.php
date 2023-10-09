@@ -71,6 +71,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'livemode' => 'bool',
         'name' => 'string',
+        'metadata' => 'array<string,mixed>',
         'object' => 'string',
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsResponse',
         'phone' => 'string',
@@ -98,6 +99,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'livemode' => null,
         'name' => null,
+        'metadata' => null,
         'object' => null,
         'payment_sources' => null,
         'phone' => null,
@@ -123,6 +125,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 		'id' => false,
 		'livemode' => false,
 		'name' => false,
+		'metadata' => false,
 		'object' => false,
 		'payment_sources' => false,
 		'phone' => false,
@@ -228,6 +231,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'livemode' => 'livemode',
         'name' => 'name',
+        'metadata' => 'metadata',
         'object' => 'object',
         'payment_sources' => 'payment_sources',
         'phone' => 'phone',
@@ -253,6 +257,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'livemode' => 'setLivemode',
         'name' => 'setName',
+        'metadata' => 'setMetadata',
         'object' => 'setObject',
         'payment_sources' => 'setPaymentSources',
         'phone' => 'setPhone',
@@ -278,6 +283,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'livemode' => 'getLivemode',
         'name' => 'getName',
+        'metadata' => 'getMetadata',
         'object' => 'getObject',
         'payment_sources' => 'getPaymentSources',
         'phone' => 'getPhone',
@@ -354,6 +360,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('payment_sources', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
@@ -397,6 +404,13 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['livemode'] === null) {
             $invalidProperties[] = "'livemode' can't be null";
         }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
+
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
@@ -462,7 +476,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets corporate
      *
-     * @param bool|null $corporate corporate
+     * @param bool|null $corporate true if the customer is a company
      *
      * @return self
      */
@@ -489,7 +503,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param int $created_at created_at
+     * @param int $created_at Creation date of the object
      *
      * @return self
      */
@@ -516,7 +530,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets custom_reference
      *
-     * @param string|null $custom_reference custom_reference
+     * @param string|null $custom_reference Custom reference
      *
      * @return self
      */
@@ -692,7 +706,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Customer's ID
      *
      * @return self
      */
@@ -719,7 +733,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets livemode
      *
-     * @param bool $livemode livemode
+     * @param bool $livemode true if the object exists in live mode or the value false if the object exists in test mode
      *
      * @return self
      */
@@ -736,7 +750,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -746,7 +760,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name Customer's name
      *
      * @return self
      */
@@ -756,6 +770,37 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling CustomerResponse., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -827,7 +872,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone
      *
-     * @param string|null $phone phone
+     * @param string|null $phone Customer's phone number
      *
      * @return self
      */
