@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *BalancesApi* | [**getBalance**](docs/Api/BalancesApi.md#getbalance) | **GET** /balance | Get a company&#39;s balance
 *ChargesApi* | [**getCharges**](docs/Api/ChargesApi.md#getcharges) | **GET** /charges | Get A List of Charges
 *ChargesApi* | [**ordersCreateCharge**](docs/Api/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
+*ChargesApi* | [**updateCharge**](docs/Api/ChargesApi.md#updatecharge) | **PUT** /charges{id} | Update a charge
 *CompaniesApi* | [**getCompanies**](docs/Api/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 *CompaniesApi* | [**getCompany**](docs/Api/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
 *CustomersApi* | [**createCustomer**](docs/Api/CustomersApi.md#createcustomer) | **POST** /customers | Create customer
@@ -194,6 +195,7 @@ Class | Method | HTTP request | Description
 - [ChargeResponseRefunds](docs/Model/ChargeResponseRefunds.md)
 - [ChargeResponseRefundsAllOf](docs/Model/ChargeResponseRefundsAllOf.md)
 - [ChargeResponseRefundsData](docs/Model/ChargeResponseRefundsData.md)
+- [ChargeUpdateRequest](docs/Model/ChargeUpdateRequest.md)
 - [ChargesDataResponse](docs/Model/ChargesDataResponse.md)
 - [Checkout](docs/Model/Checkout.md)
 - [CheckoutOrderTemplate](docs/Model/CheckoutOrderTemplate.md)
@@ -223,7 +225,6 @@ Class | Method | HTTP request | Description
 - [CustomerInfo](docs/Model/CustomerInfo.md)
 - [CustomerInfoJustCustomerId](docs/Model/CustomerInfoJustCustomerId.md)
 - [CustomerInfoJustCustomerIdResponse](docs/Model/CustomerInfoJustCustomerIdResponse.md)
-- [CustomerInfoResponse](docs/Model/CustomerInfoResponse.md)
 - [CustomerPaymentMethodRequest](docs/Model/CustomerPaymentMethodRequest.md)
 - [CustomerPaymentMethods](docs/Model/CustomerPaymentMethods.md)
 - [CustomerPaymentMethodsData](docs/Model/CustomerPaymentMethodsData.md)
@@ -285,6 +286,7 @@ Class | Method | HTTP request | Description
 - [LogsResponse](docs/Model/LogsResponse.md)
 - [LogsResponseData](docs/Model/LogsResponseData.md)
 - [OrderCaptureRequest](docs/Model/OrderCaptureRequest.md)
+- [OrderCustomerInfoResponse](docs/Model/OrderCustomerInfoResponse.md)
 - [OrderDiscountLinesRequest](docs/Model/OrderDiscountLinesRequest.md)
 - [OrderFiscalEntityAddressResponse](docs/Model/OrderFiscalEntityAddressResponse.md)
 - [OrderFiscalEntityAddressResponseAllOf](docs/Model/OrderFiscalEntityAddressResponseAllOf.md)

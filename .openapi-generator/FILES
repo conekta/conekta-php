@@ -53,6 +53,7 @@ docs/Model/ChargeResponsePaymentMethod.md
 docs/Model/ChargeResponseRefunds.md
 docs/Model/ChargeResponseRefundsAllOf.md
 docs/Model/ChargeResponseRefundsData.md
+docs/Model/ChargeUpdateRequest.md
 docs/Model/ChargesDataResponse.md
 docs/Model/Checkout.md
 docs/Model/CheckoutOrderTemplate.md
@@ -82,7 +83,6 @@ docs/Model/CustomerFiscalEntitiesResponseAllOf.md
 docs/Model/CustomerInfo.md
 docs/Model/CustomerInfoJustCustomerId.md
 docs/Model/CustomerInfoJustCustomerIdResponse.md
-docs/Model/CustomerInfoResponse.md
 docs/Model/CustomerPaymentMethodRequest.md
 docs/Model/CustomerPaymentMethods.md
 docs/Model/CustomerPaymentMethodsData.md
@@ -144,6 +144,7 @@ docs/Model/LogResponse.md
 docs/Model/LogsResponse.md
 docs/Model/LogsResponseData.md
 docs/Model/OrderCaptureRequest.md
+docs/Model/OrderCustomerInfoResponse.md
 docs/Model/OrderDiscountLinesRequest.md
 docs/Model/OrderFiscalEntityAddressResponse.md
 docs/Model/OrderFiscalEntityAddressResponseAllOf.md
@@ -283,6 +284,7 @@ lib/Model/ChargeResponsePaymentMethod.php
 lib/Model/ChargeResponseRefunds.php
 lib/Model/ChargeResponseRefundsAllOf.php
 lib/Model/ChargeResponseRefundsData.php
+lib/Model/ChargeUpdateRequest.php
 lib/Model/ChargesDataResponse.php
 lib/Model/Checkout.php
 lib/Model/CheckoutOrderTemplate.php
@@ -312,7 +314,6 @@ lib/Model/CustomerFiscalEntitiesResponseAllOf.php
 lib/Model/CustomerInfo.php
 lib/Model/CustomerInfoJustCustomerId.php
 lib/Model/CustomerInfoJustCustomerIdResponse.php
-lib/Model/CustomerInfoResponse.php
 lib/Model/CustomerPaymentMethodRequest.php
 lib/Model/CustomerPaymentMethods.php
 lib/Model/CustomerPaymentMethodsData.php
@@ -375,6 +376,7 @@ lib/Model/LogsResponse.php
 lib/Model/LogsResponseData.php
 lib/Model/ModelInterface.php
 lib/Model/OrderCaptureRequest.php
+lib/Model/OrderCustomerInfoResponse.php
 lib/Model/OrderDiscountLinesRequest.php
 lib/Model/OrderFiscalEntityAddressResponse.php
 lib/Model/OrderFiscalEntityAddressResponseAllOf.php

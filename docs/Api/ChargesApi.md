@@ -6,6 +6,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**getCharges()**](ChargesApi.md#getCharges) | **GET** /charges | Get A List of Charges |
 | [**ordersCreateCharge()**](ChargesApi.md#ordersCreateCharge) | **POST** /orders/{id}/charges | Create charge |
+| [**updateCharge()**](ChargesApi.md#updateCharge) | **PUT** /charges{id} | Update a charge |
 
 
 ## `getCharges()`
@@ -128,6 +129,68 @@ try {
 ### Return type
 
 [**\Conekta\Model\ChargeOrderResponse**](../Model/ChargeOrderResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/vnd.conekta-v2.1.0+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCharge()`
+
+```php
+updateCharge($charge_update_request, $accept_language, $x_child_company_id): \Conekta\Model\ChargeResponse
+```
+
+Update a charge
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: bearerAuth
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Conekta\Api\ChargesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$charge_update_request = new \Conekta\Model\ChargeUpdateRequest(); // \Conekta\Model\ChargeUpdateRequest | requested field for update a charge
+$accept_language = es; // string | Use for knowing which language to use
+$x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
+
+try {
+    $result = $apiInstance->updateCharge($charge_update_request, $accept_language, $x_child_company_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ChargesApi->updateCharge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **charge_update_request** | [**\Conekta\Model\ChargeUpdateRequest**](../Model/ChargeUpdateRequest.md)| requested field for update a charge | |
+| **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
+| **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
+
+### Return type
+
+[**\Conekta\Model\ChargeResponse**](../Model/ChargeResponse.md)
 
 ### Authorization
 
