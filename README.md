@@ -308,6 +308,7 @@ Class | Method | HTTP request | Description
 - [OrderResponseShippingContact](docs/Model/OrderResponseShippingContact.md)
 - [OrderResponseShippingContactAllOf](docs/Model/OrderResponseShippingContactAllOf.md)
 - [OrderTaxRequest](docs/Model/OrderTaxRequest.md)
+- [OrderUpdateFiscalEntityRequest](docs/Model/OrderUpdateFiscalEntityRequest.md)
 - [OrderUpdateRequest](docs/Model/OrderUpdateRequest.md)
 - [OrderUpdateRequestCustomerInfo](docs/Model/OrderUpdateRequestCustomerInfo.md)
 - [OrdersResponse](docs/Model/OrdersResponse.md)

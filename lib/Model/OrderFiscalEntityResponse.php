@@ -60,11 +60,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'address' => '\Conekta\Model\OrderFiscalEntityAddressResponse',
+        'email' => 'string',
+        'metadata' => 'array<string,mixed>',
         'name' => 'string',
         'tax_id' => 'string',
         'id' => 'string',
         'created_at' => 'int',
-        'object' => 'string'
+        'object' => 'string',
+        'phone' => 'string'
     ];
 
     /**
@@ -76,11 +79,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'address' => null,
+        'email' => null,
+        'metadata' => null,
         'name' => null,
         'tax_id' => null,
         'id' => null,
         'created_at' => 'int64',
-        'object' => null
+        'object' => null,
+        'phone' => null
     ];
 
     /**
@@ -90,11 +96,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'address' => false,
+		'email' => true,
+		'metadata' => false,
 		'name' => true,
 		'tax_id' => true,
 		'id' => false,
 		'created_at' => false,
-		'object' => false
+		'object' => false,
+		'phone' => true
     ];
 
     /**
@@ -184,11 +193,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'address' => 'address',
+        'email' => 'email',
+        'metadata' => 'metadata',
         'name' => 'name',
         'tax_id' => 'tax_id',
         'id' => 'id',
         'created_at' => 'created_at',
-        'object' => 'object'
+        'object' => 'object',
+        'phone' => 'phone'
     ];
 
     /**
@@ -198,11 +210,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'address' => 'setAddress',
+        'email' => 'setEmail',
+        'metadata' => 'setMetadata',
         'name' => 'setName',
         'tax_id' => 'setTaxId',
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
-        'object' => 'setObject'
+        'object' => 'setObject',
+        'phone' => 'setPhone'
     ];
 
     /**
@@ -212,11 +227,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'address' => 'getAddress',
+        'email' => 'getEmail',
+        'metadata' => 'getMetadata',
         'name' => 'getName',
         'tax_id' => 'getTaxId',
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
-        'object' => 'getObject'
+        'object' => 'getObject',
+        'phone' => 'getPhone'
     ];
 
     /**
@@ -277,11 +295,14 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('tax_id', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
     }
 
     /**
@@ -314,6 +335,10 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
         }
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
+
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -361,6 +386,71 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
         $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email Email of the fiscal entity
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        if (is_null($email)) {
+            array_push($this->openAPINullablesSetToNull, 'email');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('email', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the fiscal entity
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling OrderFiscalEntityResponse., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -510,6 +600,40 @@ class OrderFiscalEntityResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string|null $phone Phone of the fiscal entity
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            array_push($this->openAPINullablesSetToNull, 'phone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['phone'] = $phone;
 
         return $this;
     }

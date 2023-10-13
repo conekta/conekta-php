@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerShippingContacts
+ * OrderUpdateFiscalEntityRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CustomerShippingContacts Class Doc Comment
+ * OrderUpdateFiscalEntityRequest Class Doc Comment
  *
  * @category Class
- * @description [Shipping](https://developers.conekta.com/v2.1.0/reference/createcustomershippingcontacts) details, required in case of sending a shipping. If we do not receive a shipping_contact on the order, the default shipping_contact of the customer will be used.
+ * @description Fiscal entity of the order, Currently it is a purely informative field
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderUpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_shipping_contacts';
+    protected static $openAPIModelName = 'order_update_fiscal_entity_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
+        'address' => '\Conekta\Model\FiscalEntityAddress',
+        'email' => 'string',
+        'name' => 'string',
+        'metadata' => 'array<string,mixed>',
         'phone' => 'string',
-        'receiver' => 'string',
-        'between_streets' => 'string',
-        'address' => '\Conekta\Model\CustomerShippingContactsAddress',
-        'parent_id' => 'string',
-        'default' => 'bool',
-        'deleted' => 'bool',
-        'metadata' => 'array<string,mixed>'
+        'tax_id' => 'string'
     ];
 
     /**
@@ -77,14 +75,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phone' => null,
-        'receiver' => null,
-        'between_streets' => null,
         'address' => null,
-        'parent_id' => null,
-        'default' => null,
-        'deleted' => null,
-        'metadata' => null
+        'email' => null,
+        'name' => null,
+        'metadata' => null,
+        'phone' => null,
+        'tax_id' => null
     ];
 
     /**
@@ -93,14 +89,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phone' => false,
-		'receiver' => false,
-		'between_streets' => false,
-		'address' => false,
-		'parent_id' => false,
-		'default' => true,
-		'deleted' => true,
-		'metadata' => false
+        'address' => false,
+		'email' => false,
+		'name' => true,
+		'metadata' => false,
+		'phone' => false,
+		'tax_id' => true
     ];
 
     /**
@@ -189,14 +183,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'phone' => 'phone',
-        'receiver' => 'receiver',
-        'between_streets' => 'between_streets',
         'address' => 'address',
-        'parent_id' => 'parent_id',
-        'default' => 'default',
-        'deleted' => 'deleted',
-        'metadata' => 'metadata'
+        'email' => 'email',
+        'name' => 'name',
+        'metadata' => 'metadata',
+        'phone' => 'phone',
+        'tax_id' => 'tax_id'
     ];
 
     /**
@@ -205,14 +197,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'phone' => 'setPhone',
-        'receiver' => 'setReceiver',
-        'between_streets' => 'setBetweenStreets',
         'address' => 'setAddress',
-        'parent_id' => 'setParentId',
-        'default' => 'setDefault',
-        'deleted' => 'setDeleted',
-        'metadata' => 'setMetadata'
+        'email' => 'setEmail',
+        'name' => 'setName',
+        'metadata' => 'setMetadata',
+        'phone' => 'setPhone',
+        'tax_id' => 'setTaxId'
     ];
 
     /**
@@ -221,14 +211,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'phone' => 'getPhone',
-        'receiver' => 'getReceiver',
-        'between_streets' => 'getBetweenStreets',
         'address' => 'getAddress',
-        'parent_id' => 'getParentId',
-        'default' => 'getDefault',
-        'deleted' => 'getDeleted',
-        'metadata' => 'getMetadata'
+        'email' => 'getEmail',
+        'name' => 'getName',
+        'metadata' => 'getMetadata',
+        'phone' => 'getPhone',
+        'tax_id' => 'getTaxId'
     ];
 
     /**
@@ -288,14 +276,12 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('receiver', $data ?? [], null);
-        $this->setIfExists('between_streets', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
-        $this->setIfExists('default', $data ?? [], null);
-        $this->setIfExists('deleted', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
+        $this->setIfExists('tax_id', $data ?? [], null);
     }
 
     /**
@@ -348,90 +334,9 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets phone
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string|null $phone Phone contact
-     *
-     * @return self
-     */
-    public function setPhone($phone)
-    {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets receiver
-     *
-     * @return string|null
-     */
-    public function getReceiver()
-    {
-        return $this->container['receiver'];
-    }
-
-    /**
-     * Sets receiver
-     *
-     * @param string|null $receiver Name of the person who will receive the order
-     *
-     * @return self
-     */
-    public function setReceiver($receiver)
-    {
-        if (is_null($receiver)) {
-            throw new \InvalidArgumentException('non-nullable receiver cannot be null');
-        }
-        $this->container['receiver'] = $receiver;
-
-        return $this;
-    }
-
-    /**
-     * Gets between_streets
-     *
-     * @return string|null
-     */
-    public function getBetweenStreets()
-    {
-        return $this->container['between_streets'];
-    }
-
-    /**
-     * Sets between_streets
-     *
-     * @param string|null $between_streets The street names between which the order will be delivered.
-     *
-     * @return self
-     */
-    public function setBetweenStreets($between_streets)
-    {
-        if (is_null($between_streets)) {
-            throw new \InvalidArgumentException('non-nullable between_streets cannot be null');
-        }
-        $this->container['between_streets'] = $between_streets;
-
-        return $this;
-    }
-
-    /**
      * Gets address
      *
-     * @return \Conekta\Model\CustomerShippingContactsAddress
+     * @return \Conekta\Model\FiscalEntityAddress
      */
     public function getAddress()
     {
@@ -441,7 +346,7 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets address
      *
-     * @param \Conekta\Model\CustomerShippingContactsAddress $address address
+     * @param \Conekta\Model\FiscalEntityAddress $address address
      *
      * @return self
      */
@@ -456,96 +361,62 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets parent_id
+     * Gets email
      *
      * @return string|null
      */
-    public function getParentId()
+    public function getEmail()
     {
-        return $this->container['parent_id'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets parent_id
+     * Sets email
      *
-     * @param string|null $parent_id parent_id
+     * @param string|null $email Email of the fiscal entity
      *
      * @return self
      */
-    public function setParentId($parent_id)
+    public function setEmail($email)
     {
-        if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        if (is_null($email)) {
+            throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
-        $this->container['parent_id'] = $parent_id;
+        $this->container['email'] = $email;
 
         return $this;
     }
 
     /**
-     * Gets default
+     * Gets name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getDefault()
+    public function getName()
     {
-        return $this->container['default'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets default
+     * Sets name
      *
-     * @param bool|null $default default
+     * @param string|null $name Name of the fiscal entity
      *
      * @return self
      */
-    public function setDefault($default)
+    public function setName($name)
     {
-        if (is_null($default)) {
-            array_push($this->openAPINullablesSetToNull, 'default');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('default', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['default'] = $default;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted
-     *
-     * @return bool|null
-     */
-    public function getDeleted()
-    {
-        return $this->container['deleted'];
-    }
-
-    /**
-     * Sets deleted
-     *
-     * @param bool|null $deleted deleted
-     *
-     * @return self
-     */
-    public function setDeleted($deleted)
-    {
-        if (is_null($deleted)) {
-            array_push($this->openAPINullablesSetToNull, 'deleted');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deleted', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['deleted'] = $deleted;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -563,7 +434,7 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets metadata
      *
-     * @param array<string,mixed>|null $metadata Metadata associated with the shipping contact
+     * @param array<string,mixed>|null $metadata Metadata associated with the fiscal entity
      *
      * @return self
      */
@@ -574,9 +445,70 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         }
 
         if ((count($metadata) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $metadata when calling CustomerShippingContacts., number of items must be less than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for $metadata when calling OrderUpdateFiscalEntityRequest., number of items must be less than or equal to 100.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string|null $phone Phone of the fiscal entity
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        }
+        $this->container['phone'] = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_id
+     *
+     * @return string|null
+     */
+    public function getTaxId()
+    {
+        return $this->container['tax_id'];
+    }
+
+    /**
+     * Sets tax_id
+     *
+     * @param string|null $tax_id Tax ID of the fiscal entity
+     *
+     * @return self
+     */
+    public function setTaxId($tax_id)
+    {
+        if (is_null($tax_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax_id'] = $tax_id;
 
         return $this;
     }

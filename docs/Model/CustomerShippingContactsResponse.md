@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **default** | **bool** |  | [optional]
 **id** | **string** |  | [optional]
 **created_at** | **int** |  | [optional]
+**metadata** | **array<string,mixed>** | Metadata associated with the shipping contact | [optional]
 **object** | **string** |  | [optional]
 **deleted** | **bool** |  | [optional]
 

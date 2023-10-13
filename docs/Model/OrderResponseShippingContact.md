@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **address** | [**\Conekta\Model\CustomerShippingContactsResponseAddress**](CustomerShippingContactsResponseAddress.md) |  | [optional]
 **parent_id** | **string** |  | [optional]
 **default** | **bool** |  | [optional]
+**metadata** | **array<string,mixed>** | Metadata associated with the shipping contact | [optional]
 **deleted** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

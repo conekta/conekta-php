@@ -60,7 +60,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'address' => '\Conekta\Model\FiscalEntityAddress',
+        'email' => 'string',
+        'metadata' => 'array<string,mixed>',
         'name' => 'string',
+        'phone' => 'string',
         'tax_id' => 'string'
     ];
 
@@ -73,7 +76,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'address' => null,
+        'email' => null,
+        'metadata' => null,
         'name' => null,
+        'phone' => null,
         'tax_id' => null
     ];
 
@@ -84,7 +90,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'address' => false,
+		'email' => false,
+		'metadata' => false,
 		'name' => true,
+		'phone' => false,
 		'tax_id' => true
     ];
 
@@ -175,7 +184,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'address' => 'address',
+        'email' => 'email',
+        'metadata' => 'metadata',
         'name' => 'name',
+        'phone' => 'phone',
         'tax_id' => 'tax_id'
     ];
 
@@ -186,7 +198,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'address' => 'setAddress',
+        'email' => 'setEmail',
+        'metadata' => 'setMetadata',
         'name' => 'setName',
+        'phone' => 'setPhone',
         'tax_id' => 'setTaxId'
     ];
 
@@ -197,7 +212,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'address' => 'getAddress',
+        'email' => 'getEmail',
+        'metadata' => 'getMetadata',
         'name' => 'getName',
+        'phone' => 'getPhone',
         'tax_id' => 'getTaxId'
     ];
 
@@ -259,7 +277,10 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('tax_id', $data ?? [], null);
     }
 
@@ -290,6 +311,13 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -308,7 +336,7 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets address
      *
-     * @return \Conekta\Model\FiscalEntityAddress|null
+     * @return \Conekta\Model\FiscalEntityAddress
      */
     public function getAddress()
     {
@@ -318,7 +346,7 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets address
      *
-     * @param \Conekta\Model\FiscalEntityAddress|null $address address
+     * @param \Conekta\Model\FiscalEntityAddress $address address
      *
      * @return self
      */
@@ -328,6 +356,64 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
         $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     *
+     * @param string|null $email Email of the fiscal entity
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        if (is_null($email)) {
+            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        }
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the fiscal entity
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling OrderFiscalEntityRequest., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -362,6 +448,33 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
             }
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        return $this->container['phone'];
+    }
+
+    /**
+     * Sets phone
+     *
+     * @param string|null $phone Phone of the fiscal entity
+     *
+     * @return self
+     */
+    public function setPhone($phone)
+    {
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        }
+        $this->container['phone'] = $phone;
 
         return $this;
     }

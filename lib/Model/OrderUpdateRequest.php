@@ -64,7 +64,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\OrderUpdateRequestCustomerInfo',
         'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]',
-        'fiscal_entity' => '\Conekta\Model\OrderFiscalEntityRequest',
+        'fiscal_entity' => '\Conekta\Model\OrderUpdateFiscalEntityRequest',
         'line_items' => '\Conekta\Model\Product[]',
         'metadata' => 'array<string,string>',
         'pre_authorize' => 'bool',
@@ -106,7 +106,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 		'currency' => false,
 		'customer_info' => false,
 		'discount_lines' => false,
-		'fiscal_entity' => true,
+		'fiscal_entity' => false,
 		'line_items' => false,
 		'metadata' => false,
 		'pre_authorize' => false,
@@ -514,7 +514,7 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets fiscal_entity
      *
-     * @return \Conekta\Model\OrderFiscalEntityRequest|null
+     * @return \Conekta\Model\OrderUpdateFiscalEntityRequest|null
      */
     public function getFiscalEntity()
     {
@@ -524,21 +524,14 @@ class OrderUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets fiscal_entity
      *
-     * @param \Conekta\Model\OrderFiscalEntityRequest|null $fiscal_entity fiscal_entity
+     * @param \Conekta\Model\OrderUpdateFiscalEntityRequest|null $fiscal_entity fiscal_entity
      *
      * @return self
      */
     public function setFiscalEntity($fiscal_entity)
     {
         if (is_null($fiscal_entity)) {
-            array_push($this->openAPINullablesSetToNull, 'fiscal_entity');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fiscal_entity', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable fiscal_entity cannot be null');
         }
         $this->container['fiscal_entity'] = $fiscal_entity;
 

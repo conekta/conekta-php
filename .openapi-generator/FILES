@@ -166,6 +166,7 @@ docs/Model/OrderResponseProductsAllOf.md
 docs/Model/OrderResponseShippingContact.md
 docs/Model/OrderResponseShippingContactAllOf.md
 docs/Model/OrderTaxRequest.md
+docs/Model/OrderUpdateFiscalEntityRequest.md
 docs/Model/OrderUpdateRequest.md
 docs/Model/OrderUpdateRequestCustomerInfo.md
 docs/Model/OrdersResponse.md
@@ -398,6 +399,7 @@ lib/Model/OrderResponseProductsAllOf.php
 lib/Model/OrderResponseShippingContact.php
 lib/Model/OrderResponseShippingContactAllOf.php
 lib/Model/OrderTaxRequest.php
+lib/Model/OrderUpdateFiscalEntityRequest.php
 lib/Model/OrderUpdateRequest.php
 lib/Model/OrderUpdateRequestCustomerInfo.php
 lib/Model/OrdersResponse.php

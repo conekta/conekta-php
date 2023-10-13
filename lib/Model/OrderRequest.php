@@ -110,7 +110,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 		'currency' => false,
 		'customer_info' => false,
 		'discount_lines' => false,
-		'fiscal_entity' => true,
+		'fiscal_entity' => false,
 		'line_items' => false,
 		'metadata' => false,
 		'needs_shipping_contact' => false,
@@ -558,14 +558,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFiscalEntity($fiscal_entity)
     {
         if (is_null($fiscal_entity)) {
-            array_push($this->openAPINullablesSetToNull, 'fiscal_entity');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fiscal_entity', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable fiscal_entity cannot be null');
         }
         $this->container['fiscal_entity'] = $fiscal_entity;
 
