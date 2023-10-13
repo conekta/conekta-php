@@ -30,12 +30,9 @@ namespace Conekta\Test\Api;
 
 use Conekta\Api\OrdersApi;
 use \Conekta\Configuration;
-use \Conekta\ApiException;
 use Conekta\Model\OrderRefundRequest;
 use Conekta\Model\OrderRequest;
-use Conekta\Model\OrderResponse;
 use Conekta\Model\OrderUpdateRequest;
-use \Conekta\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -104,10 +101,56 @@ class OrdersApiTest extends TestCase
     {
         $accept_language = 'es';
         $rq = new OrderRequest([
-            'currency' => 'MXN'
+            'currency' => 'MXN',
+            'customer_info' => [
+               'customer_id' => 'cus_2tKcHxhTz7xU5SymF'
+            ],
+            'fiscal_entity' => [
+                'tax_id' => '324234234',
+                'name' => 'Juan Perez',
+                'email' => 'm@gmail.com',
+                'phone' => '3143159054',
+                'address' => [
+                    'street1' => 'avenida siempre viva',
+                    "street2" =>"fake street",
+                    'city' => 'Ciudad de Mexico',
+                    'state' => 'Ciudad de Mexico',
+                    'country' => 'MX',
+                    'postal_code' => '06100'
+                ],
+                'metadata' => [
+                    'region_id' => '935',
+                    'company' => 'conekta'
+                ]
+            ],
+            'shipping_contact' => [
+                'phone' => '3143159054',
+                'receiver' => 'Marvin Fuller',
+                'between_streets' => 'Ackerman Crescent',
+                'address' => [
+                    'street1' => 'avenida siempre viva',
+                    "street2" =>"fake street",
+                    'city' => 'Ciudad de Mexico',
+                    'state' => 'Ciudad de Mexico',
+                    'country' => 'MX',
+                    'postal_code' => '06100'
+                ],
+                'metadata' => [
+                    'region_id' => '935',
+                    'company' => 'conekta'
+                ]
+            ]
         ]);
         $result = self::$apiInstance->createOrder($rq, $accept_language);
-        $this->assertNotEmpty($result, 'expected not empty result');
+
+        $this->assertTrue($result->getLivemode());
+        $this->assertEquals($rq->getCurrency(), $result->getCurrency(), 'expected currency to be the same');
+        $this->assertEquals(2000, $result->getAmount(), 'expected amount to be the same');
+        $this->assertEquals('MXN', $result->getCurrency(), 'expected currency to be the same');
+        $this->assertEquals($rq->getFiscalEntity()["metadata"], $result->getFiscalEntity()["metadata"], 'expected metadata to be the same');
+        $this->assertEquals($rq->getShippingContact()["metadata"], $result->getShippingContact()["metadata"], 'expected metadata to be the same');
+        $this->assertEquals($rq->getFiscalEntity()["email"], $result->getFiscalEntity()["email"], 'expected metadata to be the same');
+        $this->assertEquals($rq->getFiscalEntity()["phone"], $result->getFiscalEntity()["phone"], 'expected metadata to be the same');
     }
 
     /**
