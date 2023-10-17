@@ -64,6 +64,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\OrderRequestCustomerInfo',
         'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]',
+        'fiscal_entity' => '\Conekta\Model\OrderFiscalEntityRequest',
         'line_items' => '\Conekta\Model\Product[]',
         'metadata' => 'array<string,mixed>',
         'needs_shipping_contact' => 'bool',
@@ -87,6 +88,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'customer_info' => null,
         'discount_lines' => null,
+        'fiscal_entity' => null,
         'line_items' => null,
         'metadata' => null,
         'needs_shipping_contact' => null,
@@ -108,6 +110,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 		'currency' => false,
 		'customer_info' => false,
 		'discount_lines' => false,
+		'fiscal_entity' => false,
 		'line_items' => false,
 		'metadata' => false,
 		'needs_shipping_contact' => false,
@@ -209,6 +212,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'customer_info' => 'customer_info',
         'discount_lines' => 'discount_lines',
+        'fiscal_entity' => 'fiscal_entity',
         'line_items' => 'line_items',
         'metadata' => 'metadata',
         'needs_shipping_contact' => 'needs_shipping_contact',
@@ -230,6 +234,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'customer_info' => 'setCustomerInfo',
         'discount_lines' => 'setDiscountLines',
+        'fiscal_entity' => 'setFiscalEntity',
         'line_items' => 'setLineItems',
         'metadata' => 'setMetadata',
         'needs_shipping_contact' => 'setNeedsShippingContact',
@@ -251,6 +256,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'customer_info' => 'getCustomerInfo',
         'discount_lines' => 'getDiscountLines',
+        'fiscal_entity' => 'getFiscalEntity',
         'line_items' => 'getLineItems',
         'metadata' => 'getMetadata',
         'needs_shipping_contact' => 'getNeedsShippingContact',
@@ -323,6 +329,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('customer_info', $data ?? [], null);
         $this->setIfExists('discount_lines', $data ?? [], null);
+        $this->setIfExists('fiscal_entity', $data ?? [], null);
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('needs_shipping_contact', $data ?? [], null);
@@ -527,6 +534,33 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable discount_lines cannot be null');
         }
         $this->container['discount_lines'] = $discount_lines;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiscal_entity
+     *
+     * @return \Conekta\Model\OrderFiscalEntityRequest|null
+     */
+    public function getFiscalEntity()
+    {
+        return $this->container['fiscal_entity'];
+    }
+
+    /**
+     * Sets fiscal_entity
+     *
+     * @param \Conekta\Model\OrderFiscalEntityRequest|null $fiscal_entity fiscal_entity
+     *
+     * @return self
+     */
+    public function setFiscalEntity($fiscal_entity)
+    {
+        if (is_null($fiscal_entity)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_entity cannot be null');
+        }
+        $this->container['fiscal_entity'] = $fiscal_entity;
 
         return $this;
     }

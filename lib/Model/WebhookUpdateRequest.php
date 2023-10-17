@@ -61,7 +61,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'url' => 'string',
         'synchronous' => 'bool',
-        'subscribed_events' => 'string[]'
+        'events' => 'string[]'
     ];
 
     /**
@@ -74,7 +74,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'url' => 'url',
         'synchronous' => null,
-        'subscribed_events' => null
+        'events' => null
     ];
 
     /**
@@ -85,7 +85,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'url' => false,
 		'synchronous' => false,
-		'subscribed_events' => false
+		'events' => false
     ];
 
     /**
@@ -176,7 +176,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'url' => 'url',
         'synchronous' => 'synchronous',
-        'subscribed_events' => 'subscribed_events'
+        'events' => 'events'
     ];
 
     /**
@@ -187,7 +187,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'url' => 'setUrl',
         'synchronous' => 'setSynchronous',
-        'subscribed_events' => 'setSubscribedEvents'
+        'events' => 'setEvents'
     ];
 
     /**
@@ -198,7 +198,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'url' => 'getUrl',
         'synchronous' => 'getSynchronous',
-        'subscribed_events' => 'getSubscribedEvents'
+        'events' => 'getEvents'
     ];
 
     /**
@@ -260,7 +260,7 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('synchronous', $data ?? [], false);
-        $this->setIfExists('subscribed_events', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
     }
 
     /**
@@ -372,28 +372,28 @@ class WebhookUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets subscribed_events
+     * Gets events
      *
      * @return string[]|null
      */
-    public function getSubscribedEvents()
+    public function getEvents()
     {
-        return $this->container['subscribed_events'];
+        return $this->container['events'];
     }
 
     /**
-     * Sets subscribed_events
+     * Sets events
      *
-     * @param string[]|null $subscribed_events subscribed_events
+     * @param string[]|null $events events
      *
      * @return self
      */
-    public function setSubscribedEvents($subscribed_events)
+    public function setEvents($events)
     {
-        if (is_null($subscribed_events)) {
-            throw new \InvalidArgumentException('non-nullable subscribed_events cannot be null');
+        if (is_null($events)) {
+            throw new \InvalidArgumentException('non-nullable events cannot be null');
         }
-        $this->container['subscribed_events'] = $subscribed_events;
+        $this->container['events'] = $events;
 
         return $this;
     }

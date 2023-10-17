@@ -67,6 +67,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         'address' => '\Conekta\Model\CustomerShippingContactsResponseAddress',
         'parent_id' => 'string',
         'default' => 'bool',
+        'metadata' => 'array<string,mixed>',
         'deleted' => 'bool'
     ];
 
@@ -87,6 +88,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         'address' => null,
         'parent_id' => null,
         'default' => null,
+        'metadata' => null,
         'deleted' => null
     ];
 
@@ -105,6 +107,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
 		'address' => false,
 		'parent_id' => false,
 		'default' => false,
+		'metadata' => false,
 		'deleted' => false
     ];
 
@@ -203,6 +206,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         'address' => 'address',
         'parent_id' => 'parent_id',
         'default' => 'default',
+        'metadata' => 'metadata',
         'deleted' => 'deleted'
     ];
 
@@ -221,6 +225,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         'address' => 'setAddress',
         'parent_id' => 'setParentId',
         'default' => 'setDefault',
+        'metadata' => 'setMetadata',
         'deleted' => 'setDeleted'
     ];
 
@@ -239,6 +244,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         'address' => 'getAddress',
         'parent_id' => 'getParentId',
         'default' => 'getDefault',
+        'metadata' => 'getMetadata',
         'deleted' => 'getDeleted'
     ];
 
@@ -308,6 +314,7 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('default', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
     }
 
@@ -337,6 +344,10 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
 
         return $invalidProperties;
     }
@@ -599,6 +610,37 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable default cannot be null');
         }
         $this->container['default'] = $default;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the shipping contact
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling OrderResponseShippingContact., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

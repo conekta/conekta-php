@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerInfoResponse
+ * ChargeUpdateRequest
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CustomerInfoResponse Class Doc Comment
+ * ChargeUpdateRequest Class Doc Comment
  *
  * @category Class
+ * @description requested field for update a charge
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargeUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_info_response';
+    protected static $openAPIModelName = 'charge_update_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_custom_reference' => 'string',
-        'name' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
-        'corporate' => 'bool',
-        'object' => 'string'
+        'reference_id' => 'string'
     ];
 
     /**
@@ -74,12 +70,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_custom_reference' => null,
-        'name' => null,
-        'email' => 'email',
-        'phone' => null,
-        'corporate' => null,
-        'object' => null
+        'reference_id' => null
     ];
 
     /**
@@ -88,12 +79,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_custom_reference' => true,
-		'name' => false,
-		'email' => false,
-		'phone' => false,
-		'corporate' => false,
-		'object' => false
+        'reference_id' => false
     ];
 
     /**
@@ -182,12 +168,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_custom_reference' => 'customer_custom_reference',
-        'name' => 'name',
-        'email' => 'email',
-        'phone' => 'phone',
-        'corporate' => 'corporate',
-        'object' => 'object'
+        'reference_id' => 'reference_id'
     ];
 
     /**
@@ -196,12 +177,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'customer_custom_reference' => 'setCustomerCustomReference',
-        'name' => 'setName',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
-        'corporate' => 'setCorporate',
-        'object' => 'setObject'
+        'reference_id' => 'setReferenceId'
     ];
 
     /**
@@ -210,12 +186,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'customer_custom_reference' => 'getCustomerCustomReference',
-        'name' => 'getName',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
-        'corporate' => 'getCorporate',
-        'object' => 'getObject'
+        'reference_id' => 'getReferenceId'
     ];
 
     /**
@@ -275,12 +246,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('customer_custom_reference', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('corporate', $data ?? [], false);
-        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('reference_id', $data ?? [], null);
     }
 
     /**
@@ -326,170 +292,28 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets customer_custom_reference
+     * Gets reference_id
      *
      * @return string|null
      */
-    public function getCustomerCustomReference()
+    public function getReferenceId()
     {
-        return $this->container['customer_custom_reference'];
+        return $this->container['reference_id'];
     }
 
     /**
-     * Sets customer_custom_reference
+     * Sets reference_id
      *
-     * @param string|null $customer_custom_reference Custom reference
+     * @param string|null $reference_id custom reference id
      *
      * @return self
      */
-    public function setCustomerCustomReference($customer_custom_reference)
+    public function setReferenceId($reference_id)
     {
-        if (is_null($customer_custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customer_custom_reference', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($reference_id)) {
+            throw new \InvalidArgumentException('non-nullable reference_id cannot be null');
         }
-        $this->container['customer_custom_reference'] = $customer_custom_reference;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets email
-     *
-     * @return string|null
-     */
-    public function getEmail()
-    {
-        return $this->container['email'];
-    }
-
-    /**
-     * Sets email
-     *
-     * @param string|null $email email
-     *
-     * @return self
-     */
-    public function setEmail($email)
-    {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
-        }
-        $this->container['email'] = $email;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string|null $phone phone
-     *
-     * @return self
-     */
-    public function setPhone($phone)
-    {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets corporate
-     *
-     * @return bool|null
-     */
-    public function getCorporate()
-    {
-        return $this->container['corporate'];
-    }
-
-    /**
-     * Sets corporate
-     *
-     * @param bool|null $corporate corporate
-     *
-     * @return self
-     */
-    public function setCorporate($corporate)
-    {
-        if (is_null($corporate)) {
-            throw new \InvalidArgumentException('non-nullable corporate cannot be null');
-        }
-        $this->container['corporate'] = $corporate;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object object
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
+        $this->container['reference_id'] = $reference_id;
 
         return $this;
     }

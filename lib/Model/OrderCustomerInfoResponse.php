@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerInfoResponse
+ * OrderCustomerInfoResponse
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CustomerInfoResponse Class Doc Comment
+ * OrderCustomerInfoResponse Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderCustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_info_response';
+    protected static $openAPIModelName = 'order_customer_info_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

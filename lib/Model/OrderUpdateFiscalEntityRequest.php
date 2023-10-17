@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerInfoResponse
+ * OrderUpdateFiscalEntityRequest
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CustomerInfoResponse Class Doc Comment
+ * OrderUpdateFiscalEntityRequest Class Doc Comment
  *
  * @category Class
+ * @description Fiscal entity of the order, Currently it is a purely informative field
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderUpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_info_response';
+    protected static $openAPIModelName = 'order_update_fiscal_entity_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_custom_reference' => 'string',
-        'name' => 'string',
+        'address' => '\Conekta\Model\FiscalEntityAddress',
         'email' => 'string',
+        'name' => 'string',
+        'metadata' => 'array<string,mixed>',
         'phone' => 'string',
-        'corporate' => 'bool',
-        'object' => 'string'
+        'tax_id' => 'string'
     ];
 
     /**
@@ -74,12 +75,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_custom_reference' => null,
+        'address' => null,
+        'email' => null,
         'name' => null,
-        'email' => 'email',
+        'metadata' => null,
         'phone' => null,
-        'corporate' => null,
-        'object' => null
+        'tax_id' => null
     ];
 
     /**
@@ -88,12 +89,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_custom_reference' => true,
-		'name' => false,
+        'address' => false,
 		'email' => false,
+		'name' => true,
+		'metadata' => false,
 		'phone' => false,
-		'corporate' => false,
-		'object' => false
+		'tax_id' => true
     ];
 
     /**
@@ -182,12 +183,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_custom_reference' => 'customer_custom_reference',
-        'name' => 'name',
+        'address' => 'address',
         'email' => 'email',
+        'name' => 'name',
+        'metadata' => 'metadata',
         'phone' => 'phone',
-        'corporate' => 'corporate',
-        'object' => 'object'
+        'tax_id' => 'tax_id'
     ];
 
     /**
@@ -196,12 +197,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'customer_custom_reference' => 'setCustomerCustomReference',
-        'name' => 'setName',
+        'address' => 'setAddress',
         'email' => 'setEmail',
+        'name' => 'setName',
+        'metadata' => 'setMetadata',
         'phone' => 'setPhone',
-        'corporate' => 'setCorporate',
-        'object' => 'setObject'
+        'tax_id' => 'setTaxId'
     ];
 
     /**
@@ -210,12 +211,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'customer_custom_reference' => 'getCustomerCustomReference',
-        'name' => 'getName',
+        'address' => 'getAddress',
         'email' => 'getEmail',
+        'name' => 'getName',
+        'metadata' => 'getMetadata',
         'phone' => 'getPhone',
-        'corporate' => 'getCorporate',
-        'object' => 'getObject'
+        'tax_id' => 'getTaxId'
     ];
 
     /**
@@ -275,12 +276,12 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('customer_custom_reference', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('corporate', $data ?? [], false);
-        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('tax_id', $data ?? [], null);
     }
 
     /**
@@ -310,6 +311,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -326,62 +334,28 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets customer_custom_reference
+     * Gets address
      *
-     * @return string|null
+     * @return \Conekta\Model\FiscalEntityAddress
      */
-    public function getCustomerCustomReference()
+    public function getAddress()
     {
-        return $this->container['customer_custom_reference'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets customer_custom_reference
+     * Sets address
      *
-     * @param string|null $customer_custom_reference Custom reference
+     * @param \Conekta\Model\FiscalEntityAddress $address address
      *
      * @return self
      */
-    public function setCustomerCustomReference($customer_custom_reference)
+    public function setAddress($address)
     {
-        if (is_null($customer_custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customer_custom_reference', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $this->container['customer_custom_reference'] = $customer_custom_reference;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
+        $this->container['address'] = $address;
 
         return $this;
     }
@@ -399,7 +373,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets email
      *
-     * @param string|null $email email
+     * @param string|null $email Email of the fiscal entity
      *
      * @return self
      */
@@ -409,6 +383,71 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable email cannot be null');
         }
         $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the fiscal entity
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the fiscal entity
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling OrderUpdateFiscalEntityRequest., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
@@ -426,7 +465,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets phone
      *
-     * @param string|null $phone phone
+     * @param string|null $phone Phone of the fiscal entity
      *
      * @return self
      */
@@ -441,55 +480,35 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets corporate
-     *
-     * @return bool|null
-     */
-    public function getCorporate()
-    {
-        return $this->container['corporate'];
-    }
-
-    /**
-     * Sets corporate
-     *
-     * @param bool|null $corporate corporate
-     *
-     * @return self
-     */
-    public function setCorporate($corporate)
-    {
-        if (is_null($corporate)) {
-            throw new \InvalidArgumentException('non-nullable corporate cannot be null');
-        }
-        $this->container['corporate'] = $corporate;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
+     * Gets tax_id
      *
      * @return string|null
      */
-    public function getObject()
+    public function getTaxId()
     {
-        return $this->container['object'];
+        return $this->container['tax_id'];
     }
 
     /**
-     * Sets object
+     * Sets tax_id
      *
-     * @param string|null $object object
+     * @param string|null $tax_id Tax ID of the fiscal entity
      *
      * @return self
      */
-    public function setObject($object)
+    public function setTaxId($tax_id)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($tax_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tax_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['object'] = $object;
+        $this->container['tax_id'] = $tax_id;
 
         return $this;
     }

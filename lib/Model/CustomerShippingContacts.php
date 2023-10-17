@@ -65,7 +65,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => '\Conekta\Model\CustomerShippingContactsAddress',
         'parent_id' => 'string',
         'default' => 'bool',
-        'deleted' => 'bool'
+        'deleted' => 'bool',
+        'metadata' => 'array<string,mixed>'
     ];
 
     /**
@@ -82,7 +83,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => null,
         'parent_id' => null,
         'default' => null,
-        'deleted' => null
+        'deleted' => null,
+        'metadata' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
 		'address' => false,
 		'parent_id' => false,
 		'default' => true,
-		'deleted' => true
+		'deleted' => true,
+		'metadata' => false
     ];
 
     /**
@@ -192,7 +195,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => 'address',
         'parent_id' => 'parent_id',
         'default' => 'default',
-        'deleted' => 'deleted'
+        'deleted' => 'deleted',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -207,7 +211,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => 'setAddress',
         'parent_id' => 'setParentId',
         'default' => 'setDefault',
-        'deleted' => 'setDeleted'
+        'deleted' => 'setDeleted',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -222,7 +227,8 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => 'getAddress',
         'parent_id' => 'getParentId',
         'default' => 'getDefault',
-        'deleted' => 'getDeleted'
+        'deleted' => 'getDeleted',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -289,6 +295,7 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('default', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -321,6 +328,10 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
         }
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -535,6 +546,37 @@ class CustomerShippingContacts implements ModelInterface, ArrayAccess, \JsonSeri
             }
         }
         $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the shipping contact
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling CustomerShippingContacts., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
