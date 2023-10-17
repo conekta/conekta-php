@@ -29,9 +29,13 @@
 namespace Conekta\Test\Api;
 
 use Conekta\Api\ChargesApi;
+use Conekta\ApiException;
 use \Conekta\Configuration;
 use Conekta\Model\ChargeRequest;
+use Conekta\Model\ChargeUpdateRequest;
 use PHPUnit\Framework\TestCase;
+
+use function PHPSTORM_META\type;
 
 /**
  * ChargesApiTest Class Doc Comment
@@ -81,6 +85,7 @@ class ChargesApiTest extends TestCase
      *
      * Get A List of Charges.
      *
+     * @throws ApiException
      */
     public function testGetCharges()
     {
@@ -94,8 +99,27 @@ class ChargesApiTest extends TestCase
      *
      * Create charge.
      *
+     * @throws ApiException
      */
     public function testOrdersCreateCharge()
+    {
+        $accept_language = 'es';
+        $rq = new ChargeRequest([
+            'payment_method' => [
+                'type' => 'card',
+                'token_id' => 'tok_test_visa_4242',
+                'monthly_installments' => 3
+            ]
+        ]);
+        $result = self::$apiInstance->ordersCreateCharge('ord_2uiGPHDV6Zzribeqy', $rq, $accept_language);
+        $this->assertEquals($result->getOrderId(), "ord_2uiGPHDV6Zzribeqy");
+        $this->assertEquals($result->getMonthlyInstallments(), $rq["payment_method"]["monthly_installments"]);
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testOrdersCreateChargeWithMonthlyInstallments()
     {
         $accept_language = 'es';
         $rq = new ChargeRequest([
@@ -103,5 +127,19 @@ class ChargesApiTest extends TestCase
         ]);
         $result = self::$apiInstance->ordersCreateCharge('ord_2tUigJ8DgBhbp6w5D', $rq, $accept_language);
         $this->assertNotEmpty($result, 'expected not empty result');
+    }
+
+    /**
+     * @throws ApiException
+     */
+    public function testOrdersUpdateCharge(){
+        $accept_language = 'es';
+        $request = new ChargeUpdateRequest([
+            'reference_id' => "762346234"
+        ]);
+        $result = self::$apiInstance->updateCharge('6524722f28c7ba0016a5b17d', $request, $accept_language);
+
+        $this->assertEquals("6524722f28c7ba0016a5b17d", $result->getId());
+        $this->assertEquals($request->getReferenceId(), $result->getReferenceId());
     }
 }

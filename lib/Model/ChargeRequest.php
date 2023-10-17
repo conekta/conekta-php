@@ -60,7 +60,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'amount' => 'int',
-        'monthly_installments' => 'int',
         'payment_method' => '\Conekta\Model\ChargeRequestPaymentMethod',
         'reference_id' => 'string'
     ];
@@ -74,7 +73,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'amount' => null,
-        'monthly_installments' => 'int8',
         'payment_method' => null,
         'reference_id' => null
     ];
@@ -86,7 +84,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'amount' => false,
-		'monthly_installments' => false,
 		'payment_method' => false,
 		'reference_id' => false
     ];
@@ -178,7 +175,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'monthly_installments' => 'monthly_installments',
         'payment_method' => 'payment_method',
         'reference_id' => 'reference_id'
     ];
@@ -190,7 +186,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'monthly_installments' => 'setMonthlyInstallments',
         'payment_method' => 'setPaymentMethod',
         'reference_id' => 'setReferenceId'
     ];
@@ -202,7 +197,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'monthly_installments' => 'getMonthlyInstallments',
         'payment_method' => 'getPaymentMethod',
         'reference_id' => 'getReferenceId'
     ];
@@ -265,7 +259,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('monthly_installments', $data ?? [], null);
         $this->setIfExists('payment_method', $data ?? [], null);
         $this->setIfExists('reference_id', $data ?? [], null);
     }
@@ -338,33 +331,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly_installments
-     *
-     * @return int|null
-     */
-    public function getMonthlyInstallments()
-    {
-        return $this->container['monthly_installments'];
-    }
-
-    /**
-     * Sets monthly_installments
-     *
-     * @param int|null $monthly_installments How many months without interest to apply, it can be 3, 6, 9, 12 or 18
-     *
-     * @return self
-     */
-    public function setMonthlyInstallments($monthly_installments)
-    {
-        if (is_null($monthly_installments)) {
-            throw new \InvalidArgumentException('non-nullable monthly_installments cannot be null');
-        }
-        $this->container['monthly_installments'] = $monthly_installments;
 
         return $this;
     }

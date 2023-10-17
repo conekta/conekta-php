@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerInfoResponse
+ * FiscalEntityAddress
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CustomerInfoResponse Class Doc Comment
+ * FiscalEntityAddress Class Doc Comment
  *
  * @category Class
+ * @description Address of the fiscal entity
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class FiscalEntityAddress implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_info_response';
+    protected static $openAPIModelName = 'fiscal_entity_address';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_custom_reference' => 'string',
-        'name' => 'string',
-        'email' => 'string',
-        'phone' => 'string',
-        'corporate' => 'bool',
-        'object' => 'string'
+        'street1' => 'string',
+        'street2' => 'string',
+        'postal_code' => 'string',
+        'city' => 'string',
+        'state' => 'string',
+        'country' => 'string',
+        'external_number' => 'string'
     ];
 
     /**
@@ -74,12 +76,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_custom_reference' => null,
-        'name' => null,
-        'email' => 'email',
-        'phone' => null,
-        'corporate' => null,
-        'object' => null
+        'street1' => null,
+        'street2' => null,
+        'postal_code' => null,
+        'city' => null,
+        'state' => null,
+        'country' => null,
+        'external_number' => null
     ];
 
     /**
@@ -88,12 +91,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_custom_reference' => true,
-		'name' => false,
-		'email' => false,
-		'phone' => false,
-		'corporate' => false,
-		'object' => false
+        'street1' => false,
+		'street2' => true,
+		'postal_code' => false,
+		'city' => false,
+		'state' => false,
+		'country' => false,
+		'external_number' => false
     ];
 
     /**
@@ -182,12 +186,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_custom_reference' => 'customer_custom_reference',
-        'name' => 'name',
-        'email' => 'email',
-        'phone' => 'phone',
-        'corporate' => 'corporate',
-        'object' => 'object'
+        'street1' => 'street1',
+        'street2' => 'street2',
+        'postal_code' => 'postal_code',
+        'city' => 'city',
+        'state' => 'state',
+        'country' => 'country',
+        'external_number' => 'external_number'
     ];
 
     /**
@@ -196,12 +201,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'customer_custom_reference' => 'setCustomerCustomReference',
-        'name' => 'setName',
-        'email' => 'setEmail',
-        'phone' => 'setPhone',
-        'corporate' => 'setCorporate',
-        'object' => 'setObject'
+        'street1' => 'setStreet1',
+        'street2' => 'setStreet2',
+        'postal_code' => 'setPostalCode',
+        'city' => 'setCity',
+        'state' => 'setState',
+        'country' => 'setCountry',
+        'external_number' => 'setExternalNumber'
     ];
 
     /**
@@ -210,12 +216,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'customer_custom_reference' => 'getCustomerCustomReference',
-        'name' => 'getName',
-        'email' => 'getEmail',
-        'phone' => 'getPhone',
-        'corporate' => 'getCorporate',
-        'object' => 'getObject'
+        'street1' => 'getStreet1',
+        'street2' => 'getStreet2',
+        'postal_code' => 'getPostalCode',
+        'city' => 'getCity',
+        'state' => 'getState',
+        'country' => 'getCountry',
+        'external_number' => 'getExternalNumber'
     ];
 
     /**
@@ -275,12 +282,13 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('customer_custom_reference', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('corporate', $data ?? [], false);
-        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('street1', $data ?? [], null);
+        $this->setIfExists('street2', $data ?? [], null);
+        $this->setIfExists('postal_code', $data ?? [], null);
+        $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('external_number', $data ?? [], null);
     }
 
     /**
@@ -310,6 +318,21 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['street1'] === null) {
+            $invalidProperties[] = "'street1' can't be null";
+        }
+        if ($this->container['postal_code'] === null) {
+            $invalidProperties[] = "'postal_code' can't be null";
+        }
+        if ($this->container['city'] === null) {
+            $invalidProperties[] = "'city' can't be null";
+        }
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['external_number'] === null) {
+            $invalidProperties[] = "'external_number' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -326,170 +349,197 @@ class CustomerInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets customer_custom_reference
+     * Gets street1
      *
-     * @return string|null
+     * @return string
      */
-    public function getCustomerCustomReference()
+    public function getStreet1()
     {
-        return $this->container['customer_custom_reference'];
+        return $this->container['street1'];
     }
 
     /**
-     * Sets customer_custom_reference
+     * Sets street1
      *
-     * @param string|null $customer_custom_reference Custom reference
+     * @param string $street1 Street name and number
      *
      * @return self
      */
-    public function setCustomerCustomReference($customer_custom_reference)
+    public function setStreet1($street1)
     {
-        if (is_null($customer_custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
+        if (is_null($street1)) {
+            throw new \InvalidArgumentException('non-nullable street1 cannot be null');
+        }
+        $this->container['street1'] = $street1;
+
+        return $this;
+    }
+
+    /**
+     * Gets street2
+     *
+     * @return string|null
+     */
+    public function getStreet2()
+    {
+        return $this->container['street2'];
+    }
+
+    /**
+     * Sets street2
+     *
+     * @param string|null $street2 Street name and number
+     *
+     * @return self
+     */
+    public function setStreet2($street2)
+    {
+        if (is_null($street2)) {
+            array_push($this->openAPINullablesSetToNull, 'street2');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customer_custom_reference', $nullablesSetToNull);
+            $index = array_search('street2', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['customer_custom_reference'] = $customer_custom_reference;
+        $this->container['street2'] = $street2;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets postal_code
+     *
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string $postal_code Postal code
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        if (is_null($postal_code)) {
+            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
+        }
+        $this->container['postal_code'] = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->container['city'];
+    }
+
+    /**
+     * Sets city
+     *
+     * @param string $city City
+     *
+     * @return self
+     */
+    public function setCity($city)
+    {
+        if (is_null($city)) {
+            throw new \InvalidArgumentException('non-nullable city cannot be null');
+        }
+        $this->container['city'] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
      *
      * @return string|null
      */
-    public function getName()
+    public function getState()
     {
-        return $this->container['name'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets name
+     * Sets state
      *
-     * @param string|null $name name
+     * @param string|null $state State
      *
      * @return self
      */
-    public function setName($name)
+    public function setState($state)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['state'] = $state;
 
         return $this;
     }
 
     /**
-     * Gets email
+     * Gets country
      *
-     * @return string|null
+     * @return string
      */
-    public function getEmail()
+    public function getCountry()
     {
-        return $this->container['email'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets email
+     * Sets country
      *
-     * @param string|null $email email
+     * @param string $country this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setCountry($country)
     {
-        if (is_null($email)) {
-            throw new \InvalidArgumentException('non-nullable email cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['email'] = $email;
+        $this->container['country'] = $country;
 
         return $this;
     }
 
     /**
-     * Gets phone
+     * Gets external_number
      *
-     * @return string|null
+     * @return string
      */
-    public function getPhone()
+    public function getExternalNumber()
     {
-        return $this->container['phone'];
+        return $this->container['external_number'];
     }
 
     /**
-     * Sets phone
+     * Sets external_number
      *
-     * @param string|null $phone phone
+     * @param string $external_number External number
      *
      * @return self
      */
-    public function setPhone($phone)
+    public function setExternalNumber($external_number)
     {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
+        if (is_null($external_number)) {
+            throw new \InvalidArgumentException('non-nullable external_number cannot be null');
         }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets corporate
-     *
-     * @return bool|null
-     */
-    public function getCorporate()
-    {
-        return $this->container['corporate'];
-    }
-
-    /**
-     * Sets corporate
-     *
-     * @param bool|null $corporate corporate
-     *
-     * @return self
-     */
-    public function setCorporate($corporate)
-    {
-        if (is_null($corporate)) {
-            throw new \InvalidArgumentException('non-nullable corporate cannot be null');
-        }
-        $this->container['corporate'] = $corporate;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object object
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
+        $this->container['external_number'] = $external_number;
 
         return $this;
     }

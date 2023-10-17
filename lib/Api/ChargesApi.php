@@ -78,6 +78,9 @@ class ChargesApi
         'ordersCreateCharge' => [
             'application/json',
         ],
+        'updateCharge' => [
+            'application/json',
+        ],
     ];
 
 /**
@@ -945,6 +948,405 @@ class ChargesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCharge
+     *
+     * Update a charge
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCharge'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Conekta\Model\ChargeResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     */
+    public function updateCharge($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    {
+        list($response) = $this->updateChargeWithHttpInfo($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateChargeWithHttpInfo
+     *
+     * Update a charge
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCharge'] to see the possible values for this operation
+     *
+     * @throws \Conekta\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Conekta\Model\ChargeResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateChargeWithHttpInfo($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    {
+        $request = $this->updateChargeRequest($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Conekta\Model\ChargeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\ChargeResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\ChargeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Conekta\Model\ChargeResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\ChargeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateChargeAsync
+     *
+     * Update a charge
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCharge'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateChargeAsync($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    {
+        return $this->updateChargeAsyncWithHttpInfo($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateChargeAsyncWithHttpInfo
+     *
+     * Update a charge
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCharge'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateChargeAsyncWithHttpInfo($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    {
+        $returnType = '\Conekta\Model\ChargeResponse';
+        $request = $this->updateChargeRequest($id, $charge_update_request, $accept_language, $x_child_company_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCharge'
+     *
+     * @param  string $id Identifier of the resource (required)
+     * @param  \Conekta\Model\ChargeUpdateRequest $charge_update_request requested field for update a charge (required)
+     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCharge'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateChargeRequest($id, $charge_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCharge'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateCharge'
+            );
+        }
+
+        // verify the required parameter 'charge_update_request' is set
+        if ($charge_update_request === null || (is_array($charge_update_request) && count($charge_update_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $charge_update_request when calling updateCharge'
+            );
+        }
+
+
+
+
+        $resourcePath = '/charges/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($accept_language !== null) {
+            $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
+        }
+        // header params
+        if ($x_child_company_id !== null) {
+            $headerParams['X-Child-Company-Id'] = ObjectSerializer::toHeaderValue($x_child_company_id);
+        }
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/vnd.conekta-v2.1.0+json', ],
+            $contentType,
+            $multipart
+        );
+        $headers = array_merge(
+            $this->headerSelector->getConektaUserAgent(),
+            $headers
+        );
+
+        // for model (json/xml)
+        if (isset($charge_update_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($charge_update_request));
+            } else {
+                $httpBody = $charge_update_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

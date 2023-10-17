@@ -60,6 +60,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'expires_at' => 'int',
+        'monthly_installments' => 'int',
         'type' => 'string',
         'token_id' => 'string',
         'payment_source_id' => 'string',
@@ -75,6 +76,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'expires_at' => 'int64',
+        'monthly_installments' => 'int8',
         'type' => null,
         'token_id' => null,
         'payment_source_id' => null,
@@ -88,6 +90,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'expires_at' => false,
+		'monthly_installments' => false,
 		'type' => false,
 		'token_id' => false,
 		'payment_source_id' => false,
@@ -181,6 +184,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'expires_at' => 'expires_at',
+        'monthly_installments' => 'monthly_installments',
         'type' => 'type',
         'token_id' => 'token_id',
         'payment_source_id' => 'payment_source_id',
@@ -194,6 +198,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'expires_at' => 'setExpiresAt',
+        'monthly_installments' => 'setMonthlyInstallments',
         'type' => 'setType',
         'token_id' => 'setTokenId',
         'payment_source_id' => 'setPaymentSourceId',
@@ -207,6 +212,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'expires_at' => 'getExpiresAt',
+        'monthly_installments' => 'getMonthlyInstallments',
         'type' => 'getType',
         'token_id' => 'getTokenId',
         'payment_source_id' => 'getPaymentSourceId',
@@ -271,6 +277,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('monthly_installments', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
         $this->setIfExists('payment_source_id', $data ?? [], null);
@@ -353,6 +360,33 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_installments
+     *
+     * @return int|null
+     */
+    public function getMonthlyInstallments()
+    {
+        return $this->container['monthly_installments'];
+    }
+
+    /**
+     * Sets monthly_installments
+     *
+     * @param int|null $monthly_installments How many months without interest to apply, it can be 3, 6, 9, 12 or 18
+     *
+     * @return self
+     */
+    public function setMonthlyInstallments($monthly_installments)
+    {
+        if (is_null($monthly_installments)) {
+            throw new \InvalidArgumentException('non-nullable monthly_installments cannot be null');
+        }
+        $this->container['monthly_installments'] = $monthly_installments;
 
         return $this;
     }

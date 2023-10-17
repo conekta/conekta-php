@@ -67,6 +67,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'default' => 'bool',
         'id' => 'string',
         'created_at' => 'int',
+        'metadata' => 'array<string,mixed>',
         'object' => 'string',
         'deleted' => 'bool'
     ];
@@ -87,6 +88,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'default' => null,
         'id' => null,
         'created_at' => 'int64',
+        'metadata' => null,
         'object' => null,
         'deleted' => null
     ];
@@ -105,6 +107,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
 		'default' => false,
 		'id' => false,
 		'created_at' => false,
+		'metadata' => false,
 		'object' => false,
 		'deleted' => false
     ];
@@ -203,6 +206,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'default' => 'default',
         'id' => 'id',
         'created_at' => 'created_at',
+        'metadata' => 'metadata',
         'object' => 'object',
         'deleted' => 'deleted'
     ];
@@ -221,6 +225,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'default' => 'setDefault',
         'id' => 'setId',
         'created_at' => 'setCreatedAt',
+        'metadata' => 'setMetadata',
         'object' => 'setObject',
         'deleted' => 'setDeleted'
     ];
@@ -239,6 +244,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'default' => 'getDefault',
         'id' => 'getId',
         'created_at' => 'getCreatedAt',
+        'metadata' => 'getMetadata',
         'object' => 'getObject',
         'deleted' => 'getDeleted'
     ];
@@ -308,6 +314,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         $this->setIfExists('default', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
     }
@@ -338,6 +345,10 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
+            $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
+        }
 
         return $invalidProperties;
     }
@@ -573,6 +584,37 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Metadata associated with the shipping contact
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+
+        if ((count($metadata) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $metadata when calling CustomerShippingContactsResponse., number of items must be less than or equal to 100.');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
