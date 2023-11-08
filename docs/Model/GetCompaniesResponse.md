@@ -1,13 +1,23 @@
-# # GetCompaniesResponse
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
 
-## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**has_more** | **bool** | Indicates if there are more pages to be requested |
-**object** | **string** | Object type, in this case is list |
-**next_page_url** | **string** | URL of the next page. | [optional]
-**previous_page_url** | **string** | Url of the previous page. | [optional]
-**data** | [**\Conekta\Model\CompanyResponse[]**](CompanyResponse.md) |  | [optional]
+// Configure Bearer authorization: bearerAuth
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken(''jesuskey);
 
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+
+$apiInstance = new Conekta\Api\CompaniesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 6307a60c41de27127515a575; // string | Identifier of the resource
+$accept_language = es; // string | Use for knowing which language to use
+
+try {
+    $result = $apiInstance->getCompany($id, $accept_language);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompaniesApi->getCompany: ', $e->getMessage(), PHP_EOL;
+}
