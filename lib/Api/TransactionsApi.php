@@ -514,18 +514,21 @@ class TransactionsApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $id id of the object to be retrieved (optional)
+     * @param  string $charge_id id of the charge used for filtering (optional)
+     * @param  string $type type of the object to be retrieved (optional)
+     * @param  string $currency currency of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\GetTransactionsResponse|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function getTransactions($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactions($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $id = null, $charge_id = null, $type = null, $currency = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        list($response) = $this->getTransactionsWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        list($response) = $this->getTransactionsWithHttpInfo($accept_language, $x_child_company_id, $limit, $next, $previous, $id, $charge_id, $type, $currency, $contentType);
         return $response;
     }
 
@@ -537,18 +540,21 @@ class TransactionsApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $id id of the object to be retrieved (optional)
+     * @param  string $charge_id id of the charge used for filtering (optional)
+     * @param  string $type type of the object to be retrieved (optional)
+     * @param  string $currency currency of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\GetTransactionsResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTransactionsWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $id = null, $charge_id = null, $type = null, $currency = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        $request = $this->getTransactionsRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getTransactionsRequest($accept_language, $x_child_company_id, $limit, $next, $previous, $id, $charge_id, $type, $currency, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -688,17 +694,20 @@ class TransactionsApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $id id of the object to be retrieved (optional)
+     * @param  string $charge_id id of the charge used for filtering (optional)
+     * @param  string $type type of the object to be retrieved (optional)
+     * @param  string $currency currency of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $id = null, $charge_id = null, $type = null, $currency = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
-        return $this->getTransactionsAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType)
+        return $this->getTransactionsAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $next, $previous, $id, $charge_id, $type, $currency, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -714,18 +723,21 @@ class TransactionsApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $id id of the object to be retrieved (optional)
+     * @param  string $charge_id id of the charge used for filtering (optional)
+     * @param  string $type type of the object to be retrieved (optional)
+     * @param  string $currency currency of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $id = null, $charge_id = null, $type = null, $currency = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
         $returnType = '\Conekta\Model\GetTransactionsResponse';
-        $request = $this->getTransactionsRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getTransactionsRequest($accept_language, $x_child_company_id, $limit, $next, $previous, $id, $charge_id, $type, $currency, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -769,15 +781,18 @@ class TransactionsApi
      * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
+     * @param  string $id id of the object to be retrieved (optional)
+     * @param  string $charge_id id of the charge used for filtering (optional)
+     * @param  string $type type of the object to be retrieved (optional)
+     * @param  string $currency currency of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTransactions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTransactionsRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getTransactions'][0])
+    public function getTransactionsRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $next = null, $previous = null, $id = null, $charge_id = null, $type = null, $currency = null, string $contentType = self::contentTypes['getTransactions'][0])
     {
 
 
@@ -789,6 +804,9 @@ class TransactionsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling TransactionsApi.getTransactions, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -811,15 +829,6 @@ class TransactionsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $search,
-            'search', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $next,
             'next', // param base name
             'string', // openApiType
@@ -831,6 +840,42 @@ class TransactionsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $previous,
             'previous', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id,
+            'id', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $charge_id,
+            'charge_id', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $currency,
+            'currency', // param base name
             'string', // openApiType
             '', // style
             false, // explode

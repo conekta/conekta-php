@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **device_fingerprint** | **string** |  | [optional]
 **failure_code** | **string** |  | [optional]
 **failure_message** | **string** |  | [optional]
-**fee** | **int** |  | [optional]
 **id** | **string** |  | [optional]
 **livemode** | **bool** |  | [optional]
 **object** | **string** |  | [optional]

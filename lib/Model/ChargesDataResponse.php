@@ -67,7 +67,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'string',
         'failure_code' => 'string',
         'failure_message' => 'string',
-        'fee' => 'int',
         'id' => 'string',
         'livemode' => 'bool',
         'object' => 'string',
@@ -96,7 +95,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => null,
         'failure_code' => null,
         'failure_message' => null,
-        'fee' => null,
         'id' => null,
         'livemode' => null,
         'object' => null,
@@ -123,7 +121,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
 		'device_fingerprint' => false,
 		'failure_code' => false,
 		'failure_message' => false,
-		'fee' => false,
 		'id' => false,
 		'livemode' => false,
 		'object' => false,
@@ -230,7 +227,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'device_fingerprint',
         'failure_code' => 'failure_code',
         'failure_message' => 'failure_message',
-        'fee' => 'fee',
         'id' => 'id',
         'livemode' => 'livemode',
         'object' => 'object',
@@ -257,7 +253,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'setDeviceFingerprint',
         'failure_code' => 'setFailureCode',
         'failure_message' => 'setFailureMessage',
-        'fee' => 'setFee',
         'id' => 'setId',
         'livemode' => 'setLivemode',
         'object' => 'setObject',
@@ -284,7 +279,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'getDeviceFingerprint',
         'failure_code' => 'getFailureCode',
         'failure_message' => 'getFailureMessage',
-        'fee' => 'getFee',
         'id' => 'getId',
         'livemode' => 'getLivemode',
         'object' => 'getObject',
@@ -362,7 +356,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('device_fingerprint', $data ?? [], null);
         $this->setIfExists('failure_code', $data ?? [], null);
         $this->setIfExists('failure_message', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
@@ -655,33 +648,6 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable failure_message cannot be null');
         }
         $this->container['failure_message'] = $failure_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee
-     *
-     * @return int|null
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee
-     *
-     * @param int|null $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
 
         return $this;
     }
