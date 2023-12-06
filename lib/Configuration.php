@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.2';
+    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.3';
 
     /**
      * Debug switch (default set to false)
