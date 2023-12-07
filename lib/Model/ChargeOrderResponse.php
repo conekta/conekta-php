@@ -67,7 +67,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'string',
         'failure_code' => 'string',
         'failure_message' => 'string',
-        'fee' => 'int',
         'id' => 'string',
         'livemode' => 'bool',
         'monthly_installments' => 'int',
@@ -97,7 +96,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => null,
         'failure_code' => null,
         'failure_message' => null,
-        'fee' => null,
         'id' => null,
         'livemode' => null,
         'monthly_installments' => null,
@@ -125,7 +123,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
 		'device_fingerprint' => true,
 		'failure_code' => false,
 		'failure_message' => false,
-		'fee' => false,
 		'id' => false,
 		'livemode' => false,
 		'monthly_installments' => true,
@@ -233,7 +230,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'device_fingerprint',
         'failure_code' => 'failure_code',
         'failure_message' => 'failure_message',
-        'fee' => 'fee',
         'id' => 'id',
         'livemode' => 'livemode',
         'monthly_installments' => 'monthly_installments',
@@ -261,7 +257,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'setDeviceFingerprint',
         'failure_code' => 'setFailureCode',
         'failure_message' => 'setFailureMessage',
-        'fee' => 'setFee',
         'id' => 'setId',
         'livemode' => 'setLivemode',
         'monthly_installments' => 'setMonthlyInstallments',
@@ -289,7 +284,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'device_fingerprint' => 'getDeviceFingerprint',
         'failure_code' => 'getFailureCode',
         'failure_message' => 'getFailureMessage',
-        'fee' => 'getFee',
         'id' => 'getId',
         'livemode' => 'getLivemode',
         'monthly_installments' => 'getMonthlyInstallments',
@@ -368,7 +362,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('device_fingerprint', $data ?? [], null);
         $this->setIfExists('failure_code', $data ?? [], null);
         $this->setIfExists('failure_message', $data ?? [], null);
-        $this->setIfExists('fee', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
         $this->setIfExists('monthly_installments', $data ?? [], null);
@@ -669,33 +662,6 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable failure_message cannot be null');
         }
         $this->container['failure_message'] = $failure_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee
-     *
-     * @return int|null
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee
-     *
-     * @param int|null $fee fee
-     *
-     * @return self
-     */
-    public function setFee($fee)
-    {
-        if (is_null($fee)) {
-            throw new \InvalidArgumentException('non-nullable fee cannot be null');
-        }
-        $this->container['fee'] = $fee;
 
         return $this;
     }

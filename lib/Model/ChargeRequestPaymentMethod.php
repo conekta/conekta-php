@@ -314,14 +314,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
-        }
-
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -494,13 +486,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($contract_id)) {
             throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
         }
-        if ((mb_strlen($contract_id) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeRequestPaymentMethod., must be smaller than or equal to 10.');
-        }
-        if ((mb_strlen($contract_id) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling ChargeRequestPaymentMethod., must be bigger than or equal to 10.');
-        }
-
         $this->container['contract_id'] = $contract_id;
 
         return $this;

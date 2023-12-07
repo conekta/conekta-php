@@ -362,14 +362,6 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) > 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be smaller than or equal to 10.";
-        }
-
-        if (!is_null($this->container['contract_id']) && (mb_strlen($this->container['contract_id']) < 10)) {
-            $invalidProperties[] = "invalid value for 'contract_id', the character length must be bigger than or equal to 10.";
-        }
-
         return $invalidProperties;
     }
 
@@ -542,13 +534,6 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         if (is_null($contract_id)) {
             throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
         }
-        if ((mb_strlen($contract_id) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling PaymentMethodCard., must be smaller than or equal to 10.');
-        }
-        if ((mb_strlen($contract_id) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $contract_id when calling PaymentMethodCard., must be bigger than or equal to 10.');
-        }
-
         $this->container['contract_id'] = $contract_id;
 
         return $this;
