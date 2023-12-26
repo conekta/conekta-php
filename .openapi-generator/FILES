@@ -150,6 +150,8 @@ docs/Model/OrderFiscalEntityAddressResponse.md
 docs/Model/OrderFiscalEntityAddressResponseAllOf.md
 docs/Model/OrderFiscalEntityRequest.md
 docs/Model/OrderFiscalEntityResponse.md
+docs/Model/OrderNextActionResponse.md
+docs/Model/OrderNextActionResponseRedirectToUrl.md
 docs/Model/OrderRefundRequest.md
 docs/Model/OrderRequest.md
 docs/Model/OrderRequestCustomerInfo.md
@@ -383,6 +385,8 @@ lib/Model/OrderFiscalEntityAddressResponse.php
 lib/Model/OrderFiscalEntityAddressResponseAllOf.php
 lib/Model/OrderFiscalEntityRequest.php
 lib/Model/OrderFiscalEntityResponse.php
+lib/Model/OrderNextActionResponse.php
+lib/Model/OrderNextActionResponseRedirectToUrl.php
 lib/Model/OrderRefundRequest.php
 lib/Model/OrderRequest.php
 lib/Model/OrderRequestCustomerInfo.php
