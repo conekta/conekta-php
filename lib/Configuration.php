@@ -210,7 +210,7 @@ class Configuration
     /**
      * Sets boolean format for query string.
      *
-     * @param string $booleanFormatForQueryString Boolean format for query string
+     * @param string $booleanFormat Boolean format for query string
      *
      * @return $this
      */
