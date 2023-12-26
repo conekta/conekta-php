@@ -38,7 +38,7 @@ $apiInstance = new Conekta\Api\PaymentMethodsApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$create_customer_payment_methods_request = {type=card, token_id=tok_test_visa_4242}; // \Conekta\Model\CreateCustomerPaymentMethodsRequest | requested field for customer payment methods
+$create_customer_payment_methods_request = {"type":"card","token_id":"tok_test_visa_4242"}; // \Conekta\Model\CreateCustomerPaymentMethodsRequest | requested field for customer payment methods
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
