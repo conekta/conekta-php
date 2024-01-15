@@ -42,8 +42,8 @@ jobs:
       - name: Run Mockoon CLI
         uses: mockoon/cli-action@v1
         with:
-          version: 'latest'
-          data-file: 'https://raw.githubusercontent.com/conekta/openapi/20231013/mocks/conekta_api.json'
+          version: '6.0.1'
+          data-file: 'https://raw.githubusercontent.com/conekta/openapi/main/mocks/conekta_api.json'
           port: 3000
       - name: Run PHPUnit
         run: vendor/bin/phpunit

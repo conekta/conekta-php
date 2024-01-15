@@ -69,7 +69,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'issuing_account_number' => 'string',
         'issuing_account_holder_name' => 'string',
         'issuing_account_tax_id' => 'string',
-        'payment_attempts' => 'object[]',
+        'payment_attempts' => 'mixed[]',
         'receiving_account_holder_name' => 'string',
         'receiving_account_number' => 'string',
         'receiving_account_bank' => 'string',
@@ -754,7 +754,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets payment_attempts
      *
-     * @return object[]|null
+     * @return mixed[]|null
      */
     public function getPaymentAttempts()
     {
@@ -764,7 +764,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets payment_attempts
      *
-     * @param object[]|null $payment_attempts payment_attempts
+     * @param mixed[]|null $payment_attempts payment_attempts
      *
      * @return self
      */

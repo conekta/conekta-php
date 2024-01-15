@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **country** | **string** |  | [optional]
 **exp_month** | **string** |  | [optional]
 **exp_year** | **string** |  | [optional]
-**fraud_indicators** | **object[]** |  | [optional]
+**fraud_indicators** | **mixed[]** |  | [optional]
 **issuer** | **string** |  | [optional]
 **last4** | **string** |  | [optional]
 **name** | **string** |  | [optional]

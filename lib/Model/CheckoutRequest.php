@@ -66,6 +66,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => 'int[]',
         'name' => 'string',
         'on_demand_enabled' => 'bool',
+        'redirection_time' => 'int',
         'success_url' => 'string',
         'type' => 'string'
     ];
@@ -85,6 +86,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => 'int8',
         'name' => null,
         'on_demand_enabled' => null,
+        'redirection_time' => 'int8',
         'success_url' => null,
         'type' => null
     ];
@@ -102,6 +104,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => false,
         'name' => false,
         'on_demand_enabled' => false,
+        'redirection_time' => false,
         'success_url' => false,
         'type' => false
     ];
@@ -199,6 +202,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => 'monthly_installments_options',
         'name' => 'name',
         'on_demand_enabled' => 'on_demand_enabled',
+        'redirection_time' => 'redirection_time',
         'success_url' => 'success_url',
         'type' => 'type'
     ];
@@ -216,6 +220,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
         'name' => 'setName',
         'on_demand_enabled' => 'setOnDemandEnabled',
+        'redirection_time' => 'setRedirectionTime',
         'success_url' => 'setSuccessUrl',
         'type' => 'setType'
     ];
@@ -233,6 +238,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
         'name' => 'getName',
         'on_demand_enabled' => 'getOnDemandEnabled',
+        'redirection_time' => 'getRedirectionTime',
         'success_url' => 'getSuccessUrl',
         'type' => 'getType'
     ];
@@ -301,6 +307,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('monthly_installments_options', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_demand_enabled', $data ?? [], null);
+        $this->setIfExists('redirection_time', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
@@ -535,6 +542,33 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable on_demand_enabled cannot be null');
         }
         $this->container['on_demand_enabled'] = $on_demand_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirection_time
+     *
+     * @return int|null
+     */
+    public function getRedirectionTime()
+    {
+        return $this->container['redirection_time'];
+    }
+
+    /**
+     * Sets redirection_time
+     *
+     * @param int|null $redirection_time number of seconds to wait before redirecting to the success_url
+     *
+     * @return self
+     */
+    public function setRedirectionTime($redirection_time)
+    {
+        if (is_null($redirection_time)) {
+            throw new \InvalidArgumentException('non-nullable redirection_time cannot be null');
+        }
+        $this->container['redirection_time'] = $redirection_time;
 
         return $this;
     }
