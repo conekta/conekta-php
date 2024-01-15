@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **monthly_installments_options** | **int[]** |  | [optional]
 **name** | **string** | Reason for payment | [optional]
 **on_demand_enabled** | **bool** |  | [optional]
+**redirection_time** | **int** | number of seconds to wait before redirecting to the success_url | [optional]
 **success_url** | **string** | Redirection url back to the site in case of successful payment, applies only to HostedPayment | [optional]
 **type** | **string** | This field represents the type of checkout | [optional]
 

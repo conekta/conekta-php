@@ -58,11 +58,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Conekta\Model\CustomerResponse[]',
         'has_more' => 'bool',
         'object' => 'string',
         'next_page_url' => 'string',
-        'previous_page_url' => 'string'
+        'previous_page_url' => 'string',
+        'data' => '\Conekta\Model\CustomerResponse[]'
     ];
 
     /**
@@ -73,11 +73,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
         'has_more' => null,
         'object' => null,
         'next_page_url' => null,
-        'previous_page_url' => null
+        'previous_page_url' => null,
+        'data' => null
     ];
 
     /**
@@ -86,11 +86,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
         'has_more' => false,
         'object' => false,
         'next_page_url' => true,
-        'previous_page_url' => true
+        'previous_page_url' => true,
+        'data' => false
     ];
 
     /**
@@ -179,11 +179,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
         'has_more' => 'has_more',
         'object' => 'object',
         'next_page_url' => 'next_page_url',
-        'previous_page_url' => 'previous_page_url'
+        'previous_page_url' => 'previous_page_url',
+        'data' => 'data'
     ];
 
     /**
@@ -192,11 +192,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
         'has_more' => 'setHasMore',
         'object' => 'setObject',
         'next_page_url' => 'setNextPageUrl',
-        'previous_page_url' => 'setPreviousPageUrl'
+        'previous_page_url' => 'setPreviousPageUrl',
+        'data' => 'setData'
     ];
 
     /**
@@ -205,11 +205,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
         'has_more' => 'getHasMore',
         'object' => 'getObject',
         'next_page_url' => 'getNextPageUrl',
-        'previous_page_url' => 'getPreviousPageUrl'
+        'previous_page_url' => 'getPreviousPageUrl',
+        'data' => 'getData'
     ];
 
     /**
@@ -269,11 +269,11 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('has_more', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('next_page_url', $data ?? [], null);
         $this->setIfExists('previous_page_url', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -323,33 +323,6 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets data
-     *
-     * @return \Conekta\Model\CustomerResponse[]|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Conekta\Model\CustomerResponse[]|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
 
     /**
      * Gets has_more
@@ -469,6 +442,33 @@ class CustomersResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['previous_page_url'] = $previous_page_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \Conekta\Model\CustomerResponse[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Conekta\Model\CustomerResponse[]|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        }
+        $this->container['data'] = $data;
 
         return $this;
     }

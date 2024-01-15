@@ -58,7 +58,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'address' => '\Conekta\Model\CustomerFiscalEntitiesRequestAddress',
+        'address' => '\Conekta\Model\CustomerAddress',
         'tax_id' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -375,7 +375,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets address
      *
-     * @return \Conekta\Model\CustomerFiscalEntitiesRequestAddress
+     * @return \Conekta\Model\CustomerAddress
      */
     public function getAddress()
     {
@@ -385,7 +385,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets address
      *
-     * @param \Conekta\Model\CustomerFiscalEntitiesRequestAddress $address address
+     * @param \Conekta\Model\CustomerAddress $address address
      *
      * @return self
      */

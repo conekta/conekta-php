@@ -67,7 +67,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'country' => 'string',
         'exp_month' => 'string',
         'exp_year' => 'string',
-        'fraud_indicators' => 'object[]',
+        'fraud_indicators' => 'mixed[]',
         'issuer' => 'string',
         'last4' => 'string',
         'name' => 'string'
@@ -623,7 +623,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets fraud_indicators
      *
-     * @return object[]|null
+     * @return mixed[]|null
      */
     public function getFraudIndicators()
     {
@@ -633,7 +633,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets fraud_indicators
      *
-     * @param object[]|null $fraud_indicators fraud_indicators
+     * @param mixed[]|null $fraud_indicators fraud_indicators
      *
      * @return self
      */

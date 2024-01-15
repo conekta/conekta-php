@@ -58,16 +58,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_at' => 'int',
-        'id' => 'string',
-        'object' => 'string',
         'phone' => 'string',
         'receiver' => 'string',
         'between_streets' => 'string',
         'address' => '\Conekta\Model\CustomerShippingContactsResponseAddress',
         'parent_id' => 'string',
         'default' => 'bool',
+        'id' => 'string',
+        'created_at' => 'int',
         'metadata' => 'array<string,mixed>',
+        'object' => 'string',
         'deleted' => 'bool'
     ];
 
@@ -79,16 +79,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'created_at' => 'int64',
-        'id' => null,
-        'object' => null,
         'phone' => null,
         'receiver' => null,
         'between_streets' => null,
         'address' => null,
         'parent_id' => null,
         'default' => null,
+        'id' => null,
+        'created_at' => 'int64',
         'metadata' => null,
+        'object' => null,
         'deleted' => null
     ];
 
@@ -98,16 +98,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'created_at' => false,
-        'id' => false,
-        'object' => false,
         'phone' => false,
         'receiver' => false,
         'between_streets' => true,
         'address' => false,
         'parent_id' => false,
         'default' => false,
+        'id' => false,
+        'created_at' => false,
         'metadata' => false,
+        'object' => false,
         'deleted' => false
     ];
 
@@ -197,16 +197,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'created_at',
-        'id' => 'id',
-        'object' => 'object',
         'phone' => 'phone',
         'receiver' => 'receiver',
         'between_streets' => 'between_streets',
         'address' => 'address',
         'parent_id' => 'parent_id',
         'default' => 'default',
+        'id' => 'id',
+        'created_at' => 'created_at',
         'metadata' => 'metadata',
+        'object' => 'object',
         'deleted' => 'deleted'
     ];
 
@@ -216,16 +216,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'id' => 'setId',
-        'object' => 'setObject',
         'phone' => 'setPhone',
         'receiver' => 'setReceiver',
         'between_streets' => 'setBetweenStreets',
         'address' => 'setAddress',
         'parent_id' => 'setParentId',
         'default' => 'setDefault',
+        'id' => 'setId',
+        'created_at' => 'setCreatedAt',
         'metadata' => 'setMetadata',
+        'object' => 'setObject',
         'deleted' => 'setDeleted'
     ];
 
@@ -235,16 +235,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'id' => 'getId',
-        'object' => 'getObject',
         'phone' => 'getPhone',
         'receiver' => 'getReceiver',
         'between_streets' => 'getBetweenStreets',
         'address' => 'getAddress',
         'parent_id' => 'getParentId',
         'default' => 'getDefault',
+        'id' => 'getId',
+        'created_at' => 'getCreatedAt',
         'metadata' => 'getMetadata',
+        'object' => 'getObject',
         'deleted' => 'getDeleted'
     ];
 
@@ -305,16 +305,16 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('receiver', $data ?? [], null);
         $this->setIfExists('between_streets', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('default', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
     }
 
@@ -363,87 +363,6 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets created_at
-     *
-     * @return int|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param int|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object object
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
-
-        return $this;
-    }
 
     /**
      * Gets phone
@@ -615,6 +534,60 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return int|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param int|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
      * Gets metadata
      *
      * @return array<string,mixed>|null
@@ -641,6 +614,33 @@ class OrderResponseShippingContact implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('invalid value for $metadata when calling OrderResponseShippingContact., number of items must be less than or equal to 100.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string|null
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string|null $object object
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
 
         return $this;
     }

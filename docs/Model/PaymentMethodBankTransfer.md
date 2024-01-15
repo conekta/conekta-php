@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **issuing_account_number** | **string** |  | [optional]
 **issuing_account_holder_name** | **string** |  | [optional]
 **issuing_account_tax_id** | **string** |  | [optional]
-**payment_attempts** | **object[]** |  | [optional]
+**payment_attempts** | **mixed[]** |  | [optional]
 **receiving_account_holder_name** | **string** |  | [optional]
 **receiving_account_number** | **string** |  | [optional]
 **receiving_account_bank** | **string** |  | [optional]

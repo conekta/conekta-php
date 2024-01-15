@@ -58,12 +58,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object' => 'string',
         'customer_custom_reference' => 'string',
         'name' => 'string',
         'email' => 'string',
         'phone' => 'string',
         'corporate' => 'bool',
+        'object' => 'string',
         'customer_id' => 'string'
     ];
 
@@ -75,12 +75,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object' => null,
         'customer_custom_reference' => null,
         'name' => null,
         'email' => 'email',
         'phone' => null,
         'corporate' => null,
+        'object' => null,
         'customer_id' => null
     ];
 
@@ -90,12 +90,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object' => false,
         'customer_custom_reference' => true,
         'name' => false,
         'email' => false,
         'phone' => false,
         'corporate' => false,
+        'object' => false,
         'customer_id' => false
     ];
 
@@ -185,12 +185,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'customer_custom_reference' => 'customer_custom_reference',
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',
         'corporate' => 'corporate',
+        'object' => 'object',
         'customer_id' => 'customer_id'
     ];
 
@@ -200,12 +200,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'customer_custom_reference' => 'setCustomerCustomReference',
         'name' => 'setName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
         'corporate' => 'setCorporate',
+        'object' => 'setObject',
         'customer_id' => 'setCustomerId'
     ];
 
@@ -215,12 +215,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'customer_custom_reference' => 'getCustomerCustomReference',
         'name' => 'getName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
         'corporate' => 'getCorporate',
+        'object' => 'getObject',
         'customer_id' => 'getCustomerId'
     ];
 
@@ -281,12 +281,12 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('customer_custom_reference', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('corporate', $data ?? [], false);
+        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('customer_id', $data ?? [], null);
     }
 
@@ -331,33 +331,6 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets object
-     *
-     * @return string|null
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string|null $object object
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
-
-        return $this;
-    }
 
     /**
      * Gets customer_custom_reference
@@ -497,6 +470,33 @@ class OrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable corporate cannot be null');
         }
         $this->container['corporate'] = $corporate;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string|null
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string|null $object object
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
 
         return $this;
     }
