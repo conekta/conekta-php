@@ -98,6 +98,7 @@ docs/Model/DiscountLinesResponse.md
 docs/Model/EmailCheckoutRequest.md
 docs/Model/Error.md
 docs/Model/EventResponse.md
+docs/Model/EventTypes.md
 docs/Model/EventsResendResponse.md
 docs/Model/FiscalEntityAddress.md
 docs/Model/GetApiKeysResponse.md
@@ -289,6 +290,7 @@ lib/Model/DiscountLinesResponse.php
 lib/Model/EmailCheckoutRequest.php
 lib/Model/Error.php
 lib/Model/EventResponse.php
+lib/Model/EventTypes.php
 lib/Model/EventsResendResponse.php
 lib/Model/FiscalEntityAddress.php
 lib/Model/GetApiKeysResponse.php

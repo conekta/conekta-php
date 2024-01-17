@@ -240,6 +240,7 @@ Class | Method | HTTP request | Description
 - [EmailCheckoutRequest](docs/Model/EmailCheckoutRequest.md)
 - [Error](docs/Model/Error.md)
 - [EventResponse](docs/Model/EventResponse.md)
+- [EventTypes](docs/Model/EventTypes.md)
 - [EventsResendResponse](docs/Model/EventsResendResponse.md)
 - [FiscalEntityAddress](docs/Model/FiscalEntityAddress.md)
 - [GetApiKeysResponse](docs/Model/GetApiKeysResponse.md)
