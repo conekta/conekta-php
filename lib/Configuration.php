@@ -94,7 +94,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://api.conekta.io';
+    protected $host = 'https://api.stg.conekta.io';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -496,7 +496,7 @@ class Configuration
     {
         return [
             [
-                "url" => "https://api.conekta.io",
+                "url" => "https://api.stg.conekta.io",
                 "description" => "Conekta main server",
             ]
         ];
