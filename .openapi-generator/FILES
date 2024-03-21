@@ -20,6 +20,7 @@ docs/Api/LogsApi.md
 docs/Api/OrdersApi.md
 docs/Api/PaymentLinkApi.md
 docs/Api/PaymentMethodsApi.md
+docs/Api/PayoutOrdersApi.md
 docs/Api/PlansApi.md
 docs/Api/ProductsApi.md
 docs/Api/ShippingContactsApi.md
@@ -153,6 +154,13 @@ docs/Model/PaymentMethodCashResponse.md
 docs/Model/PaymentMethodResponse.md
 docs/Model/PaymentMethodSpeiRecurrent.md
 docs/Model/PaymentMethodSpeiRequest.md
+docs/Model/Payout.md
+docs/Model/PayoutMethod.md
+docs/Model/PayoutOrder.md
+docs/Model/PayoutOrderPayoutsItem.md
+docs/Model/PayoutOrderResponse.md
+docs/Model/PayoutOrderResponseCustomerInfo.md
+docs/Model/PayoutOrdersResponse.md
 docs/Model/PlanRequest.md
 docs/Model/PlanResponse.md
 docs/Model/PlanUpdateRequest.md
@@ -209,6 +217,7 @@ lib/Api/LogsApi.php
 lib/Api/OrdersApi.php
 lib/Api/PaymentLinkApi.php
 lib/Api/PaymentMethodsApi.php
+lib/Api/PayoutOrdersApi.php
 lib/Api/PlansApi.php
 lib/Api/ProductsApi.php
 lib/Api/ShippingContactsApi.php
@@ -346,6 +355,13 @@ lib/Model/PaymentMethodCashResponse.php
 lib/Model/PaymentMethodResponse.php
 lib/Model/PaymentMethodSpeiRecurrent.php
 lib/Model/PaymentMethodSpeiRequest.php
+lib/Model/Payout.php
+lib/Model/PayoutMethod.php
+lib/Model/PayoutOrder.php
+lib/Model/PayoutOrderPayoutsItem.php
+lib/Model/PayoutOrderResponse.php
+lib/Model/PayoutOrderResponseCustomerInfo.php
+lib/Model/PayoutOrdersResponse.php
 lib/Model/PlanRequest.php
 lib/Model/PlanResponse.php
 lib/Model/PlanUpdateRequest.php
@@ -393,3 +409,4 @@ lib/Model/WhitelistlistRuleResponse.php
 lib/ObjectSerializer.php
 lib/ssl_data/ca_bundle.crt
 phpunit.xml.dist
+test/Api/PayoutOrdersApiTest.php
