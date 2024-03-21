@@ -1411,6 +1411,7 @@ class WebhooksApi
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
      * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $url url for webhook filter (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooks'] to see the possible values for this operation
@@ -1419,9 +1420,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\GetWebhooksResponse|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function getWebhooks($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
+    public function getWebhooks($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $url = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
     {
-        list($response) = $this->getWebhooksWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        list($response) = $this->getWebhooksWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $url, $next, $previous, $contentType);
         return $response;
     }
 
@@ -1434,6 +1435,7 @@ class WebhooksApi
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
      * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $url url for webhook filter (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooks'] to see the possible values for this operation
@@ -1442,9 +1444,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\GetWebhooksResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhooksWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
+    public function getWebhooksWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $url = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
     {
-        $request = $this->getWebhooksRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getWebhooksRequest($accept_language, $x_child_company_id, $limit, $search, $url, $next, $previous, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1633,6 +1635,7 @@ class WebhooksApi
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
      * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $url url for webhook filter (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooks'] to see the possible values for this operation
@@ -1640,9 +1643,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhooksAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
+    public function getWebhooksAsync($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $url = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
     {
-        return $this->getWebhooksAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType)
+        return $this->getWebhooksAsyncWithHttpInfo($accept_language, $x_child_company_id, $limit, $search, $url, $next, $previous, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1659,6 +1662,7 @@ class WebhooksApi
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
      * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $url url for webhook filter (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooks'] to see the possible values for this operation
@@ -1666,10 +1670,10 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWebhooksAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
+    public function getWebhooksAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $url = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
     {
         $returnType = '\Conekta\Model\GetWebhooksResponse';
-        $request = $this->getWebhooksRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
+        $request = $this->getWebhooksRequest($accept_language, $x_child_company_id, $limit, $search, $url, $next, $previous, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1714,6 +1718,7 @@ class WebhooksApi
      * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
      * @param  string $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string $url url for webhook filter (optional)
      * @param  string $next next page (optional)
      * @param  string $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooks'] to see the possible values for this operation
@@ -1721,7 +1726,7 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getWebhooksRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
+    public function getWebhooksRequest($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $url = null, $next = null, $previous = null, string $contentType = self::contentTypes['getWebhooks'][0])
     {
 
 
@@ -1733,6 +1738,7 @@ class WebhooksApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling WebhooksApi.getWebhooks, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -1757,6 +1763,15 @@ class WebhooksApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search,
             'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url,
+            'url', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

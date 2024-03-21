@@ -77,6 +77,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => 'bool',
         'paid_payments_count' => 'int',
         'recurrent' => 'bool',
+        'redirection_time' => 'int',
         'slug' => 'string',
         'sms_sent' => 'int',
         'success_url' => 'string',
@@ -113,6 +114,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => null,
         'paid_payments_count' => null,
         'recurrent' => null,
+        'redirection_time' => 'int8',
         'slug' => null,
         'sms_sent' => null,
         'success_url' => null,
@@ -147,6 +149,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => true,
         'paid_payments_count' => false,
         'recurrent' => false,
+        'redirection_time' => true,
         'slug' => false,
         'sms_sent' => false,
         'success_url' => false,
@@ -261,6 +264,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => 'on_demand_enabled',
         'paid_payments_count' => 'paid_payments_count',
         'recurrent' => 'recurrent',
+        'redirection_time' => 'redirection_time',
         'slug' => 'slug',
         'sms_sent' => 'sms_sent',
         'success_url' => 'success_url',
@@ -295,6 +299,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => 'setOnDemandEnabled',
         'paid_payments_count' => 'setPaidPaymentsCount',
         'recurrent' => 'setRecurrent',
+        'redirection_time' => 'setRedirectionTime',
         'slug' => 'setSlug',
         'sms_sent' => 'setSmsSent',
         'success_url' => 'setSuccessUrl',
@@ -329,6 +334,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'on_demand_enabled' => 'getOnDemandEnabled',
         'paid_payments_count' => 'getPaidPaymentsCount',
         'recurrent' => 'getRecurrent',
+        'redirection_time' => 'getRedirectionTime',
         'slug' => 'getSlug',
         'sms_sent' => 'getSmsSent',
         'success_url' => 'getSuccessUrl',
@@ -414,6 +420,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('on_demand_enabled', $data ?? [], null);
         $this->setIfExists('paid_payments_count', $data ?? [], null);
         $this->setIfExists('recurrent', $data ?? [], null);
+        $this->setIfExists('redirection_time', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('sms_sent', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
@@ -989,6 +996,40 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable recurrent cannot be null');
         }
         $this->container['recurrent'] = $recurrent;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirection_time
+     *
+     * @return int|null
+     */
+    public function getRedirectionTime()
+    {
+        return $this->container['redirection_time'];
+    }
+
+    /**
+     * Sets redirection_time
+     *
+     * @param int|null $redirection_time number of seconds to wait before redirecting to the success_url
+     *
+     * @return self
+     */
+    public function setRedirectionTime($redirection_time)
+    {
+        if (is_null($redirection_time)) {
+            array_push($this->openAPINullablesSetToNull, 'redirection_time');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('redirection_time', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['redirection_time'] = $redirection_time;
 
         return $this;
     }
