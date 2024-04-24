@@ -209,7 +209,7 @@ try {
 ## `getOrders()`
 
 ```php
-getOrders($accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\GetOrdersResponse
+getOrders($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $payment_status, $last_payment_info_status, $created_at, $created_at_gte, $created_at_lte, $updated_at_gte, $updated_at_lte): \Conekta\Model\GetOrdersResponse
 ```
 
 Get a list of Orders
@@ -239,9 +239,16 @@ $limit = 20; // int | The numbers of items to return, the maximum value is 250
 $search = 'search_example'; // string | General order search, e.g. by mail, reference etc.
 $next = 'next_example'; // string | next page
 $previous = 'previous_example'; // string | previous page
+$payment_status = paid; // string | Filters by order status
+$last_payment_info_status = pending_payment; // string | Filters by last payment info status
+$created_at = 1612137600; // int | created equal to
+$created_at_gte = 1612137600; // int | created at greater than or equal to
+$created_at_lte = 1612137600; // int | created at less than or equal to
+$updated_at_gte = 1612137600; // int | updated at greater than or equal to
+$updated_at_lte = 1612137600; // int | updated at less than or equal to
 
 try {
-    $result = $apiInstance->getOrders($accept_language, $x_child_company_id, $limit, $search, $next, $previous);
+    $result = $apiInstance->getOrders($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $payment_status, $last_payment_info_status, $created_at, $created_at_gte, $created_at_lte, $updated_at_gte, $updated_at_lte);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->getOrders: ', $e->getMessage(), PHP_EOL;
@@ -258,6 +265,13 @@ try {
 | **search** | **string**| General order search, e.g. by mail, reference etc. | [optional] |
 | **next** | **string**| next page | [optional] |
 | **previous** | **string**| previous page | [optional] |
+| **payment_status** | **string**| Filters by order status | [optional] |
+| **last_payment_info_status** | **string**| Filters by last payment info status | [optional] |
+| **created_at** | **int**| created equal to | [optional] |
+| **created_at_gte** | **int**| created at greater than or equal to | [optional] |
+| **created_at_lte** | **int**| created at less than or equal to | [optional] |
+| **updated_at_gte** | **int**| updated at greater than or equal to | [optional] |
+| **updated_at_lte** | **int**| updated at less than or equal to | [optional] |
 
 ### Return type
 
