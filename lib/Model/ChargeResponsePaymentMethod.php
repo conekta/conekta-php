@@ -831,7 +831,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account_type
      *
-     * @param string|null $account_type account_type
+     * @param string|null $account_type Account type of the card
      *
      * @return self
      */
@@ -858,7 +858,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets brand
      *
-     * @param string|null $brand brand
+     * @param string|null $brand Brand of the card
      *
      * @return self
      */
@@ -912,7 +912,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets country
      *
-     * @param string|null $country country
+     * @param string|null $country Country of the card
      *
      * @return self
      */
@@ -939,7 +939,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets exp_month
      *
-     * @param string|null $exp_month exp_month
+     * @param string|null $exp_month Expiration month of the card
      *
      * @return self
      */
@@ -966,7 +966,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets exp_year
      *
-     * @param string|null $exp_year exp_year
+     * @param string|null $exp_year Expiration year of the card
      *
      * @return self
      */
@@ -1020,7 +1020,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets issuer
      *
-     * @param string|null $issuer issuer
+     * @param string|null $issuer Issuer of the card
      *
      * @return self
      */
@@ -1047,7 +1047,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets last4
      *
-     * @param string|null $last4 last4
+     * @param string|null $last4 Last 4 digits of the card
      *
      * @return self
      */
@@ -1074,7 +1074,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name Name of the cardholder
      *
      * @return self
      */

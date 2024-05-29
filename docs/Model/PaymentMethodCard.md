@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [optional]
 **object** | **string** |  |
-**account_type** | **string** |  | [optional]
+**account_type** | **string** | Account type of the card | [optional]
 **auth_code** | **string** |  | [optional]
-**brand** | **string** |  | [optional]
+**brand** | **string** | Brand of the card | [optional]
 **contract_id** | **string** | Id sent for recurrent charges. | [optional]
-**country** | **string** |  | [optional]
-**exp_month** | **string** |  | [optional]
-**exp_year** | **string** |  | [optional]
+**country** | **string** | Country of the card | [optional]
+**exp_month** | **string** | Expiration month of the card | [optional]
+**exp_year** | **string** | Expiration year of the card | [optional]
 **fraud_indicators** | **mixed[]** |  | [optional]
-**issuer** | **string** |  | [optional]
-**last4** | **string** |  | [optional]
-**name** | **string** |  | [optional]
+**issuer** | **string** | Issuer of the card | [optional]
+**last4** | **string** | Last 4 digits of the card | [optional]
+**name** | **string** | Name of the cardholder | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

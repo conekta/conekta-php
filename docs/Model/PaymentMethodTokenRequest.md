@@ -1,14 +1,10 @@
-# # PaymentMethodCardRequest
+# # PaymentMethodTokenRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | Type of payment method |
-**cvc** | **string** | Card security code |
-**exp_month** | **string** | Card expiration month |
-**exp_year** | **string** | Card expiration year |
-**name** | **string** | Cardholder name |
-**number** | **string** | Card number |
+**token_id** | **string** | Token id that will be used to create a \&quot;card\&quot; type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

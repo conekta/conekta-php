@@ -1,6 +1,6 @@
 <?php
 /**
- * OrderRefundRequest
+ * PaymentMethodGeneralRequest
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * OrderRefundRequest Class Doc Comment
+ * PaymentMethodGeneralRequest Class Doc Comment
  *
  * @category Class
+ * @description Payment method used in the charge. Go to the [payment methods](https://developers.conekta.com/reference/m%C3%A9todos-de-pago) section for more details
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'orderRefund_request';
+    protected static $openAPIModelName = 'payment_method_general_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int',
         'expires_at' => 'int',
-        'reason' => 'string'
+        'monthly_installments' => 'int',
+        'type' => 'string',
+        'token_id' => 'string',
+        'payment_source_id' => 'string',
+        'contract_id' => 'string'
     ];
 
     /**
@@ -71,9 +75,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
         'expires_at' => 'int64',
-        'reason' => null
+        'monthly_installments' => 'int8',
+        'type' => null,
+        'token_id' => null,
+        'payment_source_id' => null,
+        'contract_id' => null
     ];
 
     /**
@@ -82,9 +89,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'expires_at' => true,
-        'reason' => false
+        'expires_at' => false,
+        'monthly_installments' => false,
+        'type' => false,
+        'token_id' => false,
+        'payment_source_id' => false,
+        'contract_id' => false
     ];
 
     /**
@@ -173,9 +183,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
         'expires_at' => 'expires_at',
-        'reason' => 'reason'
+        'monthly_installments' => 'monthly_installments',
+        'type' => 'type',
+        'token_id' => 'token_id',
+        'payment_source_id' => 'payment_source_id',
+        'contract_id' => 'contract_id'
     ];
 
     /**
@@ -184,9 +197,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
         'expires_at' => 'setExpiresAt',
-        'reason' => 'setReason'
+        'monthly_installments' => 'setMonthlyInstallments',
+        'type' => 'setType',
+        'token_id' => 'setTokenId',
+        'payment_source_id' => 'setPaymentSourceId',
+        'contract_id' => 'setContractId'
     ];
 
     /**
@@ -195,9 +211,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
         'expires_at' => 'getExpiresAt',
-        'reason' => 'getReason'
+        'monthly_installments' => 'getMonthlyInstallments',
+        'type' => 'getType',
+        'token_id' => 'getTokenId',
+        'payment_source_id' => 'getPaymentSourceId',
+        'contract_id' => 'getContractId'
     ];
 
     /**
@@ -257,9 +276,12 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('monthly_installments', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('token_id', $data ?? [], null);
+        $this->setIfExists('payment_source_id', $data ?? [], null);
+        $this->setIfExists('contract_id', $data ?? [], null);
     }
 
     /**
@@ -289,11 +311,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['reason'] === null) {
-            $invalidProperties[] = "'reason' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,33 +330,6 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets amount
-     *
-     * @return int
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param int $amount Amount to be refunded in cents
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
-        }
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
      * Gets expires_at
      *
      * @return int|null
@@ -350,21 +342,14 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at expires_at
+     * @param int|null $expires_at Method expiration date as unix timestamp
      *
      * @return self
      */
     public function setExpiresAt($expires_at)
     {
         if (is_null($expires_at)) {
-            array_push($this->openAPINullablesSetToNull, 'expires_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expires_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
         $this->container['expires_at'] = $expires_at;
 
@@ -372,28 +357,136 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets reason
+     * Gets monthly_installments
      *
-     * @return string
+     * @return int|null
      */
-    public function getReason()
+    public function getMonthlyInstallments()
     {
-        return $this->container['reason'];
+        return $this->container['monthly_installments'];
     }
 
     /**
-     * Sets reason
+     * Sets monthly_installments
      *
-     * @param string $reason Reason for the refund
+     * @param int|null $monthly_installments How many months without interest to apply, it can be 3, 6, 9, 12 or 18
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setMonthlyInstallments($monthly_installments)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($monthly_installments)) {
+            throw new \InvalidArgumentException('non-nullable monthly_installments cannot be null');
         }
-        $this->container['reason'] = $reason;
+        $this->container['monthly_installments'] = $monthly_installments;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of payment method
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_id
+     *
+     * @return string|null
+     */
+    public function getTokenId()
+    {
+        return $this->container['token_id'];
+    }
+
+    /**
+     * Sets token_id
+     *
+     * @param string|null $token_id token_id
+     *
+     * @return self
+     */
+    public function setTokenId($token_id)
+    {
+        if (is_null($token_id)) {
+            throw new \InvalidArgumentException('non-nullable token_id cannot be null');
+        }
+        $this->container['token_id'] = $token_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_source_id
+     *
+     * @return string|null
+     */
+    public function getPaymentSourceId()
+    {
+        return $this->container['payment_source_id'];
+    }
+
+    /**
+     * Sets payment_source_id
+     *
+     * @param string|null $payment_source_id payment_source_id
+     *
+     * @return self
+     */
+    public function setPaymentSourceId($payment_source_id)
+    {
+        if (is_null($payment_source_id)) {
+            throw new \InvalidArgumentException('non-nullable payment_source_id cannot be null');
+        }
+        $this->container['payment_source_id'] = $payment_source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contract_id
+     *
+     * @return string|null
+     */
+    public function getContractId()
+    {
+        return $this->container['contract_id'];
+    }
+
+    /**
+     * Sets contract_id
+     *
+     * @param string|null $contract_id Optional id sent to indicate the bank contract for recurrent card charges.
+     *
+     * @return self
+     */
+    public function setContractId($contract_id)
+    {
+        if (is_null($contract_id)) {
+            throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
+        }
+        $this->container['contract_id'] = $contract_id;
 
         return $this;
     }

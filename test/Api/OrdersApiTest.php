@@ -29,7 +29,8 @@
 namespace Conekta\Test\Api;
 
 use Conekta\Api\OrdersApi;
-use \Conekta\Configuration;
+use Conekta\ApiException;
+use Conekta\Configuration;
 use Conekta\Model\OrderRefundRequest;
 use Conekta\Model\OrderRequest;
 use Conekta\Model\OrderUpdateRequest;
@@ -83,6 +84,7 @@ class OrdersApiTest extends TestCase
      *
      * Cancel Order.
      *
+     * @throws ApiException
      */
     public function testCancelOrder()
     {
@@ -96,6 +98,7 @@ class OrdersApiTest extends TestCase
      *
      * Create order.
      *
+     * @throws ApiException
      */
     public function testCreateOrder()
     {
@@ -158,6 +161,7 @@ class OrdersApiTest extends TestCase
      *
      * Get Order.
      *
+     * @throws ApiException
      */
     public function testGetOrderById()
     {
@@ -171,6 +175,7 @@ class OrdersApiTest extends TestCase
      *
      * Get a list of Orders.
      *
+     * @throws ApiException
      */
     public function testGetOrders()
     {
@@ -184,6 +189,7 @@ class OrdersApiTest extends TestCase
      *
      * Cancel Refund.
      *
+     * @throws ApiException
      */
     public function testOrderCancelRefund()
     {
@@ -197,6 +203,7 @@ class OrdersApiTest extends TestCase
      *
      * Refund Order.
      *
+     * @throws ApiException
      */
     public function testOrderRefund()
     {
@@ -213,6 +220,7 @@ class OrdersApiTest extends TestCase
      *
      * Capture Order.
      *
+     * @throws ApiException
      */
     public function testOrdersCreateCapture()
     {
@@ -226,6 +234,7 @@ class OrdersApiTest extends TestCase
      *
      * Update Order.
      *
+     * @throws ApiException
      */
     public function testUpdateOrder()
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * OrderRefundRequest
+ * PaymentMethodTokenRequest
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * OrderRefundRequest Class Doc Comment
+ * PaymentMethodTokenRequest Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'orderRefund_request';
+    protected static $openAPIModelName = 'payment_method_token_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'expires_at' => 'int',
-        'reason' => 'string'
+        'type' => 'string',
+        'token_id' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'expires_at' => 'int64',
-        'reason' => null
+        'type' => null,
+        'token_id' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'expires_at' => true,
-        'reason' => false
+        'type' => false,
+        'token_id' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'expires_at' => 'expires_at',
-        'reason' => 'reason'
+        'type' => 'type',
+        'token_id' => 'token_id'
     ];
 
     /**
@@ -184,9 +180,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'expires_at' => 'setExpiresAt',
-        'reason' => 'setReason'
+        'type' => 'setType',
+        'token_id' => 'setTokenId'
     ];
 
     /**
@@ -195,9 +190,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'expires_at' => 'getExpiresAt',
-        'reason' => 'getReason'
+        'type' => 'getType',
+        'token_id' => 'getTokenId'
     ];
 
     /**
@@ -257,9 +251,8 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('token_id', $data ?? [], null);
     }
 
     /**
@@ -289,11 +282,11 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['reason'] === null) {
-            $invalidProperties[] = "'reason' can't be null";
+        if ($this->container['token_id'] === null) {
+            $invalidProperties[] = "'token_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +304,55 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets amount
-     *
-     * @return int
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param int $amount Amount to be refunded in cents
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
-        }
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return int|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param int|null $expires_at expires_at
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        if (is_null($expires_at)) {
-            array_push($this->openAPINullablesSetToNull, 'expires_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expires_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason
+     * Gets type
      *
      * @return string
      */
-    public function getReason()
+    public function getType()
     {
-        return $this->container['reason'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets reason
+     * Sets type
      *
-     * @param string $reason Reason for the refund
+     * @param string $type Type of payment method
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setType($type)
     {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['reason'] = $reason;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_id
+     *
+     * @return string
+     */
+    public function getTokenId()
+    {
+        return $this->container['token_id'];
+    }
+
+    /**
+     * Sets token_id
+     *
+     * @param string $token_id Token id that will be used to create a \"card\" type payment method. See the (subscriptions)[https://developers.conekta.com/v2.1.0/reference/createsubscription] tutorial for more information on how to tokenize cards.
+     *
+     * @return self
+     */
+    public function setTokenId($token_id)
+    {
+        if (is_null($token_id)) {
+            throw new \InvalidArgumentException('non-nullable token_id cannot be null');
+        }
+        $this->container['token_id'] = $token_id;
 
         return $this;
     }

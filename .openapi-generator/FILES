@@ -151,9 +151,11 @@ docs/Model/PaymentMethodCardResponse.md
 docs/Model/PaymentMethodCash.md
 docs/Model/PaymentMethodCashRequest.md
 docs/Model/PaymentMethodCashResponse.md
+docs/Model/PaymentMethodGeneralRequest.md
 docs/Model/PaymentMethodResponse.md
 docs/Model/PaymentMethodSpeiRecurrent.md
 docs/Model/PaymentMethodSpeiRequest.md
+docs/Model/PaymentMethodTokenRequest.md
 docs/Model/Payout.md
 docs/Model/PayoutMethod.md
 docs/Model/PayoutOrder.md
@@ -352,9 +354,11 @@ lib/Model/PaymentMethodCardResponse.php
 lib/Model/PaymentMethodCash.php
 lib/Model/PaymentMethodCashRequest.php
 lib/Model/PaymentMethodCashResponse.php
+lib/Model/PaymentMethodGeneralRequest.php
 lib/Model/PaymentMethodResponse.php
 lib/Model/PaymentMethodSpeiRecurrent.php
 lib/Model/PaymentMethodSpeiRequest.php
+lib/Model/PaymentMethodTokenRequest.php
 lib/Model/Payout.php
 lib/Model/PayoutMethod.php
 lib/Model/PayoutOrder.php

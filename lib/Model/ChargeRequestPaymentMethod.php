@@ -36,7 +36,6 @@ use \Conekta\ObjectSerializer;
  * ChargeRequestPaymentMethod Class Doc Comment
  *
  * @category Class
- * @description Payment method used in the charge. Go to the [payment methods](https://developers.conekta.com/reference/m%C3%A9todos-de-pago) section for more details
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,9 +58,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'type' => 'string',
+        'cvc' => 'string',
+        'exp_month' => 'string',
+        'exp_year' => 'string',
+        'name' => 'string',
+        'number' => 'string',
         'expires_at' => 'int',
         'monthly_installments' => 'int',
-        'type' => 'string',
         'token_id' => 'string',
         'payment_source_id' => 'string',
         'contract_id' => 'string'
@@ -75,9 +79,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'type' => null,
+        'cvc' => null,
+        'exp_month' => null,
+        'exp_year' => null,
+        'name' => null,
+        'number' => null,
         'expires_at' => 'int64',
         'monthly_installments' => 'int8',
-        'type' => null,
         'token_id' => null,
         'payment_source_id' => null,
         'contract_id' => null
@@ -89,9 +98,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'type' => false,
+        'cvc' => false,
+        'exp_month' => false,
+        'exp_year' => false,
+        'name' => false,
+        'number' => false,
         'expires_at' => false,
         'monthly_installments' => false,
-        'type' => false,
         'token_id' => false,
         'payment_source_id' => false,
         'contract_id' => false
@@ -183,9 +197,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
+        'cvc' => 'cvc',
+        'exp_month' => 'exp_month',
+        'exp_year' => 'exp_year',
+        'name' => 'name',
+        'number' => 'number',
         'expires_at' => 'expires_at',
         'monthly_installments' => 'monthly_installments',
-        'type' => 'type',
         'token_id' => 'token_id',
         'payment_source_id' => 'payment_source_id',
         'contract_id' => 'contract_id'
@@ -197,9 +216,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
+        'cvc' => 'setCvc',
+        'exp_month' => 'setExpMonth',
+        'exp_year' => 'setExpYear',
+        'name' => 'setName',
+        'number' => 'setNumber',
         'expires_at' => 'setExpiresAt',
         'monthly_installments' => 'setMonthlyInstallments',
-        'type' => 'setType',
         'token_id' => 'setTokenId',
         'payment_source_id' => 'setPaymentSourceId',
         'contract_id' => 'setContractId'
@@ -211,9 +235,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
+        'cvc' => 'getCvc',
+        'exp_month' => 'getExpMonth',
+        'exp_year' => 'getExpYear',
+        'name' => 'getName',
+        'number' => 'getNumber',
         'expires_at' => 'getExpiresAt',
         'monthly_installments' => 'getMonthlyInstallments',
-        'type' => 'getType',
         'token_id' => 'getTokenId',
         'payment_source_id' => 'getPaymentSourceId',
         'contract_id' => 'getContractId'
@@ -276,9 +305,14 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('cvc', $data ?? [], null);
+        $this->setIfExists('exp_month', $data ?? [], null);
+        $this->setIfExists('exp_year', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('number', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('monthly_installments', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
         $this->setIfExists('payment_source_id', $data ?? [], null);
         $this->setIfExists('contract_id', $data ?? [], null);
@@ -314,6 +348,45 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        if ($this->container['cvc'] === null) {
+            $invalidProperties[] = "'cvc' can't be null";
+        }
+        if ((mb_strlen($this->container['cvc']) > 4)) {
+            $invalidProperties[] = "invalid value for 'cvc', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['cvc']) < 3)) {
+            $invalidProperties[] = "invalid value for 'cvc', the character length must be bigger than or equal to 3.";
+        }
+
+        if ($this->container['exp_month'] === null) {
+            $invalidProperties[] = "'exp_month' can't be null";
+        }
+        if ((mb_strlen($this->container['exp_month']) > 2)) {
+            $invalidProperties[] = "invalid value for 'exp_month', the character length must be smaller than or equal to 2.";
+        }
+
+        if ((mb_strlen($this->container['exp_month']) < 2)) {
+            $invalidProperties[] = "invalid value for 'exp_month', the character length must be bigger than or equal to 2.";
+        }
+
+        if ($this->container['exp_year'] === null) {
+            $invalidProperties[] = "'exp_year' can't be null";
+        }
+        if ((mb_strlen($this->container['exp_year']) > 4)) {
+            $invalidProperties[] = "invalid value for 'exp_year', the character length must be smaller than or equal to 4.";
+        }
+
+        if ((mb_strlen($this->container['exp_year']) < 4)) {
+            $invalidProperties[] = "invalid value for 'exp_year', the character length must be bigger than or equal to 4.";
+        }
+
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['number'] === null) {
+            $invalidProperties[] = "'number' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,6 +401,189 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of payment method
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets cvc
+     *
+     * @return string
+     */
+    public function getCvc()
+    {
+        return $this->container['cvc'];
+    }
+
+    /**
+     * Sets cvc
+     *
+     * @param string $cvc Card security code
+     *
+     * @return self
+     */
+    public function setCvc($cvc)
+    {
+        if (is_null($cvc)) {
+            throw new \InvalidArgumentException('non-nullable cvc cannot be null');
+        }
+        if ((mb_strlen($cvc) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $cvc when calling ChargeRequestPaymentMethod., must be smaller than or equal to 4.');
+        }
+        if ((mb_strlen($cvc) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $cvc when calling ChargeRequestPaymentMethod., must be bigger than or equal to 3.');
+        }
+
+        $this->container['cvc'] = $cvc;
+
+        return $this;
+    }
+
+    /**
+     * Gets exp_month
+     *
+     * @return string
+     */
+    public function getExpMonth()
+    {
+        return $this->container['exp_month'];
+    }
+
+    /**
+     * Sets exp_month
+     *
+     * @param string $exp_month Card expiration month
+     *
+     * @return self
+     */
+    public function setExpMonth($exp_month)
+    {
+        if (is_null($exp_month)) {
+            throw new \InvalidArgumentException('non-nullable exp_month cannot be null');
+        }
+        if ((mb_strlen($exp_month) > 2)) {
+            throw new \InvalidArgumentException('invalid length for $exp_month when calling ChargeRequestPaymentMethod., must be smaller than or equal to 2.');
+        }
+        if ((mb_strlen($exp_month) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $exp_month when calling ChargeRequestPaymentMethod., must be bigger than or equal to 2.');
+        }
+
+        $this->container['exp_month'] = $exp_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets exp_year
+     *
+     * @return string
+     */
+    public function getExpYear()
+    {
+        return $this->container['exp_year'];
+    }
+
+    /**
+     * Sets exp_year
+     *
+     * @param string $exp_year Card expiration year
+     *
+     * @return self
+     */
+    public function setExpYear($exp_year)
+    {
+        if (is_null($exp_year)) {
+            throw new \InvalidArgumentException('non-nullable exp_year cannot be null');
+        }
+        if ((mb_strlen($exp_year) > 4)) {
+            throw new \InvalidArgumentException('invalid length for $exp_year when calling ChargeRequestPaymentMethod., must be smaller than or equal to 4.');
+        }
+        if ((mb_strlen($exp_year) < 4)) {
+            throw new \InvalidArgumentException('invalid length for $exp_year when calling ChargeRequestPaymentMethod., must be bigger than or equal to 4.');
+        }
+
+        $this->container['exp_year'] = $exp_year;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Cardholder name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets number
+     *
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->container['number'];
+    }
+
+    /**
+     * Sets number
+     *
+     * @param string $number Card number
+     *
+     * @return self
+     */
+    public function setNumber($number)
+    {
+        if (is_null($number)) {
+            throw new \InvalidArgumentException('non-nullable number cannot be null');
+        }
+        $this->container['number'] = $number;
+
+        return $this;
+    }
 
     /**
      * Gets expires_at
@@ -379,33 +635,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable monthly_installments cannot be null');
         }
         $this->container['monthly_installments'] = $monthly_installments;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
 
         return $this;
     }
