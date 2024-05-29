@@ -323,7 +323,7 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param int $amount amount
+     * @param int $amount Amount to be refunded in cents
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class OrderRefundRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets reason
      *
-     * @param string $reason reason
+     * @param string $reason Reason for the refund
      *
      * @return self
      */

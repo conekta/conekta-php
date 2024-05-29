@@ -321,7 +321,7 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param int|null $amount amount
+     * @param int|null $amount Amount to be charged in cents
      *
      * @return self
      */

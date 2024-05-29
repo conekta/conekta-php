@@ -99,7 +99,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'livemode' => null,
         'object' => null,
         'order_id' => null,
-        'paid_at' => null,
+        'paid_at' => 'int64',
         'payment_method' => null,
         'reference_id' => null,
         'refunds' => null,
@@ -665,7 +665,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Charge ID
      *
      * @return self
      */
@@ -692,7 +692,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets livemode
      *
-     * @param bool|null $livemode livemode
+     * @param bool|null $livemode Whether the charge was made in live mode or not
      *
      * @return self
      */
@@ -746,7 +746,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets order_id
      *
-     * @param string|null $order_id order_id
+     * @param string|null $order_id Order ID
      *
      * @return self
      */
@@ -773,7 +773,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets paid_at
      *
-     * @param int|null $paid_at paid_at
+     * @param int|null $paid_at Payment date
      *
      * @return self
      */

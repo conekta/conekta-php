@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **int** |  | [optional]
+**amount** | **int** | Amount to be charged in cents | [optional]
 **payment_method** | [**\Conekta\Model\ChargeRequestPaymentMethod**](ChargeRequestPaymentMethod.md) |  |
 **reference_id** | **string** | Custom reference to add to the charge | [optional]
 
