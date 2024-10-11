@@ -68,6 +68,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => 'string',
         'store' => 'string',
         'store_name' => 'string',
+        'customer_ip_address' => 'string',
         'account_type' => 'string',
         'brand' => 'string',
         'contract_id' => 'string',
@@ -113,6 +114,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => null,
         'store' => null,
         'store_name' => null,
+        'customer_ip_address' => null,
         'account_type' => null,
         'brand' => null,
         'contract_id' => null,
@@ -156,6 +158,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => false,
         'store' => true,
         'store_name' => false,
+        'customer_ip_address' => false,
         'account_type' => false,
         'brand' => false,
         'contract_id' => false,
@@ -279,6 +282,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => 'service_name',
         'store' => 'store',
         'store_name' => 'store_name',
+        'customer_ip_address' => 'customer_ip_address',
         'account_type' => 'account_type',
         'brand' => 'brand',
         'contract_id' => 'contract_id',
@@ -322,6 +326,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => 'setServiceName',
         'store' => 'setStore',
         'store_name' => 'setStoreName',
+        'customer_ip_address' => 'setCustomerIpAddress',
         'account_type' => 'setAccountType',
         'brand' => 'setBrand',
         'contract_id' => 'setContractId',
@@ -365,6 +370,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'service_name' => 'getServiceName',
         'store' => 'getStore',
         'store_name' => 'getStoreName',
+        'customer_ip_address' => 'getCustomerIpAddress',
         'account_type' => 'getAccountType',
         'brand' => 'getBrand',
         'contract_id' => 'getContractId',
@@ -459,6 +465,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('service_name', $data ?? [], null);
         $this->setIfExists('store', $data ?? [], null);
         $this->setIfExists('store_name', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
         $this->setIfExists('account_type', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
         $this->setIfExists('contract_id', $data ?? [], null);
@@ -814,6 +821,33 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable store_name cannot be null');
         }
         $this->container['store_name'] = $store_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address customer_ip_address
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }

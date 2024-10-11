@@ -64,7 +64,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => 'string',
         'token_id' => 'string',
         'payment_source_id' => 'string',
-        'contract_id' => 'string'
+        'cvc' => 'string',
+        'contract_id' => 'string',
+        'customer_ip_address' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => null,
         'token_id' => null,
         'payment_source_id' => null,
-        'contract_id' => null
+        'cvc' => null,
+        'contract_id' => null,
+        'customer_ip_address' => null
     ];
 
     /**
@@ -94,7 +98,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => false,
         'token_id' => false,
         'payment_source_id' => false,
-        'contract_id' => false
+        'cvc' => false,
+        'contract_id' => false,
+        'customer_ip_address' => false
     ];
 
     /**
@@ -188,7 +194,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => 'type',
         'token_id' => 'token_id',
         'payment_source_id' => 'payment_source_id',
-        'contract_id' => 'contract_id'
+        'cvc' => 'cvc',
+        'contract_id' => 'contract_id',
+        'customer_ip_address' => 'customer_ip_address'
     ];
 
     /**
@@ -202,7 +210,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => 'setType',
         'token_id' => 'setTokenId',
         'payment_source_id' => 'setPaymentSourceId',
-        'contract_id' => 'setContractId'
+        'cvc' => 'setCvc',
+        'contract_id' => 'setContractId',
+        'customer_ip_address' => 'setCustomerIpAddress'
     ];
 
     /**
@@ -216,7 +226,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         'type' => 'getType',
         'token_id' => 'getTokenId',
         'payment_source_id' => 'getPaymentSourceId',
-        'contract_id' => 'getContractId'
+        'cvc' => 'getCvc',
+        'contract_id' => 'getContractId',
+        'customer_ip_address' => 'getCustomerIpAddress'
     ];
 
     /**
@@ -281,7 +293,9 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
         $this->setIfExists('payment_source_id', $data ?? [], null);
+        $this->setIfExists('cvc', $data ?? [], null);
         $this->setIfExists('contract_id', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
     }
 
     /**
@@ -465,6 +479,33 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
+     * Gets cvc
+     *
+     * @return string|null
+     */
+    public function getCvc()
+    {
+        return $this->container['cvc'];
+    }
+
+    /**
+     * Sets cvc
+     *
+     * @param string|null $cvc Optional, It is a value that allows identifying the security code of the card. Only for PCI merchants
+     *
+     * @return self
+     */
+    public function setCvc($cvc)
+    {
+        if (is_null($cvc)) {
+            throw new \InvalidArgumentException('non-nullable cvc cannot be null');
+        }
+        $this->container['cvc'] = $cvc;
+
+        return $this;
+    }
+
+    /**
      * Gets contract_id
      *
      * @return string|null
@@ -487,6 +528,33 @@ class PaymentMethodGeneralRequest implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable contract_id cannot be null');
         }
         $this->container['contract_id'] = $contract_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }

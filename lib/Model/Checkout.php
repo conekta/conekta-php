@@ -63,6 +63,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => 'int',
         'monthly_installments_enabled' => 'bool',
         'monthly_installments_options' => 'int[]',
+        'three_ds_mode' => 'string',
         'name' => 'string',
         'needs_shipping_contact' => 'bool',
         'on_demand_enabled' => 'bool',
@@ -84,6 +85,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => 'int64',
         'monthly_installments_enabled' => null,
         'monthly_installments_options' => 'int8',
+        'three_ds_mode' => null,
         'name' => null,
         'needs_shipping_contact' => null,
         'on_demand_enabled' => null,
@@ -103,6 +105,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => false,
         'monthly_installments_enabled' => false,
         'monthly_installments_options' => false,
+        'three_ds_mode' => false,
         'name' => false,
         'needs_shipping_contact' => false,
         'on_demand_enabled' => true,
@@ -202,6 +205,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => 'expires_at',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
         'monthly_installments_options' => 'monthly_installments_options',
+        'three_ds_mode' => 'three_ds_mode',
         'name' => 'name',
         'needs_shipping_contact' => 'needs_shipping_contact',
         'on_demand_enabled' => 'on_demand_enabled',
@@ -221,6 +225,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => 'setExpiresAt',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
+        'three_ds_mode' => 'setThreeDsMode',
         'name' => 'setName',
         'needs_shipping_contact' => 'setNeedsShippingContact',
         'on_demand_enabled' => 'setOnDemandEnabled',
@@ -240,6 +245,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => 'getExpiresAt',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
+        'three_ds_mode' => 'getThreeDsMode',
         'name' => 'getName',
         'needs_shipping_contact' => 'getNeedsShippingContact',
         'on_demand_enabled' => 'getOnDemandEnabled',
@@ -310,6 +316,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('monthly_installments_enabled', $data ?? [], null);
         $this->setIfExists('monthly_installments_options', $data ?? [], null);
+        $this->setIfExists('three_ds_mode', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('needs_shipping_contact', $data ?? [], null);
         $this->setIfExists('on_demand_enabled', $data ?? [], null);
@@ -483,6 +490,33 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable monthly_installments_options cannot be null');
         }
         $this->container['monthly_installments_options'] = $monthly_installments_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets three_ds_mode
+     *
+     * @return string|null
+     */
+    public function getThreeDsMode()
+    {
+        return $this->container['three_ds_mode'];
+    }
+
+    /**
+     * Sets three_ds_mode
+     *
+     * @param string|null $three_ds_mode Indicates the 3DS2 mode for the order, either smart or strict.
+     *
+     * @return self
+     */
+    public function setThreeDsMode($three_ds_mode)
+    {
+        if (is_null($three_ds_mode)) {
+            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
+        }
+        $this->container['three_ds_mode'] = $three_ds_mode;
 
         return $this;
     }

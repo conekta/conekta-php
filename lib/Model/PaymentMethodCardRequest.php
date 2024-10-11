@@ -63,7 +63,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => 'string',
         'exp_year' => 'string',
         'name' => 'string',
-        'number' => 'string'
+        'number' => 'string',
+        'customer_ip_address' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => null,
         'exp_year' => null,
         'name' => null,
-        'number' => null
+        'number' => null,
+        'customer_ip_address' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => false,
         'exp_year' => false,
         'name' => false,
-        'number' => false
+        'number' => false,
+        'customer_ip_address' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => 'exp_month',
         'exp_year' => 'exp_year',
         'name' => 'name',
-        'number' => 'number'
+        'number' => 'number',
+        'customer_ip_address' => 'customer_ip_address'
     ];
 
     /**
@@ -201,7 +205,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => 'setExpMonth',
         'exp_year' => 'setExpYear',
         'name' => 'setName',
-        'number' => 'setNumber'
+        'number' => 'setNumber',
+        'customer_ip_address' => 'setCustomerIpAddress'
     ];
 
     /**
@@ -215,7 +220,8 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'exp_month' => 'getExpMonth',
         'exp_year' => 'getExpYear',
         'name' => 'getName',
-        'number' => 'getNumber'
+        'number' => 'getNumber',
+        'customer_ip_address' => 'getCustomerIpAddress'
     ];
 
     /**
@@ -281,6 +287,7 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('exp_year', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
     }
 
     /**
@@ -546,6 +553,33 @@ class PaymentMethodCardRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable number cannot be null');
         }
         $this->container['number'] = $number;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }

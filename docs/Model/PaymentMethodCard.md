@@ -17,5 +17,6 @@ Name | Type | Description | Notes
 **issuer** | **string** | Issuer of the card | [optional]
 **last4** | **string** | Last 4 digits of the card | [optional]
 **name** | **string** | Name of the cardholder | [optional]
+**customer_ip_address** | **string** | Optional field used to capture the customer&#39;s IP address for fraud prevention and security monitoring purposes | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

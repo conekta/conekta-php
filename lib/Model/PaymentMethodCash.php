@@ -67,7 +67,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => 'int',
         'service_name' => 'string',
         'store' => 'string',
-        'store_name' => 'string'
+        'store_name' => 'string',
+        'customer_ip_address' => 'string'
     ];
 
     /**
@@ -87,7 +88,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => 'int64',
         'service_name' => null,
         'store' => null,
-        'store_name' => null
+        'store_name' => null,
+        'customer_ip_address' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => false,
         'service_name' => false,
         'store' => true,
-        'store_name' => false
+        'store_name' => false,
+        'customer_ip_address' => false
     ];
 
     /**
@@ -203,7 +206,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => 'expires_at',
         'service_name' => 'service_name',
         'store' => 'store',
-        'store_name' => 'store_name'
+        'store_name' => 'store_name',
+        'customer_ip_address' => 'customer_ip_address'
     ];
 
     /**
@@ -221,7 +225,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => 'setExpiresAt',
         'service_name' => 'setServiceName',
         'store' => 'setStore',
-        'store_name' => 'setStoreName'
+        'store_name' => 'setStoreName',
+        'customer_ip_address' => 'setCustomerIpAddress'
     ];
 
     /**
@@ -239,7 +244,8 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'expires_at' => 'getExpiresAt',
         'service_name' => 'getServiceName',
         'store' => 'getStore',
-        'store_name' => 'getStoreName'
+        'store_name' => 'getStoreName',
+        'customer_ip_address' => 'getCustomerIpAddress'
     ];
 
     /**
@@ -309,6 +315,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('service_name', $data ?? [], null);
         $this->setIfExists('store', $data ?? [], null);
         $this->setIfExists('store_name', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
     }
 
     /**
@@ -643,6 +650,33 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable store_name cannot be null');
         }
         $this->container['store_name'] = $store_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address customer_ip_address
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }
