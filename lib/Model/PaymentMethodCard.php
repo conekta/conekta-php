@@ -70,7 +70,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => 'mixed[]',
         'issuer' => 'string',
         'last4' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'customer_ip_address' => 'string'
     ];
 
     /**
@@ -93,7 +94,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => null,
         'issuer' => null,
         'last4' => null,
-        'name' => null
+        'name' => null,
+        'customer_ip_address' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => false,
         'issuer' => false,
         'last4' => false,
-        'name' => false
+        'name' => false,
+        'customer_ip_address' => false
     ];
 
     /**
@@ -215,7 +218,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => 'fraud_indicators',
         'issuer' => 'issuer',
         'last4' => 'last4',
-        'name' => 'name'
+        'name' => 'name',
+        'customer_ip_address' => 'customer_ip_address'
     ];
 
     /**
@@ -236,7 +240,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => 'setFraudIndicators',
         'issuer' => 'setIssuer',
         'last4' => 'setLast4',
-        'name' => 'setName'
+        'name' => 'setName',
+        'customer_ip_address' => 'setCustomerIpAddress'
     ];
 
     /**
@@ -257,7 +262,8 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         'fraud_indicators' => 'getFraudIndicators',
         'issuer' => 'getIssuer',
         'last4' => 'getLast4',
-        'name' => 'getName'
+        'name' => 'getName',
+        'customer_ip_address' => 'getCustomerIpAddress'
     ];
 
     /**
@@ -330,6 +336,7 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('issuer', $data ?? [], null);
         $this->setIfExists('last4', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
     }
 
     /**
@@ -724,6 +731,33 @@ class PaymentMethodCard implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }

@@ -64,6 +64,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => 'string',
         'name' => 'string',
         'number' => 'string',
+        'customer_ip_address' => 'string',
         'expires_at' => 'int',
         'monthly_installments' => 'int',
         'token_id' => 'string',
@@ -85,6 +86,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => null,
         'name' => null,
         'number' => null,
+        'customer_ip_address' => null,
         'expires_at' => 'int64',
         'monthly_installments' => 'int8',
         'token_id' => null,
@@ -104,6 +106,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => false,
         'name' => false,
         'number' => false,
+        'customer_ip_address' => false,
         'expires_at' => false,
         'monthly_installments' => false,
         'token_id' => false,
@@ -203,6 +206,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => 'exp_year',
         'name' => 'name',
         'number' => 'number',
+        'customer_ip_address' => 'customer_ip_address',
         'expires_at' => 'expires_at',
         'monthly_installments' => 'monthly_installments',
         'token_id' => 'token_id',
@@ -222,6 +226,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => 'setExpYear',
         'name' => 'setName',
         'number' => 'setNumber',
+        'customer_ip_address' => 'setCustomerIpAddress',
         'expires_at' => 'setExpiresAt',
         'monthly_installments' => 'setMonthlyInstallments',
         'token_id' => 'setTokenId',
@@ -241,6 +246,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'exp_year' => 'getExpYear',
         'name' => 'getName',
         'number' => 'getNumber',
+        'customer_ip_address' => 'getCustomerIpAddress',
         'expires_at' => 'getExpiresAt',
         'monthly_installments' => 'getMonthlyInstallments',
         'token_id' => 'getTokenId',
@@ -311,6 +317,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('exp_year', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('monthly_installments', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
@@ -351,14 +358,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['cvc'] === null) {
             $invalidProperties[] = "'cvc' can't be null";
         }
-        if ((mb_strlen($this->container['cvc']) > 4)) {
-            $invalidProperties[] = "invalid value for 'cvc', the character length must be smaller than or equal to 4.";
-        }
-
-        if ((mb_strlen($this->container['cvc']) < 3)) {
-            $invalidProperties[] = "invalid value for 'cvc', the character length must be bigger than or equal to 3.";
-        }
-
         if ($this->container['exp_month'] === null) {
             $invalidProperties[] = "'exp_month' can't be null";
         }
@@ -442,7 +441,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets cvc
      *
-     * @param string $cvc Card security code
+     * @param string $cvc Optional, It is a value that allows identifying the security code of the card. Only for PCI merchants
      *
      * @return self
      */
@@ -451,13 +450,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if (is_null($cvc)) {
             throw new \InvalidArgumentException('non-nullable cvc cannot be null');
         }
-        if ((mb_strlen($cvc) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $cvc when calling ChargeRequestPaymentMethod., must be smaller than or equal to 4.');
-        }
-        if ((mb_strlen($cvc) < 3)) {
-            throw new \InvalidArgumentException('invalid length for $cvc when calling ChargeRequestPaymentMethod., must be bigger than or equal to 3.');
-        }
-
         $this->container['cvc'] = $cvc;
 
         return $this;
@@ -581,6 +573,33 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable number cannot be null');
         }
         $this->container['number'] = $number;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address Optional field used to capture the customer's IP address for fraud prevention and security monitoring purposes
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }

@@ -731,7 +731,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets return_url
      *
-     * @param string|null $return_url Indicates the redirection callback upon completion of the 3DS2 flow.
+     * @param string|null $return_url Indicates the redirection callback upon completion of the 3DS2 flow. Do not use this parameter if your order has a checkout parameter
      *
      * @return self
      */

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **service_name** | **string** |  | [optional]
 **store** | **string** |  | [optional]
 **store_name** | **string** |  | [optional]
+**customer_ip_address** | **string** |  | [optional]
 **account_type** | **string** | Account type of the card | [optional]
 **brand** | **string** | Brand of the card | [optional]
 **contract_id** | **string** | Id sent for recurrent charges. | [optional]

@@ -62,6 +62,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => 'int',
         'billing_cycle_end' => 'int',
         'canceled_at' => 'int',
+        'canceled_reason' => 'string',
         'card_id' => 'string',
         'charge_id' => 'string',
         'created_at' => 'int',
@@ -89,6 +90,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => 'int64',
         'billing_cycle_end' => 'int64',
         'canceled_at' => 'int64',
+        'canceled_reason' => null,
         'card_id' => null,
         'charge_id' => null,
         'created_at' => 'int64',
@@ -114,6 +116,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => true,
         'billing_cycle_end' => true,
         'canceled_at' => true,
+        'canceled_reason' => false,
         'card_id' => false,
         'charge_id' => true,
         'created_at' => false,
@@ -219,6 +222,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => 'billing_cycle_start',
         'billing_cycle_end' => 'billing_cycle_end',
         'canceled_at' => 'canceled_at',
+        'canceled_reason' => 'canceled_reason',
         'card_id' => 'card_id',
         'charge_id' => 'charge_id',
         'created_at' => 'created_at',
@@ -244,6 +248,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => 'setBillingCycleStart',
         'billing_cycle_end' => 'setBillingCycleEnd',
         'canceled_at' => 'setCanceledAt',
+        'canceled_reason' => 'setCanceledReason',
         'card_id' => 'setCardId',
         'charge_id' => 'setChargeId',
         'created_at' => 'setCreatedAt',
@@ -269,6 +274,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'billing_cycle_start' => 'getBillingCycleStart',
         'billing_cycle_end' => 'getBillingCycleEnd',
         'canceled_at' => 'getCanceledAt',
+        'canceled_reason' => 'getCanceledReason',
         'card_id' => 'getCardId',
         'charge_id' => 'getChargeId',
         'created_at' => 'getCreatedAt',
@@ -345,6 +351,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('billing_cycle_start', $data ?? [], null);
         $this->setIfExists('billing_cycle_end', $data ?? [], null);
         $this->setIfExists('canceled_at', $data ?? [], null);
+        $this->setIfExists('canceled_reason', $data ?? [], null);
         $this->setIfExists('card_id', $data ?? [], null);
         $this->setIfExists('charge_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -501,6 +508,33 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['canceled_at'] = $canceled_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets canceled_reason
+     *
+     * @return string|null
+     */
+    public function getCanceledReason()
+    {
+        return $this->container['canceled_reason'];
+    }
+
+    /**
+     * Sets canceled_reason
+     *
+     * @param string|null $canceled_reason Reason for cancellation. This field appears when the subscription status is 'canceled'.
+     *
+     * @return self
+     */
+    public function setCanceledReason($canceled_reason)
+    {
+        if (is_null($canceled_reason)) {
+            throw new \InvalidArgumentException('non-nullable canceled_reason cannot be null');
+        }
+        $this->container['canceled_reason'] = $canceled_reason;
 
         return $this;
     }

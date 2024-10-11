@@ -75,7 +75,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => 'string',
         'receiving_account_tax_id' => 'string',
         'reference_number' => 'string',
-        'tracking_code' => 'string'
+        'tracking_code' => 'string',
+        'customer_ip_address' => 'string'
     ];
 
     /**
@@ -103,7 +104,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => null,
         'receiving_account_tax_id' => null,
         'reference_number' => null,
-        'tracking_code' => null
+        'tracking_code' => null,
+        'customer_ip_address' => null
     ];
 
     /**
@@ -129,7 +131,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => false,
         'receiving_account_tax_id' => true,
         'reference_number' => true,
-        'tracking_code' => true
+        'tracking_code' => true,
+        'customer_ip_address' => false
     ];
 
     /**
@@ -235,7 +238,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => 'receiving_account_bank',
         'receiving_account_tax_id' => 'receiving_account_tax_id',
         'reference_number' => 'reference_number',
-        'tracking_code' => 'tracking_code'
+        'tracking_code' => 'tracking_code',
+        'customer_ip_address' => 'customer_ip_address'
     ];
 
     /**
@@ -261,7 +265,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => 'setReceivingAccountBank',
         'receiving_account_tax_id' => 'setReceivingAccountTaxId',
         'reference_number' => 'setReferenceNumber',
-        'tracking_code' => 'setTrackingCode'
+        'tracking_code' => 'setTrackingCode',
+        'customer_ip_address' => 'setCustomerIpAddress'
     ];
 
     /**
@@ -287,7 +292,8 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'receiving_account_bank' => 'getReceivingAccountBank',
         'receiving_account_tax_id' => 'getReceivingAccountTaxId',
         'reference_number' => 'getReferenceNumber',
-        'tracking_code' => 'getTrackingCode'
+        'tracking_code' => 'getTrackingCode',
+        'customer_ip_address' => 'getCustomerIpAddress'
     ];
 
     /**
@@ -365,6 +371,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('receiving_account_tax_id', $data ?? [], null);
         $this->setIfExists('reference_number', $data ?? [], null);
         $this->setIfExists('tracking_code', $data ?? [], null);
+        $this->setIfExists('customer_ip_address', $data ?? [], null);
     }
 
     /**
@@ -964,6 +971,33 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['tracking_code'] = $tracking_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_ip_address
+     *
+     * @return string|null
+     */
+    public function getCustomerIpAddress()
+    {
+        return $this->container['customer_ip_address'];
+    }
+
+    /**
+     * Sets customer_ip_address
+     *
+     * @param string|null $customer_ip_address customer_ip_address
+     *
+     * @return self
+     */
+    public function setCustomerIpAddress($customer_ip_address)
+    {
+        if (is_null($customer_ip_address)) {
+            throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
+        }
+        $this->container['customer_ip_address'] = $customer_ip_address;
 
         return $this;
     }
