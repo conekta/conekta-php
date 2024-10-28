@@ -51,6 +51,8 @@ docs/Model/ChargeResponseRefunds.md
 docs/Model/ChargeResponseRefundsData.md
 docs/Model/ChargeUpdateRequest.md
 docs/Model/ChargesDataResponse.md
+docs/Model/ChargesOrderResponse.md
+docs/Model/ChargesOrderResponseAllOfData.md
 docs/Model/Checkout.md
 docs/Model/CheckoutOrderTemplate.md
 docs/Model/CheckoutOrderTemplateCustomerInfo.md
@@ -253,6 +255,8 @@ lib/Model/ChargeResponseRefunds.php
 lib/Model/ChargeResponseRefundsData.php
 lib/Model/ChargeUpdateRequest.php
 lib/Model/ChargesDataResponse.php
+lib/Model/ChargesOrderResponse.php
+lib/Model/ChargesOrderResponseAllOfData.php
 lib/Model/Checkout.php
 lib/Model/CheckoutOrderTemplate.php
 lib/Model/CheckoutOrderTemplateCustomerInfo.php

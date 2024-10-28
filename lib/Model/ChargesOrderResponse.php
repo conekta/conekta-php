@@ -1,6 +1,6 @@
 <?php
 /**
- * GetApiKeysResponse
+ * ChargesOrderResponse
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * GetApiKeysResponse Class Doc Comment
+ * ChargesOrderResponse Class Doc Comment
  *
  * @category Class
+ * @description The charges associated with the order
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargesOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'get_api_keys_response';
+    protected static $openAPIModelName = 'charges_order_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,9 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next_page_url' => 'string',
-        'previous_page_url' => 'string',
         'has_more' => 'bool',
         'object' => 'string',
-        'data' => '\Conekta\Model\ApiKeyResponse[]'
+        'data' => '\Conekta\Model\ChargesOrderResponseAllOfData[]'
     ];
 
     /**
@@ -73,8 +72,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'next_page_url' => null,
-        'previous_page_url' => null,
         'has_more' => null,
         'object' => null,
         'data' => null
@@ -86,8 +83,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_page_url' => true,
-        'previous_page_url' => true,
         'has_more' => false,
         'object' => false,
         'data' => false
@@ -179,8 +174,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'next_page_url' => 'next_page_url',
-        'previous_page_url' => 'previous_page_url',
         'has_more' => 'has_more',
         'object' => 'object',
         'data' => 'data'
@@ -192,8 +185,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'next_page_url' => 'setNextPageUrl',
-        'previous_page_url' => 'setPreviousPageUrl',
         'has_more' => 'setHasMore',
         'object' => 'setObject',
         'data' => 'setData'
@@ -205,8 +196,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'next_page_url' => 'getNextPageUrl',
-        'previous_page_url' => 'getPreviousPageUrl',
         'has_more' => 'getHasMore',
         'object' => 'getObject',
         'data' => 'getData'
@@ -269,8 +258,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('next_page_url', $data ?? [], null);
-        $this->setIfExists('previous_page_url', $data ?? [], null);
         $this->setIfExists('has_more', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
@@ -323,74 +310,6 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets next_page_url
-     *
-     * @return string|null
-     */
-    public function getNextPageUrl()
-    {
-        return $this->container['next_page_url'];
-    }
-
-    /**
-     * Sets next_page_url
-     *
-     * @param string|null $next_page_url URL of the next page.
-     *
-     * @return self
-     */
-    public function setNextPageUrl($next_page_url)
-    {
-        if (is_null($next_page_url)) {
-            array_push($this->openAPINullablesSetToNull, 'next_page_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('next_page_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['next_page_url'] = $next_page_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets previous_page_url
-     *
-     * @return string|null
-     */
-    public function getPreviousPageUrl()
-    {
-        return $this->container['previous_page_url'];
-    }
-
-    /**
-     * Sets previous_page_url
-     *
-     * @param string|null $previous_page_url Url of the previous page.
-     *
-     * @return self
-     */
-    public function setPreviousPageUrl($previous_page_url)
-    {
-        if (is_null($previous_page_url)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_page_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_page_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['previous_page_url'] = $previous_page_url;
-
-        return $this;
-    }
 
     /**
      * Gets has_more
@@ -449,7 +368,7 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \Conekta\Model\ApiKeyResponse[]|null
+     * @return \Conekta\Model\ChargesOrderResponseAllOfData[]|null
      */
     public function getData()
     {
@@ -459,7 +378,7 @@ class GetApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \Conekta\Model\ApiKeyResponse[]|null $data data
+     * @param \Conekta\Model\ChargesOrderResponseAllOfData[]|null $data data
      *
      * @return self
      */
