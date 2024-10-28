@@ -1,6 +1,6 @@
 <?php
 /**
- * PayoutOrderPayoutsItem
+ * ChargesOrderResponseAllOfData
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * PayoutOrderPayoutsItem Class Doc Comment
+ * ChargesOrderResponseAllOfData Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChargesOrderResponseAllOfData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'payout_order_payouts_item';
+    protected static $openAPIModelName = 'charges_order_response_allOf_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'amount' => 'int',
+        'channel' => '\Conekta\Model\ChargeResponseChannel',
+        'created_at' => 'int',
         'currency' => 'string',
-        'expires_at' => 'int',
+        'customer_id' => 'string',
+        'description' => 'string',
+        'device_fingerprint' => 'string',
+        'failure_code' => 'string',
+        'failure_message' => 'string',
         'id' => 'string',
         'livemode' => 'bool',
         'object' => 'string',
-        'payout_order_id' => 'string',
+        'order_id' => 'string',
+        'paid_at' => 'int',
+        'payment_method' => '\Conekta\Model\ChargeResponsePaymentMethod',
+        'reference_id' => 'string',
+        'refunds' => '\Conekta\Model\ChargeResponseRefunds',
         'status' => 'string'
     ];
 
@@ -77,12 +87,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'amount' => null,
+        'channel' => null,
+        'created_at' => 'int64',
         'currency' => null,
-        'expires_at' => 'int64',
+        'customer_id' => null,
+        'description' => null,
+        'device_fingerprint' => null,
+        'failure_code' => null,
+        'failure_message' => null,
         'id' => null,
         'livemode' => null,
         'object' => null,
-        'payout_order_id' => null,
+        'order_id' => null,
+        'paid_at' => 'int64',
+        'payment_method' => null,
+        'reference_id' => null,
+        'refunds' => null,
         'status' => null
     ];
 
@@ -93,12 +113,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'amount' => false,
+        'channel' => false,
+        'created_at' => false,
         'currency' => false,
-        'expires_at' => false,
+        'customer_id' => false,
+        'description' => false,
+        'device_fingerprint' => false,
+        'failure_code' => false,
+        'failure_message' => false,
         'id' => false,
         'livemode' => false,
         'object' => false,
-        'payout_order_id' => false,
+        'order_id' => false,
+        'paid_at' => true,
+        'payment_method' => false,
+        'reference_id' => true,
+        'refunds' => true,
         'status' => false
     ];
 
@@ -189,12 +219,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'amount' => 'amount',
+        'channel' => 'channel',
+        'created_at' => 'created_at',
         'currency' => 'currency',
-        'expires_at' => 'expires_at',
+        'customer_id' => 'customer_id',
+        'description' => 'description',
+        'device_fingerprint' => 'device_fingerprint',
+        'failure_code' => 'failure_code',
+        'failure_message' => 'failure_message',
         'id' => 'id',
         'livemode' => 'livemode',
         'object' => 'object',
-        'payout_order_id' => 'payout_order_id',
+        'order_id' => 'order_id',
+        'paid_at' => 'paid_at',
+        'payment_method' => 'payment_method',
+        'reference_id' => 'reference_id',
+        'refunds' => 'refunds',
         'status' => 'status'
     ];
 
@@ -205,12 +245,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'amount' => 'setAmount',
+        'channel' => 'setChannel',
+        'created_at' => 'setCreatedAt',
         'currency' => 'setCurrency',
-        'expires_at' => 'setExpiresAt',
+        'customer_id' => 'setCustomerId',
+        'description' => 'setDescription',
+        'device_fingerprint' => 'setDeviceFingerprint',
+        'failure_code' => 'setFailureCode',
+        'failure_message' => 'setFailureMessage',
         'id' => 'setId',
         'livemode' => 'setLivemode',
         'object' => 'setObject',
-        'payout_order_id' => 'setPayoutOrderId',
+        'order_id' => 'setOrderId',
+        'paid_at' => 'setPaidAt',
+        'payment_method' => 'setPaymentMethod',
+        'reference_id' => 'setReferenceId',
+        'refunds' => 'setRefunds',
         'status' => 'setStatus'
     ];
 
@@ -221,12 +271,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'amount' => 'getAmount',
+        'channel' => 'getChannel',
+        'created_at' => 'getCreatedAt',
         'currency' => 'getCurrency',
-        'expires_at' => 'getExpiresAt',
+        'customer_id' => 'getCustomerId',
+        'description' => 'getDescription',
+        'device_fingerprint' => 'getDeviceFingerprint',
+        'failure_code' => 'getFailureCode',
+        'failure_message' => 'getFailureMessage',
         'id' => 'getId',
         'livemode' => 'getLivemode',
         'object' => 'getObject',
-        'payout_order_id' => 'getPayoutOrderId',
+        'order_id' => 'getOrderId',
+        'paid_at' => 'getPaidAt',
+        'payment_method' => 'getPaymentMethod',
+        'reference_id' => 'getReferenceId',
+        'refunds' => 'getRefunds',
         'status' => 'getStatus'
     ];
 
@@ -288,12 +348,22 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('channel', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('device_fingerprint', $data ?? [], null);
+        $this->setIfExists('failure_code', $data ?? [], null);
+        $this->setIfExists('failure_message', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('payout_order_id', $data ?? [], null);
+        $this->setIfExists('order_id', $data ?? [], null);
+        $this->setIfExists('paid_at', $data ?? [], null);
+        $this->setIfExists('payment_method', $data ?? [], null);
+        $this->setIfExists('reference_id', $data ?? [], null);
+        $this->setIfExists('refunds', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -324,21 +394,6 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['livemode'] === null) {
-            $invalidProperties[] = "'livemode' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -357,7 +412,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets amount
      *
-     * @return int
+     * @return int|null
      */
     public function getAmount()
     {
@@ -367,7 +422,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets amount
      *
-     * @param int $amount The amount of the payout.
+     * @param int|null $amount amount
      *
      * @return self
      */
@@ -382,9 +437,63 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets channel
+     *
+     * @return \Conekta\Model\ChargeResponseChannel|null
+     */
+    public function getChannel()
+    {
+        return $this->container['channel'];
+    }
+
+    /**
+     * Sets channel
+     *
+     * @param \Conekta\Model\ChargeResponseChannel|null $channel channel
+     *
+     * @return self
+     */
+    public function setChannel($channel)
+    {
+        if (is_null($channel)) {
+            throw new \InvalidArgumentException('non-nullable channel cannot be null');
+        }
+        $this->container['channel'] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return int|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param int|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
      * Gets currency
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrency()
     {
@@ -394,7 +503,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets currency
      *
-     * @param string $currency The currency in which the payout is made.
+     * @param string|null $currency currency
      *
      * @return self
      */
@@ -409,28 +518,136 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets expires_at
+     * Gets customer_id
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getExpiresAt()
+    public function getCustomerId()
     {
-        return $this->container['expires_at'];
+        return $this->container['customer_id'];
     }
 
     /**
-     * Sets expires_at
+     * Sets customer_id
      *
-     * @param int|null $expires_at The expiration date of the payout.
+     * @param string|null $customer_id customer_id
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setCustomerId($customer_id)
     {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
         }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['customer_id'] = $customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets device_fingerprint
+     *
+     * @return string|null
+     */
+    public function getDeviceFingerprint()
+    {
+        return $this->container['device_fingerprint'];
+    }
+
+    /**
+     * Sets device_fingerprint
+     *
+     * @param string|null $device_fingerprint device_fingerprint
+     *
+     * @return self
+     */
+    public function setDeviceFingerprint($device_fingerprint)
+    {
+        if (is_null($device_fingerprint)) {
+            throw new \InvalidArgumentException('non-nullable device_fingerprint cannot be null');
+        }
+        $this->container['device_fingerprint'] = $device_fingerprint;
+
+        return $this;
+    }
+
+    /**
+     * Gets failure_code
+     *
+     * @return string|null
+     */
+    public function getFailureCode()
+    {
+        return $this->container['failure_code'];
+    }
+
+    /**
+     * Sets failure_code
+     *
+     * @param string|null $failure_code failure_code
+     *
+     * @return self
+     */
+    public function setFailureCode($failure_code)
+    {
+        if (is_null($failure_code)) {
+            throw new \InvalidArgumentException('non-nullable failure_code cannot be null');
+        }
+        $this->container['failure_code'] = $failure_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets failure_message
+     *
+     * @return string|null
+     */
+    public function getFailureMessage()
+    {
+        return $this->container['failure_message'];
+    }
+
+    /**
+     * Sets failure_message
+     *
+     * @param string|null $failure_message failure_message
+     *
+     * @return self
+     */
+    public function setFailureMessage($failure_message)
+    {
+        if (is_null($failure_message)) {
+            throw new \InvalidArgumentException('non-nullable failure_message cannot be null');
+        }
+        $this->container['failure_message'] = $failure_message;
 
         return $this;
     }
@@ -438,7 +655,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -448,7 +665,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string $id The id of the payout.
+     * @param string|null $id Charge ID
      *
      * @return self
      */
@@ -465,7 +682,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets livemode
      *
-     * @return bool
+     * @return bool|null
      */
     public function getLivemode()
     {
@@ -475,7 +692,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets livemode
      *
-     * @param bool $livemode The live mode of the payout.
+     * @param bool|null $livemode Whether the charge was made in live mode or not
      *
      * @return self
      */
@@ -492,7 +709,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets object
      *
-     * @return string
+     * @return string|null
      */
     public function getObject()
     {
@@ -502,7 +719,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets object
      *
-     * @param string $object The object of the payout.
+     * @param string|null $object object
      *
      * @return self
      */
@@ -517,28 +734,157 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets payout_order_id
+     * Gets order_id
      *
      * @return string|null
      */
-    public function getPayoutOrderId()
+    public function getOrderId()
     {
-        return $this->container['payout_order_id'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets payout_order_id
+     * Sets order_id
      *
-     * @param string|null $payout_order_id The id of the payout order.
+     * @param string|null $order_id Order ID
      *
      * @return self
      */
-    public function setPayoutOrderId($payout_order_id)
+    public function setOrderId($order_id)
     {
-        if (is_null($payout_order_id)) {
-            throw new \InvalidArgumentException('non-nullable payout_order_id cannot be null');
+        if (is_null($order_id)) {
+            throw new \InvalidArgumentException('non-nullable order_id cannot be null');
         }
-        $this->container['payout_order_id'] = $payout_order_id;
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_at
+     *
+     * @return int|null
+     */
+    public function getPaidAt()
+    {
+        return $this->container['paid_at'];
+    }
+
+    /**
+     * Sets paid_at
+     *
+     * @param int|null $paid_at Payment date
+     *
+     * @return self
+     */
+    public function setPaidAt($paid_at)
+    {
+        if (is_null($paid_at)) {
+            array_push($this->openAPINullablesSetToNull, 'paid_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('paid_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['paid_at'] = $paid_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method
+     *
+     * @return \Conekta\Model\ChargeResponsePaymentMethod|null
+     */
+    public function getPaymentMethod()
+    {
+        return $this->container['payment_method'];
+    }
+
+    /**
+     * Sets payment_method
+     *
+     * @param \Conekta\Model\ChargeResponsePaymentMethod|null $payment_method payment_method
+     *
+     * @return self
+     */
+    public function setPaymentMethod($payment_method)
+    {
+        if (is_null($payment_method)) {
+            throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
+        }
+        $this->container['payment_method'] = $payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_id
+     *
+     * @return string|null
+     */
+    public function getReferenceId()
+    {
+        return $this->container['reference_id'];
+    }
+
+    /**
+     * Sets reference_id
+     *
+     * @param string|null $reference_id Reference ID of the charge
+     *
+     * @return self
+     */
+    public function setReferenceId($reference_id)
+    {
+        if (is_null($reference_id)) {
+            array_push($this->openAPINullablesSetToNull, 'reference_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reference_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['reference_id'] = $reference_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets refunds
+     *
+     * @return \Conekta\Model\ChargeResponseRefunds|null
+     */
+    public function getRefunds()
+    {
+        return $this->container['refunds'];
+    }
+
+    /**
+     * Sets refunds
+     *
+     * @param \Conekta\Model\ChargeResponseRefunds|null $refunds refunds
+     *
+     * @return self
+     */
+    public function setRefunds($refunds)
+    {
+        if (is_null($refunds)) {
+            array_push($this->openAPINullablesSetToNull, 'refunds');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('refunds', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['refunds'] = $refunds;
 
         return $this;
     }
@@ -556,7 +902,7 @@ class PayoutOrderPayoutsItem implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param string|null $status The status of the payout.
+     * @param string|null $status status
      *
      * @return self
      */
