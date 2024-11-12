@@ -48,32 +48,33 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-
+use Conekta\Api\CustomersApi;
+use Conekta\ApiException;
+use Conekta\Configuration;
+use Conekta\Model\Customer;
 
 // Configure authorization
 /**
  * @var string $apiKey use private key for authentication
  * @link https://developers.conekta.com/reference/autenticaci%C3%B3n for more information
  */
-$apiKey = "key_xxxxx";
+$apiKey =  getenv("CONEKTA_API_KEY");
 $config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken($apiKey);
 
-
-$apiInstance = new Conekta\Api\AntifraudApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$create_risk_rules_data = new \Conekta\Model\CreateRiskRulesData(); // \Conekta\Model\CreateRiskRulesData | requested field for blacklist rule
-$accept_language = es; // string | Use for knowing which language to use
-
+$apiInstance = new CustomersApi(null, $config);
+$rq = new Customer([
+    'name' => 'Franklin carrero',
+    'email'=> 'mm@gmail.com',
+    'phone' => '+5218181818181'
+]);
 try {
-    $result = $apiInstance->createRuleBlacklist($create_risk_rules_data, $accept_language);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AntifraudApi->createRuleBlacklist: ', $e->getMessage(), PHP_EOL;
+    $result = $apiInstance->createCustomer($rq);
+    $json_string = json_encode($result, JSON_PRETTY_PRINT);
+    print_r($json_string);
+} catch (ApiException $e) {
+    echo 'Exception when calling CustomersApi->createCustomer: ', $e->getMessage(), PHP_EOL;
 }
+
 
 ```
 
