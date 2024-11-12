@@ -142,7 +142,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => false,
         'is_redirect_on_failure' => false,
         'livemode' => false,
-        'max_failed_retries' => false,
+        'max_failed_retries' => true,
         'metadata' => false,
         'monthly_installments_enabled' => false,
         'monthly_installments_options' => false,
@@ -773,7 +773,14 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setMaxFailedRetries($max_failed_retries)
     {
         if (is_null($max_failed_retries)) {
-            throw new \InvalidArgumentException('non-nullable max_failed_retries cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_failed_retries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_failed_retries', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_failed_retries'] = $max_failed_retries;
 
