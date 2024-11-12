@@ -4,10 +4,73 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelPayoutOrderById()**](PayoutOrdersApi.md#cancelPayoutOrderById) | **PUT** /payout_orders/{id}/cancel | Cancel Payout Order |
 | [**createPayoutOrder()**](PayoutOrdersApi.md#createPayoutOrder) | **POST** /payout_orders | Create payout order |
 | [**getPayoutOrderById()**](PayoutOrdersApi.md#getPayoutOrderById) | **GET** /payout_orders/{id} | Get Payout Order |
 | [**getPayoutOrders()**](PayoutOrdersApi.md#getPayoutOrders) | **GET** /payout_orders | Get a list of Payout Orders |
 
+
+## `cancelPayoutOrderById()`
+
+```php
+cancelPayoutOrderById($id, $accept_language): \Conekta\Model\PayoutOrderResponse
+```
+
+Cancel Payout Order
+
+Cancel a payout Order resource that corresponds to a payout order ID.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: bearerAuth
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Conekta\Api\PayoutOrdersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 6307a60c41de27127515a575; // string | Identifier of the resource
+$accept_language = es; // string | Use for knowing which language to use
+
+try {
+    $result = $apiInstance->cancelPayoutOrderById($id, $accept_language);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PayoutOrdersApi->cancelPayoutOrderById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| Identifier of the resource | |
+| **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
+
+### Return type
+
+[**\Conekta\Model\PayoutOrderResponse**](../Model/PayoutOrderResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.conekta-v2.1.0+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createPayoutOrder()`
 

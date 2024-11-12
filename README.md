@@ -50,8 +50,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-// Configure Bearer authorization: bearerAuth
-$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure authorization
+/**
+ * @var string $apiKey use private key for authentication
+ * @link https://developers.conekta.com/reference/autenticaci%C3%B3n for more information
+ */
+$apiKey = "key_xxxxx";
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken($apiKey);
 
 
 $apiInstance = new Conekta\Api\AntifraudApi(
@@ -131,6 +136,7 @@ Class | Method | HTTP request | Description
 *PaymentMethodsApi* | [**deleteCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#deletecustomerpaymentmethods) | **DELETE** /customers/{id}/payment_sources/{payment_method_id} | Delete Payment Method
 *PaymentMethodsApi* | [**getCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#getcustomerpaymentmethods) | **GET** /customers/{id}/payment_sources | Get Payment Methods
 *PaymentMethodsApi* | [**updateCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#updatecustomerpaymentmethods) | **PUT** /customers/{id}/payment_sources/{payment_method_id} | Update Payment Method
+*PayoutOrdersApi* | [**cancelPayoutOrderById**](docs/Api/PayoutOrdersApi.md#cancelpayoutorderbyid) | **PUT** /payout_orders/{id}/cancel | Cancel Payout Order
 *PayoutOrdersApi* | [**createPayoutOrder**](docs/Api/PayoutOrdersApi.md#createpayoutorder) | **POST** /payout_orders | Create payout order
 *PayoutOrdersApi* | [**getPayoutOrderById**](docs/Api/PayoutOrdersApi.md#getpayoutorderbyid) | **GET** /payout_orders/{id} | Get Payout Order
 *PayoutOrdersApi* | [**getPayoutOrders**](docs/Api/PayoutOrdersApi.md#getpayoutorders) | **GET** /payout_orders | Get a list of Payout Orders
