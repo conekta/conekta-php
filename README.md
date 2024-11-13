@@ -48,27 +48,33 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+use Conekta\Api\CustomersApi;
+use Conekta\ApiException;
+use Conekta\Configuration;
+use Conekta\Model\Customer;
 
+// Configure authorization
+/**
+ * @var string $apiKey use private key for authentication
+ * @link https://developers.conekta.com/reference/autenticaci%C3%B3n for more information
+ */
+$apiKey =  getenv("CONEKTA_API_KEY");
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken($apiKey);
 
-// Configure Bearer authorization: bearerAuth
-$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Conekta\Api\AntifraudApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$create_risk_rules_data = new \Conekta\Model\CreateRiskRulesData(); // \Conekta\Model\CreateRiskRulesData | requested field for blacklist rule
-$accept_language = es; // string | Use for knowing which language to use
-
+$apiInstance = new CustomersApi(null, $config);
+$rq = new Customer([
+    'name' => 'Franklin carrero',
+    'email'=> 'mm@gmail.com',
+    'phone' => '+5218181818181'
+]);
 try {
-    $result = $apiInstance->createRuleBlacklist($create_risk_rules_data, $accept_language);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AntifraudApi->createRuleBlacklist: ', $e->getMessage(), PHP_EOL;
+    $result = $apiInstance->createCustomer($rq);
+    $json_string = json_encode($result, JSON_PRETTY_PRINT);
+    print_r($json_string);
+} catch (ApiException $e) {
+    echo 'Exception when calling CustomersApi->createCustomer: ', $e->getMessage(), PHP_EOL;
 }
+
 
 ```
 
@@ -131,6 +137,7 @@ Class | Method | HTTP request | Description
 *PaymentMethodsApi* | [**deleteCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#deletecustomerpaymentmethods) | **DELETE** /customers/{id}/payment_sources/{payment_method_id} | Delete Payment Method
 *PaymentMethodsApi* | [**getCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#getcustomerpaymentmethods) | **GET** /customers/{id}/payment_sources | Get Payment Methods
 *PaymentMethodsApi* | [**updateCustomerPaymentMethods**](docs/Api/PaymentMethodsApi.md#updatecustomerpaymentmethods) | **PUT** /customers/{id}/payment_sources/{payment_method_id} | Update Payment Method
+*PayoutOrdersApi* | [**cancelPayoutOrderById**](docs/Api/PayoutOrdersApi.md#cancelpayoutorderbyid) | **PUT** /payout_orders/{id}/cancel | Cancel Payout Order
 *PayoutOrdersApi* | [**createPayoutOrder**](docs/Api/PayoutOrdersApi.md#createpayoutorder) | **POST** /payout_orders | Create payout order
 *PayoutOrdersApi* | [**getPayoutOrderById**](docs/Api/PayoutOrdersApi.md#getpayoutorderbyid) | **GET** /payout_orders/{id} | Get Payout Order
 *PayoutOrdersApi* | [**getPayoutOrders**](docs/Api/PayoutOrdersApi.md#getpayoutorders) | **GET** /payout_orders | Get a list of Payout Orders
