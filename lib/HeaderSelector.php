@@ -262,7 +262,7 @@ class HeaderSelector
        $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
       $userAgent = [
-        'bindings_version' => "6.0.10",
+        'bindings_version' => "6.0.11",
         'lang'             => 'php',
         'lang_version'     => phpversion(),
         'publisher'        => 'conekta',

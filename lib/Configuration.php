@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.10';
+    protected $userAgent = 'Conekta/v2 PhpBindings/6.0.11';
 
     /**
      * Debug switch (default set to false)
@@ -456,7 +456,7 @@ class Configuration
         $report .= '    OS: ' . $uname . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 2.1.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 6.0.10' . PHP_EOL;
+        $report .= '    SDK Package Version: 6.0.11' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
