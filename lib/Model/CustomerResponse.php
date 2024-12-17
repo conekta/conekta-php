@@ -63,6 +63,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => 'bool',
         'created_at' => 'int',
         'custom_reference' => 'string',
+        'date_of_birth' => 'string',
         'default_fiscal_entity_id' => 'string',
         'default_shipping_contact_id' => 'string',
         'default_payment_source_id' => 'string',
@@ -71,6 +72,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'livemode' => 'bool',
         'name' => 'string',
+        'national_id' => 'string',
         'metadata' => 'array<string,mixed>',
         'object' => 'string',
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsResponse',
@@ -91,6 +93,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => null,
         'created_at' => 'int64',
         'custom_reference' => null,
+        'date_of_birth' => null,
         'default_fiscal_entity_id' => null,
         'default_shipping_contact_id' => null,
         'default_payment_source_id' => null,
@@ -99,6 +102,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'livemode' => null,
         'name' => null,
+        'national_id' => null,
         'metadata' => null,
         'object' => null,
         'payment_sources' => null,
@@ -117,6 +121,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => false,
         'created_at' => false,
         'custom_reference' => false,
+        'date_of_birth' => false,
         'default_fiscal_entity_id' => true,
         'default_shipping_contact_id' => false,
         'default_payment_source_id' => true,
@@ -125,6 +130,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'livemode' => false,
         'name' => false,
+        'national_id' => false,
         'metadata' => false,
         'object' => false,
         'payment_sources' => false,
@@ -223,6 +229,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => 'corporate',
         'created_at' => 'created_at',
         'custom_reference' => 'custom_reference',
+        'date_of_birth' => 'date_of_birth',
         'default_fiscal_entity_id' => 'default_fiscal_entity_id',
         'default_shipping_contact_id' => 'default_shipping_contact_id',
         'default_payment_source_id' => 'default_payment_source_id',
@@ -231,6 +238,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'livemode' => 'livemode',
         'name' => 'name',
+        'national_id' => 'national_id',
         'metadata' => 'metadata',
         'object' => 'object',
         'payment_sources' => 'payment_sources',
@@ -249,6 +257,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => 'setCorporate',
         'created_at' => 'setCreatedAt',
         'custom_reference' => 'setCustomReference',
+        'date_of_birth' => 'setDateOfBirth',
         'default_fiscal_entity_id' => 'setDefaultFiscalEntityId',
         'default_shipping_contact_id' => 'setDefaultShippingContactId',
         'default_payment_source_id' => 'setDefaultPaymentSourceId',
@@ -257,6 +266,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'livemode' => 'setLivemode',
         'name' => 'setName',
+        'national_id' => 'setNationalId',
         'metadata' => 'setMetadata',
         'object' => 'setObject',
         'payment_sources' => 'setPaymentSources',
@@ -275,6 +285,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'corporate' => 'getCorporate',
         'created_at' => 'getCreatedAt',
         'custom_reference' => 'getCustomReference',
+        'date_of_birth' => 'getDateOfBirth',
         'default_fiscal_entity_id' => 'getDefaultFiscalEntityId',
         'default_shipping_contact_id' => 'getDefaultShippingContactId',
         'default_payment_source_id' => 'getDefaultPaymentSourceId',
@@ -283,6 +294,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'livemode' => 'getLivemode',
         'name' => 'getName',
+        'national_id' => 'getNationalId',
         'metadata' => 'getMetadata',
         'object' => 'getObject',
         'payment_sources' => 'getPaymentSources',
@@ -352,6 +364,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('corporate', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('custom_reference', $data ?? [], null);
+        $this->setIfExists('date_of_birth', $data ?? [], null);
         $this->setIfExists('default_fiscal_entity_id', $data ?? [], null);
         $this->setIfExists('default_shipping_contact_id', $data ?? [], null);
         $this->setIfExists('default_payment_source_id', $data ?? [], null);
@@ -360,6 +373,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('national_id', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('payment_sources', $data ?? [], null);
@@ -540,6 +554,33 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable custom_reference cannot be null');
         }
         $this->container['custom_reference'] = $custom_reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_of_birth
+     *
+     * @return string|null
+     */
+    public function getDateOfBirth()
+    {
+        return $this->container['date_of_birth'];
+    }
+
+    /**
+     * Sets date_of_birth
+     *
+     * @param string|null $date_of_birth It is a parameter that allows to identify the date of birth of the client.
+     *
+     * @return self
+     */
+    public function setDateOfBirth($date_of_birth)
+    {
+        if (is_null($date_of_birth)) {
+            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
+        }
+        $this->container['date_of_birth'] = $date_of_birth;
 
         return $this;
     }
@@ -770,6 +811,33 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets national_id
+     *
+     * @return string|null
+     */
+    public function getNationalId()
+    {
+        return $this->container['national_id'];
+    }
+
+    /**
+     * Sets national_id
+     *
+     * @param string|null $national_id It is a parameter that allows to identify the national identification number of the client.
+     *
+     * @return self
+     */
+    public function setNationalId($national_id)
+    {
+        if (is_null($national_id)) {
+            throw new \InvalidArgumentException('non-nullable national_id cannot be null');
+        }
+        $this->container['national_id'] = $national_id;
 
         return $this;
     }

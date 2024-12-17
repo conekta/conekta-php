@@ -62,12 +62,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => '\Conekta\Model\CustomerAntifraudInfo',
         'corporate' => 'bool',
         'custom_reference' => 'string',
+        'date_of_birth' => 'string',
         'email' => 'string',
         'default_payment_source_id' => 'string',
         'default_shipping_contact_id' => 'string',
         'fiscal_entities' => '\Conekta\Model\CustomerFiscalEntitiesRequest[]',
         'metadata' => 'array<string,mixed>',
         'name' => 'string',
+        'national_id' => 'string',
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsRequest[]',
         'phone' => 'string',
         'plan_id' => 'string',
@@ -86,12 +88,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => null,
         'corporate' => null,
         'custom_reference' => null,
+        'date_of_birth' => null,
         'email' => 'email',
         'default_payment_source_id' => null,
         'default_shipping_contact_id' => null,
         'fiscal_entities' => null,
         'metadata' => null,
         'name' => null,
+        'national_id' => null,
         'payment_sources' => null,
         'phone' => null,
         'plan_id' => null,
@@ -108,12 +112,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => true,
         'corporate' => false,
         'custom_reference' => false,
+        'date_of_birth' => false,
         'email' => false,
         'default_payment_source_id' => false,
         'default_shipping_contact_id' => false,
         'fiscal_entities' => false,
         'metadata' => false,
         'name' => false,
+        'national_id' => false,
         'payment_sources' => false,
         'phone' => false,
         'plan_id' => false,
@@ -210,12 +216,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => 'antifraud_info',
         'corporate' => 'corporate',
         'custom_reference' => 'custom_reference',
+        'date_of_birth' => 'date_of_birth',
         'email' => 'email',
         'default_payment_source_id' => 'default_payment_source_id',
         'default_shipping_contact_id' => 'default_shipping_contact_id',
         'fiscal_entities' => 'fiscal_entities',
         'metadata' => 'metadata',
         'name' => 'name',
+        'national_id' => 'national_id',
         'payment_sources' => 'payment_sources',
         'phone' => 'phone',
         'plan_id' => 'plan_id',
@@ -232,12 +240,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => 'setAntifraudInfo',
         'corporate' => 'setCorporate',
         'custom_reference' => 'setCustomReference',
+        'date_of_birth' => 'setDateOfBirth',
         'email' => 'setEmail',
         'default_payment_source_id' => 'setDefaultPaymentSourceId',
         'default_shipping_contact_id' => 'setDefaultShippingContactId',
         'fiscal_entities' => 'setFiscalEntities',
         'metadata' => 'setMetadata',
         'name' => 'setName',
+        'national_id' => 'setNationalId',
         'payment_sources' => 'setPaymentSources',
         'phone' => 'setPhone',
         'plan_id' => 'setPlanId',
@@ -254,12 +264,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'antifraud_info' => 'getAntifraudInfo',
         'corporate' => 'getCorporate',
         'custom_reference' => 'getCustomReference',
+        'date_of_birth' => 'getDateOfBirth',
         'email' => 'getEmail',
         'default_payment_source_id' => 'getDefaultPaymentSourceId',
         'default_shipping_contact_id' => 'getDefaultShippingContactId',
         'fiscal_entities' => 'getFiscalEntities',
         'metadata' => 'getMetadata',
         'name' => 'getName',
+        'national_id' => 'getNationalId',
         'payment_sources' => 'getPaymentSources',
         'phone' => 'getPhone',
         'plan_id' => 'getPlanId',
@@ -327,12 +339,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('antifraud_info', $data ?? [], null);
         $this->setIfExists('corporate', $data ?? [], false);
         $this->setIfExists('custom_reference', $data ?? [], null);
+        $this->setIfExists('date_of_birth', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('default_payment_source_id', $data ?? [], null);
         $this->setIfExists('default_shipping_contact_id', $data ?? [], null);
         $this->setIfExists('fiscal_entities', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('national_id', $data ?? [], null);
         $this->setIfExists('payment_sources', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('plan_id', $data ?? [], null);
@@ -479,6 +493,33 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable custom_reference cannot be null');
         }
         $this->container['custom_reference'] = $custom_reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_of_birth
+     *
+     * @return string|null
+     */
+    public function getDateOfBirth()
+    {
+        return $this->container['date_of_birth'];
+    }
+
+    /**
+     * Sets date_of_birth
+     *
+     * @param string|null $date_of_birth It is a parameter that allows to identify the date of birth of the client.
+     *
+     * @return self
+     */
+    public function setDateOfBirth($date_of_birth)
+    {
+        if (is_null($date_of_birth)) {
+            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
+        }
+        $this->container['date_of_birth'] = $date_of_birth;
 
         return $this;
     }
@@ -645,6 +686,33 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets national_id
+     *
+     * @return string|null
+     */
+    public function getNationalId()
+    {
+        return $this->container['national_id'];
+    }
+
+    /**
+     * Sets national_id
+     *
+     * @param string|null $national_id It is a parameter that allows to identify the national identification number of the client.
+     *
+     * @return self
+     */
+    public function setNationalId($national_id)
+    {
+        if (is_null($national_id)) {
+            throw new \InvalidArgumentException('non-nullable national_id cannot be null');
+        }
+        $this->container['national_id'] = $national_id;
 
         return $this;
     }

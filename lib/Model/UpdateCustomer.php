@@ -60,6 +60,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'antifraud_info' => '\Conekta\Model\UpdateCustomerAntifraudInfo',
+        'date_of_birth' => 'string',
         'default_payment_source_id' => 'string',
         'email' => 'string',
         'name' => 'string',
@@ -70,6 +71,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => 'string',
         'fiscal_entities' => '\Conekta\Model\CustomerFiscalEntitiesRequest[]',
         'metadata' => 'array<string,mixed>',
+        'national_id' => 'string',
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsRequest[]',
         'shipping_contacts' => '\Conekta\Model\CustomerShippingContacts[]',
         'subscription' => '\Conekta\Model\SubscriptionRequest'
@@ -84,6 +86,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'antifraud_info' => null,
+        'date_of_birth' => null,
         'default_payment_source_id' => null,
         'email' => null,
         'name' => null,
@@ -94,6 +97,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => null,
         'fiscal_entities' => null,
         'metadata' => null,
+        'national_id' => null,
         'payment_sources' => null,
         'shipping_contacts' => null,
         'subscription' => null
@@ -106,6 +110,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'antifraud_info' => true,
+        'date_of_birth' => false,
         'default_payment_source_id' => false,
         'email' => false,
         'name' => false,
@@ -116,6 +121,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => false,
         'fiscal_entities' => false,
         'metadata' => false,
+        'national_id' => false,
         'payment_sources' => false,
         'shipping_contacts' => false,
         'subscription' => false
@@ -208,6 +214,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'antifraud_info' => 'antifraud_info',
+        'date_of_birth' => 'date_of_birth',
         'default_payment_source_id' => 'default_payment_source_id',
         'email' => 'email',
         'name' => 'name',
@@ -218,6 +225,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => 'custom_reference',
         'fiscal_entities' => 'fiscal_entities',
         'metadata' => 'metadata',
+        'national_id' => 'national_id',
         'payment_sources' => 'payment_sources',
         'shipping_contacts' => 'shipping_contacts',
         'subscription' => 'subscription'
@@ -230,6 +238,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'antifraud_info' => 'setAntifraudInfo',
+        'date_of_birth' => 'setDateOfBirth',
         'default_payment_source_id' => 'setDefaultPaymentSourceId',
         'email' => 'setEmail',
         'name' => 'setName',
@@ -240,6 +249,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => 'setCustomReference',
         'fiscal_entities' => 'setFiscalEntities',
         'metadata' => 'setMetadata',
+        'national_id' => 'setNationalId',
         'payment_sources' => 'setPaymentSources',
         'shipping_contacts' => 'setShippingContacts',
         'subscription' => 'setSubscription'
@@ -252,6 +262,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'antifraud_info' => 'getAntifraudInfo',
+        'date_of_birth' => 'getDateOfBirth',
         'default_payment_source_id' => 'getDefaultPaymentSourceId',
         'email' => 'getEmail',
         'name' => 'getName',
@@ -262,6 +273,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_reference' => 'getCustomReference',
         'fiscal_entities' => 'getFiscalEntities',
         'metadata' => 'getMetadata',
+        'national_id' => 'getNationalId',
         'payment_sources' => 'getPaymentSources',
         'shipping_contacts' => 'getShippingContacts',
         'subscription' => 'getSubscription'
@@ -325,6 +337,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('antifraud_info', $data ?? [], null);
+        $this->setIfExists('date_of_birth', $data ?? [], null);
         $this->setIfExists('default_payment_source_id', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -335,6 +348,7 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('custom_reference', $data ?? [], null);
         $this->setIfExists('fiscal_entities', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('national_id', $data ?? [], null);
         $this->setIfExists('payment_sources', $data ?? [], null);
         $this->setIfExists('shipping_contacts', $data ?? [], null);
         $this->setIfExists('subscription', $data ?? [], null);
@@ -416,6 +430,33 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['antifraud_info'] = $antifraud_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_of_birth
+     *
+     * @return string|null
+     */
+    public function getDateOfBirth()
+    {
+        return $this->container['date_of_birth'];
+    }
+
+    /**
+     * Sets date_of_birth
+     *
+     * @param string|null $date_of_birth It is a parameter that allows to identify the date of birth of the client.
+     *
+     * @return self
+     */
+    public function setDateOfBirth($date_of_birth)
+    {
+        if (is_null($date_of_birth)) {
+            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
+        }
+        $this->container['date_of_birth'] = $date_of_birth;
 
         return $this;
     }
@@ -690,6 +731,33 @@ class UpdateCustomer implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('invalid value for $metadata when calling UpdateCustomer., number of items must be less than or equal to 100.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets national_id
+     *
+     * @return string|null
+     */
+    public function getNationalId()
+    {
+        return $this->container['national_id'];
+    }
+
+    /**
+     * Sets national_id
+     *
+     * @param string|null $national_id It is a parameter that allows to identify the national identification number of the client.
+     *
+     * @return self
+     */
+    public function setNationalId($national_id)
+    {
+        if (is_null($national_id)) {
+            throw new \InvalidArgumentException('non-nullable national_id cannot be null');
+        }
+        $this->container['national_id'] = $national_id;
 
         return $this;
     }
