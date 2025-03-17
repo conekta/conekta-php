@@ -513,11 +513,13 @@ class EventsApi
             $contentType,
             $multipart
         );
-        $headers = array_merge(
-            $this->headerSelector->getConektaUserAgent(),
-            $headers
-        );
-
+        $clientConfig = $this->client->getConfig('headers') ?? [];
+        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+            $headers = array_merge(
+                $this->headerSelector->getConektaUserAgent(),
+                $headers
+            );
+        }
         // for model (json/xml)
         if (count($formParams) > 0) {
             if ($multipart) {
@@ -964,11 +966,13 @@ class EventsApi
             $contentType,
             $multipart
         );
-        $headers = array_merge(
-            $this->headerSelector->getConektaUserAgent(),
-            $headers
-        );
-
+        $clientConfig = $this->client->getConfig('headers') ?? [];
+        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+            $headers = array_merge(
+                $this->headerSelector->getConektaUserAgent(),
+                $headers
+            );
+        }
         // for model (json/xml)
         if (count($formParams) > 0) {
             if ($multipart) {
@@ -1414,11 +1418,13 @@ class EventsApi
             $contentType,
             $multipart
         );
-        $headers = array_merge(
-            $this->headerSelector->getConektaUserAgent(),
-            $headers
-        );
-
+        $clientConfig = $this->client->getConfig('headers') ?? [];
+        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+            $headers = array_merge(
+                $this->headerSelector->getConektaUserAgent(),
+                $headers
+            );
+        }
         // for model (json/xml)
         if (count($formParams) > 0) {
             if ($multipart) {

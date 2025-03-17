@@ -1,6 +1,6 @@
 <?php
 /**
- * OrderResponseCharges
+ * PaymentMethodBnplPayment
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * OrderResponseCharges Class Doc Comment
+ * PaymentMethodBnplPayment Class Doc Comment
  *
  * @category Class
- * @description The charges associated with the order
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodBnplPayment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'order_response_charges';
+    protected static $openAPIModelName = 'payment_method_bnpl_payment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'has_more' => 'bool',
+        'type' => 'string',
         'object' => 'string',
-        'data' => '\Conekta\Model\ChargesDataResponse[]'
+        'cancel_url' => 'string',
+        'expires_at' => 'int',
+        'failure_url' => 'string',
+        'product_type' => 'string',
+        'redirect_url' => 'string',
+        'success_url' => 'string'
     ];
 
     /**
@@ -72,9 +76,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'has_more' => null,
+        'type' => null,
         'object' => null,
-        'data' => null
+        'cancel_url' => null,
+        'expires_at' => 'int64',
+        'failure_url' => null,
+        'product_type' => null,
+        'redirect_url' => null,
+        'success_url' => null
     ];
 
     /**
@@ -83,9 +92,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'has_more' => false,
+        'type' => false,
         'object' => false,
-        'data' => false
+        'cancel_url' => false,
+        'expires_at' => false,
+        'failure_url' => false,
+        'product_type' => false,
+        'redirect_url' => false,
+        'success_url' => false
     ];
 
     /**
@@ -174,9 +188,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'has_more' => 'has_more',
+        'type' => 'type',
         'object' => 'object',
-        'data' => 'data'
+        'cancel_url' => 'cancel_url',
+        'expires_at' => 'expires_at',
+        'failure_url' => 'failure_url',
+        'product_type' => 'product_type',
+        'redirect_url' => 'redirect_url',
+        'success_url' => 'success_url'
     ];
 
     /**
@@ -185,9 +204,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'has_more' => 'setHasMore',
+        'type' => 'setType',
         'object' => 'setObject',
-        'data' => 'setData'
+        'cancel_url' => 'setCancelUrl',
+        'expires_at' => 'setExpiresAt',
+        'failure_url' => 'setFailureUrl',
+        'product_type' => 'setProductType',
+        'redirect_url' => 'setRedirectUrl',
+        'success_url' => 'setSuccessUrl'
     ];
 
     /**
@@ -196,9 +220,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'has_more' => 'getHasMore',
+        'type' => 'getType',
         'object' => 'getObject',
-        'data' => 'getData'
+        'cancel_url' => 'getCancelUrl',
+        'expires_at' => 'getExpiresAt',
+        'failure_url' => 'getFailureUrl',
+        'product_type' => 'getProductType',
+        'redirect_url' => 'getRedirectUrl',
+        'success_url' => 'getSuccessUrl'
     ];
 
     /**
@@ -258,9 +287,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('has_more', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('cancel_url', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('failure_url', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
+        $this->setIfExists('redirect_url', $data ?? [], null);
+        $this->setIfExists('success_url', $data ?? [], null);
     }
 
     /**
@@ -290,11 +324,14 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['has_more'] === null) {
-            $invalidProperties[] = "'has_more' can't be null";
-        }
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
+        }
+        if ($this->container['product_type'] === null) {
+            $invalidProperties[] = "'product_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,28 +349,28 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets has_more
+     * Gets type
      *
-     * @return bool
+     * @return string|null
      */
-    public function getHasMore()
+    public function getType()
     {
-        return $this->container['has_more'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets has_more
+     * Sets type
      *
-     * @param bool $has_more Indicates if there are more pages to be requested
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setHasMore($has_more)
+    public function setType($type)
     {
-        if (is_null($has_more)) {
-            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['has_more'] = $has_more;
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -351,7 +388,7 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object
      *
-     * @param string $object Object type, in this case is list
+     * @param string $object object
      *
      * @return self
      */
@@ -366,28 +403,163 @@ class OrderResponseCharges implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets data
+     * Gets cancel_url
      *
-     * @return \Conekta\Model\ChargesDataResponse[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getCancelUrl()
     {
-        return $this->container['data'];
+        return $this->container['cancel_url'];
     }
 
     /**
-     * Sets data
+     * Sets cancel_url
      *
-     * @param \Conekta\Model\ChargesDataResponse[]|null $data data
+     * @param string|null $cancel_url URL to redirect the customer after a canceled payment
      *
      * @return self
      */
-    public function setData($data)
+    public function setCancelUrl($cancel_url)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($cancel_url)) {
+            throw new \InvalidArgumentException('non-nullable cancel_url cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['cancel_url'] = $cancel_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return int
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param int $expires_at Expiration date of the charge
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        if (is_null($expires_at)) {
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        }
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets failure_url
+     *
+     * @return string|null
+     */
+    public function getFailureUrl()
+    {
+        return $this->container['failure_url'];
+    }
+
+    /**
+     * Sets failure_url
+     *
+     * @param string|null $failure_url URL to redirect the customer after a failed payment
+     *
+     * @return self
+     */
+    public function setFailureUrl($failure_url)
+    {
+        if (is_null($failure_url)) {
+            throw new \InvalidArgumentException('non-nullable failure_url cannot be null');
+        }
+        $this->container['failure_url'] = $failure_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_type
+     *
+     * @return string
+     */
+    public function getProductType()
+    {
+        return $this->container['product_type'];
+    }
+
+    /**
+     * Sets product_type
+     *
+     * @param string $product_type Product type of the charge
+     *
+     * @return self
+     */
+    public function setProductType($product_type)
+    {
+        if (is_null($product_type)) {
+            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+        }
+        $this->container['product_type'] = $product_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string|null
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string|null $redirect_url URL to redirect the customer to complete the payment
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        if (is_null($redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        }
+        $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_url
+     *
+     * @return string|null
+     */
+    public function getSuccessUrl()
+    {
+        return $this->container['success_url'];
+    }
+
+    /**
+     * Sets success_url
+     *
+     * @param string|null $success_url URL to redirect the customer after a successful payment
+     *
+     * @return self
+     */
+    public function setSuccessUrl($success_url)
+    {
+        if (is_null($success_url)) {
+            throw new \InvalidArgumentException('non-nullable success_url cannot be null');
+        }
+        $this->container['success_url'] = $success_url;
 
         return $this;
     }

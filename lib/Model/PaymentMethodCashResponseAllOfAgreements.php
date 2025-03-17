@@ -1,6 +1,6 @@
 <?php
 /**
- * OrderResponseDiscountLines
+ * PaymentMethodCashResponseAllOfAgreements
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * OrderResponseDiscountLines Class Doc Comment
+ * PaymentMethodCashResponseAllOfAgreements Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCashResponseAllOfAgreements implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'order_response_discount_lines';
+    protected static $openAPIModelName = 'payment_method_cash_response_allOf_agreements';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'has_more' => 'bool',
-        'object' => 'string',
-        'data' => '\Conekta\Model\DiscountLinesDataResponse[]'
+        'agreement' => 'string',
+        'provider' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'has_more' => null,
-        'object' => null,
-        'data' => null
+        'agreement' => null,
+        'provider' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'has_more' => false,
-        'object' => false,
-        'data' => false
+        'agreement' => false,
+        'provider' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'has_more' => 'has_more',
-        'object' => 'object',
-        'data' => 'data'
+        'agreement' => 'agreement',
+        'provider' => 'provider'
     ];
 
     /**
@@ -184,9 +180,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'has_more' => 'setHasMore',
-        'object' => 'setObject',
-        'data' => 'setData'
+        'agreement' => 'setAgreement',
+        'provider' => 'setProvider'
     ];
 
     /**
@@ -195,9 +190,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'has_more' => 'getHasMore',
-        'object' => 'getObject',
-        'data' => 'getData'
+        'agreement' => 'getAgreement',
+        'provider' => 'getProvider'
     ];
 
     /**
@@ -257,9 +251,8 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('has_more', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('agreement', $data ?? [], null);
+        $this->setIfExists('provider', $data ?? [], null);
     }
 
     /**
@@ -289,12 +282,6 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['has_more'] === null) {
-            $invalidProperties[] = "'has_more' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -311,82 +298,55 @@ class OrderResponseDiscountLines implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets has_more
+     * Gets agreement
      *
-     * @return bool
+     * @return string|null
      */
-    public function getHasMore()
+    public function getAgreement()
     {
-        return $this->container['has_more'];
+        return $this->container['agreement'];
     }
 
     /**
-     * Sets has_more
+     * Sets agreement
      *
-     * @param bool $has_more Indicates if there are more pages to be requested
+     * @param string|null $agreement Agreement number, you can use this number to pay in the store/bbva
      *
      * @return self
      */
-    public function setHasMore($has_more)
+    public function setAgreement($agreement)
     {
-        if (is_null($has_more)) {
-            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        if (is_null($agreement)) {
+            throw new \InvalidArgumentException('non-nullable agreement cannot be null');
         }
-        $this->container['has_more'] = $has_more;
+        $this->container['agreement'] = $agreement;
 
         return $this;
     }
 
     /**
-     * Gets object
+     * Gets provider
      *
-     * @return string
+     * @return string|null
      */
-    public function getObject()
+    public function getProvider()
     {
-        return $this->container['object'];
+        return $this->container['provider'];
     }
 
     /**
-     * Sets object
+     * Sets provider
      *
-     * @param string $object Object type, in this case is list
+     * @param string|null $provider Provider name, you can use this to know where to pay
      *
      * @return self
      */
-    public function setObject($object)
+    public function setProvider($provider)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($provider)) {
+            throw new \InvalidArgumentException('non-nullable provider cannot be null');
         }
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \Conekta\Model\DiscountLinesDataResponse[]|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \Conekta\Model\DiscountLinesDataResponse[]|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
+        $this->container['provider'] = $provider;
 
         return $this;
     }

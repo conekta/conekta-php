@@ -496,7 +496,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets allowed_payment_methods
      *
-     * @param string[]|null $allowed_payment_methods allowed_payment_methods
+     * @param string[]|null $allowed_payment_methods Are the payment methods available for this link
      *
      * @return self
      */

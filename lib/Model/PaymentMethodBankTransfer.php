@@ -63,7 +63,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'bank' => 'string',
         'clabe' => 'string',
         'description' => 'string',
-        'executed_at' => 'int',
+        'executed_at' => 'string',
         'expires_at' => 'int',
         'issuing_account_bank' => 'string',
         'issuing_account_number' => 'string',
@@ -564,7 +564,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets executed_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getExecutedAt()
     {
@@ -574,7 +574,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets executed_at
      *
-     * @param int|null $executed_at executed_at
+     * @param string|null $executed_at executed_at
      *
      * @return self
      */

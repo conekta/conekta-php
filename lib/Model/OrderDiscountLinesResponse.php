@@ -1,6 +1,6 @@
 <?php
 /**
- * ChargeRequest
+ * OrderDiscountLinesResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * ChargeRequest Class Doc Comment
+ * OrderDiscountLinesResponse Class Doc Comment
  *
  * @category Class
- * @description The charges to be made
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderDiscountLinesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'charge_request';
+    protected static $openAPIModelName = 'order_discount_lines_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'payment_method' => '\Conekta\Model\ChargeRequestPaymentMethod',
-        'reference_id' => 'string'
+        'has_more' => 'bool',
+        'object' => 'string',
+        'data' => '\Conekta\Model\DiscountLinesDataResponse[]'
     ];
 
     /**
@@ -72,9 +71,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'int64',
-        'payment_method' => null,
-        'reference_id' => null
+        'has_more' => null,
+        'object' => null,
+        'data' => null
     ];
 
     /**
@@ -83,9 +82,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'payment_method' => false,
-        'reference_id' => false
+        'has_more' => false,
+        'object' => false,
+        'data' => false
     ];
 
     /**
@@ -174,9 +173,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'payment_method' => 'payment_method',
-        'reference_id' => 'reference_id'
+        'has_more' => 'has_more',
+        'object' => 'object',
+        'data' => 'data'
     ];
 
     /**
@@ -185,9 +184,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'payment_method' => 'setPaymentMethod',
-        'reference_id' => 'setReferenceId'
+        'has_more' => 'setHasMore',
+        'object' => 'setObject',
+        'data' => 'setData'
     ];
 
     /**
@@ -196,9 +195,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'payment_method' => 'getPaymentMethod',
-        'reference_id' => 'getReferenceId'
+        'has_more' => 'getHasMore',
+        'object' => 'getObject',
+        'data' => 'getData'
     ];
 
     /**
@@ -258,9 +257,9 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('payment_method', $data ?? [], null);
-        $this->setIfExists('reference_id', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -290,8 +289,11 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['payment_method'] === null) {
-            $invalidProperties[] = "'payment_method' can't be null";
+        if ($this->container['has_more'] === null) {
+            $invalidProperties[] = "'has_more' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
         }
         return $invalidProperties;
     }
@@ -309,82 +311,82 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets has_more
      *
-     * @return int|null
+     * @return bool
      */
-    public function getAmount()
+    public function getHasMore()
     {
-        return $this->container['amount'];
+        return $this->container['has_more'];
     }
 
     /**
-     * Sets amount
+     * Sets has_more
      *
-     * @param int|null $amount Amount to be charged in cents
+     * @param bool $has_more Indicates if there are more pages to be requested
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setHasMore($has_more)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }
 
     /**
-     * Gets payment_method
+     * Gets object
      *
-     * @return \Conekta\Model\ChargeRequestPaymentMethod
+     * @return string
      */
-    public function getPaymentMethod()
+    public function getObject()
     {
-        return $this->container['payment_method'];
+        return $this->container['object'];
     }
 
     /**
-     * Sets payment_method
+     * Sets object
      *
-     * @param \Conekta\Model\ChargeRequestPaymentMethod $payment_method payment_method
+     * @param string $object Object type, in this case is list
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method)
+    public function setObject($object)
     {
-        if (is_null($payment_method)) {
-            throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
-        $this->container['payment_method'] = $payment_method;
+        $this->container['object'] = $object;
 
         return $this;
     }
 
     /**
-     * Gets reference_id
+     * Gets data
      *
-     * @return string|null
+     * @return \Conekta\Model\DiscountLinesDataResponse[]|null
      */
-    public function getReferenceId()
+    public function getData()
     {
-        return $this->container['reference_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets reference_id
+     * Sets data
      *
-     * @param string|null $reference_id Custom reference to add to the charge
+     * @param \Conekta\Model\DiscountLinesDataResponse[]|null $data data
      *
      * @return self
      */
-    public function setReferenceId($reference_id)
+    public function setData($data)
     {
-        if (is_null($reference_id)) {
-            throw new \InvalidArgumentException('non-nullable reference_id cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['reference_id'] = $reference_id;
+        $this->container['data'] = $data;
 
         return $this;
     }

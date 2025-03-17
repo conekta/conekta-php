@@ -1,13 +1,13 @@
 {
   "packageName": "conekta",
   "generateSourceCodeOnly": "false",
-  "artifactVersion": "6.0.11",
+  "artifactVersion": "6.0.12",
   "packageUrl": "https://developers.conekta.com/",
   "projectName": "conekta-php",
   "appDescriptionV2" : "Conekta PHP Library",
   "useOneOfDiscriminatorLookup" : true,
   "nonCompliantUseDiscriminatorIfCompositionFails" : false,
-  "httpUserAgent": "Conekta/v2 PhpBindings/6.0.11",
+  "httpUserAgent": "Conekta/v2 PhpBindings/6.0.12",
   "packageAuthors" : "engineering@conekta.com",
   "files": {
     "/local/CODE_OF_CONDUCT.md" : {},

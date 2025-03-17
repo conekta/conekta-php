@@ -394,6 +394,30 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['livemode'] === null) {
+            $invalidProperties[] = "'livemode' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -412,7 +436,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets amount
      *
-     * @return int|null
+     * @return int
      */
     public function getAmount()
     {
@@ -422,7 +446,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets amount
      *
-     * @param int|null $amount amount
+     * @param int $amount amount
      *
      * @return self
      */
@@ -466,7 +490,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets created_at
      *
-     * @return int|null
+     * @return int
      */
     public function getCreatedAt()
     {
@@ -476,7 +500,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets created_at
      *
-     * @param int|null $created_at created_at
+     * @param int $created_at created_at
      *
      * @return self
      */
@@ -493,7 +517,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets currency
      *
-     * @return string|null
+     * @return string
      */
     public function getCurrency()
     {
@@ -503,7 +527,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets currency
      *
-     * @param string|null $currency currency
+     * @param string $currency currency
      *
      * @return self
      */
@@ -655,7 +679,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -665,7 +689,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id Charge ID
+     * @param string $id Charge ID
      *
      * @return self
      */
@@ -682,7 +706,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets livemode
      *
-     * @return bool|null
+     * @return bool
      */
     public function getLivemode()
     {
@@ -692,7 +716,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets livemode
      *
-     * @param bool|null $livemode Whether the charge was made in live mode or not
+     * @param bool $livemode Whether the charge was made in live mode or not
      *
      * @return self
      */
@@ -709,7 +733,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets object
      *
-     * @return string|null
+     * @return string
      */
     public function getObject()
     {
@@ -719,7 +743,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets object
      *
-     * @param string|null $object object
+     * @param string $object object
      *
      * @return self
      */
@@ -736,7 +760,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets order_id
      *
-     * @return string|null
+     * @return string
      */
     public function getOrderId()
     {
@@ -746,7 +770,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets order_id
      *
-     * @param string|null $order_id Order ID
+     * @param string $order_id Order ID
      *
      * @return self
      */
@@ -892,7 +916,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -902,7 +926,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status Charge status
      *
      * @return self
      */

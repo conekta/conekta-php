@@ -1,6 +1,6 @@
 <?php
 /**
- * ChargeRequest
+ * OrderChannelResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * ChargeRequest Class Doc Comment
+ * OrderChannelResponse Class Doc Comment
  *
  * @category Class
- * @description The charges to be made
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OrderChannelResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'charge_request';
+    protected static $openAPIModelName = 'order_channel_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +58,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'payment_method' => '\Conekta\Model\ChargeRequestPaymentMethod',
-        'reference_id' => 'string'
+        'segment' => 'string',
+        'checkout_request_id' => 'string',
+        'checkout_request_type' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -72,9 +72,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'int64',
-        'payment_method' => null,
-        'reference_id' => null
+        'segment' => null,
+        'checkout_request_id' => null,
+        'checkout_request_type' => null,
+        'id' => null
     ];
 
     /**
@@ -83,9 +84,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'payment_method' => false,
-        'reference_id' => false
+        'segment' => false,
+        'checkout_request_id' => false,
+        'checkout_request_type' => false,
+        'id' => false
     ];
 
     /**
@@ -174,9 +176,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'payment_method' => 'payment_method',
-        'reference_id' => 'reference_id'
+        'segment' => 'segment',
+        'checkout_request_id' => 'checkout_request_id',
+        'checkout_request_type' => 'checkout_request_type',
+        'id' => 'id'
     ];
 
     /**
@@ -185,9 +188,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'payment_method' => 'setPaymentMethod',
-        'reference_id' => 'setReferenceId'
+        'segment' => 'setSegment',
+        'checkout_request_id' => 'setCheckoutRequestId',
+        'checkout_request_type' => 'setCheckoutRequestType',
+        'id' => 'setId'
     ];
 
     /**
@@ -196,9 +200,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'payment_method' => 'getPaymentMethod',
-        'reference_id' => 'getReferenceId'
+        'segment' => 'getSegment',
+        'checkout_request_id' => 'getCheckoutRequestId',
+        'checkout_request_type' => 'getCheckoutRequestType',
+        'id' => 'getId'
     ];
 
     /**
@@ -258,9 +263,10 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('payment_method', $data ?? [], null);
-        $this->setIfExists('reference_id', $data ?? [], null);
+        $this->setIfExists('segment', $data ?? [], null);
+        $this->setIfExists('checkout_request_id', $data ?? [], null);
+        $this->setIfExists('checkout_request_type', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -290,9 +296,6 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['payment_method'] === null) {
-            $invalidProperties[] = "'payment_method' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -309,82 +312,109 @@ class ChargeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
-     *
-     * @return int|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param int|null $amount Amount to be charged in cents
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
-        }
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method
-     *
-     * @return \Conekta\Model\ChargeRequestPaymentMethod
-     */
-    public function getPaymentMethod()
-    {
-        return $this->container['payment_method'];
-    }
-
-    /**
-     * Sets payment_method
-     *
-     * @param \Conekta\Model\ChargeRequestPaymentMethod $payment_method payment_method
-     *
-     * @return self
-     */
-    public function setPaymentMethod($payment_method)
-    {
-        if (is_null($payment_method)) {
-            throw new \InvalidArgumentException('non-nullable payment_method cannot be null');
-        }
-        $this->container['payment_method'] = $payment_method;
-
-        return $this;
-    }
-
-    /**
-     * Gets reference_id
+     * Gets segment
      *
      * @return string|null
      */
-    public function getReferenceId()
+    public function getSegment()
     {
-        return $this->container['reference_id'];
+        return $this->container['segment'];
     }
 
     /**
-     * Sets reference_id
+     * Sets segment
      *
-     * @param string|null $reference_id Custom reference to add to the charge
+     * @param string|null $segment segment
      *
      * @return self
      */
-    public function setReferenceId($reference_id)
+    public function setSegment($segment)
     {
-        if (is_null($reference_id)) {
-            throw new \InvalidArgumentException('non-nullable reference_id cannot be null');
+        if (is_null($segment)) {
+            throw new \InvalidArgumentException('non-nullable segment cannot be null');
         }
-        $this->container['reference_id'] = $reference_id;
+        $this->container['segment'] = $segment;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkout_request_id
+     *
+     * @return string|null
+     */
+    public function getCheckoutRequestId()
+    {
+        return $this->container['checkout_request_id'];
+    }
+
+    /**
+     * Sets checkout_request_id
+     *
+     * @param string|null $checkout_request_id checkout_request_id
+     *
+     * @return self
+     */
+    public function setCheckoutRequestId($checkout_request_id)
+    {
+        if (is_null($checkout_request_id)) {
+            throw new \InvalidArgumentException('non-nullable checkout_request_id cannot be null');
+        }
+        $this->container['checkout_request_id'] = $checkout_request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkout_request_type
+     *
+     * @return string|null
+     */
+    public function getCheckoutRequestType()
+    {
+        return $this->container['checkout_request_type'];
+    }
+
+    /**
+     * Sets checkout_request_type
+     *
+     * @param string|null $checkout_request_type checkout_request_type
+     *
+     * @return self
+     */
+    public function setCheckoutRequestType($checkout_request_type)
+    {
+        if (is_null($checkout_request_type)) {
+            throw new \InvalidArgumentException('non-nullable checkout_request_type cannot be null');
+        }
+        $this->container['checkout_request_type'] = $checkout_request_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

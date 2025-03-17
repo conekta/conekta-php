@@ -63,6 +63,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => 'string',
         'created_at' => 'int',
         'parent_id' => 'string',
+        'agreements' => '\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]',
         'reference' => 'string',
         'barcode' => 'string',
         'barcode_url' => 'string',
@@ -83,6 +84,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => null,
         'created_at' => 'int64',
         'parent_id' => null,
+        'agreements' => null,
         'reference' => null,
         'barcode' => null,
         'barcode_url' => null,
@@ -101,6 +103,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => false,
         'created_at' => false,
         'parent_id' => false,
+        'agreements' => false,
         'reference' => false,
         'barcode' => false,
         'barcode_url' => false,
@@ -199,6 +202,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => 'object',
         'created_at' => 'created_at',
         'parent_id' => 'parent_id',
+        'agreements' => 'agreements',
         'reference' => 'reference',
         'barcode' => 'barcode',
         'barcode_url' => 'barcode_url',
@@ -217,6 +221,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => 'setObject',
         'created_at' => 'setCreatedAt',
         'parent_id' => 'setParentId',
+        'agreements' => 'setAgreements',
         'reference' => 'setReference',
         'barcode' => 'setBarcode',
         'barcode_url' => 'setBarcodeUrl',
@@ -235,6 +240,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => 'getObject',
         'created_at' => 'getCreatedAt',
         'parent_id' => 'getParentId',
+        'agreements' => 'getAgreements',
         'reference' => 'getReference',
         'barcode' => 'getBarcode',
         'barcode_url' => 'getBarcodeUrl',
@@ -304,6 +310,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('agreements', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('barcode', $data ?? [], null);
         $this->setIfExists('barcode_url', $data ?? [], null);
@@ -501,6 +508,33 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets agreements
+     *
+     * @return \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null
+     */
+    public function getAgreements()
+    {
+        return $this->container['agreements'];
+    }
+
+    /**
+     * Sets agreements
+     *
+     * @param \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null $agreements agreements
+     *
+     * @return self
+     */
+    public function setAgreements($agreements)
+    {
+        if (is_null($agreements)) {
+            throw new \InvalidArgumentException('non-nullable agreements cannot be null');
+        }
+        $this->container['agreements'] = $agreements;
+
+        return $this;
+    }
+
+    /**
      * Gets reference
      *
      * @return string|null
@@ -567,7 +601,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets barcode_url
      *
-     * @param string|null $barcode_url barcode_url
+     * @param string|null $barcode_url URL to the barcode image, reference is the same as barcode
      *
      * @return self
      */
