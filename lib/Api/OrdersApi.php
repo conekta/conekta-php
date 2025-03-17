@@ -599,7 +599,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -1068,7 +1068,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -1517,7 +1517,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -2075,7 +2075,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -2607,7 +2607,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -3131,7 +3131,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -3621,7 +3621,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
@@ -4107,7 +4107,7 @@ class OrdersApi
             $multipart
         );
         $clientConfig = $this->client->getConfig('headers') ?? [];
-        if (!isset($clientHeaders['X-Conekta-Client-User-Agent'])) {
+        if (!isset($clientConfig['X-Conekta-Client-User-Agent'])) {
             $headers = array_merge(
                 $this->headerSelector->getConektaUserAgent(),
                 $headers
