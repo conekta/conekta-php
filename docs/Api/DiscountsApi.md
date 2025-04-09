@@ -71,7 +71,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -137,7 +137,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -203,7 +203,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -275,7 +275,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -343,7 +343,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
