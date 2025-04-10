@@ -15,5 +15,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional]
 **object** | **string** |  | [optional]
 **trial_period_days** | **int** |  | [optional]
+**max_retries** | **int** |  | [optional]
+**retry_delay_hours** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

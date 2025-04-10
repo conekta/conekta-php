@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **cashier_id** | **string** |  | [optional]
 **reference** | **string** |  | [optional]
 **barcode_url** | **string** |  | [optional]
-**expires_at** | **int** |  | [optional]
-**product_type** | **string** | Product type, e.g. bbva_cash_in, cash_in, pespay_cash_in, etc. | [optional]
+**expires_at** | **int** | Expiration date of the charge |
+**product_type** | **string** | Product type of the charge |
 **service_name** | **string** |  | [optional]
 **store** | **string** |  | [optional]
 **store_name** | **string** |  | [optional]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **bank** | **string** |  | [optional]
 **clabe** | **string** |  | [optional]
 **description** | **string** |  | [optional]
-**executed_at** | **int** |  | [optional]
+**executed_at** | **string** |  | [optional]
 **issuing_account_bank** | **string** |  | [optional]
 **issuing_account_number** | **string** |  | [optional]
 **issuing_account_holder_name** | **string** |  | [optional]
@@ -42,5 +42,9 @@ Name | Type | Description | Notes
 **receiving_account_tax_id** | **string** |  | [optional]
 **reference_number** | **string** |  | [optional]
 **tracking_code** | **string** |  | [optional]
+**cancel_url** | **string** | URL to redirect the customer after a canceled payment | [optional]
+**failure_url** | **string** | URL to redirect the customer after a failed payment | [optional]
+**redirect_url** | **string** | URL to redirect the customer to complete the payment | [optional]
+**success_url** | **string** | URL to redirect the customer after a successful payment | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

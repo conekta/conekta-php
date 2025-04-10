@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **prefix** | **string** | The first few characters of the authentication_token | [optional]
 **id** | **string** | Unique identifier of the api key | [optional]
 **object** | **string** | Object name, value is &#39;api_key&#39; | [optional]
-**deleted** | **bool** |  | [optional]
+**last_used_at** | **int** | Unix timestamp in seconds with the api key was used | [optional]
 **role** | **string** | Indicates if the api key is private or public | [optional]
+**deleted** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
