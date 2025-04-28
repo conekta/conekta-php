@@ -60,6 +60,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'allowed_payment_methods' => 'string[]',
+        'plan_ids' => 'string[]',
         'can_not_expire' => 'bool',
         'emails_sent' => 'int',
         'exclude_card_networks' => 'object[]',
@@ -95,6 +96,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'allowed_payment_methods' => null,
+        'plan_ids' => null,
         'can_not_expire' => null,
         'emails_sent' => null,
         'exclude_card_networks' => null,
@@ -128,6 +130,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'allowed_payment_methods' => false,
+        'plan_ids' => false,
         'can_not_expire' => false,
         'emails_sent' => false,
         'exclude_card_networks' => false,
@@ -241,6 +244,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'allowed_payment_methods' => 'allowed_payment_methods',
+        'plan_ids' => 'plan_ids',
         'can_not_expire' => 'can_not_expire',
         'emails_sent' => 'emails_sent',
         'exclude_card_networks' => 'exclude_card_networks',
@@ -274,6 +278,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'allowed_payment_methods' => 'setAllowedPaymentMethods',
+        'plan_ids' => 'setPlanIds',
         'can_not_expire' => 'setCanNotExpire',
         'emails_sent' => 'setEmailsSent',
         'exclude_card_networks' => 'setExcludeCardNetworks',
@@ -307,6 +312,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'allowed_payment_methods' => 'getAllowedPaymentMethods',
+        'plan_ids' => 'getPlanIds',
         'can_not_expire' => 'getCanNotExpire',
         'emails_sent' => 'getEmailsSent',
         'exclude_card_networks' => 'getExcludeCardNetworks',
@@ -391,6 +397,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('allowed_payment_methods', $data ?? [], null);
+        $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('can_not_expire', $data ?? [], null);
         $this->setIfExists('emails_sent', $data ?? [], null);
         $this->setIfExists('exclude_card_networks', $data ?? [], null);
@@ -494,6 +501,33 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable allowed_payment_methods cannot be null');
         }
         $this->container['allowed_payment_methods'] = $allowed_payment_methods;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlanIds()
+    {
+        return $this->container['plan_ids'];
+    }
+
+    /**
+     * Sets plan_ids
+     *
+     * @param string[]|null $plan_ids List of plan IDs that are available for subscription
+     *
+     * @return self
+     */
+    public function setPlanIds($plan_ids)
+    {
+        if (is_null($plan_ids)) {
+            throw new \InvalidArgumentException('non-nullable plan_ids cannot be null');
+        }
+        $this->container['plan_ids'] = $plan_ids;
 
         return $this;
     }
