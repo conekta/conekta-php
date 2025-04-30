@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allowed_payment_methods** | **string[]** | Are the payment methods available for this link | [optional]
+**plan_ids** | **string[]** | List of plan IDs that are available for subscription | [optional]
 **can_not_expire** | **bool** |  | [optional]
 **emails_sent** | **int** |  | [optional]
 **exclude_card_networks** | **object[]** |  | [optional]

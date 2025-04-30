@@ -60,6 +60,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'allowed_payment_methods' => 'string[]',
+        'plan_ids' => 'string[]',
         'expires_at' => 'int',
         'failure_url' => 'string',
         'monthly_installments_enabled' => 'bool',
@@ -81,6 +82,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'allowed_payment_methods' => null,
+        'plan_ids' => null,
         'expires_at' => 'int64',
         'failure_url' => null,
         'monthly_installments_enabled' => null,
@@ -100,6 +102,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'allowed_payment_methods' => false,
+        'plan_ids' => false,
         'expires_at' => false,
         'failure_url' => false,
         'monthly_installments_enabled' => false,
@@ -199,6 +202,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'allowed_payment_methods' => 'allowed_payment_methods',
+        'plan_ids' => 'plan_ids',
         'expires_at' => 'expires_at',
         'failure_url' => 'failure_url',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
@@ -218,6 +222,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'allowed_payment_methods' => 'setAllowedPaymentMethods',
+        'plan_ids' => 'setPlanIds',
         'expires_at' => 'setExpiresAt',
         'failure_url' => 'setFailureUrl',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
@@ -237,6 +242,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'allowed_payment_methods' => 'getAllowedPaymentMethods',
+        'plan_ids' => 'getPlanIds',
         'expires_at' => 'getExpiresAt',
         'failure_url' => 'getFailureUrl',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
@@ -290,6 +296,25 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const ALLOWED_PAYMENT_METHODS_CASH = 'cash';
+    public const ALLOWED_PAYMENT_METHODS_CARD = 'card';
+    public const ALLOWED_PAYMENT_METHODS_BANK_TRANSFER = 'bank_transfer';
+    public const ALLOWED_PAYMENT_METHODS_BNPL = 'bnpl';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAllowedPaymentMethodsAllowableValues()
+    {
+        return [
+            self::ALLOWED_PAYMENT_METHODS_CASH,
+            self::ALLOWED_PAYMENT_METHODS_CARD,
+            self::ALLOWED_PAYMENT_METHODS_BANK_TRANSFER,
+            self::ALLOWED_PAYMENT_METHODS_BNPL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -307,6 +332,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('allowed_payment_methods', $data ?? [], null);
+        $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('failure_url', $data ?? [], null);
         $this->setIfExists('monthly_installments_enabled', $data ?? [], null);
@@ -377,7 +403,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets allowed_payment_methods
      *
-     * @param string[] $allowed_payment_methods Are the payment methods available for this link
+     * @param string[] $allowed_payment_methods Are the payment methods available for this link. For subscriptions, only 'card' is allowed due to the recurring nature of the payments.
      *
      * @return self
      */
@@ -386,7 +412,43 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($allowed_payment_methods)) {
             throw new \InvalidArgumentException('non-nullable allowed_payment_methods cannot be null');
         }
+        $allowedValues = $this->getAllowedPaymentMethodsAllowableValues();
+        if (array_diff($allowed_payment_methods, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'allowed_payment_methods', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['allowed_payment_methods'] = $allowed_payment_methods;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlanIds()
+    {
+        return $this->container['plan_ids'];
+    }
+
+    /**
+     * Sets plan_ids
+     *
+     * @param string[]|null $plan_ids List of plan IDs that will be available for subscription. This field is required for subscription payments.
+     *
+     * @return self
+     */
+    public function setPlanIds($plan_ids)
+    {
+        if (is_null($plan_ids)) {
+            throw new \InvalidArgumentException('non-nullable plan_ids cannot be null');
+        }
+        $this->container['plan_ids'] = $plan_ids;
 
         return $this;
     }

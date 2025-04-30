@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allowed_payment_methods** | **string[]** | Are the payment methods available for this link |
+**allowed_payment_methods** | **string[]** | Are the payment methods available for this link. For subscriptions, only &#39;card&#39; is allowed due to the recurring nature of the payments. |
+**plan_ids** | **string[]** | List of plan IDs that will be available for subscription. This field is required for subscription payments but optional for other types of payments. |
 **expires_at** | **int** | Unix timestamp of checkout expiration | [optional]
 **failure_url** | **string** | Redirection url back to the site in case of failed payment, applies only to HostedPayment. | [optional]
 **monthly_installments_enabled** | **bool** |  | [optional]

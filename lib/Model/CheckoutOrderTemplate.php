@@ -62,6 +62,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\CheckoutOrderTemplateCustomerInfo',
         'line_items' => '\Conekta\Model\Product[]',
+        'plan_ids' => 'string[]',
         'metadata' => 'array<string,mixed>'
     ];
 
@@ -76,6 +77,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => null,
         'customer_info' => null,
         'line_items' => null,
+        'plan_ids' => null,
         'metadata' => null
     ];
 
@@ -88,6 +90,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => false,
         'customer_info' => false,
         'line_items' => false,
+        'plan_ids' => false,
         'metadata' => false
     ];
 
@@ -180,6 +183,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'currency',
         'customer_info' => 'customer_info',
         'line_items' => 'line_items',
+        'plan_ids' => 'plan_ids',
         'metadata' => 'metadata'
     ];
 
@@ -192,6 +196,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'setCurrency',
         'customer_info' => 'setCustomerInfo',
         'line_items' => 'setLineItems',
+        'plan_ids' => 'setPlanIds',
         'metadata' => 'setMetadata'
     ];
 
@@ -204,6 +209,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'getCurrency',
         'customer_info' => 'getCustomerInfo',
         'line_items' => 'getLineItems',
+        'plan_ids' => 'getPlanIds',
         'metadata' => 'getMetadata'
     ];
 
@@ -267,6 +273,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('customer_info', $data ?? [], null);
         $this->setIfExists('line_items', $data ?? [], null);
+        $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -407,6 +414,33 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable line_items cannot be null');
         }
         $this->container['line_items'] = $line_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlanIds()
+    {
+        return $this->container['plan_ids'];
+    }
+
+    /**
+     * Sets plan_ids
+     *
+     * @param string[]|null $plan_ids It is a list of plan IDs that will be associated with the order.
+     *
+     * @return self
+     */
+    public function setPlanIds($plan_ids)
+    {
+        if (is_null($plan_ids)) {
+            throw new \InvalidArgumentException('non-nullable plan_ids cannot be null');
+        }
+        $this->container['plan_ids'] = $plan_ids;
 
         return $this;
     }
