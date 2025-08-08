@@ -78,7 +78,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'string',
         'default' => 'bool',
         'visible_on_checkout' => 'bool',
-        'payment_source_status' => 'string'
+        'payment_source_status' => 'string',
+        'bank' => 'string'
     ];
 
     /**
@@ -109,7 +110,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => null,
         'default' => null,
         'visible_on_checkout' => null,
-        'payment_source_status' => null
+        'payment_source_status' => null,
+        'bank' => null
     ];
 
     /**
@@ -138,7 +140,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => false,
         'default' => false,
         'visible_on_checkout' => false,
-        'payment_source_status' => false
+        'payment_source_status' => false,
+        'bank' => false
     ];
 
     /**
@@ -247,7 +250,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'name',
         'default' => 'default',
         'visible_on_checkout' => 'visible_on_checkout',
-        'payment_source_status' => 'payment_source_status'
+        'payment_source_status' => 'payment_source_status',
+        'bank' => 'bank'
     ];
 
     /**
@@ -276,7 +280,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'setName',
         'default' => 'setDefault',
         'visible_on_checkout' => 'setVisibleOnCheckout',
-        'payment_source_status' => 'setPaymentSourceStatus'
+        'payment_source_status' => 'setPaymentSourceStatus',
+        'bank' => 'setBank'
     ];
 
     /**
@@ -305,7 +310,8 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'getName',
         'default' => 'getDefault',
         'visible_on_checkout' => 'getVisibleOnCheckout',
-        'payment_source_status' => 'getPaymentSourceStatus'
+        'payment_source_status' => 'getPaymentSourceStatus',
+        'bank' => 'getBank'
     ];
 
     /**
@@ -386,6 +392,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('default', $data ?? [], null);
         $this->setIfExists('visible_on_checkout', $data ?? [], null);
         $this->setIfExists('payment_source_status', $data ?? [], null);
+        $this->setIfExists('bank', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['type'] = static::$openAPIModelName;
@@ -1008,6 +1015,33 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable payment_source_status cannot be null');
         }
         $this->container['payment_source_status'] = $payment_source_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank
+     *
+     * @return string|null
+     */
+    public function getBank()
+    {
+        return $this->container['bank'];
+    }
+
+    /**
+     * Sets bank
+     *
+     * @param string|null $bank Bank name for the SPEI payment method
+     *
+     * @return self
+     */
+    public function setBank($bank)
+    {
+        if (is_null($bank)) {
+            throw new \InvalidArgumentException('non-nullable bank cannot be null');
+        }
+        $this->container['bank'] = $bank;
 
         return $this;
     }
