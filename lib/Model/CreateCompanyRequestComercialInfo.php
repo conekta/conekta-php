@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyResponse
+ * CreateCompanyRequestComercialInfo
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CompanyResponse Class Doc Comment
+ * CreateCompanyRequestComercialInfo Class Doc Comment
  *
  * @category Class
+ * @description Commercial information for the company.
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCompanyRequestComercialInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_response';
+    protected static $openAPIModelName = 'create_company_request_comercial_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'active' => 'bool',
-        'account_status' => 'string',
-        'parent_company_id' => 'string',
-        'onboarding_status' => 'string',
-        'documents' => '\Conekta\Model\CompanyResponseDocumentsInner[]',
-        'created_at' => 'int',
-        'object' => 'string'
+        'website' => 'string',
+        'mcc' => 'string',
+        'merchant_support_email' => 'string',
+        'merchant_support_phone' => 'string'
     ];
 
     /**
@@ -77,15 +73,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'active' => null,
-        'account_status' => null,
-        'parent_company_id' => null,
-        'onboarding_status' => null,
-        'documents' => null,
-        'created_at' => 'int64',
-        'object' => null
+        'website' => 'url',
+        'mcc' => null,
+        'merchant_support_email' => 'email',
+        'merchant_support_phone' => null
     ];
 
     /**
@@ -94,15 +85,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'active' => false,
-        'account_status' => false,
-        'parent_company_id' => true,
-        'onboarding_status' => false,
-        'documents' => false,
-        'created_at' => false,
-        'object' => false
+        'website' => false,
+        'mcc' => false,
+        'merchant_support_email' => false,
+        'merchant_support_phone' => false
     ];
 
     /**
@@ -191,15 +177,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'active' => 'active',
-        'account_status' => 'account_status',
-        'parent_company_id' => 'parent_company_id',
-        'onboarding_status' => 'onboarding_status',
-        'documents' => 'documents',
-        'created_at' => 'created_at',
-        'object' => 'object'
+        'website' => 'website',
+        'mcc' => 'mcc',
+        'merchant_support_email' => 'merchant_support_email',
+        'merchant_support_phone' => 'merchant_support_phone'
     ];
 
     /**
@@ -208,15 +189,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'active' => 'setActive',
-        'account_status' => 'setAccountStatus',
-        'parent_company_id' => 'setParentCompanyId',
-        'onboarding_status' => 'setOnboardingStatus',
-        'documents' => 'setDocuments',
-        'created_at' => 'setCreatedAt',
-        'object' => 'setObject'
+        'website' => 'setWebsite',
+        'mcc' => 'setMcc',
+        'merchant_support_email' => 'setMerchantSupportEmail',
+        'merchant_support_phone' => 'setMerchantSupportPhone'
     ];
 
     /**
@@ -225,15 +201,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'active' => 'getActive',
-        'account_status' => 'getAccountStatus',
-        'parent_company_id' => 'getParentCompanyId',
-        'onboarding_status' => 'getOnboardingStatus',
-        'documents' => 'getDocuments',
-        'created_at' => 'getCreatedAt',
-        'object' => 'getObject'
+        'website' => 'getWebsite',
+        'mcc' => 'getMcc',
+        'merchant_support_email' => 'getMerchantSupportEmail',
+        'merchant_support_phone' => 'getMerchantSupportPhone'
     ];
 
     /**
@@ -293,15 +264,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('account_status', $data ?? [], null);
-        $this->setIfExists('parent_company_id', $data ?? [], null);
-        $this->setIfExists('onboarding_status', $data ?? [], null);
-        $this->setIfExists('documents', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('website', $data ?? [], null);
+        $this->setIfExists('mcc', $data ?? [], null);
+        $this->setIfExists('merchant_support_email', $data ?? [], null);
+        $this->setIfExists('merchant_support_phone', $data ?? [], null);
     }
 
     /**
@@ -331,30 +297,6 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['active'] === null) {
-            $invalidProperties[] = "'active' can't be null";
-        }
-        if ($this->container['account_status'] === null) {
-            $invalidProperties[] = "'account_status' can't be null";
-        }
-        if ($this->container['onboarding_status'] === null) {
-            $invalidProperties[] = "'onboarding_status' can't be null";
-        }
-        if ($this->container['documents'] === null) {
-            $invalidProperties[] = "'documents' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -371,251 +313,109 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The unique identifier for the company.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the company.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool $active Indicates if the company is active.
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_status
-     *
-     * @return string
-     */
-    public function getAccountStatus()
-    {
-        return $this->container['account_status'];
-    }
-
-    /**
-     * Sets account_status
-     *
-     * @param string $account_status The current status of the company's account.
-     *
-     * @return self
-     */
-    public function setAccountStatus($account_status)
-    {
-        if (is_null($account_status)) {
-            throw new \InvalidArgumentException('non-nullable account_status cannot be null');
-        }
-        $this->container['account_status'] = $account_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_company_id
+     * Gets website
      *
      * @return string|null
      */
-    public function getParentCompanyId()
+    public function getWebsite()
     {
-        return $this->container['parent_company_id'];
+        return $this->container['website'];
     }
 
     /**
-     * Sets parent_company_id
+     * Sets website
      *
-     * @param string|null $parent_company_id The identifier of the parent company, if any.
+     * @param string|null $website The company's website URL.
      *
      * @return self
      */
-    public function setParentCompanyId($parent_company_id)
+    public function setWebsite($website)
     {
-        if (is_null($parent_company_id)) {
-            array_push($this->openAPINullablesSetToNull, 'parent_company_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('parent_company_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($website)) {
+            throw new \InvalidArgumentException('non-nullable website cannot be null');
         }
-        $this->container['parent_company_id'] = $parent_company_id;
+        $this->container['website'] = $website;
 
         return $this;
     }
 
     /**
-     * Gets onboarding_status
+     * Gets mcc
      *
-     * @return string
+     * @return string|null
      */
-    public function getOnboardingStatus()
+    public function getMcc()
     {
-        return $this->container['onboarding_status'];
+        return $this->container['mcc'];
     }
 
     /**
-     * Sets onboarding_status
+     * Sets mcc
      *
-     * @param string $onboarding_status The current status of the company's onboarding process.
+     * @param string|null $mcc The Merchant Category Code (MCC) for the company.
      *
      * @return self
      */
-    public function setOnboardingStatus($onboarding_status)
+    public function setMcc($mcc)
     {
-        if (is_null($onboarding_status)) {
-            throw new \InvalidArgumentException('non-nullable onboarding_status cannot be null');
+        if (is_null($mcc)) {
+            throw new \InvalidArgumentException('non-nullable mcc cannot be null');
         }
-        $this->container['onboarding_status'] = $onboarding_status;
+        $this->container['mcc'] = $mcc;
 
         return $this;
     }
 
     /**
-     * Gets documents
+     * Gets merchant_support_email
      *
-     * @return \Conekta\Model\CompanyResponseDocumentsInner[]
+     * @return string|null
      */
-    public function getDocuments()
+    public function getMerchantSupportEmail()
     {
-        return $this->container['documents'];
+        return $this->container['merchant_support_email'];
     }
 
     /**
-     * Sets documents
+     * Sets merchant_support_email
      *
-     * @param \Conekta\Model\CompanyResponseDocumentsInner[] $documents A list of documents related to the company.
+     * @param string|null $merchant_support_email Email address for merchant support.
      *
      * @return self
      */
-    public function setDocuments($documents)
+    public function setMerchantSupportEmail($merchant_support_email)
     {
-        if (is_null($documents)) {
-            throw new \InvalidArgumentException('non-nullable documents cannot be null');
+        if (is_null($merchant_support_email)) {
+            throw new \InvalidArgumentException('non-nullable merchant_support_email cannot be null');
         }
-        $this->container['documents'] = $documents;
+        $this->container['merchant_support_email'] = $merchant_support_email;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets merchant_support_phone
      *
-     * @return int
+     * @return string|null
      */
-    public function getCreatedAt()
+    public function getMerchantSupportPhone()
     {
-        return $this->container['created_at'];
+        return $this->container['merchant_support_phone'];
     }
 
     /**
-     * Sets created_at
+     * Sets merchant_support_phone
      *
-     * @param int $created_at Timestamp of when the company was created.
+     * @param string|null $merchant_support_phone Phone number for merchant support.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setMerchantSupportPhone($merchant_support_phone)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($merchant_support_phone)) {
+            throw new \InvalidArgumentException('non-nullable merchant_support_phone cannot be null');
         }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object The type of object, typically \"company\".
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
+        $this->container['merchant_support_phone'] = $merchant_support_phone;
 
         return $this;
     }

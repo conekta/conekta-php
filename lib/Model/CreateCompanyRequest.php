@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyPayoutDestinationResponse
+ * CreateCompanyRequest
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CompanyPayoutDestinationResponse Class Doc Comment
+ * CreateCompanyRequest Class Doc Comment
  *
  * @category Class
- * @description Company payout destination model
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCompanyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_payout_destination_response';
+    protected static $openAPIModelName = 'create_company_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object' => 'string',
-        'currency' => 'string',
-        'account_holder_name' => 'string',
-        'bank' => 'string',
-        'type' => 'string',
-        'account_number' => 'string'
+        'name' => 'string',
+        'type_company' => 'string',
+        'comercial_info' => '\Conekta\Model\CreateCompanyRequestComercialInfo',
+        'fiscal_info' => '\Conekta\Model\CreateCompanyRequestFiscalInfo',
+        'bank_account_info' => '\Conekta\Model\CreateCompanyRequestBankAccountInfo'
     ];
 
     /**
@@ -75,12 +73,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object' => null,
-        'currency' => null,
-        'account_holder_name' => null,
-        'bank' => null,
-        'type' => null,
-        'account_number' => null
+        'name' => null,
+        'type_company' => null,
+        'comercial_info' => null,
+        'fiscal_info' => null,
+        'bank_account_info' => null
     ];
 
     /**
@@ -89,12 +86,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object' => false,
-        'currency' => false,
-        'account_holder_name' => false,
-        'bank' => false,
-        'type' => false,
-        'account_number' => false
+        'name' => false,
+        'type_company' => false,
+        'comercial_info' => false,
+        'fiscal_info' => false,
+        'bank_account_info' => false
     ];
 
     /**
@@ -183,12 +179,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'currency' => 'currency',
-        'account_holder_name' => 'account_holder_name',
-        'bank' => 'bank',
-        'type' => 'type',
-        'account_number' => 'account_number'
+        'name' => 'name',
+        'type_company' => 'type_company',
+        'comercial_info' => 'comercial_info',
+        'fiscal_info' => 'fiscal_info',
+        'bank_account_info' => 'bank_account_info'
     ];
 
     /**
@@ -197,12 +192,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'currency' => 'setCurrency',
-        'account_holder_name' => 'setAccountHolderName',
-        'bank' => 'setBank',
-        'type' => 'setType',
-        'account_number' => 'setAccountNumber'
+        'name' => 'setName',
+        'type_company' => 'setTypeCompany',
+        'comercial_info' => 'setComercialInfo',
+        'fiscal_info' => 'setFiscalInfo',
+        'bank_account_info' => 'setBankAccountInfo'
     ];
 
     /**
@@ -211,12 +205,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'currency' => 'getCurrency',
-        'account_holder_name' => 'getAccountHolderName',
-        'bank' => 'getBank',
-        'type' => 'getType',
-        'account_number' => 'getAccountNumber'
+        'name' => 'getName',
+        'type_company' => 'getTypeCompany',
+        'comercial_info' => 'getComercialInfo',
+        'fiscal_info' => 'getFiscalInfo',
+        'bank_account_info' => 'getBankAccountInfo'
     ];
 
     /**
@@ -260,32 +253,6 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const OBJECT_PAYOUT_DESTINATION = 'payout_destination';
-    public const TYPE_BANK_ACCOUNT = 'bank_account';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getObjectAllowableValues()
-    {
-        return [
-            self::OBJECT_PAYOUT_DESTINATION,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_BANK_ACCOUNT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -302,12 +269,11 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('account_holder_name', $data ?? [], null);
-        $this->setIfExists('bank', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type_company', $data ?? [], null);
+        $this->setIfExists('comercial_info', $data ?? [], null);
+        $this->setIfExists('fiscal_info', $data ?? [], null);
+        $this->setIfExists('bank_account_info', $data ?? [], null);
     }
 
     /**
@@ -337,24 +303,6 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'object', must be one of '%s'",
-                $this->container['object'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -371,183 +319,136 @@ class CompanyPayoutDestinationResponse implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets object
+     * Gets name
      *
      * @return string|null
      */
-    public function getObject()
+    public function getName()
     {
-        return $this->container['object'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets object
+     * Sets name
      *
-     * @param string|null $object The resource's type
+     * @param string|null $name The name of the company.
      *
      * @return self
      */
-    public function setObject($object)
+    public function setName($name)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'object', must be one of '%s'",
-                    $object,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['object'] = $object;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets type_company
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getTypeCompany()
     {
-        return $this->container['currency'];
+        return $this->container['type_company'];
     }
 
     /**
-     * Sets currency
+     * Sets type_company
      *
-     * @param string|null $currency currency of the receiving account
+     * @param string|null $type_company The type of company, 'owner'
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setTypeCompany($type_company)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($type_company)) {
+            throw new \InvalidArgumentException('non-nullable type_company cannot be null');
         }
-        $this->container['currency'] = $currency;
+        $this->container['type_company'] = $type_company;
 
         return $this;
     }
 
     /**
-     * Gets account_holder_name
+     * Gets comercial_info
      *
-     * @return string|null
+     * @return \Conekta\Model\CreateCompanyRequestComercialInfo|null
      */
-    public function getAccountHolderName()
+    public function getComercialInfo()
     {
-        return $this->container['account_holder_name'];
+        return $this->container['comercial_info'];
     }
 
     /**
-     * Sets account_holder_name
+     * Sets comercial_info
      *
-     * @param string|null $account_holder_name Name of the account holder
+     * @param \Conekta\Model\CreateCompanyRequestComercialInfo|null $comercial_info comercial_info
      *
      * @return self
      */
-    public function setAccountHolderName($account_holder_name)
+    public function setComercialInfo($comercial_info)
     {
-        if (is_null($account_holder_name)) {
-            throw new \InvalidArgumentException('non-nullable account_holder_name cannot be null');
+        if (is_null($comercial_info)) {
+            throw new \InvalidArgumentException('non-nullable comercial_info cannot be null');
         }
-        $this->container['account_holder_name'] = $account_holder_name;
+        $this->container['comercial_info'] = $comercial_info;
 
         return $this;
     }
 
     /**
-     * Gets bank
+     * Gets fiscal_info
      *
-     * @return string|null
+     * @return \Conekta\Model\CreateCompanyRequestFiscalInfo|null
      */
-    public function getBank()
+    public function getFiscalInfo()
     {
-        return $this->container['bank'];
+        return $this->container['fiscal_info'];
     }
 
     /**
-     * Sets bank
+     * Sets fiscal_info
      *
-     * @param string|null $bank Name of the bank
+     * @param \Conekta\Model\CreateCompanyRequestFiscalInfo|null $fiscal_info fiscal_info
      *
      * @return self
      */
-    public function setBank($bank)
+    public function setFiscalInfo($fiscal_info)
     {
-        if (is_null($bank)) {
-            throw new \InvalidArgumentException('non-nullable bank cannot be null');
+        if (is_null($fiscal_info)) {
+            throw new \InvalidArgumentException('non-nullable fiscal_info cannot be null');
         }
-        $this->container['bank'] = $bank;
+        $this->container['fiscal_info'] = $fiscal_info;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets bank_account_info
      *
-     * @return string|null
+     * @return \Conekta\Model\CreateCompanyRequestBankAccountInfo|null
      */
-    public function getType()
+    public function getBankAccountInfo()
     {
-        return $this->container['type'];
+        return $this->container['bank_account_info'];
     }
 
     /**
-     * Sets type
+     * Sets bank_account_info
      *
-     * @param string|null $type Type of the payout destination
+     * @param \Conekta\Model\CreateCompanyRequestBankAccountInfo|null $bank_account_info bank_account_info
      *
      * @return self
      */
-    public function setType($type)
+    public function setBankAccountInfo($bank_account_info)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($bank_account_info)) {
+            throw new \InvalidArgumentException('non-nullable bank_account_info cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_number
-     *
-     * @return string|null
-     */
-    public function getAccountNumber()
-    {
-        return $this->container['account_number'];
-    }
-
-    /**
-     * Sets account_number
-     *
-     * @param string|null $account_number Account number of the receiving account
-     *
-     * @return self
-     */
-    public function setAccountNumber($account_number)
-    {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
-        }
-        $this->container['account_number'] = $account_number;
+        $this->container['bank_account_info'] = $bank_account_info;
 
         return $this;
     }

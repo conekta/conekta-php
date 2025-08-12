@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentMethodBnplRequest
+ * CreateCompanyRequestBankAccountInfo
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * PaymentMethodBnplRequest Class Doc Comment
+ * CreateCompanyRequestBankAccountInfo Class Doc Comment
  *
  * @category Class
+ * @description Bank account information for the company.
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCompanyRequestBankAccountInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'payment_method_bnpl_request';
+    protected static $openAPIModelName = 'create_company_request_bank_account_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'cancel_url' => 'string',
-        'can_not_expire' => 'bool',
-        'failure_url' => 'string',
-        'product_type' => 'string',
-        'success_url' => 'string'
+        'clabe' => 'string'
     ];
 
     /**
@@ -74,12 +70,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'cancel_url' => null,
-        'can_not_expire' => null,
-        'failure_url' => null,
-        'product_type' => null,
-        'success_url' => null
+        'clabe' => null
     ];
 
     /**
@@ -88,12 +79,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'cancel_url' => false,
-        'can_not_expire' => false,
-        'failure_url' => false,
-        'product_type' => false,
-        'success_url' => false
+        'clabe' => false
     ];
 
     /**
@@ -182,12 +168,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'cancel_url' => 'cancel_url',
-        'can_not_expire' => 'can_not_expire',
-        'failure_url' => 'failure_url',
-        'product_type' => 'product_type',
-        'success_url' => 'success_url'
+        'clabe' => 'clabe'
     ];
 
     /**
@@ -196,12 +177,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'cancel_url' => 'setCancelUrl',
-        'can_not_expire' => 'setCanNotExpire',
-        'failure_url' => 'setFailureUrl',
-        'product_type' => 'setProductType',
-        'success_url' => 'setSuccessUrl'
+        'clabe' => 'setClabe'
     ];
 
     /**
@@ -210,12 +186,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'cancel_url' => 'getCancelUrl',
-        'can_not_expire' => 'getCanNotExpire',
-        'failure_url' => 'getFailureUrl',
-        'product_type' => 'getProductType',
-        'success_url' => 'getSuccessUrl'
+        'clabe' => 'getClabe'
     ];
 
     /**
@@ -259,21 +230,6 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const PRODUCT_TYPE_APLAZO_BNPL = 'aplazo_bnpl';
-    public const PRODUCT_TYPE_CREDITEA_BNPL = 'creditea_bnpl';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getProductTypeAllowableValues()
-    {
-        return [
-            self::PRODUCT_TYPE_APLAZO_BNPL,
-            self::PRODUCT_TYPE_CREDITEA_BNPL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -290,12 +246,7 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('cancel_url', $data ?? [], null);
-        $this->setIfExists('can_not_expire', $data ?? [], null);
-        $this->setIfExists('failure_url', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], null);
-        $this->setIfExists('success_url', $data ?? [], null);
+        $this->setIfExists('clabe', $data ?? [], null);
     }
 
     /**
@@ -325,33 +276,6 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['cancel_url'] === null) {
-            $invalidProperties[] = "'cancel_url' can't be null";
-        }
-        if ($this->container['can_not_expire'] === null) {
-            $invalidProperties[] = "'can_not_expire' can't be null";
-        }
-        if ($this->container['failure_url'] === null) {
-            $invalidProperties[] = "'failure_url' can't be null";
-        }
-        if ($this->container['product_type'] === null) {
-            $invalidProperties[] = "'product_type' can't be null";
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'product_type', must be one of '%s'",
-                $this->container['product_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['success_url'] === null) {
-            $invalidProperties[] = "'success_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -368,173 +292,28 @@ class PaymentMethodBnplRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets type
+     * Gets clabe
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getClabe()
     {
-        return $this->container['type'];
+        return $this->container['clabe'];
     }
 
     /**
-     * Sets type
+     * Sets clabe
      *
-     * @param string $type Type of the payment method
+     * @param string|null $clabe The 18-digit CLABE for the bank account.
      *
      * @return self
      */
-    public function setType($type)
+    public function setClabe($clabe)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($clabe)) {
+            throw new \InvalidArgumentException('non-nullable clabe cannot be null');
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancel_url
-     *
-     * @return string
-     */
-    public function getCancelUrl()
-    {
-        return $this->container['cancel_url'];
-    }
-
-    /**
-     * Sets cancel_url
-     *
-     * @param string $cancel_url URL to redirect the customer after a canceled payment
-     *
-     * @return self
-     */
-    public function setCancelUrl($cancel_url)
-    {
-        if (is_null($cancel_url)) {
-            throw new \InvalidArgumentException('non-nullable cancel_url cannot be null');
-        }
-        $this->container['cancel_url'] = $cancel_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets can_not_expire
-     *
-     * @return bool
-     */
-    public function getCanNotExpire()
-    {
-        return $this->container['can_not_expire'];
-    }
-
-    /**
-     * Sets can_not_expire
-     *
-     * @param bool $can_not_expire Indicates if the payment method can not expire
-     *
-     * @return self
-     */
-    public function setCanNotExpire($can_not_expire)
-    {
-        if (is_null($can_not_expire)) {
-            throw new \InvalidArgumentException('non-nullable can_not_expire cannot be null');
-        }
-        $this->container['can_not_expire'] = $can_not_expire;
-
-        return $this;
-    }
-
-    /**
-     * Gets failure_url
-     *
-     * @return string
-     */
-    public function getFailureUrl()
-    {
-        return $this->container['failure_url'];
-    }
-
-    /**
-     * Sets failure_url
-     *
-     * @param string $failure_url URL to redirect the customer after a failed payment
-     *
-     * @return self
-     */
-    public function setFailureUrl($failure_url)
-    {
-        if (is_null($failure_url)) {
-            throw new \InvalidArgumentException('non-nullable failure_url cannot be null');
-        }
-        $this->container['failure_url'] = $failure_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_type
-     *
-     * @return string
-     */
-    public function getProductType()
-    {
-        return $this->container['product_type'];
-    }
-
-    /**
-     * Sets product_type
-     *
-     * @param string $product_type Product type of the payment method, use for the payment method to know the product type
-     *
-     * @return self
-     */
-    public function setProductType($product_type)
-    {
-        if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!in_array($product_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_type', must be one of '%s'",
-                    $product_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_type'] = $product_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets success_url
-     *
-     * @return string
-     */
-    public function getSuccessUrl()
-    {
-        return $this->container['success_url'];
-    }
-
-    /**
-     * Sets success_url
-     *
-     * @param string $success_url URL to redirect the customer after a successful payment
-     *
-     * @return self
-     */
-    public function setSuccessUrl($success_url)
-    {
-        if (is_null($success_url)) {
-            throw new \InvalidArgumentException('non-nullable success_url cannot be null');
-        }
-        $this->container['success_url'] = $success_url;
+        $this->container['clabe'] = $clabe;
 
         return $this;
     }

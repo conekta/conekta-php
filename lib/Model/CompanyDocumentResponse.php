@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyFiscalInfoResponse
+ * CompanyDocumentResponse
  *
  * PHP version 7.4
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CompanyFiscalInfoResponse Class Doc Comment
+ * CompanyDocumentResponse Class Doc Comment
  *
  * @category Class
- * @description Company fiscal info model
+ * @description Response body after uploading a company document.
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyDocumentResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_fiscal_info_response';
+    protected static $openAPIModelName = 'company_document_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object' => 'string',
-        'tax_id' => 'string',
-        'legal_entity_name' => 'string',
-        'business_type' => 'string',
-        'phone' => 'string',
-        'physical_person_business_type' => 'string',
-        'address' => '\Conekta\Model\CompanyFiscalInfoAddressResponse'
+        'file_classification' => 'string',
+        'file_name' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -76,13 +72,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object' => null,
-        'tax_id' => null,
-        'legal_entity_name' => null,
-        'business_type' => null,
-        'phone' => null,
-        'physical_person_business_type' => null,
-        'address' => null
+        'file_classification' => null,
+        'file_name' => null,
+        'status' => null
     ];
 
     /**
@@ -91,13 +83,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object' => false,
-        'tax_id' => false,
-        'legal_entity_name' => false,
-        'business_type' => false,
-        'phone' => false,
-        'physical_person_business_type' => false,
-        'address' => false
+        'file_classification' => false,
+        'file_name' => false,
+        'status' => false
     ];
 
     /**
@@ -186,13 +174,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'tax_id' => 'tax_id',
-        'legal_entity_name' => 'legal_entity_name',
-        'business_type' => 'business_type',
-        'phone' => 'phone',
-        'physical_person_business_type' => 'physical_person_business_type',
-        'address' => 'address'
+        'file_classification' => 'file_classification',
+        'file_name' => 'file_name',
+        'status' => 'status'
     ];
 
     /**
@@ -201,13 +185,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'tax_id' => 'setTaxId',
-        'legal_entity_name' => 'setLegalEntityName',
-        'business_type' => 'setBusinessType',
-        'phone' => 'setPhone',
-        'physical_person_business_type' => 'setPhysicalPersonBusinessType',
-        'address' => 'setAddress'
+        'file_classification' => 'setFileClassification',
+        'file_name' => 'setFileName',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -216,13 +196,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'tax_id' => 'getTaxId',
-        'legal_entity_name' => 'getLegalEntityName',
-        'business_type' => 'getBusinessType',
-        'phone' => 'getPhone',
-        'physical_person_business_type' => 'getPhysicalPersonBusinessType',
-        'address' => 'getAddress'
+        'file_classification' => 'getFileClassification',
+        'file_name' => 'getFileName',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -266,17 +242,35 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const OBJECT_FISCAL_INFO = 'fiscal_info';
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE = 'id_legal_representative';
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK = 'id_legal_representative_back';
+    public const FILE_CLASSIFICATION_CFDI = 'cfdi';
+    public const FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC = 'constitutive_act_basic';
+    public const FILE_CLASSIFICATION_PROOF_OF_ADDRESS = 'proof_of_address';
+    public const FILE_CLASSIFICATION_POWER_OF_ATTONERY = 'power_of_attonery';
+    public const FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER = 'deposit_account_cover';
+    public const FILE_CLASSIFICATION_PERMIT_CASINO = 'permit_casino';
+    public const FILE_CLASSIFICATION_LICENSE_SANITATION = 'license_sanitation';
+    public const FILE_CLASSIFICATION_REGISTRATION_TOURISM = 'registration_tourism';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getObjectAllowableValues()
+    public function getFileClassificationAllowableValues()
     {
         return [
-            self::OBJECT_FISCAL_INFO,
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE,
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK,
+            self::FILE_CLASSIFICATION_CFDI,
+            self::FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC,
+            self::FILE_CLASSIFICATION_PROOF_OF_ADDRESS,
+            self::FILE_CLASSIFICATION_POWER_OF_ATTONERY,
+            self::FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER,
+            self::FILE_CLASSIFICATION_PERMIT_CASINO,
+            self::FILE_CLASSIFICATION_LICENSE_SANITATION,
+            self::FILE_CLASSIFICATION_REGISTRATION_TOURISM,
         ];
     }
 
@@ -295,13 +289,9 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('tax_id', $data ?? [], null);
-        $this->setIfExists('legal_entity_name', $data ?? [], null);
-        $this->setIfExists('business_type', $data ?? [], null);
-        $this->setIfExists('phone', $data ?? [], null);
-        $this->setIfExists('physical_person_business_type', $data ?? [], null);
-        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('file_classification', $data ?? [], null);
+        $this->setIfExists('file_name', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -331,15 +321,24 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+        if ($this->container['file_classification'] === null) {
+            $invalidProperties[] = "'file_classification' can't be null";
+        }
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!is_null($this->container['file_classification']) && !in_array($this->container['file_classification'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'object', must be one of '%s'",
-                $this->container['object'],
+                "invalid value '%s' for 'file_classification', must be one of '%s'",
+                $this->container['file_classification'],
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['file_name'] === null) {
+            $invalidProperties[] = "'file_name' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -356,200 +355,92 @@ class CompanyFiscalInfoResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets object
+     * Gets file_classification
      *
-     * @return string|null
+     * @return string
      */
-    public function getObject()
+    public function getFileClassification()
     {
-        return $this->container['object'];
+        return $this->container['file_classification'];
     }
 
     /**
-     * Sets object
+     * Sets file_classification
      *
-     * @param string|null $object The resource's type
+     * @param string $file_classification Classification of the document.  | Tipo de archivo              | Descripción                                               | | :--------------------------- | :-------------------------------------------------------- | | `id_legal_representative`      | identificación oficial frente                             | | `id_legal_representative_back` | identificación oficial atrás                              | | `cfdi`                         | Prueba de situación fiscal                                | | `constitutive_act_basic`       | Acta constitutiva                                         | | `proof_of_address`             | Comprobante de domicilio del negocio                      | | `power_of_attonery`            | Poderes de representación                                 | | `deposit_account_cover`        | Carátula de la cuenta de depósito                         | | `permit_casino`                | Permiso ante SEGOB                                        | | `license_sanitation`           | Licencia sanitaria de COFEPRIS                            | | `registration_tourism`         | Inscripción ante el Registro Nacional de Turismo (SECTUR) |
      *
      * @return self
      */
-    public function setObject($object)
+    public function setFileClassification($file_classification)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($file_classification)) {
+            throw new \InvalidArgumentException('non-nullable file_classification cannot be null');
         }
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!in_array($file_classification, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'object', must be one of '%s'",
-                    $object,
+                    "Invalid value '%s' for 'file_classification', must be one of '%s'",
+                    $file_classification,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['object'] = $object;
+        $this->container['file_classification'] = $file_classification;
 
         return $this;
     }
 
     /**
-     * Gets tax_id
+     * Gets file_name
      *
-     * @return string|null
+     * @return string
      */
-    public function getTaxId()
+    public function getFileName()
     {
-        return $this->container['tax_id'];
+        return $this->container['file_name'];
     }
 
     /**
-     * Sets tax_id
+     * Sets file_name
      *
-     * @param string|null $tax_id Tax ID of the company
+     * @param string $file_name Name of the file as stored or processed.
      *
      * @return self
      */
-    public function setTaxId($tax_id)
+    public function setFileName($file_name)
     {
-        if (is_null($tax_id)) {
-            throw new \InvalidArgumentException('non-nullable tax_id cannot be null');
+        if (is_null($file_name)) {
+            throw new \InvalidArgumentException('non-nullable file_name cannot be null');
         }
-        $this->container['tax_id'] = $tax_id;
+        $this->container['file_name'] = $file_name;
 
         return $this;
     }
 
     /**
-     * Gets legal_entity_name
+     * Gets status
      *
-     * @return string|null
+     * @return string
      */
-    public function getLegalEntityName()
+    public function getStatus()
     {
-        return $this->container['legal_entity_name'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets legal_entity_name
+     * Sets status
      *
-     * @param string|null $legal_entity_name Legal name of the company
+     * @param string $status Current status of the document.
      *
      * @return self
      */
-    public function setLegalEntityName($legal_entity_name)
+    public function setStatus($status)
     {
-        if (is_null($legal_entity_name)) {
-            throw new \InvalidArgumentException('non-nullable legal_entity_name cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['legal_entity_name'] = $legal_entity_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets business_type
-     *
-     * @return string|null
-     */
-    public function getBusinessType()
-    {
-        return $this->container['business_type'];
-    }
-
-    /**
-     * Sets business_type
-     *
-     * @param string|null $business_type Business type of the company
-     *
-     * @return self
-     */
-    public function setBusinessType($business_type)
-    {
-        if (is_null($business_type)) {
-            throw new \InvalidArgumentException('non-nullable business_type cannot be null');
-        }
-        $this->container['business_type'] = $business_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone
-     *
-     * @return string|null
-     */
-    public function getPhone()
-    {
-        return $this->container['phone'];
-    }
-
-    /**
-     * Sets phone
-     *
-     * @param string|null $phone Phone number of the company
-     *
-     * @return self
-     */
-    public function setPhone($phone)
-    {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
-        $this->container['phone'] = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Gets physical_person_business_type
-     *
-     * @return string|null
-     */
-    public function getPhysicalPersonBusinessType()
-    {
-        return $this->container['physical_person_business_type'];
-    }
-
-    /**
-     * Sets physical_person_business_type
-     *
-     * @param string|null $physical_person_business_type Business type if 'persona_fisica'
-     *
-     * @return self
-     */
-    public function setPhysicalPersonBusinessType($physical_person_business_type)
-    {
-        if (is_null($physical_person_business_type)) {
-            throw new \InvalidArgumentException('non-nullable physical_person_business_type cannot be null');
-        }
-        $this->container['physical_person_business_type'] = $physical_person_business_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
-     *
-     * @return \Conekta\Model\CompanyFiscalInfoAddressResponse|null
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param \Conekta\Model\CompanyFiscalInfoAddressResponse|null $address address
-     *
-     * @return self
-     */
-    public function setAddress($address)
-    {
-        if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
-        }
-        $this->container['address'] = $address;
+        $this->container['status'] = $status;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyFiscalInfoAddressResponse
+ * CompanyResponseDocumentsInner
  *
  * PHP version 7.4
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CompanyFiscalInfoAddressResponse Class Doc Comment
+ * CompanyResponseDocumentsInner Class Doc Comment
  *
  * @category Class
- * @description Company fiscal info address model
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyResponseDocumentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_fiscal_info_address_response';
+    protected static $openAPIModelName = 'company_response_documents_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +58,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'object' => 'string',
-        'street1' => 'string',
-        'street2' => 'string',
-        'city' => 'string',
-        'state' => 'string',
-        'country' => 'string',
-        'postal_code' => 'string',
-        'external_number' => 'string',
-        'internal_number' => 'string'
+        'file_classification' => 'string',
+        'status' => 'string',
+        'file_name' => 'string'
     ];
 
     /**
@@ -78,15 +71,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'object' => null,
-        'street1' => null,
-        'street2' => null,
-        'city' => null,
-        'state' => null,
-        'country' => null,
-        'postal_code' => null,
-        'external_number' => null,
-        'internal_number' => null
+        'file_classification' => null,
+        'status' => null,
+        'file_name' => null
     ];
 
     /**
@@ -95,15 +82,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'object' => false,
-        'street1' => false,
-        'street2' => false,
-        'city' => false,
-        'state' => false,
-        'country' => false,
-        'postal_code' => false,
-        'external_number' => false,
-        'internal_number' => false
+        'file_classification' => false,
+        'status' => false,
+        'file_name' => true
     ];
 
     /**
@@ -192,15 +173,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'street1' => 'street1',
-        'street2' => 'street2',
-        'city' => 'city',
-        'state' => 'state',
-        'country' => 'country',
-        'postal_code' => 'postal_code',
-        'external_number' => 'external_number',
-        'internal_number' => 'internal_number'
+        'file_classification' => 'file_classification',
+        'status' => 'status',
+        'file_name' => 'file_name'
     ];
 
     /**
@@ -209,15 +184,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'street1' => 'setStreet1',
-        'street2' => 'setStreet2',
-        'city' => 'setCity',
-        'state' => 'setState',
-        'country' => 'setCountry',
-        'postal_code' => 'setPostalCode',
-        'external_number' => 'setExternalNumber',
-        'internal_number' => 'setInternalNumber'
+        'file_classification' => 'setFileClassification',
+        'status' => 'setStatus',
+        'file_name' => 'setFileName'
     ];
 
     /**
@@ -226,15 +195,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'street1' => 'getStreet1',
-        'street2' => 'getStreet2',
-        'city' => 'getCity',
-        'state' => 'getState',
-        'country' => 'getCountry',
-        'postal_code' => 'getPostalCode',
-        'external_number' => 'getExternalNumber',
-        'internal_number' => 'getInternalNumber'
+        'file_classification' => 'getFileClassification',
+        'status' => 'getStatus',
+        'file_name' => 'getFileName'
     ];
 
     /**
@@ -278,17 +241,35 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const OBJECT_ADDRESS = 'address';
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE = 'id_legal_representative';
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK = 'id_legal_representative_back';
+    public const FILE_CLASSIFICATION_CFDI = 'cfdi';
+    public const FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC = 'constitutive_act_basic';
+    public const FILE_CLASSIFICATION_PROOF_OF_ADDRESS = 'proof_of_address';
+    public const FILE_CLASSIFICATION_POWER_OF_ATTONERY = 'power_of_attonery';
+    public const FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER = 'deposit_account_cover';
+    public const FILE_CLASSIFICATION_PERMIT_CASINO = 'permit_casino';
+    public const FILE_CLASSIFICATION_LICENSE_SANITATION = 'license_sanitation';
+    public const FILE_CLASSIFICATION_REGISTRATION_TOURISM = 'registration_tourism';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getObjectAllowableValues()
+    public function getFileClassificationAllowableValues()
     {
         return [
-            self::OBJECT_ADDRESS,
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE,
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK,
+            self::FILE_CLASSIFICATION_CFDI,
+            self::FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC,
+            self::FILE_CLASSIFICATION_PROOF_OF_ADDRESS,
+            self::FILE_CLASSIFICATION_POWER_OF_ATTONERY,
+            self::FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER,
+            self::FILE_CLASSIFICATION_PERMIT_CASINO,
+            self::FILE_CLASSIFICATION_LICENSE_SANITATION,
+            self::FILE_CLASSIFICATION_REGISTRATION_TOURISM,
         ];
     }
 
@@ -307,15 +288,9 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('street1', $data ?? [], null);
-        $this->setIfExists('street2', $data ?? [], null);
-        $this->setIfExists('city', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('postal_code', $data ?? [], null);
-        $this->setIfExists('external_number', $data ?? [], null);
-        $this->setIfExists('internal_number', $data ?? [], null);
+        $this->setIfExists('file_classification', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('file_name', $data ?? [], null);
     }
 
     /**
@@ -345,11 +320,11 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!is_null($this->container['file_classification']) && !in_array($this->container['file_classification'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'object', must be one of '%s'",
-                $this->container['object'],
+                "invalid value '%s' for 'file_classification', must be one of '%s'",
+                $this->container['file_classification'],
                 implode("', '", $allowedValues)
             );
         }
@@ -370,254 +345,99 @@ class CompanyFiscalInfoAddressResponse implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets object
+     * Gets file_classification
      *
      * @return string|null
      */
-    public function getObject()
+    public function getFileClassification()
     {
-        return $this->container['object'];
+        return $this->container['file_classification'];
     }
 
     /**
-     * Sets object
+     * Sets file_classification
      *
-     * @param string|null $object The resource's type
+     * @param string|null $file_classification Classification of the document.  | Tipo de archivo              | Descripción                                               | | :--------------------------- | :-------------------------------------------------------- | | `id_legal_representative`      | identificación oficial frente                             | | `id_legal_representative_back` | identificación oficial atrás                              | | `cfdi`                         | Prueba de situación fiscal                                | | `constitutive_act_basic`       | Acta constitutiva                                         | | `proof_of_address`             | Comprobante de domicilio del negocio                      | | `power_of_attonery`            | Poderes de representación                                 | | `deposit_account_cover`        | Carátula de la cuenta de depósito                         | | `permit_casino`                | Permiso ante SEGOB                                        | | `license_sanitation`           | Licencia sanitaria de COFEPRIS                            | | `registration_tourism`         | Inscripción ante el Registro Nacional de Turismo (SECTUR) |
      *
      * @return self
      */
-    public function setObject($object)
+    public function setFileClassification($file_classification)
     {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        if (is_null($file_classification)) {
+            throw new \InvalidArgumentException('non-nullable file_classification cannot be null');
         }
-        $allowedValues = $this->getObjectAllowableValues();
-        if (!in_array($object, $allowedValues, true)) {
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!in_array($file_classification, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'object', must be one of '%s'",
-                    $object,
+                    "Invalid value '%s' for 'file_classification', must be one of '%s'",
+                    $file_classification,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['object'] = $object;
+        $this->container['file_classification'] = $file_classification;
 
         return $this;
     }
 
     /**
-     * Gets street1
+     * Gets status
      *
      * @return string|null
      */
-    public function getStreet1()
+    public function getStatus()
     {
-        return $this->container['street1'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets street1
+     * Sets status
      *
-     * @param string|null $street1 Street Address
+     * @param string|null $status The status of the document.
      *
      * @return self
      */
-    public function setStreet1($street1)
+    public function setStatus($status)
     {
-        if (is_null($street1)) {
-            throw new \InvalidArgumentException('non-nullable street1 cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['street1'] = $street1;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets street2
+     * Gets file_name
      *
      * @return string|null
      */
-    public function getStreet2()
+    public function getFileName()
     {
-        return $this->container['street2'];
+        return $this->container['file_name'];
     }
 
     /**
-     * Sets street2
+     * Sets file_name
      *
-     * @param string|null $street2 Colonia
+     * @param string|null $file_name The name of the file.
      *
      * @return self
      */
-    public function setStreet2($street2)
+    public function setFileName($file_name)
     {
-        if (is_null($street2)) {
-            throw new \InvalidArgumentException('non-nullable street2 cannot be null');
+        if (is_null($file_name)) {
+            array_push($this->openAPINullablesSetToNull, 'file_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['street2'] = $street2;
-
-        return $this;
-    }
-
-    /**
-     * Gets city
-     *
-     * @return string|null
-     */
-    public function getCity()
-    {
-        return $this->container['city'];
-    }
-
-    /**
-     * Sets city
-     *
-     * @param string|null $city City
-     *
-     * @return self
-     */
-    public function setCity($city)
-    {
-        if (is_null($city)) {
-            throw new \InvalidArgumentException('non-nullable city cannot be null');
-        }
-        $this->container['city'] = $city;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string|null $state State
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
-        }
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country Country
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
-        }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets postal_code
-     *
-     * @return string|null
-     */
-    public function getPostalCode()
-    {
-        return $this->container['postal_code'];
-    }
-
-    /**
-     * Sets postal_code
-     *
-     * @param string|null $postal_code Postal code
-     *
-     * @return self
-     */
-    public function setPostalCode($postal_code)
-    {
-        if (is_null($postal_code)) {
-            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
-        }
-        $this->container['postal_code'] = $postal_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets external_number
-     *
-     * @return string|null
-     */
-    public function getExternalNumber()
-    {
-        return $this->container['external_number'];
-    }
-
-    /**
-     * Sets external_number
-     *
-     * @param string|null $external_number Street number
-     *
-     * @return self
-     */
-    public function setExternalNumber($external_number)
-    {
-        if (is_null($external_number)) {
-            throw new \InvalidArgumentException('non-nullable external_number cannot be null');
-        }
-        $this->container['external_number'] = $external_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets internal_number
-     *
-     * @return string|null
-     */
-    public function getInternalNumber()
-    {
-        return $this->container['internal_number'];
-    }
-
-    /**
-     * Sets internal_number
-     *
-     * @param string|null $internal_number Unit / apartment number
-     *
-     * @return self
-     */
-    public function setInternalNumber($internal_number)
-    {
-        if (is_null($internal_number)) {
-            throw new \InvalidArgumentException('non-nullable internal_number cannot be null');
-        }
-        $this->container['internal_number'] = $internal_number;
+        $this->container['file_name'] = $file_name;
 
         return $this;
     }

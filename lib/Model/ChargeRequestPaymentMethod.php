@@ -325,7 +325,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const PRODUCT_TYPE_KLARNA_BNPL = 'klarna_bnpl';
+    public const PRODUCT_TYPE_APLAZO_BNPL = 'aplazo_bnpl';
     public const PRODUCT_TYPE_CREDITEA_BNPL = 'creditea_bnpl';
 
     /**
@@ -336,7 +336,7 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     public function getProductTypeAllowableValues()
     {
         return [
-            self::PRODUCT_TYPE_KLARNA_BNPL,
+            self::PRODUCT_TYPE_APLAZO_BNPL,
             self::PRODUCT_TYPE_CREDITEA_BNPL,
         ];
     }

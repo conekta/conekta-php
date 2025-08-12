@@ -63,6 +63,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => 'string',
         'created_at' => 'int',
         'parent_id' => 'string',
+        'bank' => 'string',
         'reference' => 'string',
         'expires_at' => 'string'
     ];
@@ -80,6 +81,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => null,
         'created_at' => 'int64',
         'parent_id' => null,
+        'bank' => null,
         'reference' => null,
         'expires_at' => null
     ];
@@ -95,6 +97,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => false,
         'created_at' => false,
         'parent_id' => false,
+        'bank' => false,
         'reference' => false,
         'expires_at' => false
     ];
@@ -190,6 +193,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => 'object',
         'created_at' => 'created_at',
         'parent_id' => 'parent_id',
+        'bank' => 'bank',
         'reference' => 'reference',
         'expires_at' => 'expires_at'
     ];
@@ -205,6 +209,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => 'setObject',
         'created_at' => 'setCreatedAt',
         'parent_id' => 'setParentId',
+        'bank' => 'setBank',
         'reference' => 'setReference',
         'expires_at' => 'setExpiresAt'
     ];
@@ -220,6 +225,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         'object' => 'getObject',
         'created_at' => 'getCreatedAt',
         'parent_id' => 'getParentId',
+        'bank' => 'getBank',
         'reference' => 'getReference',
         'expires_at' => 'getExpiresAt'
     ];
@@ -286,6 +292,7 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('bank', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
     }
@@ -475,6 +482,33 @@ class PaymentMethodSpeiRecurrent implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
         }
         $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank
+     *
+     * @return string|null
+     */
+    public function getBank()
+    {
+        return $this->container['bank'];
+    }
+
+    /**
+     * Sets bank
+     *
+     * @param string|null $bank Bank name for the SPEI payment method
+     *
+     * @return self
+     */
+    public function setBank($bank)
+    {
+        if (is_null($bank)) {
+            throw new \InvalidArgumentException('non-nullable bank cannot be null');
+        }
+        $this->container['bank'] = $bank;
 
         return $this;
     }

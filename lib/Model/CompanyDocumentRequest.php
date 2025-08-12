@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyResponse
+ * CompanyDocumentRequest
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * CompanyResponse Class Doc Comment
+ * CompanyDocumentRequest Class Doc Comment
  *
  * @category Class
+ * @description Request body for uploading a company document.
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyDocumentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_response';
+    protected static $openAPIModelName = 'company_document_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'active' => 'bool',
-        'account_status' => 'string',
-        'parent_company_id' => 'string',
-        'onboarding_status' => 'string',
-        'documents' => '\Conekta\Model\CompanyResponseDocumentsInner[]',
-        'created_at' => 'int',
-        'object' => 'string'
+        'file_classification' => 'string',
+        'content_type' => 'string',
+        'international' => 'bool',
+        'file_name' => 'string',
+        'file_data' => 'string'
     ];
 
     /**
@@ -77,15 +74,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'active' => null,
-        'account_status' => null,
-        'parent_company_id' => null,
-        'onboarding_status' => null,
-        'documents' => null,
-        'created_at' => 'int64',
-        'object' => null
+        'file_classification' => null,
+        'content_type' => null,
+        'international' => null,
+        'file_name' => null,
+        'file_data' => 'byte'
     ];
 
     /**
@@ -94,15 +87,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'active' => false,
-        'account_status' => false,
-        'parent_company_id' => true,
-        'onboarding_status' => false,
-        'documents' => false,
-        'created_at' => false,
-        'object' => false
+        'file_classification' => false,
+        'content_type' => false,
+        'international' => false,
+        'file_name' => false,
+        'file_data' => false
     ];
 
     /**
@@ -191,15 +180,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'active' => 'active',
-        'account_status' => 'account_status',
-        'parent_company_id' => 'parent_company_id',
-        'onboarding_status' => 'onboarding_status',
-        'documents' => 'documents',
-        'created_at' => 'created_at',
-        'object' => 'object'
+        'file_classification' => 'file_classification',
+        'content_type' => 'content_type',
+        'international' => 'international',
+        'file_name' => 'file_name',
+        'file_data' => 'file_data'
     ];
 
     /**
@@ -208,15 +193,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'active' => 'setActive',
-        'account_status' => 'setAccountStatus',
-        'parent_company_id' => 'setParentCompanyId',
-        'onboarding_status' => 'setOnboardingStatus',
-        'documents' => 'setDocuments',
-        'created_at' => 'setCreatedAt',
-        'object' => 'setObject'
+        'file_classification' => 'setFileClassification',
+        'content_type' => 'setContentType',
+        'international' => 'setInternational',
+        'file_name' => 'setFileName',
+        'file_data' => 'setFileData'
     ];
 
     /**
@@ -225,15 +206,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'active' => 'getActive',
-        'account_status' => 'getAccountStatus',
-        'parent_company_id' => 'getParentCompanyId',
-        'onboarding_status' => 'getOnboardingStatus',
-        'documents' => 'getDocuments',
-        'created_at' => 'getCreatedAt',
-        'object' => 'getObject'
+        'file_classification' => 'getFileClassification',
+        'content_type' => 'getContentType',
+        'international' => 'getInternational',
+        'file_name' => 'getFileName',
+        'file_data' => 'getFileData'
     ];
 
     /**
@@ -277,6 +254,37 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE = 'id_legal_representative';
+    public const FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK = 'id_legal_representative_back';
+    public const FILE_CLASSIFICATION_CFDI = 'cfdi';
+    public const FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC = 'constitutive_act_basic';
+    public const FILE_CLASSIFICATION_PROOF_OF_ADDRESS = 'proof_of_address';
+    public const FILE_CLASSIFICATION_POWER_OF_ATTONERY = 'power_of_attonery';
+    public const FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER = 'deposit_account_cover';
+    public const FILE_CLASSIFICATION_PERMIT_CASINO = 'permit_casino';
+    public const FILE_CLASSIFICATION_LICENSE_SANITATION = 'license_sanitation';
+    public const FILE_CLASSIFICATION_REGISTRATION_TOURISM = 'registration_tourism';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFileClassificationAllowableValues()
+    {
+        return [
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE,
+            self::FILE_CLASSIFICATION_ID_LEGAL_REPRESENTATIVE_BACK,
+            self::FILE_CLASSIFICATION_CFDI,
+            self::FILE_CLASSIFICATION_CONSTITUTIVE_ACT_BASIC,
+            self::FILE_CLASSIFICATION_PROOF_OF_ADDRESS,
+            self::FILE_CLASSIFICATION_POWER_OF_ATTONERY,
+            self::FILE_CLASSIFICATION_DEPOSIT_ACCOUNT_COVER,
+            self::FILE_CLASSIFICATION_PERMIT_CASINO,
+            self::FILE_CLASSIFICATION_LICENSE_SANITATION,
+            self::FILE_CLASSIFICATION_REGISTRATION_TOURISM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -293,15 +301,11 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('account_status', $data ?? [], null);
-        $this->setIfExists('parent_company_id', $data ?? [], null);
-        $this->setIfExists('onboarding_status', $data ?? [], null);
-        $this->setIfExists('documents', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('file_classification', $data ?? [], null);
+        $this->setIfExists('content_type', $data ?? [], null);
+        $this->setIfExists('international', $data ?? [], null);
+        $this->setIfExists('file_name', $data ?? [], null);
+        $this->setIfExists('file_data', $data ?? [], null);
     }
 
     /**
@@ -331,29 +335,26 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['file_classification'] === null) {
+            $invalidProperties[] = "'file_classification' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!is_null($this->container['file_classification']) && !in_array($this->container['file_classification'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'file_classification', must be one of '%s'",
+                $this->container['file_classification'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['active'] === null) {
-            $invalidProperties[] = "'active' can't be null";
+
+        if ($this->container['content_type'] === null) {
+            $invalidProperties[] = "'content_type' can't be null";
         }
-        if ($this->container['account_status'] === null) {
-            $invalidProperties[] = "'account_status' can't be null";
+        if ($this->container['file_name'] === null) {
+            $invalidProperties[] = "'file_name' can't be null";
         }
-        if ($this->container['onboarding_status'] === null) {
-            $invalidProperties[] = "'onboarding_status' can't be null";
-        }
-        if ($this->container['documents'] === null) {
-            $invalidProperties[] = "'documents' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['object'] === null) {
-            $invalidProperties[] = "'object' can't be null";
+        if ($this->container['file_data'] === null) {
+            $invalidProperties[] = "'file_data' can't be null";
         }
         return $invalidProperties;
     }
@@ -371,251 +372,146 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets file_classification
      *
      * @return string
      */
-    public function getId()
+    public function getFileClassification()
     {
-        return $this->container['id'];
+        return $this->container['file_classification'];
     }
 
     /**
-     * Sets id
+     * Sets file_classification
      *
-     * @param string $id The unique identifier for the company.
+     * @param string $file_classification Classification of the document.  | Tipo de archivo              | Descripción                                               | | :--------------------------- | :-------------------------------------------------------- | | `id_legal_representative`      | identificación oficial frente                             | | `id_legal_representative_back` | identificación oficial atrás                              | | `cfdi`                         | Prueba de situación fiscal                                | | `constitutive_act_basic`       | Acta constitutiva                                         | | `proof_of_address`             | Comprobante de domicilio del negocio                      | | `power_of_attonery`            | Poderes de representación                                 | | `deposit_account_cover`        | Carátula de la cuenta de depósito                         | | `permit_casino`                | Permiso ante SEGOB                                        | | `license_sanitation`           | Licencia sanitaria de COFEPRIS                            | | `registration_tourism`         | Inscripción ante el Registro Nacional de Turismo (SECTUR) |
      *
      * @return self
      */
-    public function setId($id)
+    public function setFileClassification($file_classification)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($file_classification)) {
+            throw new \InvalidArgumentException('non-nullable file_classification cannot be null');
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getFileClassificationAllowableValues();
+        if (!in_array($file_classification, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'file_classification', must be one of '%s'",
+                    $file_classification,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['file_classification'] = $file_classification;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets content_type
      *
      * @return string
      */
-    public function getName()
+    public function getContentType()
     {
-        return $this->container['name'];
+        return $this->container['content_type'];
     }
 
     /**
-     * Sets name
+     * Sets content_type
      *
-     * @param string $name The name of the company.
+     * @param string $content_type MIME type of the file. Allowed values depend on the `file_classification`. - `image/jpeg` - `image/png` - `application/pdf`
      *
      * @return self
      */
-    public function setName($name)
+    public function setContentType($content_type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($content_type)) {
+            throw new \InvalidArgumentException('non-nullable content_type cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['content_type'] = $content_type;
 
         return $this;
     }
 
     /**
-     * Gets active
+     * Gets international
      *
-     * @return bool
+     * @return bool|null
      */
-    public function getActive()
+    public function getInternational()
     {
-        return $this->container['active'];
+        return $this->container['international'];
     }
 
     /**
-     * Sets active
+     * Sets international
      *
-     * @param bool $active Indicates if the company is active.
+     * @param bool|null $international Indicates if the document is international. Defaults to false.
      *
      * @return self
      */
-    public function setActive($active)
+    public function setInternational($international)
     {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
+        if (is_null($international)) {
+            throw new \InvalidArgumentException('non-nullable international cannot be null');
         }
-        $this->container['active'] = $active;
+        $this->container['international'] = $international;
 
         return $this;
     }
 
     /**
-     * Gets account_status
+     * Gets file_name
      *
      * @return string
      */
-    public function getAccountStatus()
+    public function getFileName()
     {
-        return $this->container['account_status'];
+        return $this->container['file_name'];
     }
 
     /**
-     * Sets account_status
+     * Sets file_name
      *
-     * @param string $account_status The current status of the company's account.
+     * @param string $file_name Name of the file being uploaded.
      *
      * @return self
      */
-    public function setAccountStatus($account_status)
+    public function setFileName($file_name)
     {
-        if (is_null($account_status)) {
-            throw new \InvalidArgumentException('non-nullable account_status cannot be null');
+        if (is_null($file_name)) {
+            throw new \InvalidArgumentException('non-nullable file_name cannot be null');
         }
-        $this->container['account_status'] = $account_status;
+        $this->container['file_name'] = $file_name;
 
         return $this;
     }
 
     /**
-     * Gets parent_company_id
-     *
-     * @return string|null
-     */
-    public function getParentCompanyId()
-    {
-        return $this->container['parent_company_id'];
-    }
-
-    /**
-     * Sets parent_company_id
-     *
-     * @param string|null $parent_company_id The identifier of the parent company, if any.
-     *
-     * @return self
-     */
-    public function setParentCompanyId($parent_company_id)
-    {
-        if (is_null($parent_company_id)) {
-            array_push($this->openAPINullablesSetToNull, 'parent_company_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('parent_company_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['parent_company_id'] = $parent_company_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets onboarding_status
+     * Gets file_data
      *
      * @return string
      */
-    public function getOnboardingStatus()
+    public function getFileData()
     {
-        return $this->container['onboarding_status'];
+        return $this->container['file_data'];
     }
 
     /**
-     * Sets onboarding_status
+     * Sets file_data
      *
-     * @param string $onboarding_status The current status of the company's onboarding process.
+     * @param string $file_data Base64 encoded content of the file.
      *
      * @return self
      */
-    public function setOnboardingStatus($onboarding_status)
+    public function setFileData($file_data)
     {
-        if (is_null($onboarding_status)) {
-            throw new \InvalidArgumentException('non-nullable onboarding_status cannot be null');
+        if (is_null($file_data)) {
+            throw new \InvalidArgumentException('non-nullable file_data cannot be null');
         }
-        $this->container['onboarding_status'] = $onboarding_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets documents
-     *
-     * @return \Conekta\Model\CompanyResponseDocumentsInner[]
-     */
-    public function getDocuments()
-    {
-        return $this->container['documents'];
-    }
-
-    /**
-     * Sets documents
-     *
-     * @param \Conekta\Model\CompanyResponseDocumentsInner[] $documents A list of documents related to the company.
-     *
-     * @return self
-     */
-    public function setDocuments($documents)
-    {
-        if (is_null($documents)) {
-            throw new \InvalidArgumentException('non-nullable documents cannot be null');
-        }
-        $this->container['documents'] = $documents;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return int
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param int $created_at Timestamp of when the company was created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object The type of object, typically \"company\".
-     *
-     * @return self
-     */
-    public function setObject($object)
-    {
-        if (is_null($object)) {
-            throw new \InvalidArgumentException('non-nullable object cannot be null');
-        }
-        $this->container['object'] = $object;
+        $this->container['file_data'] = $file_data;
 
         return $this;
     }

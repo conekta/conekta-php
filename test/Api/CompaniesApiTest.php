@@ -73,6 +73,18 @@ class CompaniesApiTest extends TestCase
     }
 
     /**
+     * Test case for createCompany
+     *
+     * Create Company.
+     *
+     */
+    public function testCreateCompany()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getCompanies
      *
      * Get List of Companies.
@@ -91,6 +103,42 @@ class CompaniesApiTest extends TestCase
      *
      */
     public function testGetCompany()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCompanyDocuments
+     *
+     * Get Company Documents.
+     *
+     */
+    public function testGetCompanyDocuments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateCompanyDocument
+     *
+     * Update Company Document.
+     *
+     */
+    public function testUpdateCompanyDocument()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for uploadCompanyDocument
+     *
+     * Upload Company Document.
+     *
+     */
+    public function testUploadCompanyDocument()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
