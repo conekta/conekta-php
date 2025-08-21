@@ -158,10 +158,13 @@ docs/Model/PaymentMethodCard.md
 docs/Model/PaymentMethodCardRequest.md
 docs/Model/PaymentMethodCardResponse.md
 docs/Model/PaymentMethodCash.md
+docs/Model/PaymentMethodCashRecurrentResponse.md
 docs/Model/PaymentMethodCashRequest.md
 docs/Model/PaymentMethodCashResponse.md
 docs/Model/PaymentMethodCashResponseAllOfAgreements.md
 docs/Model/PaymentMethodGeneralRequest.md
+docs/Model/PaymentMethodPbbPayment.md
+docs/Model/PaymentMethodPbbRequest.md
 docs/Model/PaymentMethodResponse.md
 docs/Model/PaymentMethodSpeiRecurrent.md
 docs/Model/PaymentMethodSpeiRequest.md
@@ -372,10 +375,13 @@ lib/Model/PaymentMethodCard.php
 lib/Model/PaymentMethodCardRequest.php
 lib/Model/PaymentMethodCardResponse.php
 lib/Model/PaymentMethodCash.php
+lib/Model/PaymentMethodCashRecurrentResponse.php
 lib/Model/PaymentMethodCashRequest.php
 lib/Model/PaymentMethodCashResponse.php
 lib/Model/PaymentMethodCashResponseAllOfAgreements.php
 lib/Model/PaymentMethodGeneralRequest.php
+lib/Model/PaymentMethodPbbPayment.php
+lib/Model/PaymentMethodPbbRequest.php
 lib/Model/PaymentMethodResponse.php
 lib/Model/PaymentMethodSpeiRecurrent.php
 lib/Model/PaymentMethodSpeiRequest.php

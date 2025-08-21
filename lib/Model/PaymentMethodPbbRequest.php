@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePaymentMethods
+ * PaymentMethodPbbRequest
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * UpdatePaymentMethods Class Doc Comment
+ * PaymentMethodPbbRequest Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodPbbRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'update_payment_methods';
+    protected static $openAPIModelName = 'payment_method_pbb_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'expires_at' => 'int'
+        'type' => 'string',
+        'expires_at' => 'int',
+        'product_type' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'expires_at' => 'int64'
+        'type' => null,
+        'expires_at' => 'int64',
+        'product_type' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'expires_at' => false
+        'type' => false,
+        'expires_at' => false,
+        'product_type' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'expires_at' => 'expires_at'
+        'type' => 'type',
+        'expires_at' => 'expires_at',
+        'product_type' => 'product_type'
     ];
 
     /**
@@ -180,8 +184,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'expires_at' => 'setExpiresAt'
+        'type' => 'setType',
+        'expires_at' => 'setExpiresAt',
+        'product_type' => 'setProductType'
     ];
 
     /**
@@ -190,8 +195,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'expires_at' => 'getExpiresAt'
+        'type' => 'getType',
+        'expires_at' => 'getExpiresAt',
+        'product_type' => 'getProductType'
     ];
 
     /**
@@ -235,6 +241,19 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const PRODUCT_TYPE_BBVA_PAY_BY_BANK = 'bbva_pay_by_bank';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getProductTypeAllowableValues()
+    {
+        return [
+            self::PRODUCT_TYPE_BBVA_PAY_BY_BANK,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +270,9 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
     }
 
     /**
@@ -282,8 +302,23 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['expires_at']) && ($this->container['expires_at'] < 1)) {
-            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 1.";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if (!is_null($this->container['expires_at']) && ($this->container['expires_at'] < 0)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 0.";
+        }
+
+        if ($this->container['product_type'] === null) {
+            $invalidProperties[] = "'product_type' can't be null";
+        }
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'product_type', must be one of '%s'",
+                $this->container['product_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -302,28 +337,28 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets name
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string|null $name The name of the payment method holder
+     * @param string $type Type of the payment method
      *
      * @return self
      */
-    public function setName($name)
+    public function setType($type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -341,7 +376,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at The expiration date of the payment method in Unix timestamp format
+     * @param int|null $expires_at Expiration date of the payment method, in Unix timestamp format
      *
      * @return self
      */
@@ -351,11 +386,48 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
 
-        if (($expires_at < 1)) {
-            throw new \InvalidArgumentException('invalid value for $expires_at when calling UpdatePaymentMethods., must be bigger than or equal to 1.');
+        if (($expires_at < 0)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling PaymentMethodPbbRequest., must be bigger than or equal to 0.');
         }
 
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_type
+     *
+     * @return string
+     */
+    public function getProductType()
+    {
+        return $this->container['product_type'];
+    }
+
+    /**
+     * Sets product_type
+     *
+     * @param string $product_type Product type of the payment method, use for the payment method to know the product type
+     *
+     * @return self
+     */
+    public function setProductType($product_type)
+    {
+        if (is_null($product_type)) {
+            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+        }
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!in_array($product_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'product_type', must be one of '%s'",
+                    $product_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['product_type'] = $product_type;
 
         return $this;
     }

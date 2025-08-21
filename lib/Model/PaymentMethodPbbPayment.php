@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePaymentMethods
+ * PaymentMethodPbbPayment
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * UpdatePaymentMethods Class Doc Comment
+ * PaymentMethodPbbPayment Class Doc Comment
  *
  * @category Class
  * @package  Conekta
@@ -41,7 +41,7 @@ use \Conekta\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodPbbPayment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'update_payment_methods';
+    protected static $openAPIModelName = 'payment_method_pbb_payment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'expires_at' => 'int'
+        'type' => 'string',
+        'object' => 'string',
+        'deep_link' => 'string',
+        'expires_at' => 'int',
+        'product_type' => 'string',
+        'redirect_url' => 'string',
+        'reference' => 'string'
     ];
 
     /**
@@ -70,8 +75,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'expires_at' => 'int64'
+        'type' => null,
+        'object' => null,
+        'deep_link' => null,
+        'expires_at' => 'int64',
+        'product_type' => null,
+        'redirect_url' => null,
+        'reference' => null
     ];
 
     /**
@@ -80,8 +90,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'expires_at' => false
+        'type' => false,
+        'object' => false,
+        'deep_link' => false,
+        'expires_at' => false,
+        'product_type' => false,
+        'redirect_url' => false,
+        'reference' => false
     ];
 
     /**
@@ -170,8 +185,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'expires_at' => 'expires_at'
+        'type' => 'type',
+        'object' => 'object',
+        'deep_link' => 'deep_link',
+        'expires_at' => 'expires_at',
+        'product_type' => 'product_type',
+        'redirect_url' => 'redirect_url',
+        'reference' => 'reference'
     ];
 
     /**
@@ -180,8 +200,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'expires_at' => 'setExpiresAt'
+        'type' => 'setType',
+        'object' => 'setObject',
+        'deep_link' => 'setDeepLink',
+        'expires_at' => 'setExpiresAt',
+        'product_type' => 'setProductType',
+        'redirect_url' => 'setRedirectUrl',
+        'reference' => 'setReference'
     ];
 
     /**
@@ -190,8 +215,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'expires_at' => 'getExpiresAt'
+        'type' => 'getType',
+        'object' => 'getObject',
+        'deep_link' => 'getDeepLink',
+        'expires_at' => 'getExpiresAt',
+        'product_type' => 'getProductType',
+        'redirect_url' => 'getRedirectUrl',
+        'reference' => 'getReference'
     ];
 
     /**
@@ -251,8 +281,13 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('deep_link', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
+        $this->setIfExists('redirect_url', $data ?? [], null);
+        $this->setIfExists('reference', $data ?? [], null);
     }
 
     /**
@@ -282,10 +317,28 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['expires_at']) && ($this->container['expires_at'] < 1)) {
-            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 1.";
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['deep_link'] === null) {
+            $invalidProperties[] = "'deep_link' can't be null";
+        }
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
+        }
+        if (($this->container['expires_at'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than 0.";
         }
 
+        if ($this->container['product_type'] === null) {
+            $invalidProperties[] = "'product_type' can't be null";
+        }
+        if ($this->container['redirect_url'] === null) {
+            $invalidProperties[] = "'redirect_url' can't be null";
+        }
+        if ($this->container['reference'] === null) {
+            $invalidProperties[] = "'reference' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -302,28 +355,82 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets name
+     * Gets type
      *
      * @return string|null
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string|null $name The name of the payment method holder
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setName($name)
+    public function setType($type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string $object object
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets deep_link
+     *
+     * @return string
+     */
+    public function getDeepLink()
+    {
+        return $this->container['deep_link'];
+    }
+
+    /**
+     * Sets deep_link
+     *
+     * @param string $deep_link Deep link for the payment, use for mobile apps/flows
+     *
+     * @return self
+     */
+    public function setDeepLink($deep_link)
+    {
+        if (is_null($deep_link)) {
+            throw new \InvalidArgumentException('non-nullable deep_link cannot be null');
+        }
+        $this->container['deep_link'] = $deep_link;
 
         return $this;
     }
@@ -331,7 +438,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets expires_at
      *
-     * @return int|null
+     * @return int
      */
     public function getExpiresAt()
     {
@@ -341,7 +448,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at The expiration date of the payment method in Unix timestamp format
+     * @param int $expires_at Expiration date of the charge
      *
      * @return self
      */
@@ -351,11 +458,92 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
 
-        if (($expires_at < 1)) {
-            throw new \InvalidArgumentException('invalid value for $expires_at when calling UpdatePaymentMethods., must be bigger than or equal to 1.');
+        if (($expires_at <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling PaymentMethodPbbPayment., must be bigger than 0.');
         }
 
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_type
+     *
+     * @return string
+     */
+    public function getProductType()
+    {
+        return $this->container['product_type'];
+    }
+
+    /**
+     * Sets product_type
+     *
+     * @param string $product_type Product type of the charge
+     *
+     * @return self
+     */
+    public function setProductType($product_type)
+    {
+        if (is_null($product_type)) {
+            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+        }
+        $this->container['product_type'] = $product_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_url
+     *
+     * @return string
+     */
+    public function getRedirectUrl()
+    {
+        return $this->container['redirect_url'];
+    }
+
+    /**
+     * Sets redirect_url
+     *
+     * @param string $redirect_url URL to redirect the customer to complete the payment
+     *
+     * @return self
+     */
+    public function setRedirectUrl($redirect_url)
+    {
+        if (is_null($redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        }
+        $this->container['redirect_url'] = $redirect_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->container['reference'];
+    }
+
+    /**
+     * Sets reference
+     *
+     * @param string $reference Reference for the payment
+     *
+     * @return self
+     */
+    public function setReference($reference)
+    {
+        if (is_null($reference)) {
+            throw new \InvalidArgumentException('non-nullable reference cannot be null');
+        }
+        $this->container['reference'] = $reference;
 
         return $this;
     }

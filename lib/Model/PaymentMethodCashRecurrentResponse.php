@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePaymentMethods
+ * PaymentMethodCashRecurrentResponse
  *
  * PHP version 7.4
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Conekta\ObjectSerializer;
 
 /**
- * UpdatePaymentMethods Class Doc Comment
+ * PaymentMethodCashRecurrentResponse Class Doc Comment
  *
  * @category Class
+ * @description Alias of cash response used when type&#x3D;cash_recurrent
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentMethodCashRecurrentResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'update_payment_methods';
+    protected static $openAPIModelName = 'payment_method_cash_recurrent_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'expires_at' => 'int'
+        'type' => 'string',
+        'id' => 'string',
+        'object' => 'string',
+        'created_at' => 'int',
+        'parent_id' => 'string',
+        'agreements' => '\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]',
+        'reference' => 'string',
+        'barcode' => 'string',
+        'barcode_url' => 'string',
+        'expires_at' => 'int',
+        'provider' => 'string'
     ];
 
     /**
@@ -70,8 +80,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'expires_at' => 'int64'
+        'type' => null,
+        'id' => null,
+        'object' => null,
+        'created_at' => 'int64',
+        'parent_id' => null,
+        'agreements' => null,
+        'reference' => null,
+        'barcode' => null,
+        'barcode_url' => null,
+        'expires_at' => 'int64',
+        'provider' => null
     ];
 
     /**
@@ -80,8 +99,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'expires_at' => false
+        'type' => false,
+        'id' => false,
+        'object' => false,
+        'created_at' => false,
+        'parent_id' => false,
+        'agreements' => false,
+        'reference' => false,
+        'barcode' => false,
+        'barcode_url' => false,
+        'expires_at' => false,
+        'provider' => false
     ];
 
     /**
@@ -170,8 +198,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'expires_at' => 'expires_at'
+        'type' => 'type',
+        'id' => 'id',
+        'object' => 'object',
+        'created_at' => 'created_at',
+        'parent_id' => 'parent_id',
+        'agreements' => 'agreements',
+        'reference' => 'reference',
+        'barcode' => 'barcode',
+        'barcode_url' => 'barcode_url',
+        'expires_at' => 'expires_at',
+        'provider' => 'provider'
     ];
 
     /**
@@ -180,8 +217,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'expires_at' => 'setExpiresAt'
+        'type' => 'setType',
+        'id' => 'setId',
+        'object' => 'setObject',
+        'created_at' => 'setCreatedAt',
+        'parent_id' => 'setParentId',
+        'agreements' => 'setAgreements',
+        'reference' => 'setReference',
+        'barcode' => 'setBarcode',
+        'barcode_url' => 'setBarcodeUrl',
+        'expires_at' => 'setExpiresAt',
+        'provider' => 'setProvider'
     ];
 
     /**
@@ -190,8 +236,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'expires_at' => 'getExpiresAt'
+        'type' => 'getType',
+        'id' => 'getId',
+        'object' => 'getObject',
+        'created_at' => 'getCreatedAt',
+        'parent_id' => 'getParentId',
+        'agreements' => 'getAgreements',
+        'reference' => 'getReference',
+        'barcode' => 'getBarcode',
+        'barcode_url' => 'getBarcodeUrl',
+        'expires_at' => 'getExpiresAt',
+        'provider' => 'getProvider'
     ];
 
     /**
@@ -251,8 +306,17 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('agreements', $data ?? [], null);
+        $this->setIfExists('reference', $data ?? [], null);
+        $this->setIfExists('barcode', $data ?? [], null);
+        $this->setIfExists('barcode_url', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('provider', $data ?? [], null);
     }
 
     /**
@@ -282,10 +346,18 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['expires_at']) && ($this->container['expires_at'] < 1)) {
-            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 1.";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -302,28 +374,244 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets name
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string|null $name The name of the payment method holder
+     * @param string $type type
      *
      * @return self
      */
-    public function setName($name)
+    public function setType($type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets object
+     *
+     * @return string
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string $object object
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return int
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param int $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return string|null
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param string|null $parent_id parent_id
+     *
+     * @return self
+     */
+    public function setParentId($parent_id)
+    {
+        if (is_null($parent_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        }
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets agreements
+     *
+     * @return \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null
+     */
+    public function getAgreements()
+    {
+        return $this->container['agreements'];
+    }
+
+    /**
+     * Sets agreements
+     *
+     * @param \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null $agreements agreements
+     *
+     * @return self
+     */
+    public function setAgreements($agreements)
+    {
+        if (is_null($agreements)) {
+            throw new \InvalidArgumentException('non-nullable agreements cannot be null');
+        }
+        $this->container['agreements'] = $agreements;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference
+     *
+     * @return string|null
+     */
+    public function getReference()
+    {
+        return $this->container['reference'];
+    }
+
+    /**
+     * Sets reference
+     *
+     * @param string|null $reference reference
+     *
+     * @return self
+     */
+    public function setReference($reference)
+    {
+        if (is_null($reference)) {
+            throw new \InvalidArgumentException('non-nullable reference cannot be null');
+        }
+        $this->container['reference'] = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Gets barcode
+     *
+     * @return string|null
+     */
+    public function getBarcode()
+    {
+        return $this->container['barcode'];
+    }
+
+    /**
+     * Sets barcode
+     *
+     * @param string|null $barcode barcode
+     *
+     * @return self
+     */
+    public function setBarcode($barcode)
+    {
+        if (is_null($barcode)) {
+            throw new \InvalidArgumentException('non-nullable barcode cannot be null');
+        }
+        $this->container['barcode'] = $barcode;
+
+        return $this;
+    }
+
+    /**
+     * Gets barcode_url
+     *
+     * @return string|null
+     */
+    public function getBarcodeUrl()
+    {
+        return $this->container['barcode_url'];
+    }
+
+    /**
+     * Sets barcode_url
+     *
+     * @param string|null $barcode_url URL to the barcode image, reference is the same as barcode
+     *
+     * @return self
+     */
+    public function setBarcodeUrl($barcode_url)
+    {
+        if (is_null($barcode_url)) {
+            throw new \InvalidArgumentException('non-nullable barcode_url cannot be null');
+        }
+        $this->container['barcode_url'] = $barcode_url;
 
         return $this;
     }
@@ -341,7 +629,7 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at The expiration date of the payment method in Unix timestamp format
+     * @param int|null $expires_at expires_at
      *
      * @return self
      */
@@ -350,12 +638,34 @@ class UpdatePaymentMethods implements ModelInterface, ArrayAccess, \JsonSerializ
         if (is_null($expires_at)) {
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
-
-        if (($expires_at < 1)) {
-            throw new \InvalidArgumentException('invalid value for $expires_at when calling UpdatePaymentMethods., must be bigger than or equal to 1.');
-        }
-
         $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets provider
+     *
+     * @return string|null
+     */
+    public function getProvider()
+    {
+        return $this->container['provider'];
+    }
+
+    /**
+     * Sets provider
+     *
+     * @param string|null $provider provider
+     *
+     * @return self
+     */
+    public function setProvider($provider)
+    {
+        if (is_null($provider)) {
+            throw new \InvalidArgumentException('non-nullable provider cannot be null');
+        }
+        $this->container['provider'] = $provider;
 
         return $this;
     }

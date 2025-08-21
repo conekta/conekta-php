@@ -99,7 +99,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => 'string',
         'failure_url' => 'string',
         'redirect_url' => 'string',
-        'success_url' => 'string'
+        'success_url' => 'string',
+        'deep_link' => 'string'
     ];
 
     /**
@@ -151,7 +152,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => null,
         'failure_url' => null,
         'redirect_url' => null,
-        'success_url' => null
+        'success_url' => null,
+        'deep_link' => null
     ];
 
     /**
@@ -201,7 +203,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => false,
         'failure_url' => false,
         'redirect_url' => false,
-        'success_url' => false
+        'success_url' => false,
+        'deep_link' => false
     ];
 
     /**
@@ -331,7 +334,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => 'cancel_url',
         'failure_url' => 'failure_url',
         'redirect_url' => 'redirect_url',
-        'success_url' => 'success_url'
+        'success_url' => 'success_url',
+        'deep_link' => 'deep_link'
     ];
 
     /**
@@ -381,7 +385,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => 'setCancelUrl',
         'failure_url' => 'setFailureUrl',
         'redirect_url' => 'setRedirectUrl',
-        'success_url' => 'setSuccessUrl'
+        'success_url' => 'setSuccessUrl',
+        'deep_link' => 'setDeepLink'
     ];
 
     /**
@@ -431,7 +436,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'cancel_url' => 'getCancelUrl',
         'failure_url' => 'getFailureUrl',
         'redirect_url' => 'getRedirectUrl',
-        'success_url' => 'getSuccessUrl'
+        'success_url' => 'getSuccessUrl',
+        'deep_link' => 'getDeepLink'
     ];
 
     /**
@@ -533,6 +539,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('failure_url', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
+        $this->setIfExists('deep_link', $data ?? [], null);
 
         // Initialize discriminator property with the model name.
         $this->container['object'] = static::$openAPIModelName;
@@ -568,11 +575,24 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
+        if ($this->container['reference'] === null) {
+            $invalidProperties[] = "'reference' can't be null";
+        }
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
+        if (($this->container['expires_at'] <= 0)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than 0.";
+        }
+
         if ($this->container['product_type'] === null) {
             $invalidProperties[] = "'product_type' can't be null";
+        }
+        if ($this->container['redirect_url'] === null) {
+            $invalidProperties[] = "'redirect_url' can't be null";
+        }
+        if ($this->container['deep_link'] === null) {
+            $invalidProperties[] = "'deep_link' can't be null";
         }
         return $invalidProperties;
     }
@@ -734,7 +754,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets reference
      *
-     * @return string|null
+     * @return string
      */
     public function getReference()
     {
@@ -744,7 +764,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets reference
      *
-     * @param string|null $reference reference
+     * @param string $reference Reference for the payment
      *
      * @return self
      */
@@ -807,6 +827,11 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         if (is_null($expires_at)) {
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
+
+        if (($expires_at <= 0)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling ChargeResponsePaymentMethod., must be bigger than 0.');
+        }
+
         $this->container['expires_at'] = $expires_at;
 
         return $this;
@@ -1756,7 +1781,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets redirect_url
      *
-     * @return string|null
+     * @return string
      */
     public function getRedirectUrl()
     {
@@ -1766,7 +1791,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets redirect_url
      *
-     * @param string|null $redirect_url URL to redirect the customer to complete the payment
+     * @param string $redirect_url URL to redirect the customer to complete the payment
      *
      * @return self
      */
@@ -1803,6 +1828,33 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable success_url cannot be null');
         }
         $this->container['success_url'] = $success_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets deep_link
+     *
+     * @return string
+     */
+    public function getDeepLink()
+    {
+        return $this->container['deep_link'];
+    }
+
+    /**
+     * Sets deep_link
+     *
+     * @param string $deep_link Deep link for the payment, use for mobile apps/flows
+     *
+     * @return self
+     */
+    public function setDeepLink($deep_link)
+    {
+        if (is_null($deep_link)) {
+            throw new \InvalidArgumentException('non-nullable deep_link cannot be null');
+        }
+        $this->container['deep_link'] = $deep_link;
 
         return $this;
     }
