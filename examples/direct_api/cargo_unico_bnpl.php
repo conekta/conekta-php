@@ -18,7 +18,7 @@ $rq = new OrderRequest([
     ],
     'currency' => 'MXN',
     'customer_info' => [
-       'name' => 'Jorge Martinez',
+        'name' => 'Jorge Martinez',
         'email' => 'jorge.martinez@conekta.com',
         'phone' => '+5218181818181'
     ],
@@ -57,9 +57,12 @@ $rq = new OrderRequest([
 ]);
 
 try {
-    $result = $apiInstance->createOrder($rq);
-    $json_string = json_encode($result, JSON_PRETTY_PRINT);
+    $order = $apiInstance->createOrder($rq);
+    $json_string = json_encode( $order, JSON_PRETTY_PRINT);
     print_r($json_string);
+    print("order id" .  $order->getId());
+    print("redirect url" .  $order->getCharges()->getData()[0]->getPaymentMethod()->getRedirectUrl());
+    print("type" .  $order->getCharges()->getData()[0]->getPaymentMethod()->getType());
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->createOrder: ', $e->getMessage(), PHP_EOL;
 
