@@ -59,10 +59,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'type' => 'string',
+        'expires_at' => 'int',
+        'product_type' => 'string',
         'cancel_url' => 'string',
         'can_not_expire' => 'bool',
         'failure_url' => 'string',
-        'product_type' => 'string',
         'success_url' => 'string',
         'cvc' => 'string',
         'exp_month' => 'string',
@@ -70,7 +71,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'string',
         'number' => 'string',
         'customer_ip_address' => 'string',
-        'expires_at' => 'int',
         'monthly_installments' => 'int',
         'token_id' => 'string',
         'payment_source_id' => 'string',
@@ -86,10 +86,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'expires_at' => 'int64',
+        'product_type' => null,
         'cancel_url' => null,
         'can_not_expire' => null,
         'failure_url' => null,
-        'product_type' => null,
         'success_url' => null,
         'cvc' => null,
         'exp_month' => null,
@@ -97,7 +98,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => null,
         'number' => null,
         'customer_ip_address' => null,
-        'expires_at' => 'int64',
         'monthly_installments' => 'int8',
         'token_id' => null,
         'payment_source_id' => null,
@@ -111,10 +111,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'type' => false,
+        'expires_at' => false,
+        'product_type' => false,
         'cancel_url' => false,
         'can_not_expire' => false,
         'failure_url' => false,
-        'product_type' => false,
         'success_url' => false,
         'cvc' => false,
         'exp_month' => false,
@@ -122,7 +123,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => false,
         'number' => false,
         'customer_ip_address' => false,
-        'expires_at' => false,
         'monthly_installments' => false,
         'token_id' => false,
         'payment_source_id' => false,
@@ -216,10 +216,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'expires_at' => 'expires_at',
+        'product_type' => 'product_type',
         'cancel_url' => 'cancel_url',
         'can_not_expire' => 'can_not_expire',
         'failure_url' => 'failure_url',
-        'product_type' => 'product_type',
         'success_url' => 'success_url',
         'cvc' => 'cvc',
         'exp_month' => 'exp_month',
@@ -227,7 +228,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'name',
         'number' => 'number',
         'customer_ip_address' => 'customer_ip_address',
-        'expires_at' => 'expires_at',
         'monthly_installments' => 'monthly_installments',
         'token_id' => 'token_id',
         'payment_source_id' => 'payment_source_id',
@@ -241,10 +241,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'type' => 'setType',
+        'expires_at' => 'setExpiresAt',
+        'product_type' => 'setProductType',
         'cancel_url' => 'setCancelUrl',
         'can_not_expire' => 'setCanNotExpire',
         'failure_url' => 'setFailureUrl',
-        'product_type' => 'setProductType',
         'success_url' => 'setSuccessUrl',
         'cvc' => 'setCvc',
         'exp_month' => 'setExpMonth',
@@ -252,7 +253,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'setName',
         'number' => 'setNumber',
         'customer_ip_address' => 'setCustomerIpAddress',
-        'expires_at' => 'setExpiresAt',
         'monthly_installments' => 'setMonthlyInstallments',
         'token_id' => 'setTokenId',
         'payment_source_id' => 'setPaymentSourceId',
@@ -266,10 +266,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'type' => 'getType',
+        'expires_at' => 'getExpiresAt',
+        'product_type' => 'getProductType',
         'cancel_url' => 'getCancelUrl',
         'can_not_expire' => 'getCanNotExpire',
         'failure_url' => 'getFailureUrl',
-        'product_type' => 'getProductType',
         'success_url' => 'getSuccessUrl',
         'cvc' => 'getCvc',
         'exp_month' => 'getExpMonth',
@@ -277,7 +278,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         'name' => 'getName',
         'number' => 'getNumber',
         'customer_ip_address' => 'getCustomerIpAddress',
-        'expires_at' => 'getExpiresAt',
         'monthly_installments' => 'getMonthlyInstallments',
         'token_id' => 'getTokenId',
         'payment_source_id' => 'getPaymentSourceId',
@@ -357,10 +357,11 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
         $this->setIfExists('cancel_url', $data ?? [], null);
         $this->setIfExists('can_not_expire', $data ?? [], null);
         $this->setIfExists('failure_url', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], null);
         $this->setIfExists('success_url', $data ?? [], null);
         $this->setIfExists('cvc', $data ?? [], null);
         $this->setIfExists('exp_month', $data ?? [], null);
@@ -368,7 +369,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('number', $data ?? [], null);
         $this->setIfExists('customer_ip_address', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('monthly_installments', $data ?? [], null);
         $this->setIfExists('token_id', $data ?? [], null);
         $this->setIfExists('payment_source_id', $data ?? [], null);
@@ -405,15 +405,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['cancel_url'] === null) {
-            $invalidProperties[] = "'cancel_url' can't be null";
-        }
-        if ($this->container['can_not_expire'] === null) {
-            $invalidProperties[] = "'can_not_expire' can't be null";
-        }
-        if ($this->container['failure_url'] === null) {
-            $invalidProperties[] = "'failure_url' can't be null";
-        }
         if ($this->container['product_type'] === null) {
             $invalidProperties[] = "'product_type' can't be null";
         }
@@ -426,6 +417,15 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
 
+        if ($this->container['cancel_url'] === null) {
+            $invalidProperties[] = "'cancel_url' can't be null";
+        }
+        if ($this->container['can_not_expire'] === null) {
+            $invalidProperties[] = "'can_not_expire' can't be null";
+        }
+        if ($this->container['failure_url'] === null) {
+            $invalidProperties[] = "'failure_url' can't be null";
+        }
         if ($this->container['success_url'] === null) {
             $invalidProperties[] = "'success_url' can't be null";
         }
@@ -498,6 +498,70 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return int|null
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param int|null $expires_at Method expiration date as unix timestamp
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        if (is_null($expires_at)) {
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        }
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_type
+     *
+     * @return string
+     */
+    public function getProductType()
+    {
+        return $this->container['product_type'];
+    }
+
+    /**
+     * Sets product_type
+     *
+     * @param string $product_type Product type of the payment method, use for the payment method to know the product type
+     *
+     * @return self
+     */
+    public function setProductType($product_type)
+    {
+        if (is_null($product_type)) {
+            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+        }
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!in_array($product_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'product_type', must be one of '%s'",
+                    $product_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['product_type'] = $product_type;
 
         return $this;
     }
@@ -579,43 +643,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable failure_url cannot be null');
         }
         $this->container['failure_url'] = $failure_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_type
-     *
-     * @return string
-     */
-    public function getProductType()
-    {
-        return $this->container['product_type'];
-    }
-
-    /**
-     * Sets product_type
-     *
-     * @param string $product_type Product type of the payment method, use for the payment method to know the product type
-     *
-     * @return self
-     */
-    public function setProductType($product_type)
-    {
-        if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!in_array($product_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_type', must be one of '%s'",
-                    $product_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_type'] = $product_type;
 
         return $this;
     }
@@ -819,33 +846,6 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable customer_ip_address cannot be null');
         }
         $this->container['customer_ip_address'] = $customer_ip_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return int|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param int|null $expires_at Method expiration date as unix timestamp
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
-        }
-        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
