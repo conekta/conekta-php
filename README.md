@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *CompaniesApi* | [**getCompanies**](docs/Api/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 *CompaniesApi* | [**getCompany**](docs/Api/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
 *CompaniesApi* | [**getCompanyDocuments**](docs/Api/CompaniesApi.md#getcompanydocuments) | **GET** /companies/{company_id}/documents | Get Company Documents
+*CompaniesApi* | [**getCurrentCompany**](docs/Api/CompaniesApi.md#getcurrentcompany) | **GET** /companies/current | Get Current Company
 *CompaniesApi* | [**updateCompanyDocument**](docs/Api/CompaniesApi.md#updatecompanydocument) | **PATCH** /companies/{company_id}/document | Update Company Document
 *CompaniesApi* | [**uploadCompanyDocument**](docs/Api/CompaniesApi.md#uploadcompanydocument) | **POST** /companies/{company_id}/document | Upload Company Document
 *CustomersApi* | [**createCustomer**](docs/Api/CustomersApi.md#createcustomer) | **POST** /customers | Create customer
