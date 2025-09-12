@@ -121,6 +121,18 @@ class CompaniesApiTest extends TestCase
     }
 
     /**
+     * Test case for getCurrentCompany
+     *
+     * Get Current Company.
+     *
+     */
+    public function testGetCurrentCompany()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for updateCompanyDocument
      *
      * Update Company Document.

@@ -300,6 +300,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const ALLOWED_PAYMENT_METHODS_CARD = 'card';
     public const ALLOWED_PAYMENT_METHODS_BANK_TRANSFER = 'bank_transfer';
     public const ALLOWED_PAYMENT_METHODS_BNPL = 'bnpl';
+    public const ALLOWED_PAYMENT_METHODS_PAY_BY_BANK = 'pay_by_bank';
 
     /**
      * Gets allowable values of the enum
@@ -313,6 +314,7 @@ class CheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::ALLOWED_PAYMENT_METHODS_CARD,
             self::ALLOWED_PAYMENT_METHODS_BANK_TRANSFER,
             self::ALLOWED_PAYMENT_METHODS_BNPL,
+            self::ALLOWED_PAYMENT_METHODS_PAY_BY_BANK,
         ];
     }
 

@@ -8,6 +8,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 | [**getCompanies()**](CompaniesApi.md#getCompanies) | **GET** /companies | Get List of Companies |
 | [**getCompany()**](CompaniesApi.md#getCompany) | **GET** /companies/{id} | Get Company |
 | [**getCompanyDocuments()**](CompaniesApi.md#getCompanyDocuments) | **GET** /companies/{company_id}/documents | Get Company Documents |
+| [**getCurrentCompany()**](CompaniesApi.md#getCurrentCompany) | **GET** /companies/current | Get Current Company |
 | [**updateCompanyDocument()**](CompaniesApi.md#updateCompanyDocument) | **PATCH** /companies/{company_id}/document | Update Company Document |
 | [**uploadCompanyDocument()**](CompaniesApi.md#uploadCompanyDocument) | **POST** /companies/{company_id}/document | Upload Company Document |
 
@@ -248,6 +249,66 @@ try {
 ### Return type
 
 [**\Conekta\Model\CompanyDocumentResponse[]**](../Model/CompanyDocumentResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCurrentCompany()`
+
+```php
+getCurrentCompany($accept_language): \Conekta\Model\CompanyResponse
+```
+
+Get Current Company
+
+Retrieves information about the currently authenticated company. This endpoint returns the same data as the standard company endpoint but automatically uses the current company's context.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: bearerAuth
+$config = Conekta\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Conekta\Api\CompaniesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accept_language = es; // string | Use for knowing which language to use
+
+try {
+    $result = $apiInstance->getCurrentCompany($accept_language);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompaniesApi->getCurrentCompany: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
+
+### Return type
+
+[**\Conekta\Model\CompanyResponse**](../Model/CompanyResponse.md)
 
 ### Authorization
 
