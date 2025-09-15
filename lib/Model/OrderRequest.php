@@ -124,7 +124,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipping_contact' => false,
         'shipping_lines' => false,
         'tax_lines' => false,
-        'three_ds_mode' => false
+        'three_ds_mode' => true
     ];
 
     /**
@@ -839,14 +839,21 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets three_ds_mode
      *
-     * @param string|null $three_ds_mode Indicates the 3DS2 mode for the order, either smart or strict.
+     * @param string|null $three_ds_mode Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null.
      *
      * @return self
      */
     public function setThreeDsMode($three_ds_mode)
     {
         if (is_null($three_ds_mode)) {
-            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'three_ds_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('three_ds_mode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['three_ds_mode'] = $three_ds_mode;
 

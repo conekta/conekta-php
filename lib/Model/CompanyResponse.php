@@ -108,7 +108,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => false,
         'object' => false,
         'three_ds_enabled' => false,
-        'three_ds_mode' => false
+        'three_ds_mode' => true
     ];
 
     /**
@@ -698,17 +698,24 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets three_ds_mode
      *
-     * @param string|null $three_ds_mode The 3DS mode for the company, either 'smart' or 'strict'.
+     * @param string|null $three_ds_mode The 3DS mode for the company, either 'smart' or 'strict'. This property is only applicable when three_ds_enabled is true. When three_ds_enabled is false, this field will be null.
      *
      * @return self
      */
     public function setThreeDsMode($three_ds_mode)
     {
         if (is_null($three_ds_mode)) {
-            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'three_ds_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('three_ds_mode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getThreeDsModeAllowableValues();
-        if (!in_array($three_ds_mode, $allowedValues, true)) {
+        if (!is_null($three_ds_mode) && !in_array($three_ds_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'three_ds_mode', must be one of '%s'",

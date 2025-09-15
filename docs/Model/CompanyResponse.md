@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **created_at** | **int** | Timestamp of when the company was created. |
 **object** | **string** | The type of object, typically \&quot;company\&quot;. |
 **three_ds_enabled** | **bool** | Indicates if 3DS authentication is enabled for the company. | [optional]
-**three_ds_mode** | **string** | The 3DS mode for the company, either &#39;smart&#39; or &#39;strict&#39;. | [optional]
+**three_ds_mode** | **string** | The 3DS mode for the company, either &#39;smart&#39; or &#39;strict&#39;. This property is only applicable when three_ds_enabled is true. When three_ds_enabled is false, this field will be null. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

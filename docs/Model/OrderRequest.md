@@ -19,6 +19,6 @@ Name | Type | Description | Notes
 **shipping_contact** | [**\Conekta\Model\CustomerShippingContacts**](CustomerShippingContacts.md) |  | [optional]
 **shipping_lines** | [**\Conekta\Model\ShippingRequest[]**](ShippingRequest.md) | List of [shipping costs](https://developers.conekta.com/v2.2.0/reference/orderscreateshipping). If the online store offers digital products. | [optional]
 **tax_lines** | [**\Conekta\Model\OrderTaxRequest[]**](OrderTaxRequest.md) | List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order. | [optional]
-**three_ds_mode** | **string** | Indicates the 3DS2 mode for the order, either smart or strict. | [optional]
+**three_ds_mode** | **string** | Indicates the 3DS2 mode for the order, either smart or strict. This property is only applicable when 3DS is enabled. When 3DS is disabled, this field should be null. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
