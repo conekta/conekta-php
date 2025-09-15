@@ -66,7 +66,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => 'string',
         'documents' => '\Conekta\Model\CompanyResponseDocumentsInner[]',
         'created_at' => 'int',
-        'object' => 'string'
+        'object' => 'string',
+        'three_ds_enabled' => 'bool',
+        'three_ds_mode' => 'string'
     ];
 
     /**
@@ -85,7 +87,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => null,
         'documents' => null,
         'created_at' => 'int64',
-        'object' => null
+        'object' => null,
+        'three_ds_enabled' => null,
+        'three_ds_mode' => null
     ];
 
     /**
@@ -102,7 +106,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => false,
         'documents' => false,
         'created_at' => false,
-        'object' => false
+        'object' => false,
+        'three_ds_enabled' => false,
+        'three_ds_mode' => false
     ];
 
     /**
@@ -199,7 +205,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => 'onboarding_status',
         'documents' => 'documents',
         'created_at' => 'created_at',
-        'object' => 'object'
+        'object' => 'object',
+        'three_ds_enabled' => 'three_ds_enabled',
+        'three_ds_mode' => 'three_ds_mode'
     ];
 
     /**
@@ -216,7 +224,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => 'setOnboardingStatus',
         'documents' => 'setDocuments',
         'created_at' => 'setCreatedAt',
-        'object' => 'setObject'
+        'object' => 'setObject',
+        'three_ds_enabled' => 'setThreeDsEnabled',
+        'three_ds_mode' => 'setThreeDsMode'
     ];
 
     /**
@@ -233,7 +243,9 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboarding_status' => 'getOnboardingStatus',
         'documents' => 'getDocuments',
         'created_at' => 'getCreatedAt',
-        'object' => 'getObject'
+        'object' => 'getObject',
+        'three_ds_enabled' => 'getThreeDsEnabled',
+        'three_ds_mode' => 'getThreeDsMode'
     ];
 
     /**
@@ -277,6 +289,21 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const THREE_DS_MODE_SMART = 'smart';
+    public const THREE_DS_MODE_STRICT = 'strict';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getThreeDsModeAllowableValues()
+    {
+        return [
+            self::THREE_DS_MODE_SMART,
+            self::THREE_DS_MODE_STRICT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -302,6 +329,8 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('documents', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('three_ds_enabled', $data ?? [], null);
+        $this->setIfExists('three_ds_mode', $data ?? [], null);
     }
 
     /**
@@ -355,6 +384,15 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
+        $allowedValues = $this->getThreeDsModeAllowableValues();
+        if (!is_null($this->container['three_ds_mode']) && !in_array($this->container['three_ds_mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'three_ds_mode', must be one of '%s'",
+                $this->container['three_ds_mode'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -616,6 +654,70 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets three_ds_enabled
+     *
+     * @return bool|null
+     */
+    public function getThreeDsEnabled()
+    {
+        return $this->container['three_ds_enabled'];
+    }
+
+    /**
+     * Sets three_ds_enabled
+     *
+     * @param bool|null $three_ds_enabled Indicates if 3DS authentication is enabled for the company.
+     *
+     * @return self
+     */
+    public function setThreeDsEnabled($three_ds_enabled)
+    {
+        if (is_null($three_ds_enabled)) {
+            throw new \InvalidArgumentException('non-nullable three_ds_enabled cannot be null');
+        }
+        $this->container['three_ds_enabled'] = $three_ds_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets three_ds_mode
+     *
+     * @return string|null
+     */
+    public function getThreeDsMode()
+    {
+        return $this->container['three_ds_mode'];
+    }
+
+    /**
+     * Sets three_ds_mode
+     *
+     * @param string|null $three_ds_mode The 3DS mode for the company, either 'smart' or 'strict'.
+     *
+     * @return self
+     */
+    public function setThreeDsMode($three_ds_mode)
+    {
+        if (is_null($three_ds_mode)) {
+            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
+        }
+        $allowedValues = $this->getThreeDsModeAllowableValues();
+        if (!in_array($three_ds_mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'three_ds_mode', must be one of '%s'",
+                    $three_ds_mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['three_ds_mode'] = $three_ds_mode;
 
         return $this;
     }

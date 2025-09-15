@@ -13,5 +13,7 @@ Name | Type | Description | Notes
 **documents** | [**\Conekta\Model\CompanyResponseDocumentsInner[]**](CompanyResponseDocumentsInner.md) | A list of documents related to the company. |
 **created_at** | **int** | Timestamp of when the company was created. |
 **object** | **string** | The type of object, typically \&quot;company\&quot;. |
+**three_ds_enabled** | **bool** | Indicates if 3DS authentication is enabled for the company. | [optional]
+**three_ds_mode** | **string** | The 3DS mode for the company, either &#39;smart&#39; or &#39;strict&#39;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
