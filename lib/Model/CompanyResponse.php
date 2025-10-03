@@ -661,7 +661,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets three_ds_enabled
      *
-     * @return bool
+     * @return bool|null
      */
     public function getThreeDsEnabled()
     {
@@ -671,7 +671,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets three_ds_enabled
      *
-     * @param bool $three_ds_enabled Indicates if 3DS authentication is enabled for the company.
+     * @param bool|null $three_ds_enabled Indicates if 3DS authentication is enabled for the company.
      *
      * @return self
      */

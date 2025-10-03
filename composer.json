@@ -1,6 +1,6 @@
 {
     "name": "conekta/conekta-php",
-    "version": "7.0.5",
+    "version": "7.0.6",
     "description": "Conekta PHP Library",
     "type": "library",
     "keywords": [
