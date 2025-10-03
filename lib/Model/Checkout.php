@@ -67,6 +67,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'needs_shipping_contact' => 'bool',
         'on_demand_enabled' => 'bool',
+        'plan_ids' => 'string[]',
         'order_template' => '\Conekta\Model\CheckoutOrderTemplate',
         'payments_limit_count' => 'int',
         'recurrent' => 'bool',
@@ -89,6 +90,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'needs_shipping_contact' => null,
         'on_demand_enabled' => null,
+        'plan_ids' => null,
         'order_template' => null,
         'payments_limit_count' => 'int8',
         'recurrent' => null,
@@ -109,6 +111,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'needs_shipping_contact' => false,
         'on_demand_enabled' => true,
+        'plan_ids' => false,
         'order_template' => false,
         'payments_limit_count' => false,
         'recurrent' => false,
@@ -209,6 +212,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'needs_shipping_contact' => 'needs_shipping_contact',
         'on_demand_enabled' => 'on_demand_enabled',
+        'plan_ids' => 'plan_ids',
         'order_template' => 'order_template',
         'payments_limit_count' => 'payments_limit_count',
         'recurrent' => 'recurrent',
@@ -229,6 +233,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'needs_shipping_contact' => 'setNeedsShippingContact',
         'on_demand_enabled' => 'setOnDemandEnabled',
+        'plan_ids' => 'setPlanIds',
         'order_template' => 'setOrderTemplate',
         'payments_limit_count' => 'setPaymentsLimitCount',
         'recurrent' => 'setRecurrent',
@@ -249,6 +254,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'needs_shipping_contact' => 'getNeedsShippingContact',
         'on_demand_enabled' => 'getOnDemandEnabled',
+        'plan_ids' => 'getPlanIds',
         'order_template' => 'getOrderTemplate',
         'payments_limit_count' => 'getPaymentsLimitCount',
         'recurrent' => 'getRecurrent',
@@ -320,6 +326,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('needs_shipping_contact', $data ?? [], null);
         $this->setIfExists('on_demand_enabled', $data ?? [], null);
+        $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('order_template', $data ?? [], null);
         $this->setIfExists('payments_limit_count', $data ?? [], null);
         $this->setIfExists('recurrent', $data ?? [], null);
@@ -612,6 +619,33 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['on_demand_enabled'] = $on_demand_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets plan_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlanIds()
+    {
+        return $this->container['plan_ids'];
+    }
+
+    /**
+     * Sets plan_ids
+     *
+     * @param string[]|null $plan_ids It is a list of plan IDs that will be associated with the order.
+     *
+     * @return self
+     */
+    public function setPlanIds($plan_ids)
+    {
+        if (is_null($plan_ids)) {
+            throw new \InvalidArgumentException('non-nullable plan_ids cannot be null');
+        }
+        $this->container['plan_ids'] = $plan_ids;
 
         return $this;
     }
