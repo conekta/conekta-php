@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Conekta/v2 PhpBindings/7.0.6';
+    protected $userAgent = 'Conekta/v2 PhpBindings/7.0.7';
 
     /**
      * Debug switch (default set to false)
@@ -456,7 +456,7 @@ class Configuration
         $report .= '    OS: ' . $uname . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: 2.2.0' . PHP_EOL;
-        $report .= '    SDK Package Version: 7.0.6' . PHP_EOL;
+        $report .= '    SDK Package Version: 7.0.7' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
@@ -510,18 +510,18 @@ class Configuration
     * @param array|null $variables    hash of variable and the corresponding value (optional)
     * @return string URL based on host settings
     */
-    public static function getHostString(array $hostsSettings, $hostIndex, array $variables = null)
+    public static function getHostString(array $hostSettings, $hostIndex, ?array $variables = null)
     {
         if (null === $variables) {
             $variables = [];
         }
 
         // check array index out of bound
-        if ($hostIndex < 0 || $hostIndex >= count($hostsSettings)) {
-            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than ".count($hostsSettings));
+        if ($hostIndex < 0 || $hostIndex >= count($hostSettings)) {
+            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than ".count($hostSettings));
         }
 
-        $host = $hostsSettings[$hostIndex];
+        $host = $hostSettings[$hostIndex];
         $url = $host["url"];
 
         // go through variable and assign a value

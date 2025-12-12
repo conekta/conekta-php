@@ -26,6 +26,7 @@ docs/Api/ProductsApi.md
 docs/Api/ShippingContactsApi.md
 docs/Api/ShippingsApi.md
 docs/Api/SubscriptionsApi.md
+docs/Api/SubscriptionsCustomerPortalApi.md
 docs/Api/TaxesApi.md
 docs/Api/TokensApi.md
 docs/Api/TransactionsApi.md
@@ -75,6 +76,7 @@ docs/Model/Customer.md
 docs/Model/CustomerAddress.md
 docs/Model/CustomerAntifraudInfo.md
 docs/Model/CustomerAntifraudInfoResponse.md
+docs/Model/CustomerDetails.md
 docs/Model/CustomerFiscalEntitiesDataResponse.md
 docs/Model/CustomerFiscalEntitiesRequest.md
 docs/Model/CustomerFiscalEntitiesResponse.md
@@ -85,6 +87,7 @@ docs/Model/CustomerPaymentMethodRequest.md
 docs/Model/CustomerPaymentMethodsData.md
 docs/Model/CustomerPaymentMethodsRequest.md
 docs/Model/CustomerPaymentMethodsResponse.md
+docs/Model/CustomerPortalResponse.md
 docs/Model/CustomerResponse.md
 docs/Model/CustomerResponseShippingContacts.md
 docs/Model/CustomerShippingContacts.md
@@ -188,6 +191,9 @@ docs/Model/RiskRulesList.md
 docs/Model/ShippingOrderResponse.md
 docs/Model/ShippingRequest.md
 docs/Model/SmsCheckoutRequest.md
+docs/Model/SubscriptionDetails.md
+docs/Model/SubscriptionDetailsCard.md
+docs/Model/SubscriptionDetailsPlan.md
 docs/Model/SubscriptionEventsResponse.md
 docs/Model/SubscriptionRequest.md
 docs/Model/SubscriptionResponse.md
@@ -239,6 +245,7 @@ lib/Api/ProductsApi.php
 lib/Api/ShippingContactsApi.php
 lib/Api/ShippingsApi.php
 lib/Api/SubscriptionsApi.php
+lib/Api/SubscriptionsCustomerPortalApi.php
 lib/Api/TaxesApi.php
 lib/Api/TokensApi.php
 lib/Api/TransactionsApi.php
@@ -291,6 +298,7 @@ lib/Model/Customer.php
 lib/Model/CustomerAddress.php
 lib/Model/CustomerAntifraudInfo.php
 lib/Model/CustomerAntifraudInfoResponse.php
+lib/Model/CustomerDetails.php
 lib/Model/CustomerFiscalEntitiesDataResponse.php
 lib/Model/CustomerFiscalEntitiesRequest.php
 lib/Model/CustomerFiscalEntitiesResponse.php
@@ -301,6 +309,7 @@ lib/Model/CustomerPaymentMethodRequest.php
 lib/Model/CustomerPaymentMethodsData.php
 lib/Model/CustomerPaymentMethodsRequest.php
 lib/Model/CustomerPaymentMethodsResponse.php
+lib/Model/CustomerPortalResponse.php
 lib/Model/CustomerResponse.php
 lib/Model/CustomerResponseShippingContacts.php
 lib/Model/CustomerShippingContacts.php
@@ -405,6 +414,9 @@ lib/Model/RiskRulesList.php
 lib/Model/ShippingOrderResponse.php
 lib/Model/ShippingRequest.php
 lib/Model/SmsCheckoutRequest.php
+lib/Model/SubscriptionDetails.php
+lib/Model/SubscriptionDetailsCard.php
+lib/Model/SubscriptionDetailsPlan.php
 lib/Model/SubscriptionEventsResponse.php
 lib/Model/SubscriptionRequest.php
 lib/Model/SubscriptionResponse.php
@@ -459,6 +471,7 @@ test/Api/ProductsApiTest.php
 test/Api/ShippingContactsApiTest.php
 test/Api/ShippingsApiTest.php
 test/Api/SubscriptionsApiTest.php
+test/Api/SubscriptionsCustomerPortalApiTest.php
 test/Api/TaxesApiTest.php
 test/Api/TokensApiTest.php
 test/Api/TransactionsApiTest.php
