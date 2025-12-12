@@ -42,16 +42,12 @@ jobs:
           PHPUNIT_VERSION=""
           
           if [ "$PHP_VERSION_MAJOR" -eq 7 ]; then
-              # PHP 7.4 requiere PHPUnit 9
               PHPUNIT_VERSION="^9.6" 
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -le 1 ]; then
-              # PHP 8.0 y 8.1 usan PHPUnit 10
               PHPUNIT_VERSION="^10.5"
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -le 3 ]; then
-              # PHP 8.2 y 8.3 usan PHPUnit 11
               PHPUNIT_VERSION="^11.0"
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -eq 4 ]; then
-              # PHP 8.4 requiere PHPUnit 12
               PHPUNIT_VERSION="^12.0"
           else
               echo "Error: Versión de PHP no soportada."
@@ -59,10 +55,9 @@ jobs:
           fi
 
           echo "Instalando phpunit/phpunit:${PHPUNIT_VERSION} para PHP ${{ matrix.php-version }}"
-          # Nota: Usamos --no-update para solo agregar el requisito, 
-          # luego forzamos la actualización de solo PHPUnit.
           composer require --dev "phpunit/phpunit:${PHPUNIT_VERSION}" --no-update
-          composer update phpunit/phpunit --no-ansi --no-interaction --prefer-dist --optimize-autoloader
+          # ¡AÑADIR -W!
+          composer update phpunit/phpunit --with-all-dependencies --no-ansi --no-interaction --prefer-dist --optimize-autoloader
       - name: phpstan
         uses: php-actions/phpstan@v3
         with:
