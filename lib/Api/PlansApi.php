@@ -96,13 +96,13 @@ class PlansApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
     }
@@ -141,8 +141,8 @@ class PlansApi
      * Create Plan
      *
      * @param  \Conekta\Model\PlanRequest $plan_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -161,8 +161,8 @@ class PlansApi
      * Create Plan
      *
      * @param  \Conekta\Model\PlanRequest $plan_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -195,18 +195,6 @@ class PlansApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -319,6 +307,19 @@ class PlansApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\PlanResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -392,8 +393,8 @@ class PlansApi
      * Create Plan
      *
      * @param  \Conekta\Model\PlanRequest $plan_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -415,8 +416,8 @@ class PlansApi
      * Create Plan
      *
      * @param  \Conekta\Model\PlanRequest $plan_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -467,8 +468,8 @@ class PlansApi
      * Create request for operation 'createPlan'
      *
      * @param  \Conekta\Model\PlanRequest $plan_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -580,7 +581,7 @@ class PlansApi
      * Delete Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -599,7 +600,7 @@ class PlansApi
      * Delete Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -632,18 +633,6 @@ class PlansApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -783,6 +772,19 @@ class PlansApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\PlanResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -864,7 +866,7 @@ class PlansApi
      * Delete Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -886,7 +888,7 @@ class PlansApi
      * Delete Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -937,7 +939,7 @@ class PlansApi
      * Create request for operation 'deletePlan'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1045,8 +1047,8 @@ class PlansApi
      * Get Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1065,8 +1067,8 @@ class PlansApi
      * Get Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1099,18 +1101,6 @@ class PlansApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1250,6 +1240,19 @@ class PlansApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\PlanResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1331,8 +1334,8 @@ class PlansApi
      * Get Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1354,8 +1357,8 @@ class PlansApi
      * Get Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1406,8 +1409,8 @@ class PlansApi
      * Create request for operation 'getPlan'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1519,12 +1522,12 @@ class PlansApi
      *
      * Get A List of Plans
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1542,12 +1545,12 @@ class PlansApi
      *
      * Get A List of Plans
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1580,18 +1583,6 @@ class PlansApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1704,6 +1695,19 @@ class PlansApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\GetPlansResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1776,12 +1780,12 @@ class PlansApi
      *
      * Get A List of Plans
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1802,12 +1806,12 @@ class PlansApi
      *
      * Get A List of Plans
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1857,12 +1861,12 @@ class PlansApi
     /**
      * Create request for operation 'getPlans'
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPlans'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2007,8 +2011,8 @@ class PlansApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2028,8 +2032,8 @@ class PlansApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2062,18 +2066,6 @@ class PlansApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2213,6 +2205,19 @@ class PlansApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\PlanResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2295,8 +2300,8 @@ class PlansApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2319,8 +2324,8 @@ class PlansApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2372,8 +2377,8 @@ class PlansApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

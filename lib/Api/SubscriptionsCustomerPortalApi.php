@@ -87,13 +87,13 @@ class SubscriptionsCustomerPortalApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
     }
@@ -132,8 +132,8 @@ class SubscriptionsCustomerPortalApi
      * Create customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerPortal'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -152,8 +152,8 @@ class SubscriptionsCustomerPortalApi
      * Create customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerPortal'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -186,18 +186,6 @@ class SubscriptionsCustomerPortalApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 201:
@@ -310,6 +298,19 @@ class SubscriptionsCustomerPortalApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerPortalResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -383,8 +384,8 @@ class SubscriptionsCustomerPortalApi
      * Create customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -406,8 +407,8 @@ class SubscriptionsCustomerPortalApi
      * Create customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -458,8 +459,8 @@ class SubscriptionsCustomerPortalApi
      * Create request for operation 'createCustomerPortal'
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -572,8 +573,8 @@ class SubscriptionsCustomerPortalApi
      * Get customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerPortal'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -592,8 +593,8 @@ class SubscriptionsCustomerPortalApi
      * Get customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerPortal'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -626,18 +627,6 @@ class SubscriptionsCustomerPortalApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -723,6 +712,19 @@ class SubscriptionsCustomerPortalApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerPortalResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -788,8 +790,8 @@ class SubscriptionsCustomerPortalApi
      * Get customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -811,8 +813,8 @@ class SubscriptionsCustomerPortalApi
      * Get customer portal
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -863,8 +865,8 @@ class SubscriptionsCustomerPortalApi
      * Create request for operation 'getCustomerPortal'
      *
      * @param  string $subscription_id Identifier of the subscription resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerPortal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

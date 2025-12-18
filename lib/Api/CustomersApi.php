@@ -102,13 +102,13 @@ class CustomersApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
     }
@@ -147,8 +147,8 @@ class CustomersApi
      * Create customer
      *
      * @param  \Conekta\Model\Customer $customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -167,8 +167,8 @@ class CustomersApi
      * Create customer
      *
      * @param  \Conekta\Model\Customer $customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -201,18 +201,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -352,6 +340,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -433,8 +434,8 @@ class CustomersApi
      * Create customer
      *
      * @param  \Conekta\Model\Customer $customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -456,8 +457,8 @@ class CustomersApi
      * Create customer
      *
      * @param  \Conekta\Model\Customer $customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -508,8 +509,8 @@ class CustomersApi
      * Create request for operation 'createCustomer'
      *
      * @param  \Conekta\Model\Customer $customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -622,8 +623,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -643,8 +644,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -677,18 +678,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -828,6 +817,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CreateCustomerFiscalEntitiesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -910,8 +912,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -934,8 +936,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -987,8 +989,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1115,8 +1117,8 @@ class CustomersApi
      * Delete Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomerById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1135,8 +1137,8 @@ class CustomersApi
      * Delete Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomerById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1169,18 +1171,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1320,6 +1310,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1401,8 +1404,8 @@ class CustomersApi
      * Delete Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1424,8 +1427,8 @@ class CustomersApi
      * Delete Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1476,8 +1479,8 @@ class CustomersApi
      * Create request for operation 'deleteCustomerById'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1590,8 +1593,8 @@ class CustomersApi
      * Get Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1610,8 +1613,8 @@ class CustomersApi
      * Get Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1644,18 +1647,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1768,6 +1759,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1841,8 +1845,8 @@ class CustomersApi
      * Get Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1864,8 +1868,8 @@ class CustomersApi
      * Get Customer
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1916,8 +1920,8 @@ class CustomersApi
      * Create request for operation 'getCustomerById'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2029,12 +2033,12 @@ class CustomersApi
      *
      * Get a list of customers
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomers'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2052,12 +2056,12 @@ class CustomersApi
      *
      * Get a list of customers
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomers'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2090,18 +2094,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2187,6 +2179,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2251,12 +2256,12 @@ class CustomersApi
      *
      * Get a list of customers
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2277,12 +2282,12 @@ class CustomersApi
      *
      * Get a list of customers
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2332,12 +2337,12 @@ class CustomersApi
     /**
      * Create request for operation 'getCustomers'
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2482,8 +2487,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\UpdateCustomer $update_customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2503,8 +2508,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\UpdateCustomer $update_customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2537,18 +2542,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2688,6 +2681,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\CustomerResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2770,8 +2776,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\UpdateCustomer $update_customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2794,8 +2800,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\UpdateCustomer $update_customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2847,8 +2853,8 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\UpdateCustomer $update_customer requested field for customer (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2977,8 +2983,8 @@ class CustomersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
      * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2999,8 +3005,8 @@ class CustomersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
      * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3033,18 +3039,6 @@ class CustomersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -3184,6 +3178,19 @@ class CustomersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\UpdateCustomerFiscalEntitiesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -3267,8 +3274,8 @@ class CustomersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
      * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3292,8 +3299,8 @@ class CustomersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
      * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3346,8 +3353,8 @@ class CustomersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
      * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -96,13 +96,13 @@ class WebhookKeysApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
     }
@@ -140,8 +140,8 @@ class WebhookKeysApi
      *
      * Create Webhook Key
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyRequest $webhook_key_request webhook_key_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyRequest|null $webhook_key_request webhook_key_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -159,8 +159,8 @@ class WebhookKeysApi
      *
      * Create Webhook Key
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyRequest $webhook_key_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyRequest|null $webhook_key_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -193,18 +193,6 @@ class WebhookKeysApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -290,6 +278,19 @@ class WebhookKeysApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\WebhookKeyCreateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -354,8 +355,8 @@ class WebhookKeysApi
      *
      * Create Webhook Key
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyRequest $webhook_key_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyRequest|null $webhook_key_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -376,8 +377,8 @@ class WebhookKeysApi
      *
      * Create Webhook Key
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyRequest $webhook_key_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyRequest|null $webhook_key_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -427,8 +428,8 @@ class WebhookKeysApi
     /**
      * Create request for operation 'createWebhookKey'
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyRequest $webhook_key_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyRequest|null $webhook_key_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -529,7 +530,7 @@ class WebhookKeysApi
      * Delete Webhook key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -548,7 +549,7 @@ class WebhookKeysApi
      * Delete Webhook key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -581,18 +582,6 @@ class WebhookKeysApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -705,6 +694,19 @@ class WebhookKeysApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\WebhookKeyDeleteResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -778,7 +780,7 @@ class WebhookKeysApi
      * Delete Webhook key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -800,7 +802,7 @@ class WebhookKeysApi
      * Delete Webhook key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -851,7 +853,7 @@ class WebhookKeysApi
      * Create request for operation 'deleteWebhookKey'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -959,8 +961,8 @@ class WebhookKeysApi
      * Get Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -979,8 +981,8 @@ class WebhookKeysApi
      * Get Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1013,18 +1015,6 @@ class WebhookKeysApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1137,6 +1127,19 @@ class WebhookKeysApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\WebhookKeyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1210,8 +1213,8 @@ class WebhookKeysApi
      * Get Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1233,8 +1236,8 @@ class WebhookKeysApi
      * Get Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1285,8 +1288,8 @@ class WebhookKeysApi
      * Create request for operation 'getWebhookKey'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1398,12 +1401,12 @@ class WebhookKeysApi
      *
      * Get List of Webhook Keys
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKeys'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1421,12 +1424,12 @@ class WebhookKeysApi
      *
      * Get List of Webhook Keys
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKeys'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1459,18 +1462,6 @@ class WebhookKeysApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1556,6 +1547,19 @@ class WebhookKeysApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\GetWebhookKeysResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1620,12 +1624,12 @@ class WebhookKeysApi
      *
      * Get List of Webhook Keys
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1646,12 +1650,12 @@ class WebhookKeysApi
      *
      * Get List of Webhook Keys
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1701,12 +1705,12 @@ class WebhookKeysApi
     /**
      * Create request for operation 'getWebhookKeys'
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1850,8 +1854,8 @@ class WebhookKeysApi
      * Update Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyUpdateRequest $webhook_key_update_request webhook_key_update_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyUpdateRequest|null $webhook_key_update_request webhook_key_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1870,8 +1874,8 @@ class WebhookKeysApi
      * Update Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyUpdateRequest $webhook_key_update_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyUpdateRequest|null $webhook_key_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookKey'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1904,18 +1908,6 @@ class WebhookKeysApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2028,6 +2020,19 @@ class WebhookKeysApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\WebhookKeyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2101,8 +2106,8 @@ class WebhookKeysApi
      * Update Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyUpdateRequest $webhook_key_update_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyUpdateRequest|null $webhook_key_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2124,8 +2129,8 @@ class WebhookKeysApi
      * Update Webhook Key
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyUpdateRequest $webhook_key_update_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyUpdateRequest|null $webhook_key_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2176,8 +2181,8 @@ class WebhookKeysApi
      * Create request for operation 'updateWebhookKey'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\WebhookKeyUpdateRequest $webhook_key_update_request (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  \Conekta\Model\WebhookKeyUpdateRequest|null $webhook_key_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

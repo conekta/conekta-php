@@ -105,13 +105,13 @@ class OrdersApi
      * @param int             $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null,
-        $hostIndex = 0
+        ?ClientInterface $client = null,
+        ?Configuration $config = null,
+        ?HeaderSelector $selector = null,
+        int $hostIndex = 0
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
     }
@@ -150,8 +150,8 @@ class OrdersApi
      * Cancel Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -170,8 +170,8 @@ class OrdersApi
      * Cancel Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -204,18 +204,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -382,6 +370,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -471,8 +472,8 @@ class OrdersApi
      * Cancel Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -494,8 +495,8 @@ class OrdersApi
      * Cancel Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -546,8 +547,8 @@ class OrdersApi
      * Create request for operation 'cancelOrder'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -660,8 +661,8 @@ class OrdersApi
      * Create order
      *
      * @param  \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -680,8 +681,8 @@ class OrdersApi
      * Create order
      *
      * @param  \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -714,18 +715,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -865,6 +854,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -946,8 +948,8 @@ class OrdersApi
      * Create order
      *
      * @param  \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -969,8 +971,8 @@ class OrdersApi
      * Create order
      *
      * @param  \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1021,8 +1023,8 @@ class OrdersApi
      * Create request for operation 'createOrder'
      *
      * @param  \Conekta\Model\OrderRequest $order_request requested field for order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1134,8 +1136,8 @@ class OrdersApi
      * Get Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1154,8 +1156,8 @@ class OrdersApi
      * Get Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1188,18 +1190,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1312,6 +1302,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1385,8 +1388,8 @@ class OrdersApi
      * Get Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1408,8 +1411,8 @@ class OrdersApi
      * Get Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1460,8 +1463,8 @@ class OrdersApi
      * Create request for operation 'getOrderById'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1573,19 +1576,19 @@ class OrdersApi
      *
      * Get a list of Orders
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
-     * @param  string $payment_status Filters by order status (optional)
-     * @param  string $last_payment_info_status Filters by last payment info status (optional)
-     * @param  int $created_at created equal to (optional)
-     * @param  int $created_at_gte created at greater than or equal to (optional)
-     * @param  int $created_at_lte created at less than or equal to (optional)
-     * @param  int $updated_at_gte updated at greater than or equal to (optional)
-     * @param  int $updated_at_lte updated at less than or equal to (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
+     * @param  string|null $payment_status Filters by order status (optional)
+     * @param  string|null $last_payment_info_status Filters by last payment info status (optional)
+     * @param  int|null $created_at created equal to (optional)
+     * @param  int|null $created_at_gte created at greater than or equal to (optional)
+     * @param  int|null $created_at_lte created at less than or equal to (optional)
+     * @param  int|null $updated_at_gte updated at greater than or equal to (optional)
+     * @param  int|null $updated_at_lte updated at less than or equal to (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrders'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1603,19 +1606,19 @@ class OrdersApi
      *
      * Get a list of Orders
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
-     * @param  string $payment_status Filters by order status (optional)
-     * @param  string $last_payment_info_status Filters by last payment info status (optional)
-     * @param  int $created_at created equal to (optional)
-     * @param  int $created_at_gte created at greater than or equal to (optional)
-     * @param  int $created_at_lte created at less than or equal to (optional)
-     * @param  int $updated_at_gte updated at greater than or equal to (optional)
-     * @param  int $updated_at_lte updated at less than or equal to (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
+     * @param  string|null $payment_status Filters by order status (optional)
+     * @param  string|null $last_payment_info_status Filters by last payment info status (optional)
+     * @param  int|null $created_at created equal to (optional)
+     * @param  int|null $created_at_gte created at greater than or equal to (optional)
+     * @param  int|null $created_at_lte created at less than or equal to (optional)
+     * @param  int|null $updated_at_gte updated at greater than or equal to (optional)
+     * @param  int|null $updated_at_lte updated at less than or equal to (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrders'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1648,18 +1651,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -1745,6 +1736,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\GetOrdersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -1809,19 +1813,19 @@ class OrdersApi
      *
      * Get a list of Orders
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
-     * @param  string $payment_status Filters by order status (optional)
-     * @param  string $last_payment_info_status Filters by last payment info status (optional)
-     * @param  int $created_at created equal to (optional)
-     * @param  int $created_at_gte created at greater than or equal to (optional)
-     * @param  int $created_at_lte created at less than or equal to (optional)
-     * @param  int $updated_at_gte updated at greater than or equal to (optional)
-     * @param  int $updated_at_lte updated at less than or equal to (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
+     * @param  string|null $payment_status Filters by order status (optional)
+     * @param  string|null $last_payment_info_status Filters by last payment info status (optional)
+     * @param  int|null $created_at created equal to (optional)
+     * @param  int|null $created_at_gte created at greater than or equal to (optional)
+     * @param  int|null $created_at_lte created at less than or equal to (optional)
+     * @param  int|null $updated_at_gte updated at greater than or equal to (optional)
+     * @param  int|null $updated_at_lte updated at less than or equal to (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1842,19 +1846,19 @@ class OrdersApi
      *
      * Get a list of Orders
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
-     * @param  string $payment_status Filters by order status (optional)
-     * @param  string $last_payment_info_status Filters by last payment info status (optional)
-     * @param  int $created_at created equal to (optional)
-     * @param  int $created_at_gte created at greater than or equal to (optional)
-     * @param  int $created_at_lte created at less than or equal to (optional)
-     * @param  int $updated_at_gte updated at greater than or equal to (optional)
-     * @param  int $updated_at_lte updated at less than or equal to (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
+     * @param  string|null $payment_status Filters by order status (optional)
+     * @param  string|null $last_payment_info_status Filters by last payment info status (optional)
+     * @param  int|null $created_at created equal to (optional)
+     * @param  int|null $created_at_gte created at greater than or equal to (optional)
+     * @param  int|null $created_at_lte created at less than or equal to (optional)
+     * @param  int|null $updated_at_gte updated at greater than or equal to (optional)
+     * @param  int|null $updated_at_lte updated at less than or equal to (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1904,19 +1908,19 @@ class OrdersApi
     /**
      * Create request for operation 'getOrders'
      *
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  int $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
-     * @param  string $search General order search, e.g. by mail, reference etc. (optional)
-     * @param  string $next next page (optional)
-     * @param  string $previous previous page (optional)
-     * @param  string $payment_status Filters by order status (optional)
-     * @param  string $last_payment_info_status Filters by last payment info status (optional)
-     * @param  int $created_at created equal to (optional)
-     * @param  int $created_at_gte created at greater than or equal to (optional)
-     * @param  int $created_at_lte created at less than or equal to (optional)
-     * @param  int $updated_at_gte updated at greater than or equal to (optional)
-     * @param  int $updated_at_lte updated at less than or equal to (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  int|null $limit The numbers of items to return, the maximum value is 250 (optional, default to 20)
+     * @param  string|null $search General order search, e.g. by mail, reference etc. (optional)
+     * @param  string|null $next next page (optional)
+     * @param  string|null $previous previous page (optional)
+     * @param  string|null $payment_status Filters by order status (optional)
+     * @param  string|null $last_payment_info_status Filters by last payment info status (optional)
+     * @param  int|null $created_at created equal to (optional)
+     * @param  int|null $created_at_gte created at greater than or equal to (optional)
+     * @param  int|null $created_at_lte created at less than or equal to (optional)
+     * @param  int|null $updated_at_gte updated at greater than or equal to (optional)
+     * @param  int|null $updated_at_lte updated at less than or equal to (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2131,8 +2135,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $refund_id refund identifier (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderCancelRefund'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2152,8 +2156,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $refund_id refund identifier (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderCancelRefund'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2186,18 +2190,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2364,6 +2356,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2454,8 +2459,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $refund_id refund identifier (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderCancelRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2478,8 +2483,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $refund_id refund identifier (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderCancelRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2531,8 +2536,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $refund_id refund identifier (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderCancelRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2661,8 +2666,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderRefundRequest $order_refund_request requested field for a refund (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderRefund'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2682,8 +2687,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderRefundRequest $order_refund_request requested field for a refund (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderRefund'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2716,18 +2721,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -2894,6 +2887,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -2984,8 +2990,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderRefundRequest $order_refund_request requested field for a refund (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3008,8 +3014,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderRefundRequest $order_refund_request requested field for a refund (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3061,8 +3067,8 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderRefundRequest $order_refund_request requested field for a refund (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['orderRefund'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3189,9 +3195,9 @@ class OrdersApi
      * Capture Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  \Conekta\Model\OrderCaptureRequest $order_capture_request requested fields for capture order (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  \Conekta\Model\OrderCaptureRequest|null $order_capture_request requested fields for capture order (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersCreateCapture'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3210,9 +3216,9 @@ class OrdersApi
      * Capture Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  \Conekta\Model\OrderCaptureRequest $order_capture_request requested fields for capture order (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  \Conekta\Model\OrderCaptureRequest|null $order_capture_request requested fields for capture order (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersCreateCapture'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3245,18 +3251,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -3396,6 +3390,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -3477,9 +3484,9 @@ class OrdersApi
      * Capture Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  \Conekta\Model\OrderCaptureRequest $order_capture_request requested fields for capture order (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  \Conekta\Model\OrderCaptureRequest|null $order_capture_request requested fields for capture order (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersCreateCapture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3501,9 +3508,9 @@ class OrdersApi
      * Capture Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  \Conekta\Model\OrderCaptureRequest $order_capture_request requested fields for capture order (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  \Conekta\Model\OrderCaptureRequest|null $order_capture_request requested fields for capture order (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersCreateCapture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3554,9 +3561,9 @@ class OrdersApi
      * Create request for operation 'ordersCreateCapture'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  string $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
-     * @param  \Conekta\Model\OrderCaptureRequest $order_capture_request requested fields for capture order (optional)
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  \Conekta\Model\OrderCaptureRequest|null $order_capture_request requested fields for capture order (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersCreateCapture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3678,7 +3685,7 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3698,7 +3705,7 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3731,18 +3738,6 @@ class OrdersApi
 
             $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
 
             switch($statusCode) {
                 case 200:
@@ -3882,6 +3877,19 @@ class OrdersApi
                     ];
             }
 
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
             $returnType = '\Conekta\Model\OrderResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
@@ -3964,7 +3972,7 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3987,7 +3995,7 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4039,7 +4047,7 @@ class OrdersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
-     * @param  string $accept_language Use for knowing which language to use (optional, default to 'es')
+     * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
