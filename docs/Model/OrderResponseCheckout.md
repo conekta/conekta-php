@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **allowed_payment_methods** | **string[]** | Are the payment methods available for this link | [optional]
 **can_not_expire** | **bool** |  | [optional]
 **emails_sent** | **int** |  | [optional]
-**exclude_card_networks** | **object[]** |  | [optional]
+**exclude_card_networks** | **string[]** |  | [optional]
 **expires_at** | **int** |  | [optional]
 **failure_url** | **string** |  | [optional]
 **force_3ds_flow** | **bool** |  | [optional]
