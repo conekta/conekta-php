@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **bank** | **string** |  | [optional]
 **clabe** | **string** |  | [optional]
 **description** | **string** |  | [optional]
-**executed_at** | **int** |  | [optional]
+**executed_at** | **string** |  | [optional]
 **expires_at** | **int** |  | [optional]
 **issuing_account_bank** | **string** |  | [optional]
 **issuing_account_number** | **string** |  | [optional]

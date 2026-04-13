@@ -9,9 +9,10 @@ Name | Type | Description | Notes
 **object** | **string** |  |
 **created_at** | **int** |  |
 **parent_id** | **string** |  | [optional]
+**agreements** | [**\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]**](PaymentMethodCashResponseAllOfAgreements.md) |  | [optional]
 **reference** | **string** |  | [optional]
 **barcode** | **string** |  | [optional]
-**barcode_url** | **string** |  | [optional]
+**barcode_url** | **string** | URL to the barcode image, reference is the same as barcode | [optional]
 **expires_at** | **string** |  | [optional]
 **provider** | **string** |  | [optional]
 **last4** | **string** |  | [optional]
@@ -24,5 +25,6 @@ Name | Type | Description | Notes
 **default** | **bool** |  | [optional]
 **visible_on_checkout** | **bool** |  | [optional]
 **payment_source_status** | **string** |  | [optional]
+**bank** | **string** | Bank name for the SPEI payment method | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

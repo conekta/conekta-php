@@ -6,7 +6,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**getEvent()**](EventsApi.md#getEvent) | **GET** /events/{id} | Get Event |
 | [**getEvents()**](EventsApi.md#getEvents) | **GET** /events | Get list of Events |
-| [**resendEvent()**](EventsApi.md#resendEvent) | **POST** /events/{event_id}/webhook_logs/{webhook_log_id}/resend | Resend Event |
+| [**resendEvent()**](EventsApi.md#resendEvent) | **POST** /events/{event_id}/resend | Resend Event |
 
 
 ## `getEvent()`
@@ -67,7 +67,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -135,7 +135,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -144,12 +144,12 @@ try {
 ## `resendEvent()`
 
 ```php
-resendEvent($event_id, $webhook_log_id, $accept_language): \Conekta\Model\EventsResendResponse
+resendEvent($event_id, $resend_request, $accept_language): \Conekta\Model\EventsResendResponse
 ```
 
 Resend Event
 
-Try to send an event
+Resend event to selected webhooks
 
 ### Example
 
@@ -169,11 +169,11 @@ $apiInstance = new Conekta\Api\EventsApi(
     $config
 );
 $event_id = 6463d6e35a4c3e001819e760; // string | event identifier
-$webhook_log_id = webhl_2tsv6NzWJHBWCkqGt; // string | webhook log identifier
+$resend_request = new \Conekta\Model\ResendRequest(); // \Conekta\Model\ResendRequest | requested fields for resend an event
 $accept_language = es; // string | Use for knowing which language to use
 
 try {
-    $result = $apiInstance->resendEvent($event_id, $webhook_log_id, $accept_language);
+    $result = $apiInstance->resendEvent($event_id, $resend_request, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventsApi->resendEvent: ', $e->getMessage(), PHP_EOL;
@@ -185,7 +185,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **event_id** | **string**| event identifier | |
-| **webhook_log_id** | **string**| webhook log identifier | |
+| **resend_request** | [**\Conekta\Model\ResendRequest**](../Model/ResendRequest.md)| requested fields for resend an event | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 
 ### Return type
@@ -198,8 +198,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.1.0+json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/vnd.conekta-v2.2.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

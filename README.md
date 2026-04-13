@@ -94,8 +94,13 @@ Class | Method | HTTP request | Description
 *ChargesApi* | [**ordersCreateCharge**](docs/Api/ChargesApi.md#orderscreatecharge) | **POST** /orders/{id}/charges | Create charge
 *ChargesApi* | [**ordersCreateCharges**](docs/Api/ChargesApi.md#orderscreatecharges) | **POST** /orders/{id}/add_charges | Create charges
 *ChargesApi* | [**updateCharge**](docs/Api/ChargesApi.md#updatecharge) | **PUT** /charges/{id} | Update a charge
+*CompaniesApi* | [**createCompany**](docs/Api/CompaniesApi.md#createcompany) | **POST** /companies | Create Company
 *CompaniesApi* | [**getCompanies**](docs/Api/CompaniesApi.md#getcompanies) | **GET** /companies | Get List of Companies
 *CompaniesApi* | [**getCompany**](docs/Api/CompaniesApi.md#getcompany) | **GET** /companies/{id} | Get Company
+*CompaniesApi* | [**getCompanyDocuments**](docs/Api/CompaniesApi.md#getcompanydocuments) | **GET** /companies/{company_id}/documents | Get Company Documents
+*CompaniesApi* | [**getCurrentCompany**](docs/Api/CompaniesApi.md#getcurrentcompany) | **GET** /companies/current | Get Current Company
+*CompaniesApi* | [**updateCompanyDocument**](docs/Api/CompaniesApi.md#updatecompanydocument) | **PATCH** /companies/{company_id}/document | Update Company Document
+*CompaniesApi* | [**uploadCompanyDocument**](docs/Api/CompaniesApi.md#uploadcompanydocument) | **POST** /companies/{company_id}/document | Upload Company Document
 *CustomersApi* | [**createCustomer**](docs/Api/CustomersApi.md#createcustomer) | **POST** /customers | Create customer
 *CustomersApi* | [**createCustomerFiscalEntities**](docs/Api/CustomersApi.md#createcustomerfiscalentities) | **POST** /customers/{id}/fiscal_entities | Create Fiscal Entity
 *CustomersApi* | [**deleteCustomerById**](docs/Api/CustomersApi.md#deletecustomerbyid) | **DELETE** /customers/{id} | Delete Customer
@@ -110,7 +115,7 @@ Class | Method | HTTP request | Description
 *DiscountsApi* | [**ordersUpdateDiscountLines**](docs/Api/DiscountsApi.md#ordersupdatediscountlines) | **PUT** /orders/{id}/discount_lines/{discount_lines_id} | Update Discount
 *EventsApi* | [**getEvent**](docs/Api/EventsApi.md#getevent) | **GET** /events/{id} | Get Event
 *EventsApi* | [**getEvents**](docs/Api/EventsApi.md#getevents) | **GET** /events | Get list of Events
-*EventsApi* | [**resendEvent**](docs/Api/EventsApi.md#resendevent) | **POST** /events/{event_id}/webhook_logs/{webhook_log_id}/resend | Resend Event
+*EventsApi* | [**resendEvent**](docs/Api/EventsApi.md#resendevent) | **POST** /events/{event_id}/resend | Resend Event
 *LogsApi* | [**getLogById**](docs/Api/LogsApi.md#getlogbyid) | **GET** /logs/{id} | Get Log
 *LogsApi* | [**getLogs**](docs/Api/LogsApi.md#getlogs) | **GET** /logs | Get List Of Logs
 *OrdersApi* | [**cancelOrder**](docs/Api/OrdersApi.md#cancelorder) | **POST** /orders/{id}/cancel | Cancel Order
@@ -149,13 +154,24 @@ Class | Method | HTTP request | Description
 *ShippingsApi* | [**ordersCreateShipping**](docs/Api/ShippingsApi.md#orderscreateshipping) | **POST** /orders/{id}/shipping_lines | Create Shipping
 *ShippingsApi* | [**ordersDeleteShipping**](docs/Api/ShippingsApi.md#ordersdeleteshipping) | **DELETE** /orders/{id}/shipping_lines/{shipping_id} | Delete Shipping
 *ShippingsApi* | [**ordersUpdateShipping**](docs/Api/ShippingsApi.md#ordersupdateshipping) | **PUT** /orders/{id}/shipping_lines/{shipping_id} | Update Shipping
-*SubscriptionsApi* | [**cancelSubscription**](docs/Api/SubscriptionsApi.md#cancelsubscription) | **POST** /customers/{id}/subscription/cancel | Cancel Subscription
-*SubscriptionsApi* | [**createSubscription**](docs/Api/SubscriptionsApi.md#createsubscription) | **POST** /customers/{id}/subscription | Create Subscription
-*SubscriptionsApi* | [**getAllEventsFromSubscription**](docs/Api/SubscriptionsApi.md#getalleventsfromsubscription) | **GET** /customers/{id}/subscription/events | Get Events By Subscription
-*SubscriptionsApi* | [**getSubscription**](docs/Api/SubscriptionsApi.md#getsubscription) | **GET** /customers/{id}/subscription | Get Subscription
-*SubscriptionsApi* | [**pauseSubscription**](docs/Api/SubscriptionsApi.md#pausesubscription) | **POST** /customers/{id}/subscription/pause | Pause Subscription
-*SubscriptionsApi* | [**resumeSubscription**](docs/Api/SubscriptionsApi.md#resumesubscription) | **POST** /customers/{id}/subscription/resume | Resume Subscription
-*SubscriptionsApi* | [**updateSubscription**](docs/Api/SubscriptionsApi.md#updatesubscription) | **PUT** /customers/{id}/subscription | Update Subscription
+*SubscriptionsApi* | [**cancelSubscription**](docs/Api/SubscriptionsApi.md#cancelsubscription) | **POST** /customers/{id}/subscription/cancel | Cancel Subscription [Deprecated]
+*SubscriptionsApi* | [**createSubscription**](docs/Api/SubscriptionsApi.md#createsubscription) | **POST** /customers/{id}/subscription | Create Subscription [Deprecated]
+*SubscriptionsApi* | [**getSubscription**](docs/Api/SubscriptionsApi.md#getsubscription) | **GET** /customers/{id}/subscription | Get Subscription [Deprecated]
+*SubscriptionsApi* | [**getSubscriptionEvents**](docs/Api/SubscriptionsApi.md#getsubscriptionevents) | **GET** /customers/{id}/subscription/events | Get Subscription Events [Deprecated]
+*SubscriptionsApi* | [**pauseSubscription**](docs/Api/SubscriptionsApi.md#pausesubscription) | **POST** /customers/{id}/subscription/pause | Pause Subscription [Deprecated]
+*SubscriptionsApi* | [**resumeSubscription**](docs/Api/SubscriptionsApi.md#resumesubscription) | **POST** /customers/{id}/subscription/resume | Resume Subscription [Deprecated]
+*SubscriptionsApi* | [**subscriptionCancel**](docs/Api/SubscriptionsApi.md#subscriptioncancel) | **POST** /customers/{customer_id}/subscriptions/{id}/cancel | Cancel Subscription
+*SubscriptionsApi* | [**subscriptionCreate**](docs/Api/SubscriptionsApi.md#subscriptioncreate) | **POST** /customers/{customer_id}/subscriptions | Create Subscription
+*SubscriptionsApi* | [**subscriptionEvents**](docs/Api/SubscriptionsApi.md#subscriptionevents) | **GET** /customers/{customer_id}/subscriptions/{id}/events | Get Subscription Events
+*SubscriptionsApi* | [**subscriptionList**](docs/Api/SubscriptionsApi.md#subscriptionlist) | **GET** /customers/{customer_id}/subscriptions | List Subscriptions
+*SubscriptionsApi* | [**subscriptionPause**](docs/Api/SubscriptionsApi.md#subscriptionpause) | **POST** /customers/{customer_id}/subscriptions/{id}/pause | Pause Subscription
+*SubscriptionsApi* | [**subscriptionResume**](docs/Api/SubscriptionsApi.md#subscriptionresume) | **POST** /customers/{customer_id}/subscriptions/{id}/resume | Resume Subscription
+*SubscriptionsApi* | [**subscriptionUpdate**](docs/Api/SubscriptionsApi.md#subscriptionupdate) | **PUT** /customers/{customer_id}/subscriptions/{id} | Update Subscription
+*SubscriptionsApi* | [**subscriptionsGet**](docs/Api/SubscriptionsApi.md#subscriptionsget) | **GET** /customers/{customer_id}/subscriptions/{id} | Get Subscription
+*SubscriptionsApi* | [**subscriptionsRetry**](docs/Api/SubscriptionsApi.md#subscriptionsretry) | **POST** /customers/{customer_id}/subscriptions/{id}/retry | Retry Failed Payment
+*SubscriptionsApi* | [**updateSubscription**](docs/Api/SubscriptionsApi.md#updatesubscription) | **PUT** /customers/{id}/subscription | Update Subscription [Deprecated]
+*SubscriptionsCustomerPortalApi* | [**createCustomerPortal**](docs/Api/SubscriptionsCustomerPortalApi.md#createcustomerportal) | **POST** /subscriptions/{subscription_id}/customer_portal | Create customer portal
+*SubscriptionsCustomerPortalApi* | [**getCustomerPortal**](docs/Api/SubscriptionsCustomerPortalApi.md#getcustomerportal) | **GET** /subscriptions/{subscription_id}/customer_portal | Get customer portal
 *TaxesApi* | [**ordersCreateTaxes**](docs/Api/TaxesApi.md#orderscreatetaxes) | **POST** /orders/{id}/tax_lines | Create Tax
 *TaxesApi* | [**ordersDeleteTaxes**](docs/Api/TaxesApi.md#ordersdeletetaxes) | **DELETE** /orders/{id}/tax_lines/{tax_id} | Delete Tax
 *TaxesApi* | [**ordersUpdateTaxes**](docs/Api/TaxesApi.md#ordersupdatetaxes) | **PUT** /orders/{id}/tax_lines/{tax_id} | Update Tax
@@ -205,10 +221,14 @@ Class | Method | HTTP request | Description
 - [CheckoutRequest](docs/Model/CheckoutRequest.md)
 - [CheckoutResponse](docs/Model/CheckoutResponse.md)
 - [CheckoutsResponse](docs/Model/CheckoutsResponse.md)
-- [CompanyFiscalInfoAddressResponse](docs/Model/CompanyFiscalInfoAddressResponse.md)
-- [CompanyFiscalInfoResponse](docs/Model/CompanyFiscalInfoResponse.md)
-- [CompanyPayoutDestinationResponse](docs/Model/CompanyPayoutDestinationResponse.md)
+- [CompanyDocumentRequest](docs/Model/CompanyDocumentRequest.md)
+- [CompanyDocumentResponse](docs/Model/CompanyDocumentResponse.md)
 - [CompanyResponse](docs/Model/CompanyResponse.md)
+- [CompanyResponseDocumentsInner](docs/Model/CompanyResponseDocumentsInner.md)
+- [CreateCompanyRequest](docs/Model/CreateCompanyRequest.md)
+- [CreateCompanyRequestBankAccountInfo](docs/Model/CreateCompanyRequestBankAccountInfo.md)
+- [CreateCompanyRequestComercialInfo](docs/Model/CreateCompanyRequestComercialInfo.md)
+- [CreateCompanyRequestFiscalInfo](docs/Model/CreateCompanyRequestFiscalInfo.md)
 - [CreateCustomerFiscalEntitiesResponse](docs/Model/CreateCustomerFiscalEntitiesResponse.md)
 - [CreateCustomerPaymentMethodsRequest](docs/Model/CreateCustomerPaymentMethodsRequest.md)
 - [CreateCustomerPaymentMethodsResponse](docs/Model/CreateCustomerPaymentMethodsResponse.md)
@@ -217,6 +237,7 @@ Class | Method | HTTP request | Description
 - [CustomerAddress](docs/Model/CustomerAddress.md)
 - [CustomerAntifraudInfo](docs/Model/CustomerAntifraudInfo.md)
 - [CustomerAntifraudInfoResponse](docs/Model/CustomerAntifraudInfoResponse.md)
+- [CustomerDetails](docs/Model/CustomerDetails.md)
 - [CustomerFiscalEntitiesDataResponse](docs/Model/CustomerFiscalEntitiesDataResponse.md)
 - [CustomerFiscalEntitiesRequest](docs/Model/CustomerFiscalEntitiesRequest.md)
 - [CustomerFiscalEntitiesResponse](docs/Model/CustomerFiscalEntitiesResponse.md)
@@ -227,6 +248,7 @@ Class | Method | HTTP request | Description
 - [CustomerPaymentMethodsData](docs/Model/CustomerPaymentMethodsData.md)
 - [CustomerPaymentMethodsRequest](docs/Model/CustomerPaymentMethodsRequest.md)
 - [CustomerPaymentMethodsResponse](docs/Model/CustomerPaymentMethodsResponse.md)
+- [CustomerPortalResponse](docs/Model/CustomerPortalResponse.md)
 - [CustomerResponse](docs/Model/CustomerResponse.md)
 - [CustomerResponseShippingContacts](docs/Model/CustomerResponseShippingContacts.md)
 - [CustomerShippingContacts](docs/Model/CustomerShippingContacts.md)
@@ -267,8 +289,11 @@ Class | Method | HTTP request | Description
 - [LogsResponse](docs/Model/LogsResponse.md)
 - [LogsResponseData](docs/Model/LogsResponseData.md)
 - [OrderCaptureRequest](docs/Model/OrderCaptureRequest.md)
+- [OrderChannelResponse](docs/Model/OrderChannelResponse.md)
+- [OrderChargesResponse](docs/Model/OrderChargesResponse.md)
 - [OrderCustomerInfoResponse](docs/Model/OrderCustomerInfoResponse.md)
 - [OrderDiscountLinesRequest](docs/Model/OrderDiscountLinesRequest.md)
+- [OrderDiscountLinesResponse](docs/Model/OrderDiscountLinesResponse.md)
 - [OrderFiscalEntityAddressResponse](docs/Model/OrderFiscalEntityAddressResponse.md)
 - [OrderFiscalEntityRequest](docs/Model/OrderFiscalEntityRequest.md)
 - [OrderFiscalEntityResponse](docs/Model/OrderFiscalEntityResponse.md)
@@ -278,10 +303,8 @@ Class | Method | HTTP request | Description
 - [OrderRequest](docs/Model/OrderRequest.md)
 - [OrderRequestCustomerInfo](docs/Model/OrderRequestCustomerInfo.md)
 - [OrderResponse](docs/Model/OrderResponse.md)
-- [OrderResponseCharges](docs/Model/OrderResponseCharges.md)
 - [OrderResponseCheckout](docs/Model/OrderResponseCheckout.md)
 - [OrderResponseCustomerInfo](docs/Model/OrderResponseCustomerInfo.md)
-- [OrderResponseDiscountLines](docs/Model/OrderResponseDiscountLines.md)
 - [OrderResponseProducts](docs/Model/OrderResponseProducts.md)
 - [OrderResponseShippingContact](docs/Model/OrderResponseShippingContact.md)
 - [OrderTaxRequest](docs/Model/OrderTaxRequest.md)
@@ -293,13 +316,19 @@ Class | Method | HTTP request | Description
 - [Pagination](docs/Model/Pagination.md)
 - [PaymentMethod](docs/Model/PaymentMethod.md)
 - [PaymentMethodBankTransfer](docs/Model/PaymentMethodBankTransfer.md)
+- [PaymentMethodBnplPayment](docs/Model/PaymentMethodBnplPayment.md)
+- [PaymentMethodBnplRequest](docs/Model/PaymentMethodBnplRequest.md)
 - [PaymentMethodCard](docs/Model/PaymentMethodCard.md)
 - [PaymentMethodCardRequest](docs/Model/PaymentMethodCardRequest.md)
 - [PaymentMethodCardResponse](docs/Model/PaymentMethodCardResponse.md)
 - [PaymentMethodCash](docs/Model/PaymentMethodCash.md)
+- [PaymentMethodCashRecurrentResponse](docs/Model/PaymentMethodCashRecurrentResponse.md)
 - [PaymentMethodCashRequest](docs/Model/PaymentMethodCashRequest.md)
 - [PaymentMethodCashResponse](docs/Model/PaymentMethodCashResponse.md)
+- [PaymentMethodCashResponseAllOfAgreements](docs/Model/PaymentMethodCashResponseAllOfAgreements.md)
 - [PaymentMethodGeneralRequest](docs/Model/PaymentMethodGeneralRequest.md)
+- [PaymentMethodPbbPayment](docs/Model/PaymentMethodPbbPayment.md)
+- [PaymentMethodPbbRequest](docs/Model/PaymentMethodPbbRequest.md)
 - [PaymentMethodResponse](docs/Model/PaymentMethodResponse.md)
 - [PaymentMethodSpeiRecurrent](docs/Model/PaymentMethodSpeiRecurrent.md)
 - [PaymentMethodSpeiRequest](docs/Model/PaymentMethodSpeiRequest.md)
@@ -317,11 +346,15 @@ Class | Method | HTTP request | Description
 - [Product](docs/Model/Product.md)
 - [ProductDataResponse](docs/Model/ProductDataResponse.md)
 - [ProductOrderResponse](docs/Model/ProductOrderResponse.md)
+- [ResendRequest](docs/Model/ResendRequest.md)
 - [RiskRulesData](docs/Model/RiskRulesData.md)
 - [RiskRulesList](docs/Model/RiskRulesList.md)
 - [ShippingOrderResponse](docs/Model/ShippingOrderResponse.md)
 - [ShippingRequest](docs/Model/ShippingRequest.md)
 - [SmsCheckoutRequest](docs/Model/SmsCheckoutRequest.md)
+- [SubscriptionDetails](docs/Model/SubscriptionDetails.md)
+- [SubscriptionDetailsCard](docs/Model/SubscriptionDetailsCard.md)
+- [SubscriptionDetailsPlan](docs/Model/SubscriptionDetailsPlan.md)
 - [SubscriptionEventsResponse](docs/Model/SubscriptionEventsResponse.md)
 - [SubscriptionRequest](docs/Model/SubscriptionRequest.md)
 - [SubscriptionResponse](docs/Model/SubscriptionResponse.md)
@@ -380,7 +413,7 @@ engineering@conekta.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `2.1.0`
-    - Package version: `6.0.11`
-    - Generator version: `7.9.0`
+- API version: `2.2.0`
+    - Package version: `7.0.8`
+    - Generator version: `7.12.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
