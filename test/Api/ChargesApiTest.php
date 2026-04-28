@@ -57,8 +57,8 @@ class ChargesApiTest extends BaseTestCase
         $paymentMethod = $response->getPaymentMethod();
         self::assertNotNull($paymentMethod);
         self::assertInstanceOf(ChargeOrderResponsePaymentMethod::class, $paymentMethod);
-        self::assertSame('default', $paymentMethod->getType());
-        self::assertNotEmpty($paymentMethod->getObject());
+        self::assertSame('credit', $paymentMethod->getType());
+        self::assertSame('card_payment', $paymentMethod->getObject());
     }
 
     public function testOrdersCreateCharges()
