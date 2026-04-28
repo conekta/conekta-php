@@ -80,7 +80,7 @@ try {
 ## `createCustomerFiscalEntities()`
 
 ```php
-createCustomerFiscalEntities($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id): \Conekta\Model\CreateCustomerFiscalEntitiesResponse
+createCustomerFiscalEntities($id, $fiscal_entity_request, $accept_language, $x_child_company_id): \Conekta\Model\CreateCustomerFiscalEntitiesResponse
 ```
 
 Create Fiscal Entity
@@ -105,12 +105,12 @@ $apiInstance = new Conekta\Api\CustomersApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$customer_fiscal_entities_request = new \Conekta\Model\CustomerFiscalEntitiesRequest(); // \Conekta\Model\CustomerFiscalEntitiesRequest | requested field for customer fiscal entities
+$fiscal_entity_request = new \Conekta\Model\FiscalEntityRequest(); // \Conekta\Model\FiscalEntityRequest | requested field for customer fiscal entities
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->createCustomerFiscalEntities($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->createCustomerFiscalEntities($id, $fiscal_entity_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->createCustomerFiscalEntities: ', $e->getMessage(), PHP_EOL;
@@ -122,7 +122,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **customer_fiscal_entities_request** | [**\Conekta\Model\CustomerFiscalEntitiesRequest**](../Model/CustomerFiscalEntitiesRequest.md)| requested field for customer fiscal entities | |
+| **fiscal_entity_request** | [**\Conekta\Model\FiscalEntityRequest**](../Model/FiscalEntityRequest.md)| requested field for customer fiscal entities | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 
@@ -410,7 +410,7 @@ try {
 ## `updateCustomerFiscalEntities()`
 
 ```php
-updateCustomerFiscalEntities($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id): \Conekta\Model\UpdateCustomerFiscalEntitiesResponse
+updateCustomerFiscalEntities($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id): \Conekta\Model\UpdateCustomerFiscalEntitiesResponse
 ```
 
 Update  Fiscal Entity
@@ -436,12 +436,12 @@ $apiInstance = new Conekta\Api\CustomersApi(
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $fiscal_entities_id = fis_ent_2tQ8HkkfbauaKP9Ho; // string | identifier
-$customer_update_fiscal_entities_request = new \Conekta\Model\CustomerUpdateFiscalEntitiesRequest(); // \Conekta\Model\CustomerUpdateFiscalEntitiesRequest | requested field for customer update fiscal entities
+$update_fiscal_entity_request = new \Conekta\Model\UpdateFiscalEntityRequest(); // \Conekta\Model\UpdateFiscalEntityRequest | requested field for customer update fiscal entities
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateCustomerFiscalEntities($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateCustomerFiscalEntities($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomersApi->updateCustomerFiscalEntities: ', $e->getMessage(), PHP_EOL;
@@ -454,7 +454,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
 | **fiscal_entities_id** | **string**| identifier | |
-| **customer_update_fiscal_entities_request** | [**\Conekta\Model\CustomerUpdateFiscalEntitiesRequest**](../Model/CustomerUpdateFiscalEntitiesRequest.md)| requested field for customer update fiscal entities | |
+| **update_fiscal_entity_request** | [**\Conekta\Model\UpdateFiscalEntityRequest**](../Model/UpdateFiscalEntityRequest.md)| requested field for customer update fiscal entities | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

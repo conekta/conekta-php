@@ -61,6 +61,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'has_more' => 'bool',
         'object' => 'string',
+        'next_page_url' => 'string',
+        'previous_page_url' => 'string',
         'data' => '\Conekta\Model\ChargesDataResponse[]'
     ];
 
@@ -74,6 +76,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'has_more' => null,
         'object' => null,
+        'next_page_url' => null,
+        'previous_page_url' => null,
         'data' => null
     ];
 
@@ -85,6 +89,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'has_more' => false,
         'object' => false,
+        'next_page_url' => false,
+        'previous_page_url' => false,
         'data' => false
     ];
 
@@ -176,6 +182,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'has_more' => 'has_more',
         'object' => 'object',
+        'next_page_url' => 'next_page_url',
+        'previous_page_url' => 'previous_page_url',
         'data' => 'data'
     ];
 
@@ -187,6 +195,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'has_more' => 'setHasMore',
         'object' => 'setObject',
+        'next_page_url' => 'setNextPageUrl',
+        'previous_page_url' => 'setPreviousPageUrl',
         'data' => 'setData'
     ];
 
@@ -198,6 +208,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'has_more' => 'getHasMore',
         'object' => 'getObject',
+        'next_page_url' => 'getNextPageUrl',
+        'previous_page_url' => 'getPreviousPageUrl',
         'data' => 'getData'
     ];
 
@@ -260,6 +272,8 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('has_more', $data ?? [], null);
         $this->setIfExists('object', $data ?? [], null);
+        $this->setIfExists('next_page_url', $data ?? [], null);
+        $this->setIfExists('previous_page_url', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
     }
 
@@ -361,6 +375,60 @@ class OrderChargesResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $this->container['object'] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_page_url
+     *
+     * @return string|null
+     */
+    public function getNextPageUrl()
+    {
+        return $this->container['next_page_url'];
+    }
+
+    /**
+     * Sets next_page_url
+     *
+     * @param string|null $next_page_url URL of the next page.
+     *
+     * @return self
+     */
+    public function setNextPageUrl($next_page_url)
+    {
+        if (is_null($next_page_url)) {
+            throw new \InvalidArgumentException('non-nullable next_page_url cannot be null');
+        }
+        $this->container['next_page_url'] = $next_page_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_page_url
+     *
+     * @return string|null
+     */
+    public function getPreviousPageUrl()
+    {
+        return $this->container['previous_page_url'];
+    }
+
+    /**
+     * Sets previous_page_url
+     *
+     * @param string|null $previous_page_url Url of the previous page.
+     *
+     * @return self
+     */
+    public function setPreviousPageUrl($previous_page_url)
+    {
+        if (is_null($previous_page_url)) {
+            throw new \InvalidArgumentException('non-nullable previous_page_url cannot be null');
+        }
+        $this->container['previous_page_url'] = $previous_page_url;
 
         return $this;
     }

@@ -51,7 +51,7 @@ class CreateCompanyRequestComercialInfo implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'create_company_request_comercial_info';
+    protected static $openAPIModelName = 'Create_Company_Request_comercial_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

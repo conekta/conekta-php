@@ -106,7 +106,7 @@ $apiInstance = new Conekta\Api\ChargesApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$charge_request = new \Conekta\Model\ChargeRequest(); // \Conekta\Model\ChargeRequest | requested field for a charge
+$charge_request = {"payment_method":{"can_not_expire":true,"cancel_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/cancel","failure_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/failure","product_type":"aplazo_bnpl","success_url":"https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/success","type":"bnpl"}}; // \Conekta\Model\ChargeRequest | requested field for a charge
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
@@ -172,7 +172,7 @@ $apiInstance = new Conekta\Api\ChargesApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$charge_request = new \Conekta\Model\ChargeRequest(); // \Conekta\Model\ChargeRequest | requested field for a charge
+$charge_request = {payment_method={can_not_expire=true, cancel_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/cancel, failure_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/failure, product_type=aplazo_bnpl, success_url=https://pay.conekta.io/payment-status/fdcb06d6-c9e1-44ee-921f-17723b63852f/success, type=bnpl}}; // \Conekta\Model\ChargeRequest | requested field for a charge
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 

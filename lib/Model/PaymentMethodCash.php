@@ -105,14 +105,14 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
         'type' => false,
         'object' => false,
         'agreement' => false,
-        'auth_code' => true,
-        'cashier_id' => true,
+        'auth_code' => false,
+        'cashier_id' => false,
         'reference' => false,
         'barcode_url' => false,
         'expires_at' => false,
         'product_type' => false,
         'service_name' => false,
-        'store' => true,
+        'store' => false,
         'store_name' => false,
         'customer_ip_address' => false
     ];
@@ -478,14 +478,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setAuthCode($auth_code)
     {
         if (is_null($auth_code)) {
-            array_push($this->openAPINullablesSetToNull, 'auth_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('auth_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable auth_code cannot be null');
         }
         $this->container['auth_code'] = $auth_code;
 
@@ -512,14 +505,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCashierId($cashier_id)
     {
         if (is_null($cashier_id)) {
-            array_push($this->openAPINullablesSetToNull, 'cashier_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cashier_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable cashier_id cannot be null');
         }
         $this->container['cashier_id'] = $cashier_id;
 
@@ -681,14 +667,7 @@ class PaymentMethodCash implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setStore($store)
     {
         if (is_null($store)) {
-            array_push($this->openAPINullablesSetToNull, 'store');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('store', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable store cannot be null');
         }
         $this->container['store'] = $store;
 

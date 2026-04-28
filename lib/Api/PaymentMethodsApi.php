@@ -1637,7 +1637,7 @@ class PaymentMethodsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $payment_method_id Identifier of the payment method (required)
-     * @param  \Conekta\Model\UpdatePaymentMethods $update_payment_methods requested field for customer payment methods (required)
+     * @param  \Conekta\Model\UpdatePaymentMethodsCard $update_payment_methods_card requested field for customer payment methods (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerPaymentMethods'] to see the possible values for this operation
@@ -1646,9 +1646,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\UpdateCustomerPaymentMethodsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
+    public function updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods_card, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
-        list($response) = $this->updateCustomerPaymentMethodsWithHttpInfo($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateCustomerPaymentMethodsWithHttpInfo($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -1659,7 +1659,7 @@ class PaymentMethodsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $payment_method_id Identifier of the payment method (required)
-     * @param  \Conekta\Model\UpdatePaymentMethods $update_payment_methods requested field for customer payment methods (required)
+     * @param  \Conekta\Model\UpdatePaymentMethodsCard $update_payment_methods_card requested field for customer payment methods (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerPaymentMethods'] to see the possible values for this operation
@@ -1668,9 +1668,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\UpdateCustomerPaymentMethodsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerPaymentMethodsWithHttpInfo($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
+    public function updateCustomerPaymentMethodsWithHttpInfo($id, $payment_method_id, $update_payment_methods_card, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
-        $request = $this->updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1928,7 +1928,7 @@ class PaymentMethodsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $payment_method_id Identifier of the payment method (required)
-     * @param  \Conekta\Model\UpdatePaymentMethods $update_payment_methods requested field for customer payment methods (required)
+     * @param  \Conekta\Model\UpdatePaymentMethodsCard $update_payment_methods_card requested field for customer payment methods (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerPaymentMethods'] to see the possible values for this operation
@@ -1936,9 +1936,9 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerPaymentMethodsAsync($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
+    public function updateCustomerPaymentMethodsAsync($id, $payment_method_id, $update_payment_methods_card, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
-        return $this->updateCustomerPaymentMethodsAsyncWithHttpInfo($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateCustomerPaymentMethodsAsyncWithHttpInfo($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1953,7 +1953,7 @@ class PaymentMethodsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $payment_method_id Identifier of the payment method (required)
-     * @param  \Conekta\Model\UpdatePaymentMethods $update_payment_methods requested field for customer payment methods (required)
+     * @param  \Conekta\Model\UpdatePaymentMethodsCard $update_payment_methods_card requested field for customer payment methods (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerPaymentMethods'] to see the possible values for this operation
@@ -1961,10 +1961,10 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerPaymentMethodsAsyncWithHttpInfo($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
+    public function updateCustomerPaymentMethodsAsyncWithHttpInfo($id, $payment_method_id, $update_payment_methods_card, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
         $returnType = '\Conekta\Model\UpdateCustomerPaymentMethodsResponse';
-        $request = $this->updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2007,7 +2007,7 @@ class PaymentMethodsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $payment_method_id Identifier of the payment method (required)
-     * @param  \Conekta\Model\UpdatePaymentMethods $update_payment_methods requested field for customer payment methods (required)
+     * @param  \Conekta\Model\UpdatePaymentMethodsCard $update_payment_methods_card requested field for customer payment methods (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerPaymentMethods'] to see the possible values for this operation
@@ -2015,7 +2015,7 @@ class PaymentMethodsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
+    public function updateCustomerPaymentMethodsRequest($id, $payment_method_id, $update_payment_methods_card, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerPaymentMethods'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2032,10 +2032,10 @@ class PaymentMethodsApi
             );
         }
 
-        // verify the required parameter 'update_payment_methods' is set
-        if ($update_payment_methods === null || (is_array($update_payment_methods) && count($update_payment_methods) === 0)) {
+        // verify the required parameter 'update_payment_methods_card' is set
+        if ($update_payment_methods_card === null || (is_array($update_payment_methods_card) && count($update_payment_methods_card) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_payment_methods when calling updateCustomerPaymentMethods'
+                'Missing the required parameter $update_payment_methods_card when calling updateCustomerPaymentMethods'
             );
         }
 
@@ -2088,12 +2088,12 @@ class PaymentMethodsApi
         );
 
         // for model (json/xml)
-        if (isset($update_payment_methods)) {
+        if (isset($update_payment_methods_card)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_payment_methods));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_payment_methods_card));
             } else {
-                $httpBody = $update_payment_methods;
+                $httpBody = $update_payment_methods_card;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

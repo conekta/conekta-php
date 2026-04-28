@@ -143,7 +143,7 @@ class AntifraudApi
      *
      * Create blacklisted rule
      *
-     * @param  \Conekta\Model\CreateRiskRulesData $create_risk_rules_data requested field for blacklist rule (required)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest $create_rule_whitelist_request requested field for blacklist rule (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleBlacklist'] to see the possible values for this operation
      *
@@ -151,9 +151,9 @@ class AntifraudApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\BlacklistRuleResponse|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createRuleBlacklist($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
+    public function createRuleBlacklist($create_rule_whitelist_request, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
-        list($response) = $this->createRuleBlacklistWithHttpInfo($create_risk_rules_data, $accept_language, $contentType);
+        list($response) = $this->createRuleBlacklistWithHttpInfo($create_rule_whitelist_request, $accept_language, $contentType);
         return $response;
     }
 
@@ -162,7 +162,7 @@ class AntifraudApi
      *
      * Create blacklisted rule
      *
-     * @param  \Conekta\Model\CreateRiskRulesData $create_risk_rules_data requested field for blacklist rule (required)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest $create_rule_whitelist_request requested field for blacklist rule (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleBlacklist'] to see the possible values for this operation
      *
@@ -170,9 +170,9 @@ class AntifraudApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\BlacklistRuleResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createRuleBlacklistWithHttpInfo($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
+    public function createRuleBlacklistWithHttpInfo($create_rule_whitelist_request, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
-        $request = $this->createRuleBlacklistRequest($create_risk_rules_data, $accept_language, $contentType);
+        $request = $this->createRuleBlacklistRequest($create_rule_whitelist_request, $accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -358,16 +358,16 @@ class AntifraudApi
      *
      * Create blacklisted rule
      *
-     * @param  \Conekta\Model\CreateRiskRulesData $create_risk_rules_data requested field for blacklist rule (required)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest $create_rule_whitelist_request requested field for blacklist rule (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleBlacklist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRuleBlacklistAsync($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
+    public function createRuleBlacklistAsync($create_rule_whitelist_request, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
-        return $this->createRuleBlacklistAsyncWithHttpInfo($create_risk_rules_data, $accept_language, $contentType)
+        return $this->createRuleBlacklistAsyncWithHttpInfo($create_rule_whitelist_request, $accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -380,17 +380,17 @@ class AntifraudApi
      *
      * Create blacklisted rule
      *
-     * @param  \Conekta\Model\CreateRiskRulesData $create_risk_rules_data requested field for blacklist rule (required)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest $create_rule_whitelist_request requested field for blacklist rule (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleBlacklist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRuleBlacklistAsyncWithHttpInfo($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
+    public function createRuleBlacklistAsyncWithHttpInfo($create_rule_whitelist_request, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
         $returnType = '\Conekta\Model\BlacklistRuleResponse';
-        $request = $this->createRuleBlacklistRequest($create_risk_rules_data, $accept_language, $contentType);
+        $request = $this->createRuleBlacklistRequest($create_rule_whitelist_request, $accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -431,20 +431,20 @@ class AntifraudApi
     /**
      * Create request for operation 'createRuleBlacklist'
      *
-     * @param  \Conekta\Model\CreateRiskRulesData $create_risk_rules_data requested field for blacklist rule (required)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest $create_rule_whitelist_request requested field for blacklist rule (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleBlacklist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRuleBlacklistRequest($create_risk_rules_data, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
+    public function createRuleBlacklistRequest($create_rule_whitelist_request, $accept_language = 'es', string $contentType = self::contentTypes['createRuleBlacklist'][0])
     {
 
-        // verify the required parameter 'create_risk_rules_data' is set
-        if ($create_risk_rules_data === null || (is_array($create_risk_rules_data) && count($create_risk_rules_data) === 0)) {
+        // verify the required parameter 'create_rule_whitelist_request' is set
+        if ($create_rule_whitelist_request === null || (is_array($create_rule_whitelist_request) && count($create_rule_whitelist_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_risk_rules_data when calling createRuleBlacklist'
+                'Missing the required parameter $create_rule_whitelist_request when calling createRuleBlacklist'
             );
         }
 
@@ -476,12 +476,12 @@ class AntifraudApi
         );
 
         // for model (json/xml)
-        if (isset($create_risk_rules_data)) {
+        if (isset($create_rule_whitelist_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_risk_rules_data));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_rule_whitelist_request));
             } else {
-                $httpBody = $create_risk_rules_data;
+                $httpBody = $create_rule_whitelist_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -539,16 +539,16 @@ class AntifraudApi
      * Create whitelisted rule
      *
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\CreateRiskRulesData|null $create_risk_rules_data create_risk_rules_data (optional)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest|null $create_rule_whitelist_request create_rule_whitelist_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleWhitelist'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\WhitelistlistRuleResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createRuleWhitelist($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
+    public function createRuleWhitelist($accept_language = 'es', $create_rule_whitelist_request = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
-        list($response) = $this->createRuleWhitelistWithHttpInfo($accept_language, $create_risk_rules_data, $contentType);
+        list($response) = $this->createRuleWhitelistWithHttpInfo($accept_language, $create_rule_whitelist_request, $contentType);
         return $response;
     }
 
@@ -558,16 +558,16 @@ class AntifraudApi
      * Create whitelisted rule
      *
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\CreateRiskRulesData|null $create_risk_rules_data (optional)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest|null $create_rule_whitelist_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleWhitelist'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\WhitelistlistRuleResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createRuleWhitelistWithHttpInfo($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
+    public function createRuleWhitelistWithHttpInfo($accept_language = 'es', $create_rule_whitelist_request = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
-        $request = $this->createRuleWhitelistRequest($accept_language, $create_risk_rules_data, $contentType);
+        $request = $this->createRuleWhitelistRequest($accept_language, $create_rule_whitelist_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -789,15 +789,15 @@ class AntifraudApi
      * Create whitelisted rule
      *
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\CreateRiskRulesData|null $create_risk_rules_data (optional)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest|null $create_rule_whitelist_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleWhitelist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRuleWhitelistAsync($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
+    public function createRuleWhitelistAsync($accept_language = 'es', $create_rule_whitelist_request = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
-        return $this->createRuleWhitelistAsyncWithHttpInfo($accept_language, $create_risk_rules_data, $contentType)
+        return $this->createRuleWhitelistAsyncWithHttpInfo($accept_language, $create_rule_whitelist_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -811,16 +811,16 @@ class AntifraudApi
      * Create whitelisted rule
      *
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\CreateRiskRulesData|null $create_risk_rules_data (optional)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest|null $create_rule_whitelist_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleWhitelist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRuleWhitelistAsyncWithHttpInfo($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
+    public function createRuleWhitelistAsyncWithHttpInfo($accept_language = 'es', $create_rule_whitelist_request = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
         $returnType = '\Conekta\Model\WhitelistlistRuleResponse';
-        $request = $this->createRuleWhitelistRequest($accept_language, $create_risk_rules_data, $contentType);
+        $request = $this->createRuleWhitelistRequest($accept_language, $create_rule_whitelist_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -862,13 +862,13 @@ class AntifraudApi
      * Create request for operation 'createRuleWhitelist'
      *
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
-     * @param  \Conekta\Model\CreateRiskRulesData|null $create_risk_rules_data (optional)
+     * @param  \Conekta\Model\CreateRuleWhitelistRequest|null $create_rule_whitelist_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRuleWhitelist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRuleWhitelistRequest($accept_language = 'es', $create_risk_rules_data = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
+    public function createRuleWhitelistRequest($accept_language = 'es', $create_rule_whitelist_request = null, string $contentType = self::contentTypes['createRuleWhitelist'][0])
     {
 
 
@@ -900,12 +900,12 @@ class AntifraudApi
         );
 
         // for model (json/xml)
-        if (isset($create_risk_rules_data)) {
+        if (isset($create_rule_whitelist_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_risk_rules_data));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_rule_whitelist_request));
             } else {
-                $httpBody = $create_risk_rules_data;
+                $httpBody = $create_rule_whitelist_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

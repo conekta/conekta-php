@@ -118,20 +118,20 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
         'object' => false,
         'bank' => false,
         'clabe' => false,
-        'description' => true,
-        'executed_at' => true,
+        'description' => false,
+        'executed_at' => false,
         'expires_at' => false,
-        'issuing_account_bank' => true,
-        'issuing_account_number' => true,
-        'issuing_account_holder_name' => true,
-        'issuing_account_tax_id' => true,
+        'issuing_account_bank' => false,
+        'issuing_account_number' => false,
+        'issuing_account_holder_name' => false,
+        'issuing_account_tax_id' => false,
         'payment_attempts' => false,
-        'receiving_account_holder_name' => true,
+        'receiving_account_holder_name' => false,
         'receiving_account_number' => false,
         'receiving_account_bank' => false,
-        'receiving_account_tax_id' => true,
-        'reference_number' => true,
-        'tracking_code' => true,
+        'receiving_account_tax_id' => false,
+        'reference_number' => false,
+        'tracking_code' => false,
         'customer_ip_address' => false
     ];
 
@@ -547,14 +547,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setDescription($description)
     {
         if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
 
@@ -581,14 +574,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setExecutedAt($executed_at)
     {
         if (is_null($executed_at)) {
-            array_push($this->openAPINullablesSetToNull, 'executed_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('executed_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable executed_at cannot be null');
         }
         $this->container['executed_at'] = $executed_at;
 
@@ -642,14 +628,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setIssuingAccountBank($issuing_account_bank)
     {
         if (is_null($issuing_account_bank)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_bank');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_bank', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_bank cannot be null');
         }
         $this->container['issuing_account_bank'] = $issuing_account_bank;
 
@@ -676,14 +655,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setIssuingAccountNumber($issuing_account_number)
     {
         if (is_null($issuing_account_number)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_number cannot be null');
         }
         $this->container['issuing_account_number'] = $issuing_account_number;
 
@@ -710,14 +682,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setIssuingAccountHolderName($issuing_account_holder_name)
     {
         if (is_null($issuing_account_holder_name)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_holder_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_holder_name cannot be null');
         }
         $this->container['issuing_account_holder_name'] = $issuing_account_holder_name;
 
@@ -744,14 +709,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setIssuingAccountTaxId($issuing_account_tax_id)
     {
         if (is_null($issuing_account_tax_id)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_tax_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_tax_id cannot be null');
         }
         $this->container['issuing_account_tax_id'] = $issuing_account_tax_id;
 
@@ -805,14 +763,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setReceivingAccountHolderName($receiving_account_holder_name)
     {
         if (is_null($receiving_account_holder_name)) {
-            array_push($this->openAPINullablesSetToNull, 'receiving_account_holder_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('receiving_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable receiving_account_holder_name cannot be null');
         }
         $this->container['receiving_account_holder_name'] = $receiving_account_holder_name;
 
@@ -893,14 +844,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setReceivingAccountTaxId($receiving_account_tax_id)
     {
         if (is_null($receiving_account_tax_id)) {
-            array_push($this->openAPINullablesSetToNull, 'receiving_account_tax_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('receiving_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable receiving_account_tax_id cannot be null');
         }
         $this->container['receiving_account_tax_id'] = $receiving_account_tax_id;
 
@@ -927,14 +871,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setReferenceNumber($reference_number)
     {
         if (is_null($reference_number)) {
-            array_push($this->openAPINullablesSetToNull, 'reference_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable reference_number cannot be null');
         }
         $this->container['reference_number'] = $reference_number;
 
@@ -961,14 +898,7 @@ class PaymentMethodBankTransfer implements ModelInterface, ArrayAccess, \JsonSer
     public function setTrackingCode($tracking_code)
     {
         if (is_null($tracking_code)) {
-            array_push($this->openAPINullablesSetToNull, 'tracking_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tracking_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable tracking_code cannot be null');
         }
         $this->container['tracking_code'] = $tracking_code;
 

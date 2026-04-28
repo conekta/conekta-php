@@ -94,7 +94,7 @@ class UpdateProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'antifraud_info' => false,
+        'antifraud_info' => true,
         'description' => false,
         'sku' => false,
         'name' => false,
@@ -102,7 +102,7 @@ class UpdateProduct implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => false,
         'tags' => false,
         'brand' => false,
-        'metadata' => false
+        'metadata' => true
     ];
 
     /**
@@ -378,7 +378,14 @@ class UpdateProduct implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAntifraudInfo($antifraud_info)
     {
         if (is_null($antifraud_info)) {
-            throw new \InvalidArgumentException('non-nullable antifraud_info cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'antifraud_info');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('antifraud_info', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['antifraud_info'] = $antifraud_info;
 
@@ -608,7 +615,14 @@ class UpdateProduct implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

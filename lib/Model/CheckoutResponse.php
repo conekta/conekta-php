@@ -146,7 +146,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'needs_shipping_contact' => false,
         'object' => false,
         'paid_payments_count' => false,
-        'payments_limit_count' => true,
+        'payments_limit_count' => false,
         'recurrent' => false,
         'slug' => false,
         'sms_sent' => false,
@@ -983,14 +983,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPaymentsLimitCount($payments_limit_count)
     {
         if (is_null($payments_limit_count)) {
-            array_push($this->openAPINullablesSetToNull, 'payments_limit_count');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payments_limit_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable payments_limit_count cannot be null');
         }
         $this->container['payments_limit_count'] = $payments_limit_count;
 
@@ -1145,7 +1138,7 @@ class CheckoutResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets success_url
      *
-     * @param string|null $success_url success_url
+     * @param string|null $success_url The URL to redirect to after a successful payment.
      *
      * @return self
      */

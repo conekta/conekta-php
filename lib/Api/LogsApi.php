@@ -138,7 +138,7 @@ class LogsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\LogResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\LogResponseForRequest|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function getLogById($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getLogById'][0])
     {
@@ -158,7 +158,7 @@ class LogsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\LogResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\LogResponseForRequest|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLogByIdWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getLogById'][0])
     {
@@ -189,11 +189,11 @@ class LogsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\LogResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\LogResponseForRequest' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\LogResponse' !== 'string') {
+                        if ('\Conekta\Model\LogResponseForRequest' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -211,7 +211,7 @@ class LogsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\LogResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\LogResponseForRequest', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -311,7 +311,7 @@ class LogsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\LogResponse';
+            $returnType = '\Conekta\Model\LogResponseForRequest';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -344,7 +344,7 @@ class LogsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\LogResponse',
+                        '\Conekta\Model\LogResponseForRequest',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -416,7 +416,7 @@ class LogsApi
      */
     public function getLogByIdAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getLogById'][0])
     {
-        $returnType = '\Conekta\Model\LogResponse';
+        $returnType = '\Conekta\Model\LogResponseForRequest';
         $request = $this->getLogByIdRequest($id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -582,7 +582,7 @@ class LogsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\LogsResponse|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\LogsResponseForRequest|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function getLogs($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getLogs'][0])
     {
@@ -605,7 +605,7 @@ class LogsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\LogsResponse|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\LogsResponseForRequest|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLogsWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getLogs'][0])
     {
@@ -636,11 +636,11 @@ class LogsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\LogsResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\LogsResponseForRequest' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\LogsResponse' !== 'string') {
+                        if ('\Conekta\Model\LogsResponseForRequest' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -658,7 +658,7 @@ class LogsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\LogsResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\LogsResponseForRequest', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -731,7 +731,7 @@ class LogsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\LogsResponse';
+            $returnType = '\Conekta\Model\LogsResponseForRequest';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -764,7 +764,7 @@ class LogsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\LogsResponse',
+                        '\Conekta\Model\LogsResponseForRequest',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -834,7 +834,7 @@ class LogsApi
      */
     public function getLogsAsyncWithHttpInfo($accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['getLogs'][0])
     {
-        $returnType = '\Conekta\Model\LogsResponse';
+        $returnType = '\Conekta\Model\LogsResponseForRequest';
         $request = $this->getLogsRequest($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
 
         return $this->client

@@ -3684,7 +3684,7 @@ class OrdersApi
      * Update Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
+     * @param  \Conekta\Model\OrderUpdate $order_update requested field for an order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
@@ -3692,9 +3692,9 @@ class OrdersApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateOrder($id, $order_update_request, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrder($id, $order_update, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
     {
-        list($response) = $this->updateOrderWithHttpInfo($id, $order_update_request, $accept_language, $contentType);
+        list($response) = $this->updateOrderWithHttpInfo($id, $order_update, $accept_language, $contentType);
         return $response;
     }
 
@@ -3704,7 +3704,7 @@ class OrdersApi
      * Update Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
+     * @param  \Conekta\Model\OrderUpdate $order_update requested field for an order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
@@ -3712,9 +3712,9 @@ class OrdersApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateOrderWithHttpInfo($id, $order_update_request, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderWithHttpInfo($id, $order_update, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
     {
-        $request = $this->updateOrderRequest($id, $order_update_request, $accept_language, $contentType);
+        $request = $this->updateOrderRequest($id, $order_update, $accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3971,16 +3971,16 @@ class OrdersApi
      * Update Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
+     * @param  \Conekta\Model\OrderUpdate $order_update requested field for an order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsync($id, $order_update_request, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderAsync($id, $order_update, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
     {
-        return $this->updateOrderAsyncWithHttpInfo($id, $order_update_request, $accept_language, $contentType)
+        return $this->updateOrderAsyncWithHttpInfo($id, $order_update, $accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3994,17 +3994,17 @@ class OrdersApi
      * Update Order
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
+     * @param  \Conekta\Model\OrderUpdate $order_update requested field for an order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsyncWithHttpInfo($id, $order_update_request, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderAsyncWithHttpInfo($id, $order_update, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
     {
         $returnType = '\Conekta\Model\OrderResponse';
-        $request = $this->updateOrderRequest($id, $order_update_request, $accept_language, $contentType);
+        $request = $this->updateOrderRequest($id, $order_update, $accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4046,14 +4046,14 @@ class OrdersApi
      * Create request for operation 'updateOrder'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\OrderUpdateRequest $order_update_request requested field for an order (required)
+     * @param  \Conekta\Model\OrderUpdate $order_update requested field for an order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateOrderRequest($id, $order_update_request, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
+    public function updateOrderRequest($id, $order_update, $accept_language = 'es', string $contentType = self::contentTypes['updateOrder'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -4063,10 +4063,10 @@ class OrdersApi
             );
         }
 
-        // verify the required parameter 'order_update_request' is set
-        if ($order_update_request === null || (is_array($order_update_request) && count($order_update_request) === 0)) {
+        // verify the required parameter 'order_update' is set
+        if ($order_update === null || (is_array($order_update) && count($order_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $order_update_request when calling updateOrder'
+                'Missing the required parameter $order_update when calling updateOrder'
             );
         }
 
@@ -4106,12 +4106,12 @@ class OrdersApi
         );
 
         // for model (json/xml)
-        if (isset($order_update_request)) {
+        if (isset($order_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($order_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($order_update));
             } else {
-                $httpBody = $order_update_request;
+                $httpBody = $order_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

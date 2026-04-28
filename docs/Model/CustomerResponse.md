@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **payment_sources** | [**\Conekta\Model\CustomerPaymentMethodsResponse**](CustomerPaymentMethodsResponse.md) |  | [optional]
 **phone** | **string** | Customer&#39;s phone number | [optional]
 **shipping_contacts** | [**\Conekta\Model\CustomerResponseShippingContacts**](CustomerResponseShippingContacts.md) |  | [optional]
-**subscription** | [**\Conekta\Model\SubscriptionResponse**](SubscriptionResponse.md) |  | [optional]
+**subscription** | [**\Conekta\Model\CustomerSubscriptionResponse**](CustomerSubscriptionResponse.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

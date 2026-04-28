@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **object** | **string** |  |
 **created_at** | **int** |  |
 **parent_id** | **string** |  | [optional]
-**agreements** | [**\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]**](PaymentMethodCashResponseAllOfAgreements.md) |  | [optional]
+**agreements** | [**\Conekta\Model\CashAgreementsResponse[]**](CashAgreementsResponse.md) |  | [optional]
 **reference** | **string** |  | [optional]
 **barcode** | **string** |  | [optional]
 **barcode_url** | **string** | URL to the barcode image, reference is the same as barcode | [optional]

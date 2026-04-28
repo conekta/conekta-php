@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **sms_sent** | **int** |  | [optional]
 **starts_at** | **int** |  | [optional]
 **status** | **string** |  | [optional]
-**success_url** | **string** |  | [optional]
+**success_url** | **string** | The URL to redirect to after a successful payment. | [optional]
 **type** | **string** |  | [optional]
 **url** | **string** |  | [optional]
 

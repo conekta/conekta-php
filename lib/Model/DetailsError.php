@@ -85,7 +85,7 @@ class DetailsError implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'code' => false,
-        'param' => true,
+        'param' => false,
         'message' => false,
         'debug_message' => false
     ];
@@ -358,14 +358,7 @@ class DetailsError implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParam($param)
     {
         if (is_null($param)) {
-            array_push($this->openAPINullablesSetToNull, 'param');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('param', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable param cannot be null');
         }
         $this->container['param'] = $param;
 

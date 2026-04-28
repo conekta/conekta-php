@@ -84,7 +84,7 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'allowed_payout_methods' => null,
-        'amount' => null,
+        'amount' => 'int64',
         'created_at' => 'int64',
         'currency' => null,
         'customer_info' => null,
@@ -386,6 +386,9 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['customer_info'] === null) {
             $invalidProperties[] = "'customer_info' can't be null";
         }
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
@@ -404,6 +407,9 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         }
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -566,7 +572,7 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets expires_at
      *
-     * @return int|null
+     * @return int
      */
     public function getExpiresAt()
     {
@@ -576,7 +582,7 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at The expiration date of the payout order.
+     * @param int $expires_at The expiration date of the payout order.
      *
      * @return self
      */
@@ -759,7 +765,7 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -769,7 +775,7 @@ class PayoutOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status
      *
-     * @param string|null $status The status of the payout order.
+     * @param string $status The status of the payout order.
      *
      * @return self
      */

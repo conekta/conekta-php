@@ -105,7 +105,7 @@ $apiInstance = new Conekta\Api\OrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_request = new \Conekta\Model\OrderRequest(); // \Conekta\Model\OrderRequest | requested field for order
+$order_request = {"charges":[{"amount":40000,"expires_at":1677196303,"monthly_installments":0,"payment_method":{"type":"card","token_id":"tok_2897348234","payment_source_id":"src_2tLkkyfMPh6v7pFry","customer_ip_address":"0.0.0.0"},"reference_id":"string"}],"currency":"MXN","customer_info":{"name":"DevTest","email":"test@conekta.com","phone":"5522997233","corporate":false,"object":"customer_info"},"fiscal_entity":{"tax_id":"1234567890","name":"Conekta Inc","email":"test@gmail.com","phone":"525511223344","metadata":{"test":true,"company_id":"123"},"address":{"street1":"Nuevo Leon 254","street2":"Departamento 404","postal_code":"06100","city":"Ciudad de Mexico","state":"Ciudad de Mexico","country":"MX","external_number":"123"}},"discount_lines":[{"amount":500,"code":"123","type":"loyalty"}],"line_items":[{"antifraud_info":{"additionalProp1":{},"additionalProp2":{},"additionalProp3":{}},"description":"string","sku":"string","name":"Box of Cohiba S1s","unit_price":20000,"quantity":1,"tags":["string"],"brand":"string","metadata":{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}}],"metadata":{"test":true,"company_id":"123"},"pre_authorize":false,"shipping_contact":{"phone":"525511223344","receiver":"Marvin Fuller","between_streets":"Ackerman Crescent","metadata":{"test":true,"company_id":"123"},"address":{"street1":"Nuevo Leon 254","street2":"Departamento 404","postal_code":"06100","city":"Ciudad de Mexico","state":"Ciudad de Mexico","country":"MX","residential":true},"parent_id":"string","default":true,"deleted":true},"shipping_lines":[{"amount":100,"carrier":"FEDEX","tracking_number":"TRACK123","method":"TRAING","metadata":{"key":"value"}}],"tax_lines":[{"amount":100,"description":"testing","metadata":{"additionalProp1":{},"additionalProp2":{},"additionalProp3":{}}}]}; // \Conekta\Model\OrderRequest | requested field for order
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
@@ -491,7 +491,7 @@ try {
 ## `updateOrder()`
 
 ```php
-updateOrder($id, $order_update_request, $accept_language): \Conekta\Model\OrderResponse
+updateOrder($id, $order_update, $accept_language): \Conekta\Model\OrderResponse
 ```
 
 Update Order
@@ -516,11 +516,11 @@ $apiInstance = new Conekta\Api\OrdersApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$order_update_request = new \Conekta\Model\OrderUpdateRequest(); // \Conekta\Model\OrderUpdateRequest | requested field for an order
+$order_update = new \Conekta\Model\OrderUpdate(); // \Conekta\Model\OrderUpdate | requested field for an order
 $accept_language = es; // string | Use for knowing which language to use
 
 try {
-    $result = $apiInstance->updateOrder($id, $order_update_request, $accept_language);
+    $result = $apiInstance->updateOrder($id, $order_update, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->updateOrder: ', $e->getMessage(), PHP_EOL;
@@ -532,7 +532,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **order_update_request** | [**\Conekta\Model\OrderUpdateRequest**](../Model/OrderUpdateRequest.md)| requested field for an order | |
+| **order_update** | [**\Conekta\Model\OrderUpdate**](../Model/OrderUpdate.md)| requested field for an order | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 
 ### Return type

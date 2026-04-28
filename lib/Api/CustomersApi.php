@@ -622,7 +622,7 @@ class CustomersApi
      * Create Fiscal Entity
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
+     * @param  \Conekta\Model\FiscalEntityRequest $fiscal_entity_request requested field for customer fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
@@ -631,9 +631,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\CreateCustomerFiscalEntitiesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createCustomerFiscalEntities($id, $customer_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
+    public function createCustomerFiscalEntities($id, $fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
     {
-        list($response) = $this->createCustomerFiscalEntitiesWithHttpInfo($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->createCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -643,7 +643,7 @@ class CustomersApi
      * Create Fiscal Entity
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
+     * @param  \Conekta\Model\FiscalEntityRequest $fiscal_entity_request requested field for customer fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
@@ -652,9 +652,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\CreateCustomerFiscalEntitiesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCustomerFiscalEntitiesWithHttpInfo($id, $customer_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
+    public function createCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
     {
-        $request = $this->createCustomerFiscalEntitiesRequest($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->createCustomerFiscalEntitiesRequest($id, $fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -911,7 +911,7 @@ class CustomersApi
      * Create Fiscal Entity
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
+     * @param  \Conekta\Model\FiscalEntityRequest $fiscal_entity_request requested field for customer fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
@@ -919,9 +919,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCustomerFiscalEntitiesAsync($id, $customer_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
+    public function createCustomerFiscalEntitiesAsync($id, $fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
     {
-        return $this->createCustomerFiscalEntitiesAsyncWithHttpInfo($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->createCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entity_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -935,7 +935,7 @@ class CustomersApi
      * Create Fiscal Entity
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
+     * @param  \Conekta\Model\FiscalEntityRequest $fiscal_entity_request requested field for customer fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
@@ -943,10 +943,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCustomerFiscalEntitiesAsyncWithHttpInfo($id, $customer_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
+    public function createCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
     {
         $returnType = '\Conekta\Model\CreateCustomerFiscalEntitiesResponse';
-        $request = $this->createCustomerFiscalEntitiesRequest($id, $customer_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->createCustomerFiscalEntitiesRequest($id, $fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -988,7 +988,7 @@ class CustomersApi
      * Create request for operation 'createCustomerFiscalEntities'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerFiscalEntitiesRequest $customer_fiscal_entities_request requested field for customer fiscal entities (required)
+     * @param  \Conekta\Model\FiscalEntityRequest $fiscal_entity_request requested field for customer fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerFiscalEntities'] to see the possible values for this operation
@@ -996,7 +996,7 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCustomerFiscalEntitiesRequest($id, $customer_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
+    public function createCustomerFiscalEntitiesRequest($id, $fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerFiscalEntities'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1006,10 +1006,10 @@ class CustomersApi
             );
         }
 
-        // verify the required parameter 'customer_fiscal_entities_request' is set
-        if ($customer_fiscal_entities_request === null || (is_array($customer_fiscal_entities_request) && count($customer_fiscal_entities_request) === 0)) {
+        // verify the required parameter 'fiscal_entity_request' is set
+        if ($fiscal_entity_request === null || (is_array($fiscal_entity_request) && count($fiscal_entity_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_fiscal_entities_request when calling createCustomerFiscalEntities'
+                'Missing the required parameter $fiscal_entity_request when calling createCustomerFiscalEntities'
             );
         }
 
@@ -1054,12 +1054,12 @@ class CustomersApi
         );
 
         // for model (json/xml)
-        if (isset($customer_fiscal_entities_request)) {
+        if (isset($fiscal_entity_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_fiscal_entities_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($fiscal_entity_request));
             } else {
-                $httpBody = $customer_fiscal_entities_request;
+                $httpBody = $fiscal_entity_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2982,7 +2982,7 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
+     * @param  \Conekta\Model\UpdateFiscalEntityRequest $update_fiscal_entity_request requested field for customer update fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
@@ -2991,9 +2991,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\UpdateCustomerFiscalEntitiesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateCustomerFiscalEntities($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
+    public function updateCustomerFiscalEntities($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
     {
-        list($response) = $this->updateCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -3004,7 +3004,7 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
+     * @param  \Conekta\Model\UpdateFiscalEntityRequest $update_fiscal_entity_request requested field for customer update fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
@@ -3013,9 +3013,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\UpdateCustomerFiscalEntitiesResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
+    public function updateCustomerFiscalEntitiesWithHttpInfo($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
     {
-        $request = $this->updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3273,7 +3273,7 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
+     * @param  \Conekta\Model\UpdateFiscalEntityRequest $update_fiscal_entity_request requested field for customer update fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
@@ -3281,9 +3281,9 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerFiscalEntitiesAsync($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
+    public function updateCustomerFiscalEntitiesAsync($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
     {
-        return $this->updateCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3298,7 +3298,7 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
+     * @param  \Conekta\Model\UpdateFiscalEntityRequest $update_fiscal_entity_request requested field for customer update fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
@@ -3306,10 +3306,10 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
+    public function updateCustomerFiscalEntitiesAsyncWithHttpInfo($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
     {
         $returnType = '\Conekta\Model\UpdateCustomerFiscalEntitiesResponse';
-        $request = $this->updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3352,7 +3352,7 @@ class CustomersApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $fiscal_entities_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateFiscalEntitiesRequest $customer_update_fiscal_entities_request requested field for customer update fiscal entities (required)
+     * @param  \Conekta\Model\UpdateFiscalEntityRequest $update_fiscal_entity_request requested field for customer update fiscal entities (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerFiscalEntities'] to see the possible values for this operation
@@ -3360,7 +3360,7 @@ class CustomersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $customer_update_fiscal_entities_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
+    public function updateCustomerFiscalEntitiesRequest($id, $fiscal_entities_id, $update_fiscal_entity_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerFiscalEntities'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -3377,10 +3377,10 @@ class CustomersApi
             );
         }
 
-        // verify the required parameter 'customer_update_fiscal_entities_request' is set
-        if ($customer_update_fiscal_entities_request === null || (is_array($customer_update_fiscal_entities_request) && count($customer_update_fiscal_entities_request) === 0)) {
+        // verify the required parameter 'update_fiscal_entity_request' is set
+        if ($update_fiscal_entity_request === null || (is_array($update_fiscal_entity_request) && count($update_fiscal_entity_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_update_fiscal_entities_request when calling updateCustomerFiscalEntities'
+                'Missing the required parameter $update_fiscal_entity_request when calling updateCustomerFiscalEntities'
             );
         }
 
@@ -3433,12 +3433,12 @@ class CustomersApi
         );
 
         // for model (json/xml)
-        if (isset($customer_update_fiscal_entities_request)) {
+        if (isset($update_fiscal_entity_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_update_fiscal_entities_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_fiscal_entity_request));
             } else {
-                $httpBody = $customer_update_fiscal_entities_request;
+                $httpBody = $update_fiscal_entity_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

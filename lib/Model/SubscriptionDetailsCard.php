@@ -111,7 +111,7 @@ class SubscriptionDetailsCard implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => false,
         'payment_source_status' => false,
         'customer_id' => false,
-        'customer_custom_reference' => true
+        'customer_custom_reference' => false
     ];
 
     /**
@@ -684,14 +684,7 @@ class SubscriptionDetailsCard implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCustomerCustomReference($customer_custom_reference)
     {
         if (is_null($customer_custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customer_custom_reference', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable customer_custom_reference cannot be null');
         }
         $this->container['customer_custom_reference'] = $customer_custom_reference;
 

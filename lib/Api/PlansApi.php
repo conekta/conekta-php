@@ -2010,7 +2010,7 @@ class PlansApi
      * Update Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
+     * @param  \Conekta\Model\UpdatePlan $update_plan requested field for plan (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
@@ -2019,9 +2019,9 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\PlanResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updatePlan($id, $plan_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
+    public function updatePlan($id, $update_plan, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
     {
-        list($response) = $this->updatePlanWithHttpInfo($id, $plan_update_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updatePlanWithHttpInfo($id, $update_plan, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -2031,7 +2031,7 @@ class PlansApi
      * Update Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
+     * @param  \Conekta\Model\UpdatePlan $update_plan requested field for plan (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
@@ -2040,9 +2040,9 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\PlanResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePlanWithHttpInfo($id, $plan_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
+    public function updatePlanWithHttpInfo($id, $update_plan, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
     {
-        $request = $this->updatePlanRequest($id, $plan_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updatePlanRequest($id, $update_plan, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2299,7 +2299,7 @@ class PlansApi
      * Update Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
+     * @param  \Conekta\Model\UpdatePlan $update_plan requested field for plan (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
@@ -2307,9 +2307,9 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePlanAsync($id, $plan_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
+    public function updatePlanAsync($id, $update_plan, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
     {
-        return $this->updatePlanAsyncWithHttpInfo($id, $plan_update_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->updatePlanAsyncWithHttpInfo($id, $update_plan, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2323,7 +2323,7 @@ class PlansApi
      * Update Plan
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
+     * @param  \Conekta\Model\UpdatePlan $update_plan requested field for plan (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
@@ -2331,10 +2331,10 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePlanAsyncWithHttpInfo($id, $plan_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
+    public function updatePlanAsyncWithHttpInfo($id, $update_plan, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
     {
         $returnType = '\Conekta\Model\PlanResponse';
-        $request = $this->updatePlanRequest($id, $plan_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updatePlanRequest($id, $update_plan, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2376,7 +2376,7 @@ class PlansApi
      * Create request for operation 'updatePlan'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\PlanUpdateRequest $plan_update_request requested field for plan (required)
+     * @param  \Conekta\Model\UpdatePlan $update_plan requested field for plan (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePlan'] to see the possible values for this operation
@@ -2384,7 +2384,7 @@ class PlansApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePlanRequest($id, $plan_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
+    public function updatePlanRequest($id, $update_plan, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updatePlan'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2394,10 +2394,10 @@ class PlansApi
             );
         }
 
-        // verify the required parameter 'plan_update_request' is set
-        if ($plan_update_request === null || (is_array($plan_update_request) && count($plan_update_request) === 0)) {
+        // verify the required parameter 'update_plan' is set
+        if ($update_plan === null || (is_array($update_plan) && count($update_plan) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $plan_update_request when calling updatePlan'
+                'Missing the required parameter $update_plan when calling updatePlan'
             );
         }
 
@@ -2442,12 +2442,12 @@ class PlansApi
         );
 
         // for model (json/xml)
-        if (isset($plan_update_request)) {
+        if (isset($update_plan)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($plan_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_plan));
             } else {
-                $httpBody = $plan_update_request;
+                $httpBody = $update_plan;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

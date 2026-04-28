@@ -94,7 +94,7 @@ class OrderFiscalEntityAddressResponse implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'street1' => false,
-        'street2' => true,
+        'street2' => false,
         'postal_code' => false,
         'city' => false,
         'state' => false,
@@ -402,14 +402,7 @@ class OrderFiscalEntityAddressResponse implements ModelInterface, ArrayAccess, \
     public function setStreet2($street2)
     {
         if (is_null($street2)) {
-            array_push($this->openAPINullablesSetToNull, 'street2');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('street2', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable street2 cannot be null');
         }
         $this->container['street2'] = $street2;
 

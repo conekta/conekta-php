@@ -51,7 +51,7 @@ class CreateCompanyRequestFiscalInfo implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'create_company_request_fiscal_info';
+    protected static $openAPIModelName = 'Create_Company_Request_fiscal_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
