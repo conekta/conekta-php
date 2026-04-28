@@ -397,6 +397,10 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
+        if (($this->container['expires_at'] < 1)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -504,7 +508,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expires_at
      *
-     * @param int $expires_at It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 10 minutes to 365 days from the creation date.
+     * @param int $expires_at It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date.
      *
      * @return self
      */
@@ -513,6 +517,11 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($expires_at)) {
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
+
+        if (($expires_at < 1)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling Checkout., must be bigger than or equal to 1.');
+        }
+
         $this->container['expires_at'] = $expires_at;
 
         return $this;

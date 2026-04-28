@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **allowed_payment_methods** | **string[]** | Are the payment methods available for this link. For subscriptions, only &#39;card&#39; is allowed due to the recurring nature of the payments. |
 **exclude_card_networks** | **string[]** | List of card networks to exclude from the checkout. This field is only applicable for card payments. | [optional]
 **plan_ids** | **string[]** | List of plan IDs that will be available for subscription. This field is required for subscription payments. | [optional]
-**expires_at** | **int** | Unix timestamp of checkout expiration | [optional]
+**expires_at** | **int** | It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. | [optional]
 **failure_url** | **string** | Redirection url back to the site in case of failed payment, applies only to HostedPayment. | [optional]
 **monthly_installments_enabled** | **bool** |  | [optional]
 **monthly_installments_options** | **int[]** |  | [optional]

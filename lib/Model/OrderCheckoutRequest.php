@@ -416,6 +416,10 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['allowed_payment_methods'] === null) {
             $invalidProperties[] = "'allowed_payment_methods' can't be null";
         }
+        if (!is_null($this->container['expires_at']) && ($this->container['expires_at'] < 1)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 1.";
+        }
+
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -552,7 +556,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets expires_at
      *
-     * @param int|null $expires_at Unix timestamp of checkout expiration
+     * @param int|null $expires_at It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date.
      *
      * @return self
      */
@@ -561,6 +565,11 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if (is_null($expires_at)) {
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
+
+        if (($expires_at < 1)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling OrderCheckoutRequest., must be bigger than or equal to 1.');
+        }
+
         $this->container['expires_at'] = $expires_at;
 
         return $this;
