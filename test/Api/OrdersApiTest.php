@@ -35,10 +35,6 @@ class OrdersApiTest extends BaseTestCase
 
     public function testCancelOrder()
     {
-        // The mock returns tax_lines wrapped as {object:"list", data:[...]} but
-        // OrderResponse expects a flat OrderTaxResponse[]. Skip until the mock is fixed.
-        self::markTestSkipped('Mock tax_lines format mismatch with OrderResponse model.');
-
         $response = $this->api()->cancelOrder(self::ORDER_CANCEL_ID);
 
         self::assertInstanceOf(OrderResponse::class, $response);

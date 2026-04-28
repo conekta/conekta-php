@@ -97,6 +97,7 @@ docs/Model/DeleteApiKeysResponse.md
 docs/Model/DeletedBlacklistRuleResponse.md
 docs/Model/DeletedWhitelistRuleResponse.md
 docs/Model/DetailsError.md
+docs/Model/DiscountLinesDataResponse.md
 docs/Model/DiscountLinesResponse.md
 docs/Model/EmailCheckoutRequest.md
 docs/Model/Error.md
@@ -127,6 +128,7 @@ docs/Model/OrderChannelResponse.md
 docs/Model/OrderChargesResponse.md
 docs/Model/OrderCheckoutRequest.md
 docs/Model/OrderDiscountLinesRequest.md
+docs/Model/OrderDiscountLinesResponse.md
 docs/Model/OrderFiscalEntityAddressResponse.md
 docs/Model/OrderFiscalEntityRequest.md
 docs/Model/OrderFiscalEntityResponse.md
@@ -140,6 +142,8 @@ docs/Model/OrderResponseCheckout.md
 docs/Model/OrderResponseCustomerInfo.md
 docs/Model/OrderResponseProducts.md
 docs/Model/OrderResponseShippingContact.md
+docs/Model/OrderShippingLinesResponse.md
+docs/Model/OrderTaxLinesResponse.md
 docs/Model/OrderTaxRequest.md
 docs/Model/OrderTaxResponse.md
 docs/Model/OrderUpdate.md
@@ -178,6 +182,7 @@ docs/Model/ProductOrderResponse.md
 docs/Model/ResendEventRequest.md
 docs/Model/RiskRulesData.md
 docs/Model/RiskRulesList.md
+docs/Model/ShippingLinesDataResponse.md
 docs/Model/ShippingOrderResponse.md
 docs/Model/ShippingRequest.md
 docs/Model/SmsCheckoutRequest.md
@@ -187,6 +192,7 @@ docs/Model/SubscriptionDetailsPlan.md
 docs/Model/SubscriptionEventsResponse.md
 docs/Model/SubscriptionRequest.md
 docs/Model/SubscriptionResponse.md
+docs/Model/TaxLinesDataResponse.md
 docs/Model/TokenRequest.md
 docs/Model/TokenRequestCard.md
 docs/Model/TokenRequestCheckout.md
@@ -309,6 +315,7 @@ lib/Model/DeleteApiKeysResponse.php
 lib/Model/DeletedBlacklistRuleResponse.php
 lib/Model/DeletedWhitelistRuleResponse.php
 lib/Model/DetailsError.php
+lib/Model/DiscountLinesDataResponse.php
 lib/Model/DiscountLinesResponse.php
 lib/Model/EmailCheckoutRequest.php
 lib/Model/Error.php
@@ -340,6 +347,7 @@ lib/Model/OrderChannelResponse.php
 lib/Model/OrderChargesResponse.php
 lib/Model/OrderCheckoutRequest.php
 lib/Model/OrderDiscountLinesRequest.php
+lib/Model/OrderDiscountLinesResponse.php
 lib/Model/OrderFiscalEntityAddressResponse.php
 lib/Model/OrderFiscalEntityRequest.php
 lib/Model/OrderFiscalEntityResponse.php
@@ -353,6 +361,8 @@ lib/Model/OrderResponseCheckout.php
 lib/Model/OrderResponseCustomerInfo.php
 lib/Model/OrderResponseProducts.php
 lib/Model/OrderResponseShippingContact.php
+lib/Model/OrderShippingLinesResponse.php
+lib/Model/OrderTaxLinesResponse.php
 lib/Model/OrderTaxRequest.php
 lib/Model/OrderTaxResponse.php
 lib/Model/OrderUpdate.php
@@ -391,6 +401,7 @@ lib/Model/ProductOrderResponse.php
 lib/Model/ResendEventRequest.php
 lib/Model/RiskRulesData.php
 lib/Model/RiskRulesList.php
+lib/Model/ShippingLinesDataResponse.php
 lib/Model/ShippingOrderResponse.php
 lib/Model/ShippingRequest.php
 lib/Model/SmsCheckoutRequest.php
@@ -400,6 +411,7 @@ lib/Model/SubscriptionDetailsPlan.php
 lib/Model/SubscriptionEventsResponse.php
 lib/Model/SubscriptionRequest.php
 lib/Model/SubscriptionResponse.php
+lib/Model/TaxLinesDataResponse.php
 lib/Model/TokenRequest.php
 lib/Model/TokenRequestCard.php
 lib/Model/TokenRequestCheckout.php
@@ -433,28 +445,3 @@ lib/Model/WhitelistlistRuleResponse.php
 lib/ObjectSerializer.php
 lib/ssl_data/ca_bundle.crt
 phpunit.xml.dist
-test/Api/AntifraudApiTest.php
-test/Api/ApiKeysApiTest.php
-test/Api/BalancesApiTest.php
-test/Api/ChargesApiTest.php
-test/Api/CompaniesApiTest.php
-test/Api/CustomersApiTest.php
-test/Api/DiscountsApiTest.php
-test/Api/EventsApiTest.php
-test/Api/LogsApiTest.php
-test/Api/OrdersApiTest.php
-test/Api/PaymentLinkApiTest.php
-test/Api/PaymentMethodsApiTest.php
-test/Api/PayoutOrdersApiTest.php
-test/Api/PlansApiTest.php
-test/Api/ProductsApiTest.php
-test/Api/ShippingContactsApiTest.php
-test/Api/ShippingsApiTest.php
-test/Api/SubscriptionsApiTest.php
-test/Api/SubscriptionsCustomerPortalApiTest.php
-test/Api/TaxesApiTest.php
-test/Api/TokensApiTest.php
-test/Api/TransactionsApiTest.php
-test/Api/TransfersApiTest.php
-test/Api/WebhookKeysApiTest.php
-test/Api/WebhooksApiTest.php

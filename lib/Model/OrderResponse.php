@@ -67,8 +67,9 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'int',
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\OrderResponseCustomerInfo',
-        'discount_lines' => '\Conekta\Model\DiscountLinesResponse[]',
-        'tax_lines' => '\Conekta\Model\OrderTaxResponse[]',
+        'discount_lines' => '\Conekta\Model\OrderDiscountLinesResponse',
+        'tax_lines' => '\Conekta\Model\OrderTaxLinesResponse',
+        'shipping_lines' => '\Conekta\Model\OrderShippingLinesResponse',
         'fiscal_entity' => '\Conekta\Model\OrderFiscalEntityResponse',
         'id' => 'string',
         'is_refundable' => 'bool',
@@ -101,6 +102,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_info' => null,
         'discount_lines' => null,
         'tax_lines' => null,
+        'shipping_lines' => null,
         'fiscal_entity' => null,
         'id' => null,
         'is_refundable' => null,
@@ -131,6 +133,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_info' => false,
         'discount_lines' => false,
         'tax_lines' => false,
+        'shipping_lines' => false,
         'fiscal_entity' => false,
         'id' => false,
         'is_refundable' => false,
@@ -241,6 +244,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_info' => 'customer_info',
         'discount_lines' => 'discount_lines',
         'tax_lines' => 'tax_lines',
+        'shipping_lines' => 'shipping_lines',
         'fiscal_entity' => 'fiscal_entity',
         'id' => 'id',
         'is_refundable' => 'is_refundable',
@@ -271,6 +275,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_info' => 'setCustomerInfo',
         'discount_lines' => 'setDiscountLines',
         'tax_lines' => 'setTaxLines',
+        'shipping_lines' => 'setShippingLines',
         'fiscal_entity' => 'setFiscalEntity',
         'id' => 'setId',
         'is_refundable' => 'setIsRefundable',
@@ -301,6 +306,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'customer_info' => 'getCustomerInfo',
         'discount_lines' => 'getDiscountLines',
         'tax_lines' => 'getTaxLines',
+        'shipping_lines' => 'getShippingLines',
         'fiscal_entity' => 'getFiscalEntity',
         'id' => 'getId',
         'is_refundable' => 'getIsRefundable',
@@ -382,6 +388,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('customer_info', $data ?? [], null);
         $this->setIfExists('discount_lines', $data ?? [], null);
         $this->setIfExists('tax_lines', $data ?? [], null);
+        $this->setIfExists('shipping_lines', $data ?? [], null);
         $this->setIfExists('fiscal_entity', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('is_refundable', $data ?? [], null);
@@ -661,7 +668,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets discount_lines
      *
-     * @return \Conekta\Model\DiscountLinesResponse[]|null
+     * @return \Conekta\Model\OrderDiscountLinesResponse|null
      */
     public function getDiscountLines()
     {
@@ -671,7 +678,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets discount_lines
      *
-     * @param \Conekta\Model\DiscountLinesResponse[]|null $discount_lines List of discounts that are applied to the order
+     * @param \Conekta\Model\OrderDiscountLinesResponse|null $discount_lines discount_lines
      *
      * @return self
      */
@@ -688,7 +695,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_lines
      *
-     * @return \Conekta\Model\OrderTaxResponse[]|null
+     * @return \Conekta\Model\OrderTaxLinesResponse|null
      */
     public function getTaxLines()
     {
@@ -698,7 +705,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_lines
      *
-     * @param \Conekta\Model\OrderTaxResponse[]|null $tax_lines List of taxes that are applied to the order
+     * @param \Conekta\Model\OrderTaxLinesResponse|null $tax_lines tax_lines
      *
      * @return self
      */
@@ -708,6 +715,33 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tax_lines cannot be null');
         }
         $this->container['tax_lines'] = $tax_lines;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipping_lines
+     *
+     * @return \Conekta\Model\OrderShippingLinesResponse|null
+     */
+    public function getShippingLines()
+    {
+        return $this->container['shipping_lines'];
+    }
+
+    /**
+     * Sets shipping_lines
+     *
+     * @param \Conekta\Model\OrderShippingLinesResponse|null $shipping_lines shipping_lines
+     *
+     * @return self
+     */
+    public function setShippingLines($shipping_lines)
+    {
+        if (is_null($shipping_lines)) {
+            throw new \InvalidArgumentException('non-nullable shipping_lines cannot be null');
+        }
+        $this->container['shipping_lines'] = $shipping_lines;
 
         return $this;
     }
