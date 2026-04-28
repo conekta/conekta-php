@@ -333,7 +333,7 @@ try {
 ## `updateWebhook()`
 
 ```php
-updateWebhook($id, $webhook_update_request, $accept_language, $x_child_company_id): \Conekta\Model\WebhookResponse
+updateWebhook($id, $update_webhook, $accept_language, $x_child_company_id): \Conekta\Model\WebhookResponse
 ```
 
 Update Webhook
@@ -358,12 +358,12 @@ $apiInstance = new Conekta\Api\WebhooksApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$webhook_update_request = new \Conekta\Model\WebhookUpdateRequest(); // \Conekta\Model\WebhookUpdateRequest | requested fields in order to update a webhook
+$update_webhook = new \Conekta\Model\UpdateWebhook(); // \Conekta\Model\UpdateWebhook | requested fields in order to update a webhook
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateWebhook($id, $webhook_update_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateWebhook($id, $update_webhook, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->updateWebhook: ', $e->getMessage(), PHP_EOL;
@@ -375,7 +375,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **webhook_update_request** | [**\Conekta\Model\WebhookUpdateRequest**](../Model/WebhookUpdateRequest.md)| requested fields in order to update a webhook | |
+| **update_webhook** | [**\Conekta\Model\UpdateWebhook**](../Model/UpdateWebhook.md)| requested fields in order to update a webhook | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

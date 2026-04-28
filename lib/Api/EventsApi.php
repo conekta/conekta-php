@@ -1028,7 +1028,7 @@ class EventsApi
      * Resend Event
      *
      * @param  string $event_id event identifier (required)
-     * @param  \Conekta\Model\ResendRequest $resend_request requested fields for resend an event (required)
+     * @param  \Conekta\Model\ResendEventRequest $resend_event_request requested fields for resend an event (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEvent'] to see the possible values for this operation
      *
@@ -1036,9 +1036,9 @@ class EventsApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\EventsResendResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function resendEvent($event_id, $resend_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
+    public function resendEvent($event_id, $resend_event_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
     {
-        list($response) = $this->resendEventWithHttpInfo($event_id, $resend_request, $accept_language, $contentType);
+        list($response) = $this->resendEventWithHttpInfo($event_id, $resend_event_request, $accept_language, $contentType);
         return $response;
     }
 
@@ -1048,7 +1048,7 @@ class EventsApi
      * Resend Event
      *
      * @param  string $event_id event identifier (required)
-     * @param  \Conekta\Model\ResendRequest $resend_request requested fields for resend an event (required)
+     * @param  \Conekta\Model\ResendEventRequest $resend_event_request requested fields for resend an event (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEvent'] to see the possible values for this operation
      *
@@ -1056,9 +1056,9 @@ class EventsApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\EventsResendResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function resendEventWithHttpInfo($event_id, $resend_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
+    public function resendEventWithHttpInfo($event_id, $resend_event_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
     {
-        $request = $this->resendEventRequest($event_id, $resend_request, $accept_language, $contentType);
+        $request = $this->resendEventRequest($event_id, $resend_event_request, $accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1280,16 +1280,16 @@ class EventsApi
      * Resend Event
      *
      * @param  string $event_id event identifier (required)
-     * @param  \Conekta\Model\ResendRequest $resend_request requested fields for resend an event (required)
+     * @param  \Conekta\Model\ResendEventRequest $resend_event_request requested fields for resend an event (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resendEventAsync($event_id, $resend_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
+    public function resendEventAsync($event_id, $resend_event_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
     {
-        return $this->resendEventAsyncWithHttpInfo($event_id, $resend_request, $accept_language, $contentType)
+        return $this->resendEventAsyncWithHttpInfo($event_id, $resend_event_request, $accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1303,17 +1303,17 @@ class EventsApi
      * Resend Event
      *
      * @param  string $event_id event identifier (required)
-     * @param  \Conekta\Model\ResendRequest $resend_request requested fields for resend an event (required)
+     * @param  \Conekta\Model\ResendEventRequest $resend_event_request requested fields for resend an event (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resendEventAsyncWithHttpInfo($event_id, $resend_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
+    public function resendEventAsyncWithHttpInfo($event_id, $resend_event_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
     {
         $returnType = '\Conekta\Model\EventsResendResponse';
-        $request = $this->resendEventRequest($event_id, $resend_request, $accept_language, $contentType);
+        $request = $this->resendEventRequest($event_id, $resend_event_request, $accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1355,14 +1355,14 @@ class EventsApi
      * Create request for operation 'resendEvent'
      *
      * @param  string $event_id event identifier (required)
-     * @param  \Conekta\Model\ResendRequest $resend_request requested fields for resend an event (required)
+     * @param  \Conekta\Model\ResendEventRequest $resend_event_request requested fields for resend an event (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function resendEventRequest($event_id, $resend_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
+    public function resendEventRequest($event_id, $resend_event_request, $accept_language = 'es', string $contentType = self::contentTypes['resendEvent'][0])
     {
 
         // verify the required parameter 'event_id' is set
@@ -1372,10 +1372,10 @@ class EventsApi
             );
         }
 
-        // verify the required parameter 'resend_request' is set
-        if ($resend_request === null || (is_array($resend_request) && count($resend_request) === 0)) {
+        // verify the required parameter 'resend_event_request' is set
+        if ($resend_event_request === null || (is_array($resend_event_request) && count($resend_event_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $resend_request when calling resendEvent'
+                'Missing the required parameter $resend_event_request when calling resendEvent'
             );
         }
 
@@ -1415,12 +1415,12 @@ class EventsApi
         );
 
         // for model (json/xml)
-        if (isset($resend_request)) {
+        if (isset($resend_event_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($resend_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($resend_event_request));
             } else {
-                $httpBody = $resend_request;
+                $httpBody = $resend_event_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

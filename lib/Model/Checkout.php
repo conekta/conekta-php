@@ -71,6 +71,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_ids' => 'string[]',
         'order_template' => '\Conekta\Model\CheckoutOrderTemplate',
         'payments_limit_count' => 'int',
+        'success_url' => 'string',
         'recurrent' => 'bool',
         'type' => 'string'
     ];
@@ -95,6 +96,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_ids' => null,
         'order_template' => null,
         'payments_limit_count' => 'int8',
+        'success_url' => null,
         'recurrent' => null,
         'type' => null
     ];
@@ -110,13 +112,14 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'expires_at' => false,
         'monthly_installments_enabled' => false,
         'monthly_installments_options' => false,
-        'three_ds_mode' => true,
+        'three_ds_mode' => false,
         'name' => false,
         'needs_shipping_contact' => false,
-        'on_demand_enabled' => true,
+        'on_demand_enabled' => false,
         'plan_ids' => false,
         'order_template' => false,
         'payments_limit_count' => false,
+        'success_url' => false,
         'recurrent' => false,
         'type' => false
     ];
@@ -219,6 +222,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_ids' => 'plan_ids',
         'order_template' => 'order_template',
         'payments_limit_count' => 'payments_limit_count',
+        'success_url' => 'success_url',
         'recurrent' => 'recurrent',
         'type' => 'type'
     ];
@@ -241,6 +245,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_ids' => 'setPlanIds',
         'order_template' => 'setOrderTemplate',
         'payments_limit_count' => 'setPaymentsLimitCount',
+        'success_url' => 'setSuccessUrl',
         'recurrent' => 'setRecurrent',
         'type' => 'setType'
     ];
@@ -263,6 +268,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_ids' => 'getPlanIds',
         'order_template' => 'getOrderTemplate',
         'payments_limit_count' => 'getPaymentsLimitCount',
+        'success_url' => 'getSuccessUrl',
         'recurrent' => 'getRecurrent',
         'type' => 'getType'
     ];
@@ -353,6 +359,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('order_template', $data ?? [], null);
         $this->setIfExists('payments_limit_count', $data ?? [], null);
+        $this->setIfExists('success_url', $data ?? [], null);
         $this->setIfExists('recurrent', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
@@ -396,6 +403,10 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['order_template'] === null) {
             $invalidProperties[] = "'order_template' can't be null";
         }
+        if (!is_null($this->container['payments_limit_count']) && ($this->container['payments_limit_count'] < 1)) {
+            $invalidProperties[] = "invalid value for 'payments_limit_count', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['recurrent'] === null) {
             $invalidProperties[] = "'recurrent' can't be null";
         }
@@ -581,14 +592,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThreeDsMode($three_ds_mode)
     {
         if (is_null($three_ds_mode)) {
-            array_push($this->openAPINullablesSetToNull, 'three_ds_mode');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('three_ds_mode', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
         }
         $this->container['three_ds_mode'] = $three_ds_mode;
 
@@ -669,14 +673,7 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOnDemandEnabled($on_demand_enabled)
     {
         if (is_null($on_demand_enabled)) {
-            array_push($this->openAPINullablesSetToNull, 'on_demand_enabled');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_demand_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable on_demand_enabled cannot be null');
         }
         $this->container['on_demand_enabled'] = $on_demand_enabled;
 
@@ -759,7 +756,39 @@ class Checkout implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($payments_limit_count)) {
             throw new \InvalidArgumentException('non-nullable payments_limit_count cannot be null');
         }
+
+        if (($payments_limit_count < 1)) {
+            throw new \InvalidArgumentException('invalid value for $payments_limit_count when calling Checkout., must be bigger than or equal to 1.');
+        }
+
         $this->container['payments_limit_count'] = $payments_limit_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_url
+     *
+     * @return string|null
+     */
+    public function getSuccessUrl()
+    {
+        return $this->container['success_url'];
+    }
+
+    /**
+     * Sets success_url
+     *
+     * @param string|null $success_url The URL to redirect to after a successful payment.
+     *
+     * @return self
+     */
+    public function setSuccessUrl($success_url)
+    {
+        if (is_null($success_url)) {
+            throw new \InvalidArgumentException('non-nullable success_url cannot be null');
+        }
+        $this->container['success_url'] = $success_url;
 
         return $this;
     }

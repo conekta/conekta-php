@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **phone** | **string** |  | [optional]
 **receiver** | **string** |  | [optional]
 **between_streets** | **string** |  | [optional]
-**address** | [**\Conekta\Model\CustomerShippingContactsResponseAddress**](CustomerShippingContactsResponseAddress.md) |  | [optional]
+**address** | [**\Conekta\Model\CustomerShippingContactsAddress**](CustomerShippingContactsAddress.md) |  | [optional]
 **parent_id** | **string** |  | [optional]
 **default** | **bool** |  | [optional]
 **id** | **string** |  | [optional]

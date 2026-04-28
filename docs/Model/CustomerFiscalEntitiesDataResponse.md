@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**\Conekta\Model\CustomerAddress**](CustomerAddress.md) |  |
+**address** | [**\Conekta\Model\FiscalEntityRequestAddress**](FiscalEntityRequestAddress.md) |  |
 **tax_id** | **string** |  | [optional]
 **email** | **string** |  | [optional]
 **phone** | **string** |  | [optional]

@@ -77,7 +77,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'country' => 'string',
         'exp_month' => 'string',
         'exp_year' => 'string',
-        'fraud_indicators' => 'object[]',
+        'fraud_indicators' => 'mixed[]',
         'issuer' => 'string',
         'last4' => 'string',
         'name' => 'string',
@@ -89,7 +89,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'issuing_account_number' => 'string',
         'issuing_account_holder_name' => 'string',
         'issuing_account_tax_id' => 'string',
-        'payment_attempts' => 'object[]',
+        'payment_attempts' => 'mixed[]',
         'receiving_account_holder_name' => 'string',
         'receiving_account_number' => 'string',
         'receiving_account_bank' => 'string',
@@ -166,13 +166,13 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'object' => false,
         'agreement' => false,
         'auth_code' => false,
-        'cashier_id' => true,
+        'cashier_id' => false,
         'reference' => false,
         'barcode_url' => false,
         'expires_at' => false,
         'product_type' => false,
         'service_name' => false,
-        'store' => true,
+        'store' => false,
         'store_name' => false,
         'customer_ip_address' => false,
         'account_type' => false,
@@ -187,19 +187,19 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         'name' => false,
         'bank' => false,
         'clabe' => false,
-        'description' => true,
-        'executed_at' => true,
-        'issuing_account_bank' => true,
-        'issuing_account_number' => true,
-        'issuing_account_holder_name' => true,
-        'issuing_account_tax_id' => true,
+        'description' => false,
+        'executed_at' => false,
+        'issuing_account_bank' => false,
+        'issuing_account_number' => false,
+        'issuing_account_holder_name' => false,
+        'issuing_account_tax_id' => false,
         'payment_attempts' => false,
-        'receiving_account_holder_name' => true,
+        'receiving_account_holder_name' => false,
         'receiving_account_number' => false,
         'receiving_account_bank' => false,
-        'receiving_account_tax_id' => true,
-        'reference_number' => true,
-        'tracking_code' => true,
+        'receiving_account_tax_id' => false,
+        'reference_number' => false,
+        'tracking_code' => false,
         'cancel_url' => false,
         'failure_url' => false,
         'redirect_url' => false,
@@ -581,8 +581,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
-        if (($this->container['expires_at'] <= 0)) {
-            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than 0.";
+        if (($this->container['expires_at'] < 0)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 0.";
         }
 
         if ($this->container['product_type'] === null) {
@@ -737,14 +737,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setCashierId($cashier_id)
     {
         if (is_null($cashier_id)) {
-            array_push($this->openAPINullablesSetToNull, 'cashier_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cashier_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable cashier_id cannot be null');
         }
         $this->container['cashier_id'] = $cashier_id;
 
@@ -828,8 +821,8 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
 
-        if (($expires_at <= 0)) {
-            throw new \InvalidArgumentException('invalid value for $expires_at when calling ChargeResponsePaymentMethod., must be bigger than 0.');
+        if (($expires_at < 0)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling ChargeResponsePaymentMethod., must be bigger than or equal to 0.');
         }
 
         $this->container['expires_at'] = $expires_at;
@@ -911,14 +904,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setStore($store)
     {
         if (is_null($store)) {
-            array_push($this->openAPINullablesSetToNull, 'store');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('store', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable store cannot be null');
         }
         $this->container['store'] = $store;
 
@@ -1144,7 +1130,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets fraud_indicators
      *
-     * @return object[]|null
+     * @return mixed[]|null
      */
     public function getFraudIndicators()
     {
@@ -1154,7 +1140,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets fraud_indicators
      *
-     * @param object[]|null $fraud_indicators fraud_indicators
+     * @param mixed[]|null $fraud_indicators fraud_indicators
      *
      * @return self
      */
@@ -1323,14 +1309,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setDescription($description)
     {
         if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
 
@@ -1357,14 +1336,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setExecutedAt($executed_at)
     {
         if (is_null($executed_at)) {
-            array_push($this->openAPINullablesSetToNull, 'executed_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('executed_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable executed_at cannot be null');
         }
         $this->container['executed_at'] = $executed_at;
 
@@ -1391,14 +1363,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setIssuingAccountBank($issuing_account_bank)
     {
         if (is_null($issuing_account_bank)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_bank');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_bank', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_bank cannot be null');
         }
         $this->container['issuing_account_bank'] = $issuing_account_bank;
 
@@ -1425,14 +1390,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setIssuingAccountNumber($issuing_account_number)
     {
         if (is_null($issuing_account_number)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_number cannot be null');
         }
         $this->container['issuing_account_number'] = $issuing_account_number;
 
@@ -1459,14 +1417,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setIssuingAccountHolderName($issuing_account_holder_name)
     {
         if (is_null($issuing_account_holder_name)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_holder_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_holder_name cannot be null');
         }
         $this->container['issuing_account_holder_name'] = $issuing_account_holder_name;
 
@@ -1493,14 +1444,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setIssuingAccountTaxId($issuing_account_tax_id)
     {
         if (is_null($issuing_account_tax_id)) {
-            array_push($this->openAPINullablesSetToNull, 'issuing_account_tax_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('issuing_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable issuing_account_tax_id cannot be null');
         }
         $this->container['issuing_account_tax_id'] = $issuing_account_tax_id;
 
@@ -1510,7 +1454,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets payment_attempts
      *
-     * @return object[]|null
+     * @return mixed[]|null
      */
     public function getPaymentAttempts()
     {
@@ -1520,7 +1464,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets payment_attempts
      *
-     * @param object[]|null $payment_attempts payment_attempts
+     * @param mixed[]|null $payment_attempts payment_attempts
      *
      * @return self
      */
@@ -1554,14 +1498,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setReceivingAccountHolderName($receiving_account_holder_name)
     {
         if (is_null($receiving_account_holder_name)) {
-            array_push($this->openAPINullablesSetToNull, 'receiving_account_holder_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('receiving_account_holder_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable receiving_account_holder_name cannot be null');
         }
         $this->container['receiving_account_holder_name'] = $receiving_account_holder_name;
 
@@ -1642,14 +1579,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setReceivingAccountTaxId($receiving_account_tax_id)
     {
         if (is_null($receiving_account_tax_id)) {
-            array_push($this->openAPINullablesSetToNull, 'receiving_account_tax_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('receiving_account_tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable receiving_account_tax_id cannot be null');
         }
         $this->container['receiving_account_tax_id'] = $receiving_account_tax_id;
 
@@ -1676,14 +1606,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setReferenceNumber($reference_number)
     {
         if (is_null($reference_number)) {
-            array_push($this->openAPINullablesSetToNull, 'reference_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable reference_number cannot be null');
         }
         $this->container['reference_number'] = $reference_number;
 
@@ -1710,14 +1633,7 @@ class ChargeResponsePaymentMethod implements ModelInterface, ArrayAccess, \JsonS
     public function setTrackingCode($tracking_code)
     {
         if (is_null($tracking_code)) {
-            array_push($this->openAPINullablesSetToNull, 'tracking_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tracking_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable tracking_code cannot be null');
         }
         $this->container['tracking_code'] = $tracking_code;
 

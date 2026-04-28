@@ -142,17 +142,17 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => false,
         'is_redirect_on_failure' => false,
         'livemode' => false,
-        'max_failed_retries' => true,
+        'max_failed_retries' => false,
         'metadata' => false,
         'monthly_installments_enabled' => false,
         'monthly_installments_options' => false,
         'name' => false,
         'needs_shipping_contact' => false,
         'object' => false,
-        'on_demand_enabled' => true,
+        'on_demand_enabled' => false,
         'paid_payments_count' => false,
         'recurrent' => false,
-        'redirection_time' => true,
+        'redirection_time' => false,
         'slug' => false,
         'sms_sent' => false,
         'success_url' => false,
@@ -481,10 +481,25 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['allowed_payment_methods'] === null) {
+            $invalidProperties[] = "'allowed_payment_methods' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         if (!is_null($this->container['metadata']) && (count($this->container['metadata']) > 100)) {
             $invalidProperties[] = "invalid value for 'metadata', number of items must be less than or equal to 100.";
         }
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['object'] === null) {
+            $invalidProperties[] = "'object' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -503,7 +518,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets allowed_payment_methods
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getAllowedPaymentMethods()
     {
@@ -513,7 +528,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets allowed_payment_methods
      *
-     * @param string[]|null $allowed_payment_methods Are the payment methods available for this link
+     * @param string[] $allowed_payment_methods Are the payment methods available for this link
      *
      * @return self
      */
@@ -701,7 +716,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -711,7 +726,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id id
      *
      * @return self
      */
@@ -799,14 +814,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setMaxFailedRetries($max_failed_retries)
     {
         if (is_null($max_failed_retries)) {
-            array_push($this->openAPINullablesSetToNull, 'max_failed_retries');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_failed_retries', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable max_failed_retries cannot be null');
         }
         $this->container['max_failed_retries'] = $max_failed_retries;
 
@@ -901,7 +909,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -911,7 +919,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -955,7 +963,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets object
      *
-     * @return string|null
+     * @return string
      */
     public function getObject()
     {
@@ -965,7 +973,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets object
      *
-     * @param string|null $object object
+     * @param string $object object
      *
      * @return self
      */
@@ -999,14 +1007,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setOnDemandEnabled($on_demand_enabled)
     {
         if (is_null($on_demand_enabled)) {
-            array_push($this->openAPINullablesSetToNull, 'on_demand_enabled');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_demand_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable on_demand_enabled cannot be null');
         }
         $this->container['on_demand_enabled'] = $on_demand_enabled;
 
@@ -1087,14 +1088,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRedirectionTime($redirection_time)
     {
         if (is_null($redirection_time)) {
-            array_push($this->openAPINullablesSetToNull, 'redirection_time');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('redirection_time', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable redirection_time cannot be null');
         }
         $this->container['redirection_time'] = $redirection_time;
 
@@ -1168,7 +1162,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets success_url
      *
-     * @param string|null $success_url success_url
+     * @param string|null $success_url Redirection url back to the site in case of successful payment, applies only to HostedPayment
      *
      * @return self
      */
@@ -1239,7 +1233,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -1249,7 +1243,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type This field represents the type of checkout, which determines the user experience during the payment process. 'HostedPayment' will redirect the customer to a Conekta-hosted page to complete the payment, while 'Integration' allows the payment process to be handled entirely on your site using Conekta's APIs and SDKs.
      *
      * @return self
      */
@@ -1276,7 +1270,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets url
      *
-     * @param string|null $url url
+     * @param string|null $url Indicate the url of the Conekta component to complete the payment. For HostedPayment, this will be a Conekta-hosted page
      *
      * @return self
      */

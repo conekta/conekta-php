@@ -75,6 +75,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'payment_method' => '\Conekta\Model\ChargeResponsePaymentMethod',
         'reference_id' => 'string',
         'refunds' => '\Conekta\Model\ChargeResponseRefunds',
+        'chargeback' => '\Conekta\Model\ChargebackResponse',
         'status' => 'string'
     ];
 
@@ -103,6 +104,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'payment_method' => null,
         'reference_id' => null,
         'refunds' => null,
+        'chargeback' => null,
         'status' => null
     ];
 
@@ -125,10 +127,11 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'livemode' => false,
         'object' => false,
         'order_id' => false,
-        'paid_at' => true,
+        'paid_at' => false,
         'payment_method' => false,
-        'reference_id' => true,
-        'refunds' => true,
+        'reference_id' => false,
+        'refunds' => false,
+        'chargeback' => false,
         'status' => false
     ];
 
@@ -235,6 +238,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'payment_method' => 'payment_method',
         'reference_id' => 'reference_id',
         'refunds' => 'refunds',
+        'chargeback' => 'chargeback',
         'status' => 'status'
     ];
 
@@ -261,6 +265,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'payment_method' => 'setPaymentMethod',
         'reference_id' => 'setReferenceId',
         'refunds' => 'setRefunds',
+        'chargeback' => 'setChargeback',
         'status' => 'setStatus'
     ];
 
@@ -287,6 +292,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'payment_method' => 'getPaymentMethod',
         'reference_id' => 'getReferenceId',
         'refunds' => 'getRefunds',
+        'chargeback' => 'getChargeback',
         'status' => 'getStatus'
     ];
 
@@ -364,6 +370,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('payment_method', $data ?? [], null);
         $this->setIfExists('reference_id', $data ?? [], null);
         $this->setIfExists('refunds', $data ?? [], null);
+        $this->setIfExists('chargeback', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -797,21 +804,14 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets paid_at
      *
-     * @param int|null $paid_at Payment date
+     * @param int|null $paid_at charge Payment date
      *
      * @return self
      */
     public function setPaidAt($paid_at)
     {
         if (is_null($paid_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paid_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paid_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable paid_at cannot be null');
         }
         $this->container['paid_at'] = $paid_at;
 
@@ -865,14 +865,7 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setReferenceId($reference_id)
     {
         if (is_null($reference_id)) {
-            array_push($this->openAPINullablesSetToNull, 'reference_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable reference_id cannot be null');
         }
         $this->container['reference_id'] = $reference_id;
 
@@ -899,16 +892,36 @@ class ChargesDataResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setRefunds($refunds)
     {
         if (is_null($refunds)) {
-            array_push($this->openAPINullablesSetToNull, 'refunds');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('refunds', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable refunds cannot be null');
         }
         $this->container['refunds'] = $refunds;
+
+        return $this;
+    }
+
+    /**
+     * Gets chargeback
+     *
+     * @return \Conekta\Model\ChargebackResponse|null
+     */
+    public function getChargeback()
+    {
+        return $this->container['chargeback'];
+    }
+
+    /**
+     * Sets chargeback
+     *
+     * @param \Conekta\Model\ChargebackResponse|null $chargeback chargeback
+     *
+     * @return self
+     */
+    public function setChargeback($chargeback)
+    {
+        if (is_null($chargeback)) {
+            throw new \InvalidArgumentException('non-nullable chargeback cannot be null');
+        }
+        $this->container['chargeback'] = $chargeback;
 
         return $this;
     }

@@ -819,7 +819,7 @@ try {
 ## `subscriptionUpdate()`
 
 ```php
-subscriptionUpdate($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Update Subscription
@@ -845,12 +845,12 @@ $apiInstance = new Conekta\Api\SubscriptionsApi(
 );
 $customer_id = cus_2tGzG1GxtDAZHEGPH; // string | Identifier of the customer resource
 $id = sub_2tGzG1GxtDAZHEGPH; // string | Identifier of the subscription resource
-$subscription_update_request = new \Conekta\Model\SubscriptionUpdateRequest(); // \Conekta\Model\SubscriptionUpdateRequest | requested field for update a subscription
+$updates_a_subscription = new \Conekta\Model\UpdatesASubscription(); // \Conekta\Model\UpdatesASubscription | requested field for update a subscription
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->subscriptionUpdate($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->subscriptionUpdate: ', $e->getMessage(), PHP_EOL;
@@ -863,7 +863,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **customer_id** | **string**| Identifier of the customer resource | |
 | **id** | **string**| Identifier of the subscription resource | |
-| **subscription_update_request** | [**\Conekta\Model\SubscriptionUpdateRequest**](../Model/SubscriptionUpdateRequest.md)| requested field for update a subscription | |
+| **updates_a_subscription** | [**\Conekta\Model\UpdatesASubscription**](../Model/UpdatesASubscription.md)| requested field for update a subscription | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 
@@ -1019,7 +1019,7 @@ try {
 ## `updateSubscription()`
 
 ```php
-updateSubscription($id, $subscription_update_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Update Subscription [Deprecated]
@@ -1044,12 +1044,12 @@ $apiInstance = new Conekta\Api\SubscriptionsApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$subscription_update_request = new \Conekta\Model\SubscriptionUpdateRequest(); // \Conekta\Model\SubscriptionUpdateRequest | requested field for update a subscription
+$updates_a_subscription = new \Conekta\Model\UpdatesASubscription(); // \Conekta\Model\UpdatesASubscription | requested field for update a subscription
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateSubscription($id, $subscription_update_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionsApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -1061,7 +1061,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **subscription_update_request** | [**\Conekta\Model\SubscriptionUpdateRequest**](../Model/SubscriptionUpdateRequest.md)| requested field for update a subscription | |
+| **updates_a_subscription** | [**\Conekta\Model\UpdatesASubscription**](../Model/UpdatesASubscription.md)| requested field for update a subscription | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

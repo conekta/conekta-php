@@ -12,7 +12,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `ordersCreateTaxes()`
 
 ```php
-ordersCreateTaxes($id, $order_tax_request, $accept_language, $x_child_company_id): \Conekta\Model\UpdateOrderTaxResponse
+ordersCreateTaxes($id, $order_tax_request, $accept_language, $x_child_company_id): \Conekta\Model\OrderTaxResponse
 ```
 
 Create Tax
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\UpdateOrderTaxResponse**](../Model/UpdateOrderTaxResponse.md)
+[**\Conekta\Model\OrderTaxResponse**](../Model/OrderTaxResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `ordersDeleteTaxes()`
 
 ```php
-ordersDeleteTaxes($id, $tax_id, $accept_language, $x_child_company_id): \Conekta\Model\UpdateOrderTaxResponse
+ordersDeleteTaxes($id, $tax_id, $accept_language, $x_child_company_id): \Conekta\Model\OrderTaxResponse
 ```
 
 Delete Tax
@@ -126,7 +126,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\UpdateOrderTaxResponse**](../Model/UpdateOrderTaxResponse.md)
+[**\Conekta\Model\OrderTaxResponse**](../Model/OrderTaxResponse.md)
 
 ### Authorization
 
@@ -144,7 +144,7 @@ try {
 ## `ordersUpdateTaxes()`
 
 ```php
-ordersUpdateTaxes($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id): \Conekta\Model\UpdateOrderTaxResponse
+ordersUpdateTaxes($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id): \Conekta\Model\OrderTaxResponse
 ```
 
 Update Tax
@@ -170,12 +170,12 @@ $apiInstance = new Conekta\Api\TaxesApi(
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $tax_id = tax_lin_2tQ974hSHcsdeSZHG; // string | identifier
-$update_order_tax_request = new \Conekta\Model\UpdateOrderTaxRequest(); // \Conekta\Model\UpdateOrderTaxRequest | requested field for taxes
+$orders_update_taxes_request = new \Conekta\Model\OrdersUpdateTaxesRequest(); // \Conekta\Model\OrdersUpdateTaxesRequest | requested field for taxes
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->ordersUpdateTaxes($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->ordersUpdateTaxes($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaxesApi->ordersUpdateTaxes: ', $e->getMessage(), PHP_EOL;
@@ -188,13 +188,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
 | **tax_id** | **string**| identifier | |
-| **update_order_tax_request** | [**\Conekta\Model\UpdateOrderTaxRequest**](../Model/UpdateOrderTaxRequest.md)| requested field for taxes | |
+| **orders_update_taxes_request** | [**\Conekta\Model\OrdersUpdateTaxesRequest**](../Model/OrdersUpdateTaxesRequest.md)| requested field for taxes | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 
 ### Return type
 
-[**\Conekta\Model\UpdateOrderTaxResponse**](../Model/UpdateOrderTaxResponse.md)
+[**\Conekta\Model\OrderTaxResponse**](../Model/OrderTaxResponse.md)
 
 ### Authorization
 

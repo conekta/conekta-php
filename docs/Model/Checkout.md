@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **plan_ids** | **string[]** | It is a list of plan IDs that will be associated with the order. | [optional]
 **order_template** | [**\Conekta\Model\CheckoutOrderTemplate**](CheckoutOrderTemplate.md) |  |
 **payments_limit_count** | **int** | It is the number of payments that can be made through the link. | [optional]
+**success_url** | **string** | The URL to redirect to after a successful payment. | [optional]
 **recurrent** | **bool** | false: single use. true: multiple payments |
 **type** | **string** | It is the type of link that will be created. It must be a valid type. |
 

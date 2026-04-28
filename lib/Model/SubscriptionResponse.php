@@ -113,24 +113,24 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'billing_cycle_start' => true,
-        'billing_cycle_end' => true,
-        'canceled_at' => true,
+        'billing_cycle_start' => false,
+        'billing_cycle_end' => false,
+        'canceled_at' => false,
         'canceled_reason' => false,
         'card_id' => false,
-        'charge_id' => true,
+        'charge_id' => false,
         'created_at' => false,
         'customer_custom_reference' => false,
         'customer_id' => false,
         'id' => false,
         'last_billing_cycle_order_id' => false,
         'object' => false,
-        'paused_at' => true,
+        'paused_at' => false,
         'plan_id' => false,
         'status' => false,
         'subscription_start' => false,
-        'trial_start' => true,
-        'trial_end' => true
+        'trial_start' => false,
+        'trial_end' => false
     ];
 
     /**
@@ -430,14 +430,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBillingCycleStart($billing_cycle_start)
     {
         if (is_null($billing_cycle_start)) {
-            array_push($this->openAPINullablesSetToNull, 'billing_cycle_start');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('billing_cycle_start', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable billing_cycle_start cannot be null');
         }
         $this->container['billing_cycle_start'] = $billing_cycle_start;
 
@@ -464,14 +457,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBillingCycleEnd($billing_cycle_end)
     {
         if (is_null($billing_cycle_end)) {
-            array_push($this->openAPINullablesSetToNull, 'billing_cycle_end');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('billing_cycle_end', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable billing_cycle_end cannot be null');
         }
         $this->container['billing_cycle_end'] = $billing_cycle_end;
 
@@ -498,14 +484,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setCanceledAt($canceled_at)
     {
         if (is_null($canceled_at)) {
-            array_push($this->openAPINullablesSetToNull, 'canceled_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('canceled_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable canceled_at cannot be null');
         }
         $this->container['canceled_at'] = $canceled_at;
 
@@ -586,14 +565,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setChargeId($charge_id)
     {
         if (is_null($charge_id)) {
-            array_push($this->openAPINullablesSetToNull, 'charge_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('charge_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable charge_id cannot be null');
         }
         $this->container['charge_id'] = $charge_id;
 
@@ -782,14 +754,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPausedAt($paused_at)
     {
         if (is_null($paused_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paused_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paused_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable paused_at cannot be null');
         }
         $this->container['paused_at'] = $paused_at;
 
@@ -897,14 +862,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTrialStart($trial_start)
     {
         if (is_null($trial_start)) {
-            array_push($this->openAPINullablesSetToNull, 'trial_start');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trial_start', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable trial_start cannot be null');
         }
         $this->container['trial_start'] = $trial_start;
 
@@ -931,14 +889,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTrialEnd($trial_end)
     {
         if (is_null($trial_end)) {
-            array_push($this->openAPINullablesSetToNull, 'trial_end');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trial_end', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable trial_end cannot be null');
         }
         $this->container['trial_end'] = $trial_end;
 

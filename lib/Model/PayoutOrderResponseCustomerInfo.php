@@ -59,13 +59,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'customer_custom_reference' => 'string',
         'name' => 'string',
         'email' => 'string',
         'phone' => 'string',
         'corporate' => 'bool',
-        'object' => 'string',
-        'id' => 'string'
+        'object' => 'string'
     ];
 
     /**
@@ -76,13 +76,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'customer_custom_reference' => null,
         'name' => null,
         'email' => 'email',
         'phone' => null,
         'corporate' => null,
-        'object' => null,
-        'id' => null
+        'object' => null
     ];
 
     /**
@@ -91,13 +91,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_custom_reference' => true,
+        'id' => false,
+        'customer_custom_reference' => false,
         'name' => false,
         'email' => false,
         'phone' => false,
         'corporate' => false,
-        'object' => false,
-        'id' => false
+        'object' => false
     ];
 
     /**
@@ -186,13 +186,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'customer_custom_reference' => 'customer_custom_reference',
         'name' => 'name',
         'email' => 'email',
         'phone' => 'phone',
         'corporate' => 'corporate',
-        'object' => 'object',
-        'id' => 'id'
+        'object' => 'object'
     ];
 
     /**
@@ -201,13 +201,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'customer_custom_reference' => 'setCustomerCustomReference',
         'name' => 'setName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
         'corporate' => 'setCorporate',
-        'object' => 'setObject',
-        'id' => 'setId'
+        'object' => 'setObject'
     ];
 
     /**
@@ -216,13 +216,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'customer_custom_reference' => 'getCustomerCustomReference',
         'name' => 'getName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
         'corporate' => 'getCorporate',
-        'object' => 'getObject',
-        'id' => 'getId'
+        'object' => 'getObject'
     ];
 
     /**
@@ -282,13 +282,13 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('customer_custom_reference', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('corporate', $data ?? [], false);
         $this->setIfExists('object', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -337,6 +337,33 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The id of the customer.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets customer_custom_reference
      *
      * @return string|null
@@ -356,14 +383,7 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
     public function setCustomerCustomReference($customer_custom_reference)
     {
         if (is_null($customer_custom_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'customer_custom_reference');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('customer_custom_reference', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable customer_custom_reference cannot be null');
         }
         $this->container['customer_custom_reference'] = $customer_custom_reference;
 
@@ -501,33 +521,6 @@ class PayoutOrderResponseCustomerInfo implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable object cannot be null');
         }
         $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The id of the customer.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }

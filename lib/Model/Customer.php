@@ -66,14 +66,14 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
         'email' => 'string',
         'default_payment_source_id' => 'string',
         'default_shipping_contact_id' => 'string',
-        'fiscal_entities' => '\Conekta\Model\CustomerFiscalEntitiesRequest[]',
+        'fiscal_entities' => '\Conekta\Model\FiscalEntityRequest[]',
         'metadata' => 'array<string,mixed>',
         'name' => 'string',
         'national_id' => 'string',
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsRequest[]',
         'phone' => 'string',
         'plan_id' => 'string',
-        'shipping_contacts' => '\Conekta\Model\CustomerShippingContacts[]',
+        'shipping_contacts' => '\Conekta\Model\CustomerShippingContactsRequest[]',
         'subscription' => '\Conekta\Model\SubscriptionRequest'
     ];
 
@@ -109,7 +109,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'antifraud_info' => true,
+        'antifraud_info' => false,
         'corporate' => false,
         'custom_reference' => false,
         'date_of_birth' => false,
@@ -429,14 +429,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAntifraudInfo($antifraud_info)
     {
         if (is_null($antifraud_info)) {
-            array_push($this->openAPINullablesSetToNull, 'antifraud_info');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('antifraud_info', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable antifraud_info cannot be null');
         }
         $this->container['antifraud_info'] = $antifraud_info;
 
@@ -608,7 +601,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fiscal_entities
      *
-     * @return \Conekta\Model\CustomerFiscalEntitiesRequest[]|null
+     * @return \Conekta\Model\FiscalEntityRequest[]|null
      */
     public function getFiscalEntities()
     {
@@ -618,7 +611,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fiscal_entities
      *
-     * @param \Conekta\Model\CustomerFiscalEntitiesRequest[]|null $fiscal_entities fiscal_entities
+     * @param \Conekta\Model\FiscalEntityRequest[]|null $fiscal_entities fiscal_entities
      *
      * @return self
      */
@@ -801,7 +794,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_contacts
      *
-     * @return \Conekta\Model\CustomerShippingContacts[]|null
+     * @return \Conekta\Model\CustomerShippingContactsRequest[]|null
      */
     public function getShippingContacts()
     {
@@ -811,7 +804,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_contacts
      *
-     * @param \Conekta\Model\CustomerShippingContacts[]|null $shipping_contacts Contains the detail of the shipping addresses that the client has active or has used in Conekta
+     * @param \Conekta\Model\CustomerShippingContactsRequest[]|null $shipping_contacts Contains the detail of the shipping addresses that the client has active or has used in Conekta
      *
      * @return self
      */

@@ -326,6 +326,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     public const PRODUCT_TYPE_APLAZO_BNPL = 'aplazo_bnpl';
+    public const PRODUCT_TYPE_AZTECA_BNPL = 'azteca_bnpl';
+    public const PRODUCT_TYPE_COPPEL_BNPL = 'coppel_bnpl';
     public const PRODUCT_TYPE_CREDITEA_BNPL = 'creditea_bnpl';
 
     /**
@@ -337,6 +339,8 @@ class ChargeRequestPaymentMethod implements ModelInterface, ArrayAccess, \JsonSe
     {
         return [
             self::PRODUCT_TYPE_APLAZO_BNPL,
+            self::PRODUCT_TYPE_AZTECA_BNPL,
+            self::PRODUCT_TYPE_COPPEL_BNPL,
             self::PRODUCT_TYPE_CREDITEA_BNPL,
         ];
     }

@@ -104,7 +104,7 @@ class SubscriptionDetails implements ModelInterface, ArrayAccess, \JsonSerializa
         'status' => false,
         'plan_id' => false,
         'customer_id' => false,
-        'next_billing_cycle' => true,
+        'next_billing_cycle' => false,
         'created_at' => false,
         'updated_at' => false
     ];
@@ -563,14 +563,7 @@ class SubscriptionDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setNextBillingCycle($next_billing_cycle)
     {
         if (is_null($next_billing_cycle)) {
-            array_push($this->openAPINullablesSetToNull, 'next_billing_cycle');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('next_billing_cycle', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable next_billing_cycle cannot be null');
         }
         $this->container['next_billing_cycle'] = $next_billing_cycle;
 

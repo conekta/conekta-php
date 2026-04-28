@@ -51,7 +51,7 @@ class WebhookKeyDeleteResponse implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'webhook-key_delete_response';
+    protected static $openAPIModelName = 'webhook_key_delete_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

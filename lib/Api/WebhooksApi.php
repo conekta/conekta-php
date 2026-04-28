@@ -2309,7 +2309,7 @@ class WebhooksApi
      * Update Webhook
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\WebhookUpdateRequest $webhook_update_request requested fields in order to update a webhook (required)
+     * @param  \Conekta\Model\UpdateWebhook $update_webhook requested fields in order to update a webhook (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
@@ -2318,9 +2318,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\WebhookResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateWebhook($id, $webhook_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhook($id, $update_webhook, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        list($response) = $this->updateWebhookWithHttpInfo($id, $webhook_update_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateWebhookWithHttpInfo($id, $update_webhook, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -2330,7 +2330,7 @@ class WebhooksApi
      * Update Webhook
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\WebhookUpdateRequest $webhook_update_request requested fields in order to update a webhook (required)
+     * @param  \Conekta\Model\UpdateWebhook $update_webhook requested fields in order to update a webhook (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
@@ -2339,9 +2339,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\WebhookResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWebhookWithHttpInfo($id, $webhook_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookWithHttpInfo($id, $update_webhook, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        $request = $this->updateWebhookRequest($id, $webhook_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateWebhookRequest($id, $update_webhook, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2563,7 +2563,7 @@ class WebhooksApi
      * Update Webhook
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\WebhookUpdateRequest $webhook_update_request requested fields in order to update a webhook (required)
+     * @param  \Conekta\Model\UpdateWebhook $update_webhook requested fields in order to update a webhook (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
@@ -2571,9 +2571,9 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebhookAsync($id, $webhook_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookAsync($id, $update_webhook, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        return $this->updateWebhookAsyncWithHttpInfo($id, $webhook_update_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateWebhookAsyncWithHttpInfo($id, $update_webhook, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2587,7 +2587,7 @@ class WebhooksApi
      * Update Webhook
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\WebhookUpdateRequest $webhook_update_request requested fields in order to update a webhook (required)
+     * @param  \Conekta\Model\UpdateWebhook $update_webhook requested fields in order to update a webhook (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
@@ -2595,10 +2595,10 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebhookAsyncWithHttpInfo($id, $webhook_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookAsyncWithHttpInfo($id, $update_webhook, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
         $returnType = '\Conekta\Model\WebhookResponse';
-        $request = $this->updateWebhookRequest($id, $webhook_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateWebhookRequest($id, $update_webhook, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2640,7 +2640,7 @@ class WebhooksApi
      * Create request for operation 'updateWebhook'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\WebhookUpdateRequest $webhook_update_request requested fields in order to update a webhook (required)
+     * @param  \Conekta\Model\UpdateWebhook $update_webhook requested fields in order to update a webhook (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
@@ -2648,7 +2648,7 @@ class WebhooksApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateWebhookRequest($id, $webhook_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookRequest($id, $update_webhook, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -2658,10 +2658,10 @@ class WebhooksApi
             );
         }
 
-        // verify the required parameter 'webhook_update_request' is set
-        if ($webhook_update_request === null || (is_array($webhook_update_request) && count($webhook_update_request) === 0)) {
+        // verify the required parameter 'update_webhook' is set
+        if ($update_webhook === null || (is_array($update_webhook) && count($update_webhook) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $webhook_update_request when calling updateWebhook'
+                'Missing the required parameter $update_webhook when calling updateWebhook'
             );
         }
 
@@ -2706,12 +2706,12 @@ class WebhooksApi
         );
 
         // for model (json/xml)
-        if (isset($webhook_update_request)) {
+        if (isset($update_webhook)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_webhook));
             } else {
-                $httpBody = $webhook_update_request;
+                $httpBody = $update_webhook;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

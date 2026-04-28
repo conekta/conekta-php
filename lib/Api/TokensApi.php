@@ -128,7 +128,7 @@ class TokensApi
      *
      * Create Token
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
+     * @param  \Conekta\Model\TokenRequest $token_request requested field for token (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
@@ -136,9 +136,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\TokenResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createToken($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function createToken($token_request, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
-        list($response) = $this->createTokenWithHttpInfo($token, $accept_language, $contentType);
+        list($response) = $this->createTokenWithHttpInfo($token_request, $accept_language, $contentType);
         return $response;
     }
 
@@ -147,7 +147,7 @@ class TokensApi
      *
      * Create Token
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
+     * @param  \Conekta\Model\TokenRequest $token_request requested field for token (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
@@ -155,9 +155,9 @@ class TokensApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\TokenResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTokenWithHttpInfo($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function createTokenWithHttpInfo($token_request, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
-        $request = $this->createTokenRequest($token, $accept_language, $contentType);
+        $request = $this->createTokenRequest($token_request, $accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -378,16 +378,16 @@ class TokensApi
      *
      * Create Token
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
+     * @param  \Conekta\Model\TokenRequest $token_request requested field for token (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsync($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function createTokenAsync($token_request, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
-        return $this->createTokenAsyncWithHttpInfo($token, $accept_language, $contentType)
+        return $this->createTokenAsyncWithHttpInfo($token_request, $accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -400,17 +400,17 @@ class TokensApi
      *
      * Create Token
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
+     * @param  \Conekta\Model\TokenRequest $token_request requested field for token (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTokenAsyncWithHttpInfo($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function createTokenAsyncWithHttpInfo($token_request, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
         $returnType = '\Conekta\Model\TokenResponse';
-        $request = $this->createTokenRequest($token, $accept_language, $contentType);
+        $request = $this->createTokenRequest($token_request, $accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -451,20 +451,20 @@ class TokensApi
     /**
      * Create request for operation 'createToken'
      *
-     * @param  \Conekta\Model\Token $token requested field for token (required)
+     * @param  \Conekta\Model\TokenRequest $token_request requested field for token (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTokenRequest($token, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
+    public function createTokenRequest($token_request, $accept_language = 'es', string $contentType = self::contentTypes['createToken'][0])
     {
 
-        // verify the required parameter 'token' is set
-        if ($token === null || (is_array($token) && count($token) === 0)) {
+        // verify the required parameter 'token_request' is set
+        if ($token_request === null || (is_array($token_request) && count($token_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token when calling createToken'
+                'Missing the required parameter $token_request when calling createToken'
             );
         }
 
@@ -496,12 +496,12 @@ class TokensApi
         );
 
         // for model (json/xml)
-        if (isset($token)) {
+        if (isset($token_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($token));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($token_request));
             } else {
-                $httpBody = $token;
+                $httpBody = $token_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

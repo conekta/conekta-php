@@ -63,7 +63,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'object' => 'string',
         'created_at' => 'int',
         'parent_id' => 'string',
-        'agreements' => '\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]',
+        'agreements' => '\Conekta\Model\CashAgreementsResponse[]',
         'reference' => 'string',
         'barcode' => 'string',
         'barcode_url' => 'string',
@@ -75,6 +75,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => 'string',
         'exp_year' => 'string',
         'brand' => 'string',
+        'issuer' => 'string',
         'name' => 'string',
         'default' => 'bool',
         'visible_on_checkout' => 'bool',
@@ -107,6 +108,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => null,
         'exp_year' => null,
         'brand' => null,
+        'issuer' => null,
         'name' => null,
         'default' => null,
         'visible_on_checkout' => null,
@@ -137,6 +139,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => false,
         'exp_year' => false,
         'brand' => false,
+        'issuer' => false,
         'name' => false,
         'default' => false,
         'visible_on_checkout' => false,
@@ -247,6 +250,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => 'exp_month',
         'exp_year' => 'exp_year',
         'brand' => 'brand',
+        'issuer' => 'issuer',
         'name' => 'name',
         'default' => 'default',
         'visible_on_checkout' => 'visible_on_checkout',
@@ -277,6 +281,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => 'setExpMonth',
         'exp_year' => 'setExpYear',
         'brand' => 'setBrand',
+        'issuer' => 'setIssuer',
         'name' => 'setName',
         'default' => 'setDefault',
         'visible_on_checkout' => 'setVisibleOnCheckout',
@@ -307,6 +312,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         'exp_month' => 'getExpMonth',
         'exp_year' => 'getExpYear',
         'brand' => 'getBrand',
+        'issuer' => 'getIssuer',
         'name' => 'getName',
         'default' => 'getDefault',
         'visible_on_checkout' => 'getVisibleOnCheckout',
@@ -388,6 +394,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('exp_month', $data ?? [], null);
         $this->setIfExists('exp_year', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('issuer', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('default', $data ?? [], null);
         $this->setIfExists('visible_on_checkout', $data ?? [], null);
@@ -590,7 +597,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets agreements
      *
-     * @return \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null
+     * @return \Conekta\Model\CashAgreementsResponse[]|null
      */
     public function getAgreements()
     {
@@ -600,7 +607,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets agreements
      *
-     * @param \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null $agreements agreements
+     * @param \Conekta\Model\CashAgreementsResponse[]|null $agreements agreements
      *
      * @return self
      */
@@ -907,6 +914,33 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable brand cannot be null');
         }
         $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer
+     *
+     * @return string|null
+     */
+    public function getIssuer()
+    {
+        return $this->container['issuer'];
+    }
+
+    /**
+     * Sets issuer
+     *
+     * @param string|null $issuer Name of the institution that issued the card
+     *
+     * @return self
+     */
+    public function setIssuer($issuer)
+    {
+        if (is_null($issuer)) {
+            throw new \InvalidArgumentException('non-nullable issuer cannot be null');
+        }
+        $this->container['issuer'] = $issuer;
 
         return $this;
     }

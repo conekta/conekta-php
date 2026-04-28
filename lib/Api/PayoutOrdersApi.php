@@ -568,7 +568,7 @@ class PayoutOrdersApi
      *
      * Create payout order
      *
-     * @param  \Conekta\Model\PayoutOrder $payout_order requested field for payout order (required)
+     * @param  \Conekta\Model\PayoutOrderRequest $payout_order_request requested field for payout order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayoutOrder'] to see the possible values for this operation
      *
@@ -576,9 +576,9 @@ class PayoutOrdersApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\PayoutOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createPayoutOrder($payout_order, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
+    public function createPayoutOrder($payout_order_request, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
     {
-        list($response) = $this->createPayoutOrderWithHttpInfo($payout_order, $accept_language, $contentType);
+        list($response) = $this->createPayoutOrderWithHttpInfo($payout_order_request, $accept_language, $contentType);
         return $response;
     }
 
@@ -587,7 +587,7 @@ class PayoutOrdersApi
      *
      * Create payout order
      *
-     * @param  \Conekta\Model\PayoutOrder $payout_order requested field for payout order (required)
+     * @param  \Conekta\Model\PayoutOrderRequest $payout_order_request requested field for payout order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayoutOrder'] to see the possible values for this operation
      *
@@ -595,9 +595,9 @@ class PayoutOrdersApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\PayoutOrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPayoutOrderWithHttpInfo($payout_order, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
+    public function createPayoutOrderWithHttpInfo($payout_order_request, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
     {
-        $request = $this->createPayoutOrderRequest($payout_order, $accept_language, $contentType);
+        $request = $this->createPayoutOrderRequest($payout_order_request, $accept_language, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -888,16 +888,16 @@ class PayoutOrdersApi
      *
      * Create payout order
      *
-     * @param  \Conekta\Model\PayoutOrder $payout_order requested field for payout order (required)
+     * @param  \Conekta\Model\PayoutOrderRequest $payout_order_request requested field for payout order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayoutOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPayoutOrderAsync($payout_order, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
+    public function createPayoutOrderAsync($payout_order_request, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
     {
-        return $this->createPayoutOrderAsyncWithHttpInfo($payout_order, $accept_language, $contentType)
+        return $this->createPayoutOrderAsyncWithHttpInfo($payout_order_request, $accept_language, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -910,17 +910,17 @@ class PayoutOrdersApi
      *
      * Create payout order
      *
-     * @param  \Conekta\Model\PayoutOrder $payout_order requested field for payout order (required)
+     * @param  \Conekta\Model\PayoutOrderRequest $payout_order_request requested field for payout order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayoutOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPayoutOrderAsyncWithHttpInfo($payout_order, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
+    public function createPayoutOrderAsyncWithHttpInfo($payout_order_request, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
     {
         $returnType = '\Conekta\Model\PayoutOrderResponse';
-        $request = $this->createPayoutOrderRequest($payout_order, $accept_language, $contentType);
+        $request = $this->createPayoutOrderRequest($payout_order_request, $accept_language, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -961,20 +961,20 @@ class PayoutOrdersApi
     /**
      * Create request for operation 'createPayoutOrder'
      *
-     * @param  \Conekta\Model\PayoutOrder $payout_order requested field for payout order (required)
+     * @param  \Conekta\Model\PayoutOrderRequest $payout_order_request requested field for payout order (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPayoutOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPayoutOrderRequest($payout_order, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
+    public function createPayoutOrderRequest($payout_order_request, $accept_language = 'es', string $contentType = self::contentTypes['createPayoutOrder'][0])
     {
 
-        // verify the required parameter 'payout_order' is set
-        if ($payout_order === null || (is_array($payout_order) && count($payout_order) === 0)) {
+        // verify the required parameter 'payout_order_request' is set
+        if ($payout_order_request === null || (is_array($payout_order_request) && count($payout_order_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $payout_order when calling createPayoutOrder'
+                'Missing the required parameter $payout_order_request when calling createPayoutOrder'
             );
         }
 
@@ -1006,12 +1006,12 @@ class PayoutOrdersApi
         );
 
         // for model (json/xml)
-        if (isset($payout_order)) {
+        if (isset($payout_order_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payout_order));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payout_order_request));
             } else {
-                $httpBody = $payout_order;
+                $httpBody = $payout_order_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

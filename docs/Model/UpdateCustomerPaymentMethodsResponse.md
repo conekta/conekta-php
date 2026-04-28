@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **object** | **string** |  |
 **created_at** | **int** |  |
 **parent_id** | **string** |  | [optional]
-**agreements** | [**\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]**](PaymentMethodCashResponseAllOfAgreements.md) |  | [optional]
+**agreements** | [**\Conekta\Model\CashAgreementsResponse[]**](CashAgreementsResponse.md) |  | [optional]
 **reference** | **string** |  | [optional]
 **barcode** | **string** |  | [optional]
 **barcode_url** | **string** | URL to the barcode image, reference is the same as barcode | [optional]
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **exp_month** | **string** |  | [optional]
 **exp_year** | **string** |  | [optional]
 **brand** | **string** |  | [optional]
+**issuer** | **string** | Name of the institution that issued the card | [optional]
 **name** | **string** |  | [optional]
 **default** | **bool** |  | [optional]
 **visible_on_checkout** | **bool** |  | [optional]

@@ -11,7 +11,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `getLogById()`
 
 ```php
-getLogById($id, $accept_language, $x_child_company_id): \Conekta\Model\LogResponse
+getLogById($id, $accept_language, $x_child_company_id): \Conekta\Model\LogResponseForRequest
 ```
 
 Get Log
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\LogResponse**](../Model/LogResponse.md)
+[**\Conekta\Model\LogResponseForRequest**](../Model/LogResponseForRequest.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `getLogs()`
 
 ```php
-getLogs($accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\LogsResponse
+getLogs($accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\LogsResponseForRequest
 ```
 
 Get List Of Logs
@@ -127,7 +127,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\LogsResponse**](../Model/LogsResponse.md)
+[**\Conekta\Model\LogsResponseForRequest**](../Model/LogsResponseForRequest.md)
 
 ### Authorization
 
