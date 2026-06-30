@@ -92,9 +92,9 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'address' => false,
         'email' => false,
         'metadata' => false,
-        'name' => true,
+        'name' => false,
         'phone' => false,
-        'tax_id' => true
+        'tax_id' => false
     ];
 
     /**
@@ -438,14 +438,7 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function setName($name)
     {
         if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
 
@@ -499,14 +492,7 @@ class OrderFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function setTaxId($tax_id)
     {
         if (is_null($tax_id)) {
-            array_push($this->openAPINullablesSetToNull, 'tax_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tax_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable tax_id cannot be null');
         }
         $this->container['tax_id'] = $tax_id;
 

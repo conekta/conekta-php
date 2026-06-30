@@ -75,7 +75,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'paid_at' => 'int',
         'payment_method' => '\Conekta\Model\ChargeOrderResponsePaymentMethod',
         'reference_id' => 'string',
-        'refunds' => 'object[]',
+        'refunds' => 'mixed[]',
         'status' => 'string'
     ];
 
@@ -120,17 +120,17 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => false,
         'customer_id' => false,
         'description' => false,
-        'device_fingerprint' => true,
+        'device_fingerprint' => false,
         'failure_code' => false,
         'failure_message' => false,
         'id' => false,
         'livemode' => false,
-        'monthly_installments' => true,
+        'monthly_installments' => false,
         'object' => false,
         'order_id' => false,
-        'paid_at' => true,
+        'paid_at' => false,
         'payment_method' => false,
-        'reference_id' => true,
+        'reference_id' => false,
         'refunds' => false,
         'status' => false
     ];
@@ -598,14 +598,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDeviceFingerprint($device_fingerprint)
     {
         if (is_null($device_fingerprint)) {
-            array_push($this->openAPINullablesSetToNull, 'device_fingerprint');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('device_fingerprint', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable device_fingerprint cannot be null');
         }
         $this->container['device_fingerprint'] = $device_fingerprint;
 
@@ -740,14 +733,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setMonthlyInstallments($monthly_installments)
     {
         if (is_null($monthly_installments)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly_installments');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly_installments', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable monthly_installments cannot be null');
         }
         $this->container['monthly_installments'] = $monthly_installments;
 
@@ -828,14 +814,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPaidAt($paid_at)
     {
         if (is_null($paid_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paid_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paid_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable paid_at cannot be null');
         }
         $this->container['paid_at'] = $paid_at;
 
@@ -889,14 +868,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setReferenceId($reference_id)
     {
         if (is_null($reference_id)) {
-            array_push($this->openAPINullablesSetToNull, 'reference_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable reference_id cannot be null');
         }
         $this->container['reference_id'] = $reference_id;
 
@@ -906,7 +878,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets refunds
      *
-     * @return object[]|null
+     * @return mixed[]|null
      */
     public function getRefunds()
     {
@@ -916,7 +888,7 @@ class ChargeOrderResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets refunds
      *
-     * @param object[]|null $refunds refunds
+     * @param mixed[]|null $refunds refunds
      *
      * @return self
      */

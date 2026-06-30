@@ -61,7 +61,7 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
         'phone' => 'string',
         'receiver' => 'string',
         'between_streets' => 'string',
-        'address' => '\Conekta\Model\CustomerShippingContactsAddress',
+        'address' => '\Conekta\Model\CustomerShippingContactsRequestAddress',
         'parent_id' => 'string',
         'default' => 'bool',
         'deleted' => 'bool',
@@ -103,8 +103,8 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
         'between_streets' => false,
         'address' => false,
         'parent_id' => false,
-        'default' => true,
-        'deleted' => true,
+        'default' => false,
+        'deleted' => false,
         'metadata' => false,
         'id' => false,
         'object' => false,
@@ -460,7 +460,7 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
     /**
      * Gets address
      *
-     * @return \Conekta\Model\CustomerShippingContactsAddress
+     * @return \Conekta\Model\CustomerShippingContactsRequestAddress
      */
     public function getAddress()
     {
@@ -470,7 +470,7 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
     /**
      * Sets address
      *
-     * @param \Conekta\Model\CustomerShippingContactsAddress $address address
+     * @param \Conekta\Model\CustomerShippingContactsRequestAddress $address address
      *
      * @return self
      */
@@ -531,14 +531,7 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
     public function setDefault($default)
     {
         if (is_null($default)) {
-            array_push($this->openAPINullablesSetToNull, 'default');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('default', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable default cannot be null');
         }
         $this->container['default'] = $default;
 
@@ -565,14 +558,7 @@ class CustomerShippingContactsDataResponse implements ModelInterface, ArrayAcces
     public function setDeleted($deleted)
     {
         if (is_null($deleted)) {
-            array_push($this->openAPINullablesSetToNull, 'deleted');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deleted', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable deleted cannot be null');
         }
         $this->container['deleted'] = $deleted;
 

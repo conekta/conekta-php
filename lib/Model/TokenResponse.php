@@ -87,7 +87,7 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'checkout' => true,
+        'checkout' => false,
         'id' => false,
         'livemode' => false,
         'object' => false,
@@ -353,14 +353,7 @@ class TokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCheckout($checkout)
     {
         if (is_null($checkout)) {
-            array_push($this->openAPINullablesSetToNull, 'checkout');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('checkout', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable checkout cannot be null');
         }
         $this->container['checkout'] = $checkout;
 

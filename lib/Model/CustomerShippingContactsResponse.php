@@ -62,7 +62,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
         'phone' => 'string',
         'receiver' => 'string',
         'between_streets' => 'string',
-        'address' => '\Conekta\Model\CustomerShippingContactsResponseAddress',
+        'address' => '\Conekta\Model\CustomerShippingContactsAddress',
         'parent_id' => 'string',
         'default' => 'bool',
         'id' => 'string',
@@ -101,7 +101,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'phone' => false,
         'receiver' => false,
-        'between_streets' => true,
+        'between_streets' => false,
         'address' => false,
         'parent_id' => false,
         'default' => false,
@@ -439,14 +439,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     public function setBetweenStreets($between_streets)
     {
         if (is_null($between_streets)) {
-            array_push($this->openAPINullablesSetToNull, 'between_streets');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('between_streets', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable between_streets cannot be null');
         }
         $this->container['between_streets'] = $between_streets;
 
@@ -456,7 +449,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets address
      *
-     * @return \Conekta\Model\CustomerShippingContactsResponseAddress|null
+     * @return \Conekta\Model\CustomerShippingContactsAddress|null
      */
     public function getAddress()
     {
@@ -466,7 +459,7 @@ class CustomerShippingContactsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets address
      *
-     * @param \Conekta\Model\CustomerShippingContactsResponseAddress|null $address address
+     * @param \Conekta\Model\CustomerShippingContactsAddress|null $address address
      *
      * @return self
      */

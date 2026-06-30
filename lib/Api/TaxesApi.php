@@ -142,7 +142,7 @@ class TaxesApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function ordersCreateTaxes($id, $order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersCreateTaxes'][0])
     {
@@ -163,7 +163,7 @@ class TaxesApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function ordersCreateTaxesWithHttpInfo($id, $order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersCreateTaxes'][0])
     {
@@ -194,11 +194,11 @@ class TaxesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\UpdateOrderTaxResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\OrderTaxResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\UpdateOrderTaxResponse' !== 'string') {
+                        if ('\Conekta\Model\OrderTaxResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -216,7 +216,7 @@ class TaxesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\UpdateOrderTaxResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\OrderTaxResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -316,7 +316,7 @@ class TaxesApi
                 );
             }
 
-            $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
+            $returnType = '\Conekta\Model\OrderTaxResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -349,7 +349,7 @@ class TaxesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\UpdateOrderTaxResponse',
+                        '\Conekta\Model\OrderTaxResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -423,7 +423,7 @@ class TaxesApi
      */
     public function ordersCreateTaxesAsyncWithHttpInfo($id, $order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersCreateTaxes'][0])
     {
-        $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
+        $returnType = '\Conekta\Model\OrderTaxResponse';
         $request = $this->ordersCreateTaxesRequest($id, $order_tax_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -602,7 +602,7 @@ class TaxesApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function ordersDeleteTaxes($id, $tax_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersDeleteTaxes'][0])
     {
@@ -623,7 +623,7 @@ class TaxesApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function ordersDeleteTaxesWithHttpInfo($id, $tax_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersDeleteTaxes'][0])
     {
@@ -654,11 +654,11 @@ class TaxesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\UpdateOrderTaxResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\OrderTaxResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\UpdateOrderTaxResponse' !== 'string') {
+                        if ('\Conekta\Model\OrderTaxResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -676,7 +676,7 @@ class TaxesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\UpdateOrderTaxResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\OrderTaxResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -803,7 +803,7 @@ class TaxesApi
                 );
             }
 
-            $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
+            $returnType = '\Conekta\Model\OrderTaxResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -836,7 +836,7 @@ class TaxesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\UpdateOrderTaxResponse',
+                        '\Conekta\Model\OrderTaxResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -918,7 +918,7 @@ class TaxesApi
      */
     public function ordersDeleteTaxesAsyncWithHttpInfo($id, $tax_id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersDeleteTaxes'][0])
     {
-        $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
+        $returnType = '\Conekta\Model\OrderTaxResponse';
         $request = $this->ordersDeleteTaxesRequest($id, $tax_id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -1092,18 +1092,18 @@ class TaxesApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $tax_id identifier (required)
-     * @param  \Conekta\Model\UpdateOrderTaxRequest $update_order_tax_request requested field for taxes (required)
+     * @param  \Conekta\Model\OrdersUpdateTaxesRequest $orders_update_taxes_request requested field for taxes (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersUpdateTaxes'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function ordersUpdateTaxes($id, $tax_id, $update_order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
+    public function ordersUpdateTaxes($id, $tax_id, $orders_update_taxes_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
     {
-        list($response) = $this->ordersUpdateTaxesWithHttpInfo($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->ordersUpdateTaxesWithHttpInfo($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -1114,18 +1114,18 @@ class TaxesApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $tax_id identifier (required)
-     * @param  \Conekta\Model\UpdateOrderTaxRequest $update_order_tax_request requested field for taxes (required)
+     * @param  \Conekta\Model\OrdersUpdateTaxesRequest $orders_update_taxes_request requested field for taxes (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersUpdateTaxes'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\UpdateOrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\OrderTaxResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function ordersUpdateTaxesWithHttpInfo($id, $tax_id, $update_order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
+    public function ordersUpdateTaxesWithHttpInfo($id, $tax_id, $orders_update_taxes_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
     {
-        $request = $this->ordersUpdateTaxesRequest($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->ordersUpdateTaxesRequest($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1152,11 +1152,11 @@ class TaxesApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\UpdateOrderTaxResponse' === '\SplFileObject') {
+                    if ('\Conekta\Model\OrderTaxResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\UpdateOrderTaxResponse' !== 'string') {
+                        if ('\Conekta\Model\OrderTaxResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1174,7 +1174,7 @@ class TaxesApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\UpdateOrderTaxResponse', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\OrderTaxResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1301,7 +1301,7 @@ class TaxesApi
                 );
             }
 
-            $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
+            $returnType = '\Conekta\Model\OrderTaxResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1334,7 +1334,7 @@ class TaxesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\UpdateOrderTaxResponse',
+                        '\Conekta\Model\OrderTaxResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1383,7 +1383,7 @@ class TaxesApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $tax_id identifier (required)
-     * @param  \Conekta\Model\UpdateOrderTaxRequest $update_order_tax_request requested field for taxes (required)
+     * @param  \Conekta\Model\OrdersUpdateTaxesRequest $orders_update_taxes_request requested field for taxes (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersUpdateTaxes'] to see the possible values for this operation
@@ -1391,9 +1391,9 @@ class TaxesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function ordersUpdateTaxesAsync($id, $tax_id, $update_order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
+    public function ordersUpdateTaxesAsync($id, $tax_id, $orders_update_taxes_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
     {
-        return $this->ordersUpdateTaxesAsyncWithHttpInfo($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->ordersUpdateTaxesAsyncWithHttpInfo($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1408,7 +1408,7 @@ class TaxesApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $tax_id identifier (required)
-     * @param  \Conekta\Model\UpdateOrderTaxRequest $update_order_tax_request requested field for taxes (required)
+     * @param  \Conekta\Model\OrdersUpdateTaxesRequest $orders_update_taxes_request requested field for taxes (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersUpdateTaxes'] to see the possible values for this operation
@@ -1416,10 +1416,10 @@ class TaxesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function ordersUpdateTaxesAsyncWithHttpInfo($id, $tax_id, $update_order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
+    public function ordersUpdateTaxesAsyncWithHttpInfo($id, $tax_id, $orders_update_taxes_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
     {
-        $returnType = '\Conekta\Model\UpdateOrderTaxResponse';
-        $request = $this->ordersUpdateTaxesRequest($id, $tax_id, $update_order_tax_request, $accept_language, $x_child_company_id, $contentType);
+        $returnType = '\Conekta\Model\OrderTaxResponse';
+        $request = $this->ordersUpdateTaxesRequest($id, $tax_id, $orders_update_taxes_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1462,7 +1462,7 @@ class TaxesApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $tax_id identifier (required)
-     * @param  \Conekta\Model\UpdateOrderTaxRequest $update_order_tax_request requested field for taxes (required)
+     * @param  \Conekta\Model\OrdersUpdateTaxesRequest $orders_update_taxes_request requested field for taxes (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ordersUpdateTaxes'] to see the possible values for this operation
@@ -1470,7 +1470,7 @@ class TaxesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function ordersUpdateTaxesRequest($id, $tax_id, $update_order_tax_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
+    public function ordersUpdateTaxesRequest($id, $tax_id, $orders_update_taxes_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['ordersUpdateTaxes'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1487,10 +1487,10 @@ class TaxesApi
             );
         }
 
-        // verify the required parameter 'update_order_tax_request' is set
-        if ($update_order_tax_request === null || (is_array($update_order_tax_request) && count($update_order_tax_request) === 0)) {
+        // verify the required parameter 'orders_update_taxes_request' is set
+        if ($orders_update_taxes_request === null || (is_array($orders_update_taxes_request) && count($orders_update_taxes_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_order_tax_request when calling ordersUpdateTaxes'
+                'Missing the required parameter $orders_update_taxes_request when calling ordersUpdateTaxes'
             );
         }
 
@@ -1543,12 +1543,12 @@ class TaxesApi
         );
 
         // for model (json/xml)
-        if (isset($update_order_tax_request)) {
+        if (isset($orders_update_taxes_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_order_tax_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orders_update_taxes_request));
             } else {
-                $httpBody = $update_order_tax_request;
+                $httpBody = $orders_update_taxes_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

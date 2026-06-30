@@ -103,7 +103,7 @@ class SubscriptionDetailsPlan implements ModelInterface, ArrayAccess, \JsonSeria
         'currency' => false,
         'interval' => false,
         'frequency' => false,
-        'trial_period_days' => true,
+        'trial_period_days' => false,
         'expiry_count' => false,
         'created_at' => false
     ];
@@ -562,14 +562,7 @@ class SubscriptionDetailsPlan implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTrialPeriodDays($trial_period_days)
     {
         if (is_null($trial_period_days)) {
-            array_push($this->openAPINullablesSetToNull, 'trial_period_days');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trial_period_days', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable trial_period_days cannot be null');
         }
         $this->container['trial_period_days'] = $trial_period_days;
 

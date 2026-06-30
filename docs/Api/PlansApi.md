@@ -268,7 +268,7 @@ try {
 ## `updatePlan()`
 
 ```php
-updatePlan($id, $plan_update_request, $accept_language, $x_child_company_id): \Conekta\Model\PlanResponse
+updatePlan($id, $update_plan, $accept_language, $x_child_company_id): \Conekta\Model\PlanResponse
 ```
 
 Update Plan
@@ -291,12 +291,12 @@ $apiInstance = new Conekta\Api\PlansApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$plan_update_request = new \Conekta\Model\PlanUpdateRequest(); // \Conekta\Model\PlanUpdateRequest | requested field for plan
+$update_plan = new \Conekta\Model\UpdatePlan(); // \Conekta\Model\UpdatePlan | requested field for plan
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updatePlan($id, $plan_update_request, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updatePlan($id, $update_plan, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PlansApi->updatePlan: ', $e->getMessage(), PHP_EOL;
@@ -308,7 +308,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **plan_update_request** | [**\Conekta\Model\PlanUpdateRequest**](../Model/PlanUpdateRequest.md)| requested field for plan | |
+| **update_plan** | [**\Conekta\Model\UpdatePlan**](../Model/UpdatePlan.md)| requested field for plan | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

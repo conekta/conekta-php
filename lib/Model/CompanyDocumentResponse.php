@@ -51,7 +51,7 @@ class CompanyDocumentResponse implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'company_document_response';
+    protected static $openAPIModelName = 'CompanyDocumentResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

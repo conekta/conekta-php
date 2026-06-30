@@ -10,12 +10,12 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `createToken()`
 
 ```php
-createToken($token, $accept_language): \Conekta\Model\TokenResponse
+createToken($token_request, $accept_language): \Conekta\Model\TokenResponse
 ```
 
 Create Token
 
-Generate a payment token, to associate it with a card
+Generate a payment token, to associate it with a card, Endpoint could be use directly only for PCI compliance account
 
 ### Example
 
@@ -34,11 +34,11 @@ $apiInstance = new Conekta\Api\TokensApi(
     new GuzzleHttp\Client(),
     $config
 );
-$token = new \Conekta\Model\Token(); // \Conekta\Model\Token | requested field for token
+$token_request = new \Conekta\Model\TokenRequest(); // \Conekta\Model\TokenRequest | requested field for token
 $accept_language = es; // string | Use for knowing which language to use
 
 try {
-    $result = $apiInstance->createToken($token, $accept_language);
+    $result = $apiInstance->createToken($token_request, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TokensApi->createToken: ', $e->getMessage(), PHP_EOL;
@@ -49,7 +49,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **token** | [**\Conekta\Model\Token**](../Model/Token.md)| requested field for token | |
+| **token_request** | [**\Conekta\Model\TokenRequest**](../Model/TokenRequest.md)| requested field for token | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 
 ### Return type

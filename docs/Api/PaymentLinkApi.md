@@ -99,7 +99,7 @@ $apiInstance = new Conekta\Api\PaymentLinkApi(
     new GuzzleHttp\Client(),
     $config
 );
-$checkout = new \Conekta\Model\Checkout(); // \Conekta\Model\Checkout | requested field for checkout
+$checkout = {"name":"Payment Link con Plan","type":"PaymentLink","recurrent":false,"expires_at":1745331574,"allowed_payment_methods":["card"],"needs_shipping_contact":false,"plan_ids":["plan_ejemplo_1","plan_ejemplo_2"],"order_template":{"line_items":[{"name":"Producto de Ejemplo","unit_price":15000,"quantity":1}],"currency":"MXN","customer_info":{"name":"Cliente Ejemplo","email":"ejemplo@conekta.com","phone":"5555555555"},"metadata":{"reference":"mi_referencia_123","more_info":"datos_adicionales"}}}; // \Conekta\Model\Checkout | requested field for checkout
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 

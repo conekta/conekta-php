@@ -69,6 +69,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => 'string',
         'exp_year' => 'string',
         'brand' => 'string',
+        'issuer' => 'string',
         'name' => 'string',
         'default' => 'bool',
         'visible_on_checkout' => 'bool',
@@ -94,6 +95,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => null,
         'exp_year' => null,
         'brand' => null,
+        'issuer' => null,
         'name' => null,
         'default' => null,
         'visible_on_checkout' => null,
@@ -117,6 +119,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => false,
         'exp_year' => false,
         'brand' => false,
+        'issuer' => false,
         'name' => false,
         'default' => false,
         'visible_on_checkout' => false,
@@ -220,6 +223,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => 'exp_month',
         'exp_year' => 'exp_year',
         'brand' => 'brand',
+        'issuer' => 'issuer',
         'name' => 'name',
         'default' => 'default',
         'visible_on_checkout' => 'visible_on_checkout',
@@ -243,6 +247,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => 'setExpMonth',
         'exp_year' => 'setExpYear',
         'brand' => 'setBrand',
+        'issuer' => 'setIssuer',
         'name' => 'setName',
         'default' => 'setDefault',
         'visible_on_checkout' => 'setVisibleOnCheckout',
@@ -266,6 +271,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         'exp_month' => 'getExpMonth',
         'exp_year' => 'getExpYear',
         'brand' => 'getBrand',
+        'issuer' => 'getIssuer',
         'name' => 'getName',
         'default' => 'getDefault',
         'visible_on_checkout' => 'getVisibleOnCheckout',
@@ -340,6 +346,7 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('exp_month', $data ?? [], null);
         $this->setIfExists('exp_year', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('issuer', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('default', $data ?? [], null);
         $this->setIfExists('visible_on_checkout', $data ?? [], null);
@@ -693,6 +700,33 @@ class PaymentMethodCardResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable brand cannot be null');
         }
         $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer
+     *
+     * @return string|null
+     */
+    public function getIssuer()
+    {
+        return $this->container['issuer'];
+    }
+
+    /**
+     * Sets issuer
+     *
+     * @param string|null $issuer Name of the institution that issued the card
+     *
+     * @return self
+     */
+    public function setIssuer($issuer)
+    {
+        if (is_null($issuer)) {
+            throw new \InvalidArgumentException('non-nullable issuer cannot be null');
+        }
+        $this->container['issuer'] = $issuer;
 
         return $this;
     }

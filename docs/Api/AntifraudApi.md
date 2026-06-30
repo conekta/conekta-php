@@ -15,7 +15,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `createRuleBlacklist()`
 
 ```php
-createRuleBlacklist($create_risk_rules_data, $accept_language): \Conekta\Model\BlacklistRuleResponse
+createRuleBlacklist($create_rule_whitelist_request, $accept_language): \Conekta\Model\BlacklistRuleResponse
 ```
 
 Create blacklisted rule
@@ -37,11 +37,11 @@ $apiInstance = new Conekta\Api\AntifraudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_risk_rules_data = new \Conekta\Model\CreateRiskRulesData(); // \Conekta\Model\CreateRiskRulesData | requested field for blacklist rule
+$create_rule_whitelist_request = new \Conekta\Model\CreateRuleWhitelistRequest(); // \Conekta\Model\CreateRuleWhitelistRequest | requested field for blacklist rule
 $accept_language = es; // string | Use for knowing which language to use
 
 try {
-    $result = $apiInstance->createRuleBlacklist($create_risk_rules_data, $accept_language);
+    $result = $apiInstance->createRuleBlacklist($create_rule_whitelist_request, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AntifraudApi->createRuleBlacklist: ', $e->getMessage(), PHP_EOL;
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_risk_rules_data** | [**\Conekta\Model\CreateRiskRulesData**](../Model/CreateRiskRulesData.md)| requested field for blacklist rule | |
+| **create_rule_whitelist_request** | [**\Conekta\Model\CreateRuleWhitelistRequest**](../Model/CreateRuleWhitelistRequest.md)| requested field for blacklist rule | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 
 ### Return type
@@ -75,7 +75,7 @@ try {
 ## `createRuleWhitelist()`
 
 ```php
-createRuleWhitelist($accept_language, $create_risk_rules_data): \Conekta\Model\WhitelistlistRuleResponse
+createRuleWhitelist($accept_language, $create_rule_whitelist_request): \Conekta\Model\WhitelistlistRuleResponse
 ```
 
 Create whitelisted rule
@@ -98,10 +98,10 @@ $apiInstance = new Conekta\Api\AntifraudApi(
     $config
 );
 $accept_language = es; // string | Use for knowing which language to use
-$create_risk_rules_data = new \Conekta\Model\CreateRiskRulesData(); // \Conekta\Model\CreateRiskRulesData
+$create_rule_whitelist_request = new \Conekta\Model\CreateRuleWhitelistRequest(); // \Conekta\Model\CreateRuleWhitelistRequest
 
 try {
-    $result = $apiInstance->createRuleWhitelist($accept_language, $create_risk_rules_data);
+    $result = $apiInstance->createRuleWhitelist($accept_language, $create_rule_whitelist_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AntifraudApi->createRuleWhitelist: ', $e->getMessage(), PHP_EOL;
@@ -113,7 +113,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
-| **create_risk_rules_data** | [**\Conekta\Model\CreateRiskRulesData**](../Model/CreateRiskRulesData.md)|  | [optional] |
+| **create_rule_whitelist_request** | [**\Conekta\Model\CreateRuleWhitelistRequest**](../Model/CreateRuleWhitelistRequest.md)|  | [optional] |
 
 ### Return type
 

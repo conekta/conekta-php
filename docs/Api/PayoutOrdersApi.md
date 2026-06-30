@@ -75,7 +75,7 @@ try {
 ## `createPayoutOrder()`
 
 ```php
-createPayoutOrder($payout_order, $accept_language): \Conekta\Model\PayoutOrderResponse
+createPayoutOrder($payout_order_request, $accept_language): \Conekta\Model\PayoutOrderResponse
 ```
 
 Create payout order
@@ -99,11 +99,11 @@ $apiInstance = new Conekta\Api\PayoutOrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$payout_order = new \Conekta\Model\PayoutOrder(); // \Conekta\Model\PayoutOrder | requested field for payout order
+$payout_order_request = new \Conekta\Model\PayoutOrderRequest(); // \Conekta\Model\PayoutOrderRequest | requested field for payout order
 $accept_language = es; // string | Use for knowing which language to use
 
 try {
-    $result = $apiInstance->createPayoutOrder($payout_order, $accept_language);
+    $result = $apiInstance->createPayoutOrder($payout_order_request, $accept_language);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PayoutOrdersApi->createPayoutOrder: ', $e->getMessage(), PHP_EOL;
@@ -114,7 +114,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **payout_order** | [**\Conekta\Model\PayoutOrder**](../Model/PayoutOrder.md)| requested field for payout order | |
+| **payout_order_request** | [**\Conekta\Model\PayoutOrderRequest**](../Model/PayoutOrderRequest.md)| requested field for payout order | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 
 ### Return type

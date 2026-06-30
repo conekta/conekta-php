@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** | The id of the customer. |
 **customer_custom_reference** | **string** | Custom reference | [optional]
 **name** | **string** |  | [optional]
 **email** | **string** |  | [optional]
 **phone** | **string** |  | [optional]
 **corporate** | **bool** |  | [optional] [default to false]
 **object** | **string** |  | [optional]
-**id** | **string** | The id of the customer. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

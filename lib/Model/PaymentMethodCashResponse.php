@@ -63,7 +63,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
         'object' => 'string',
         'created_at' => 'int',
         'parent_id' => 'string',
-        'agreements' => '\Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]',
+        'agreements' => '\Conekta\Model\CashAgreementsResponse[]',
         'reference' => 'string',
         'barcode' => 'string',
         'barcode_url' => 'string',
@@ -510,7 +510,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets agreements
      *
-     * @return \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null
+     * @return \Conekta\Model\CashAgreementsResponse[]|null
      */
     public function getAgreements()
     {
@@ -520,7 +520,7 @@ class PaymentMethodCashResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets agreements
      *
-     * @param \Conekta\Model\PaymentMethodCashResponseAllOfAgreements[]|null $agreements agreements
+     * @param \Conekta\Model\CashAgreementsResponse[]|null $agreements agreements
      *
      * @return self
      */

@@ -217,7 +217,7 @@ try {
 ## `updateCustomerPaymentMethods()`
 
 ```php
-updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id): \Conekta\Model\UpdateCustomerPaymentMethodsResponse
+updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id): \Conekta\Model\UpdateCustomerPaymentMethodsResponse
 ```
 
 Update Payment Method
@@ -243,12 +243,12 @@ $apiInstance = new Conekta\Api\PaymentMethodsApi(
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $payment_method_id = src_2tQ974hSHcsdeSZHG; // string | Identifier of the payment method
-$update_payment_methods = new \Conekta\Model\UpdatePaymentMethods(); // \Conekta\Model\UpdatePaymentMethods | requested field for customer payment methods
+$update_payment_methods_card = new \Conekta\Model\UpdatePaymentMethodsCard(); // \Conekta\Model\UpdatePaymentMethodsCard | requested field for customer payment methods
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateCustomerPaymentMethods($id, $payment_method_id, $update_payment_methods_card, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentMethodsApi->updateCustomerPaymentMethods: ', $e->getMessage(), PHP_EOL;
@@ -261,7 +261,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
 | **payment_method_id** | **string**| Identifier of the payment method | |
-| **update_payment_methods** | [**\Conekta\Model\UpdatePaymentMethods**](../Model/UpdatePaymentMethods.md)| requested field for customer payment methods | |
+| **update_payment_methods_card** | [**\Conekta\Model\UpdatePaymentMethodsCard**](../Model/UpdatePaymentMethodsCard.md)| requested field for customer payment methods | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

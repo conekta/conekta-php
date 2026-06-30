@@ -62,7 +62,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\CheckoutOrderTemplateCustomerInfo',
         'line_items' => '\Conekta\Model\Product[]',
-        'metadata' => 'array<string,mixed>'
+        'metadata' => 'array<string,mixed>',
+        'tax_lines' => '\Conekta\Model\OrderTaxRequest[]',
+        'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]'
     ];
 
     /**
@@ -76,7 +78,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => null,
         'customer_info' => null,
         'line_items' => null,
-        'metadata' => null
+        'metadata' => null,
+        'tax_lines' => null,
+        'discount_lines' => null
     ];
 
     /**
@@ -88,7 +92,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => false,
         'customer_info' => false,
         'line_items' => false,
-        'metadata' => false
+        'metadata' => false,
+        'tax_lines' => false,
+        'discount_lines' => false
     ];
 
     /**
@@ -180,7 +186,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'currency',
         'customer_info' => 'customer_info',
         'line_items' => 'line_items',
-        'metadata' => 'metadata'
+        'metadata' => 'metadata',
+        'tax_lines' => 'tax_lines',
+        'discount_lines' => 'discount_lines'
     ];
 
     /**
@@ -192,7 +200,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'setCurrency',
         'customer_info' => 'setCustomerInfo',
         'line_items' => 'setLineItems',
-        'metadata' => 'setMetadata'
+        'metadata' => 'setMetadata',
+        'tax_lines' => 'setTaxLines',
+        'discount_lines' => 'setDiscountLines'
     ];
 
     /**
@@ -204,7 +214,9 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'getCurrency',
         'customer_info' => 'getCustomerInfo',
         'line_items' => 'getLineItems',
-        'metadata' => 'getMetadata'
+        'metadata' => 'getMetadata',
+        'tax_lines' => 'getTaxLines',
+        'discount_lines' => 'getDiscountLines'
     ];
 
     /**
@@ -268,6 +280,8 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('customer_info', $data ?? [], null);
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('tax_lines', $data ?? [], null);
+        $this->setIfExists('discount_lines', $data ?? [], null);
     }
 
     /**
@@ -438,6 +452,60 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('invalid value for $metadata when calling CheckoutOrderTemplate., number of items must be less than or equal to 100.');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax_lines
+     *
+     * @return \Conekta\Model\OrderTaxRequest[]|null
+     */
+    public function getTaxLines()
+    {
+        return $this->container['tax_lines'];
+    }
+
+    /**
+     * Sets tax_lines
+     *
+     * @param \Conekta\Model\OrderTaxRequest[]|null $tax_lines List of [taxes](https://developers.conekta.com/v2.2.0/reference/orderscreatetaxes) that are applied to the order.
+     *
+     * @return self
+     */
+    public function setTaxLines($tax_lines)
+    {
+        if (is_null($tax_lines)) {
+            throw new \InvalidArgumentException('non-nullable tax_lines cannot be null');
+        }
+        $this->container['tax_lines'] = $tax_lines;
+
+        return $this;
+    }
+
+    /**
+     * Gets discount_lines
+     *
+     * @return \Conekta\Model\OrderDiscountLinesRequest[]|null
+     */
+    public function getDiscountLines()
+    {
+        return $this->container['discount_lines'];
+    }
+
+    /**
+     * Sets discount_lines
+     *
+     * @param \Conekta\Model\OrderDiscountLinesRequest[]|null $discount_lines List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order.
+     *
+     * @return self
+     */
+    public function setDiscountLines($discount_lines)
+    {
+        if (is_null($discount_lines)) {
+            throw new \InvalidArgumentException('non-nullable discount_lines cannot be null');
+        }
+        $this->container['discount_lines'] = $discount_lines;
 
         return $this;
     }

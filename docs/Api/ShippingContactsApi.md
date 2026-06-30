@@ -12,7 +12,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `createCustomerShippingContacts()`
 
 ```php
-createCustomerShippingContacts($id, $customer_shipping_contacts, $accept_language, $x_child_company_id): \Conekta\Model\CustomerShippingContactsResponse
+createCustomerShippingContacts($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id): \Conekta\Model\CustomerShippingContactsResponse
 ```
 
 Create a shipping contacts
@@ -37,12 +37,12 @@ $apiInstance = new Conekta\Api\ShippingContactsApi(
     $config
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
-$customer_shipping_contacts = new \Conekta\Model\CustomerShippingContacts(); // \Conekta\Model\CustomerShippingContacts | requested field for customer shippings contacts
+$customer_shipping_contacts_request = new \Conekta\Model\CustomerShippingContactsRequest(); // \Conekta\Model\CustomerShippingContactsRequest | requested field for customer shippings contacts
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->createCustomerShippingContacts($id, $customer_shipping_contacts, $accept_language, $x_child_company_id);
+    $result = $apiInstance->createCustomerShippingContacts($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShippingContactsApi->createCustomerShippingContacts: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
-| **customer_shipping_contacts** | [**\Conekta\Model\CustomerShippingContacts**](../Model/CustomerShippingContacts.md)| requested field for customer shippings contacts | |
+| **customer_shipping_contacts_request** | [**\Conekta\Model\CustomerShippingContactsRequest**](../Model/CustomerShippingContactsRequest.md)| requested field for customer shippings contacts | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 
@@ -144,7 +144,7 @@ try {
 ## `updateCustomerShippingContacts()`
 
 ```php
-updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id): \Conekta\Model\CustomerShippingContactsResponse
+updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id): \Conekta\Model\CustomerShippingContactsResponse
 ```
 
 Update shipping contacts
@@ -170,12 +170,12 @@ $apiInstance = new Conekta\Api\ShippingContactsApi(
 );
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $shipping_contacts_id = 6307a60c41de27127515a575; // string | identifier
-$customer_update_shipping_contacts = new \Conekta\Model\CustomerUpdateShippingContacts(); // \Conekta\Model\CustomerUpdateShippingContacts | requested field for customer update shippings contacts
+$customer_update_shipping_contacts_request = new \Conekta\Model\CustomerUpdateShippingContactsRequest(); // \Conekta\Model\CustomerUpdateShippingContactsRequest | requested field for customer update shippings contacts
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
 
 try {
-    $result = $apiInstance->updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id);
+    $result = $apiInstance->updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShippingContactsApi->updateCustomerShippingContacts: ', $e->getMessage(), PHP_EOL;
@@ -188,7 +188,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| Identifier of the resource | |
 | **shipping_contacts_id** | **string**| identifier | |
-| **customer_update_shipping_contacts** | [**\Conekta\Model\CustomerUpdateShippingContacts**](../Model/CustomerUpdateShippingContacts.md)| requested field for customer update shippings contacts | |
+| **customer_update_shipping_contacts_request** | [**\Conekta\Model\CustomerUpdateShippingContactsRequest**](../Model/CustomerUpdateShippingContactsRequest.md)| requested field for customer update shippings contacts | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
 

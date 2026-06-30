@@ -51,7 +51,7 @@ class CreateCompanyRequestBankAccountInfo implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'create_company_request_bank_account_info';
+    protected static $openAPIModelName = 'Create_Company_Request_bank_account_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

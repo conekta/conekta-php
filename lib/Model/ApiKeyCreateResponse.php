@@ -58,6 +58,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'authentication_token' => 'string',
         'active' => 'bool',
         'created_at' => 'int',
         'updated_at' => 'int',
@@ -68,8 +69,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'livemode' => 'bool',
         'object' => 'string',
         'prefix' => 'string',
-        'role' => 'string',
-        'authentication_token' => 'string'
+        'role' => 'string'
     ];
 
     /**
@@ -80,6 +80,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'authentication_token' => null,
         'active' => null,
         'created_at' => 'int64',
         'updated_at' => 'int64',
@@ -90,8 +91,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'livemode' => null,
         'object' => null,
         'prefix' => null,
-        'role' => null,
-        'authentication_token' => null
+        'role' => null
     ];
 
     /**
@@ -100,18 +100,18 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'authentication_token' => false,
         'active' => false,
         'created_at' => false,
         'updated_at' => false,
-        'deactivated_at' => true,
-        'last_used_at' => true,
+        'deactivated_at' => false,
+        'last_used_at' => false,
         'description' => false,
         'id' => false,
         'livemode' => false,
         'object' => false,
         'prefix' => false,
-        'role' => false,
-        'authentication_token' => false
+        'role' => false
     ];
 
     /**
@@ -200,6 +200,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'authentication_token' => 'authentication_token',
         'active' => 'active',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
@@ -210,8 +211,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'livemode' => 'livemode',
         'object' => 'object',
         'prefix' => 'prefix',
-        'role' => 'role',
-        'authentication_token' => 'authentication_token'
+        'role' => 'role'
     ];
 
     /**
@@ -220,6 +220,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'authentication_token' => 'setAuthenticationToken',
         'active' => 'setActive',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
@@ -230,8 +231,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'livemode' => 'setLivemode',
         'object' => 'setObject',
         'prefix' => 'setPrefix',
-        'role' => 'setRole',
-        'authentication_token' => 'setAuthenticationToken'
+        'role' => 'setRole'
     ];
 
     /**
@@ -240,6 +240,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'authentication_token' => 'getAuthenticationToken',
         'active' => 'getActive',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
@@ -250,8 +251,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         'livemode' => 'getLivemode',
         'object' => 'getObject',
         'prefix' => 'getPrefix',
-        'role' => 'getRole',
-        'authentication_token' => 'getAuthenticationToken'
+        'role' => 'getRole'
     ];
 
     /**
@@ -311,6 +311,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('authentication_token', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -322,7 +323,6 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('prefix', $data ?? [], null);
         $this->setIfExists('role', $data ?? [], null);
-        $this->setIfExists('authentication_token', $data ?? [], null);
     }
 
     /**
@@ -366,6 +366,33 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets authentication_token
+     *
+     * @return string|null
+     */
+    public function getAuthenticationToken()
+    {
+        return $this->container['authentication_token'];
+    }
+
+    /**
+     * Sets authentication_token
+     *
+     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
+     *
+     * @return self
+     */
+    public function setAuthenticationToken($authentication_token)
+    {
+        if (is_null($authentication_token)) {
+            throw new \InvalidArgumentException('non-nullable authentication_token cannot be null');
+        }
+        $this->container['authentication_token'] = $authentication_token;
+
+        return $this;
+    }
 
     /**
      * Gets active
@@ -468,14 +495,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setDeactivatedAt($deactivated_at)
     {
         if (is_null($deactivated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'deactivated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deactivated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable deactivated_at cannot be null');
         }
         $this->container['deactivated_at'] = $deactivated_at;
 
@@ -502,14 +522,7 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setLastUsedAt($last_used_at)
     {
         if (is_null($last_used_at)) {
-            array_push($this->openAPINullablesSetToNull, 'last_used_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('last_used_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable last_used_at cannot be null');
         }
         $this->container['last_used_at'] = $last_used_at;
 
@@ -674,33 +687,6 @@ class ApiKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable role cannot be null');
         }
         $this->container['role'] = $role;
-
-        return $this;
-    }
-
-    /**
-     * Gets authentication_token
-     *
-     * @return string|null
-     */
-    public function getAuthenticationToken()
-    {
-        return $this->container['authentication_token'];
-    }
-
-    /**
-     * Sets authentication_token
-     *
-     * @param string|null $authentication_token It is occupied as a user when authenticated with basic authentication, with a blank password. This value will only appear once, in the request to create a new key. Copy and save it in a safe place.
-     *
-     * @return self
-     */
-    public function setAuthenticationToken($authentication_token)
-    {
-        if (is_null($authentication_token)) {
-            throw new \InvalidArgumentException('non-nullable authentication_token cannot be null');
-        }
-        $this->container['authentication_token'] = $authentication_token;
 
         return $this;
     }

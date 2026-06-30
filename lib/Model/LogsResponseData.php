@@ -120,16 +120,16 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'ip_address' => false,
         'livemode' => false,
-        'loggable_id' => true,
-        'loggable_type' => true,
+        'loggable_id' => false,
+        'loggable_type' => false,
         'method' => false,
-        'oauth_token_id' => true,
+        'oauth_token_id' => false,
         'query_string' => false,
         'related' => false,
         'request_body' => false,
-        'request_headers' => false,
+        'request_headers' => true,
         'response_body' => false,
-        'response_headers' => false,
+        'response_headers' => true,
         'searchable_tags' => false,
         'status' => false,
         'updated_at' => false,
@@ -551,14 +551,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLoggableId($loggable_id)
     {
         if (is_null($loggable_id)) {
-            array_push($this->openAPINullablesSetToNull, 'loggable_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('loggable_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable loggable_id cannot be null');
         }
         $this->container['loggable_id'] = $loggable_id;
 
@@ -585,14 +578,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLoggableType($loggable_type)
     {
         if (is_null($loggable_type)) {
-            array_push($this->openAPINullablesSetToNull, 'loggable_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('loggable_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable loggable_type cannot be null');
         }
         $this->container['loggable_type'] = $loggable_type;
 
@@ -646,14 +632,7 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setOauthTokenId($oauth_token_id)
     {
         if (is_null($oauth_token_id)) {
-            array_push($this->openAPINullablesSetToNull, 'oauth_token_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('oauth_token_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable oauth_token_id cannot be null');
         }
         $this->container['oauth_token_id'] = $oauth_token_id;
 
@@ -761,7 +740,14 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setRequestHeaders($request_headers)
     {
         if (is_null($request_headers)) {
-            throw new \InvalidArgumentException('non-nullable request_headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'request_headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('request_headers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['request_headers'] = $request_headers;
 
@@ -815,7 +801,14 @@ class LogsResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResponseHeaders($response_headers)
     {
         if (is_null($response_headers)) {
-            throw new \InvalidArgumentException('non-nullable response_headers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'response_headers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('response_headers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['response_headers'] = $response_headers;
 

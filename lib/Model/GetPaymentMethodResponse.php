@@ -88,8 +88,8 @@ class GetPaymentMethodResponse implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'has_more' => false,
         'object' => false,
-        'next_page_url' => true,
-        'previous_page_url' => true,
+        'next_page_url' => false,
+        'previous_page_url' => false,
         'data' => false
     ];
 
@@ -398,14 +398,7 @@ class GetPaymentMethodResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setNextPageUrl($next_page_url)
     {
         if (is_null($next_page_url)) {
-            array_push($this->openAPINullablesSetToNull, 'next_page_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('next_page_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable next_page_url cannot be null');
         }
         $this->container['next_page_url'] = $next_page_url;
 
@@ -432,14 +425,7 @@ class GetPaymentMethodResponse implements ModelInterface, ArrayAccess, \JsonSeri
     public function setPreviousPageUrl($previous_page_url)
     {
         if (is_null($previous_page_url)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_page_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_page_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable previous_page_url cannot be null');
         }
         $this->container['previous_page_url'] = $previous_page_url;
 

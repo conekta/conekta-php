@@ -60,7 +60,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'charges' => '\Conekta\Model\ChargeRequest[]',
-        'checkout' => '\Conekta\Model\CheckoutRequest',
+        'checkout' => '\Conekta\Model\OrderCheckoutRequest',
         'currency' => 'string',
         'customer_info' => '\Conekta\Model\OrderRequestCustomerInfo',
         'discount_lines' => '\Conekta\Model\OrderDiscountLinesRequest[]',
@@ -71,7 +71,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'pre_authorize' => 'bool',
         'processing_mode' => 'string',
         'return_url' => 'string',
-        'shipping_contact' => '\Conekta\Model\CustomerShippingContacts',
+        'shipping_contact' => '\Conekta\Model\CustomerShippingContactsRequest',
         'shipping_lines' => '\Conekta\Model\ShippingRequest[]',
         'tax_lines' => '\Conekta\Model\OrderTaxRequest[]',
         'three_ds_mode' => 'string'
@@ -124,7 +124,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'shipping_contact' => false,
         'shipping_lines' => false,
         'tax_lines' => false,
-        'three_ds_mode' => true
+        'three_ds_mode' => false
     ];
 
     /**
@@ -345,7 +345,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('needs_shipping_contact', $data ?? [], null);
-        $this->setIfExists('pre_authorize', $data ?? [], false);
+        $this->setIfExists('pre_authorize', $data ?? [], null);
         $this->setIfExists('processing_mode', $data ?? [], null);
         $this->setIfExists('return_url', $data ?? [], null);
         $this->setIfExists('shipping_contact', $data ?? [], null);
@@ -443,7 +443,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets checkout
      *
-     * @return \Conekta\Model\CheckoutRequest|null
+     * @return \Conekta\Model\OrderCheckoutRequest|null
      */
     public function getCheckout()
     {
@@ -453,7 +453,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets checkout
      *
-     * @param \Conekta\Model\CheckoutRequest|null $checkout checkout
+     * @param \Conekta\Model\OrderCheckoutRequest|null $checkout checkout
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets discount_lines
      *
-     * @param \Conekta\Model\OrderDiscountLinesRequest[]|null $discount_lines List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+     * @param \Conekta\Model\OrderDiscountLinesRequest[]|null $discount_lines List of [discounts](https://developers.conekta.com/v2.2.0/reference/orderscreatediscountline) that are applied to the order.
      *
      * @return self
      */
@@ -748,7 +748,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shipping_contact
      *
-     * @return \Conekta\Model\CustomerShippingContacts|null
+     * @return \Conekta\Model\CustomerShippingContactsRequest|null
      */
     public function getShippingContact()
     {
@@ -758,7 +758,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shipping_contact
      *
-     * @param \Conekta\Model\CustomerShippingContacts|null $shipping_contact shipping_contact
+     * @param \Conekta\Model\CustomerShippingContactsRequest|null $shipping_contact shipping_contact
      *
      * @return self
      */
@@ -846,14 +846,7 @@ class OrderRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThreeDsMode($three_ds_mode)
     {
         if (is_null($three_ds_mode)) {
-            array_push($this->openAPINullablesSetToNull, 'three_ds_mode');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('three_ds_mode', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
         }
         $this->container['three_ds_mode'] = $three_ds_mode;
 

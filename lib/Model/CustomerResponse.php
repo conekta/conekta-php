@@ -78,7 +78,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'payment_sources' => '\Conekta\Model\CustomerPaymentMethodsResponse',
         'phone' => 'string',
         'shipping_contacts' => '\Conekta\Model\CustomerResponseShippingContacts',
-        'subscription' => '\Conekta\Model\SubscriptionResponse'
+        'subscription' => '\Conekta\Model\CustomerSubscriptionResponse'
     ];
 
     /**
@@ -117,14 +117,14 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'antifraud_info' => true,
+        'antifraud_info' => false,
         'corporate' => false,
         'created_at' => false,
         'custom_reference' => false,
         'date_of_birth' => false,
-        'default_fiscal_entity_id' => true,
+        'default_fiscal_entity_id' => false,
         'default_shipping_contact_id' => false,
-        'default_payment_source_id' => true,
+        'default_payment_source_id' => false,
         'email' => false,
         'fiscal_entities' => false,
         'id' => false,
@@ -463,14 +463,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAntifraudInfo($antifraud_info)
     {
         if (is_null($antifraud_info)) {
-            array_push($this->openAPINullablesSetToNull, 'antifraud_info');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('antifraud_info', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable antifraud_info cannot be null');
         }
         $this->container['antifraud_info'] = $antifraud_info;
 
@@ -605,14 +598,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDefaultFiscalEntityId($default_fiscal_entity_id)
     {
         if (is_null($default_fiscal_entity_id)) {
-            array_push($this->openAPINullablesSetToNull, 'default_fiscal_entity_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('default_fiscal_entity_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable default_fiscal_entity_id cannot be null');
         }
         $this->container['default_fiscal_entity_id'] = $default_fiscal_entity_id;
 
@@ -666,14 +652,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDefaultPaymentSourceId($default_payment_source_id)
     {
         if (is_null($default_payment_source_id)) {
-            array_push($this->openAPINullablesSetToNull, 'default_payment_source_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('default_payment_source_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable default_payment_source_id cannot be null');
         }
         $this->container['default_payment_source_id'] = $default_payment_source_id;
 
@@ -984,7 +963,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subscription
      *
-     * @return \Conekta\Model\SubscriptionResponse|null
+     * @return \Conekta\Model\CustomerSubscriptionResponse|null
      */
     public function getSubscription()
     {
@@ -994,7 +973,7 @@ class CustomerResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscription
      *
-     * @param \Conekta\Model\SubscriptionResponse|null $subscription subscription
+     * @param \Conekta\Model\CustomerSubscriptionResponse|null $subscription subscription
      *
      * @return self
      */

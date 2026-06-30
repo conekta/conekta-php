@@ -326,8 +326,8 @@ class PaymentMethodPbbPayment implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
-        if (($this->container['expires_at'] <= 0)) {
-            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than 0.";
+        if (($this->container['expires_at'] < 0)) {
+            $invalidProperties[] = "invalid value for 'expires_at', must be bigger than or equal to 0.";
         }
 
         if ($this->container['product_type'] === null) {
@@ -458,8 +458,8 @@ class PaymentMethodPbbPayment implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
 
-        if (($expires_at <= 0)) {
-            throw new \InvalidArgumentException('invalid value for $expires_at when calling PaymentMethodPbbPayment., must be bigger than 0.');
+        if (($expires_at < 0)) {
+            throw new \InvalidArgumentException('invalid value for $expires_at when calling PaymentMethodPbbPayment., must be bigger than or equal to 0.');
         }
 
         $this->container['expires_at'] = $expires_at;

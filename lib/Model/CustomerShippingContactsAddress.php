@@ -36,7 +36,6 @@ use \Conekta\ObjectSerializer;
  * CustomerShippingContactsAddress Class Doc Comment
  *
  * @category Class
- * @description Address of the person who will receive the order
  * @package  Conekta
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +58,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
+        'object' => 'string',
         'street1' => 'string',
         'street2' => 'string',
         'postal_code' => 'string',
@@ -76,6 +76,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'object' => null,
         'street1' => null,
         'street2' => null,
         'postal_code' => null,
@@ -91,13 +92,14 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'object' => false,
         'street1' => false,
         'street2' => false,
         'postal_code' => false,
         'city' => false,
         'state' => false,
         'country' => false,
-        'residential' => true
+        'residential' => false
     ];
 
     /**
@@ -186,6 +188,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
+        'object' => 'object',
         'street1' => 'street1',
         'street2' => 'street2',
         'postal_code' => 'postal_code',
@@ -201,6 +204,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
+        'object' => 'setObject',
         'street1' => 'setStreet1',
         'street2' => 'setStreet2',
         'postal_code' => 'setPostalCode',
@@ -216,6 +220,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
+        'object' => 'getObject',
         'street1' => 'getStreet1',
         'street2' => 'getStreet2',
         'postal_code' => 'getPostalCode',
@@ -282,6 +287,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('object', $data ?? [], null);
         $this->setIfExists('street1', $data ?? [], null);
         $this->setIfExists('street2', $data ?? [], null);
         $this->setIfExists('postal_code', $data ?? [], null);
@@ -332,6 +338,33 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets object
+     *
+     * @return string|null
+     */
+    public function getObject()
+    {
+        return $this->container['object'];
+    }
+
+    /**
+     * Sets object
+     *
+     * @param string|null $object object
+     *
+     * @return self
+     */
+    public function setObject($object)
+    {
+        if (is_null($object)) {
+            throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $this->container['object'] = $object;
+
+        return $this;
+    }
 
     /**
      * Gets street1
@@ -481,7 +514,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
     /**
      * Sets country
      *
-     * @param string|null $country this field follows the [ISO 3166-1 alpha-2 standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+     * @param string|null $country country
      *
      * @return self
      */
@@ -515,14 +548,7 @@ class CustomerShippingContactsAddress implements ModelInterface, ArrayAccess, \J
     public function setResidential($residential)
     {
         if (is_null($residential)) {
-            array_push($this->openAPINullablesSetToNull, 'residential');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('residential', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable residential cannot be null');
         }
         $this->container['residential'] = $residential;
 

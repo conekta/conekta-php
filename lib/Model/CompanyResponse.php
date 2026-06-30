@@ -64,7 +64,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_status' => 'string',
         'parent_company_id' => 'string',
         'onboarding_status' => 'string',
-        'documents' => '\Conekta\Model\CompanyResponseDocumentsInner[]',
+        'documents' => '\Conekta\Model\CompanyDocumentResponse[]',
         'created_at' => 'int',
         'object' => 'string',
         'three_ds_enabled' => 'bool',
@@ -102,13 +102,13 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'active' => false,
         'account_status' => false,
-        'parent_company_id' => true,
+        'parent_company_id' => false,
         'onboarding_status' => false,
         'documents' => false,
         'created_at' => false,
         'object' => false,
         'three_ds_enabled' => false,
-        'three_ds_mode' => true
+        'three_ds_mode' => false
     ];
 
     /**
@@ -536,14 +536,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentCompanyId($parent_company_id)
     {
         if (is_null($parent_company_id)) {
-            array_push($this->openAPINullablesSetToNull, 'parent_company_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('parent_company_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable parent_company_id cannot be null');
         }
         $this->container['parent_company_id'] = $parent_company_id;
 
@@ -580,7 +573,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets documents
      *
-     * @return \Conekta\Model\CompanyResponseDocumentsInner[]
+     * @return \Conekta\Model\CompanyDocumentResponse[]
      */
     public function getDocuments()
     {
@@ -590,7 +583,7 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets documents
      *
-     * @param \Conekta\Model\CompanyResponseDocumentsInner[] $documents A list of documents related to the company.
+     * @param \Conekta\Model\CompanyDocumentResponse[] $documents A list of documents related to the company.
      *
      * @return self
      */
@@ -705,17 +698,10 @@ class CompanyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setThreeDsMode($three_ds_mode)
     {
         if (is_null($three_ds_mode)) {
-            array_push($this->openAPINullablesSetToNull, 'three_ds_mode');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('three_ds_mode', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable three_ds_mode cannot be null');
         }
         $allowedValues = $this->getThreeDsModeAllowableValues();
-        if (!is_null($three_ds_mode) && !in_array($three_ds_mode, $allowedValues, true)) {
+        if (!in_array($three_ds_mode, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'three_ds_mode', must be one of '%s'",

@@ -5982,7 +5982,7 @@ class SubscriptionsApi
      *
      * @param  string $customer_id Identifier of the customer resource (required)
      * @param  string $id Identifier of the subscription resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionUpdate'] to see the possible values for this operation
@@ -5991,9 +5991,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function subscriptionUpdate($customer_id, $id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
+    public function subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
-        list($response) = $this->subscriptionUpdateWithHttpInfo($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->subscriptionUpdateWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -6004,7 +6004,7 @@ class SubscriptionsApi
      *
      * @param  string $customer_id Identifier of the customer resource (required)
      * @param  string $id Identifier of the subscription resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionUpdate'] to see the possible values for this operation
@@ -6013,9 +6013,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionUpdateWithHttpInfo($customer_id, $id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
+    public function subscriptionUpdateWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
-        $request = $this->subscriptionUpdateRequest($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->subscriptionUpdateRequest($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6273,7 +6273,7 @@ class SubscriptionsApi
      *
      * @param  string $customer_id Identifier of the customer resource (required)
      * @param  string $id Identifier of the subscription resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionUpdate'] to see the possible values for this operation
@@ -6281,9 +6281,9 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionUpdateAsync($customer_id, $id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
+    public function subscriptionUpdateAsync($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
-        return $this->subscriptionUpdateAsyncWithHttpInfo($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->subscriptionUpdateAsyncWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6298,7 +6298,7 @@ class SubscriptionsApi
      *
      * @param  string $customer_id Identifier of the customer resource (required)
      * @param  string $id Identifier of the subscription resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionUpdate'] to see the possible values for this operation
@@ -6306,10 +6306,10 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionUpdateAsyncWithHttpInfo($customer_id, $id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
+    public function subscriptionUpdateAsyncWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
         $returnType = '\Conekta\Model\SubscriptionResponse';
-        $request = $this->subscriptionUpdateRequest($customer_id, $id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->subscriptionUpdateRequest($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6352,7 +6352,7 @@ class SubscriptionsApi
      *
      * @param  string $customer_id Identifier of the customer resource (required)
      * @param  string $id Identifier of the subscription resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionUpdate'] to see the possible values for this operation
@@ -6360,7 +6360,7 @@ class SubscriptionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionUpdateRequest($customer_id, $id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
+    public function subscriptionUpdateRequest($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
 
         // verify the required parameter 'customer_id' is set
@@ -6377,10 +6377,10 @@ class SubscriptionsApi
             );
         }
 
-        // verify the required parameter 'subscription_update_request' is set
-        if ($subscription_update_request === null || (is_array($subscription_update_request) && count($subscription_update_request) === 0)) {
+        // verify the required parameter 'updates_a_subscription' is set
+        if ($updates_a_subscription === null || (is_array($updates_a_subscription) && count($updates_a_subscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription_update_request when calling subscriptionUpdate'
+                'Missing the required parameter $updates_a_subscription when calling subscriptionUpdate'
             );
         }
 
@@ -6433,12 +6433,12 @@ class SubscriptionsApi
         );
 
         // for model (json/xml)
-        if (isset($subscription_update_request)) {
+        if (isset($updates_a_subscription)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscription_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($updates_a_subscription));
             } else {
-                $httpBody = $subscription_update_request;
+                $httpBody = $updates_a_subscription;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -7042,6 +7042,33 @@ class SubscriptionsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 422:
+                    if ('\Conekta\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Conekta\Model\Error' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 401:
                     if ('\Conekta\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -7070,33 +7097,6 @@ class SubscriptionsApi
                         $response->getHeaders()
                     ];
                 case 404:
-                    if ('\Conekta\Model\Error' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\Conekta\Model\Error' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\Error', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 422:
                     if ('\Conekta\Model\Error' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -7203,6 +7203,14 @@ class SubscriptionsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Conekta\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -7212,14 +7220,6 @@ class SubscriptionsApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Conekta\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Conekta\Model\Error',
@@ -7453,7 +7453,7 @@ class SubscriptionsApi
      * Update Subscription [Deprecated]
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
@@ -7463,9 +7463,9 @@ class SubscriptionsApi
      * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
-    public function updateSubscription($id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscription($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        list($response) = $this->updateSubscriptionWithHttpInfo($id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateSubscriptionWithHttpInfo($id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -7475,7 +7475,7 @@ class SubscriptionsApi
      * Update Subscription [Deprecated]
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
@@ -7485,9 +7485,9 @@ class SubscriptionsApi
      * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function updateSubscriptionWithHttpInfo($id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionWithHttpInfo($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        $request = $this->updateSubscriptionRequest($id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateSubscriptionRequest($id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7744,7 +7744,7 @@ class SubscriptionsApi
      * Update Subscription [Deprecated]
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
@@ -7753,9 +7753,9 @@ class SubscriptionsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function updateSubscriptionAsync($id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionAsync($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        return $this->updateSubscriptionAsyncWithHttpInfo($id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateSubscriptionAsyncWithHttpInfo($id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7769,7 +7769,7 @@ class SubscriptionsApi
      * Update Subscription [Deprecated]
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
@@ -7778,10 +7778,10 @@ class SubscriptionsApi
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function updateSubscriptionAsyncWithHttpInfo($id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionAsyncWithHttpInfo($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
         $returnType = '\Conekta\Model\SubscriptionResponse';
-        $request = $this->updateSubscriptionRequest($id, $subscription_update_request, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateSubscriptionRequest($id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7823,7 +7823,7 @@ class SubscriptionsApi
      * Create request for operation 'updateSubscription'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\SubscriptionUpdateRequest $subscription_update_request requested field for update a subscription (required)
+     * @param  \Conekta\Model\UpdatesASubscription $updates_a_subscription requested field for update a subscription (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSubscription'] to see the possible values for this operation
@@ -7832,7 +7832,7 @@ class SubscriptionsApi
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function updateSubscriptionRequest($id, $subscription_update_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
+    public function updateSubscriptionRequest($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -7842,10 +7842,10 @@ class SubscriptionsApi
             );
         }
 
-        // verify the required parameter 'subscription_update_request' is set
-        if ($subscription_update_request === null || (is_array($subscription_update_request) && count($subscription_update_request) === 0)) {
+        // verify the required parameter 'updates_a_subscription' is set
+        if ($updates_a_subscription === null || (is_array($updates_a_subscription) && count($updates_a_subscription) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $subscription_update_request when calling updateSubscription'
+                'Missing the required parameter $updates_a_subscription when calling updateSubscription'
             );
         }
 
@@ -7890,12 +7890,12 @@ class SubscriptionsApi
         );
 
         // for model (json/xml)
-        if (isset($subscription_update_request)) {
+        if (isset($updates_a_subscription)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscription_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($updates_a_subscription));
             } else {
-                $httpBody = $subscription_update_request;
+                $httpBody = $updates_a_subscription;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

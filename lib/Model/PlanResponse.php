@@ -106,14 +106,14 @@ class PlanResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => false,
         'created_at' => false,
         'currency' => false,
-        'expiry_count' => true,
+        'expiry_count' => false,
         'frequency' => false,
         'id' => false,
         'interval' => false,
         'livemode' => false,
         'name' => false,
         'object' => false,
-        'trial_period_days' => true,
+        'trial_period_days' => false,
         'max_retries' => false,
         'retry_delay_hours' => false
     ];
@@ -484,14 +484,7 @@ class PlanResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExpiryCount($expiry_count)
     {
         if (is_null($expiry_count)) {
-            array_push($this->openAPINullablesSetToNull, 'expiry_count');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiry_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiry_count cannot be null');
         }
         $this->container['expiry_count'] = $expiry_count;
 
@@ -680,14 +673,7 @@ class PlanResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTrialPeriodDays($trial_period_days)
     {
         if (is_null($trial_period_days)) {
-            array_push($this->openAPINullablesSetToNull, 'trial_period_days');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trial_period_days', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable trial_period_days cannot be null');
         }
         $this->container['trial_period_days'] = $trial_period_days;
 

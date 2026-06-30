@@ -86,7 +86,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'details' => false,
-        'log_id' => true,
+        'log_id' => false,
         'type' => false,
         'object' => false
     ];
@@ -359,14 +359,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLogId($log_id)
     {
         if (is_null($log_id)) {
-            array_push($this->openAPINullablesSetToNull, 'log_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('log_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable log_id cannot be null');
         }
         $this->container['log_id'] = $log_id;
 

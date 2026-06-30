@@ -51,7 +51,7 @@ class WebhookKeyCreateResponse implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'webhook-key_create_response';
+    protected static $openAPIModelName = 'webhook_key_create_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

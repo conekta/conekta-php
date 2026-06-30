@@ -271,6 +271,19 @@ class PaymentMethodBnplPayment implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const OBJECT_BNPL_PAYMENT = 'bnpl_payment';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectAllowableValues()
+    {
+        return [
+            self::OBJECT_BNPL_PAYMENT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -327,6 +340,15 @@ class PaymentMethodBnplPayment implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['object'] === null) {
             $invalidProperties[] = "'object' can't be null";
         }
+        $allowedValues = $this->getObjectAllowableValues();
+        if (!is_null($this->container['object']) && !in_array($this->container['object'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'object', must be one of '%s'",
+                $this->container['object'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['expires_at'] === null) {
             $invalidProperties[] = "'expires_at' can't be null";
         }
@@ -396,6 +418,16 @@ class PaymentMethodBnplPayment implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($object)) {
             throw new \InvalidArgumentException('non-nullable object cannot be null');
+        }
+        $allowedValues = $this->getObjectAllowableValues();
+        if (!in_array($object, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'object', must be one of '%s'",
+                    $object,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['object'] = $object;
 

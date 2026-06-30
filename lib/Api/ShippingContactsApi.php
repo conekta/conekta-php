@@ -135,7 +135,7 @@ class ShippingContactsApi
      * Create a shipping contacts
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerShippingContacts $customer_shipping_contacts requested field for customer shippings contacts (required)
+     * @param  \Conekta\Model\CustomerShippingContactsRequest $customer_shipping_contacts_request requested field for customer shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerShippingContacts'] to see the possible values for this operation
@@ -144,9 +144,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\CustomerShippingContactsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function createCustomerShippingContacts($id, $customer_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
+    public function createCustomerShippingContacts($id, $customer_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
     {
-        list($response) = $this->createCustomerShippingContactsWithHttpInfo($id, $customer_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->createCustomerShippingContactsWithHttpInfo($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -156,7 +156,7 @@ class ShippingContactsApi
      * Create a shipping contacts
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerShippingContacts $customer_shipping_contacts requested field for customer shippings contacts (required)
+     * @param  \Conekta\Model\CustomerShippingContactsRequest $customer_shipping_contacts_request requested field for customer shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerShippingContacts'] to see the possible values for this operation
@@ -165,9 +165,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\CustomerShippingContactsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCustomerShippingContactsWithHttpInfo($id, $customer_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
+    public function createCustomerShippingContactsWithHttpInfo($id, $customer_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
     {
-        $request = $this->createCustomerShippingContactsRequest($id, $customer_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->createCustomerShippingContactsRequest($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -424,7 +424,7 @@ class ShippingContactsApi
      * Create a shipping contacts
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerShippingContacts $customer_shipping_contacts requested field for customer shippings contacts (required)
+     * @param  \Conekta\Model\CustomerShippingContactsRequest $customer_shipping_contacts_request requested field for customer shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerShippingContacts'] to see the possible values for this operation
@@ -432,9 +432,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCustomerShippingContactsAsync($id, $customer_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
+    public function createCustomerShippingContactsAsync($id, $customer_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
     {
-        return $this->createCustomerShippingContactsAsyncWithHttpInfo($id, $customer_shipping_contacts, $accept_language, $x_child_company_id, $contentType)
+        return $this->createCustomerShippingContactsAsyncWithHttpInfo($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -448,7 +448,7 @@ class ShippingContactsApi
      * Create a shipping contacts
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerShippingContacts $customer_shipping_contacts requested field for customer shippings contacts (required)
+     * @param  \Conekta\Model\CustomerShippingContactsRequest $customer_shipping_contacts_request requested field for customer shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerShippingContacts'] to see the possible values for this operation
@@ -456,10 +456,10 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCustomerShippingContactsAsyncWithHttpInfo($id, $customer_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
+    public function createCustomerShippingContactsAsyncWithHttpInfo($id, $customer_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
     {
         $returnType = '\Conekta\Model\CustomerShippingContactsResponse';
-        $request = $this->createCustomerShippingContactsRequest($id, $customer_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->createCustomerShippingContactsRequest($id, $customer_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -501,7 +501,7 @@ class ShippingContactsApi
      * Create request for operation 'createCustomerShippingContacts'
      *
      * @param  string $id Identifier of the resource (required)
-     * @param  \Conekta\Model\CustomerShippingContacts $customer_shipping_contacts requested field for customer shippings contacts (required)
+     * @param  \Conekta\Model\CustomerShippingContactsRequest $customer_shipping_contacts_request requested field for customer shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerShippingContacts'] to see the possible values for this operation
@@ -509,7 +509,7 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCustomerShippingContactsRequest($id, $customer_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
+    public function createCustomerShippingContactsRequest($id, $customer_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createCustomerShippingContacts'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -519,10 +519,10 @@ class ShippingContactsApi
             );
         }
 
-        // verify the required parameter 'customer_shipping_contacts' is set
-        if ($customer_shipping_contacts === null || (is_array($customer_shipping_contacts) && count($customer_shipping_contacts) === 0)) {
+        // verify the required parameter 'customer_shipping_contacts_request' is set
+        if ($customer_shipping_contacts_request === null || (is_array($customer_shipping_contacts_request) && count($customer_shipping_contacts_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_shipping_contacts when calling createCustomerShippingContacts'
+                'Missing the required parameter $customer_shipping_contacts_request when calling createCustomerShippingContacts'
             );
         }
 
@@ -567,12 +567,12 @@ class ShippingContactsApi
         );
 
         // for model (json/xml)
-        if (isset($customer_shipping_contacts)) {
+        if (isset($customer_shipping_contacts_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_shipping_contacts));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_shipping_contacts_request));
             } else {
-                $httpBody = $customer_shipping_contacts;
+                $httpBody = $customer_shipping_contacts_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1127,7 +1127,7 @@ class ShippingContactsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $shipping_contacts_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateShippingContacts $customer_update_shipping_contacts requested field for customer update shippings contacts (required)
+     * @param  \Conekta\Model\CustomerUpdateShippingContactsRequest $customer_update_shipping_contacts_request requested field for customer update shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerShippingContacts'] to see the possible values for this operation
@@ -1136,9 +1136,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\CustomerShippingContactsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
+    public function updateCustomerShippingContacts($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
     {
-        list($response) = $this->updateCustomerShippingContactsWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->updateCustomerShippingContactsWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
         return $response;
     }
 
@@ -1149,7 +1149,7 @@ class ShippingContactsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $shipping_contacts_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateShippingContacts $customer_update_shipping_contacts requested field for customer update shippings contacts (required)
+     * @param  \Conekta\Model\CustomerUpdateShippingContactsRequest $customer_update_shipping_contacts_request requested field for customer update shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerShippingContacts'] to see the possible values for this operation
@@ -1158,9 +1158,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\CustomerShippingContactsResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCustomerShippingContactsWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
+    public function updateCustomerShippingContactsWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
     {
-        $request = $this->updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1418,7 +1418,7 @@ class ShippingContactsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $shipping_contacts_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateShippingContacts $customer_update_shipping_contacts requested field for customer update shippings contacts (required)
+     * @param  \Conekta\Model\CustomerUpdateShippingContactsRequest $customer_update_shipping_contacts_request requested field for customer update shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerShippingContacts'] to see the possible values for this operation
@@ -1426,9 +1426,9 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerShippingContactsAsync($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
+    public function updateCustomerShippingContactsAsync($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
     {
-        return $this->updateCustomerShippingContactsAsyncWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id, $contentType)
+        return $this->updateCustomerShippingContactsAsyncWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1443,7 +1443,7 @@ class ShippingContactsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $shipping_contacts_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateShippingContacts $customer_update_shipping_contacts requested field for customer update shippings contacts (required)
+     * @param  \Conekta\Model\CustomerUpdateShippingContactsRequest $customer_update_shipping_contacts_request requested field for customer update shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerShippingContacts'] to see the possible values for this operation
@@ -1451,10 +1451,10 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCustomerShippingContactsAsyncWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
+    public function updateCustomerShippingContactsAsyncWithHttpInfo($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
     {
         $returnType = '\Conekta\Model\CustomerShippingContactsResponse';
-        $request = $this->updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1497,7 +1497,7 @@ class ShippingContactsApi
      *
      * @param  string $id Identifier of the resource (required)
      * @param  string $shipping_contacts_id identifier (required)
-     * @param  \Conekta\Model\CustomerUpdateShippingContacts $customer_update_shipping_contacts requested field for customer update shippings contacts (required)
+     * @param  \Conekta\Model\CustomerUpdateShippingContactsRequest $customer_update_shipping_contacts_request requested field for customer update shippings contacts (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomerShippingContacts'] to see the possible values for this operation
@@ -1505,7 +1505,7 @@ class ShippingContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
+    public function updateCustomerShippingContactsRequest($id, $shipping_contacts_id, $customer_update_shipping_contacts_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateCustomerShippingContacts'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1522,10 +1522,10 @@ class ShippingContactsApi
             );
         }
 
-        // verify the required parameter 'customer_update_shipping_contacts' is set
-        if ($customer_update_shipping_contacts === null || (is_array($customer_update_shipping_contacts) && count($customer_update_shipping_contacts) === 0)) {
+        // verify the required parameter 'customer_update_shipping_contacts_request' is set
+        if ($customer_update_shipping_contacts_request === null || (is_array($customer_update_shipping_contacts_request) && count($customer_update_shipping_contacts_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $customer_update_shipping_contacts when calling updateCustomerShippingContacts'
+                'Missing the required parameter $customer_update_shipping_contacts_request when calling updateCustomerShippingContacts'
             );
         }
 
@@ -1578,12 +1578,12 @@ class ShippingContactsApi
         );
 
         // for model (json/xml)
-        if (isset($customer_update_shipping_contacts)) {
+        if (isset($customer_update_shipping_contacts_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_update_shipping_contacts));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_update_shipping_contacts_request));
             } else {
-                $httpBody = $customer_update_shipping_contacts;
+                $httpBody = $customer_update_shipping_contacts_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

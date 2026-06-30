@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **paid_at** | **int** |  | [optional]
 **payment_method** | [**\Conekta\Model\ChargeOrderResponsePaymentMethod**](ChargeOrderResponsePaymentMethod.md) |  | [optional]
 **reference_id** | **string** | Reference ID of the charge | [optional]
-**refunds** | **object[]** |  | [optional]
+**refunds** | **mixed[]** |  | [optional]
 **status** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

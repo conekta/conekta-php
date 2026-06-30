@@ -102,8 +102,8 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'active' => false,
         'created_at' => false,
         'updated_at' => false,
-        'deactivated_at' => true,
-        'last_used_at' => true,
+        'deactivated_at' => false,
+        'last_used_at' => false,
         'description' => false,
         'id' => false,
         'livemode' => false,
@@ -462,14 +462,7 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeactivatedAt($deactivated_at)
     {
         if (is_null($deactivated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'deactivated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deactivated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable deactivated_at cannot be null');
         }
         $this->container['deactivated_at'] = $deactivated_at;
 
@@ -496,14 +489,7 @@ class ApiKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLastUsedAt($last_used_at)
     {
         if (is_null($last_used_at)) {
-            array_push($this->openAPINullablesSetToNull, 'last_used_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('last_used_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable last_used_at cannot be null');
         }
         $this->container['last_used_at'] = $last_used_at;
 

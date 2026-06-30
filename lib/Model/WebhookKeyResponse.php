@@ -51,7 +51,7 @@ class WebhookKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'webhook-key_response';
+    protected static $openAPIModelName = 'webhook_key_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -94,7 +94,7 @@ class WebhookKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => false,
         'active' => false,
         'created_at' => false,
-        'deactivated_at' => true,
+        'deactivated_at' => false,
         'public_key' => false,
         'livemode' => false,
         'object' => false
@@ -434,14 +434,7 @@ class WebhookKeyResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setDeactivatedAt($deactivated_at)
     {
         if (is_null($deactivated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'deactivated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deactivated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable deactivated_at cannot be null');
         }
         $this->container['deactivated_at'] = $deactivated_at;
 

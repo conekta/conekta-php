@@ -103,7 +103,7 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         'prefix' => false,
         'id' => false,
         'object' => false,
-        'last_used_at' => true,
+        'last_used_at' => false,
         'role' => false,
         'deleted' => false
     ];
@@ -562,14 +562,7 @@ class DeleteApiKeysResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setLastUsedAt($last_used_at)
     {
         if (is_null($last_used_at)) {
-            array_push($this->openAPINullablesSetToNull, 'last_used_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('last_used_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable last_used_at cannot be null');
         }
         $this->container['last_used_at'] = $last_used_at;
 

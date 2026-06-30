@@ -59,16 +59,16 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'available' => '\Conekta\Model\BalanceCommonField[]',
-        'cashout_retention_amount' => '\Conekta\Model\BalanceCommonField[]',
-        'conekta_retention' => '\Conekta\Model\BalanceCommonField[]',
-        'gateway' => '\Conekta\Model\BalanceCommonField[]',
-        'pending' => '\Conekta\Model\BalanceCommonField[]',
-        'retained' => '\Conekta\Model\BalanceCommonField[]',
-        'retention_amount' => '\Conekta\Model\BalanceCommonField[]',
+        'available' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'cashout_retention_amount' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'conekta_retention' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'gateway' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'pending' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'retained' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'retention_amount' => '\Conekta\Model\BalanceCommonFielsResponse[]',
         'target_collateral_amount' => 'object',
-        'target_retention_amount' => '\Conekta\Model\BalanceCommonField[]',
-        'temporarily_retained' => '\Conekta\Model\BalanceCommonField[]'
+        'target_retention_amount' => '\Conekta\Model\BalanceCommonFielsResponse[]',
+        'temporarily_retained' => '\Conekta\Model\BalanceCommonFielsResponse[]'
     ];
 
     /**
@@ -357,7 +357,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getAvailable()
     {
@@ -367,7 +367,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $available The balance's available
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $available The balance's available
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cashout_retention_amount
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getCashoutRetentionAmount()
     {
@@ -394,7 +394,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cashout_retention_amount
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $cashout_retention_amount The balance's cashout retention amount
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $cashout_retention_amount The balance's cashout retention amount
      *
      * @return self
      */
@@ -411,7 +411,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets conekta_retention
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getConektaRetention()
     {
@@ -421,7 +421,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets conekta_retention
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $conekta_retention The balance's conekta retention
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $conekta_retention The balance's conekta retention
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets gateway
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getGateway()
     {
@@ -448,7 +448,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gateway
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $gateway The balance's gateway
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $gateway The balance's gateway
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pending
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getPending()
     {
@@ -475,7 +475,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pending
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $pending The balance's pending
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $pending The balance's pending
      *
      * @return self
      */
@@ -492,7 +492,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retained
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getRetained()
     {
@@ -502,7 +502,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retained
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $retained The balance's retained
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $retained The balance's retained
      *
      * @return self
      */
@@ -519,7 +519,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retention_amount
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getRetentionAmount()
     {
@@ -529,7 +529,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retention_amount
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $retention_amount The balance's retention amount
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $retention_amount The balance's retention amount
      *
      * @return self
      */
@@ -573,7 +573,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets target_retention_amount
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getTargetRetentionAmount()
     {
@@ -583,7 +583,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target_retention_amount
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $target_retention_amount The balance's target retention amount
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $target_retention_amount The balance's target retention amount
      *
      * @return self
      */
@@ -600,7 +600,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets temporarily_retained
      *
-     * @return \Conekta\Model\BalanceCommonField[]|null
+     * @return \Conekta\Model\BalanceCommonFielsResponse[]|null
      */
     public function getTemporarilyRetained()
     {
@@ -610,7 +610,7 @@ class BalanceResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets temporarily_retained
      *
-     * @param \Conekta\Model\BalanceCommonField[]|null $temporarily_retained The balance's temporarily retained
+     * @param \Conekta\Model\BalanceCommonFielsResponse[]|null $temporarily_retained The balance's temporarily retained
      *
      * @return self
      */

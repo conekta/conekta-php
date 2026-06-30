@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **currency** | **string** | The three-letter ISO 4217 currency code. The currency of the order. | [optional]
 **customer_info** | [**\Conekta\Model\OrderResponseCustomerInfo**](OrderResponseCustomerInfo.md) |  | [optional]
 **discount_lines** | [**\Conekta\Model\OrderDiscountLinesResponse**](OrderDiscountLinesResponse.md) |  | [optional]
+**tax_lines** | [**\Conekta\Model\OrderTaxLinesResponse**](OrderTaxLinesResponse.md) |  | [optional]
+**shipping_lines** | [**\Conekta\Model\OrderShippingLinesResponse**](OrderShippingLinesResponse.md) |  | [optional]
 **fiscal_entity** | [**\Conekta\Model\OrderFiscalEntityResponse**](OrderFiscalEntityResponse.md) |  | [optional]
 **id** | **string** |  | [optional]
 **is_refundable** | **bool** |  | [optional]

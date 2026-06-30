@@ -58,7 +58,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'address' => '\Conekta\Model\CustomerAddress',
+        'address' => '\Conekta\Model\FiscalEntityRequestAddress',
         'tax_id' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -102,7 +102,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
         'tax_id' => false,
         'email' => false,
         'phone' => false,
-        'metadata' => false,
+        'metadata' => true,
         'company_name' => false,
         'id' => false,
         'object' => false,
@@ -375,7 +375,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
     /**
      * Gets address
      *
-     * @return \Conekta\Model\CustomerAddress
+     * @return \Conekta\Model\FiscalEntityRequestAddress
      */
     public function getAddress()
     {
@@ -385,7 +385,7 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
     /**
      * Sets address
      *
-     * @param \Conekta\Model\CustomerAddress $address address
+     * @param \Conekta\Model\FiscalEntityRequestAddress $address address
      *
      * @return self
      */
@@ -500,7 +500,14 @@ class CustomerFiscalEntitiesDataResponse implements ModelInterface, ArrayAccess,
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['metadata'] = $metadata;
 

@@ -3,7 +3,7 @@ php-test:
 phpstan:
 	vendor/bin/phpstan analyse lib --level 7
 php:
-	rm -rf docs && rm -rf test && \
+	rm -rf docs &&  \
 	rm -rf lib/Model && \
 	docker run --rm \
 	-v ${PWD}:/local openapitools/openapi-generator-cli:v7.12.0 generate \
