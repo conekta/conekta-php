@@ -500,7 +500,7 @@ class UpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return boolean
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -513,7 +513,7 @@ class UpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset)
     {
         return $this->container[$offset] ?? null;
     }
@@ -542,7 +542,7 @@ class UpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->container[$offset]);
     }

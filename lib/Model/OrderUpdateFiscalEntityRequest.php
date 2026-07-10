@@ -505,7 +505,7 @@ class OrderUpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return boolean
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -518,7 +518,7 @@ class OrderUpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \Js
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset)
     {
         return $this->container[$offset] ?? null;
     }
@@ -547,7 +547,7 @@ class OrderUpdateFiscalEntityRequest implements ModelInterface, ArrayAccess, \Js
      *
      * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->container[$offset]);
     }

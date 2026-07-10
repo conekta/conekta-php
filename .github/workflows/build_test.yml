@@ -14,7 +14,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.4"
           - "8.0"
           - "8.1"
           - "8.2"
@@ -44,8 +43,8 @@ jobs:
           
           PHPUNIT_VERSION=""
           
-          if [ "$PHP_VERSION_MAJOR" -eq 7 ] || ([ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -eq 0 ]); then
-              PHPUNIT_VERSION="^9.6" 
+          if [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -eq 0 ]; then
+              PHPUNIT_VERSION="^9.6"
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -le 1 ]; then
               PHPUNIT_VERSION="^10.5"
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -le 3 ]; then
