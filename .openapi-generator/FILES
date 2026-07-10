@@ -57,7 +57,6 @@ docs/Model/ChargesDataResponse.md
 docs/Model/ChargesOrderResponse.md
 docs/Model/Checkout.md
 docs/Model/CheckoutOrderTemplate.md
-docs/Model/CheckoutOrderTemplateCustomerInfo.md
 docs/Model/CheckoutResponse.md
 docs/Model/CheckoutsResponse.md
 docs/Model/CompanyDocumentRequest.md
@@ -90,7 +89,6 @@ docs/Model/CustomerShippingContactsDataResponse.md
 docs/Model/CustomerShippingContactsRequest.md
 docs/Model/CustomerShippingContactsRequestAddress.md
 docs/Model/CustomerShippingContactsResponse.md
-docs/Model/CustomerSubscriptionResponse.md
 docs/Model/CustomerUpdateShippingContactsRequest.md
 docs/Model/CustomersResponse.md
 docs/Model/DeleteApiKeysResponse.md
@@ -128,7 +126,6 @@ docs/Model/OrderChannelResponse.md
 docs/Model/OrderChargesResponse.md
 docs/Model/OrderCheckoutRequest.md
 docs/Model/OrderDiscountLinesRequest.md
-docs/Model/OrderDiscountLinesResponse.md
 docs/Model/OrderFiscalEntityAddressResponse.md
 docs/Model/OrderFiscalEntityRequest.md
 docs/Model/OrderFiscalEntityResponse.md
@@ -140,10 +137,11 @@ docs/Model/OrderRequestCustomerInfo.md
 docs/Model/OrderResponse.md
 docs/Model/OrderResponseCheckout.md
 docs/Model/OrderResponseCustomerInfo.md
+docs/Model/OrderResponseDiscountLines.md
 docs/Model/OrderResponseProducts.md
 docs/Model/OrderResponseShippingContact.md
-docs/Model/OrderShippingLinesResponse.md
-docs/Model/OrderTaxLinesResponse.md
+docs/Model/OrderResponseShippingLines.md
+docs/Model/OrderResponseTaxLines.md
 docs/Model/OrderTaxRequest.md
 docs/Model/OrderTaxResponse.md
 docs/Model/OrderUpdate.md
@@ -192,6 +190,7 @@ docs/Model/SubscriptionDetailsPlan.md
 docs/Model/SubscriptionEventsResponse.md
 docs/Model/SubscriptionRequest.md
 docs/Model/SubscriptionResponse.md
+docs/Model/SubscriptionResponse1.md
 docs/Model/TaxLinesDataResponse.md
 docs/Model/TokenRequest.md
 docs/Model/TokenRequestCard.md
@@ -275,7 +274,6 @@ lib/Model/ChargesDataResponse.php
 lib/Model/ChargesOrderResponse.php
 lib/Model/Checkout.php
 lib/Model/CheckoutOrderTemplate.php
-lib/Model/CheckoutOrderTemplateCustomerInfo.php
 lib/Model/CheckoutResponse.php
 lib/Model/CheckoutsResponse.php
 lib/Model/CompanyDocumentRequest.php
@@ -308,7 +306,6 @@ lib/Model/CustomerShippingContactsDataResponse.php
 lib/Model/CustomerShippingContactsRequest.php
 lib/Model/CustomerShippingContactsRequestAddress.php
 lib/Model/CustomerShippingContactsResponse.php
-lib/Model/CustomerSubscriptionResponse.php
 lib/Model/CustomerUpdateShippingContactsRequest.php
 lib/Model/CustomersResponse.php
 lib/Model/DeleteApiKeysResponse.php
@@ -347,7 +344,6 @@ lib/Model/OrderChannelResponse.php
 lib/Model/OrderChargesResponse.php
 lib/Model/OrderCheckoutRequest.php
 lib/Model/OrderDiscountLinesRequest.php
-lib/Model/OrderDiscountLinesResponse.php
 lib/Model/OrderFiscalEntityAddressResponse.php
 lib/Model/OrderFiscalEntityRequest.php
 lib/Model/OrderFiscalEntityResponse.php
@@ -359,10 +355,11 @@ lib/Model/OrderRequestCustomerInfo.php
 lib/Model/OrderResponse.php
 lib/Model/OrderResponseCheckout.php
 lib/Model/OrderResponseCustomerInfo.php
+lib/Model/OrderResponseDiscountLines.php
 lib/Model/OrderResponseProducts.php
 lib/Model/OrderResponseShippingContact.php
-lib/Model/OrderShippingLinesResponse.php
-lib/Model/OrderTaxLinesResponse.php
+lib/Model/OrderResponseShippingLines.php
+lib/Model/OrderResponseTaxLines.php
 lib/Model/OrderTaxRequest.php
 lib/Model/OrderTaxResponse.php
 lib/Model/OrderUpdate.php
@@ -411,6 +408,7 @@ lib/Model/SubscriptionDetailsPlan.php
 lib/Model/SubscriptionEventsResponse.php
 lib/Model/SubscriptionRequest.php
 lib/Model/SubscriptionResponse.php
+lib/Model/SubscriptionResponse1.php
 lib/Model/TaxLinesDataResponse.php
 lib/Model/TokenRequest.php
 lib/Model/TokenRequestCard.php

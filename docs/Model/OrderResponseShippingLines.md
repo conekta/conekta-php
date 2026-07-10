@@ -1,4 +1,4 @@
-# # OrderDiscountLinesResponse
+# # OrderResponseShippingLines
 
 ## Properties
 
@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **object** | **string** | Object type, in this case is list |
 **next_page_url** | **string** | URL of the next page. | [optional]
 **previous_page_url** | **string** | Url of the previous page. | [optional]
-**data** | [**\Conekta\Model\DiscountLinesDataResponse[]**](DiscountLinesDataResponse.md) |  | [optional]
+**data** | [**\Conekta\Model\ShippingLinesDataResponse[]**](ShippingLinesDataResponse.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

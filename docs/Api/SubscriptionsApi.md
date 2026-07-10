@@ -25,7 +25,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `cancelSubscription()`
 
 ```php
-cancelSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+cancelSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Cancel Subscription [Deprecated]
@@ -71,7 +71,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -89,7 +89,7 @@ try {
 ## `createSubscription()`
 
 ```php
-createSubscription($id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+createSubscription($id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Create Subscription [Deprecated]
@@ -137,7 +137,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -155,7 +155,7 @@ try {
 ## `getSubscription()`
 
 ```php
-getSubscription($id, $accept_language): \Conekta\Model\SubscriptionResponse
+getSubscription($id, $accept_language): \Conekta\Model\SubscriptionResponse1
 ```
 
 Get Subscription [Deprecated]
@@ -199,7 +199,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -272,7 +272,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -281,7 +281,7 @@ try {
 ## `pauseSubscription()`
 
 ```php
-pauseSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+pauseSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Pause Subscription [Deprecated]
@@ -327,7 +327,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -336,7 +336,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -345,7 +345,7 @@ try {
 ## `resumeSubscription()`
 
 ```php
-resumeSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+resumeSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Resume Subscription [Deprecated]
@@ -391,7 +391,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -400,7 +400,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -409,7 +409,7 @@ try {
 ## `subscriptionCancel()`
 
 ```php
-subscriptionCancel($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionCancel($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Cancel Subscription
@@ -457,7 +457,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -466,7 +466,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -475,7 +475,7 @@ try {
 ## `subscriptionCreate()`
 
 ```php
-subscriptionCreate($customer_id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionCreate($customer_id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Create Subscription
@@ -523,7 +523,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -532,7 +532,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -606,7 +606,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -615,7 +615,7 @@ try {
 ## `subscriptionList()`
 
 ```php
-subscriptionList($customer_id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\SubscriptionResponse
+subscriptionList($customer_id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\SubscriptionResponse1
 ```
 
 List Subscriptions
@@ -669,7 +669,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -678,7 +678,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -687,7 +687,7 @@ try {
 ## `subscriptionPause()`
 
 ```php
-subscriptionPause($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionPause($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Pause Subscription
@@ -735,7 +735,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -744,7 +744,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -753,7 +753,7 @@ try {
 ## `subscriptionResume()`
 
 ```php
-subscriptionResume($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionResume($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Resume Subscription
@@ -801,7 +801,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -810,7 +810,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -819,7 +819,7 @@ try {
 ## `subscriptionUpdate()`
 
 ```php
-subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Update Subscription
@@ -869,7 +869,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -878,7 +878,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -887,7 +887,7 @@ try {
 ## `subscriptionsGet()`
 
 ```php
-subscriptionsGet($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionsGet($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Get Subscription
@@ -935,7 +935,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -944,7 +944,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -953,7 +953,7 @@ try {
 ## `subscriptionsRetry()`
 
 ```php
-subscriptionsRetry($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+subscriptionsRetry($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Retry Failed Payment
@@ -1001,7 +1001,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -1010,7 +1010,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -1019,7 +1019,7 @@ try {
 ## `updateSubscription()`
 
 ```php
-updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
+updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
 ```
 
 Update Subscription [Deprecated]
@@ -1067,7 +1067,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
+[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
 
 ### Authorization
 
@@ -1076,7 +1076,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
