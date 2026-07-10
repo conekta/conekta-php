@@ -1086,7 +1086,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return boolean
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1099,7 +1099,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
      * @return mixed|null
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet(mixed $offset)
+    public function offsetGet($offset)
     {
         return $this->container[$offset] ?? null;
     }
@@ -1128,7 +1128,7 @@ class CustomerPaymentMethodsData implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetUnset(mixed $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
