@@ -1,4 +1,4 @@
-# # UpdateCustomerAntifraudInfo
+# UpdateCustomerAntifraudInfo
 
 ## Properties
 

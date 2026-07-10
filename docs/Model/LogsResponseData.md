@@ -1,4 +1,4 @@
-# # LogsResponseData
+# LogsResponseData
 
 ## Properties
 

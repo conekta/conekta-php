@@ -1,4 +1,4 @@
-# # PayoutOrderRequestCustomerInfo
+# PayoutOrderRequestCustomerInfo
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CashAgreementsResponse
+# CashAgreementsResponse
 
 ## Properties
 

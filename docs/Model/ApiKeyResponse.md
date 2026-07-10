@@ -1,4 +1,4 @@
-# # ApiKeyResponse
+# ApiKeyResponse
 
 ## Properties
 

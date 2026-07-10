@@ -1,4 +1,4 @@
-# # CustomerPaymentMethodsResponse
+# CustomerPaymentMethodsResponse
 
 ## Properties
 

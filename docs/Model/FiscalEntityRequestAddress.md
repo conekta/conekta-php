@@ -1,4 +1,4 @@
-# # FiscalEntityRequestAddress
+# FiscalEntityRequestAddress
 
 ## Properties
 

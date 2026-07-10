@@ -1,4 +1,4 @@
-# # OrderFiscalEntityAddressResponse
+# OrderFiscalEntityAddressResponse
 
 ## Properties
 

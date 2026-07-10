@@ -1,4 +1,4 @@
-# # ChargebackFileResponse
+# ChargebackFileResponse
 
 ## Properties
 

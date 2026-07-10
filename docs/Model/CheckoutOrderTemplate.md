@@ -1,4 +1,4 @@
-# # CheckoutOrderTemplate
+# CheckoutOrderTemplate
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCompaniesResponse
+# GetCompaniesResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # BlacklistRuleResponse
+# BlacklistRuleResponse
 
 ## Properties
 

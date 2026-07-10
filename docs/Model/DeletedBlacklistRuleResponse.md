@@ -1,4 +1,4 @@
-# # DeletedBlacklistRuleResponse
+# DeletedBlacklistRuleResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # EventsResendResponse
+# EventsResendResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetWebhookKeysResponse
+# GetWebhookKeysResponse
 
 ## Properties
 

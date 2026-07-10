@@ -1,4 +1,4 @@
-# # OrderDiscountLinesRequest
+# OrderDiscountLinesRequest
 
 ## Properties
 

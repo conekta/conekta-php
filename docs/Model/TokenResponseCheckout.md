@@ -1,4 +1,4 @@
-# # TokenResponseCheckout
+# TokenResponseCheckout
 
 ## Properties
 

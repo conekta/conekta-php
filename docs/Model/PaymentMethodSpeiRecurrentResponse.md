@@ -1,4 +1,4 @@
-# # PaymentMethodSpeiRecurrentResponse
+# PaymentMethodSpeiRecurrentResponse
 
 ## Properties
 

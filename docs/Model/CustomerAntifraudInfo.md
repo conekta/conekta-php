@@ -1,4 +1,4 @@
-# # CustomerAntifraudInfo
+# CustomerAntifraudInfo
 
 ## Properties
 

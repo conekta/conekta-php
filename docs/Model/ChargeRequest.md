@@ -1,4 +1,4 @@
-# # ChargeRequest
+# ChargeRequest
 
 ## Properties
 

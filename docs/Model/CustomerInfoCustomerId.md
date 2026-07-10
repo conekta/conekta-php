@@ -1,4 +1,4 @@
-# # CustomerInfoCustomerId
+# CustomerInfoCustomerId
 
 ## Properties
 

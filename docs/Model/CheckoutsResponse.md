@@ -1,4 +1,4 @@
-# # CheckoutsResponse
+# CheckoutsResponse
 
 ## Properties
 

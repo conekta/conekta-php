@@ -1,4 +1,4 @@
-# # OrderRequest
+# OrderRequest
 
 ## Properties
 

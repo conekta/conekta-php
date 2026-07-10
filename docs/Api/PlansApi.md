@@ -1,5 +1,7 @@
 # Conekta\PlansApi
 
+
+
 All URIs are relative to https://api.conekta.io, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

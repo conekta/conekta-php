@@ -1,4 +1,4 @@
-# # SubscriptionEventsResponse
+# SubscriptionEventsResponse
 
 ## Properties
 

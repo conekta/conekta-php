@@ -6,7 +6,7 @@ php:
 	rm -rf docs &&  \
 	rm -rf lib/Model && \
 	docker run --rm \
-	-v ${PWD}:/local openapitools/openapi-generator-cli:v7.12.0 generate \
+	-v ${PWD}:/local openapitools/openapi-generator-cli:v7.23.0 generate \
 		-i https://raw.githubusercontent.com/conekta/openapi/refs/heads/release/v2.3.0/_build/api.yaml \
 		-g php \
 		-o /local \

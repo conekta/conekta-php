@@ -1,4 +1,4 @@
-# # OrderResponseCustomerInfo
+# OrderResponseCustomerInfo
 
 ## Properties
 

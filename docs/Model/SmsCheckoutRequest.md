@@ -1,4 +1,4 @@
-# # SmsCheckoutRequest
+# SmsCheckoutRequest
 
 ## Properties
 

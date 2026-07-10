@@ -1,4 +1,4 @@
-# # OrderResponse
+# OrderResponse
 
 ## Properties
 

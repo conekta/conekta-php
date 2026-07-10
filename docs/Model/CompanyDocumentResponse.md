@@ -1,4 +1,4 @@
-# # CompanyDocumentResponse
+# CompanyDocumentResponse
 
 ## Properties
 

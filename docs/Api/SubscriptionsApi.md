@@ -1,5 +1,7 @@
 # Conekta\SubscriptionsApi
 
+All subscription-related endpoints including creation, management, and events
+
 All URIs are relative to https://api.conekta.io, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

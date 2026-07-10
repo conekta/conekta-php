@@ -1,4 +1,4 @@
-# # OrderUpdateFiscalEntityRequest
+# OrderUpdateFiscalEntityRequest
 
 ## Properties
 

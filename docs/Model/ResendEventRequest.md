@@ -1,4 +1,4 @@
-# # ResendEventRequest
+# ResendEventRequest
 
 ## Properties
 

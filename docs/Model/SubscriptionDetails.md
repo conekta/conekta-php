@@ -1,4 +1,4 @@
-# # SubscriptionDetails
+# SubscriptionDetails
 
 ## Properties
 

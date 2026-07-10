@@ -1,4 +1,4 @@
-# # OrderChannelResponse
+# OrderChannelResponse
 
 ## Properties
 

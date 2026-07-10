@@ -1,4 +1,4 @@
-# # ShippingOrderResponse
+# ShippingOrderResponse
 
 ## Properties
 

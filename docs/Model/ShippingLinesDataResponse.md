@@ -1,4 +1,4 @@
-# # ShippingLinesDataResponse
+# ShippingLinesDataResponse
 
 ## Properties
 

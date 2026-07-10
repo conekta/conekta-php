@@ -1,4 +1,4 @@
-# # ChargeResponse
+# ChargeResponse
 
 ## Properties
 

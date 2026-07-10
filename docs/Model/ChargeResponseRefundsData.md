@@ -1,4 +1,4 @@
-# # ChargeResponseRefundsData
+# ChargeResponseRefundsData
 
 ## Properties
 

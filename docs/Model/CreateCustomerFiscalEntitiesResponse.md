@@ -1,4 +1,4 @@
-# # CreateCustomerFiscalEntitiesResponse
+# CreateCustomerFiscalEntitiesResponse
 
 ## Properties
 

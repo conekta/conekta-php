@@ -1,4 +1,4 @@
-# # CustomerFiscalEntitiesResponse
+# CustomerFiscalEntitiesResponse
 
 ## Properties
 

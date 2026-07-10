@@ -1,4 +1,4 @@
-# # SubscriptionResponse1
+# SubscriptionResponse1
 
 ## Properties
 

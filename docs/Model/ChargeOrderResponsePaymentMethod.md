@@ -1,4 +1,4 @@
-# # ChargeOrderResponsePaymentMethod
+# ChargeOrderResponsePaymentMethod
 
 ## Properties
 

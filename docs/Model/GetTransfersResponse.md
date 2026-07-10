@@ -1,4 +1,4 @@
-# # GetTransfersResponse
+# GetTransfersResponse
 
 ## Properties
 

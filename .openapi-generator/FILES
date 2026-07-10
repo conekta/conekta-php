@@ -249,6 +249,7 @@ lib/Api/WebhookKeysApi.php
 lib/Api/WebhooksApi.php
 lib/ApiException.php
 lib/Configuration.php
+lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/ApiKeyCreateResponse.php
 lib/Model/ApiKeyRequest.php

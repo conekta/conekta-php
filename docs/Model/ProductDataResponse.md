@@ -1,4 +1,4 @@
-# # ProductDataResponse
+# ProductDataResponse
 
 ## Properties
 

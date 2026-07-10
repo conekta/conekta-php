@@ -1,4 +1,4 @@
-# # PaymentMethodTokenRequest
+# PaymentMethodTokenRequest
 
 ## Properties
 

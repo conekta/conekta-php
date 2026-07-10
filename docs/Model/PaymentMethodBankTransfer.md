@@ -1,4 +1,4 @@
-# # PaymentMethodBankTransfer
+# PaymentMethodBankTransfer
 
 ## Properties
 

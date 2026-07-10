@@ -1,4 +1,4 @@
-# # OrderRefundRequest
+# OrderRefundRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # OrderNextActionResponseRedirectToUrl
+# OrderNextActionResponseRedirectToUrl
 
 ## Properties
 

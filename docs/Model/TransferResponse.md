@@ -1,4 +1,4 @@
-# # TransferResponse
+# TransferResponse
 
 ## Properties
 

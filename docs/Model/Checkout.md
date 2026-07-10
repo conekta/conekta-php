@@ -1,4 +1,4 @@
-# # Checkout
+# Checkout
 
 ## Properties
 

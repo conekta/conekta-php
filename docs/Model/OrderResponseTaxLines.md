@@ -1,4 +1,4 @@
-# # OrderResponseTaxLines
+# OrderResponseTaxLines
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # OrderResponseCheckout
+# OrderResponseCheckout
 
 ## Properties
 

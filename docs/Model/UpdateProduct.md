@@ -1,4 +1,4 @@
-# # UpdateProduct
+# UpdateProduct
 
 ## Properties
 

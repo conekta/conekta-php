@@ -1,4 +1,4 @@
-# # CustomerPaymentMethodsData
+# CustomerPaymentMethodsData
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetOrdersResponse
+# GetOrdersResponse
 
 ## Properties
 

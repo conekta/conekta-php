@@ -1,4 +1,4 @@
-# # TokenRequestCard
+# TokenRequestCard
 
 ## Properties
 
