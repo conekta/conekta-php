@@ -179,7 +179,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function cancelSubscription($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelSubscription'][0])
@@ -200,7 +200,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function cancelSubscriptionWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelSubscription'][0])
@@ -232,11 +232,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -254,7 +254,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -354,7 +354,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -387,7 +387,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -461,7 +461,7 @@ class SubscriptionsApi
      */
     public function cancelSubscriptionAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['cancelSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->cancelSubscriptionRequest($id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -626,7 +626,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function createSubscription($id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createSubscription'][0])
@@ -648,7 +648,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function createSubscriptionWithHttpInfo($id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createSubscription'][0])
@@ -680,11 +680,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -702,7 +702,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -829,7 +829,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -862,7 +862,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -946,7 +946,7 @@ class SubscriptionsApi
      */
     public function createSubscriptionAsyncWithHttpInfo($id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['createSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->createSubscriptionRequest($id, $subscription_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -1124,7 +1124,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function getSubscription($id, $accept_language = 'es', string $contentType = self::contentTypes['getSubscription'][0])
@@ -1144,7 +1144,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function getSubscriptionWithHttpInfo($id, $accept_language = 'es', string $contentType = self::contentTypes['getSubscription'][0])
@@ -1176,11 +1176,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1198,7 +1198,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1298,7 +1298,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1331,7 +1331,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1403,7 +1403,7 @@ class SubscriptionsApi
      */
     public function getSubscriptionAsyncWithHttpInfo($id, $accept_language = 'es', string $contentType = self::contentTypes['getSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->getSubscriptionRequest($id, $accept_language, $contentType);
 
         return $this->client
@@ -2077,7 +2077,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function pauseSubscription($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['pauseSubscription'][0])
@@ -2098,7 +2098,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function pauseSubscriptionWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['pauseSubscription'][0])
@@ -2130,11 +2130,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2152,7 +2152,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2279,7 +2279,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2312,7 +2312,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2394,7 +2394,7 @@ class SubscriptionsApi
      */
     public function pauseSubscriptionAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['pauseSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->pauseSubscriptionRequest($id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -2558,7 +2558,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function resumeSubscription($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['resumeSubscription'][0])
@@ -2579,7 +2579,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function resumeSubscriptionWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['resumeSubscription'][0])
@@ -2611,11 +2611,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2633,7 +2633,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2787,7 +2787,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2820,7 +2820,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2910,7 +2910,7 @@ class SubscriptionsApi
      */
     public function resumeSubscriptionAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['resumeSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->resumeSubscriptionRequest($id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -3075,7 +3075,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionCancel($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCancel'][0])
     {
@@ -3096,7 +3096,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionCancelWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCancel'][0])
     {
@@ -3127,11 +3127,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3149,7 +3149,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3249,7 +3249,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3282,7 +3282,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3356,7 +3356,7 @@ class SubscriptionsApi
      */
     public function subscriptionCancelAsyncWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCancel'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionCancelRequest($customer_id, $id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -3536,7 +3536,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionCreate($customer_id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
     {
@@ -3557,7 +3557,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionCreateWithHttpInfo($customer_id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
     {
@@ -3588,11 +3588,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3610,7 +3610,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3737,7 +3737,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3770,7 +3770,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3852,7 +3852,7 @@ class SubscriptionsApi
      */
     public function subscriptionCreateAsyncWithHttpInfo($customer_id, $subscription_request, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionCreateRequest($customer_id, $subscription_request, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -4561,7 +4561,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionList($customer_id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
@@ -4585,7 +4585,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionListWithHttpInfo($customer_id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
@@ -4616,11 +4616,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4638,7 +4638,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4738,7 +4738,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4771,7 +4771,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4851,7 +4851,7 @@ class SubscriptionsApi
      */
     public function subscriptionListAsyncWithHttpInfo($customer_id, $accept_language = 'es', $x_child_company_id = null, $limit = 20, $search = null, $next = null, $previous = null, string $contentType = self::contentTypes['subscriptionList'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionListRequest($customer_id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous, $contentType);
 
         return $this->client
@@ -5065,7 +5065,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionPause($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionPause'][0])
     {
@@ -5086,7 +5086,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionPauseWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionPause'][0])
     {
@@ -5117,11 +5117,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5139,7 +5139,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5239,7 +5239,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5272,7 +5272,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5346,7 +5346,7 @@ class SubscriptionsApi
      */
     public function subscriptionPauseAsyncWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionPause'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionPauseRequest($customer_id, $id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -5526,7 +5526,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionResume($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionResume'][0])
     {
@@ -5547,7 +5547,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionResumeWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionResume'][0])
     {
@@ -5578,11 +5578,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5600,7 +5600,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5700,7 +5700,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5733,7 +5733,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5807,7 +5807,7 @@ class SubscriptionsApi
      */
     public function subscriptionResumeAsyncWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionResume'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionResumeRequest($customer_id, $id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -5988,7 +5988,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
@@ -6010,7 +6010,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionUpdateWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
@@ -6041,11 +6041,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6063,7 +6063,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6190,7 +6190,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6223,7 +6223,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6307,7 +6307,7 @@ class SubscriptionsApi
      */
     public function subscriptionUpdateAsyncWithHttpInfo($customer_id, $id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionUpdate'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionUpdateRequest($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -6502,7 +6502,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionsGet($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsGet'][0])
     {
@@ -6523,7 +6523,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionsGetWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsGet'][0])
     {
@@ -6554,11 +6554,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6576,7 +6576,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6676,7 +6676,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6709,7 +6709,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6783,7 +6783,7 @@ class SubscriptionsApi
      */
     public function subscriptionsGetAsyncWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsGet'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionsGetRequest($customer_id, $id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -6963,7 +6963,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
     public function subscriptionsRetry($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsRetry'][0])
     {
@@ -6984,7 +6984,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function subscriptionsRetryWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsRetry'][0])
     {
@@ -7015,11 +7015,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7037,7 +7037,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7164,7 +7164,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7197,7 +7197,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7279,7 +7279,7 @@ class SubscriptionsApi
      */
     public function subscriptionsRetryAsyncWithHttpInfo($customer_id, $id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['subscriptionsRetry'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->subscriptionsRetryRequest($customer_id, $id, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client
@@ -7459,7 +7459,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
+     * @return \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      * @deprecated
      */
     public function updateSubscription($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
@@ -7481,7 +7481,7 @@ class SubscriptionsApi
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Conekta\Model\SubscriptionResponse1|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Conekta\Model\SubscriptionResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function updateSubscriptionWithHttpInfo($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
@@ -7513,11 +7513,11 @@ class SubscriptionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Conekta\Model\SubscriptionResponse1' === '\SplFileObject') {
+                    if ('\Conekta\Model\SubscriptionResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Conekta\Model\SubscriptionResponse1' !== 'string') {
+                        if ('\Conekta\Model\SubscriptionResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7535,7 +7535,7 @@ class SubscriptionsApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse1', []),
+                        ObjectSerializer::deserialize($content, '\Conekta\Model\SubscriptionResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7662,7 +7662,7 @@ class SubscriptionsApi
                 );
             }
 
-            $returnType = '\Conekta\Model\SubscriptionResponse1';
+            $returnType = '\Conekta\Model\SubscriptionResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7695,7 +7695,7 @@ class SubscriptionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Conekta\Model\SubscriptionResponse1',
+                        '\Conekta\Model\SubscriptionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7779,7 +7779,7 @@ class SubscriptionsApi
      */
     public function updateSubscriptionAsyncWithHttpInfo($id, $updates_a_subscription, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['updateSubscription'][0])
     {
-        $returnType = '\Conekta\Model\SubscriptionResponse1';
+        $returnType = '\Conekta\Model\SubscriptionResponse';
         $request = $this->updateSubscriptionRequest($id, $updates_a_subscription, $accept_language, $x_child_company_id, $contentType);
 
         return $this->client

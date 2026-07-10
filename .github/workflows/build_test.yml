@@ -20,6 +20,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
         dependency-versions:
           - "lowest"
     steps:
@@ -49,7 +50,7 @@ jobs:
               PHPUNIT_VERSION="^10.5"
           elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -le 3 ]; then
               PHPUNIT_VERSION="^11.0"
-          elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -eq 4 ]; then
+          elif [ "$PHP_VERSION_MAJOR" -eq 8 ] && [ "$PHP_VERSION_MINOR" -ge 4 ]; then
               PHPUNIT_VERSION="^12.0"
           else
               echo "Error: Versión de PHP no soportada."

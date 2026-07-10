@@ -51,7 +51,7 @@ class SubscriptionResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @var string
      */
-    protected static $openAPIModelName = 'subscription_response';
+    protected static $openAPIModelName = 'subscription_response_1';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

@@ -27,7 +27,7 @@ All URIs are relative to https://api.conekta.io, except if the operation defines
 ## `cancelSubscription()`
 
 ```php
-cancelSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+cancelSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Cancel Subscription [Deprecated]
@@ -73,7 +73,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ try {
 ## `createSubscription()`
 
 ```php
-createSubscription($id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+createSubscription($id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Create Subscription [Deprecated]
@@ -139,7 +139,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ try {
 ## `getSubscription()`
 
 ```php
-getSubscription($id, $accept_language): \Conekta\Model\SubscriptionResponse1
+getSubscription($id, $accept_language): \Conekta\Model\SubscriptionResponse
 ```
 
 Get Subscription [Deprecated]
@@ -201,7 +201,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ try {
 ## `pauseSubscription()`
 
 ```php
-pauseSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+pauseSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Pause Subscription [Deprecated]
@@ -329,7 +329,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ try {
 ## `resumeSubscription()`
 
 ```php
-resumeSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+resumeSubscription($id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Resume Subscription [Deprecated]
@@ -393,7 +393,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -411,7 +411,7 @@ try {
 ## `subscriptionCancel()`
 
 ```php
-subscriptionCancel($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionCancel($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Cancel Subscription
@@ -459,7 +459,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ try {
 ## `subscriptionCreate()`
 
 ```php
-subscriptionCreate($customer_id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionCreate($customer_id, $subscription_request, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Create Subscription
@@ -525,7 +525,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -617,7 +617,7 @@ try {
 ## `subscriptionList()`
 
 ```php
-subscriptionList($customer_id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\SubscriptionResponse1
+subscriptionList($customer_id, $accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\SubscriptionResponse
 ```
 
 List Subscriptions
@@ -671,7 +671,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -689,7 +689,7 @@ try {
 ## `subscriptionPause()`
 
 ```php
-subscriptionPause($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionPause($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Pause Subscription
@@ -737,7 +737,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -755,7 +755,7 @@ try {
 ## `subscriptionResume()`
 
 ```php
-subscriptionResume($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionResume($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Resume Subscription
@@ -803,7 +803,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -821,7 +821,7 @@ try {
 ## `subscriptionUpdate()`
 
 ```php
-subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionUpdate($customer_id, $id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Update Subscription
@@ -871,7 +871,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -889,7 +889,7 @@ try {
 ## `subscriptionsGet()`
 
 ```php
-subscriptionsGet($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionsGet($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Get Subscription
@@ -937,7 +937,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -955,7 +955,7 @@ try {
 ## `subscriptionsRetry()`
 
 ```php
-subscriptionsRetry($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+subscriptionsRetry($customer_id, $id, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Retry Failed Payment
@@ -1003,7 +1003,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
@@ -1021,7 +1021,7 @@ try {
 ## `updateSubscription()`
 
 ```php
-updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse1
+updateSubscription($id, $updates_a_subscription, $accept_language, $x_child_company_id): \Conekta\Model\SubscriptionResponse
 ```
 
 Update Subscription [Deprecated]
@@ -1069,7 +1069,7 @@ try {
 
 ### Return type
 
-[**\Conekta\Model\SubscriptionResponse1**](../Model/SubscriptionResponse1.md)
+[**\Conekta\Model\SubscriptionResponse**](../Model/SubscriptionResponse.md)
 
 ### Authorization
 
