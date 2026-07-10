@@ -1,4 +1,4 @@
-# # CreateCustomerPaymentMethodsResponse
+# CreateCustomerPaymentMethodsResponse
 
 ## Properties
 

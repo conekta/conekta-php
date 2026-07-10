@@ -1,4 +1,4 @@
-# # ChargesDataResponse
+# ChargesDataResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ApiKeyUpdateRequest
+# ApiKeyUpdateRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ChargeResponseChannel
+# ChargeResponseChannel
 
 ## Properties
 

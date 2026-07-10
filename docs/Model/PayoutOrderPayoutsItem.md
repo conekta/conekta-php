@@ -1,4 +1,4 @@
-# # PayoutOrderPayoutsItem
+# PayoutOrderPayoutsItem
 
 ## Properties
 

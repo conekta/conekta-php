@@ -1,4 +1,4 @@
-# # UpdateWebhook
+# UpdateWebhook
 
 ## Properties
 

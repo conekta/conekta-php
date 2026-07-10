@@ -1,4 +1,4 @@
-# # PaymentMethodCashResponse
+# PaymentMethodCashResponse
 
 ## Properties
 

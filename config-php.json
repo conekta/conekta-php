@@ -1,13 +1,13 @@
 {
   "packageName": "conekta",
   "generateSourceCodeOnly": "false",
-  "artifactVersion": "7.1.0",
+  "artifactVersion": "9.0.0",
   "packageUrl": "https://developers.conekta.com/",
   "projectName": "conekta-php",
   "appDescriptionV2" : "Conekta PHP Library",
   "useOneOfDiscriminatorLookup" : true,
   "nonCompliantUseDiscriminatorIfCompositionFails" : false,
-  "httpUserAgent": "Conekta/v2 PhpBindings/7.1.0",
+  "httpUserAgent": "Conekta/v2 PhpBindings/9.0.0",
   "packageAuthors" : "engineering@conekta.com",
   "files": {
     "/local/CODE_OF_CONDUCT.md" : {},
@@ -26,6 +26,9 @@
   "gitUserId": "conekta",
   "gitRepoId": "conekta-php",
   "modern" : true,
+  "modelNameMappings": {
+    "subscription_response_1": "SubscriptionResponse"
+  },
   "disallowAdditionalPropertiesIfNotPresent" : true,
   "invokerPackage" : "Conekta",
   "templateDir": "/local/templates/php",

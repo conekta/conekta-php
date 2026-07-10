@@ -1,4 +1,4 @@
-# # GetApiKeysResponse
+# GetApiKeysResponse
 
 ## Properties
 

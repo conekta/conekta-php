@@ -1,4 +1,4 @@
-# # WebhookKeyResponse
+# WebhookKeyResponse
 
 ## Properties
 

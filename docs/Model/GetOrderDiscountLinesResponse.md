@@ -1,4 +1,4 @@
-# # GetOrderDiscountLinesResponse
+# GetOrderDiscountLinesResponse
 
 ## Properties
 

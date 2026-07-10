@@ -1,4 +1,4 @@
-# # CompanyResponse
+# CompanyResponse
 
 ## Properties
 

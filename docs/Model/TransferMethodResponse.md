@@ -1,4 +1,4 @@
-# # TransferMethodResponse
+# TransferMethodResponse
 
 ## Properties
 

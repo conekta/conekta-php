@@ -1,4 +1,4 @@
-# # WebhookKeyRequest
+# WebhookKeyRequest
 
 ## Properties
 

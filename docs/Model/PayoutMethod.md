@@ -1,4 +1,4 @@
-# # PayoutMethod
+# PayoutMethod
 
 ## Properties
 

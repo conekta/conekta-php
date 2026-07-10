@@ -1,4 +1,4 @@
-# # WebhookLog
+# WebhookLog
 
 ## Properties
 

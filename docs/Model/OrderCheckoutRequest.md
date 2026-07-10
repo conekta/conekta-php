@@ -1,14 +1,16 @@
-# # OrderCheckoutRequest
+# OrderCheckoutRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allowed_payment_methods** | **string[]** | Are the payment methods available for this link. For subscriptions, only &#39;card&#39; is allowed due to the recurring nature of the payments. |
+**allowed_payment_methods** | **string[]** | Are the payment methods available for this link. For subscriptions, only &#39;card&#39; is allowed due to the recurring nature of the payments. This field is mutually exclusive with excluded_payment_methods. | [optional]
+**excluded_payment_methods** | **string[]** | Payment methods to be excluded from the checkout. This field is mutually exclusive with allowed_payment_methods. | [optional]
 **exclude_card_networks** | **string[]** | List of card networks to exclude from the checkout. This field is only applicable for card payments. | [optional]
 **plan_ids** | **string[]** | List of plan IDs that will be available for subscription. This field is required for subscription payments. | [optional]
 **expires_at** | **int** | It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. | [optional]
 **failure_url** | **string** | Redirection url back to the site in case of failed payment, applies only to HostedPayment. | [optional]
+**force_save_card** | **bool** | Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments. | [optional]
 **monthly_installments_enabled** | **bool** |  | [optional]
 **monthly_installments_options** | **int[]** |  | [optional]
 **max_failed_retries** | **int** | Number of retries allowed before the checkout is marked as failed | [optional]

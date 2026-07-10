@@ -1,10 +1,11 @@
-# # Checkout
+# Checkout
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allowed_payment_methods** | **string[]** | Those are the payment methods that will be available for the link |
+**allowed_payment_methods** | **string[]** | Those are the payment methods that will be available for the link. This field is mutually exclusive with excluded_payment_methods. | [optional]
+**excluded_payment_methods** | **string[]** | Payment methods to be excluded from the checkout. This field is mutually exclusive with allowed_payment_methods. | [optional]
 **exclude_card_networks** | **string[]** | List of card networks to exclude from the checkout. This field is only applicable for card payments. | [optional]
 **expires_at** | **int** | It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. |
 **monthly_installments_enabled** | **bool** | This flag allows you to specify if months without interest will be active. | [optional]

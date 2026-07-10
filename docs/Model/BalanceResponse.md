@@ -1,4 +1,4 @@
-# # BalanceResponse
+# BalanceResponse
 
 ## Properties
 

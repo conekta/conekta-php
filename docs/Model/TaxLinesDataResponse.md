@@ -1,4 +1,4 @@
-# # TaxLinesDataResponse
+# TaxLinesDataResponse
 
 ## Properties
 

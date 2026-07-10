@@ -1,4 +1,4 @@
-# # CreateCompanyRequestComercialInfo
+# CreateCompanyRequestComercialInfo
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # OrderResponseShippingContact
+# OrderResponseShippingContact
 
 ## Properties
 

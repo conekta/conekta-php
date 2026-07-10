@@ -1,4 +1,4 @@
-# # CustomerShippingContactsRequestAddress
+# CustomerShippingContactsRequestAddress
 
 ## Properties
 

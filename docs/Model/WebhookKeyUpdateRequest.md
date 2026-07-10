@@ -1,4 +1,4 @@
-# # WebhookKeyUpdateRequest
+# WebhookKeyUpdateRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # SubscriptionRequest
+# SubscriptionRequest
 
 ## Properties
 

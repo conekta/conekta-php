@@ -1,4 +1,4 @@
-# # PlanResponse
+# PlanResponse
 
 ## Properties
 

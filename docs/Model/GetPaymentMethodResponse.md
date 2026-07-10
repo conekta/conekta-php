@@ -1,4 +1,4 @@
-# # GetPaymentMethodResponse
+# GetPaymentMethodResponse
 
 ## Properties
 

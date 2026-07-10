@@ -1,4 +1,4 @@
-# # EmailCheckoutRequest
+# EmailCheckoutRequest
 
 ## Properties
 

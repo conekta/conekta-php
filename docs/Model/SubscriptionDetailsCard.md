@@ -1,4 +1,4 @@
-# # SubscriptionDetailsCard
+# SubscriptionDetailsCard
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # RiskRulesList
+# RiskRulesList
 
 ## Properties
 

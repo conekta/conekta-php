@@ -1,4 +1,4 @@
-# # Customer
+# Customer
 
 ## Properties
 

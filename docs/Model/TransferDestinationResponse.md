@@ -1,4 +1,4 @@
-# # TransferDestinationResponse
+# TransferDestinationResponse
 
 ## Properties
 

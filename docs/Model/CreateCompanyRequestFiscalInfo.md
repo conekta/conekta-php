@@ -1,4 +1,4 @@
-# # CreateCompanyRequestFiscalInfo
+# CreateCompanyRequestFiscalInfo
 
 ## Properties
 

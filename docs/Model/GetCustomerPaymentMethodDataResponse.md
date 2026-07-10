@@ -1,4 +1,4 @@
-# # GetCustomerPaymentMethodDataResponse
+# GetCustomerPaymentMethodDataResponse
 
 ## Properties
 

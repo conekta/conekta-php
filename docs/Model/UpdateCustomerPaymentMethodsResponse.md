@@ -1,4 +1,4 @@
-# # UpdateCustomerPaymentMethodsResponse
+# UpdateCustomerPaymentMethodsResponse
 
 ## Properties
 

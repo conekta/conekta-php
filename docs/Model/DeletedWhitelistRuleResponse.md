@@ -1,4 +1,4 @@
-# # DeletedWhitelistRuleResponse
+# DeletedWhitelistRuleResponse
 
 ## Properties
 

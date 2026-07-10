@@ -1,4 +1,4 @@
-# # DiscountLinesResponse
+# DiscountLinesResponse
 
 ## Properties
 

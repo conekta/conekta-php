@@ -1,4 +1,4 @@
-# # BalanceCommonFielsResponse
+# BalanceCommonFielsResponse
 
 ## Properties
 

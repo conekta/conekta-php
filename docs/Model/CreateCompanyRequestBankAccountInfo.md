@@ -1,4 +1,4 @@
-# # CreateCompanyRequestBankAccountInfo
+# CreateCompanyRequestBankAccountInfo
 
 ## Properties
 

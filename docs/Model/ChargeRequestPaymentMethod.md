@@ -1,4 +1,4 @@
-# # ChargeRequestPaymentMethod
+# ChargeRequestPaymentMethod
 
 ## Properties
 

@@ -1,19 +1,21 @@
-# # OrderResponseCheckout
+# OrderResponseCheckout
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**allowed_payment_methods** | **string[]** | Are the payment methods available for this link |
+**allowed_payment_methods** | **string[]** | Are the payment methods available for this link | [optional]
+**excluded_payment_methods** | **string[]** | Payment methods excluded from the checkout. This field is only returned when excluded_payment_methods is provided in the request. | [optional]
 **can_not_expire** | **bool** |  | [optional]
 **emails_sent** | **int** |  | [optional]
 **exclude_card_networks** | **string[]** |  | [optional]
 **expires_at** | **int** |  | [optional]
 **failure_url** | **string** |  | [optional]
 **force_3ds_flow** | **bool** |  | [optional]
+**force_save_card** | **bool** | Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments. | [optional]
 **id** | **string** |  |
 **is_redirect_on_failure** | **bool** |  | [optional]
-**livemode** | **bool** |  | [optional]
+**livemode** | **bool** |  |
 **max_failed_retries** | **int** | Number of retries allowed before the checkout is marked as failed | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
 **monthly_installments_enabled** | **bool** |  | [optional]

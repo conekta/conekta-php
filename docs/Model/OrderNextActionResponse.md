@@ -1,4 +1,4 @@
-# # OrderNextActionResponse
+# OrderNextActionResponse
 
 ## Properties
 

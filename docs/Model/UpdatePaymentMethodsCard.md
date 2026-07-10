@@ -1,4 +1,4 @@
-# # UpdatePaymentMethodsCard
+# UpdatePaymentMethodsCard
 
 ## Properties
 

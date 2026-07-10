@@ -1,4 +1,4 @@
-# # Payout
+# Payout
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # PaymentMethodBnplRequest
+# PaymentMethodBnplRequest
 
 ## Properties
 

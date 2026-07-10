@@ -1,5 +1,7 @@
 # Conekta\WebhooksApi
 
+
+
 All URIs are relative to https://api.conekta.io, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
@@ -68,7 +70,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -128,7 +130,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -190,7 +192,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -262,7 +264,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -324,7 +326,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -390,7 +392,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/vnd.conekta-v2.2.0+json`
+- **Accept**: `application/vnd.conekta-v2.3.0+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -1,4 +1,4 @@
-# # CompanyDocumentRequest
+# CompanyDocumentRequest
 
 ## Properties
 

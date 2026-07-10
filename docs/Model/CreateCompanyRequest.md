@@ -1,4 +1,4 @@
-# # CreateCompanyRequest
+# CreateCompanyRequest
 
 ## Properties
 

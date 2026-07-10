@@ -1,4 +1,4 @@
-# # CustomerAntifraudInfoResponse
+# CustomerAntifraudInfoResponse
 
 ## Properties
 

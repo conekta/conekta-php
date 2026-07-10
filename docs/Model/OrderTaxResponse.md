@@ -1,4 +1,4 @@
-# # OrderTaxResponse
+# OrderTaxResponse
 
 ## Properties
 

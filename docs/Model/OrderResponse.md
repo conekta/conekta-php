@@ -1,4 +1,4 @@
-# # OrderResponse
+# OrderResponse
 
 ## Properties
 
@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **created_at** | **int** | The time at which the object was created in seconds since the Unix epoch | [optional]
 **currency** | **string** | The three-letter ISO 4217 currency code. The currency of the order. | [optional]
 **customer_info** | [**\Conekta\Model\OrderResponseCustomerInfo**](OrderResponseCustomerInfo.md) |  | [optional]
-**discount_lines** | [**\Conekta\Model\OrderDiscountLinesResponse**](OrderDiscountLinesResponse.md) |  | [optional]
-**tax_lines** | [**\Conekta\Model\OrderTaxLinesResponse**](OrderTaxLinesResponse.md) |  | [optional]
-**shipping_lines** | [**\Conekta\Model\OrderShippingLinesResponse**](OrderShippingLinesResponse.md) |  | [optional]
+**discount_lines** | [**\Conekta\Model\OrderResponseDiscountLines**](OrderResponseDiscountLines.md) |  | [optional]
+**tax_lines** | [**\Conekta\Model\OrderResponseTaxLines**](OrderResponseTaxLines.md) |  | [optional]
+**shipping_lines** | [**\Conekta\Model\OrderResponseShippingLines**](OrderResponseShippingLines.md) |  | [optional]
 **fiscal_entity** | [**\Conekta\Model\OrderFiscalEntityResponse**](OrderFiscalEntityResponse.md) |  | [optional]
 **id** | **string** |  | [optional]
 **is_refundable** | **bool** |  | [optional]
