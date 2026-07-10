@@ -26,6 +26,9 @@
   "gitUserId": "conekta",
   "gitRepoId": "conekta-php",
   "modern" : true,
+  "schemaMappings": {
+    "subscription_response_1": "\\Conekta\\Model\\SubscriptionResponse"
+  },
   "disallowAdditionalPropertiesIfNotPresent" : true,
   "invokerPackage" : "Conekta",
   "templateDir": "/local/templates/php",

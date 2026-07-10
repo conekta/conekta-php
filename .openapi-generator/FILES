@@ -190,7 +190,6 @@ docs/Model/SubscriptionDetailsPlan.md
 docs/Model/SubscriptionEventsResponse.md
 docs/Model/SubscriptionRequest.md
 docs/Model/SubscriptionResponse.md
-docs/Model/SubscriptionResponse1.md
 docs/Model/TaxLinesDataResponse.md
 docs/Model/TokenRequest.md
 docs/Model/TokenRequestCard.md
@@ -409,7 +408,6 @@ lib/Model/SubscriptionDetailsPlan.php
 lib/Model/SubscriptionEventsResponse.php
 lib/Model/SubscriptionRequest.php
 lib/Model/SubscriptionResponse.php
-lib/Model/SubscriptionResponse1.php
 lib/Model/TaxLinesDataResponse.php
 lib/Model/TokenRequest.php
 lib/Model/TokenRequestCard.php

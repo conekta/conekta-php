@@ -350,7 +350,6 @@ Class | Method | HTTP request | Description
 - [SubscriptionEventsResponse](docs/Model/SubscriptionEventsResponse.md)
 - [SubscriptionRequest](docs/Model/SubscriptionRequest.md)
 - [SubscriptionResponse](docs/Model/SubscriptionResponse.md)
-- [SubscriptionResponse1](docs/Model/SubscriptionResponse1.md)
 - [TaxLinesDataResponse](docs/Model/TaxLinesDataResponse.md)
 - [TokenRequest](docs/Model/TokenRequest.md)
 - [TokenRequestCard](docs/Model/TokenRequestCard.md)
