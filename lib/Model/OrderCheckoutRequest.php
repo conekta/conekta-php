@@ -64,6 +64,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => 'string[]',
         'expires_at' => 'int',
         'failure_url' => 'string',
+        'force_save_card' => 'bool',
         'monthly_installments_enabled' => 'bool',
         'monthly_installments_options' => 'int[]',
         'max_failed_retries' => 'int',
@@ -87,6 +88,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => null,
         'expires_at' => 'int64',
         'failure_url' => 'uri',
+        'force_save_card' => null,
         'monthly_installments_enabled' => null,
         'monthly_installments_options' => 'int8',
         'max_failed_retries' => 'int8',
@@ -108,6 +110,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => false,
         'expires_at' => false,
         'failure_url' => false,
+        'force_save_card' => false,
         'monthly_installments_enabled' => false,
         'monthly_installments_options' => false,
         'max_failed_retries' => false,
@@ -209,6 +212,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => 'plan_ids',
         'expires_at' => 'expires_at',
         'failure_url' => 'failure_url',
+        'force_save_card' => 'force_save_card',
         'monthly_installments_enabled' => 'monthly_installments_enabled',
         'monthly_installments_options' => 'monthly_installments_options',
         'max_failed_retries' => 'max_failed_retries',
@@ -230,6 +234,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => 'setPlanIds',
         'expires_at' => 'setExpiresAt',
         'failure_url' => 'setFailureUrl',
+        'force_save_card' => 'setForceSaveCard',
         'monthly_installments_enabled' => 'setMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'setMonthlyInstallmentsOptions',
         'max_failed_retries' => 'setMaxFailedRetries',
@@ -251,6 +256,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         'plan_ids' => 'getPlanIds',
         'expires_at' => 'getExpiresAt',
         'failure_url' => 'getFailureUrl',
+        'force_save_card' => 'getForceSaveCard',
         'monthly_installments_enabled' => 'getMonthlyInstallmentsEnabled',
         'monthly_installments_options' => 'getMonthlyInstallmentsOptions',
         'max_failed_retries' => 'getMaxFailedRetries',
@@ -307,6 +313,8 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public const ALLOWED_PAYMENT_METHODS_BANK_TRANSFER = 'bank_transfer';
     public const ALLOWED_PAYMENT_METHODS_BNPL = 'bnpl';
     public const ALLOWED_PAYMENT_METHODS_PAY_BY_BANK = 'pay_by_bank';
+    public const ALLOWED_PAYMENT_METHODS_GOOGLE = 'google';
+    public const ALLOWED_PAYMENT_METHODS_APPLE = 'apple';
     public const EXCLUDE_CARD_NETWORKS_VISA = 'visa';
     public const EXCLUDE_CARD_NETWORKS_MASTERCARD = 'mastercard';
     public const EXCLUDE_CARD_NETWORKS_AMEX = 'amex';
@@ -326,6 +334,8 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             self::ALLOWED_PAYMENT_METHODS_BANK_TRANSFER,
             self::ALLOWED_PAYMENT_METHODS_BNPL,
             self::ALLOWED_PAYMENT_METHODS_PAY_BY_BANK,
+            self::ALLOWED_PAYMENT_METHODS_GOOGLE,
+            self::ALLOWED_PAYMENT_METHODS_APPLE,
         ];
     }
 
@@ -376,6 +386,7 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('plan_ids', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('failure_url', $data ?? [], null);
+        $this->setIfExists('force_save_card', $data ?? [], null);
         $this->setIfExists('monthly_installments_enabled', $data ?? [], null);
         $this->setIfExists('monthly_installments_options', $data ?? [], null);
         $this->setIfExists('max_failed_retries', $data ?? [], null);
@@ -598,6 +609,33 @@ class OrderCheckoutRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable failure_url cannot be null');
         }
         $this->container['failure_url'] = $failure_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_save_card
+     *
+     * @return bool|null
+     */
+    public function getForceSaveCard()
+    {
+        return $this->container['force_save_card'];
+    }
+
+    /**
+     * Sets force_save_card
+     *
+     * @param bool|null $force_save_card Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments.
+     *
+     * @return self
+     */
+    public function setForceSaveCard($force_save_card)
+    {
+        if (is_null($force_save_card)) {
+            throw new \InvalidArgumentException('non-nullable force_save_card cannot be null');
+        }
+        $this->container['force_save_card'] = $force_save_card;
 
         return $this;
     }

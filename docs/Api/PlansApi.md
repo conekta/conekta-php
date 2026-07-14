@@ -200,7 +200,7 @@ try {
 ## `getPlans()`
 
 ```php
-getPlans($accept_language, $x_child_company_id, $limit, $search, $next, $previous): \Conekta\Model\GetPlansResponse
+getPlans($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $currency, $frequency): \Conekta\Model\GetPlansResponse
 ```
 
 Get A List of Plans
@@ -228,9 +228,11 @@ $limit = 20; // int | The numbers of items to return, the maximum value is 250
 $search = 'search_example'; // string | General order search, e.g. by mail, reference etc.
 $next = 'next_example'; // string | next page
 $previous = 'previous_example'; // string | previous page
+$currency = MXN; // string | currency of the object to be retrieved
+$frequency = 1; // int | frequency of the object to be retrieved
 
 try {
-    $result = $apiInstance->getPlans($accept_language, $x_child_company_id, $limit, $search, $next, $previous);
+    $result = $apiInstance->getPlans($accept_language, $x_child_company_id, $limit, $search, $next, $previous, $currency, $frequency);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PlansApi->getPlans: ', $e->getMessage(), PHP_EOL;
@@ -247,6 +249,8 @@ try {
 | **search** | **string**| General order search, e.g. by mail, reference etc. | [optional] |
 | **next** | **string**| next page | [optional] |
 | **previous** | **string**| previous page | [optional] |
+| **currency** | **string**| currency of the object to be retrieved | [optional] |
+| **frequency** | **int**| frequency of the object to be retrieved | [optional] |
 
 ### Return type
 

@@ -9,7 +9,7 @@ namespace Conekta\Test\Api;
 use Conekta\Api\PaymentLinkApi;
 use Conekta\Model\Checkout;
 use Conekta\Model\CheckoutOrderTemplate;
-use Conekta\Model\CheckoutOrderTemplateCustomerInfo;
+use Conekta\Model\OrderRequestCustomerInfo;
 use Conekta\Model\CheckoutResponse;
 use Conekta\Model\CheckoutsResponse;
 use Conekta\Model\EmailCheckoutRequest;
@@ -47,7 +47,7 @@ class PaymentLinkApiTest extends BaseTestCase
             'needs_shipping_contact' => false,
             'order_template' => new CheckoutOrderTemplate([
                 'currency' => 'MXN',
-                'customer_info' => new CheckoutOrderTemplateCustomerInfo([
+                'customer_info' => new OrderRequestCustomerInfo([
                     'name' => 'Juan Perez',
                     'email' => 'juan@conekta.com',
                     'phone' => '+5215555555555',

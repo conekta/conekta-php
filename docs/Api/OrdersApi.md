@@ -145,7 +145,7 @@ try {
 ## `getOrderById()`
 
 ```php
-getOrderById($id, $accept_language, $x_child_company_id): \Conekta\Model\OrderResponse
+getOrderById($id, $accept_language, $x_child_company_id, $client): \Conekta\Model\OrderResponse
 ```
 
 Get Order
@@ -172,9 +172,10 @@ $apiInstance = new Conekta\Api\OrdersApi(
 $id = 6307a60c41de27127515a575; // string | Identifier of the resource
 $accept_language = es; // string | Use for knowing which language to use
 $x_child_company_id = 6441b6376b60c3a638da80af; // string | In the case of a holding company, the company id of the child company to which will process the request.
+$client = checkout; // string | client of the object to be retrieved
 
 try {
-    $result = $apiInstance->getOrderById($id, $accept_language, $x_child_company_id);
+    $result = $apiInstance->getOrderById($id, $accept_language, $x_child_company_id, $client);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->getOrderById: ', $e->getMessage(), PHP_EOL;
@@ -188,6 +189,7 @@ try {
 | **id** | **string**| Identifier of the resource | |
 | **accept_language** | **string**| Use for knowing which language to use | [optional] [default to &#39;es&#39;] |
 | **x_child_company_id** | **string**| In the case of a holding company, the company id of the child company to which will process the request. | [optional] |
+| **client** | **string**| client of the object to be retrieved | [optional] |
 
 ### Return type
 

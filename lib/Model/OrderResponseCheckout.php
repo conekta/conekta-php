@@ -65,6 +65,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => 'int',
         'failure_url' => 'string',
         'force_3ds_flow' => 'bool',
+        'force_save_card' => 'bool',
         'id' => 'string',
         'is_redirect_on_failure' => 'bool',
         'livemode' => 'bool',
@@ -103,6 +104,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => 'int64',
         'failure_url' => null,
         'force_3ds_flow' => null,
+        'force_save_card' => null,
         'id' => null,
         'is_redirect_on_failure' => null,
         'livemode' => null,
@@ -139,6 +141,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => false,
         'failure_url' => false,
         'force_3ds_flow' => false,
+        'force_save_card' => false,
         'id' => false,
         'is_redirect_on_failure' => false,
         'livemode' => false,
@@ -255,6 +258,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => 'expires_at',
         'failure_url' => 'failure_url',
         'force_3ds_flow' => 'force_3ds_flow',
+        'force_save_card' => 'force_save_card',
         'id' => 'id',
         'is_redirect_on_failure' => 'is_redirect_on_failure',
         'livemode' => 'livemode',
@@ -291,6 +295,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => 'setExpiresAt',
         'failure_url' => 'setFailureUrl',
         'force_3ds_flow' => 'setForce3dsFlow',
+        'force_save_card' => 'setForceSaveCard',
         'id' => 'setId',
         'is_redirect_on_failure' => 'setIsRedirectOnFailure',
         'livemode' => 'setLivemode',
@@ -327,6 +332,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         'expires_at' => 'getExpiresAt',
         'failure_url' => 'getFailureUrl',
         'force_3ds_flow' => 'getForce3dsFlow',
+        'force_save_card' => 'getForceSaveCard',
         'id' => 'getId',
         'is_redirect_on_failure' => 'getIsRedirectOnFailure',
         'livemode' => 'getLivemode',
@@ -431,6 +437,7 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('failure_url', $data ?? [], null);
         $this->setIfExists('force_3ds_flow', $data ?? [], null);
+        $this->setIfExists('force_save_card', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('is_redirect_on_failure', $data ?? [], null);
         $this->setIfExists('livemode', $data ?? [], null);
@@ -709,6 +716,33 @@ class OrderResponseCheckout implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable force_3ds_flow cannot be null');
         }
         $this->container['force_3ds_flow'] = $force_3ds_flow;
+
+        return $this;
+    }
+
+    /**
+     * Gets force_save_card
+     *
+     * @return bool|null
+     */
+    public function getForceSaveCard()
+    {
+        return $this->container['force_save_card'];
+    }
+
+    /**
+     * Sets force_save_card
+     *
+     * @param bool|null $force_save_card Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments.
+     *
+     * @return self
+     */
+    public function setForceSaveCard($force_save_card)
+    {
+        if (is_null($force_save_card)) {
+            throw new \InvalidArgumentException('non-nullable force_save_card cannot be null');
+        }
+        $this->container['force_save_card'] = $force_save_card;
 
         return $this;
     }

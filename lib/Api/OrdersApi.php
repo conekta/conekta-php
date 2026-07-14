@@ -1138,15 +1138,16 @@ class OrdersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $client client of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error
      */
-    public function getOrderById($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getOrderById'][0])
+    public function getOrderById($id, $accept_language = 'es', $x_child_company_id = null, $client = null, string $contentType = self::contentTypes['getOrderById'][0])
     {
-        list($response) = $this->getOrderByIdWithHttpInfo($id, $accept_language, $x_child_company_id, $contentType);
+        list($response) = $this->getOrderByIdWithHttpInfo($id, $accept_language, $x_child_company_id, $client, $contentType);
         return $response;
     }
 
@@ -1158,15 +1159,16 @@ class OrdersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $client client of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \Conekta\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Conekta\Model\OrderResponse|\Conekta\Model\Error|\Conekta\Model\Error|\Conekta\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderByIdWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getOrderById'][0])
+    public function getOrderByIdWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, $client = null, string $contentType = self::contentTypes['getOrderById'][0])
     {
-        $request = $this->getOrderByIdRequest($id, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->getOrderByIdRequest($id, $accept_language, $x_child_company_id, $client, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1390,14 +1392,15 @@ class OrdersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $client client of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOrderByIdAsync($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getOrderById'][0])
+    public function getOrderByIdAsync($id, $accept_language = 'es', $x_child_company_id = null, $client = null, string $contentType = self::contentTypes['getOrderById'][0])
     {
-        return $this->getOrderByIdAsyncWithHttpInfo($id, $accept_language, $x_child_company_id, $contentType)
+        return $this->getOrderByIdAsyncWithHttpInfo($id, $accept_language, $x_child_company_id, $client, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1413,15 +1416,16 @@ class OrdersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $client client of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getOrderByIdAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getOrderById'][0])
+    public function getOrderByIdAsyncWithHttpInfo($id, $accept_language = 'es', $x_child_company_id = null, $client = null, string $contentType = self::contentTypes['getOrderById'][0])
     {
         $returnType = '\Conekta\Model\OrderResponse';
-        $request = $this->getOrderByIdRequest($id, $accept_language, $x_child_company_id, $contentType);
+        $request = $this->getOrderByIdRequest($id, $accept_language, $x_child_company_id, $client, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1465,12 +1469,13 @@ class OrdersApi
      * @param  string $id Identifier of the resource (required)
      * @param  string|null $accept_language Use for knowing which language to use (optional, default to 'es')
      * @param  string|null $x_child_company_id In the case of a holding company, the company id of the child company to which will process the request. (optional)
+     * @param  string|null $client client of the object to be retrieved (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOrderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getOrderByIdRequest($id, $accept_language = 'es', $x_child_company_id = null, string $contentType = self::contentTypes['getOrderById'][0])
+    public function getOrderByIdRequest($id, $accept_language = 'es', $x_child_company_id = null, $client = null, string $contentType = self::contentTypes['getOrderById'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1483,6 +1488,7 @@ class OrdersApi
 
 
 
+
         $resourcePath = '/orders/{id}';
         $formParams = [];
         $queryParams = [];
@@ -1490,6 +1496,15 @@ class OrdersApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $client,
+            'client', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         // header params
         if ($accept_language !== null) {
