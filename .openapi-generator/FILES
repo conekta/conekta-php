@@ -57,7 +57,6 @@ docs/Model/ChargesDataResponse.md
 docs/Model/ChargesOrderResponse.md
 docs/Model/Checkout.md
 docs/Model/CheckoutOrderTemplate.md
-docs/Model/CheckoutOrderTemplateCustomerInfo.md
 docs/Model/CheckoutResponse.md
 docs/Model/CheckoutsResponse.md
 docs/Model/CompanyDocumentRequest.md
@@ -275,7 +274,6 @@ lib/Model/ChargesDataResponse.php
 lib/Model/ChargesOrderResponse.php
 lib/Model/Checkout.php
 lib/Model/CheckoutOrderTemplate.php
-lib/Model/CheckoutOrderTemplateCustomerInfo.php
 lib/Model/CheckoutResponse.php
 lib/Model/CheckoutsResponse.php
 lib/Model/CompanyDocumentRequest.php

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **plan_ids** | **string[]** | List of plan IDs that will be available for subscription. This field is required for subscription payments. | [optional]
 **expires_at** | **int** | It is the time when the link will expire.  It is expressed in seconds since the Unix epoch. The valid range is from 5 minutes to 365 days from the creation date. | [optional]
 **failure_url** | **string** | Redirection url back to the site in case of failed payment, applies only to HostedPayment. | [optional]
+**force_save_card** | **bool** | Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments. | [optional]
 **monthly_installments_enabled** | **bool** |  | [optional]
 **monthly_installments_options** | **int[]** |  | [optional]
 **max_failed_retries** | **int** | Number of retries allowed before the checkout is marked as failed | [optional]

@@ -60,7 +60,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'currency' => 'string',
-        'customer_info' => '\Conekta\Model\CheckoutOrderTemplateCustomerInfo',
+        'customer_info' => '\Conekta\Model\OrderRequestCustomerInfo',
         'line_items' => '\Conekta\Model\Product[]',
         'metadata' => 'array<string,mixed>',
         'tax_lines' => '\Conekta\Model\OrderTaxRequest[]',
@@ -374,7 +374,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets customer_info
      *
-     * @return \Conekta\Model\CheckoutOrderTemplateCustomerInfo|null
+     * @return \Conekta\Model\OrderRequestCustomerInfo|null
      */
     public function getCustomerInfo()
     {
@@ -384,7 +384,7 @@ class CheckoutOrderTemplate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets customer_info
      *
-     * @param \Conekta\Model\CheckoutOrderTemplateCustomerInfo|null $customer_info customer_info
+     * @param \Conekta\Model\OrderRequestCustomerInfo|null $customer_info customer_info
      *
      * @return self
      */

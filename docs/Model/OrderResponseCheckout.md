@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **expires_at** | **int** |  | [optional]
 **failure_url** | **string** |  | [optional]
 **force_3ds_flow** | **bool** |  | [optional]
+**force_save_card** | **bool** | Indicates whether the card used for the payment should be saved for future purchases. This field is only applicable for card payments. | [optional]
 **id** | **string** |  |
 **is_redirect_on_failure** | **bool** |  | [optional]
 **livemode** | **bool** |  | [optional]
